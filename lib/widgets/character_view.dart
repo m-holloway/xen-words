@@ -3,15 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import '../controllers/game_controller.dart';
 
 /// Widget for displaying and animating the character
-/// 
-/// FUTURE TODO: Convert rabbit_rig.fbx to glTF/GLB format for 3D rendering
-/// with flutter_scene. For now, using animated emoji as placeholder.
-/// 
-/// Steps for 3D integration:
-/// 1. Convert FBX to GLB using Blender or online converter
-/// 2. Import the model using flutter_scene package
-/// 3. Implement animation playback for idle, celebrate, and fail states
-/// 4. Set up proper camera positioning and lighting
+/// TODO: Replace with 3D model once we resolve the rendering approach
 class CharacterView extends StatefulWidget {
   final GameState gameState;
 
@@ -24,113 +16,100 @@ class CharacterView extends StatefulWidget {
   State<CharacterView> createState() => _CharacterViewState();
 }
 
-class _CharacterViewState extends State<CharacterView>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
-
-  @override
-  void initState() {
-    super.initState();
-    _animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 2),
-    );
-    _playIdleAnimation();
-  }
+class _CharacterViewState extends State<CharacterView> {
+  GameState? _lastState;
 
   @override
   void didUpdateWidget(CharacterView oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.gameState != widget.gameState) {
-      _playAnimationForState(widget.gameState);
-    }
-  }
-
-  void _playAnimationForState(GameState state) {
-    switch (state) {
-      case GameState.celebrating:
-        _playCelebrationAnimation();
-        break;
-      case GameState.failing:
-        _playFailAnimation();
-        break;
-      case GameState.playing:
-        _playIdleAnimation();
-        break;
-      default:
-        break;
-    }
-  }
-
-  void _playCelebrationAnimation() {
-    _animationController.forward(from: 0);
-  }
-
-  void _playFailAnimation() {
-    _animationController.forward(from: 0);
-  }
-
-  void _playIdleAnimation() {
-    _animationController.repeat();
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
-
-  String _getCharacterEmoji() {
-    switch (widget.gameState) {
-      case GameState.celebrating:
-        return '🎉';
-      case GameState.failing:
-        return '😔';
-      case GameState.completed:
-        return '⭐';
-      default:
-        return '🐰';
+    if (widget.gameState != _lastState) {
+      _lastState = widget.gameState;
+      setState(() {});
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 150,
-      height: 150,
+    return Container(
+      width: 180,
+      height: 180,
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.15),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            blurRadius: 15,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
       child: Center(
-        child: Text(
-          _getCharacterEmoji(),
-          style: const TextStyle(fontSize: 100),
-        )
-            .animate(
-              target: widget.gameState == GameState.celebrating ? 1 : 0,
-            )
-            .scale(
-              duration: const Duration(milliseconds: 500),
-              begin: const Offset(1, 1),
-              end: const Offset(1.3, 1.3),
-            )
-            .rotate(
-              duration: const Duration(milliseconds: 500),
-              begin: 0,
-              end: 0.1,
-            )
-            .animate(
-              target: widget.gameState == GameState.failing ? 1 : 0,
-            )
-            .shake(
-              duration: const Duration(milliseconds: 500),
-              hz: 8,
-            )
-            .animate(
-              target: widget.gameState == GameState.playing ? 1 : 0,
-            )
-            .shimmer(
-              duration: const Duration(seconds: 2),
-            ),
+        child: _buildCharacterForState(),
       ),
     );
   }
-}
 
+  Widget _buildCharacterForState() {
+    switch (widget.gameState) {
+      case GameState.celebrating:
+        return const Text(
+          '🐰',
+          style: TextStyle(fontSize: 80),
+        )
+            .animate(onPlay: (controller) => controller.repeat(reverse: true))
+            .scale(
+              duration: 500.ms,
+              begin: const Offset(1.0, 1.0),
+              end: const Offset(1.3, 1.3),
+            )
+            .rotate(
+              duration: 500.ms,
+              begin: -0.05,
+              end: 0.05,
+            );
+
+      case GameState.failing:
+        return const Text(
+          '🐰',
+          style: TextStyle(fontSize: 80),
+        )
+            .animate()
+            .shake(
+              duration: 500.ms,
+              hz: 10,
+            )
+            .tint(
+              color: Colors.red,
+              duration: 500.ms,
+            );
+
+      case GameState.playing:
+        return const Text(
+          '🐰',
+          style: TextStyle(fontSize: 80),
+        )
+            .animate(onPlay: (controller) => controller.repeat(reverse: true))
+            .moveY(
+              duration: 2.seconds,
+              begin: 0,
+              end: -10,
+              curve: Curves.easeInOut,
+            );
+
+      case GameState.completed:
+        return const Text(
+          '🐰',
+          style: TextStyle(fontSize: 80),
+        )
+            .animate(onPlay: (controller) => controller.repeat())
+            .rotate(duration: 2.seconds);
+
+      default:
+        return const Text(
+          '🐰',
+          style: TextStyle(fontSize: 80),
+        );
+    }
+  }
+}

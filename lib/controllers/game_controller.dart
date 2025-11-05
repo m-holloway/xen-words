@@ -83,14 +83,15 @@ class GameController extends ChangeNotifier {
     _currentWordIndex = -1;
     _shuffledIndices = WordList.generateShuffledIndices(_numWeeks);
     
-    print('Shuffled indices: $_shuffledIndices');
+    print('🎮 Shuffled indices: $_shuffledIndices');
 
     notifyListeners();
 
     // Play game start sound and then enable microphone
-    await audioService.playGameStart(onComplete: () {
-      _enableMicrophone();
+    await audioService.playGameStart(onComplete: () async {
+      print('🎵 Game start audio complete');
       _displayNextWord();
+      await _enableMicrophone();
     });
   }
 
@@ -99,7 +100,7 @@ class GameController extends ChangeNotifier {
     if (_currentWordIndex < _numWeeks * WordList.wordsPerWeek - 1) {
       _currentWordIndex++;
       _state = GameState.playing;
-      print('Displaying word $_currentWordIndex: $currentWord');
+      print('📖 Displaying word $_currentWordIndex: $currentWord');
       notifyListeners();
     } else {
       _completeGame();
@@ -107,32 +108,39 @@ class GameController extends ChangeNotifier {
   }
 
   /// Enable microphone listening
-  void _enableMicrophone() {
-    if (!_isMicrophoneEnabled) {
-      _isMicrophoneEnabled = true;
-      _startListening();
-      notifyListeners();
-    }
+  Future<void> _enableMicrophone() async {
+    print('🎤 Enabling microphone...');
+    _isMicrophoneEnabled = true;
+    notifyListeners();
+    
+    // Small delay to ensure previous session is fully stopped
+    await Future.delayed(const Duration(milliseconds: 100));
+    await _startListening();
   }
 
   /// Disable microphone listening
-  void _disableMicrophone() {
-    if (_isMicrophoneEnabled) {
-      _isMicrophoneEnabled = false;
-      speechRecognizer.stopListening();
-      notifyListeners();
-    }
+  Future<void> _disableMicrophone() async {
+    print('🎤 Disabling microphone...');
+    _isMicrophoneEnabled = false;
+    notifyListeners();
+    await speechRecognizer.stopListening();
   }
 
   /// Start listening for speech
-  void _startListening() {
-    speechRecognizer.startListening(
-      onResult: _handleSpeechResult,
-      onPartial: _handlePartialResult,
-      onError: (error) {
-        print('Speech recognition error: $error');
-      },
-    );
+  Future<void> _startListening() async {
+    print('🎤 Starting continuous listening...');
+    try {
+      await speechRecognizer.startListening(
+        onResult: _handleSpeechResult,
+        onPartial: _handlePartialResult,
+        onError: (error) {
+          print('❌ Speech recognition error: $error');
+        },
+      );
+      print('✅ Continuous listening started (will auto-restart)');
+    } catch (e) {
+      print('❌ Error starting speech recognition: $e');
+    }
   }
 
   /// Handle partial speech recognition results
@@ -142,27 +150,31 @@ class GameController extends ChangeNotifier {
 
   /// Handle final speech recognition results
   void _handleSpeechResult(SpeechRecognitionResult result) {
-    if (_state != GameState.playing) return;
+    if (_state != GameState.playing) {
+      print('⚠️  Ignoring result, not in playing state: $_state');
+      return;
+    }
+
+    // Only process non-empty results (empty ones are handled by auto-restart in speech recognizer)
+    if (result.text.isEmpty) {
+      print('⚠️  Empty result ignored (auto-restart will handle)');
+      return;
+    }
 
     final expectedWord = currentWord.toLowerCase();
-    print('Result: ${result.text}, Expected: $expectedWord');
+    print('📝 Result: ${result.text}, Expected: $expectedWord');
 
     bool gotExpected = false;
-    bool gotNonEmpty = false;
 
     // Check main result
-    if (result.text.isNotEmpty) {
-      gotNonEmpty = true;
-      if (WordList.phraseContainsWord(result.text, expectedWord)) {
-        gotExpected = true;
-      }
+    if (WordList.phraseContainsWord(result.text, expectedWord)) {
+      gotExpected = true;
     }
 
     // Check alternatives if not found in main result
     if (!gotExpected && result.alternatives.isNotEmpty) {
       for (final alt in result.alternatives) {
         if (alt.text.isNotEmpty && alt.confidence < 0.8) {
-          gotNonEmpty = true;
           if (WordList.phraseContainsWord(alt.text, expectedWord)) {
             gotExpected = true;
             break;
@@ -172,55 +184,49 @@ class GameController extends ChangeNotifier {
     }
 
     // Handle result
-    if (gotNonEmpty) {
-      if (gotExpected) {
-        _playCelebration();
-      } else {
-        _playFailure();
-      }
+    if (gotExpected) {
+      print('✅ Correct word!');
+      _playCelebration();
+    } else {
+      print('❌ Wrong word');
+      _playFailure();
     }
-
-    // Restart listening after processing
-    Future.delayed(const Duration(milliseconds: 500), () {
-      if (_state == GameState.playing && _isMicrophoneEnabled) {
-        _startListening();
-      }
-    });
+    // Speech recognizer will auto-restart listening after this
   }
 
   /// Play celebration for correct word
-  void _playCelebration() {
-    _disableMicrophone();
+  void _playCelebration() async {
+    await _disableMicrophone();
     _state = GameState.celebrating;
     notifyListeners();
 
     // Launch a single firework
-    // Note: Size will be provided by the UI when calling this
-    // For now, using a default size
     fireworksController.launchSingle(const Size(800, 600));
 
-    audioService.playWordSuccess(onComplete: () {
-      _enableMicrophone();
+    audioService.playWordSuccess(onComplete: () async {
+      print('🎵 Success audio complete, moving to next word...');
       _displayNextWord();
+      await _enableMicrophone();
     });
   }
 
   /// Play failure for incorrect word
-  void _playFailure() {
-    _disableMicrophone();
+  void _playFailure() async {
+    await _disableMicrophone();
     _state = GameState.failing;
     notifyListeners();
 
-    audioService.playWordMiss(onComplete: () {
-      _enableMicrophone();
+    audioService.playWordMiss(onComplete: () async {
+      print('🎵 Miss audio complete, continuing...');
       _state = GameState.playing;
       notifyListeners();
+      await _enableMicrophone();
     });
   }
 
   /// Complete the game
-  void _completeGame() {
-    _disableMicrophone();
+  void _completeGame() async {
+    await _disableMicrophone();
     _state = GameState.completed;
     notifyListeners();
 
@@ -228,28 +234,32 @@ class GameController extends ChangeNotifier {
     fireworksController.launchMultiple(const Size(800, 600), count: 5);
 
     audioService.playGameComplete();
+    print('🎉 Game completed!');
   }
 
   /// Play word pronunciation hint
   Future<void> playWordHint() async {
     if (currentWord.isNotEmpty && _state == GameState.playing) {
-      _disableMicrophone();
+      print('💡 Playing hint for: $currentWord');
+      await _disableMicrophone();
       await audioService.playWordPronunciation(
         currentWord,
-        onComplete: () {
-          _enableMicrophone();
+        onComplete: () async {
+          print('💡 Hint complete, re-enabling microphone');
+          await _enableMicrophone();
         },
       );
     }
   }
 
   /// Reset game to initial state
-  void resetGame() {
-    _disableMicrophone();
+  void resetGame() async {
+    await _disableMicrophone();
     _state = GameState.initial;
     _currentWordIndex = -1;
     _shuffledIndices = [];
     notifyListeners();
+    print('🔄 Game reset');
   }
 
   @override
