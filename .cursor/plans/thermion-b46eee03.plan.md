@@ -1,4 +1,4 @@
-<!-- b46eee03-3441-4f32-8b26-ab7dd54daa44 7c325701-0361-4bd9-aa25-edb5c15036b5 -->
+<!-- b46eee03-3441-4f32-8b26-ab7dd54daa44 921c46ec-6d89-4108-af1c-3d28665e6a5c -->
 # 3D Visual Enhancements Plan
 
 ## Overview
@@ -153,8 +153,8 @@ Improve the visual quality of the 3D character in both the splash screen and gam
 
 ### To-dos
 
-- [x] Delete FLUTTER_SCENE_MIGRATION.md and update pubspec.yaml with Thermion
-- [x] Rewrite character_view.dart to use Thermion
-- [x] Update 3D_INTEGRATION.md with Thermion approach
-- [x] Update ANIMATION_MAPPING.md, README.md, and BUILD_NOTES.md
-- [x] Test implementation and fix any issues
+- [ ] Delete FLUTTER_SCENE_MIGRATION.md and update pubspec.yaml with Thermion
+- [ ] Rewrite character_view.dart to use Thermion
+- [ ] Update 3D_INTEGRATION.md with Thermion approach
+- [ ] Update ANIMATION_MAPPING.md, README.md, and BUILD_NOTES.md
+- [ ] Test implementation and fix any issues

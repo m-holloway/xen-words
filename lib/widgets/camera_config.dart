@@ -69,12 +69,12 @@ class CameraConfig {
   // Game state specific shots
   static Vector3 get playingShot => calculatePosition(
     distance: distanceMedium,
-    heightOffset: heightEyeLevel,
+    heightOffset: 1.1, // Frame character higher in frame (moved up 2x more: 0.7 + 0.4 = 1.1)
   );
   
   static Vector3 get celebratingShot => calculatePosition(
-    distance: distanceClose,
-    heightOffset: heightEyeLevel,
+    distance: distanceMedium, // Wider shot to accommodate jump animations and other dynamic movements
+    heightOffset: heightSlightlyAbove, // Slightly above to see jumps better
   );
   
   static Vector3 get failingShot => calculatePosition(
@@ -84,7 +84,7 @@ class CameraConfig {
   
   static Vector3 get completedShot => calculatePosition(
     distance: distanceMedium,
-    heightOffset: heightEyeLevel,
+    heightOffset: 1.1, // Moved up 2x more: 0.7 + 0.4 = 1.1
     angleOffset: angleSlightRight,
   );
   

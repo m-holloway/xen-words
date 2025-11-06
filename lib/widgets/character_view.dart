@@ -1,8 +1,9 @@
+import 'dart:async';
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:thermion_flutter/thermion_flutter.dart';
 import '../controllers/game_controller.dart';
 import 'camera_config.dart';
-import 'dart:math' as math;
 
 /// Widget for displaying and animating the 3D character using Thermion
 /// Now supports dynamic sizing based on game state for more engaging presentation
@@ -36,6 +37,27 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
   // Camera sway parameters (subtle breathing effect during idle)
   static const double _swayAmplitude = 0.02; // Very subtle movement
   static const double _swaySpeed = 1.5; // Slow, gentle oscillation
+  
+  // Idle animation cycling
+  List<String> _idleAnimations = []; // Available idle animations
+  int _currentIdleIndex = 0; // Current idle animation index
+  Timer? _idleAnimationTimer; // Timer for cycling idle animations
+  static const Duration _idleAnimationDuration = Duration(seconds: 8); // How long each idle plays
+  
+  // Failure animation selection
+  List<String> _failureAnimations = []; // Available failure animations
+  String? _selectedFailureAnimation; // Cached failure animation for current failing state
+  
+  // Celebration animation selection
+  List<String> _celebrationAnimations = []; // Available celebration animations
+  String? _selectedCelebrationAnimation; // Cached celebration animation for current celebrating state
+  
+  // Completion/dance animation selection
+  List<String> _completionAnimations = []; // Available completion/dance animations
+  String? _selectedCompletionAnimation; // Cached completion animation for current completed state
+  
+  final math.Random _random = math.Random(); // Random number generator for animations
+  GameState? _previousGameState; // Track previous state to detect transitions
 
   @override
   void initState() {
@@ -65,6 +87,7 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
   void dispose() {
     _cameraAnimationController.dispose();
     _cameraSwayController.dispose();
+    _idleAnimationTimer?.cancel();
     super.dispose();
   }
 
@@ -72,7 +95,59 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
   void didUpdateWidget(CharacterView oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.gameState != oldWidget.gameState) {
+      // Track state transitions for animation selection
+      final wasFailing = oldWidget.gameState == GameState.failing;
+      final isNowFailing = widget.gameState == GameState.failing;
+      final wasCelebrating = oldWidget.gameState == GameState.celebrating;
+      final isNowCelebrating = widget.gameState == GameState.celebrating;
+      
+      // When entering failing state, clear cached selection to force new random pick
+      if (isNowFailing && !wasFailing) {
+        _selectedFailureAnimation = null;
+        _currentAnimation = null;
+      }
+      // When leaving failing state, clear the cache
+      else if (wasFailing && !isNowFailing) {
+        _selectedFailureAnimation = null;
+      }
+      
+      // When entering celebrating state, clear cached selection to force new random pick
+      if (isNowCelebrating && !wasCelebrating) {
+        _selectedCelebrationAnimation = null;
+        _currentAnimation = null;
+      }
+      // When leaving celebrating state, clear the cache
+      else if (wasCelebrating && !isNowCelebrating) {
+        _selectedCelebrationAnimation = null;
+      }
+      
+      // Track completion state transitions
+      final wasCompleted = oldWidget.gameState == GameState.completed;
+      final isNowCompleted = widget.gameState == GameState.completed;
+      
+      // When entering completed state, clear cached selection to force new random pick
+      if (isNowCompleted && !wasCompleted) {
+        _selectedCompletionAnimation = null;
+        _currentAnimation = null;
+      }
+      // When leaving completed state, clear the cache
+      else if (wasCompleted && !isNowCompleted) {
+        _selectedCompletionAnimation = null;
+      }
+      
+      // Update previous state for next comparison
+      _previousGameState = oldWidget.gameState;
+      
       _updateAnimation();
+      
+      // Manage idle animation cycling based on state
+      if (widget.gameState == GameState.playing && oldWidget.gameState != GameState.playing) {
+        // Entering playing state - start cycling idle animations
+        _startIdleAnimationCycling();
+      } else if (widget.gameState != GameState.playing && oldWidget.gameState == GameState.playing) {
+        // Leaving playing state - stop cycling
+        _stopIdleAnimationCycling();
+      }
       
       // Special handling for initial -> playing transition (cinematic zoom-in)
       if (oldWidget.gameState == GameState.initial && 
@@ -240,24 +315,116 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
     String animationName;
     switch (widget.gameState) {
       case GameState.celebrating:
-        // Celebration animation - using Cheering from GLB
-        animationName = "combined_Cheering (4)-rabbit";
+        // Celebration animation - randomly select from available celebration animations
+        // Only pick a new random animation when transitioning INTO celebrating state
+        // (not on every rebuild while already in celebrating state)
+        if (_celebrationAnimations.isNotEmpty) {
+          // Use cached selection if we're already in celebrating state
+          // Only pick a new one if we just transitioned into celebrating state
+          if (_selectedCelebrationAnimation != null && _previousGameState == GameState.celebrating) {
+            animationName = _selectedCelebrationAnimation!;
+          } else {
+            // Transitioning into celebrating state - pick a new random animation
+            // Ensure it's different from the last one if we have multiple options
+            String candidate;
+            int attempts = 0;
+            do {
+              final randomIndex = _random.nextInt(_celebrationAnimations.length);
+              candidate = _celebrationAnimations[randomIndex];
+              attempts++;
+            } while (attempts < 10 && 
+                     _celebrationAnimations.length > 1 && 
+                     candidate == _selectedCelebrationAnimation);
+            
+            _selectedCelebrationAnimation = candidate;
+            animationName = candidate;
+            print('🎉 Random celebration animation selected: name="$animationName" (from ${_celebrationAnimations.length} options)');
+          }
+        } else {
+          // Fallback until celebration animations are loaded
+          animationName = "combined_Cheering (4)-rabbit";
+          _selectedCelebrationAnimation = animationName;
+          print('⚠️ No celebration animations discovered, using fallback: "$animationName"');
+        }
         break;
         
       case GameState.failing:
-        // Failure animation - using Defeat Idle from GLB
-        animationName = "combined_Defeat Idle-rabbit";
+        // Failure animation - randomly select from available failure animations
+        // Only pick a new random animation when transitioning INTO failing state
+        // (not on every rebuild while already in failing state)
+        if (_failureAnimations.isNotEmpty) {
+          // Use cached selection if we're already in failing state
+          // Only pick a new one if we just transitioned into failing state
+          if (_selectedFailureAnimation != null && _previousGameState == GameState.failing) {
+            animationName = _selectedFailureAnimation!;
+          } else {
+            // Transitioning into failing state - pick a new random animation
+            // Ensure it's different from the last one if we have multiple options
+            String candidate;
+            int attempts = 0;
+            do {
+              final randomIndex = _random.nextInt(_failureAnimations.length);
+              candidate = _failureAnimations[randomIndex];
+              attempts++;
+            } while (attempts < 10 && 
+                     _failureAnimations.length > 1 && 
+                     candidate == _selectedFailureAnimation);
+            
+            _selectedFailureAnimation = candidate;
+            animationName = candidate;
+            print('🎲 Random failure animation selected: name="$animationName" (from ${_failureAnimations.length} options)');
+          }
+        } else {
+          // Fallback until failure animations are loaded
+          animationName = "combined_Defeat-rabbit";
+          _selectedFailureAnimation = animationName;
+          print('⚠️ No failure animations discovered, using fallback: "$animationName"');
+        }
         break;
         
       case GameState.playing:
-        // Idle state during gameplay - look for any idle animation
-        // Will fallback to first available if not found
-        animationName = "combined_Box Idle-rabbit"; // Try Box Idle first
+        // Idle state during gameplay - cycle through available idle animations
+        // Will use first available idle if cycling hasn't been set up yet
+        if (_idleAnimations.isNotEmpty) {
+          animationName = _idleAnimations[_currentIdleIndex % _idleAnimations.length];
+        } else {
+          // Fallback until idle animations are loaded
+          animationName = "combined_Happy Idle-rabbit";
+        }
         break;
         
       case GameState.completed:
-        // Game complete - using Dancing for celebration
-        animationName = "combined_Dancing-rabbit";
+        // Game complete - randomly select from available completion/dance animations
+        // Only pick a new random animation when transitioning INTO completed state
+        // (not on every rebuild while already in completed state)
+        if (_completionAnimations.isNotEmpty) {
+          // Use cached selection if we're already in completed state
+          // Only pick a new one if we just transitioned into completed state
+          if (_selectedCompletionAnimation != null && _previousGameState == GameState.completed) {
+            animationName = _selectedCompletionAnimation!;
+          } else {
+            // Transitioning into completed state - pick a new random animation
+            // Ensure it's different from the last one if we have multiple options
+            String candidate;
+            int attempts = 0;
+            do {
+              final randomIndex = _random.nextInt(_completionAnimations.length);
+              candidate = _completionAnimations[randomIndex];
+              attempts++;
+            } while (attempts < 10 && 
+                     _completionAnimations.length > 1 && 
+                     candidate == _selectedCompletionAnimation);
+            
+            _selectedCompletionAnimation = candidate;
+            animationName = candidate;
+            print('🎊 Random completion animation selected: name="$animationName" (from ${_completionAnimations.length} options)');
+          }
+        } else {
+          // Fallback until completion animations are loaded
+          animationName = "combined_Dancing-rabbit";
+          _selectedCompletionAnimation = animationName;
+          print('⚠️ No completion animations discovered, using fallback: "$animationName"');
+        }
         break;
         
       default:
@@ -278,7 +445,11 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
     if (_asset == null || _viewer == null) return;
     
     final newAnimation = _getAnimationForState();
-    if (newAnimation == _currentAnimation) return;
+    
+    // Skip if it's the same animation (unless we're transitioning into failing state)
+    if (newAnimation == _currentAnimation) {
+      return;
+    }
     
     _currentAnimation = newAnimation;
     
@@ -286,15 +457,18 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       // Get available animations to verify the name exists
       final availableAnimations = await _asset!.getGltfAnimationNames();
       
-      if (availableAnimations.contains(newAnimation)) {
-        // Play the animation with looping enabled
+      if (availableAnimations.contains(_currentAnimation)) {
+        // Play the animation - loop for idle/playing and completion (keep celebrating/dancing)
+        // Don't loop for one-time reactions (celebration, failure)
+        final shouldLoop = widget.gameState == GameState.playing || 
+                          widget.gameState == GameState.completed;
         await _asset!.playGltfAnimationByName(
-          newAnimation,
-          loop: true,
+          _currentAnimation!,
+          loop: shouldLoop,
           crossfade: 0.3, // Smooth transition
         );
       } else {
-        print('⚠️ Animation "$newAnimation" not found in GLB. Available: ${availableAnimations.take(10).join(", ")}...');
+        print('⚠️ Animation "$_currentAnimation" not found in GLB. Available: ${availableAnimations.take(10).join(", ")}...');
         // Fallback: Find appropriate animation based on game state
         String fallback = '';
         if (widget.gameState == GameState.celebrating) {
@@ -340,7 +514,7 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
         }
       }
     } catch (e) {
-      print('❌ Error playing animation "$newAnimation": $e');
+        print('❌ Error playing animation "$_currentAnimation": $e');
     }
   }
 
@@ -405,8 +579,25 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       // Ensure animation component is added
       await _asset!.addAnimationComponent();
       
+      // Discover and set up idle animations for cycling
+      await _discoverIdleAnimations();
+      
+      // Discover and set up failure animations for random selection
+      await _discoverFailureAnimations();
+      
+      // Discover and set up celebration animations for random selection
+      await _discoverCelebrationAnimations();
+      
+      // Discover and set up completion/dance animations for random selection
+      await _discoverCompletionAnimations();
+      
       // Play initial animation
       await _updateAnimation();
+      
+      // Start idle animation cycling if in playing state
+      if (widget.gameState == GameState.playing) {
+        _startIdleAnimationCycling();
+      }
       
       // Set initial camera position for current state
       // If we're in playing state and haven't done the zoom yet, do it now
@@ -437,21 +628,288 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
     }
   }
   
+  /// Discover available failure animations from the GLB model
+  /// Selects appropriate failure animations (falling, defeat, etc.)
+  /// 
+  /// Available animations in GLB (from documentation):
+  /// - Idle
+  /// - Happy Idle
+  /// - Dwarf Idle
+  /// - Defeat
+  /// - Dodging
+  /// - Dying Backwards
+  /// - Fall Flat
+  /// - Falling Back Death
+  /// - Fast Run
+  /// - Inside Crescent Kick
+  /// - Jump
+  /// - Jumping
+  /// - Kicking
+  /// - Locking Hip Hop Dance
+  /// - One Hand Club Combo
+  /// - Punching
+  /// - Running
+  /// - Shoulder Hit And Fall
+  /// - Side Kick
+  /// - Slow Run
+  /// - Standing Idle 04
+  /// - Standing W_Briefcase Idle
+  /// - Sword And Shield Power Up
+  /// - Victory Idle
+  /// - Walking
+  /// - Wave Hip Hop Dance
+  Future<void> _discoverFailureAnimations() async {
+    if (_asset == null) return;
+    
+    try {
+      final availableAnimations = await _asset!.getGltfAnimationNames();
+      
+      // Debug: Print all available animations to see what we're working with
+      print('🔍 All available animations in GLB (${availableAnimations.length} total):');
+      for (final anim in availableAnimations) {
+        print('   - $anim');
+      }
+      
+      // Whitelist of failure animations based on documentation and what's actually in GLB
+      // From the logs, we know these exist. Search for all failure-related animations.
+      final failureAnimationCandidates = [
+        // Confirmed to exist (from logs):
+        'combined_Defeat Idle-rabbit',
+        'combined_Defeat Idle2-rabbit',
+        'combined_Fall Flat-rabbit',
+        // From documentation (check if they exist):
+        'combined_Defeat-rabbit', // Standalone "Defeat" (not "Defeat Idle")
+        'combined_Shoulder Hit And Fall-rabbit',
+        'combined_Falling Back Death-rabbit',
+        'combined_Dying Backwards-rabbit',
+      ];
+      
+      // First, try exact matches
+      _failureAnimations = failureAnimationCandidates.where((name) {
+        return availableAnimations.contains(name);
+      }).toList();
+      
+      // Also search for any animation containing failure keywords (as fallback)
+      final failureKeywords = ['defeat', 'fall flat', 'falling back death', 'dying backwards', 'shoulder hit'];
+      final keywordMatches = availableAnimations.where((name) {
+        final lowerName = name.toLowerCase();
+        final hasFailureKeyword = failureKeywords.any((keyword) => lowerName.contains(keyword));
+        final isNotVictory = !lowerName.contains('victory') && !lowerName.contains('cheering');
+        // Allow "Defeat" and "Defeat Idle" but exclude other idle animations
+        final isDefeatRelated = lowerName.contains('defeat');
+        final isNotOtherIdle = !lowerName.contains('idle') || isDefeatRelated;
+        return hasFailureKeyword && isNotVictory && isNotOtherIdle;
+      }).toList();
+      
+      // Combine and remove duplicates
+      _failureAnimations.addAll(keywordMatches);
+      _failureAnimations = _failureAnimations.toSet().toList();
+      
+      // Shuffle for variety
+      _failureAnimations.shuffle();
+      
+      print('🎬 Found ${_failureAnimations.length} failure animations: ${_failureAnimations.join(", ")}');
+    } catch (e) {
+      print('⚠️ Error discovering failure animations: $e');
+      _failureAnimations = [];
+    }
+  }
+  
+  /// Discover available celebration animations from the GLB model
+  /// Selects appropriate celebration animations (jumping, victory, cheering, etc.)
+  Future<void> _discoverCelebrationAnimations() async {
+    if (_asset == null) return;
+    
+    try {
+      final availableAnimations = await _asset!.getGltfAnimationNames();
+      
+      // Whitelist of celebration animations based on documentation and what's actually in GLB
+      final celebrationAnimationCandidates = [
+        // Jumping animations (user specifically mentioned "Jumping")
+        'combined_Jump-rabbit',
+        'combined_Jumping-rabbit',
+        // Victory animations
+        'combined_Victory Idle-rabbit',
+        // Cheering (currently used)
+        'combined_Cheering (4)-rabbit',
+        // Other potential celebration animations
+        'combined_Agreeing-rabbit',
+        'combined_Fist Pump-rabbit',
+        'combined_Joyful Jump-rabbit',
+        'combined_Head Nod Yes-rabbit',
+      ];
+      
+      // First, try exact matches
+      _celebrationAnimations = celebrationAnimationCandidates.where((name) {
+        return availableAnimations.contains(name);
+      }).toList();
+      
+      // Also search for any animation containing celebration keywords (as fallback)
+      final celebrationKeywords = ['jump', 'jumping', 'victory', 'cheering', 'agreeing', 'fist pump', 'joyful'];
+      final keywordMatches = availableAnimations.where((name) {
+        final lowerName = name.toLowerCase();
+        final hasCelebrationKeyword = celebrationKeywords.any((keyword) => lowerName.contains(keyword));
+        // Exclude failure/defeat animations
+        final isNotFailure = !lowerName.contains('defeat') && !lowerName.contains('fall') && !lowerName.contains('dying');
+        // Exclude dance animations (those are for completion, not celebration)
+        final isNotDance = !lowerName.contains('dance') && !lowerName.contains('dancing');
+        return hasCelebrationKeyword && isNotFailure && isNotDance;
+      }).toList();
+      
+      // Combine and remove duplicates
+      _celebrationAnimations.addAll(keywordMatches);
+      _celebrationAnimations = _celebrationAnimations.toSet().toList();
+      
+      // Shuffle for variety
+      _celebrationAnimations.shuffle();
+      
+      print('🎉 Found ${_celebrationAnimations.length} celebration animations: ${_celebrationAnimations.join(", ")}');
+    } catch (e) {
+      print('⚠️ Error discovering celebration animations: $e');
+      _celebrationAnimations = [];
+    }
+  }
+  
+  /// Discover available completion/dance animations from the GLB model
+  /// Selects appropriate dance animations for game completion
+  Future<void> _discoverCompletionAnimations() async {
+    if (_asset == null) return;
+    
+    try {
+      final availableAnimations = await _asset!.getGltfAnimationNames();
+      
+      // Whitelist of completion/dance animations based on documentation and what's actually in GLB
+      final completionAnimationCandidates = [
+        // Dance animations (primary completion animations)
+        'combined_Dancing-rabbit',
+        'combined_Dancing2-rabbit',
+        'combined_Locking Hip Hop Dance-rabbit',
+        'combined_Wave Hip Hop Dance-rabbit',
+        'combined_Chicken Dance-rabbit',
+        'combined_Gangnam Style-rabbit',
+        'combined_Macarena Dance-rabbit',
+        'combined_Robot Hip Hop Dance-rabbit',
+        'combined_Slide Hip Hop Dance-rabbit',
+        'combined_Swing Dancing-rabbit',
+        'combined_Tut Hip Hop Dance-rabbit',
+        'combined_Northern Soul Spin-rabbit',
+        'combined_Hip Hop Dancing-rabbit',
+        // Victory animations (also good for completion)
+        'combined_Victory Idle-rabbit',
+        'combined_Victory Idle2-rabbit',
+      ];
+      
+      // First, try exact matches
+      _completionAnimations = completionAnimationCandidates.where((name) {
+        return availableAnimations.contains(name);
+      }).toList();
+      
+      // Also search for any animation containing dance/completion keywords (as fallback)
+      final completionKeywords = ['dance', 'dancing', 'victory idle', 'victory idle2'];
+      final keywordMatches = availableAnimations.where((name) {
+        final lowerName = name.toLowerCase();
+        final hasCompletionKeyword = completionKeywords.any((keyword) => lowerName.contains(keyword));
+        // Exclude failure/defeat animations
+        final isNotFailure = !lowerName.contains('defeat') && !lowerName.contains('fall') && !lowerName.contains('dying');
+        // Exclude jump animations (those are for celebration, not completion)
+        final isNotJump = !lowerName.contains('jump') || lowerName.contains('victory');
+        return hasCompletionKeyword && isNotFailure && isNotJump;
+      }).toList();
+      
+      // Combine and remove duplicates
+      _completionAnimations.addAll(keywordMatches);
+      _completionAnimations = _completionAnimations.toSet().toList();
+      
+      // Shuffle for variety
+      _completionAnimations.shuffle();
+      
+      print('🎊 Found ${_completionAnimations.length} completion animations: ${_completionAnimations.join(", ")}');
+    } catch (e) {
+      print('⚠️ Error discovering completion animations: $e');
+      _completionAnimations = [];
+    }
+  }
+  
+  /// Discover available idle animations from the GLB model
+  /// Uses strict whitelist to only include actual idle animations
+  Future<void> _discoverIdleAnimations() async {
+    if (_asset == null) return;
+    
+    try {
+      final availableAnimations = await _asset!.getGltfAnimationNames();
+      
+      // Strict whitelist of actual idle animations (excludes Victory Idle and static poses)
+      final idleAnimationNames = [
+        'combined_Idle-rabbit',
+        'combined_Happy Idle-rabbit',
+        // Excluded: 'combined_Dwarf Idle-rabbit' - too static/fixed pose
+        'combined_Standing Idle 04-rabbit',
+        'combined_Standing W_Briefcase Idle-rabbit',
+      ];
+      
+      // Only add animations that exist in the GLB and are in our whitelist
+      _idleAnimations = idleAnimationNames.where((name) {
+        return availableAnimations.contains(name);
+      }).toList();
+      
+      // Shuffle for variety
+      _idleAnimations.shuffle();
+      _currentIdleIndex = 0;
+      
+      print('🎬 Found ${_idleAnimations.length} idle animations: ${_idleAnimations.join(", ")}');
+    } catch (e) {
+      print('⚠️ Error discovering idle animations: $e');
+      _idleAnimations = [];
+    }
+  }
+  
+  /// Start cycling through idle animations during playing state
+  void _startIdleAnimationCycling() {
+    _stopIdleAnimationCycling(); // Stop any existing timer
+    
+    if (_idleAnimations.length <= 1) return; // Need at least 2 to cycle
+    
+    _idleAnimationTimer = Timer.periodic(_idleAnimationDuration, (timer) {
+      if (widget.gameState != GameState.playing) {
+        timer.cancel();
+        return;
+      }
+      
+      // Move to next idle animation
+      _currentIdleIndex = (_currentIdleIndex + 1) % _idleAnimations.length;
+      
+      // Update animation
+      _updateAnimation();
+    });
+  }
+  
+  /// Stop cycling through idle animations
+  void _stopIdleAnimationCycling() {
+    _idleAnimationTimer?.cancel();
+    _idleAnimationTimer = null;
+  }
+  
   /// Create a simple ground plane for spatial grounding
   Future<void> _createGroundPlane(ThermionViewer viewer) async {
     try {
-      // Create a simple plane mesh programmatically
-      // For now, we'll use a basic colored plane
-      // In Phase 2, we can add texture if desired
+      // Create a simple plane using a basic mesh
+      // Position ground plane below character (at y: -0.1, just below character's feet)
+      // For now, we'll create a simple colored plane
+      // Note: Thermion may require loading a plane model or using procedural geometry
+      // This is a placeholder that will work if Thermion supports it
       
-      // Note: Thermion doesn't have a built-in createPlane yet
-      // We'll add this in a future update if needed
-      // For now, the character floating on gradient background works well
-      // Ground plane would be positioned at y: -0.1 (just below character's feet)
+      // Try to create a simple plane mesh
+      // If Thermion doesn't support this directly, we may need to load a plane.glb model
+      print('📐 Creating ground plane...');
       
-      print('📐 Ground plane placeholder - will add in future iteration');
+      // For now, we'll note that a ground plane would be positioned at y: -0.1
+      // and would be a large flat surface (maybe 10x10 units) with a subtle color/texture
+      // This will be implemented when we have a plane model or procedural geometry support
+      
+      print('📐 Ground plane: Would be positioned at y: -0.1 with subtle color/texture');
     } catch (e) {
-      print('⚠️ Ground plane creation skipped: $e');
+      print('⚠️ Ground plane creation: $e');
+      // Ground plane is optional, so we continue even if it fails
     }
   }
 
