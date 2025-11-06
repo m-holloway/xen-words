@@ -146,4 +146,4 @@ Hardcode the 64-word list from GameController.cs (weeks 1-31), maintain shufflin
 - [ ] Wire up game controller with state management, connect all components
 - [ ] Add thermion dependency, setup 3D rendering context
 - [ ] Import and setup rabbit model with animation state machine
-- [ ] Implement fireworks particle system with physics and visual effects
+- [ ] Implement fireworks particle system with physics and visual effects∏

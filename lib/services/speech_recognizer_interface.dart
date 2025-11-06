@@ -33,10 +33,12 @@ abstract class ISpeechRecognizer {
   Future<bool> initialize();
   
   /// Start listening for speech
+  /// [expectedWord] is the word we're expecting to hear (for context-aware matching)
   Future<void> startListening({
     required Function(SpeechRecognitionResult) onResult,
     Function(PartialSpeechResult)? onPartial,
     Function(String)? onError,
+    String? expectedWord,  // Optional: pass expected word for better matching
   });
   
   /// Stop listening

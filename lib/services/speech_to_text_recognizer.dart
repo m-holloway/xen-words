@@ -91,6 +91,7 @@ class SpeechToTextRecognizer implements ISpeechRecognizer {
     required Function(SpeechRecognitionResult) onResult,
     Function(PartialSpeechResult)? onPartial,
     Function(String)? onError,
+    String? expectedWord,  // Optional: not used by speech_to_text but kept for interface compatibility
   }) async {
     _onResult = onResult;
     _onPartial = onPartial;

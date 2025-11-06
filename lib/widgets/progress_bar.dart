@@ -15,9 +15,12 @@ class WordProgressBar extends StatelessWidget {
   Widget build(BuildContext context) {
     if (totalWords == 0) return const SizedBox.shrink();
     
-    // Calculate how many dots should be filled
-    // Map progress (0.0 to 1.0) to number of filled dots (0 to 10)
-    final progress = (currentWordIndex + 1) / totalWords;
+    // Calculate how many dots should be filled based on COMPLETED words
+    // currentWordIndex is the word currently being shown (0-based)
+    // So if we're on word 0, no words are completed yet (0 dots)
+    // If we're on word 1, one word is completed (1 dot), etc.
+    final completedWords = currentWordIndex; // Words completed = current index
+    final progress = completedWords / totalWords;
     final filledDots = (progress * 10).floor().clamp(0, 10);
     
     return Row(

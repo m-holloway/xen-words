@@ -17,15 +17,70 @@ class GameScreen extends StatefulWidget {
   State<GameScreen> createState() => _GameScreenState();
 }
 
-class _GameScreenState extends State<GameScreen> {
+class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
   bool _isInitializing = false;
   bool _isStartingGame = false; // Track if game is starting to prevent multiple clicks
+  AppLifecycleState? _previousLifecycleState; // Track previous state to avoid pausing on initial launch
+  bool _gameHasStarted = false; // Track if game has actually started (prevents lifecycle interference during startup)
   
   @override
   void initState() {
     super.initState();
     // Don't initialize on startup - wait until user starts game
     // This keeps UI responsive
+    
+    // Listen to app lifecycle changes to pause/resume microphone
+    WidgetsBinding.instance.addObserver(this);
+    _previousLifecycleState = WidgetsBinding.instance.lifecycleState;
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    
+    if (!mounted) return;
+    
+    // Don't interfere with microphone until game has actually started
+    // This prevents lifecycle observer from interfering during game startup
+    if (!_gameHasStarted) {
+      _previousLifecycleState = state;
+      return;
+    }
+    
+    final controller = context.read<GameController>();
+    
+    // Only pause if we were previously in foreground (resumed)
+    // This prevents pausing during initial app launch
+    final wasInForeground = _previousLifecycleState == AppLifecycleState.resumed;
+    _previousLifecycleState = state;
+    
+    switch (state) {
+      case AppLifecycleState.resumed:
+        // App came back to foreground - resume microphone if game is active
+        if (controller.state == GameState.playing ||
+            controller.state == GameState.celebrating ||
+            controller.state == GameState.failing) {
+          print('📱 App resumed - resuming microphone');
+          controller.resumeMicrophone();
+        }
+        break;
+      case AppLifecycleState.paused:
+      case AppLifecycleState.inactive:
+      case AppLifecycleState.detached:
+      case AppLifecycleState.hidden:
+        // App went to background - pause microphone (only if we were in foreground)
+        if (wasInForeground && controller.isMicrophoneEnabled) {
+          print('📱 App backgrounded - pausing microphone');
+          controller.pauseMicrophone();
+        }
+        break;
+    }
   }
 
   Future<bool> _initializeSpeech() async {
@@ -126,8 +181,10 @@ class _GameScreenState extends State<GameScreen> {
                       ),
                     ),
                   
-                  // Character view
-                  if (controller.state != GameState.initial)
+                  // Character view (hidden during celebration/fireworks)
+                  if (controller.state != GameState.initial && 
+                      controller.state != GameState.celebrating &&
+                      controller.fireworksController.isDone)
                     Positioned(
                       bottom: 20,
                       right: 20,
@@ -185,6 +242,12 @@ class _GameScreenState extends State<GameScreen> {
                           // Initialize speech recognition when user starts game
                           final initialized = await _initializeSpeech();
                           if (mounted && initialized) {
+                            // Mark that game has started BEFORE beginning round
+                            // This prevents lifecycle observer from interfering during startup
+                            setState(() {
+                              _gameHasStarted = true;
+                            });
+                            
                             // Only start game if initialization succeeded
                             // Don't show week selector again - go straight to game
                             await WakelockPlus.enable();
@@ -200,6 +263,7 @@ class _GameScreenState extends State<GameScreen> {
                           if (mounted) {
                             setState(() {
                               _isStartingGame = false;
+                              _gameHasStarted = false;
                             });
                           }
                         }
@@ -248,6 +312,8 @@ class _GameScreenState extends State<GameScreen> {
         );
 
       case GameState.completed:
+        // Hide "Play Again" button during celebration/fireworks
+        final showPlayAgain = controller.fireworksController.isDone;
         return Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -272,32 +338,39 @@ class _GameScreenState extends State<GameScreen> {
                   ],
                 ),
               ),
-              const SizedBox(height: 40),
-              ElevatedButton(
-                onPressed: () async {
-                  await WakelockPlus.disable();
-                  controller.resetGame();
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 48,
-                    vertical: 16,
+              if (showPlayAgain) ...[
+                const SizedBox(height: 40),
+                ElevatedButton(
+                  onPressed: () async {
+                    await WakelockPlus.disable();
+                    controller.resetGame();
+                    // Reset all game state flags so UI is ready for next game
+                    setState(() {
+                      _gameHasStarted = false;
+                      _isStartingGame = false;
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 48,
+                      vertical: 16,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    elevation: 4,
                   ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
+                  child: const Text(
+                    'Play Again',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                  elevation: 4,
                 ),
-                child: const Text(
-                  'Play Again',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              ],
             ],
           ),
         );

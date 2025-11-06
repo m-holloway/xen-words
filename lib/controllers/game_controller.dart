@@ -47,6 +47,12 @@ class GameController extends ChangeNotifier {
     // Pre-initialize speech recognizer in the background
     // This prevents the 16-second delay when user clicks "Start Game"
     _preInitializeSpeechRecognizer();
+    
+    // Listen to fireworks controller so UI rebuilds when fireworks finish
+    // This allows us to show/hide bunny and "Play Again" button based on fireworks state
+    fireworksController.addListener(() {
+      notifyListeners();
+    });
   }
 
   /// Future that completes when app initialization is done
@@ -201,18 +207,29 @@ class GameController extends ChangeNotifier {
     print('🎮 Starting game for week $_currentWeek');
     print('🎮 Shuffled indices: $_shuffledIndices');
 
-    // Immediately transition to playing state and show first word for responsive UI
+    // Transition UI immediately to playing state (but word not shown yet)
+    // This makes the start screen disappear immediately
+    _state = GameState.playing;
+    notifyListeners();
+    
+    // Play game start sound and WAIT for it to complete
+    // This prevents the user from speaking over the audio
+    final audioComplete = Completer<void>();
+    await audioService.playGameStart(onComplete: () {
+      print('🎵 Game start audio complete');
+      audioComplete.complete();
+    });
+    await audioComplete.future;
+    
+    // NOW display the first word and enable microphone
+    // _displayNextWord() will increment from -1 to 0 and set up the word
     _displayNextWord();
     
-    // Play game start sound in the background (non-blocking)
-    // This makes the UI feel responsive while audio plays
-    audioService.playGameStart(onComplete: () async {
-      print('🎵 Game start audio complete');
-      // Microphone is already enabled, audio just finished
-    });
-    
-    // Enable microphone immediately (don't wait for audio)
+    // Enable microphone with the correct expected word (now that word is set up)
     await _enableMicrophone();
+    
+    // Give microphone a moment to start processing audio
+    await Future.delayed(const Duration(milliseconds: 200));
   }
 
   /// Display the next word in the sequence
@@ -245,6 +262,28 @@ class GameController extends ChangeNotifier {
     _isMicrophoneEnabled = false;
     notifyListeners();
     await speechRecognizer.stopListening();
+  }
+
+  /// Pause microphone when app goes to background
+  /// This is different from _disableMicrophone - it's temporary and can be resumed
+  Future<void> pauseMicrophone() async {
+    if (_isMicrophoneEnabled) {
+      print('⏸️ Pausing microphone (app backgrounded)');
+      await _disableMicrophone();
+    }
+  }
+
+  /// Resume microphone when app comes back to foreground
+  Future<void> resumeMicrophone() async {
+    // Only resume if we're in a playing state
+    if (_state == GameState.playing ||
+        _state == GameState.celebrating ||
+        _state == GameState.failing) {
+      if (!_isMicrophoneEnabled) {
+        print('▶️ Resuming microphone (app resumed)');
+        await _enableMicrophone();
+      }
+    }
   }
 
   /// Start listening for speech
