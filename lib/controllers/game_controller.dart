@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import '../models/word_list.dart';
 import '../models/app_settings.dart';
@@ -29,6 +30,10 @@ class GameController extends ChangeNotifier {
   bool _isMicrophoneEnabled = false;
   double _microphoneRMS = 0.0;
   AppSettings? _settings;
+  
+  // Initialization tracking
+  final Completer<void> _initializationCompleter = Completer<void>();
+  bool _isInitializing = false;
 
   GameController({
     required this.audioService,
@@ -38,6 +43,46 @@ class GameController extends ChangeNotifier {
     _settings = const AppSettings();
     _currentWeek = 1;
     _loadSettings(); // Fire and forget - will update when loaded
+    
+    // Pre-initialize speech recognizer in the background
+    // This prevents the 16-second delay when user clicks "Start Game"
+    _preInitializeSpeechRecognizer();
+  }
+
+  /// Future that completes when app initialization is done
+  Future<void> get initializationComplete => _initializationCompleter.future;
+
+  /// Pre-initialize speech recognizer in the background
+  /// This starts loading the model as soon as the app starts,
+  /// so it's ready when the user clicks "Start Game"
+  void _preInitializeSpeechRecognizer() {
+    if (_isInitializing) return;
+    _isInitializing = true;
+    
+    // Start initialization after a short delay to not block app startup
+    Future.delayed(const Duration(milliseconds: 500), () async {
+      try {
+        print('🚀 Pre-initializing speech recognizer in background...');
+        final hasPermission = await speechRecognizer.requestPermission();
+        if (hasPermission) {
+          await speechRecognizer.initialize();
+          print('✅ Speech recognizer pre-initialized successfully');
+        } else {
+          print('⚠️ Microphone permission not granted, will request on Start Game');
+        }
+        
+        // Mark initialization as complete
+        if (!_initializationCompleter.isCompleted) {
+          _initializationCompleter.complete();
+        }
+      } catch (e) {
+        print('⚠️ Pre-initialization failed (will retry on Start Game): $e');
+        // Still mark as complete - we'll retry when user clicks Start Game
+        if (!_initializationCompleter.isCompleted) {
+          _initializationCompleter.complete();
+        }
+      }
+    });
   }
 
   /// Load settings from preferences
@@ -156,14 +201,18 @@ class GameController extends ChangeNotifier {
     print('🎮 Starting game for week $_currentWeek');
     print('🎮 Shuffled indices: $_shuffledIndices');
 
-    notifyListeners();
-
-    // Play game start sound and then enable microphone
-    await audioService.playGameStart(onComplete: () async {
+    // Immediately transition to playing state and show first word for responsive UI
+    _displayNextWord();
+    
+    // Play game start sound in the background (non-blocking)
+    // This makes the UI feel responsive while audio plays
+    audioService.playGameStart(onComplete: () async {
       print('🎵 Game start audio complete');
-      _displayNextWord();
-      await _enableMicrophone();
+      // Microphone is already enabled, audio just finished
     });
+    
+    // Enable microphone immediately (don't wait for audio)
+    await _enableMicrophone();
   }
 
   /// Display the next word in the sequence

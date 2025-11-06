@@ -8,6 +8,7 @@ class WeekSelector extends StatefulWidget {
   final AppSettings settings;
   final Function(int) onWeekChanged;
   final VoidCallback onStartGame;
+  final bool isStarting; // Whether game is currently starting
 
   const WeekSelector({
     Key? key,
@@ -15,6 +16,7 @@ class WeekSelector extends StatefulWidget {
     required this.settings,
     required this.onWeekChanged,
     required this.onStartGame,
+    this.isStarting = false,
   }) : super(key: key);
 
   @override
@@ -170,25 +172,38 @@ class _WeekSelectorState extends State<WeekSelector> {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: widget.onStartGame,
+              onPressed: widget.isStarting ? null : widget.onStartGame,
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
+                backgroundColor: widget.isStarting 
+                    ? Colors.grey 
+                    : Colors.green,
                 foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(vertical: 24),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
-                elevation: 6,
-                shadowColor: Colors.green.withOpacity(0.4),
+                elevation: widget.isStarting ? 2 : 6,
+                shadowColor: widget.isStarting 
+                    ? Colors.grey.withOpacity(0.2)
+                    : Colors.green.withOpacity(0.4),
               ),
-              child: const Text(
-                'Start Game',
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1.5,
-                ),
-              ),
+              child: widget.isStarting
+                  ? const SizedBox(
+                      width: 24,
+                      height: 24,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 3,
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                      ),
+                    )
+                  : const Text(
+                      'Start Game',
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.5,
+                      ),
+                    ),
             ),
           ),
         ],

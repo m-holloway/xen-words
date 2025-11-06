@@ -19,6 +19,7 @@ class GameScreen extends StatefulWidget {
 
 class _GameScreenState extends State<GameScreen> {
   bool _isInitializing = false;
+  bool _isStartingGame = false; // Track if game is starting to prevent multiple clicks
   
   @override
   void initState() {
@@ -168,17 +169,39 @@ class _GameScreenState extends State<GameScreen> {
                   ? WeekSelector(
                       currentWeek: controller.currentWeek,
                       settings: controller.settings!,
+                      isStarting: _isStartingGame,
                       onWeekChanged: (week) async {
                         await controller.setCurrentWeek(week);
                       },
                       onStartGame: () async {
-                        // Initialize speech recognition when user starts game
-                        final initialized = await _initializeSpeech();
-                        if (mounted && initialized) {
-                          // Only start game if initialization succeeded
-                          // Don't show week selector again - go straight to game
-                          await WakelockPlus.enable();
-                          controller.beginRound();
+                        // Prevent multiple clicks
+                        if (_isStartingGame) return;
+                        
+                        setState(() {
+                          _isStartingGame = true;
+                        });
+                        
+                        try {
+                          // Initialize speech recognition when user starts game
+                          final initialized = await _initializeSpeech();
+                          if (mounted && initialized) {
+                            // Only start game if initialization succeeded
+                            // Don't show week selector again - go straight to game
+                            await WakelockPlus.enable();
+                            controller.beginRound();
+                          } else if (mounted) {
+                            // Reset if initialization failed
+                            setState(() {
+                              _isStartingGame = false;
+                            });
+                          }
+                        } catch (e) {
+                          // Reset on error
+                          if (mounted) {
+                            setState(() {
+                              _isStartingGame = false;
+                            });
+                          }
                         }
                       },
                     )
