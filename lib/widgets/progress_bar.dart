@@ -23,15 +23,38 @@ class WordProgressBar extends StatelessWidget {
     final progress = completedWords / totalWords;
     final filledDots = (progress * 10).floor().clamp(0, 10);
     
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(10, (index) {
-        final isFilled = index < filledDots;
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4),
-          child: _GlowDot(isFilled: isFilled),
-        );
-      }),
+    // Wrap with enhanced visual treatment for better visibility on character background
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+      decoration: BoxDecoration(
+        // Semi-transparent background
+        color: Colors.black.withOpacity(0.4),
+        borderRadius: BorderRadius.circular(24),
+        // Subtle glow
+        boxShadow: [
+          BoxShadow(
+            color: Colors.white.withOpacity(0.2),
+            blurRadius: 20,
+            spreadRadius: 1,
+          ),
+        ],
+        // Subtle border
+        border: Border.all(
+          color: Colors.white.withOpacity(0.2),
+          width: 1,
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: List.generate(10, (index) {
+          final isFilled = index < filledDots;
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            child: _GlowDot(isFilled: isFilled),
+          );
+        }),
+      ),
     );
   }
 }

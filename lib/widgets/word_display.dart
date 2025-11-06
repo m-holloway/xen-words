@@ -247,7 +247,34 @@ class _WordDisplayState extends State<WordDisplay> with TickerProviderStateMixin
   Widget build(BuildContext context) {
     final isFailing = widget.gameState == GameState.failing;
 
-    return GestureDetector(
+    // Wrap word display with enhanced visual treatment for better visibility
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 40),
+      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 24),
+      decoration: BoxDecoration(
+        // Semi-transparent background
+        color: Colors.black.withOpacity(0.5),
+        borderRadius: BorderRadius.circular(24),
+        // Glow effect
+        boxShadow: [
+          BoxShadow(
+            color: Colors.white.withOpacity(0.3),
+            blurRadius: 30,
+            spreadRadius: 2,
+          ),
+          BoxShadow(
+            color: Colors.purple.withOpacity(0.4),
+            blurRadius: 20,
+            spreadRadius: -5,
+          ),
+        ],
+        // Subtle border for definition
+        border: Border.all(
+          color: Colors.white.withOpacity(0.3),
+          width: 1.5,
+        ),
+      ),
+      child: GestureDetector(
       onTap: widget.onTap,
       child: AnimatedBuilder(
         animation: Listenable.merge([_animationController, _transitionController, _outlineAnimationController, _wordFadeInController]),
@@ -398,7 +425,8 @@ class _WordDisplayState extends State<WordDisplay> with TickerProviderStateMixin
       duration: Duration(milliseconds: _failureShakeDurationMs),
       hz: _failureShakeHz,
       offset: Offset(_failureShakeOffset, 0),
-    );
+    ),
+    ); // Close the outer Container
   }
 }
 

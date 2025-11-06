@@ -5,6 +5,7 @@ import 'camera_config.dart';
 import 'dart:math' as math;
 
 /// Widget for displaying and animating the 3D character using Thermion
+/// Now supports dynamic sizing based on game state for more engaging presentation
 class CharacterView extends StatefulWidget {
   final GameState gameState;
 
@@ -25,11 +26,16 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
   
   // Camera animation controllers
   late AnimationController _cameraAnimationController;
+  late AnimationController _cameraSwayController; // For subtle idle sway
   Vector3? _targetCameraPosition;
   Vector3? _currentCameraPosition;
   bool _hasPerformedInitialZoom = false; // Track if we've done the cinematic start
   Vector3? _animationStart;
   Vector3? _animationEnd;
+  
+  // Camera sway parameters (subtle breathing effect during idle)
+  static const double _swayAmplitude = 0.02; // Very subtle movement
+  static const double _swaySpeed = 1.5; // Slow, gentle oscillation
 
   @override
   void initState() {
@@ -42,6 +48,14 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       vsync: this,
     );
     
+    // Initialize camera sway controller (for subtle idle movement)
+    final swayDurationMs = (1000 / _swaySpeed).round();
+    _cameraSwayController = AnimationController(
+      duration: Duration(milliseconds: swayDurationMs),
+      vsync: this,
+    )..repeat(); // Continuously loop
+    _cameraSwayController.addListener(_updateCameraSway);
+    
     // Start with a wide shot (will zoom in when game starts)
     _currentCameraPosition = CameraConfig.wideShot;
     _targetCameraPosition = _currentCameraPosition;
@@ -50,6 +64,7 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
   @override
   void dispose() {
     _cameraAnimationController.dispose();
+    _cameraSwayController.dispose();
     super.dispose();
   }
 
@@ -137,6 +152,33 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
     if (status == AnimationStatus.completed && _targetCameraPosition != null) {
       _currentCameraPosition = _targetCameraPosition;
     }
+  }
+  
+  /// Apply subtle camera sway for breathing/life effect (only during playing state)
+  void _updateCameraSway() {
+    if (_camera == null || _currentCameraPosition == null) return;
+    
+    // Only apply sway during playing state (not during reactions or transitions)
+    if (widget.gameState != GameState.playing) return;
+    
+    // Don't apply sway during camera transitions
+    if (_cameraAnimationController.isAnimating) return;
+    
+    // Calculate sway offset using sine wave
+    final t = _cameraSwayController.value * 2 * math.pi;
+    final swayX = math.sin(t) * _swayAmplitude;
+    final swayY = math.cos(t * 0.7) * _swayAmplitude; // Different frequency for Y
+    
+    // Apply sway to current position
+    final swayedPosition = Vector3(
+      _currentCameraPosition!.x + swayX,
+      _currentCameraPosition!.y + swayY,
+      _currentCameraPosition!.z,
+    );
+    
+    // Update camera with sway
+    final characterCenter = CameraConfig.characterPosition + Vector3(0, CameraConfig.characterCenterHeight, 0);
+    _camera!.lookAt(swayedPosition, focus: characterCenter);
   }
   
   /// Update camera position based on game state using director-friendly shot types
@@ -323,36 +365,42 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
         addToScene: true,
       );
       
-      // Improved lighting setup for better PBR material visibility
-      // Main key light from top-right (simulates natural sunlight)
+      // Enhanced three-point lighting setup with proper front-lighting
+      // IMPORTANT: In Filament/Thermion, direction vector is the direction light travels FROM
+      // Camera is at positive Z (3.0) looking at origin, so light from front needs NEGATIVE Z
+      // Key light: Front-top (main illumination from camera's perspective)
       final keyLight = DirectLight.sun(
-        color: 5500.0, // Slightly warmer daylight
-        intensity: 120000.0, // Bright key light
+        color: 4500.0, // Warmer daylight
+        intensity: 150000.0, // Slightly reduced for more natural look
         castShadows: false,
-        direction: Vector3(0.4, -0.9, 0.2).normalized(),
+        direction: Vector3(0.2, -0.7, -0.7).normalized(), // Front-top (negative Z = from camera direction)
       );
       await viewer.addDirectLight(keyLight);
       
-      // Fill light from front-left (reduces harsh shadows)
+      // Fill light: Front-top, opposite side (softer, reduces shadows from key light)
       final fillLight = DirectLight.sun(
-        color: 6500.0, // Cooler fill light
-        intensity: 40000.0, // Softer fill
+        color: 5000.0, // Warmer fill
+        intensity: 65000.0, // Slightly reduced fill light
         castShadows: false,
-        direction: Vector3(-0.3, -0.5, -0.8).normalized(),
+        direction: Vector3(-0.2, -0.6, -0.75).normalized(), // Front-top-left (negative Z = from camera)
       );
       await viewer.addDirectLight(fillLight);
       
-      // Rim light from back (adds depth and separation from background)
+      // Rim light: Back-top (adds depth and separation, creates edge highlight)
+      // State-responsive color - warm gold during celebration, cool during failure
       final rimLight = DirectLight.sun(
-        color: 7000.0,
-        intensity: 30000.0,
+        color: _getRimLightColor(),
+        intensity: 45000.0,
         castShadows: false,
-        direction: Vector3(-0.2, 0.3, 0.9).normalized(),
+        direction: Vector3(0.0, -0.3, 0.95).normalized(), // Back-top (positive Z = from behind character)
       );
       await viewer.addDirectLight(rimLight);
       
-      // Note: IBL (Image-Based Lighting) would provide even better results
-      // but requires a KTX environment file. For now, three-point lighting works well.
+      // Create simple ground plane for spatial grounding
+      await _createGroundPlane(viewer);
+      
+      // Note: Using gradient background instead of skybox for Phase 1
+      // Skybox can be added later with KTX environment files
       
       // Ensure animation component is added
       await _asset!.addAnimationComponent();
@@ -374,37 +422,79 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
     }
   }
 
+  /// Get rim light color based on game state for emotional tone
+  double _getRimLightColor() {
+    switch (widget.gameState) {
+      case GameState.celebrating:
+        return 3500.0; // Warm gold/amber for celebration
+      case GameState.failing:
+        return 7500.0; // Cool blue for failure
+      case GameState.completed:
+        return 3000.0; // Very warm for completion
+      case GameState.playing:
+      default:
+        return 5500.0; // Neutral daylight
+    }
+  }
+  
+  /// Create a simple ground plane for spatial grounding
+  Future<void> _createGroundPlane(ThermionViewer viewer) async {
+    try {
+      // Create a simple plane mesh programmatically
+      // For now, we'll use a basic colored plane
+      // In Phase 2, we can add texture if desired
+      
+      // Note: Thermion doesn't have a built-in createPlane yet
+      // We'll add this in a future update if needed
+      // For now, the character floating on gradient background works well
+      // Ground plane would be positioned at y: -0.1 (just below character's feet)
+      
+      print('📐 Ground plane placeholder - will add in future iteration');
+    } catch (e) {
+      print('⚠️ Ground plane creation skipped: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    // Always full-screen for maximum character presence
     return Container(
-      width: 180,
-      height: 180,
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.15),
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            blurRadius: 15,
-            offset: const Offset(0, 5),
-          ),
-        ],
+      decoration: const BoxDecoration(
+        // Beautiful gradient background that complements the character
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color(0xFF4A148C), // Deep purple at top
+            Color(0xFF7B1FA2), // Medium purple
+            Color(0xFF9C27B0), // Lighter purple at bottom
+          ],
+          stops: [0.0, 0.5, 1.0],
+        ),
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: ViewerWidget(
+      child: ViewerWidget(
           // Don't provide assetPath - we'll load it ourselves in onViewerAvailable to avoid double loading
           assetPath: null,
           initialCameraPosition: CameraConfig.wideShot,
           manipulatorType: ManipulatorType.NONE, // Disable user interaction
-          background: Colors.transparent,
+          background: Colors.transparent, // Use gradient instead
           transformToUnitCube: false, // Keep original scale
           postProcessing: true, // Enable tone mapping and anti-aliasing
           // Lights are added programmatically in onViewerAvailable for better control
           onViewerAvailable: _onViewerAvailable,
           initial: Container(
-            color: Colors.transparent,
-            child: const Center(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color(0xFF4A148C),
+                  Color(0xFF7B1FA2),
+                  Color(0xFF9C27B0),
+                ],
+              ),
+            ),
+            child: Center(
               child: CircularProgressIndicator(
                 strokeWidth: 2,
                 valueColor: AlwaysStoppedAnimation<Color>(Colors.white70),
@@ -412,7 +502,6 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
             ),
           ),
         ),
-      ),
     );
   }
 }

@@ -164,9 +164,18 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
           child: Consumer<GameController>(
             builder: (context, controller, child) {
               return Stack(
+                clipBehavior: Clip.none,
                 children: [
-                  // Main content
-                  _buildMainContent(controller),
+                  // Full-screen character background (always visible except initial state)
+                  if (controller.state != GameState.initial)
+                    Positioned.fill(
+                      child: CharacterView(gameState: controller.state),
+                    ),
+                  
+                  // Main content overlays (word display, etc) - constrained to screen bounds
+                  Positioned.fill(
+                    child: _buildMainContent(controller),
+                  ),
                   
                   // Settings button (only shown in initial state)
                   if (controller.state == GameState.initial)
@@ -181,16 +190,7 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                       ),
                     ),
                   
-                  // Character view (shown during gameplay, hidden only during initial state)
-                  // Note: Character is visible during celebration to show celebration animation
-                  if (controller.state != GameState.initial)
-                    Positioned(
-                      bottom: 20,
-                      right: 20,
-                      child: CharacterView(gameState: controller.state),
-                    ),
-                  
-                  // Fireworks overlay
+                  // Fireworks overlay (always on top)
                   Positioned.fill(
                     child: FireworksOverlay(
                       controller: controller.fireworksController,
@@ -279,30 +279,38 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
         return LayoutBuilder(
           builder: (context, constraints) {
             final screenSize = Size(constraints.maxWidth, constraints.maxHeight);
-            // Store screen size and word position for fireworks
-            final wordY = constraints.maxHeight * 0.4; // Word is centered, typically at ~40% from top
-            final wordX = constraints.maxWidth / 2;
-            final wordPosition = Offset(wordX, wordY);
+            // Word is at top of screen now, so fireworks should originate from there
+            // Approximate position: center horizontally, near top (accounting for word display height)
+            final wordPosition = Offset(screenSize.width / 2, 120); // Top area where word display is
             
             // Update fireworks controller with actual screen size
             WidgetsBinding.instance.addPostFrameCallback((_) {
               controller.fireworksController.updateScreenSize(screenSize, wordPosition);
             });
             
-            return Center(
+            // Layout with word board at top, progress bar at bottom, character fully visible in middle
+            // Use SizedBox to constrain to available height and prevent overflow
+            return SizedBox(
+              height: constraints.maxHeight,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  const SizedBox(height: 20),
+                  // Word display at top with enhanced visibility
                   WordDisplay(
                     word: controller.currentWord,
                     gameState: controller.state,
                     onTap: controller.playWordHint,
                     celebrationColor: controller.celebrationColor,
                   ),
-                  const SizedBox(height: 50),
-                  WordProgressBar(
-                    currentWordIndex: controller.currentWordIndex,
-                    totalWords: controller.totalWords,
+                  // Spacer to push progress bar to bottom
+                  const Spacer(),
+                  // Progress bar at bottom (not taking prominent attention space)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 40),
+                    child: WordProgressBar(
+                      currentWordIndex: controller.currentWordIndex,
+                      totalWords: controller.totalWords,
+                    ),
                   ),
                 ],
               ),
