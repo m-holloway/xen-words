@@ -18,10 +18,11 @@ A Flutter-based educational app for helping children learn sight words through s
 - ✅ Screen timeout prevention during gameplay
 
 ### Stage 2: Character Integration ✅ COMPLETED
-- ✅ flutter_scene dependency added for 3D rendering support
+- ✅ 3D character model using Thermion (Google Filament engine)
 - ✅ Animated character view with state-based animations
 - ✅ Character responds to game states (idle, celebrate, fail)
-- 📝 Note: Currently using emoji placeholder (🐰). 3D model requires FBX to GLB conversion
+- ✅ Smooth animation transitions with crossfading
+- 📝 See `3D_INTEGRATION.md` for implementation details
 
 ### Stage 3: Particle Effects ✅ COMPLETED
 - ✅ Custom fireworks particle system
@@ -59,7 +60,8 @@ assets/
   │   ├── sound/                         # Sound effects (copied from Unity)
   │   └── words/                         # Word pronunciations (copied from Unity)
   └── models/
-      └── rabbit_rig.fbx                 # 3D character model (needs conversion)
+      ├── rabbit_rig.fbx                 # Original 3D character model
+      └── Rabbit.glb                     # Converted GLB model (ready for integration)
 ```
 
 ## Dependencies
@@ -71,7 +73,8 @@ assets/
 - **permission_handler**: Microphone permissions
 - **flutter_animate**: UI animations
 - **wakelock_plus**: Keep screen on during gameplay
-- **flutter_scene**: 3D rendering (for future 3D character)
+- **thermion_dart**: 3D rendering core (Google Filament)
+- **thermion_flutter**: 3D rendering Flutter integration
 
 ## Getting Started
 
@@ -128,26 +131,18 @@ The app includes 64 sight words organized across 31 weeks (2 words per week):
 ## Future Enhancements
 
 ### 3D Character Model
-To enable the full 3D character experience:
+The 3D character model (`Rabbit.glb`) is integrated using Thermion. See `3D_INTEGRATION.md` for complete implementation details.
 
-1. **Convert the FBX model to GLB:**
-   - Option A: Use Blender
-     - Open `assets/models/rabbit_rig.fbx`
-     - File → Export → glTF 2.0 (.glb)
-     - Save as `rabbit_rig.glb`
-   - Option B: Online converter
-     - Use https://products.aspose.app/3d/conversion/fbx-to-glb
-     - Upload `rabbit_rig.fbx` and download `rabbit_rig.glb`
+**Current Implementation:**
+- ✅ Native 3D rendering with Thermion (Google Filament engine)
+- ✅ Smooth animation transitions
+- ✅ Full GLB animation support
 
-2. **Update character_view.dart:**
-   - Uncomment the 3D loading code
-   - Update the asset path to `assets/models/rabbit_rig.glb`
-   - Configure animations for idle, celebrate, and fail states
-
-3. **Test and adjust:**
-   - Verify model loads correctly
-   - Adjust camera position and lighting
-   - Fine-tune animation timing
+**Future Enhancements:**
+- Add more animations from Unity project (see `MISSING_ANIMATIONS.md`)
+- Implement animation randomization for variety
+- Add image-based lighting (IBL) and skybox
+- Optimize for better performance on older devices
 
 ### Speech Recognition Alternatives
 The app uses `speech_to_text` package currently, but the architecture supports:
@@ -165,8 +160,8 @@ The app uses `speech_to_text` package currently, but the architecture supports:
 
 ## Known Limitations
 
-1. **3D Character**: Currently using emoji placeholder. Full 3D character requires model conversion.
-2. **Speech Recognition**: Online-only with `speech_to_text`. Consider offline alternatives for better privacy and reliability.
+1. **3D Character**: Using Thermion for 3D rendering. Some animations from Unity project are not yet in the GLB file - see `MISSING_ANIMATIONS.md` for details.
+2. **Speech Recognition**: Using Sherpa-ONNX (offline) as primary, with `speech_to_text` as fallback.
 3. **Particle Effects**: Basic 2D implementation. For more advanced effects, consider using shaders or more sophisticated rendering techniques.
 
 ## Development Notes

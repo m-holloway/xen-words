@@ -2,30 +2,44 @@
 
 ## Build Issues Fixed
 
-### Issue 1: flutter_scene Native Assets Error
+### Issue 1: 3D Rendering Solution (Resolved)
+**Initial Approach:**
+- Initially considered `model_viewer_plus` (WebView-based) and `flutter_scene` (experimental)
+- `model_viewer_plus` had flickering issues during animation transitions
+- `flutter_scene` required experimental native assets feature
+
+**Resolution:**
+- Chose **Thermion** (Google Filament-based) for production-ready 3D rendering
+- Native rendering (Metal/Vulkan) with smooth animation transitions
+- Full GLB animation support with crossfading
+
+**Changes Made:**
+- Added `thermion_dart` and `thermion_flutter` dependencies
+- Implemented 3D character view using Thermion's `ViewerWidget`
+- Smooth animation transitions with 0.3s crossfade
+- See `3D_INTEGRATION.md` for complete implementation details
+
+**Setup Requirements:**
+- Enable native assets: `flutter config --enable-native-assets`
+- Set Android NDK version to 28.2.13676358 in `android/app/build.gradle.kts`
+
+### Issue 2: Thermion Build Requirements (Resolved)
 **Error:**
 ```
-Package(s) flutter_scene flutter_scene_importer require the native assets feature to be enabled.
-Enable using `flutter config --enable-native-assets`.
+Package(s) thermion_dart require the native assets feature to be enabled.
+thermion_flutter requires Android NDK 28.2.13676358
 ```
 
 **Resolution:**
-1. Enabled native assets feature: `flutter config --enable-native-assets`
-2. However, decided to comment out `flutter_scene` dependency since:
-   - It's not actively being used yet (character view uses emoji placeholder)
-   - Adds build complexity
-   - Can be re-enabled when ready to implement actual 3D character
+1. Enable native assets: `flutter config --enable-native-assets`
+2. Update `android/app/build.gradle.kts` to set `ndkVersion = "28.2.13676358"`
+3. Run `flutter clean` and rebuild
 
 **Changes Made:**
-- Commented out `flutter_scene: ^0.9.2-0` in `pubspec.yaml`
-- Character view currently uses animated emoji (🐰) as placeholder
-- 3D support can be added later by:
-  1. Converting `rabbit_rig.fbx` to GLB format
-  2. Uncommenting flutter_scene dependency
-  3. Enabling native assets
-  4. Updating character_view.dart to load the 3D model
+- Updated `android/app/build.gradle.kts` with required NDK version
+- Native assets feature enabled (stable feature in recent Flutter versions)
 
-### Issue 2: Gradle Symlink Error
+### Issue 3: Gradle Symlink Error
 **Error:**
 ```
 PathExistsException: Cannot create link, path = '.../windows/flutter/ephemeral/.plugin_symlinks/audioplayers_windows'
@@ -35,7 +49,7 @@ PathExistsException: Cannot create link, path = '.../windows/flutter/ephemeral/.
 - Removed the problematic symlinks directory: `rm -rf windows/flutter/ephemeral/.plugin_symlinks`
 - Re-ran `flutter pub get` successfully
 
-### Issue 3: Disk Space Constraints
+### Issue 4: Disk Space Constraints
 **Error:**
 ```
 No space left on device (during Gradle build)
@@ -79,12 +93,9 @@ flutter build ios --release  # iOS
 
 ## Known Considerations
 
-1. **Speech Recognition**: Using `speech_to_text` package (online). For offline, consider Vosk or Sherpa-ONNX later.
+1. **Speech Recognition**: Using Sherpa-ONNX (offline) as primary, with `speech_to_text` as fallback.
 
-2. **3D Character**: Currently using emoji placeholder. Full 3D requires:
-   - Model conversion (FBX → GLB)
-   - Re-enabling flutter_scene
-   - Native assets feature
+2. **3D Character**: Using Thermion for 3D rendering with smooth animation transitions. See `3D_INTEGRATION.md` for implementation details. Some animations from Unity project are not yet in the GLB file - see `MISSING_ANIMATIONS.md`.
 
 3. **Disk Space**: Keep an eye on available disk space. Clean caches periodically:
    ```bash
@@ -113,6 +124,7 @@ flutter build ios --release  # iOS
 3. Fine-tune animation timings
 4. Test speech recognition accuracy
 5. Consider adding progress tracking
-6. Implement 3D character (optional)
+6. Add more animations to GLB (see `MISSING_ANIMATIONS.md`)
 7. Consider offline speech recognition (optional)
+8. Test 3D character on various devices for performance
 

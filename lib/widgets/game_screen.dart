@@ -181,10 +181,9 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                       ),
                     ),
                   
-                  // Character view (hidden during celebration/fireworks)
-                  if (controller.state != GameState.initial && 
-                      controller.state != GameState.celebrating &&
-                      controller.fireworksController.isDone)
+                  // Character view (shown during gameplay, hidden only during initial state)
+                  // Note: Character is visible during celebration to show celebration animation
+                  if (controller.state != GameState.initial)
                     Positioned(
                       bottom: 20,
                       right: 20,

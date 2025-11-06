@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.xensemble.xen_words"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "28.2.13676358" // Required by thermion_flutter
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11

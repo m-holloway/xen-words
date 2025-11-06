@@ -33,7 +33,6 @@ class GameController extends ChangeNotifier {
   
   // Initialization tracking
   final Completer<void> _initializationCompleter = Completer<void>();
-  bool _isInitializing = false;
 
   GameController({
     required this.audioService,
@@ -44,9 +43,9 @@ class GameController extends ChangeNotifier {
     _currentWeek = 1;
     _loadSettings(); // Fire and forget - will update when loaded
     
-    // Pre-initialize speech recognizer in the background
-    // This prevents the 16-second delay when user clicks "Start Game"
-    _preInitializeSpeechRecognizer();
+    // DON'T pre-initialize speech recognizer here - wait for 3D model to load first
+    // This prevents blocking the 3D model loading on the splash screen
+    // Speech recognition will be initialized in onSplashModelLoaded() callback
     
     // Listen to fireworks controller so UI rebuilds when fireworks finish
     // This allows us to show/hide bunny and "Play Again" button based on fireworks state
@@ -58,37 +57,23 @@ class GameController extends ChangeNotifier {
   /// Future that completes when app initialization is done
   Future<void> get initializationComplete => _initializationCompleter.future;
 
-  /// Pre-initialize speech recognizer in the background
-  /// This starts loading the model as soon as the app starts,
-  /// so it's ready when the user clicks "Start Game"
-  void _preInitializeSpeechRecognizer() {
-    if (_isInitializing) return;
-    _isInitializing = true;
+  // REMOVED: _preInitializeSpeechRecognizer()
+  // Speech recognition now initializes when user clicks "Start Game" in game_screen.dart
+  // This prevents blocking the main thread during splash screen
+  
+  /// Called when 3D model is fully loaded on splash screen
+  /// Completes initialization immediately - speech recognition will initialize when user starts game
+  /// This keeps the splash screen responsive
+  void onSplashModelLoaded() {
+    print('🎉 3D model loaded on splash screen - completing initialization');
     
-    // Start initialization after a short delay to not block app startup
-    Future.delayed(const Duration(milliseconds: 500), () async {
-      try {
-        print('🚀 Pre-initializing speech recognizer in background...');
-        final hasPermission = await speechRecognizer.requestPermission();
-        if (hasPermission) {
-          await speechRecognizer.initialize();
-          print('✅ Speech recognizer pre-initialized successfully');
-        } else {
-          print('⚠️ Microphone permission not granted, will request on Start Game');
-        }
-        
-        // Mark initialization as complete
-        if (!_initializationCompleter.isCompleted) {
-          _initializationCompleter.complete();
-        }
-      } catch (e) {
-        print('⚠️ Pre-initialization failed (will retry on Start Game): $e');
-        // Still mark as complete - we'll retry when user clicks Start Game
-        if (!_initializationCompleter.isCompleted) {
-          _initializationCompleter.complete();
-        }
-      }
-    });
+    // Complete initialization future immediately - splash screen can transition
+    // Speech recognition will initialize when user clicks "Start Game" (handled in game_screen.dart)
+    // This prevents blocking the main thread during splash screen
+    if (!_initializationCompleter.isCompleted) {
+      _initializationCompleter.complete();
+      print('✅ Splash screen can transition - speech recognition will initialize on Start Game');
+    }
   }
 
   /// Load settings from preferences

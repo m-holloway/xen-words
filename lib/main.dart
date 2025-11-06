@@ -45,6 +45,7 @@ class XenWordsApp extends StatelessWidget {
             ),
             home: SplashScreen(
               initializationFuture: controller.initializationComplete,
+              onModelLoaded: controller.onSplashModelLoaded,
               child: const GameScreen(),
             ),
           );

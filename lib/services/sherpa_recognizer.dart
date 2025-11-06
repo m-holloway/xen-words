@@ -114,12 +114,17 @@ class SherpaRecognizer implements ISpeechRecognizer {
       print('🎤 Initializing Sherpa-ONNX...');
 
       // Initialize native bindings FIRST - required before creating recognizer
+      // This is a native call that may block, so we yield immediately after
       print('🔧 Initializing native bindings...');
       sherpa.initBindings();
       print('✅ Native bindings initialized');
+      
+      // Yield to UI thread to keep animations smooth (60fps = ~16ms per frame)
+      await Future.delayed(const Duration(milliseconds: 16));
 
       // Copy assets to device storage and get file paths
       // Use cached directory if available (files already copied from background init)
+      print('📦 Copying/verifying model assets...');
       final modelDir = _cachedModelDir ?? await _copyAssetsToDeviceStorage();
       if (modelDir != null) {
         _cachedModelDir = modelDir;
@@ -129,6 +134,9 @@ class SherpaRecognizer implements ISpeechRecognizer {
         return false;
       }
       
+      // Yield to UI thread
+      await Future.delayed(const Duration(milliseconds: 16));
+      
       print('📁 Model directory: $modelDir');
       
       // Verify all model files exist
@@ -137,7 +145,7 @@ class SherpaRecognizer implements ISpeechRecognizer {
       final joinerPath = path.join(modelDir, 'joiner-epoch-99-avg-1-chunk-16-left-128.int8.onnx');
       final tokensPath = path.join(modelDir, 'tokens.txt');
       
-      // Check if files exist
+      // Check if files exist (yield between checks to keep UI responsive)
       final encoderFile = File(encoderPath);
       final decoderFile = File(decoderPath);
       final joinerFile = File(joinerPath);
@@ -147,29 +155,48 @@ class SherpaRecognizer implements ISpeechRecognizer {
         print('❌ Encoder file not found: $encoderPath');
         return false;
       }
+      await Future.delayed(const Duration(milliseconds: 8));
+      
       if (!await decoderFile.exists()) {
         print('❌ Decoder file not found: $decoderPath');
         return false;
       }
+      await Future.delayed(const Duration(milliseconds: 8));
+      
       if (!await joinerFile.exists()) {
         print('❌ Joiner file not found: $joinerPath');
         return false;
       }
+      await Future.delayed(const Duration(milliseconds: 8));
+      
       if (!await tokensFile.exists()) {
         print('❌ Tokens file not found: $tokensPath');
         return false;
       }
       
+      // Yield to UI thread before file size checks (these can be slow)
+      await Future.delayed(const Duration(milliseconds: 16));
+      
       print('✅ All model files verified');
       print('   Encoder: ${encoderFile.path} (${await encoderFile.length()} bytes)');
+      await Future.delayed(const Duration(milliseconds: 8));
       print('   Decoder: ${decoderFile.path} (${await decoderFile.length()} bytes)');
+      await Future.delayed(const Duration(milliseconds: 8));
       print('   Joiner: ${joinerFile.path} (${await joinerFile.length()} bytes)');
+      await Future.delayed(const Duration(milliseconds: 8));
       print('   Tokens: ${tokensFile.path} (${await tokensFile.length()} bytes)');
+      
+      // Yield before heavy recognizer creation - give UI multiple frames
+      await Future.delayed(const Duration(milliseconds: 50));
       
       // Create recognizer configuration for streaming ASR
       // Note: Hotwords don't work with BPE token models (tokens.txt contains sub-word units, not words)
       // We'll rely on post-processing filtering and homonym correction instead
       print('🔧 Creating recognizer configuration...');
+      
+      // Yield during config creation to keep UI responsive
+      await Future.delayed(const Duration(milliseconds: 16));
+      
       final config = sherpa.OnlineRecognizerConfig(
         feat: const sherpa.FeatureConfig(
           sampleRate: 16000,
@@ -196,9 +223,19 @@ class SherpaRecognizer implements ISpeechRecognizer {
         // Skip hotwords - they don't work with BPE token models
       );
       
+      // Multiple yields before creating recognizer (this is a VERY heavy native operation)
+      // The native call will block, but at least we've given UI time to render
+      print('⚠️ About to create recognizer - this may block for 10-15 seconds...');
+      await Future.delayed(const Duration(milliseconds: 100));
+      
       print('🔧 Creating recognizer...');
-      // Create recognizer
+      // Create recognizer - this is a synchronous native call that WILL block the main thread
+      // Unfortunately, there's no way to make this async or move it to an isolate
+      // The native library doesn't support background initialization
       _recognizer = sherpa.OnlineRecognizer(config);
+      
+      // Yield after recognizer creation
+      await Future.delayed(const Duration(milliseconds: 50));
       
       print('🔧 Creating stream...');
       // Create stream for recognition

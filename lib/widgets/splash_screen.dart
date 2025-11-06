@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'splash_character_view.dart';
 
 /// Splash screen shown while app initializes
 /// Provides entertaining animation while speech recognizer loads
 class SplashScreen extends StatefulWidget {
   final Future<void> initializationFuture;
   final Widget child;
+  final Function()? onModelLoaded; // Called when 3D model is fully loaded
 
   const SplashScreen({
     Key? key,
     required this.initializationFuture,
     required this.child,
+    this.onModelLoaded,
   }) : super(key: key);
 
   @override
@@ -144,30 +147,23 @@ class _SplashScreenState extends State<SplashScreen>
                   );
                 },
               ),
-              const SizedBox(height: 60),
+              const SizedBox(height: 40),
               
-              // Loading indicator with text
-              Column(
-                children: [
-                  SizedBox(
-                    width: 50,
-                    height: 50,
-                    child: CircularProgressIndicator(
-                      strokeWidth: 4,
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        Colors.blue.shade300,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  Text(
-                    'Getting ready...',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white.withOpacity(0.7),
-                    ),
-                  ),
-                ],
+              // 3D Character with continuous animation
+              SplashCharacterView(
+                size: 200,
+                onModelLoaded: widget.onModelLoaded,
+              ),
+              
+              const SizedBox(height: 30),
+              
+              // Loading text (no spinner - character provides visual interest)
+              Text(
+                'Getting ready...',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.white.withOpacity(0.7),
+                ),
               ),
             ],
           ),
