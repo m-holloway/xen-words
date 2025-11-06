@@ -76,29 +76,54 @@ class WordList {
   static const int maxWeeks = 31;
   static const int wordsPerWeek = 2;
 
-  /// Generate a shuffled list of indices for the given number of weeks
-  static List<int> generateShuffledIndices(int numWeeks) {
+  /// Generate a shuffled list of indices for words up to the given week number
+  /// Each unique word appears exactly once, even if it appears multiple times in the word list
+  /// weekNumber: The current week (1-31), includes all words from weeks 1 through weekNumber
+  static List<int> generateShuffledIndicesForWeek(int weekNumber) {
     final random = Random();
-    final int wordCount = numWeeks * wordsPerWeek;
+    final int wordCount = weekNumber * wordsPerWeek;
     
-    // Create a list of indices from 0 to wordCount-1
-    final List<int> indices = List.generate(wordCount, (index) => index);
-    
-    // Fisher-Yates shuffle
+    // First, collect unique words and their first occurrence index
+    // This ensures each word appears only once, even if duplicated in the list
+    final Map<String, int> wordToIndex = {};
     for (int i = 0; i < wordCount; i++) {
-      final int randomIndex = random.nextInt(wordCount - i) + i;
-      final int temp = indices[i];
-      indices[i] = indices[randomIndex];
-      indices[randomIndex] = temp;
+      final word = allWords[i];
+      // Only add if we haven't seen this word before
+      if (!wordToIndex.containsKey(word)) {
+        wordToIndex[word] = i;
+      }
     }
     
-    return indices;
+    // Get all unique indices (one per unique word)
+    final List<int> uniqueIndices = wordToIndex.values.toList();
+    
+    // Fisher-Yates shuffle on the unique indices
+    for (int i = 0; i < uniqueIndices.length; i++) {
+      final int randomIndex = random.nextInt(uniqueIndices.length - i) + i;
+      final int temp = uniqueIndices[i];
+      uniqueIndices[i] = uniqueIndices[randomIndex];
+      uniqueIndices[randomIndex] = temp;
+    }
+    
+    return uniqueIndices;
   }
 
-  /// Get the subset of words for a given number of weeks
-  static List<String> getWordsForWeeks(int numWeeks) {
-    final int wordCount = numWeeks * wordsPerWeek;
+  /// Get the subset of words for a given week number (includes all weeks up to that week)
+  static List<String> getWordsForWeek(int weekNumber) {
+    final int wordCount = weekNumber * wordsPerWeek;
     return allWords.take(wordCount).toList();
+  }
+
+  /// Legacy method for backwards compatibility
+  @Deprecated('Use generateShuffledIndicesForWeek instead')
+  static List<int> generateShuffledIndices(int numWeeks) {
+    return generateShuffledIndicesForWeek(numWeeks);
+  }
+
+  /// Legacy method for backwards compatibility
+  @Deprecated('Use getWordsForWeek instead')
+  static List<String> getWordsForWeeks(int numWeeks) {
+    return getWordsForWeek(numWeeks);
   }
 
   /// Get a word by index

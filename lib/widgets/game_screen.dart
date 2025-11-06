@@ -4,6 +4,7 @@ import 'package:wakelock_plus/wakelock_plus.dart';
 import '../controllers/game_controller.dart';
 import 'word_display.dart';
 import 'week_selector.dart';
+import 'settings_page.dart';
 import 'character_view.dart';
 import 'fireworks_overlay.dart';
 import 'progress_bar.dart';
@@ -64,6 +65,28 @@ class _GameScreenState extends State<GameScreen> {
     }
   }
 
+  void _openSettings(BuildContext context, GameController controller) async {
+    if (controller.settings == null) return;
+    
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => SettingsPage(
+          initialSettings: controller.settings!,
+          onSettingsChanged: (settings) {
+            // Settings are saved immediately when changed
+            controller.updateSettings(settings);
+          },
+        ),
+      ),
+    );
+    
+    // Refresh settings after returning from settings page
+    if (mounted) {
+      await controller.refreshSettings();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,6 +111,19 @@ class _GameScreenState extends State<GameScreen> {
                 children: [
                   // Main content
                   _buildMainContent(controller),
+                  
+                  // Settings button (only shown in initial state)
+                  if (controller.state == GameState.initial)
+                    Positioned(
+                      top: 20,
+                      right: 20,
+                      child: IconButton(
+                        icon: const Icon(Icons.settings, size: 32),
+                        color: Colors.white,
+                        onPressed: () => _openSettings(context, controller),
+                        tooltip: 'Settings',
+                      ),
+                    ),
                   
                   // Character view
                   if (controller.state != GameState.initial)
@@ -128,20 +164,27 @@ class _GameScreenState extends State<GameScreen> {
                     ),
                   ],
                 )
-              : WeekSelector(
-                  numWeeks: controller.numWeeks,
-                  onWeeksChanged: controller.setNumWeeks,
-                  onStartGame: () async {
-                    // Initialize speech recognition when user starts game
-                    final initialized = await _initializeSpeech();
-                    if (mounted && initialized) {
-                      // Only start game if initialization succeeded
-                      // Don't show week selector again - go straight to game
-                      await WakelockPlus.enable();
-                      controller.beginRound();
-                    }
-                  },
-                ),
+              : controller.settings != null
+                  ? WeekSelector(
+                      currentWeek: controller.currentWeek,
+                      settings: controller.settings!,
+                      onWeekChanged: (week) async {
+                        await controller.setCurrentWeek(week);
+                      },
+                      onStartGame: () async {
+                        // Initialize speech recognition when user starts game
+                        final initialized = await _initializeSpeech();
+                        if (mounted && initialized) {
+                          // Only start game if initialization succeeded
+                          // Don't show week selector again - go straight to game
+                          await WakelockPlus.enable();
+                          controller.beginRound();
+                        }
+                      },
+                    )
+                  : const Center(
+                      child: CircularProgressIndicator(color: Colors.white),
+                    ),
         );
 
       case GameState.playing:

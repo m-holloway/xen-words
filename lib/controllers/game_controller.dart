@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import '../models/word_list.dart';
+import '../models/app_settings.dart';
 import '../services/audio_player_service.dart';
 import '../services/speech_recognizer_interface.dart';
+import '../services/preferences_service.dart';
 import '../widgets/fireworks_overlay.dart';
 
 enum GameState {
@@ -17,23 +19,48 @@ class GameController extends ChangeNotifier {
   final AudioPlayerService audioService;
   final ISpeechRecognizer speechRecognizer;
   final FireworksController fireworksController = FireworksController();
+  final PreferencesService preferencesService = PreferencesService();
 
   // Game state
   GameState _state = GameState.initial;
-  int _numWeeks = 7;
+  int _currentWeek = 1; // Current week number (1-31)
   int _currentWordIndex = -1;
   List<int> _shuffledIndices = [];
   bool _isMicrophoneEnabled = false;
   double _microphoneRMS = 0.0;
+  AppSettings? _settings;
 
   GameController({
     required this.audioService,
     required this.speechRecognizer,
-  });
+  }) {
+    // Initialize with default settings, then load from preferences
+    _settings = const AppSettings();
+    _currentWeek = 1;
+    _loadSettings(); // Fire and forget - will update when loaded
+  }
+
+  /// Load settings from preferences
+  Future<void> _loadSettings() async {
+    try {
+      _settings = await preferencesService.loadSettings();
+      _currentWeek = _settings!.currentWeek;
+      notifyListeners();
+    } catch (e) {
+      print('Error loading settings: $e');
+      // Keep default settings if loading fails
+    }
+  }
 
   // Getters
   GameState get state => _state;
-  int get numWeeks => _numWeeks;
+  int get currentWeek => _currentWeek;
+  AppSettings? get settings => _settings;
+  
+  // Legacy getter for backwards compatibility
+  @Deprecated('Use currentWeek instead')
+  int get numWeeks => _currentWeek;
+  
   int get currentWordIndex => _currentWordIndex;
   String get currentWord {
     if (_currentWordIndex >= 0 && _currentWordIndex < _shuffledIndices.length) {
@@ -50,12 +77,12 @@ class GameController extends ChangeNotifier {
   double get microphoneRMS => _microphoneRMS;
   Color? get celebrationColor => fireworksController.lastFireworkColor;
   int get totalWords {
-    // Return the actual number of unique words (may be less than numWeeks * wordsPerWeek if there are duplicates)
+    // Return the actual number of unique words (may be less than currentWeek * wordsPerWeek if there are duplicates)
     if (_shuffledIndices.isNotEmpty) {
       return _shuffledIndices.length;
     }
-    // Fallback: calculate unique words for the selected weeks
-    final int wordCount = _numWeeks * WordList.wordsPerWeek;
+    // Fallback: calculate unique words for the current week
+    final int wordCount = _currentWeek * WordList.wordsPerWeek;
     final Set<String> uniqueWords = {};
     for (int i = 0; i < wordCount && i < WordList.allWords.length; i++) {
       uniqueWords.add(WordList.allWords[i]);
@@ -67,12 +94,32 @@ class GameController extends ChangeNotifier {
     return _shuffledIndices.length - _currentWordIndex - 1;
   }
 
-  /// Set the number of weeks for the game
-  void setNumWeeks(int weeks) {
-    if (weeks >= 1 && weeks <= WordList.maxWeeks) {
-      _numWeeks = weeks;
+  /// Set the current week number
+  Future<void> setCurrentWeek(int week) async {
+    if (week >= 1 && week <= WordList.maxWeeks) {
+      _currentWeek = week;
+      await preferencesService.updateCurrentWeek(week);
       notifyListeners();
     }
+  }
+
+  /// Update settings
+  Future<void> updateSettings(AppSettings newSettings) async {
+    _settings = newSettings;
+    _currentWeek = newSettings.currentWeek;
+    await preferencesService.saveSettings(newSettings);
+    notifyListeners();
+  }
+
+  /// Refresh settings from preferences (useful after settings page changes)
+  Future<void> refreshSettings() async {
+    await _loadSettings();
+  }
+
+  /// Legacy method for backwards compatibility
+  @Deprecated('Use setCurrentWeek instead')
+  void setNumWeeks(int weeks) {
+    setCurrentWeek(weeks);
   }
 
   /// Initialize the speech recognizer
@@ -99,10 +146,14 @@ class GameController extends ChangeNotifier {
 
   /// Start a new game round
   Future<void> beginRound() async {
+    // Refresh settings in case they changed
+    await _loadSettings();
+    
     _state = GameState.initial;
     _currentWordIndex = -1;
-    _shuffledIndices = WordList.generateShuffledIndices(_numWeeks);
+    _shuffledIndices = WordList.generateShuffledIndicesForWeek(_currentWeek);
     
+    print('🎮 Starting game for week $_currentWeek');
     print('🎮 Shuffled indices: $_shuffledIndices');
 
     notifyListeners();
@@ -260,7 +311,7 @@ class GameController extends ChangeNotifier {
     notifyListeners();
 
     // Launch multiple fireworks for finale
-    fireworksController.launchMultiple(null, count: 5);
+    fireworksController.launchMultiple(null, count: 7);
 
     audioService.playGameComplete();
     print('🎉 Game completed!');

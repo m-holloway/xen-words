@@ -25,11 +25,13 @@ dependencies:
   # Speech Recognition
   speech_to_text: ^7.0.0      # Keeping as fallback
   sherpa_onnx: ^1.10.27       # Primary - with grammar/vocabulary restriction
+  record: ^6.1.0              # Audio capture for Sherpa-ONNX
   
   # Utilities
   path_provider: ^2.1.2
   flutter_animate: ^4.5.0
   wakelock_plus: ^1.2.5
+  shared_preferences: ^2.2.2
   
   # 3D Rendering
   # TODO: Integrate 3D model viewer (flutter_scene requires build hooks for GLB conversion)

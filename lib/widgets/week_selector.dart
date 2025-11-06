@@ -1,105 +1,193 @@
 import 'package:flutter/material.dart';
 import '../models/word_list.dart';
+import '../models/app_settings.dart';
 
-/// Widget for selecting the number of weeks to practice
-class WeekSelector extends StatelessWidget {
-  final int numWeeks;
-  final Function(int) onWeeksChanged;
+/// Super simple kid-friendly widget for displaying and adjusting the current week
+class WeekSelector extends StatefulWidget {
+  final int currentWeek;
+  final AppSettings settings;
+  final Function(int) onWeekChanged;
   final VoidCallback onStartGame;
 
   const WeekSelector({
     Key? key,
-    required this.numWeeks,
-    required this.onWeeksChanged,
+    required this.currentWeek,
+    required this.settings,
+    required this.onWeekChanged,
     required this.onStartGame,
   }) : super(key: key);
 
   @override
+  State<WeekSelector> createState() => _WeekSelectorState();
+}
+
+class _WeekSelectorState extends State<WeekSelector> {
+  late int _currentWeek;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentWeek = widget.currentWeek;
+  }
+
+  @override
+  void didUpdateWidget(WeekSelector oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.currentWeek != _currentWeek) {
+      _currentWeek = widget.currentWeek;
+    }
+  }
+
+  void _handleWeekChange(int newWeek) {
+    if (newWeek >= 1 && newWeek <= WordList.maxWeeks) {
+      setState(() {
+        _currentWeek = newWeek;
+      });
+      widget.onWeekChanged(newWeek);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final wordsInWeek = _currentWeek * WordList.wordsPerWeek;
+    
     return Container(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.all(32),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.9),
-        borderRadius: BorderRadius.circular(20),
+        color: Colors.white.withOpacity(0.95),
+        borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
+            color: Colors.black.withOpacity(0.15),
+            blurRadius: 20,
+            offset: const Offset(0, 8),
           ),
         ],
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text(
-            'Select Number of Weeks',
-            style: TextStyle(
-              fontSize: 24,
+          // Week Number Display - Large and clear
+          Text(
+            'Week $_currentWeek',
+            style: const TextStyle(
+              fontSize: 64,
               fontWeight: FontWeight.bold,
-              color: Colors.black87,
+              color: Colors.blue,
+              letterSpacing: 3,
             ),
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 12),
+          Text(
+            '$wordsInWeek words',
+            style: TextStyle(
+              fontSize: 22,
+              color: Colors.grey.shade600,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          const SizedBox(height: 48),
+          
+          // Simple week adjustment buttons - large and intuitive
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              IconButton(
-                icon: const Icon(Icons.remove_circle),
-                iconSize: 40,
-                color: Colors.blue,
-                onPressed: numWeeks > 1 ? () => onWeeksChanged(numWeeks - 1) : null,
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade50,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Text(
-                  '$numWeeks',
-                  style: const TextStyle(
-                    fontSize: 48,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue,
+              // Previous week button
+              Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: _currentWeek > 1
+                      ? () => _handleWeekChange(_currentWeek - 1)
+                      : null,
+                  borderRadius: BorderRadius.circular(50),
+                  child: Container(
+                    width: 80,
+                    height: 80,
+                    decoration: BoxDecoration(
+                      color: _currentWeek > 1 
+                          ? Colors.blue.shade100 
+                          : Colors.grey.shade200,
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: _currentWeek > 1 
+                            ? Colors.blue 
+                            : Colors.grey.shade400,
+                        width: 4,
+                      ),
+                    ),
+                    child: Icon(
+                      Icons.arrow_back,
+                      size: 40,
+                      color: _currentWeek > 1 
+                          ? Colors.blue 
+                          : Colors.grey.shade400,
+                    ),
                   ),
                 ),
               ),
-              IconButton(
-                icon: const Icon(Icons.add_circle),
-                iconSize: 40,
-                color: Colors.blue,
-                onPressed: numWeeks < WordList.maxWeeks
-                    ? () => onWeeksChanged(numWeeks + 1)
-                    : null,
+              
+              const SizedBox(width: 40),
+              
+              // Next week button
+              Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: _currentWeek < WordList.maxWeeks
+                      ? () => _handleWeekChange(_currentWeek + 1)
+                      : null,
+                  borderRadius: BorderRadius.circular(50),
+                  child: Container(
+                    width: 80,
+                    height: 80,
+                    decoration: BoxDecoration(
+                      color: _currentWeek < WordList.maxWeeks 
+                          ? Colors.blue.shade100 
+                          : Colors.grey.shade200,
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: _currentWeek < WordList.maxWeeks 
+                            ? Colors.blue 
+                            : Colors.grey.shade400,
+                        width: 4,
+                      ),
+                    ),
+                    child: Icon(
+                      Icons.arrow_forward,
+                      size: 40,
+                      color: _currentWeek < WordList.maxWeeks 
+                          ? Colors.blue 
+                          : Colors.grey.shade400,
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
-          const SizedBox(height: 16),
-          Text(
-            '${numWeeks * WordList.wordsPerWeek} words',
-            style: TextStyle(
-              fontSize: 18,
-              color: Colors.grey.shade600,
-            ),
-          ),
-          const SizedBox(height: 32),
-          ElevatedButton(
-            onPressed: onStartGame,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.green,
-              foregroundColor: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 16),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
+          
+          const SizedBox(height: 48),
+          
+          // Start Game Button - Large and prominent
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: widget.onStartGame,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(vertical: 24),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                elevation: 6,
+                shadowColor: Colors.green.withOpacity(0.4),
               ),
-              elevation: 4,
-            ),
-            child: const Text(
-              'Start Game',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+              child: const Text(
+                'Start Game',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.5,
+                ),
               ),
             ),
           ),
@@ -108,5 +196,3 @@ class WeekSelector extends StatelessWidget {
     );
   }
 }
-
-
