@@ -41,11 +41,31 @@ class GameController extends ChangeNotifier {
     }
     return '';
   }
-  bool get isGameComplete => _currentWordIndex >= (_numWeeks * WordList.wordsPerWeek - 1);
+  bool get isGameComplete {
+    // Game is complete when we've shown all unique words
+    if (_shuffledIndices.isEmpty) return false;
+    return _currentWordIndex >= (_shuffledIndices.length - 1);
+  }
   bool get isMicrophoneEnabled => _isMicrophoneEnabled;
   double get microphoneRMS => _microphoneRMS;
-  int get totalWords => _numWeeks * WordList.wordsPerWeek;
-  int get wordsRemaining => totalWords - _currentWordIndex - 1;
+  Color? get celebrationColor => fireworksController.lastFireworkColor;
+  int get totalWords {
+    // Return the actual number of unique words (may be less than numWeeks * wordsPerWeek if there are duplicates)
+    if (_shuffledIndices.isNotEmpty) {
+      return _shuffledIndices.length;
+    }
+    // Fallback: calculate unique words for the selected weeks
+    final int wordCount = _numWeeks * WordList.wordsPerWeek;
+    final Set<String> uniqueWords = {};
+    for (int i = 0; i < wordCount && i < WordList.allWords.length; i++) {
+      uniqueWords.add(WordList.allWords[i]);
+    }
+    return uniqueWords.length;
+  }
+  int get wordsRemaining {
+    if (_shuffledIndices.isEmpty) return 0;
+    return _shuffledIndices.length - _currentWordIndex - 1;
+  }
 
   /// Set the number of weeks for the game
   void setNumWeeks(int weeks) {
@@ -97,7 +117,8 @@ class GameController extends ChangeNotifier {
 
   /// Display the next word in the sequence
   void _displayNextWord() {
-    if (_currentWordIndex < _numWeeks * WordList.wordsPerWeek - 1) {
+    // Check against actual shuffled indices length (which may be less due to duplicates)
+    if (_currentWordIndex < _shuffledIndices.length - 1) {
       _currentWordIndex++;
       _state = GameState.playing;
       print('📖 Displaying word $_currentWordIndex: $currentWord');
@@ -130,12 +151,14 @@ class GameController extends ChangeNotifier {
   Future<void> _startListening() async {
     print('🎤 Starting continuous listening...');
     try {
+      // Pass expected word for context-aware matching
       await speechRecognizer.startListening(
         onResult: _handleSpeechResult,
         onPartial: _handlePartialResult,
         onError: (error) {
           print('❌ Speech recognition error: $error');
         },
+        expectedWord: currentWord,  // Pass expected word for better matching
       );
       print('✅ Continuous listening started (will auto-restart)');
     } catch (e) {
@@ -200,8 +223,9 @@ class GameController extends ChangeNotifier {
     _state = GameState.celebrating;
     notifyListeners();
 
-    // Launch a single firework
-    fireworksController.launchSingle(const Size(800, 600));
+    // Launch a single firework above the word
+    // The screen size and word position will be set by the game screen via updateScreenSize
+    fireworksController.launchSingle(null);
 
     audioService.playWordSuccess(onComplete: () async {
       print('🎵 Success audio complete, moving to next word...');
@@ -212,14 +236,19 @@ class GameController extends ChangeNotifier {
 
   /// Play failure for incorrect word
   void _playFailure() async {
+    // Disable microphone first (quick operation)
     await _disableMicrophone();
+    
+    // Immediately trigger animation and audio together
     _state = GameState.failing;
     notifyListeners();
-
+    
+    // Start audio playback right after (minimal delay from state change)
     audioService.playWordMiss(onComplete: () async {
       print('🎵 Miss audio complete, continuing...');
       _state = GameState.playing;
       notifyListeners();
+      // Re-enable microphone after audio completes
       await _enableMicrophone();
     });
   }
@@ -231,7 +260,7 @@ class GameController extends ChangeNotifier {
     notifyListeners();
 
     // Launch multiple fireworks for finale
-    fireworksController.launchMultiple(const Size(800, 600), count: 5);
+    fireworksController.launchMultiple(null, count: 5);
 
     audioService.playGameComplete();
     print('🎉 Game completed!');
