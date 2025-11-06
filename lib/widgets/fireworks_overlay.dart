@@ -135,6 +135,7 @@ class Firework {
   final Offset origin; // Explosion position
   final List<Particle> particles = [];
   final Color color;
+  final int particleCount; // Number of particles per firework (tunable)
   bool hasExploded = false;
   
   // Launch trajectory state - pre-calculated velocity that particles will inherit
@@ -146,7 +147,11 @@ class Firework {
   static const double launchAngleVariation = 0.3; // Random variation in launch angle (radians)
   static const double fuseTime = 0.8; // Simulated fuse time for velocity calculation
 
-  Firework({required this.origin, required this.color}) {
+  Firework({
+    required this.origin, 
+    required this.color,
+    this.particleCount = 35, // Default particle count
+  }) {
     // Calculate what the launch velocity would be at explosion time (without simulating)
     // This simulates a rocket launched upward that has been traveling for fuseTime seconds
     explosionVelocity = _calculateLaunchVelocity();
@@ -197,7 +202,6 @@ class Firework {
     final explosionCenter = Vector3(origin.dx, origin.dy, launchDepth);
 
     final random = Random();
-    const particleCount = 50;
     
     // Starting radius for the explosion - particles start distributed within this sphere
     // Use a larger radius for a more visible initial burst
@@ -289,6 +293,10 @@ class FireworksController extends ChangeNotifier {
   Offset? _wordPosition;
   Color? _lastFireworkColor; // Store the last firework color
 
+  // Tunable parameters for firework effects
+  static const int defaultParticleCount = 35; // Particles per firework for single launches
+  static const int finaleParticleCount = 25; // Particles per firework for multi-launch finale (~30% reduction)
+
   List<Firework> get fireworks => _fireworks;
   Color? get lastFireworkColor => _lastFireworkColor;
 
@@ -337,49 +345,63 @@ class FireworksController extends ChangeNotifier {
     _fireworks.add(Firework(
       origin: origin,
       color: fireworkColor,
+      particleCount: defaultParticleCount, // Use full particle count for single launches
     ));
     notifyListeners();
   }
 
-  void launchMultiple(Size? size, {int count = 5, Offset? wordPosition}) {
-    final random = Random();
+  void launchMultiple(Size? size, {int count = 7, Offset? wordPosition}) {
     final screenSize = size ?? _screenSize ?? const Size(800, 600);
     final wordPos = wordPosition ?? _wordPosition;
     final startRadius = 40.0;
     
+    // Launch fireworks with randomized spacing for a more organic, natural finale feel
+    const baseDelayBetweenLaunches = 750; // Base delay in ms between fireworks
+    const delayVariation = 200; // Random variation range (±100ms)
+    
+    final random = Random();
+    int cumulativeDelay = 0;
+    
     for (int i = 0; i < count; i++) {
-      Future.delayed(Duration(milliseconds: i * 300), () {
-        if (_fireworks.length < count) {
-          Offset origin;
-          if (wordPos != null) {
-            // Launch above the word with broader variation
-            final x = wordPos.dx + (random.nextDouble() - 0.5) * screenSize.width * 0.4; // Broader horizontal spread
-            final y = (wordPos.dy - screenSize.height * 0.15).clamp(
-              screenSize.height * 0.15,
-              screenSize.height * 0.5,
-            );
-            origin = Offset(x.clamp(startRadius + 10, screenSize.width - startRadius - 10), y);
-          } else {
-            // Fallback placement
-            final x = screenSize.width * 0.3 + random.nextDouble() * screenSize.width * 0.4;
-            final y = screenSize.height * 0.35 + random.nextDouble() * screenSize.height * 0.2;
-            origin = Offset(x, y);
-          }
-          
-          // Ensure origin stays well within screen bounds
-          origin = Offset(
-            origin.dx.clamp(startRadius + 10, screenSize.width - startRadius - 10),
-            origin.dy.clamp(startRadius + 10, screenSize.height - startRadius - 10),
+      // Add random variation to each launch time for organic feel
+      final randomOffset = (random.nextDouble() - 0.5) * delayVariation; // ±100ms
+      final thisDelay = (baseDelayBetweenLaunches + randomOffset).round().clamp(400, 1000);
+      cumulativeDelay += thisDelay;
+      
+      Future.delayed(Duration(milliseconds: cumulativeDelay), () {
+        // Create a new Random instance inside the delayed callback for position randomness
+        final random = Random();
+        
+        Offset origin;
+        if (wordPos != null) {
+          // Launch above the word with broader variation
+          final x = wordPos.dx + (random.nextDouble() - 0.5) * screenSize.width * 0.4; // Broader horizontal spread
+          final y = (wordPos.dy - screenSize.height * 0.15).clamp(
+            screenSize.height * 0.15,
+            screenSize.height * 0.5,
           );
-
-          final fireworkColor = ColorGenerator.randomColor();
-          _lastFireworkColor = fireworkColor; // Store the color
-          _fireworks.add(Firework(
-            origin: origin,
-            color: fireworkColor,
-          ));
-          notifyListeners();
+          origin = Offset(x.clamp(startRadius + 10, screenSize.width - startRadius - 10), y);
+        } else {
+          // Fallback placement
+          final x = screenSize.width * 0.3 + random.nextDouble() * screenSize.width * 0.4;
+          final y = screenSize.height * 0.35 + random.nextDouble() * screenSize.height * 0.2;
+          origin = Offset(x, y);
         }
+        
+        // Ensure origin stays well within screen bounds
+        origin = Offset(
+          origin.dx.clamp(startRadius + 10, screenSize.width - startRadius - 10),
+          origin.dy.clamp(startRadius + 10, screenSize.height - startRadius - 10),
+        );
+
+        final fireworkColor = ColorGenerator.randomColor();
+        _lastFireworkColor = fireworkColor; // Store the color
+        _fireworks.add(Firework(
+          origin: origin,
+          color: fireworkColor,
+          particleCount: finaleParticleCount, // Use reduced particle count for finale (~30% less)
+        ));
+        notifyListeners();
       });
     }
   }
@@ -391,8 +413,14 @@ class FireworksController extends ChangeNotifier {
       return;
     }
 
-    final dt = now.difference(_lastUpdate!).inMicroseconds / 1000000.0;
+    // Calculate delta time and clamp it to prevent large time jumps
+    // This prevents animation from running too fast if there's a delay
+    var dt = now.difference(_lastUpdate!).inMicroseconds / 1000000.0;
+    dt = dt.clamp(0.0, 0.05); // Clamp to max 50ms (20 FPS minimum)
     _lastUpdate = now;
+
+    // Only update if we have fireworks to avoid unnecessary work
+    if (_fireworks.isEmpty) return;
 
     for (var firework in _fireworks) {
       firework.update(dt);
@@ -457,11 +485,11 @@ class FireworksPainter extends CustomPainter {
           // Draw blurred colored trail (outer glow) - size scales with perspective
           final blurredTrailPaint = Paint()
             ..style = PaintingStyle.stroke
-            ..strokeWidth = size * 0.8 // Scale trail width with particle size
+            ..strokeWidth = size * 1.7 // Scale trail width with particle size
             ..strokeCap = StrokeCap.round
             ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4)
             ..blendMode = BlendMode.plus
-            ..color = particle.color.withOpacity(alpha * 0.6);
+            ..color = particle.color.withValues(alpha: alpha * 0.9);
           
           canvas.drawLine(startPoint, endPoint, blurredTrailPaint);
           
@@ -471,29 +499,29 @@ class FireworksPainter extends CustomPainter {
             ..strokeWidth = size * 0.3
             ..strokeCap = StrokeCap.round
             ..blendMode = BlendMode.plus
-            ..color = Colors.white.withOpacity(alpha * 0.9);
+            ..color = Colors.white.withValues(alpha: alpha*.7);
           
           canvas.drawLine(startPoint, endPoint, hotTrailPaint);
         }
 
         // Draw outer blurry glow (nice soft halo) - scales with perspective
-        outerGlowPaint.color = particle.color.withOpacity(alpha * 0.5);
+        outerGlowPaint.color = particle.color.withValues(alpha: alpha * 0.6);
         canvas.drawCircle(
           screenPosition,
-          size * 3.0,
+          size * 3,
           outerGlowPaint,
         );
 
         // Draw inner glow (medium blur) - scales with perspective
-        innerGlowPaint.color = particle.color.withOpacity(alpha * 0.8);
+        innerGlowPaint.color = particle.color.withValues(alpha: alpha * 0.8);
         canvas.drawCircle(
           screenPosition,
-          size * 1.8,
+          size * 1.9,
           innerGlowPaint,
         );
 
         // Draw core particle (bright center) - scales with perspective
-        corePaint.color = particle.color.withOpacity(alpha);
+        corePaint.color = particle.color.withValues(alpha: alpha);
         canvas.drawCircle(
           screenPosition,
           size,
@@ -502,12 +530,12 @@ class FireworksPainter extends CustomPainter {
         
         // Draw hot white center (the really nice bright spot) - scales with perspective
         final hotPaint = Paint()
-          ..color = Colors.white.withOpacity(alpha * 0.95)
+          ..color = Colors.white.withValues(alpha: alpha * 0.97)
           ..style = PaintingStyle.fill
           ..blendMode = BlendMode.plus;
         canvas.drawCircle(
           screenPosition,
-          size * 0.5,
+          size * 0.55,
           hotPaint,
         );
       }
