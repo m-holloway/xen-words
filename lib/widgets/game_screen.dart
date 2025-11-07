@@ -143,6 +143,19 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
     }
   }
 
+  void _exitGame(BuildContext context, GameController controller) {
+    // Stop the game and return to initial screen
+    controller.resetGame();
+    
+    // Reset game started flag
+    setState(() {
+      _gameHasStarted = false;
+      _isStartingGame = false;
+    });
+    
+    print('🔙 Exited game, returning to menu');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -187,6 +200,19 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                         color: Colors.white,
                         onPressed: () => _openSettings(context, controller),
                         tooltip: 'Settings',
+                      ),
+                    ),
+                  
+                  // Back button (shown during gameplay, not on initial screen)
+                  if (controller.state != GameState.initial)
+                    Positioned(
+                      top: 20,
+                      left: 20,
+                      child: IconButton(
+                        icon: const Icon(Icons.arrow_back, size: 32),
+                        color: Colors.white,
+                        onPressed: () => _exitGame(context, controller),
+                        tooltip: 'Back to Menu',
                       ),
                     ),
                   

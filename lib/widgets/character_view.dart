@@ -1085,14 +1085,14 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
     // Always full-screen for maximum character presence
     return Container(
       decoration: const BoxDecoration(
-        // Beautiful gradient background that complements the character
+        // Natural sky gradient that complements the wood floor
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            Color(0xFF4A148C), // Deep purple at top
-            Color(0xFF7B1FA2), // Medium purple
-            Color(0xFF9C27B0), // Lighter purple at bottom
+            Color(0xFF87CEEB), // Sky blue at top
+            Color(0xFFB0E0E6), // Powder blue in middle
+            Color(0xFFE0F6FF), // Very light blue at bottom (horizon)
           ],
           stops: [0.0, 0.5, 1.0],
         ),
@@ -1113,9 +1113,9 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color(0xFF4A148C),
-                  Color(0xFF7B1FA2),
-                  Color(0xFF9C27B0),
+                  Color(0xFF87CEEB), // Sky blue
+                  Color(0xFFB0E0E6), // Powder blue
+                  Color(0xFFE0F6FF), // Light blue
                 ],
               ),
             ),
