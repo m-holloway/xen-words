@@ -5,7 +5,7 @@ Creates a tapered pot with configurable parameters.
 This script can be run standalone or imported.
 
 Usage:
-    blender --background --python generate_pot.py
+    /Applications/Blender.app/Contents/MacOS/Blender --background --python generate_pot.py
 """
 
 import bpy
@@ -22,12 +22,10 @@ POT_CONFIG = {
     'bottom_radius': 0.18,      # Radius at pot bottom (meters)
     'top_radius': 0.24,         # Radius at pot top/rim (meters)
     'height': 0.35,             # Total pot height (meters)
-    'rim_height': 0.01,         # Height of rim lip (meters)
-    'rim_flare': 0.04,          # How much rim flares out (meters)
+    'wall_thickness': 0.02,     # Wall thickness (meters)
     
     # Detail
     'segments': 16,             # Number of segments around circumference
-    'height_segments': 3,       # Vertical subdivisions for shape
     
     # Features
     'drainage_hole': True,      # Include drainage hole in bottom
@@ -44,92 +42,135 @@ POT_CONFIG = {
 # ============================================================================
 
 def create_pot_geometry(config):
-    """Create the pot mesh geometry."""
+    """Create the pot mesh geometry using simple extrusion."""
     mesh = bpy.data.meshes.new("PotMesh")
     bm = bmesh.new()
     
-    # Calculate profile (vertical cross-section)
     bottom_r = config['bottom_radius']
     top_r = config['top_radius']
-    rim_r = top_r + config['rim_flare']
     height = config['height']
-    rim_height = config['rim_height']
+    thickness = config['wall_thickness']
     segments = config['segments']
     
-    # Create vertical profile points
-    profile_points = [
-        (bottom_r, 0.0),                        # Bottom outer edge
-        (top_r, height - rim_height),           # Body top
-        (rim_r, height - rim_height * 0.5),     # Rim flare
-        (rim_r, height),                        # Rim top outer
-        (top_r - 0.01, height),                 # Rim top inner
-        (top_r - 0.01, height - rim_height),    # Inside rim
-        (bottom_r - 0.02, 0.02),                # Inside bottom
-    ]
-    
-    # Create vertices by rotating profile around Z axis
-    verts_by_ring = []
-    for radius, z in profile_points:
-        ring = []
-        for i in range(segments):
-            angle = (2 * math.pi * i) / segments
-            x = radius * math.cos(angle)
-            y = radius * math.sin(angle)
-            vert = bm.verts.new((x, y, z))
-            ring.append(vert)
-        verts_by_ring.append(ring)
-    
-    # Create faces between rings
-    for ring_idx in range(len(verts_by_ring) - 1):
-        ring1 = verts_by_ring[ring_idx]
-        ring2 = verts_by_ring[ring_idx + 1]
-        
-        for i in range(segments):
-            v1 = ring1[i]
-            v2 = ring1[(i + 1) % segments]
-            v3 = ring2[(i + 1) % segments]
-            v4 = ring2[i]
-            bm.faces.new([v1, v2, v3, v4])
-    
-    # Create rim top face (horizontal)
-    rim_outer_ring = verts_by_ring[3]
-    rim_inner_ring = verts_by_ring[4]
+    # Create outer rim vertices (top)
+    outer_top_ring = []
     for i in range(segments):
-        v1 = rim_outer_ring[i]
-        v2 = rim_outer_ring[(i + 1) % segments]
-        v3 = rim_inner_ring[(i + 1) % segments]
-        v4 = rim_inner_ring[i]
+        angle = (2 * math.pi * i) / segments
+        x = top_r * math.cos(angle)
+        y = top_r * math.sin(angle)
+        vert = bm.verts.new((x, y, height))
+        outer_top_ring.append(vert)
+    
+    # Create outer bottom vertices
+    outer_bottom_ring = []
+    for i in range(segments):
+        angle = (2 * math.pi * i) / segments
+        x = bottom_r * math.cos(angle)
+        y = bottom_r * math.sin(angle)
+        vert = bm.verts.new((x, y, 0))
+        outer_bottom_ring.append(vert)
+    
+    # Create inner rim vertices (top)
+    inner_top_ring = []
+    for i in range(segments):
+        angle = (2 * math.pi * i) / segments
+        x = (top_r - thickness) * math.cos(angle)
+        y = (top_r - thickness) * math.sin(angle)
+        vert = bm.verts.new((x, y, height))
+        inner_top_ring.append(vert)
+    
+    # Create inner bottom vertices
+    inner_bottom_ring = []
+    for i in range(segments):
+        angle = (2 * math.pi * i) / segments
+        x = (bottom_r - thickness) * math.cos(angle)
+        y = (bottom_r - thickness) * math.sin(angle)
+        vert = bm.verts.new((x, y, thickness * 0.5))
+        inner_bottom_ring.append(vert)
+    
+    # Create outer wall faces
+    for i in range(segments):
+        v1 = outer_bottom_ring[i]
+        v2 = outer_bottom_ring[(i + 1) % segments]
+        v3 = outer_top_ring[(i + 1) % segments]
+        v4 = outer_top_ring[i]
         bm.faces.new([v1, v2, v3, v4])
     
-    # Create bottom face
-    bottom_ring = verts_by_ring[0]
-    center = bm.verts.new((0, 0, 0))
+    # Create inner wall faces (reversed winding)
+    for i in range(segments):
+        v1 = inner_bottom_ring[i]
+        v2 = inner_top_ring[i]
+        v3 = inner_top_ring[(i + 1) % segments]
+        v4 = inner_bottom_ring[(i + 1) % segments]
+        bm.faces.new([v1, v2, v3, v4])
     
+    # Create rim top faces (connecting outer and inner)
+    for i in range(segments):
+        v1 = outer_top_ring[i]
+        v2 = outer_top_ring[(i + 1) % segments]
+        v3 = inner_top_ring[(i + 1) % segments]
+        v4 = inner_top_ring[i]
+        bm.faces.new([v1, v2, v3, v4])
+    
+    # Create bottom
     if config['drainage_hole']:
-        # Create drainage hole
+        # Create drainage hole ring
         hole_r = config['drainage_radius']
         hole_verts = []
-        for i in range(8):  # 8 segments for hole
-            angle = (2 * math.pi * i) / 8
+        hole_segments = 8
+        for i in range(hole_segments):
+            angle = (2 * math.pi * i) / hole_segments
             x = hole_r * math.cos(angle)
             y = hole_r * math.sin(angle)
             vert = bm.verts.new((x, y, 0))
             hole_verts.append(vert)
         
-        # Bottom face as ring between hole and outer edge
-        for i in range(8):
-            # Triangles from hole to outer
-            v1 = hole_verts[i]
-            v2 = hole_verts[(i + 1) % 8]
-            # Find closest outer vertices
-            outer_i = int((i / 8) * segments)
-            v3 = bottom_ring[outer_i]
-            bm.faces.new([v1, v2, v3])
-    else:
-        # Solid bottom
+        # Create bottom face as triangles from outer bottom to hole
+        # This is a simple approach - connect hole to outer bottom
         for i in range(segments):
-            v1 = bottom_ring[i]
-            v2 = bottom_ring[(i + 1) % segments]
+            # Outer segment
+            v1 = outer_bottom_ring[i]
+            v2 = outer_bottom_ring[(i + 1) % segments]
+            
+            # Find corresponding inner vertex
+            v3 = inner_bottom_ring[(i + 1) % segments]
+            v4 = inner_bottom_ring[i]
+            
+            bm.faces.new([v1, v2, v3, v4])
+        
+        # Connect inner bottom to hole
+        for i in range(segments):
+            hole_i = int((i / segments) * hole_segments) % hole_segments
+            hole_next = (hole_i + 1) % hole_segments
+            
+            v1 = inner_bottom_ring[i]
+            v2 = inner_bottom_ring[(i + 1) % segments]
+            v3 = hole_verts[hole_next]
+            v4 = hole_verts[hole_i]
+            
+            try:
+                bm.faces.new([v1, v2, v3, v4])
+            except:
+                # If quad fails, try triangles
+                try:
+                    bm.faces.new([v1, v2, v3])
+                    bm.faces.new([v1, v3, v4])
+                except:
+                    pass
+    else:
+        # Solid bottom - connect outer bottom to inner bottom
+        for i in range(segments):
+            v1 = outer_bottom_ring[i]
+            v2 = outer_bottom_ring[(i + 1) % segments]
+            v3 = inner_bottom_ring[(i + 1) % segments]
+            v4 = inner_bottom_ring[i]
+            bm.faces.new([v1, v2, v3, v4])
+        
+        # Fill inner bottom with center vertex
+        center = bm.verts.new((0, 0, 0))
+        for i in range(segments):
+            v1 = inner_bottom_ring[i]
+            v2 = inner_bottom_ring[(i + 1) % segments]
             bm.faces.new([center, v1, v2])
     
     # Apply smooth shading
@@ -225,4 +266,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
