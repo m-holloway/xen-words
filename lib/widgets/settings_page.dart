@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../models/app_settings.dart';
 import '../models/word_list.dart';
 
@@ -58,6 +59,100 @@ class _SettingsPageState extends State<SettingsPage> {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
+          // Personalization Section
+          _buildSection(
+            title: 'Personalization',
+            icon: Icons.person,
+            children: [
+              _buildCard(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Child\'s First Name',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'This name will appear on the personalized rug in the learning space.',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey.shade600,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Enter name (e.g., Addy)',
+                        border: const OutlineInputBorder(),
+                        prefixIcon: const Icon(Icons.badge),
+                      ),
+                      textCapitalization: TextCapitalization.words,
+                      onChanged: (value) {
+                        _updateSettings(_settings.copyWith(childName: value));
+                      },
+                      controller: TextEditingController(text: _settings.childName)
+                        ..selection = TextSelection.collapsed(
+                          offset: _settings.childName.length,
+                        ),
+                    ),
+                    if (_settings.hasChildName) ...[
+                      const SizedBox(height: 12),
+                      Row(
+                        children: [
+                          const Icon(Icons.check_circle, color: Colors.green, size: 20),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              'The rug will show "${_settings.childName}"',
+                              style: const TextStyle(
+                                fontSize: 14,
+                                color: Colors.green,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 16),
+
+          // Font Selection Section
+          _buildSection(
+            title: 'Rug Font Style',
+            icon: Icons.font_download,
+            children: [
+              _buildCard(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Choose a font for the welcome rug',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    _buildFontPicker(),
+                  ],
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 24),
+
           // Week Settings Section
           _buildSection(
             title: 'Week Settings',
@@ -353,6 +448,123 @@ class _SettingsPageState extends State<SettingsPage> {
         ],
       ),
     );
+  }
+
+  Widget _buildFontPicker() {
+    final fonts = [
+      {'name': 'Quicksand', 'description': 'Playful & Rounded'},
+      {'name': 'Nunito', 'description': 'Clean & Friendly'},
+      {'name': 'Fredoka', 'description': 'Super Playful'},
+      {'name': 'Chewy', 'description': 'Fun & Chunky'},
+      {'name': 'Rubik Bubbles', 'description': 'Bubbly Fun'},
+      {'name': 'Righteous', 'description': 'Bold & Modern'},
+      {'name': 'Galindo', 'description': 'Quirky & Fun'},
+      {'name': 'Pacifico', 'description': 'Casual Script'},
+      {'name': 'Lavishly Yours', 'description': 'Elegant Script'},
+      {'name': 'Ballet', 'description': 'Graceful Script'},
+    ];
+
+    return Column(
+      children: fonts.map((font) {
+        final fontName = font['name']!;
+        final isSelected = _settings.rugFontFamily == fontName;
+        
+        return GestureDetector(
+          onTap: () {
+            _updateSettings(_settings.copyWith(rugFontFamily: fontName));
+          },
+          child: Container(
+            margin: const EdgeInsets.only(bottom: 12),
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: isSelected ? Colors.purple.shade50 : Colors.grey.shade50,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                color: isSelected ? Colors.purple : Colors.grey.shade300,
+                width: isSelected ? 2 : 1,
+              ),
+            ),
+            child: Row(
+              children: [
+                // Radio button
+                Icon(
+                  isSelected ? Icons.radio_button_checked : Icons.radio_button_unchecked,
+                  color: isSelected ? Colors.purple : Colors.grey,
+                ),
+                const SizedBox(width: 16),
+                // Font preview and info
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Font name and description
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            fontName,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black87,
+                            ),
+                          ),
+                          Text(
+                            font['description']!,
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey.shade600,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      // Preview text
+                      Text(
+                        _settings.hasChildName 
+                            ? 'Welcome ${_settings.childName}!'
+                            : 'Welcome Adalyn!',
+                        style: _getFontStyle(fontName).copyWith(
+                          fontSize: 24,
+                          color: const Color(0xFF3C2814),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      }).toList(),
+    );
+  }
+
+  TextStyle _getFontStyle(String fontName) {
+    switch (fontName) {
+      case 'Quicksand':
+        return GoogleFonts.quicksand(fontWeight: FontWeight.w700);
+      case 'Nunito':
+        return GoogleFonts.nunito(fontWeight: FontWeight.w700);
+      case 'Fredoka':
+        return GoogleFonts.fredoka(fontWeight: FontWeight.w700);
+      case 'Chewy':
+        return GoogleFonts.chewy();
+      case 'Rubik Bubbles':
+        return GoogleFonts.rubikBubbles();
+      case 'Righteous':
+        return GoogleFonts.righteous();
+      case 'Galindo':
+        return GoogleFonts.galindo();
+      case 'Pacifico':
+        return GoogleFonts.pacifico();
+      case 'Lavishly Yours':
+        return GoogleFonts.lavishlyYours();
+      case 'Ballet':
+        return GoogleFonts.ballet();
+      default:
+        return GoogleFonts.quicksand(fontWeight: FontWeight.w700);
+    }
   }
 }
 

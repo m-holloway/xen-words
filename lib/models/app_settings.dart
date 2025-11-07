@@ -1,10 +1,12 @@
-/// App settings model for storing user preferences
+/// App settings model for storing user preferences and child personalization
 class AppSettings {
   final int currentWeek; // Current week number (1-31)
   final bool autoAdvanceEnabled; // Whether to automatically advance weeks
   final int advanceDayOfWeek; // Day of week to advance (0=Sunday, 6=Saturday)
   final int wordsPerWeek; // Number of words per week
   final DateTime? lastAdvanceDate; // Last date the week was advanced
+  final String childName; // Child's first name for personalization
+  final String rugFontFamily; // Font family for rug text
 
   const AppSettings({
     this.currentWeek = 1,
@@ -12,6 +14,8 @@ class AppSettings {
     this.advanceDayOfWeek = 0, // Sunday by default
     this.wordsPerWeek = 2,
     this.lastAdvanceDate,
+    this.childName = '',
+    this.rugFontFamily = 'Quicksand',
   });
 
   AppSettings copyWith({
@@ -20,6 +24,8 @@ class AppSettings {
     int? advanceDayOfWeek,
     int? wordsPerWeek,
     DateTime? lastAdvanceDate,
+    String? childName,
+    String? rugFontFamily,
   }) {
     return AppSettings(
       currentWeek: currentWeek ?? this.currentWeek,
@@ -27,6 +33,8 @@ class AppSettings {
       advanceDayOfWeek: advanceDayOfWeek ?? this.advanceDayOfWeek,
       wordsPerWeek: wordsPerWeek ?? this.wordsPerWeek,
       lastAdvanceDate: lastAdvanceDate ?? this.lastAdvanceDate,
+      childName: childName ?? this.childName,
+      rugFontFamily: rugFontFamily ?? this.rugFontFamily,
     );
   }
 
@@ -63,5 +71,7 @@ class AppSettings {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     return days[advanceDayOfWeek];
   }
+  
+  /// Check if child name is set
+  bool get hasChildName => childName.isNotEmpty;
 }
-

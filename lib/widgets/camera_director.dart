@@ -48,9 +48,9 @@ class CameraDirector {
   /// NORMAL GAMEPLAY SHOT
   /// This is the "neutral" framing during regular play
   static const ShotComposition playingShot = ShotComposition(
-    distance: 3.6,           // Distance from character
-    heightOffset: -0.2,       // Height above LOOK-AT point (characterCenterHeight + this)
-    angleOffset: -0.2,        // Side angle (+ = right, - = left)
+    distance: 7.0,           // Distance from character
+    heightOffset: 1,       // Height above LOOK-AT point (characterCenterHeight + this)
+    angleOffset: -0.8,        // Side angle (+ = right, - = left)
     description: "Natural gameplay framing - comfortable, clear view",
   );
   
@@ -58,7 +58,7 @@ class CameraDirector {
   /// Camera response when child gets word RIGHT
   /// Note: Many celebration animations include JUMPING - camera needs to accommodate this!
   static const ShotComposition celebratingShot = ShotComposition(
-    distance: 2.8,           // Slightly wider to keep jumps in frame (was 2.0)
+    distance: 3,           // Slightly wider to keep jumps in frame (was 2.0)
     heightOffset: .2,       // Less height difference = more stable during jumps (was 0.5)
     angleOffset: 0.0,        // Straight on
     description: "Push-in close but stable for jumps",

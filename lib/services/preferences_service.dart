@@ -8,6 +8,8 @@ class PreferencesService {
   static const String _keyAdvanceDayOfWeek = 'advance_day_of_week';
   static const String _keyWordsPerWeek = 'words_per_week';
   static const String _keyLastAdvanceDate = 'last_advance_date';
+  static const String _keyChildName = 'child_name';
+  static const String _keyRugFontFamily = 'rug_font_family';
 
   /// Load settings from preferences
   Future<AppSettings> loadSettings() async {
@@ -17,6 +19,8 @@ class PreferencesService {
     final autoAdvanceEnabled = prefs.getBool(_keyAutoAdvanceEnabled) ?? true;
     final advanceDayOfWeek = prefs.getInt(_keyAdvanceDayOfWeek) ?? 0; // Sunday
     final wordsPerWeek = prefs.getInt(_keyWordsPerWeek) ?? 2;
+    final childName = prefs.getString(_keyChildName) ?? '';
+    final rugFontFamily = prefs.getString(_keyRugFontFamily) ?? 'Quicksand';
     
     DateTime? lastAdvanceDate;
     final lastAdvanceTimestamp = prefs.getInt(_keyLastAdvanceDate);
@@ -24,12 +28,16 @@ class PreferencesService {
       lastAdvanceDate = DateTime.fromMillisecondsSinceEpoch(lastAdvanceTimestamp);
     }
     
+    print('⚙️ Loading settings: childName="$childName", font="$rugFontFamily", currentWeek=$currentWeek');
+    
     var settings = AppSettings(
       currentWeek: currentWeek,
       autoAdvanceEnabled: autoAdvanceEnabled,
       advanceDayOfWeek: advanceDayOfWeek,
       wordsPerWeek: wordsPerWeek,
       lastAdvanceDate: lastAdvanceDate,
+      childName: childName,
+      rugFontFamily: rugFontFamily,
     );
     
     // Check if we should auto-advance
@@ -53,6 +61,8 @@ class PreferencesService {
     await prefs.setBool(_keyAutoAdvanceEnabled, settings.autoAdvanceEnabled);
     await prefs.setInt(_keyAdvanceDayOfWeek, settings.advanceDayOfWeek);
     await prefs.setInt(_keyWordsPerWeek, settings.wordsPerWeek);
+    await prefs.setString(_keyChildName, settings.childName);
+    await prefs.setString(_keyRugFontFamily, settings.rugFontFamily);
     
     if (settings.lastAdvanceDate != null) {
       await prefs.setInt(
@@ -62,6 +72,8 @@ class PreferencesService {
     } else {
       await prefs.remove(_keyLastAdvanceDate);
     }
+    
+    print('💾 Saved settings: childName="${settings.childName}", font="${settings.rugFontFamily}", currentWeek=${settings.currentWeek}');
   }
 
   /// Update current week

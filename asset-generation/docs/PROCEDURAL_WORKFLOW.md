@@ -176,6 +176,42 @@ ASSET_CONFIG = {
 - **Colors**: RGBA tuples (0-1 range)
 - **Poly counts**: absolute numbers
 
+### 3.5. **Coordinate System Conversion (CRITICAL!)**
+
+**Blender uses Z-up, Thermion uses Y-up.** This affects positioning!
+
+#### Blender Coordinate System
+- **X**: Left (-) / Right (+)
+- **Y**: Forward (+) / Backward (-) from character
+- **Z**: Down (-) / Up (+)
+
+#### Thermion Coordinate System (GLB Export)
+- **X**: Left (-) / Right (+) (same as Blender)
+- **Y**: Down (-) / Up (+) (was Z in Blender)
+- **Z**: Backward (-) / Forward (+) (was -Y in Blender)
+
+#### Conversion Rules
+When exporting to GLB, Blender automatically converts:
+- Blender `(X, Y, Z)` → GLB `(X, Z, -Y)`
+
+**Important positioning notes:**
+- **Camera position**: In Thermion, camera is at `Z=3.0` looking at character at `(0,0,0)`
+- **Behind character**: Negative Z in Thermion = Positive Y in Blender
+- **In front of character**: Positive Z in Thermion = Negative Y in Blender
+- **Plants are at**: `Y=2.5` in Blender (forward from character)
+- **Backdrop should be**: `Y > 2.5` in Blender (behind plants, further from camera)
+
+**Example:**
+```python
+# In Blender scene composer:
+backdrop.location = (0, 3.5, 0)  # X=0 (center), Y=3.5 (behind), Z=0 (ground)
+
+# After GLB export, in Thermion:
+# X=0 (center), Y=0 (ground), Z=-3.5 (behind character) ✓
+```
+
+**Common mistake**: Setting `Y=-2.5` in Blender thinking "behind" = negative, but this actually puts it in front of the camera!
+
 ### 4. **Validate Outputs**
 
 After generation, run the analyzer:
@@ -276,6 +312,7 @@ blender --background --python scripts/compose_game_scene.py
 ## Learn More
 
 - [Asset Parameters Reference](ASSET_PARAMETERS.md) - All available parameters
+- [Coordinate System Reference](COORDINATE_SYSTEMS.md) - **CRITICAL: Blender vs Thermion coordinate conversion**
 - [Asset Library Guide](../ASSET_LIBRARY_GUIDE.md) - Library organization
 - [Blender MCP Guide](../BLENDER_MCP.md) - Interactive Blender integration
 

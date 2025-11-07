@@ -1,10 +1,17 @@
 import 'dart:async';
 import 'dart:math' as math;
+import 'dart:ui' as ui;
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:thermion_flutter/thermion_flutter.dart';
 import '../controllers/game_controller.dart';
+import '../utils/glb_texture_replacer.dart';
 import 'camera_config.dart';
 import 'camera_director.dart';
+import 'rug_loading_overlay.dart';
 
 /// Widget for displaying and animating the 3D character using Thermion
 /// Now supports dynamic sizing based on game state for more engaging presentation
@@ -626,8 +633,15 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       );
       await viewer.addDirectLight(rimLight);
       
-      // Create simple ground plane for spatial grounding
-      await _createGroundPlane(viewer);
+      // Load the complete game scene (includes ground, backdrop, rug, books, plants)
+      print('🔄 About to load game scene...');
+      await _loadGameScene(viewer);
+      print('✓ Game scene load complete');
+      
+      // Create personalized rug texture and apply it
+      print('🔄 About to load personalized rug...');
+      await _createPersonalizedRug(viewer);
+      print('✓ Rug load attempt complete');
       
       // Note: Using gradient background instead of skybox for Phase 1
       // Skybox can be added later with KTX environment files
@@ -1061,22 +1075,235 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
     );
   }
   
-  /// Create a simple ground plane for spatial grounding
-  Future<void> _createGroundPlane(ThermionViewer viewer) async {
+  /// Load the complete game scene (ground, backdrop, rug, books, plants)
+  Future<void> _loadGameScene(ThermionViewer viewer) async {
     try {
-      print('📐 Loading ground plane...');
+      print('📐 Loading game scene...');
       
-      // Load ground plane GLB asset
-      // Position is baked into the GLB (Z=-0.1 in Blender, which is Y=-0.1 here)
+      // Load GameScene GLB which includes all assets
+      // Note: Blender uses Z-up, Thermion uses Y-up
+      // Positions are converted during export, but we may need to adjust
       await viewer.loadGltf(
-        'assets/models/GroundPlane.glb',
+        'assets/models/exports/GameScene.glb',
         addToScene: true,
       );
       
-      print('✅ Ground plane loaded and positioned');
+      print('✅ Game scene loaded (includes ground, backdrop, rug, books, plants)');
     } catch (e) {
-      print('⚠️ Ground plane creation failed: $e');
-      // Ground plane is optional, so we continue even if it fails
+      print('⚠️ Game scene loading failed: $e');
+      // Fallback to just ground plane if GameScene fails
+      try {
+        print('📐 Falling back to ground plane...');
+        await viewer.loadGltf(
+          'assets/models/GroundPlane.glb',
+          addToScene: true,
+        );
+        print('✅ Ground plane loaded (fallback)');
+      } catch (e2) {
+        print('⚠️ Ground plane fallback also failed: $e2');
+      }
+    }
+  }
+  
+  /// Create personalized rug with dynamic texture generation
+  /// Generates texture at runtime and modifies GLB before loading
+  Future<void> _createPersonalizedRug(ThermionViewer viewer) async {
+    print('═══════════════════════════════════════');
+    print('🎨 GENERATING PERSONALIZED RUG');
+    print('═══════════════════════════════════════');
+    
+    // Show loading overlay
+    OverlayEntry? loadingOverlay;
+    String? errorMessage;
+    
+    try {
+      // Get name and font from game controller settings
+      final controller = context.read<GameController>();
+      final name = controller.settings?.childName ?? '';
+      final fontFamily = controller.settings?.rugFontFamily ?? 'Quicksand';
+      
+      if (name.isEmpty) {
+        print('⚠️ No child name set, using default');
+        return; // Skip rug generation if no name
+      }
+      
+      print('👤 Generating rug for: $name (font: $fontFamily)');
+      
+      // Generate texture PNG using dart:ui Canvas
+      final texturePng = await _generateRugTexture(name, fontFamily);
+      print('✅ Generated texture: ${texturePng.length} bytes');
+      
+      // Show loading overlay
+      if (mounted) {
+        loadingOverlay = OverlayEntry(
+          builder: (context) => RugLoadingOverlay(
+            childName: name,
+            errorMessage: errorMessage,
+          ),
+        );
+        Overlay.of(context).insert(loadingOverlay);
+      }
+      
+      // Get cache directory for modified GLB
+      final cacheDir = await getTemporaryDirectory();
+      final modifiedRugPath = '${cacheDir.path}/PersonalizedRug_$name.glb';
+      
+      print('📝 Modifying GLB with personalized texture...');
+      
+      // Replace texture in template GLB
+      final success = await GlbTextureReplacer.replaceTexture(
+        templateAssetPath: 'assets/models/library/Rug.glb',
+        newTexturePng: texturePng,
+        outputPath: modifiedRugPath,
+      );
+      
+      if (!success) {
+        errorMessage = 'Failed to modify GLB template';
+        print('❌ $errorMessage');
+        throw Exception(errorMessage);
+      }
+      
+      print('✅ Modified GLB created: $modifiedRugPath');
+      print('🔄 Loading personalized rug into scene...');
+      
+      // Load the modified GLB with personalized texture
+      await viewer.loadGltf(
+        'file://$modifiedRugPath',
+        addToScene: true,
+      );
+      
+      print('═══════════════════════════════════════');
+      print('✅ PERSONALIZED RUG LOADED SUCCESSFULLY!');
+      print('   Name: "$name"');
+      print('   GLB: $modifiedRugPath');
+      print('═══════════════════════════════════════');
+      
+      // Remove loading overlay on success
+      loadingOverlay?.remove();
+      loadingOverlay = null;
+      
+    } catch (e, stackTrace) {
+      print('═══════════════════════════════════════');
+      print('❌ RUG GENERATION/LOADING FAILED!');
+      print('Error: $e');
+      print('Stack trace: $stackTrace');
+      print('═══════════════════════════════════════');
+      
+      // Update overlay with error
+      if (loadingOverlay != null && mounted) {
+        errorMessage = e.toString();
+        loadingOverlay.markNeedsBuild();
+        
+        // Auto-dismiss after 3 seconds
+        Future.delayed(const Duration(seconds: 3), () {
+          loadingOverlay?.remove();
+        });
+      }
+      
+      // Rug is optional, so we continue even if it fails
+    }
+  }
+  
+  /// Generate rug texture PNG with personalized name
+  /// Returns PNG bytes
+  Future<Uint8List> _generateRugTexture(String name, String fontFamily) async {
+    const size = 1024;
+    final recorder = ui.PictureRecorder();
+    final canvas = Canvas(recorder);
+    final paint = Paint();
+    
+    // Draw circular rug base (warm beige)
+    paint.color = const Color(0xFFD2B48C); // Tan
+    canvas.drawCircle(
+      Offset(size / 2, size / 2),
+      size / 2 - 20,
+      paint,
+    );
+    
+    // Add subtle texture circles for fabric feel
+    paint.color = const Color(0xFFBE9878); // Slightly darker
+    paint.style = PaintingStyle.stroke;
+    paint.strokeWidth = 2.0;
+    for (int i = 0; i < 5; i++) {
+      final radius = (size / 2 - 20) - (i * size / 16);
+      canvas.drawCircle(
+        Offset(size / 2, size / 2),
+        radius,
+        paint,
+      );
+    }
+    
+    // Get font style based on selected font family
+    final welcomeStyle = _getRugFontStyle(fontFamily, 80, FontWeight.w600);
+    final nameStyle = _getRugFontStyle(fontFamily, 120, FontWeight.w700);
+    
+    // Draw "Welcome" (first line - warm greeting)
+    final welcomeTextPainter = TextPainter(
+      text: TextSpan(
+        text: 'Welcome',
+        style: welcomeStyle.copyWith(
+          color: const Color(0xFF3C2814), // Dark brown
+          letterSpacing: 1.0,
+        ),
+      ),
+      textDirection: TextDirection.ltr,
+    );
+    welcomeTextPainter.layout();
+    welcomeTextPainter.paint(
+      canvas,
+      Offset(size / 2 - welcomeTextPainter.width / 2, size / 2 - 140),
+    );
+    
+    // Draw child's name (second line - THE STAR!)
+    final nameTextPainter = TextPainter(
+      text: TextSpan(
+        text: '$name!',
+        style: nameStyle.copyWith(
+          color: const Color(0xFF5D3A1A), // Rich brown (slightly lighter for contrast)
+          letterSpacing: 2.0,
+        ),
+      ),
+      textDirection: TextDirection.ltr,
+    );
+    nameTextPainter.layout();
+    nameTextPainter.paint(
+      canvas,
+      Offset(size / 2 - nameTextPainter.width / 2, size / 2 + 60),
+    );
+    
+    // Convert to image
+    final picture = recorder.endRecording();
+    final image = await picture.toImage(size, size);
+    final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
+    
+    return byteData!.buffer.asUint8List();
+  }
+
+  /// Get the appropriate Google Font style for the rug
+  TextStyle _getRugFontStyle(String fontFamily, double fontSize, FontWeight weight) {
+    switch (fontFamily) {
+      case 'Quicksand':
+        return GoogleFonts.quicksand(fontSize: fontSize, fontWeight: weight);
+      case 'Nunito':
+        return GoogleFonts.nunito(fontSize: fontSize, fontWeight: weight);
+      case 'Fredoka':
+        return GoogleFonts.fredoka(fontSize: fontSize, fontWeight: weight);
+      case 'Chewy':
+        return GoogleFonts.chewy(fontSize: fontSize);
+      case 'Rubik Bubbles':
+        return GoogleFonts.rubikBubbles(fontSize: fontSize);
+      case 'Righteous':
+        return GoogleFonts.righteous(fontSize: fontSize);
+      case 'Galindo':
+        return GoogleFonts.galindo(fontSize: fontSize);
+      case 'Pacifico':
+        return GoogleFonts.pacifico(fontSize: fontSize);
+      case 'Lavishly Yours':
+        return GoogleFonts.lavishlyYours(fontSize: fontSize);
+      case 'Ballet':
+        return GoogleFonts.ballet(fontSize: fontSize);
+      default:
+        return GoogleFonts.quicksand(fontSize: fontSize, fontWeight: weight);
     }
   }
 
