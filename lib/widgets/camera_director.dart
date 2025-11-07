@@ -48,7 +48,7 @@ class CameraDirector {
   /// NORMAL GAMEPLAY SHOT
   /// This is the "neutral" framing during regular play
   static const ShotComposition playingShot = ShotComposition(
-    distance: 4.2,           // Distance from character
+    distance: 3.6,           // Distance from character
     heightOffset: -0.2,       // Height above LOOK-AT point (characterCenterHeight + this)
     angleOffset: -0.2,        // Side angle (+ = right, - = left)
     description: "Natural gameplay framing - comfortable, clear view",
@@ -91,7 +91,7 @@ class CameraDirector {
   
   /// SUCCESS TRANSITION
   /// How fast to push in when celebrating
-  /// FASTER = more energetic excitement
+  /// FASTER = more energetic excitemrent
   static const Duration successTransitionSpeed = Duration(milliseconds: 800);
   
   /// FAILURE TRANSITION

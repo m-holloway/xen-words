@@ -1090,9 +1090,9 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            Color(0xFF87CEEB), // Sky blue at top
-            Color(0xFFB0E0E6), // Powder blue in middle
-            Color(0xFFE0F6FF), // Very light blue at bottom (horizon)
+            Color(0xFF4A90E2), // Deeper blue at top
+            Color(0xFF6BB6FF), // Medium blue in middle
+            Color(0xFFA8D5FF), // Lighter blue at bottom (horizon)
           ],
           stops: [0.0, 0.5, 1.0],
         ),
@@ -1113,9 +1113,9 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color(0xFF87CEEB), // Sky blue
-                  Color(0xFFB0E0E6), // Powder blue
-                  Color(0xFFE0F6FF), // Light blue
+                  Color(0xFF4A90E2), // Deeper blue
+                  Color(0xFF6BB6FF), // Medium blue
+                  Color(0xFFA8D5FF), // Lighter blue
                 ],
               ),
             ),
