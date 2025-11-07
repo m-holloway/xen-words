@@ -3,14 +3,18 @@ import 'package:thermion_flutter/thermion_flutter.dart';
 /// Director-friendly camera configuration
 /// All camera positions are calculated from these intuitive parameters
 /// 
+/// IMPORTANT: All camera positions are RELATIVE to the character's position.
+/// This means the camera will track the character even if they move (jumping, etc.)
+/// 
 /// Adjust these values to change camera framing without touching the rest of the code.
 /// Think of it like directing a film - you set the shot type, height, and angle.
 class CameraConfig {
   // Character reference point (where the character is positioned in 3D space)
+  // This is the base position - actual tracking happens in CharacterView
   static final Vector3 characterPosition = Vector3(0, 0, 0);
-  static const double characterHeight = 2.0; // Character's total height
-  static const double characterCenterHeight = 1.1; // Character's center (torso level)
-  static const double characterEyeLevel = 1.3; // Character's eye level
+  static const double characterHeight = 2.0; // Working height for camera system
+  static const double characterCenterHeight = 1.1; // WHERE CAMERA LOOKS (torso/chest for framing!)
+  static const double characterEyeLevel = 1.3; // Eye level reference
   
   // Camera distances (how far the camera is from the character)
   static const double distanceWide = 4.5;      // Wide establishing shot
@@ -72,14 +76,20 @@ class CameraConfig {
     heightOffset: 1.1, // Frame character higher in frame (moved up 2x more: 0.7 + 0.4 = 1.1)
   );
   
+  // SUCCESS REACTION: Push in closer + boom up slightly
+  // Creates intimate connection, empowers the child, says "YOU did it!"
+  // The closer framing makes the celebration feel personal and important
   static Vector3 get celebratingShot => calculatePosition(
-    distance: distanceMedium, // Wider shot to accommodate jump animations and other dynamic movements
-    heightOffset: heightSlightlyAbove, // Slightly above to see jumps better
+    distance: distanceClose, // CHANGED: Push in from medium to close (emotional connection)
+    heightOffset: heightAbove, // CHANGED: Boom up to emphasize triumph (hero angle)
   );
   
+  // FAILURE REACTION: Pull back wider + boom down slightly  
+  // Gives breathing room, reduces pressure, shows empathy
+  // The wider framing says "it's okay, you have space, try again"
   static Vector3 get failingShot => calculatePosition(
-    distance: distanceWide,
-    heightOffset: heightSlightlyAbove,
+    distance: distanceWide + 0.5, // CHANGED: Pull back even more (give space)
+    heightOffset: heightBelow, // CHANGED: Boom down to show vulnerability without judgment
   );
   
   static Vector3 get completedShot => calculatePosition(

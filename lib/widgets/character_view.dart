@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:thermion_flutter/thermion_flutter.dart';
 import '../controllers/game_controller.dart';
 import 'camera_config.dart';
+import 'camera_director.dart';
 
 /// Widget for displaying and animating the 3D character using Thermion
 /// Now supports dynamic sizing based on game state for more engaging presentation
@@ -24,6 +25,7 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
   ThermionAsset? _asset;
   String? _currentAnimation;
   Camera? _camera;
+  Vector3? _characterWorldPosition; // Track character's actual world position
   
   // Camera animation controllers
   late AnimationController _cameraAnimationController;
@@ -34,9 +36,10 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
   Vector3? _animationStart;
   Vector3? _animationEnd;
   
-  // Camera sway parameters (subtle breathing effect during idle)
-  static const double _swayAmplitude = 0.02; // Very subtle movement
-  static const double _swaySpeed = 1.5; // Slow, gentle oscillation
+  // Random phase offsets for organic variation (set once, then drifts slowly)
+  double _randomPhaseX = 0.0;
+  double _randomPhaseY = 0.0;
+  double _randomPhaseDrift = 0.0;
   
   // Idle animation cycling
   List<String> _idleAnimations = []; // Available idle animations
@@ -64,6 +67,9 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
     super.initState();
     _currentAnimation = _getAnimationForState();
     
+    // Initialize character position (default, will be updated when asset loads)
+    _characterWorldPosition = CameraConfig.characterPosition;
+    
     // Initialize camera animation controller
     _cameraAnimationController = AnimationController(
       duration: const Duration(milliseconds: 1200), // Longer for cinematic feel
@@ -71,7 +77,8 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
     );
     
     // Initialize camera sway controller (for subtle idle movement)
-    final swayDurationMs = (1000 / _swaySpeed).round();
+    // Use primary breathing frequency for controller speed
+    final swayDurationMs = (1000 / CameraDirector.primaryBreathing.frequency).round();
     _cameraSwayController = AnimationController(
       duration: Duration(milliseconds: swayDurationMs),
       vsync: this,
@@ -79,8 +86,13 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
     _cameraSwayController.addListener(_updateCameraSway);
     
     // Start with a wide shot (will zoom in when game starts)
-    _currentCameraPosition = CameraConfig.wideShot;
+    _currentCameraPosition = _getRelativeCameraPosition(CameraConfig.wideShot);
     _targetCameraPosition = _currentCameraPosition;
+    
+    // Initialize random phase offsets for organic movement
+    _randomPhaseX = _random.nextDouble() * 2 * math.pi;
+    _randomPhaseY = _random.nextDouble() * 2 * math.pi;
+    _randomPhaseDrift = _random.nextDouble() * 2 * math.pi;
   }
   
   @override
@@ -162,23 +174,23 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
   
   /// Perform a cinematic zoom-in when the game starts
   Future<void> _performCinematicZoomIn() async {
-    if (_camera == null || _currentCameraPosition == null) return;
+    if (_camera == null || _currentCameraPosition == null || _characterWorldPosition == null) return;
     
     _hasPerformedInitialZoom = true;
     
-    // Start from wide shot, zoom to natural gameplay shot
-    final startPosition = CameraConfig.wideShot;
-    final endPosition = CameraConfig.playingShot;
+    // Start from wide shot, zoom to natural gameplay shot (relative to character)
+    final startPosition = _getRelativeCameraPosition(CameraConfig.wideShot);
+    final endPosition = _getRelativeCameraPosition(CameraConfig.playingShot);
     
     // Set starting position if not already there, looking at character's center
     if (_currentCameraPosition != startPosition) {
-      final characterCenter = CameraConfig.characterPosition + Vector3(0, CameraConfig.characterCenterHeight, 0);
+      final characterCenter = CameraDirector.getCharacterCenter(_characterWorldPosition!);
       await _camera!.lookAt(startPosition, focus: characterCenter);
       _currentCameraPosition = startPosition;
     }
     
-    // Animate with a nice ease-in-out curve
-    _cameraAnimationController.duration = const Duration(milliseconds: 1500);
+    // Animate with a nice ease-in-out curve (use cinematic zoom speed)
+    _cameraAnimationController.duration = CameraDirector.cinematicZoomSpeed;
     _cameraAnimationController.reset();
     
     // Store animation parameters
@@ -199,16 +211,14 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
   
   /// Camera animation listener callback (called during animation)
   void _updateCameraPosition() {
-    if (_camera == null || _animationStart == null || _animationEnd == null) return;
+    if (_camera == null || _animationStart == null || _animationEnd == null || _characterWorldPosition == null) return;
     
     final start = _animationStart!;
     final end = _animationEnd!;
     final t = _cameraAnimationController.value;
     
-    // Use easeInOutCubic for smooth acceleration and deceleration
-    final easedT = t < 0.5
-        ? 4 * t * t * t
-        : 1 - math.pow(-2 * t + 2, 3) / 2;
+    // Use easeInOutSine for gentler, smoother transitions
+    final easedT = -(math.cos(math.pi * t) - 1) / 2;
     
     final current = Vector3(
       start.x + (end.x - start.x) * easedT,
@@ -218,8 +228,13 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
     
     _currentCameraPosition = current;
     
-    // Position camera and look at character's center
-    _camera!.lookAt(current, focus: CameraConfig.characterPosition + Vector3(0, CameraConfig.characterCenterHeight, 0));
+    // Position camera and look at character's current center
+    // For celebration, look higher to track jumping animations
+    final verticalOffset = widget.gameState == GameState.celebrating 
+        ? CameraDirector.celebrationLookAtOffset 
+        : 0.0;
+    final characterCenter = CameraDirector.getCharacterCenter(_characterWorldPosition!, verticalOffset: verticalOffset);
+    _camera!.lookAt(current, focus: characterCenter);
   }
   
   /// Camera animation status listener
@@ -229,9 +244,11 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
     }
   }
   
-  /// Apply subtle camera sway for breathing/life effect (only during playing state)
+  /// Apply enhanced organic camera movement with multi-frequency layering
+  /// Creates a living, breathing feel instead of mechanical sine waves
+  /// All parameters controlled via CameraDirector
   void _updateCameraSway() {
-    if (_camera == null || _currentCameraPosition == null) return;
+    if (_camera == null || _currentCameraPosition == null || _characterWorldPosition == null) return;
     
     // Only apply sway during playing state (not during reactions or transitions)
     if (widget.gameState != GameState.playing) return;
@@ -239,58 +256,97 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
     // Don't apply sway during camera transitions
     if (_cameraAnimationController.isAnimating) return;
     
-    // Calculate sway offset using sine wave
-    final t = _cameraSwayController.value * 2 * math.pi;
-    final swayX = math.sin(t) * _swayAmplitude;
-    final swayY = math.cos(t * 0.7) * _swayAmplitude; // Different frequency for Y
+    // Get normalized time (0.0 to 1.0)
+    final t = _cameraSwayController.value;
     
-    // Apply sway to current position
+    // Get breathing parameters from CameraDirector
+    final primaryBreath = CameraDirector.primaryBreathing;
+    final drift = CameraDirector.slowDrift;
+    final shake = CameraDirector.microShake;
+    final intensity = CameraDirector.breathingIntensityMultiplier;
+    
+    // Layer 1: Primary breathing cycle (slow, rhythmic)
+    final breathingPhase = (t * 2 * math.pi * primaryBreath.frequency) + _randomPhaseX;
+    final breathingX = math.sin(breathingPhase) * primaryBreath.amplitude * intensity;
+    final breathingY = math.cos(breathingPhase * 0.7 + _randomPhaseY) * primaryBreath.amplitude * intensity;
+    
+    // Layer 2: Very slow drift (gives organic wandering feel)
+    final driftPhase = (t * 2 * math.pi * drift.frequency) + _randomPhaseDrift;
+    final driftX = math.sin(driftPhase * 1.3) * drift.amplitude * intensity;
+    final driftY = math.cos(driftPhase * 0.9) * drift.amplitude * intensity;
+    
+    // Layer 3: Micro-shake (tiny high-frequency tremor, like human hand-held)
+    final shakePhase = t * 2 * math.pi * shake.frequency;
+    final shakeX = math.sin(shakePhase * 3.7) * shake.amplitude * intensity;
+    final shakeY = math.cos(shakePhase * 4.3) * shake.amplitude * intensity;
+    
+    // Combine all layers
+    final totalSwayX = breathingX + driftX + shakeX;
+    final totalSwayY = breathingY + driftY + shakeY;
+    
+    // Apply combined movement to current position
     final swayedPosition = Vector3(
-      _currentCameraPosition!.x + swayX,
-      _currentCameraPosition!.y + swayY,
+      _currentCameraPosition!.x + totalSwayX,
+      _currentCameraPosition!.y + totalSwayY,
       _currentCameraPosition!.z,
     );
     
-    // Update camera with sway
-    final characterCenter = CameraConfig.characterPosition + Vector3(0, CameraConfig.characterCenterHeight, 0);
+    // Update camera with organic movement, looking at character's current position
+    final characterCenter = CameraDirector.getCharacterCenter(_characterWorldPosition!);
     _camera!.lookAt(swayedPosition, focus: characterCenter);
+    
+    // Slowly drift the random phase offsets over time for continuous organic variation
+    // This prevents the pattern from repeating exactly
+    _randomPhaseDrift += 0.0001; // Very slow drift
   }
   
   /// Update camera position based on game state using director-friendly shot types
+  /// All parameters controlled via CameraDirector
   Future<void> _updateCameraForState() async {
-    if (_camera == null) return;
+    if (_camera == null || _characterWorldPosition == null) return;
     
-    Vector3 newPosition;
+    Vector3 relativePosition;
+    Duration transitionDuration;
+    
     switch (widget.gameState) {
       case GameState.celebrating:
-        newPosition = CameraConfig.celebratingShot;
+        // Get shot with optional random variation
+        relativePosition = CameraDirector.getVariedShot(CameraDirector.celebratingShot);
+        transitionDuration = CameraDirector.successTransitionSpeed;
         break;
       case GameState.failing:
-        newPosition = CameraConfig.failingShot;
+        // Get shot with optional random variation
+        relativePosition = CameraDirector.getVariedShot(CameraDirector.failingShot);
+        transitionDuration = CameraDirector.failureTransitionSpeed;
         break;
       case GameState.completed:
-        newPosition = CameraConfig.completedShot;
+        relativePosition = CameraDirector.getVariedShot(CameraDirector.completedShot);
+        transitionDuration = CameraDirector.normalTransitionSpeed;
         break;
       case GameState.playing:
       default:
-        newPosition = CameraConfig.playingShot;
+        relativePosition = CameraDirector.getVariedShot(CameraDirector.playingShot);
+        transitionDuration = CameraDirector.normalTransitionSpeed;
     }
     
-    if (_targetCameraPosition != newPosition) {
-      _targetCameraPosition = newPosition;
-      _animateCameraTo(newPosition);
+    // Convert relative position to world position based on character's current location
+    final worldPosition = _getRelativeCameraPosition(relativePosition);
+    
+    if (_targetCameraPosition != worldPosition) {
+      _targetCameraPosition = worldPosition;
+      _animateCameraTo(worldPosition, duration: transitionDuration);
     }
   }
   
   /// Animate camera to target position smoothly
-  Future<void> _animateCameraTo(Vector3 target) async {
+  Future<void> _animateCameraTo(Vector3 target, {Duration? duration}) async {
     if (_camera == null || _currentCameraPosition == null) return;
     
     final start = _currentCameraPosition!;
     final end = target;
     
-    // Use shorter duration for state changes (not the initial zoom)
-    _cameraAnimationController.duration = const Duration(milliseconds: 800);
+    // Use custom duration if provided, otherwise default
+    _cameraAnimationController.duration = duration ?? const Duration(milliseconds: 800);
     _cameraAnimationController.reset();
     
     // Store animation parameters
@@ -527,8 +583,8 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       _camera = await viewer.getActiveCamera();
       
       // Set initial camera position, looking at character's center
-      if (_currentCameraPosition != null) {
-        final characterCenter = CameraConfig.characterPosition + Vector3(0, CameraConfig.characterCenterHeight, 0);
+      if (_currentCameraPosition != null && _characterWorldPosition != null) {
+        final characterCenter = CameraDirector.getCharacterCenter(_characterWorldPosition!);
         await _camera!.lookAt(_currentCameraPosition!, focus: characterCenter);
       }
       
@@ -578,6 +634,12 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       
       // Ensure animation component is added
       await _asset!.addAnimationComponent();
+      
+      // Update character's world position for camera tracking
+      await _updateCharacterPosition();
+      
+      // Validate character dimensions (for camera positioning accuracy)
+      await _validateCharacterDimensions();
       
       // Discover and set up idle animations for cycling
       await _discoverIdleAnimations();
@@ -889,26 +951,131 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
     _idleAnimationTimer = null;
   }
   
+  /// Update character's world position by querying the asset
+  /// Call this periodically or when animations change to keep camera tracking accurate
+  Future<void> _updateCharacterPosition() async {
+    if (_asset == null) return;
+    
+    try {
+      // In this implementation, the character model doesn't move in world space
+      // (animations are skeletal, not positional), so we use the base position
+      _characterWorldPosition = CameraDirector.characterBasePosition;
+      
+      // Future enhancement: If we need to track actual movement (e.g., for positional animations),
+      // we would call await _asset!.getWorldTransform() and extract position from the transform matrix
+      // Transform is a 4x4 matrix where the last column contains position (x, y, z, 1)
+    } catch (e) {
+      // If we can't get transform, fall back to default position
+      _characterWorldPosition = CameraDirector.characterBasePosition;
+    }
+  }
+  
+  /// Validate character dimensions by querying the actual model bounding box
+  /// This helps ensure camera positioning is accurate for the actual character size
+  Future<void> _validateCharacterDimensions() async {
+    if (_asset == null || _viewer == null) return;
+    
+    try {
+      // Get the bounding box of the character model
+      final boundingBox = await _asset!.getBoundingBox();
+      
+      // Aabb3 has min and max properties (Vector3)
+      // Y-axis is vertical in this coordinate system
+      final minY = boundingBox.min.y; // Bottom of model
+      final maxY = boundingBox.max.y; // Top of model
+      
+      final actualHeight = maxY - minY;
+      final actualCenter = minY + (actualHeight / 2);
+      
+      // Estimate eye level (typically 75-80% up from bottom for humanoid characters)
+      final estimatedEyeLevel = minY + (actualHeight * 0.75);
+      
+      print('');
+      print('📏 CHARACTER DIMENSION VALIDATION:');
+      print('════════════════════════════════════════════════════════');
+      print('🎯 Units: Likely meters (Thermion/Filament default)');
+      print('');
+      print('📦 Bounding Box (raw data):');
+      print('   Min: (${boundingBox.min.x.toStringAsFixed(2)}, ${boundingBox.min.y.toStringAsFixed(2)}, ${boundingBox.min.z.toStringAsFixed(2)})');
+      print('   Max: (${boundingBox.max.x.toStringAsFixed(2)}, ${boundingBox.max.y.toStringAsFixed(2)}, ${boundingBox.max.z.toStringAsFixed(2)})');
+      print('');
+      print('📏 ACTUAL Model Measurements:');
+      print('   Total Height (Y-axis): ${actualHeight.toStringAsFixed(3)} units');
+      print('   Bottom (minY):          ${minY.toStringAsFixed(3)} units');
+      print('   Top (maxY):             ${maxY.toStringAsFixed(3)} units');
+      print('   Center Y:               ${actualCenter.toStringAsFixed(3)} units');
+      print('   Estimated Eye Level:    ${estimatedEyeLevel.toStringAsFixed(3)} units (75% up)');
+      print('');
+      print('🎬 CURRENT Camera Config Values:');
+      print('   characterHeight:       ${CameraDirector.characterHeight.toStringAsFixed(3)} units');
+      print('   characterCenterHeight: ${CameraDirector.characterCenterHeight.toStringAsFixed(3)} units');
+      print('   characterEyeLevel:     ${CameraDirector.characterEyeLevel.toStringAsFixed(3)} units');
+      print('');
+      
+      // Calculate differences
+      final heightDiff = (actualHeight - CameraDirector.characterHeight).abs();
+      final centerDiff = (actualCenter - CameraDirector.characterCenterHeight).abs();
+      final eyeDiff = (estimatedEyeLevel - CameraDirector.characterEyeLevel).abs();
+      
+      print('⚖️  COMPARISON (absolute difference):');
+      print('   Height difference:  ${heightDiff.toStringAsFixed(3)} units');
+      print('   Center difference:  ${centerDiff.toStringAsFixed(3)} units');
+      print('   Eye level difference: ${eyeDiff.toStringAsFixed(3)} units');
+      print('');
+      
+      // Provide recommendations
+      if (heightDiff > 0.1 || centerDiff > 0.1 || eyeDiff > 0.1) {
+        print('💡 RECOMMENDATION: Update camera_director.dart with actual values:');
+        print('');
+        print('   static const double characterHeight = ${actualHeight.toStringAsFixed(2)};');
+        print('   static const double characterCenterHeight = ${actualCenter.toStringAsFixed(2)};');
+        print('   static const double characterEyeLevel = ${estimatedEyeLevel.toStringAsFixed(2)};');
+        print('');
+        print('   This will improve camera framing accuracy!');
+      } else {
+        print('✅ Current values are close enough! Camera framing should be accurate.');
+      }
+      
+      print('════════════════════════════════════════════════════════');
+      print('');
+      
+    } catch (e) {
+      print('⚠️ Could not validate character dimensions: $e');
+      print('   Current camera config values are guesses and may need adjustment.');
+    }
+  }
+  
+  /// Convert a relative camera position (from CameraConfig) to a world position
+  /// based on the character's current world position
+  Vector3 _getRelativeCameraPosition(Vector3 relativePosition) {
+    if (_characterWorldPosition == null) {
+      return relativePosition; // Fallback if character position not yet known
+    }
+    
+    // CameraConfig positions are already defined as offsets from character position (0, 0, 0)
+    // So we add the character's world position to get the actual camera world position
+    return Vector3(
+      _characterWorldPosition!.x + relativePosition.x,
+      _characterWorldPosition!.y + relativePosition.y,
+      _characterWorldPosition!.z + relativePosition.z,
+    );
+  }
+  
   /// Create a simple ground plane for spatial grounding
   Future<void> _createGroundPlane(ThermionViewer viewer) async {
     try {
-      // Create a simple plane using a basic mesh
-      // Position ground plane below character (at y: -0.1, just below character's feet)
-      // For now, we'll create a simple colored plane
-      // Note: Thermion may require loading a plane model or using procedural geometry
-      // This is a placeholder that will work if Thermion supports it
+      print('📐 Loading ground plane...');
       
-      // Try to create a simple plane mesh
-      // If Thermion doesn't support this directly, we may need to load a plane.glb model
-      print('📐 Creating ground plane...');
+      // Load ground plane GLB asset
+      // Position is baked into the GLB (Z=-0.1 in Blender, which is Y=-0.1 here)
+      await viewer.loadGltf(
+        'assets/models/GroundPlane.glb',
+        addToScene: true,
+      );
       
-      // For now, we'll note that a ground plane would be positioned at y: -0.1
-      // and would be a large flat surface (maybe 10x10 units) with a subtle color/texture
-      // This will be implemented when we have a plane model or procedural geometry support
-      
-      print('📐 Ground plane: Would be positioned at y: -0.1 with subtle color/texture');
+      print('✅ Ground plane loaded and positioned');
     } catch (e) {
-      print('⚠️ Ground plane creation: $e');
+      print('⚠️ Ground plane creation failed: $e');
       // Ground plane is optional, so we continue even if it fails
     }
   }
