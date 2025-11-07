@@ -48,9 +48,9 @@ class CameraDirector {
   /// NORMAL GAMEPLAY SHOT
   /// This is the "neutral" framing during regular play
   static const ShotComposition playingShot = ShotComposition(
-    distance: 3.0,           // Distance from character
-    heightOffset: 0.3,       // Height above LOOK-AT point (characterCenterHeight + this)
-    angleOffset: 0.0,        // Side angle (+ = right, - = left)
+    distance: 4.2,           // Distance from character
+    heightOffset: -0.2,       // Height above LOOK-AT point (characterCenterHeight + this)
+    angleOffset: -0.2,        // Side angle (+ = right, - = left)
     description: "Natural gameplay framing - comfortable, clear view",
   );
   
@@ -80,8 +80,8 @@ class CameraDirector {
   /// Celebratory final shot
   static const ShotComposition completedShot = ShotComposition(
     distance: 3.0,
-    heightOffset: 1.1,       // Match playing shot framing
-    angleOffset: 0.3,        // Slight angle for visual interest
+    heightOffset: 0.8,       // Match playing shot framing
+    angleOffset: 0.9,        // Slight angle for visual interest
     description: "Victory shot with slight angle",
   );
   
@@ -124,7 +124,7 @@ class CameraDirector {
   /// Makes camera feel like it has weight and a human operator
   static const RandomOvershoot transitionOvershoot = RandomOvershoot(
     overshootAmount: 0.15,       // How much to overshoot (5% of distance)
-    overshootProbability: 0.4,   // 30% chance of overshoot on any transition
+    overshootProbability: 0.8,   // 30% chance of overshoot on any transition
     enabled: false,               // TODO: Enable when implementing momentum
   );
   
