@@ -1,4 +1,6 @@
 import 'package:thermion_flutter/thermion_flutter.dart';
+import '../services/director_tuner.dart';
+import '../models/tunable_parameter.dart';
 
 /// 🎨 LIGHTING DIRECTOR'S CONTROL PANEL 🎨
 /// 
@@ -39,12 +41,15 @@ class LightingDirector {
   /// - fromFrontAbove: Main key light (standard)
   /// - fromSide: Dramatic side lighting
   /// - fromAboveBehind: Rim/backlight effect
-  static const LightDirection primaryDirection = LightDirection(
-    x: 0.3,              // More from right for visible direction (was 0.2)
-    y: -0.5,             // Less steep - more natural angle (was -0.7)
-    z: -0.7,             // From FRONT (negative Z = from camera side)
-    description: "Natural front-right key light, gentler angle",
-  );
+  static LightDirection get primaryDirection {
+    final tuner = DirectorTuner.instance;
+    return LightDirection(
+      x: tuner.getValue('lighting', 'primaryDirection.x', 0.3),
+      y: tuner.getValue('lighting', 'primaryDirection.y', -0.5),
+      z: tuner.getValue('lighting', 'primaryDirection.z', -0.7),
+      description: "Natural front-right key light, gentler angle",
+    );
+  }
   
   /// COLOR TEMPERATURE: How warm or cool the light feels
   /// 
@@ -56,7 +61,7 @@ class LightingDirector {
   /// - 8000+K: Very cool, blue hour
   /// 
   /// For zen/cozy aesthetic: Try 3500-4500K range
-  static const double primaryColorTemp = 4400.0; // Warm, inviting daylight
+  static double get primaryColorTemp => DirectorTuner.instance.getValue('lighting', 'primaryColorTemp', 4400.0);
   
   /// INTENSITY: How bright the light is
   /// 
@@ -67,7 +72,7 @@ class LightingDirector {
   /// - 150,000+: Very bright, high contrast
   /// 
   /// Start moderate, increase until you see clear depth
-  static const double primaryIntensity = 120000.0;
+  static double get primaryIntensity => DirectorTuner.instance.getValue('lighting', 'primaryIntensity', 120000.0);
   
   /// SHADOWS: Enable/disable shadow casting
   /// 
@@ -78,7 +83,7 @@ class LightingDirector {
   /// 
   /// Performance note: Shadows have a cost, but modern devices handle it well
   /// NOTE: Starting with shadows OFF for Phase 1 - can enable once basic lighting looks good
-  static const bool primaryCastsShadows = true;
+  static bool get primaryCastsShadows => DirectorTuner.instance.getValue('lighting', 'primaryCastsShadows', true);
   
   // ========================================================================
   // 💡 FILL LIGHT (Lifts Shadows, Adds Detail)
@@ -88,27 +93,30 @@ class LightingDirector {
   
   /// FILL DIRECTION: Opposite side from primary
   /// Classic 3-point lighting: Fill comes from front-opposite side
-  static const LightDirection fillDirection = LightDirection(
-    x: -0.2,             // From left (opposite of primary's right bias)
-    y: -0.2,             // From above
-    z: -0.75,            // From front (negative Z = from camera direction)
-    description: "Soft front-left fill to soften shadows",
-  );
+  static LightDirection get fillDirection {
+    final tuner = DirectorTuner.instance;
+    return LightDirection(
+      x: tuner.getValue('lighting', 'fillDirection.x', -0.2),
+      y: tuner.getValue('lighting', 'fillDirection.y', -0.2),
+      z: tuner.getValue('lighting', 'fillDirection.z', -0.75),
+      description: "Soft front-left fill to soften shadows",
+    );
+  }
   
   /// FILL COLOR TEMPERATURE
   /// Often cooler than primary for natural look
   /// Cool fill + warm key = dimensional, realistic lighting
-  static const double fillColorTemp = 4600.0; // Slightly cooler than primary
+  static double get fillColorTemp => DirectorTuner.instance.getValue('lighting', 'fillColorTemp', 4600.0);
   
   /// FILL INTENSITY
   /// Should be LESS than primary (typically 30-50% of primary)
   /// Too bright = flattens the scene (defeats the purpose!)
   /// Higher value = softer, lighter shadows
   /// Lower value = darker, more dramatic shadows
-  static const double fillIntensity = 80000.0; // About 60% of primary for softer shadows
+  static double get fillIntensity => DirectorTuner.instance.getValue('lighting', 'fillIntensity', 80000.0);
   
   /// FILL SHADOWS: Usually disabled to keep it soft
-  static const bool fillCastsShadows = false;
+  static bool get fillCastsShadows => DirectorTuner.instance.getValue('lighting', 'fillCastsShadows', false);
   
   // ========================================================================
   // ✨ RIM/BACK LIGHT (Separation & Depth)
@@ -120,25 +128,28 @@ class LightingDirector {
   /// RIM DIRECTION: From behind/above character
   /// This creates a bright edge/halo effect
   /// POSITIVE Z = rays travel from backdrop toward camera (backlight)
-  static const LightDirection rimDirection = LightDirection(
-    x: 0.0,              // Center for even rim
-    y: -0.3,             // From above
-    z: 0.95,             // Strongly from behind (positive Z = backlight)
-    description: "Back light for edge highlights and separation",
-  );
+  static LightDirection get rimDirection {
+    final tuner = DirectorTuner.instance;
+    return LightDirection(
+      x: tuner.getValue('lighting', 'rimDirection.x', 0.0),
+      y: tuner.getValue('lighting', 'rimDirection.y', -0.3),
+      z: tuner.getValue('lighting', 'rimDirection.z', 0.95),
+      description: "Back light for edge highlights and separation",
+    );
+  }
   
   /// RIM COLOR TEMPERATURE
   /// Can be warm (golden) or cool (blue) for creative effect
   /// Warmer than primary = glowing, magical
   /// Cooler than primary = crisp, clean separation
-  static const double rimColorTemp = 3500.0; // Warm gold
+  static double get rimColorTemp => DirectorTuner.instance.getValue('lighting', 'rimColorTemp', 3500.0);
   
   /// RIM INTENSITY
   /// Moderate intensity - enough to see the edge, not overpower
-  static const double rimIntensity = 65000.0;
+  static double get rimIntensity => DirectorTuner.instance.getValue('lighting', 'rimIntensity', 65000.0);
   
   /// RIM SHADOWS: Usually disabled (it's a subtle accent)
-  static const bool rimCastsShadows = false;
+  static bool get rimCastsShadows => DirectorTuner.instance.getValue('lighting', 'rimCastsShadows', false);
   
   // ========================================================================
   // 🌅 AMBIENT / ENVIRONMENT (Base Scene Illumination)
@@ -153,12 +164,12 @@ class LightingDirector {
   /// 
   /// Good range: 5,000-20,000 (much less than directional lights)
   /// Increased to lift shadows and create softer, more inviting feel
-  static const double ambientIntensity = 20000.0;
+  static double get ambientIntensity => DirectorTuner.instance.getValue('lighting', 'ambientIntensity', 20000.0);
   
   /// AMBIENT COLOR TEMPERATURE
   /// Sky light is typically cool (blue-ish)
   /// Contrasts nicely with warm primary light
-  static const double ambientColorTemp = 6500.0; // Cool sky blue
+  static double get ambientColorTemp => DirectorTuner.instance.getValue('lighting', 'ambientColorTemp', 6500.0);
   
   // ========================================================================
   // 🎚️ GLOBAL ADJUSTMENTS (Master Controls)
@@ -167,17 +178,17 @@ class LightingDirector {
   /// MASTER BRIGHTNESS: Multiply all light intensities by this
   /// Quick way to make entire scene brighter/darker
   /// 1.0 = normal, 1.5 = 50% brighter, 0.7 = 30% dimmer
-  static const double masterBrightness = 1.0;
+  static double get masterBrightness => DirectorTuner.instance.getValue('lighting', 'masterBrightness', 1.0);
   
   /// ENABLE/DISABLE ENTIRE LIGHTING SETUP
   /// Useful for A/B testing: see scene with vs without custom lighting
-  static const bool useCustomLighting = true;
+  static bool get useCustomLighting => DirectorTuner.instance.getValue('lighting', 'useCustomLighting', true);
   
   // ========================================================================
   // 🏠 SCENE OBJECT POSITIONING (For Shadow Accuracy)
   // ========================================================================
   
-  /// RUG VERTICAL OFFSET
+  /// RUG VERTICAL OFFSET (Floor Level)
   /// How far above/below ground plane the rug sits
   /// Negative = lower (toward floor), Positive = higher (elevated)
   /// 
@@ -186,7 +197,16 @@ class LightingDirector {
   /// Too low = might clip through floor
   /// 
   /// Good range: -0.01 to -0.05 (1-5cm below origin)
-  static const double rugYOffset = -0.02; // 2cm below origin - nearly flush with floor
+  static double get rugYOffset => DirectorTuner.instance.getValue('lighting', 'rugYOffset', -0.02);
+  
+  /// CHARACTER HEIGHT ABOVE RUG
+  /// How far above the rug the character's feet should be
+  /// Prevents clipping through the rug surface
+  /// 
+  /// Character Y position = rugYOffset + characterHeightAboveRug
+  /// 
+  /// Good range: 0.01 to 0.03 (1-3cm above rug surface)
+  static double get characterHeightAboveRug => DirectorTuner.instance.getValue('lighting', 'characterHeightAboveRug', 0.02);
   
   // ========================================================================
   // 🌑 SHADOW CONFIGURATION
@@ -195,13 +215,13 @@ class LightingDirector {
   /// GLOBAL SHADOW ENABLE
   /// Master switch for ALL shadows in the scene
   /// Must be true for any shadows to render (even if lights have castShadows = true)
-  static const bool shadowsEnabled = true;
+  static bool get shadowsEnabled => DirectorTuner.instance.getValue('lighting', 'shadowsEnabled', true);
   
   /// SHADOW MAP SIZE
   /// Resolution of shadow texture (higher = sharper shadows, more memory)
   /// Common values: 512, 1024, 2048, 4096
   /// Start with 1024, increase if shadows look blocky
-  static const int shadowMapSize = 4096;
+  static int get shadowMapSize => DirectorTuner.instance.getValue('lighting', 'shadowMapSize', 4096);
   
   /// SHADOW TYPE
   /// PCF = Percentage Closer Filtering (soft shadows) - RECOMMENDED
@@ -215,7 +235,7 @@ class LightingDirector {
   /// How soft/hard shadow edges appear
   /// 0.0 = hard shadows, 1.0 = very soft shadows
   /// Good range: 0.3-0.7 for natural look
-  static const double shadowSoftness = 0.5;
+  static double get shadowSoftness => DirectorTuner.instance.getValue('lighting', 'shadowSoftness', 0.5);
   
   // ========================================================================
   // 🎭 LIGHTING SCENARIOS (Presets for Different Moods)
@@ -228,6 +248,52 @@ class LightingDirector {
   // TODO: Implement scenario switching system if desired
   
   // ========================================================================
+  // 🎛️ PARAMETER REGISTRATION (Called during app initialization)
+  // ========================================================================
+  
+  /// Register all tunable parameters with DirectorTuner
+  static void registerParameters() {
+    // Primary light
+    DirectorTuner.register('lighting', 'primaryDirection.x', min: -1.0, max: 1.0, defaultValue: 0.3, unit: 'direction');
+    DirectorTuner.register('lighting', 'primaryDirection.y', min: -1.0, max: 1.0, defaultValue: -0.5, unit: 'direction');
+    DirectorTuner.register('lighting', 'primaryDirection.z', min: -1.0, max: 1.0, defaultValue: -0.7, unit: 'direction');
+    DirectorTuner.register('lighting', 'primaryColorTemp', min: 2000.0, max: 10000.0, defaultValue: 4400.0, unit: 'K');
+    DirectorTuner.register('lighting', 'primaryIntensity', min: 0.0, max: 300000.0, defaultValue: 120000.0, unit: 'lux');
+    DirectorTuner.register('lighting', 'primaryCastsShadows', min: 0.0, max: 1.0, defaultValue: true, type: ParameterType.bool);
+    
+    // Fill light
+    DirectorTuner.register('lighting', 'fillDirection.x', min: -1.0, max: 1.0, defaultValue: -0.2, unit: 'direction');
+    DirectorTuner.register('lighting', 'fillDirection.y', min: -1.0, max: 1.0, defaultValue: -0.2, unit: 'direction');
+    DirectorTuner.register('lighting', 'fillDirection.z', min: -1.0, max: 1.0, defaultValue: -0.75, unit: 'direction');
+    DirectorTuner.register('lighting', 'fillColorTemp', min: 2000.0, max: 10000.0, defaultValue: 4600.0, unit: 'K');
+    DirectorTuner.register('lighting', 'fillIntensity', min: 0.0, max: 300000.0, defaultValue: 80000.0, unit: 'lux');
+    DirectorTuner.register('lighting', 'fillCastsShadows', min: 0.0, max: 1.0, defaultValue: false, type: ParameterType.bool);
+    
+    // Rim light
+    DirectorTuner.register('lighting', 'rimDirection.x', min: -1.0, max: 1.0, defaultValue: 0.0, unit: 'direction');
+    DirectorTuner.register('lighting', 'rimDirection.y', min: -1.0, max: 1.0, defaultValue: -0.3, unit: 'direction');
+    DirectorTuner.register('lighting', 'rimDirection.z', min: -1.0, max: 1.0, defaultValue: 0.95, unit: 'direction');
+    DirectorTuner.register('lighting', 'rimColorTemp', min: 2000.0, max: 10000.0, defaultValue: 3500.0, unit: 'K');
+    DirectorTuner.register('lighting', 'rimIntensity', min: 0.0, max: 300000.0, defaultValue: 65000.0, unit: 'lux');
+    DirectorTuner.register('lighting', 'rimCastsShadows', min: 0.0, max: 1.0, defaultValue: false, type: ParameterType.bool);
+    
+    // Ambient
+    DirectorTuner.register('lighting', 'ambientIntensity', min: 0.0, max: 50000.0, defaultValue: 20000.0, unit: 'lux');
+    DirectorTuner.register('lighting', 'ambientColorTemp', min: 2000.0, max: 10000.0, defaultValue: 6500.0, unit: 'K');
+    
+    // Global
+    DirectorTuner.register('lighting', 'masterBrightness', min: 0.0, max: 2.0, defaultValue: 1.0, unit: 'multiplier');
+    DirectorTuner.register('lighting', 'useCustomLighting', min: 0.0, max: 1.0, defaultValue: true, type: ParameterType.bool);
+    DirectorTuner.register('lighting', 'rugYOffset', min: -0.1, max: 0.1, defaultValue: -0.02, unit: 'units');
+    DirectorTuner.register('lighting', 'characterHeightAboveRug', min: 0.0, max: 0.1, defaultValue: 0.018, unit: 'units');
+    
+    // Shadows
+    DirectorTuner.register('lighting', 'shadowsEnabled', min: 0.0, max: 1.0, defaultValue: true, type: ParameterType.bool);
+    DirectorTuner.register('lighting', 'shadowMapSize', min: 256.0, max: 8192.0, defaultValue: 4096.0, type: ParameterType.int);
+    DirectorTuner.register('lighting', 'shadowSoftness', min: 0.0, max: 1.0, defaultValue: 0.5, unit: 'softness');
+  }
+  
+  // ========================================================================
   // 🛠️ HELPER METHODS (Don't edit these, edit values above)
   // ========================================================================
   
@@ -235,7 +301,7 @@ class LightingDirector {
   static DirectLight createPrimaryLight() {
     final direction = primaryDirection.normalized();
     return DirectLight.sun(
-      color: primaryColorTemp * masterBrightness,
+      color: primaryColorTemp, // Color temperature in Kelvin (not multiplied by brightness)
       intensity: primaryIntensity * masterBrightness,
       castShadows: primaryCastsShadows,
       direction: direction,
@@ -246,7 +312,7 @@ class LightingDirector {
   static DirectLight createFillLight() {
     final direction = fillDirection.normalized();
     return DirectLight.sun(
-      color: fillColorTemp * masterBrightness,
+      color: fillColorTemp, // Color temperature in Kelvin (not multiplied by brightness)
       intensity: fillIntensity * masterBrightness,
       castShadows: fillCastsShadows,
       direction: direction,
@@ -257,7 +323,7 @@ class LightingDirector {
   static DirectLight createRimLight() {
     final direction = rimDirection.normalized();
     return DirectLight.sun(
-      color: rimColorTemp * masterBrightness,
+      color: rimColorTemp, // Color temperature in Kelvin (not multiplied by brightness)
       intensity: rimIntensity * masterBrightness,
       castShadows: rimCastsShadows,
       direction: direction,

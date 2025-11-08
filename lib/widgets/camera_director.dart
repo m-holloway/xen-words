@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 import 'package:thermion_flutter/thermion_flutter.dart';
+import '../services/director_tuner.dart';
 
 /// 🎬 CAMERA DIRECTOR'S CONTROL PANEL 🎬
 /// 
@@ -31,9 +32,9 @@ class CameraDirector {
   static final Vector3 characterBasePosition = Vector3(0, 0, 0);
   
   // Effective working values (tune these!)
-  static const double characterHeight = 2.0;           // Working height for camera
-  static const double characterCenterHeight = 1.1;     // WHERE CAMERA LOOKS (torso/chest for framing)
-  static const double characterEyeLevel = 1.3;         // Eye level reference
+  static double get characterHeight => DirectorTuner.instance.getValue('camera', 'characterHeight', 2.0);
+  static double get characterCenterHeight => DirectorTuner.instance.getValue('camera', 'characterCenterHeight', 1.1);
+  static double get characterEyeLevel => DirectorTuner.instance.getValue('camera', 'characterEyeLevel', 1.3);
   
   // For reference: Model bounding box from validation
   // (These are in model space, not camera space!)
@@ -47,65 +48,90 @@ class CameraDirector {
   
   /// NORMAL GAMEPLAY SHOT
   /// This is the "neutral" framing during regular play
-  static const ShotComposition playingShot = ShotComposition(
-    distance: 6.0,           // Distance from character
-    heightOffset: 0.3,       // Height above LOOK-AT point (characterCenterHeight + this)
-    angleOffset: -0.8,        // Side angle (+ = right, - = left)
-    description: "Natural gameplay framing - comfortable, clear view",
-  );
+  static ShotComposition get playingShot {
+    final tuner = DirectorTuner.instance;
+    return ShotComposition(
+      distance: tuner.getValue('camera', 'playingShot.distance', 2.96),
+      heightOffset: tuner.getValue('camera', 'playingShot.heightOffset', 0.84),
+      angleOffset: tuner.getValue('camera', 'playingShot.angleOffset', -0.44),
+      description: "Natural gameplay framing - comfortable, clear view",
+    );
+  }
   
   /// SUCCESS SHOT (Celebrating)
   /// Camera response when child gets word RIGHT
   /// Note: Many celebration animations include JUMPING - camera needs to accommodate this!
-  static const ShotComposition celebratingShot = ShotComposition(
-    distance: 3,           // Slightly wider to keep jumps in frame (was 2.0)
-    heightOffset: .2,       // Less height difference = more stable during jumps (was 0.5)
-    angleOffset: 0.0,        // Straight on
-    description: "Push-in close but stable for jumps",
-  );
+  static ShotComposition get celebratingShot {
+    final tuner = DirectorTuner.instance;
+    return ShotComposition(
+      distance: tuner.getValue('camera', 'celebratingShot.distance', 3.0),
+      heightOffset: tuner.getValue('camera', 'celebratingShot.heightOffset', 0.2),
+      angleOffset: tuner.getValue('camera', 'celebratingShot.angleOffset', 0.0),
+      description: "Push-in close but stable for jumps",
+    );
+  }
   
   /// Vertical offset for celebration look-at point to track jumping
-  static const double celebrationLookAtOffset = -0.1; // Look higher during celebration
+  static double get celebrationLookAtOffset => DirectorTuner.instance.getValue('camera', 'celebrationLookAtOffset', -0.1);
   
   /// FAILURE SHOT (Failing)
   /// Camera response when child struggles or gets word wrong
-  static const ShotComposition failingShot = ShotComposition(
-    distance: 3.5,            // Give space but not too extreme (was 5.0)
-    heightOffset: -0.2,       // Eye level = neutral, non-judgmental (was -0.3)
-    angleOffset: 0.0,        // Straight on
-    description: "Pull-back with neutral angle = 'It's okay, you've got this'",
-  );
+  static ShotComposition get failingShot {
+    final tuner = DirectorTuner.instance;
+    return ShotComposition(
+      distance: tuner.getValue('camera', 'failingShot.distance', 3.5),
+      heightOffset: tuner.getValue('camera', 'failingShot.heightOffset', -0.2),
+      angleOffset: tuner.getValue('camera', 'failingShot.angleOffset', 0.0),
+      description: "Pull-back with neutral angle = 'It's okay, you've got this'",
+    );
+  }
   
   /// COMPLETION SHOT (All words done)
   /// Celebratory final shot
-  static const ShotComposition completedShot = ShotComposition(
-    distance: 5.0,
-    heightOffset: 0.8,       // Match playing shot framing
-    angleOffset: 0.9,        // Slight angle for visual interest
-    description: "Victory shot with slight angle",
-  );
+  static ShotComposition get completedShot {
+    final tuner = DirectorTuner.instance;
+    return ShotComposition(
+      distance: tuner.getValue('camera', 'completedShot.distance', 5.0),
+      heightOffset: tuner.getValue('camera', 'completedShot.heightOffset', 0.8),
+      angleOffset: tuner.getValue('camera', 'completedShot.angleOffset', 0.9),
+      description: "Victory shot with slight angle",
+    );
+  }
   
   // ========================================================================
   // ⏱️ TRANSITION TIMING - How fast camera moves between shots
   // ========================================================================
   
   /// SUCCESS TRANSITION
-  /// How fast to push in when celebrating
+  /// How long the camera takes to push in when celebrating
   /// FASTER = more energetic excitemrent
-  static const Duration successTransitionSpeed = Duration(milliseconds: 800);
+  static Duration get successTransitionTime {
+    final ms = DirectorTuner.instance.getValue('camera', 'successTransitionTime', 800);
+    return Duration(milliseconds: ms.toInt());
+  }
   
   /// FAILURE TRANSITION
-  /// How fast to pull back when failing
+  /// How long the camera takes to pull back when failing
   /// SLOWER = more empathetic, gentle, patient
-  static const Duration failureTransitionSpeed = Duration(milliseconds: 900);
+  static Duration get failureTransitionTime {
+    final ms = DirectorTuner.instance.getValue('camera', 'failureTransitionTime', 900);
+    return Duration(milliseconds: ms.toInt());
+  }
   
   /// NORMAL TRANSITION
-  /// Default transition speed
-  static const Duration normalTransitionSpeed = Duration(milliseconds: 800);
+  /// Default transition time
+  static Duration get normalTransitionTime {
+    final ms = DirectorTuner.instance.getValue('camera', 'normalTransitionTime', 800);
+    return Duration(milliseconds: ms.toInt());
+  }
   
-  /// CINEMATIC INTRO ZOOM
-  /// Initial zoom-in when game starts
-  static const Duration cinematicZoomSpeed = Duration(milliseconds: 1500);
+  /// INITIAL GAME TRANSITION
+  /// Duration of the opening cinematic zoom when game first starts
+  /// (Only happens once at the beginning)
+  static Duration get initialGameTransitionTime {
+    final ms = DirectorTuner.instance.getValue('camera', 'initialGameTransitionTime', 1500);
+    return Duration(milliseconds: ms.toInt());
+  }
   
   // ========================================================================
   // 🎲 RANDOMNESS & VARIATION - Makes movements feel organic, not robotic
@@ -134,32 +160,89 @@ class CameraDirector {
   
   /// PRIMARY BREATHING
   /// Main slow breathing rhythm (most noticeable)
-  static const BreathingLayer primaryBreathing = BreathingLayer(
-    frequency:1.1,              // Cycles per second (slower = more dramatic)
-    amplitude: 0.006,            // Movement distance (60% of total)
-    description: "Main breathing rhythm - like operator breathing",
-  );
+  static BreathingLayer get primaryBreathing {
+    final tuner = DirectorTuner.instance;
+    return BreathingLayer(
+      frequency: tuner.getValue('camera', 'primaryBreathing.frequency', 0.512),
+      amplitude: tuner.getValue('camera', 'primaryBreathing.amplitude', 0.032),
+      description: "Main breathing rhythm - like operator breathing",
+    );
+  }
   
   /// SLOW DRIFT
   /// Very slow wandering movement
-  static const BreathingLayer slowDrift = BreathingLayer(
-    frequency: 0.2,              // Very slow
-    amplitude: 0.006,            // Movement distance (30% of total)
-    description: "Slow drift - like operator shifting weight",
-  );
+  static BreathingLayer get slowDrift {
+    final tuner = DirectorTuner.instance;
+    return BreathingLayer(
+      frequency: tuner.getValue('camera', 'slowDrift.frequency', 0.2199),
+      amplitude: tuner.getValue('camera', 'slowDrift.amplitude', 0.051),
+      description: "Slow drift - like operator shifting weight",
+    );
+  }
   
   /// MICRO SHAKE
   /// Tiny high-frequency tremor
-  static const BreathingLayer microShake = BreathingLayer(
-    frequency: 4.0,              // Fast
-    amplitude: 0.002,            // Movement distance (10% of total)
-    description: "Micro-shake - like human hand-held tremor",
-  );
+  static BreathingLayer get microShake {
+    final tuner = DirectorTuner.instance;
+    return BreathingLayer(
+      frequency: tuner.getValue('camera', 'microShake.frequency', 6.43),
+      amplitude: tuner.getValue('camera', 'microShake.amplitude', 0.0029),
+      description: "Micro-shake - like human hand-held tremor",
+    );
+  }
   
   /// BREATHING INTENSITY MULTIPLIER
   /// Multiply all breathing by this value to exaggerate or reduce
   /// 1.0 = normal, 2.0 = double intensity, 0.5 = half intensity
-  static const double breathingIntensityMultiplier = 1.2;
+  static double get breathingIntensityMultiplier => DirectorTuner.instance.getValue('camera', 'breathingIntensityMultiplier', 1.2);
+  
+  // ========================================================================
+  // 🎛️ PARAMETER REGISTRATION (Called during app initialization)
+  // ========================================================================
+  
+  /// Register all tunable parameters with DirectorTuner
+  static void registerParameters() {
+    // Character reference
+    DirectorTuner.register('camera', 'characterHeight', min: 0.5, max: 5.0, defaultValue: 2.0, unit: 'units');
+    DirectorTuner.register('camera', 'characterCenterHeight', min: 0.5, max: 3.0, defaultValue: 0.7, unit: 'units');
+    DirectorTuner.register('camera', 'characterEyeLevel', min: 0.5, max: 3.0, defaultValue: 1.3, unit: 'units');
+    
+    // Playing shot
+    DirectorTuner.register('camera', 'playingShot.distance', min: 1.0, max: 20.0, defaultValue: 2.77, unit: 'units');
+    DirectorTuner.register('camera', 'playingShot.heightOffset', min: -2.0, max: 2.0, defaultValue: 0.44, unit: 'units');
+    DirectorTuner.register('camera', 'playingShot.angleOffset', min: -2.0, max: 2.0, defaultValue: -0.44, unit: 'units');
+    
+    // Celebrating shot
+    DirectorTuner.register('camera', 'celebratingShot.distance', min: 1.0, max: 20.0, defaultValue: 3.0, unit: 'units');
+    DirectorTuner.register('camera', 'celebratingShot.heightOffset', min: -2.0, max: 2.0, defaultValue: 0.2, unit: 'units');
+    DirectorTuner.register('camera', 'celebratingShot.angleOffset', min: -2.0, max: 2.0, defaultValue: 0.0, unit: 'units');
+    DirectorTuner.register('camera', 'celebrationLookAtOffset', min: -1.0, max: 1.0, defaultValue: -0.1, unit: 'units');
+    
+    // Failing shot
+    DirectorTuner.register('camera', 'failingShot.distance', min: 1.0, max: 20.0, defaultValue: 3.5, unit: 'units');
+    DirectorTuner.register('camera', 'failingShot.heightOffset', min: -2.0, max: 2.0, defaultValue: -0.2, unit: 'units');
+    DirectorTuner.register('camera', 'failingShot.angleOffset', min: -2.0, max: 2.0, defaultValue: 0.0, unit: 'units');
+    
+    // Completed shot
+    DirectorTuner.register('camera', 'completedShot.distance', min: 1.0, max: 20.0, defaultValue: 5.0, unit: 'units');
+    DirectorTuner.register('camera', 'completedShot.heightOffset', min: -2.0, max: 2.0, defaultValue: 0.8, unit: 'units');
+    DirectorTuner.register('camera', 'completedShot.angleOffset', min: -2.0, max: 2.0, defaultValue: 0.9, unit: 'units');
+    
+    // Transition times (in milliseconds)
+    DirectorTuner.register('camera', 'successTransitionTime', min: 100.0, max: 3000.0, defaultValue: 1148.0, unit: 'ms');
+    DirectorTuner.register('camera', 'failureTransitionTime', min: 100.0, max: 3000.0, defaultValue: 900.0, unit: 'ms');
+    DirectorTuner.register('camera', 'normalTransitionTime', min: 100.0, max: 3000.0, defaultValue: 800.0, unit: 'ms');
+    DirectorTuner.register('camera', 'initialGameTransitionTime', min: 100.0, max: 5000.0, defaultValue: 2235.0, unit: 'ms');
+    
+    // Breathing layers
+    DirectorTuner.register('camera', 'primaryBreathing.frequency', min: 0.1, max: 5.0, defaultValue: 0.512, unit: 'Hz');
+    DirectorTuner.register('camera', 'primaryBreathing.amplitude', min: 0.0, max: 0.1, defaultValue: 0.032, unit: 'units');
+    DirectorTuner.register('camera', 'slowDrift.frequency', min: 0.01, max: 2.0, defaultValue: 0.2199, unit: 'Hz');
+    DirectorTuner.register('camera', 'slowDrift.amplitude', min: 0.0, max: 0.1, defaultValue: 0.051, unit: 'units');
+    DirectorTuner.register('camera', 'microShake.frequency', min: 1.0, max: 10.0, defaultValue: 6.43, unit: 'Hz');
+    DirectorTuner.register('camera', 'microShake.amplitude', min: 0.0, max: 0.01, defaultValue: 0.0029, unit: 'units');
+    DirectorTuner.register('camera', 'breathingIntensityMultiplier', min: 0.0, max: 3.0, defaultValue: 0.63, unit: 'multiplier');
+  }
   
   // ========================================================================
   // 📊 HELPER METHODS - Don't edit these, edit values above

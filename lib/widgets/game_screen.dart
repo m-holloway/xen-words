@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 import '../controllers/game_controller.dart';
+import '../services/director_tuner.dart';
 import 'word_display.dart';
 import 'week_selector.dart';
 import 'settings_page.dart';
 import 'character_view.dart';
 import 'fireworks_overlay.dart';
 import 'progress_bar.dart';
+import 'director_overlay.dart';
+
+/// Intent for toggling director overlay
+class _ToggleDirectorIntent extends Intent {
+  const _ToggleDirectorIntent();
+}
 
 /// Main game screen widget
 class GameScreen extends StatefulWidget {
@@ -22,6 +30,13 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
   bool _isStartingGame = false; // Track if game is starting to prevent multiple clicks
   AppLifecycleState? _previousLifecycleState; // Track previous state to avoid pausing on initial launch
   bool _gameHasStarted = false; // Track if game has actually started (prevents lifecycle interference during startup)
+  
+  // Director overlay state
+  void _onDirectorValueChanged() {
+    setState(() {
+      // Trigger rebuild to reflect tuner changes
+    });
+  }
   
   @override
   void initState() {
@@ -176,9 +191,24 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
         child: SafeArea(
           child: Consumer<GameController>(
             builder: (context, controller, child) {
-              return Stack(
-                clipBehavior: Clip.none,
-                children: [
+              return Shortcuts(
+                shortcuts: const {
+                  SingleActivator(LogicalKeyboardKey.keyD): _ToggleDirectorIntent(),
+                },
+                child: Actions(
+                  actions: {
+                    _ToggleDirectorIntent: CallbackAction<_ToggleDirectorIntent>(
+                      onInvoke: (_) {
+                        print('🎹 GameScreen: Shortcut triggered! Calling DirectorTuner.toggleOverlay()');
+                        DirectorTuner.instance.toggleOverlay();
+                        return null;
+                      },
+                    ),
+                  },
+                  child: FocusScope(
+                    child: Stack(
+                      clipBehavior: Clip.none,
+                      children: [
                   // Full-screen character background (always visible except initial state)
                   if (controller.state != GameState.initial)
                     Positioned.fill(
@@ -222,7 +252,17 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                       controller: controller.fireworksController,
                     ),
                   ),
-                ],
+                  
+                  // Director tuning overlay (always on top, keyboard controlled)
+                  Positioned.fill(
+                    child: DirectorOverlay(
+                      onValueChanged: _onDirectorValueChanged,
+                    ),
+                  ),
+                      ],
+                    ),
+                  ),
+                ),
               );
             },
           ),

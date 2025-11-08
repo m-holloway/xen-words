@@ -3,12 +3,22 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'controllers/game_controller.dart';
 import 'services/audio_player_service.dart';
+import 'services/director_tuner.dart';
 import 'services/sherpa_recognizer.dart';
 import 'widgets/game_screen.dart';
 import 'widgets/splash_screen.dart';
+import 'widgets/lighting_director.dart';
+import 'widgets/camera_director.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
+  // Initialize DirectorTuner and register parameters
+  LightingDirector.registerParameters();
+  CameraDirector.registerParameters();
+  
+  // Load saved defaults from previous sessions
+  await DirectorTuner.instance.loadDefaults();
   
   // Set preferred orientations
   SystemChrome.setPreferredOrientations([
