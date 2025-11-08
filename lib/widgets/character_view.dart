@@ -11,6 +11,7 @@ import '../controllers/game_controller.dart';
 import '../utils/glb_texture_replacer.dart';
 import 'camera_config.dart';
 import 'camera_director.dart';
+import 'lighting_director.dart';
 import 'rug_loading_overlay.dart';
 
 /// Widget for displaying and animating the 3D character using Thermion
@@ -602,36 +603,57 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
         addToScene: true,
       );
       
-      // Enhanced three-point lighting setup with proper front-lighting
-      // IMPORTANT: In Filament/Thermion, direction vector is the direction light travels FROM
-      // Camera is at positive Z (3.0) looking at origin, so light from front needs NEGATIVE Z
-      // Key light: Front-top (main illumination from camera's perspective)
-      final keyLight = DirectLight.sun(
-        color: 4500.0, // Warmer daylight
-        intensity: 150000.0, // Slightly reduced for more natural look
-        castShadows: false,
-        direction: Vector3(0.2, -0.7, -0.7).normalized(), // Front-top (negative Z = from camera direction)
-      );
-      await viewer.addDirectLight(keyLight);
+      // ========================================================================
+      // 🎨 SCENE LIGHTING SETUP (Controlled by LightingDirector)
+      // ========================================================================
+      // All lighting parameters are in lighting_director.dart for easy tuning
+      // Edit values there and hot reload to see changes instantly!
       
-      // Fill light: Front-top, opposite side (softer, reduces shadows from key light)
-      final fillLight = DirectLight.sun(
-        color: 5000.0, // Warmer fill
-        intensity: 65000.0, // Slightly reduced fill light
-        castShadows: false,
-        direction: Vector3(-0.2, -0.6, -0.75).normalized(), // Front-top-left (negative Z = from camera)
-      );
-      await viewer.addDirectLight(fillLight);
-      
-      // Rim light: Back-top (adds depth and separation, creates edge highlight)
-      // State-responsive color - warm gold during celebration, cool during failure
-      final rimLight = DirectLight.sun(
-        color: _getRimLightColor(),
-        intensity: 45000.0,
-        castShadows: false,
-        direction: Vector3(0.0, -0.3, 0.95).normalized(), // Back-top (positive Z = from behind character)
-      );
-      await viewer.addDirectLight(rimLight);
+      if (LightingDirector.useCustomLighting) {
+        print('');
+        print('═══════════════════════════════════════');
+        print('🎨 LIGHTING SETUP');
+        print('═══════════════════════════════════════');
+        
+        // ENABLE SHADOWS ON THE VIEWER (Master switch!)
+        // Shadows are DISABLED by default in Thermion - must explicitly enable
+        if (LightingDirector.shadowsEnabled) {
+          await viewer.setShadowsEnabled(true);
+          await viewer.setShadowType(ShadowType.PCF); // Percentage Closer Filtering for soft shadows
+          print('🌑 SHADOWS: GLOBALLY ENABLED');
+          print('   Shadow Type: PCF (soft shadows)');
+          print('   Shadow Map Size: ${LightingDirector.shadowMapSize}');
+        }
+        
+        // PRIMARY LIGHT: Main illumination (sun/window light from backdrop)
+        final primaryLight = LightingDirector.createPrimaryLight();
+        await viewer.addDirectLight(primaryLight);
+        print('');
+        print('☀️  PRIMARY LIGHT:');
+        print('   Intensity: ${LightingDirector.primaryIntensity}');
+        print('   Color Temp: ${LightingDirector.primaryColorTemp}K');
+        print('   Direction: (${LightingDirector.primaryDirection.x.toStringAsFixed(2)}, ${LightingDirector.primaryDirection.y.toStringAsFixed(2)}, ${LightingDirector.primaryDirection.z.toStringAsFixed(2)})');
+        print('   Cast Shadows: ${LightingDirector.primaryCastsShadows}');
+        
+        // FILL LIGHT: Softens shadows, adds detail in dark areas
+        final fillLight = LightingDirector.createFillLight();
+        await viewer.addDirectLight(fillLight);
+        print('');
+        print('💡 FILL LIGHT:');
+        print('   Intensity: ${LightingDirector.fillIntensity}');
+        print('   Color Temp: ${LightingDirector.fillColorTemp}K');
+        
+        // RIM LIGHT: Edge highlights for depth and separation
+        final rimLight = LightingDirector.createRimLight();
+        await viewer.addDirectLight(rimLight);
+        print('');
+        print('✨ RIM LIGHT:');
+        print('   Intensity: ${LightingDirector.rimIntensity}');
+        print('   Color Temp: ${LightingDirector.rimColorTemp}K');
+        
+        print('═══════════════════════════════════════');
+        print('');
+      }
       
       // Load the complete game scene (includes ground, backdrop, rug, books, plants)
       print('🔄 About to load game scene...');
@@ -689,20 +711,6 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
     }
   }
 
-  /// Get rim light color based on game state for emotional tone
-  double _getRimLightColor() {
-    switch (widget.gameState) {
-      case GameState.celebrating:
-        return 3500.0; // Warm gold/amber for celebration
-      case GameState.failing:
-        return 7500.0; // Cool blue for failure
-      case GameState.completed:
-        return 3000.0; // Very warm for completion
-      case GameState.playing:
-      default:
-        return 5500.0; // Neutral daylight
-    }
-  }
   
   /// Discover available failure animations from the GLB model
   /// Selects appropriate failure animations (falling, defeat, etc.)
@@ -1167,15 +1175,30 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       print('🔄 Loading personalized rug into scene...');
       
       // Load the modified GLB with personalized texture
-      await viewer.loadGltf(
+      final rugAsset = await viewer.loadGltf(
         'file://$modifiedRugPath',
         addToScene: true,
       );
+      
+      // ADJUST RUG POSITION - Lower it to be nearly flush with the ground
+      // The rug should be very thin, almost directly on the floor
+      // Controlled by LightingDirector.rugYOffset for easy tuning
+      print('📍 Adjusting rug position (Y offset: ${LightingDirector.rugYOffset})...');
+      
+      try {
+        // Set the rug's vertical position to be nearly on the ground
+        await rugAsset.setTransform(Matrix4.identity()..translate(0.0, LightingDirector.rugYOffset, 0.0));
+        print('✅ Rug position adjusted');
+      } catch (e) {
+        print('⚠️ Could not adjust rug position: $e');
+        print('   Rug may appear elevated - this is a known limitation');
+      }
       
       print('═══════════════════════════════════════');
       print('✅ PERSONALIZED RUG LOADED SUCCESSFULLY!');
       print('   Name: "$name"');
       print('   GLB: $modifiedRugPath');
+      print('   Position: (0, ${LightingDirector.rugYOffset}, 0)');
       print('═══════════════════════════════════════');
       
       // Remove loading overlay on success

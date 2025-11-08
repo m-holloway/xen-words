@@ -48,8 +48,8 @@ class CameraDirector {
   /// NORMAL GAMEPLAY SHOT
   /// This is the "neutral" framing during regular play
   static const ShotComposition playingShot = ShotComposition(
-    distance: 7.0,           // Distance from character
-    heightOffset: 1,       // Height above LOOK-AT point (characterCenterHeight + this)
+    distance: 6.0,           // Distance from character
+    heightOffset: 0.3,       // Height above LOOK-AT point (characterCenterHeight + this)
     angleOffset: -0.8,        // Side angle (+ = right, - = left)
     description: "Natural gameplay framing - comfortable, clear view",
   );
@@ -79,7 +79,7 @@ class CameraDirector {
   /// COMPLETION SHOT (All words done)
   /// Celebratory final shot
   static const ShotComposition completedShot = ShotComposition(
-    distance: 3.0,
+    distance: 5.0,
     heightOffset: 0.8,       // Match playing shot framing
     angleOffset: 0.9,        // Slight angle for visual interest
     description: "Victory shot with slight angle",
