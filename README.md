@@ -183,6 +183,24 @@ Using Provider pattern with `GameController`:
 - Automatic UI updates via `ChangeNotifier`
 - Clean separation of concerns
 
+### Responsive Layout
+**All UI components are fully responsive** across iOS and Android devices in both portrait and landscape orientations. For detailed guidelines and best practices when creating new UI components, see:
+
+📖 **[Responsive Layout Guide](docs/RESPONSIVE_LAYOUT_GUIDE.md)**
+
+Key principles:
+- Use `LayoutBuilder` for context-aware sizing
+- Calculate sizes as percentages with `.clamp()` for bounds
+- Detect landscape mode and reduce vertical spacing
+- Wrap text in `FittedBox` to prevent wrapping
+- Test on iPhone SE in both orientations
+
+The guide includes:
+- Before/after examples showing fixed vs responsive layouts
+- Common responsive patterns and code snippets
+- Testing strategy for different devices
+- Quick reference checklist for all UI work
+
 ## Testing
 
 To test without voice recognition:

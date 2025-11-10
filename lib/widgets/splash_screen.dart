@@ -103,76 +103,121 @@ class _SplashScreenState extends State<SplashScreen>
             stops: const [0.0, 0.33, 0.6, 1.0],
           ),
         ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // Animated logo/title
-              AnimatedBuilder(
-                animation: _controller,
-                builder: (context, child) {
-                  return Transform.scale(
-                    scale: _scaleAnimation.value,
-                    child: Opacity(
-                      opacity: _fadeAnimation.value,
-                      child: Column(
-                        children: [
-                          // Spinning letters effect
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              _buildAnimatedLetter('X', 0),
-                              _buildAnimatedLetter('E', 0.2),
-                              _buildAnimatedLetter('N', 0.4),
-                              const SizedBox(width: 20),
-                              _buildAnimatedLetter('W', 0.6),
-                              _buildAnimatedLetter('O', 0.8),
-                              _buildAnimatedLetter('R', 1.0),
-                              _buildAnimatedLetter('D', 1.2),
-                              _buildAnimatedLetter('S', 1.4),
-                            ],
-                          ),
-                          const SizedBox(height: 20),
-                          Text(
-                            'Learning Sight Words',
-                            style: TextStyle(
-                              fontSize: 24,
-                              color: Colors.white.withOpacity(0.8),
-                              fontWeight: FontWeight.w300,
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            // Detect landscape mode
+            final isLandscape = constraints.maxWidth > constraints.maxHeight;
+            final availableHeight = constraints.maxHeight;
+            
+            // Responsive sizing based on orientation and available space
+            final letterFontSize = isLandscape
+                ? (availableHeight * 0.12).clamp(32.0, 48.0)
+                : (availableHeight * 0.08).clamp(48.0, 64.0);
+            
+            final subtitleFontSize = isLandscape
+                ? (availableHeight * 0.04).clamp(14.0, 18.0)
+                : (availableHeight * 0.03).clamp(18.0, 24.0);
+            
+            final loadingFontSize = isLandscape
+                ? (availableHeight * 0.035).clamp(12.0, 16.0)
+                : (availableHeight * 0.025).clamp(14.0, 18.0);
+            
+            final characterSize = isLandscape
+                ? (availableHeight * 0.35).clamp(120.0, 160.0)
+                : (availableHeight * 0.25).clamp(150.0, 200.0);
+            
+            final spacingAfterTitle = isLandscape
+                ? (availableHeight * 0.03).clamp(8.0, 16.0)
+                : (availableHeight * 0.025).clamp(12.0, 20.0);
+            
+            final spacingAfterLogo = isLandscape
+                ? (availableHeight * 0.05).clamp(16.0, 24.0)
+                : (availableHeight * 0.05).clamp(24.0, 40.0);
+            
+            final spacingAfterCharacter = isLandscape
+                ? (availableHeight * 0.04).clamp(12.0, 20.0)
+                : (availableHeight * 0.04).clamp(20.0, 30.0);
+            
+            return Center(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // Animated logo/title
+                    AnimatedBuilder(
+                      animation: _controller,
+                      builder: (context, child) {
+                        return Transform.scale(
+                          scale: _scaleAnimation.value,
+                          child: Opacity(
+                            opacity: _fadeAnimation.value,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                // Spinning letters effect
+                                FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      _buildAnimatedLetter('X', 0, letterFontSize),
+                                      _buildAnimatedLetter('E', 0.2, letterFontSize),
+                                      _buildAnimatedLetter('N', 0.4, letterFontSize),
+                                      SizedBox(width: letterFontSize * 0.3),
+                                      _buildAnimatedLetter('W', 0.6, letterFontSize),
+                                      _buildAnimatedLetter('O', 0.8, letterFontSize),
+                                      _buildAnimatedLetter('R', 1.0, letterFontSize),
+                                      _buildAnimatedLetter('D', 1.2, letterFontSize),
+                                      _buildAnimatedLetter('S', 1.4, letterFontSize),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(height: spacingAfterTitle),
+                                Text(
+                                  'Learning Sight Words',
+                                  style: TextStyle(
+                                    fontSize: subtitleFontSize,
+                                    color: Colors.white.withOpacity(0.8),
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
+                        );
+                      },
+                    ),
+                    SizedBox(height: spacingAfterLogo),
+                    
+                    // 3D Character with continuous animation
+                    SplashCharacterView(
+                      size: characterSize,
+                      onModelLoaded: widget.onModelLoaded,
+                    ),
+                    
+                    SizedBox(height: spacingAfterCharacter),
+                    
+                    // Loading text (no spinner - character provides visual interest)
+                    Text(
+                      'Getting ready...',
+                      style: TextStyle(
+                        fontSize: loadingFontSize,
+                        color: Colors.white.withOpacity(0.7),
                       ),
                     ),
-                  );
-                },
-              ),
-              const SizedBox(height: 40),
-              
-              // 3D Character with continuous animation
-              SplashCharacterView(
-                size: 200,
-                onModelLoaded: widget.onModelLoaded,
-              ),
-              
-              const SizedBox(height: 30),
-              
-              // Loading text (no spinner - character provides visual interest)
-              Text(
-                'Getting ready...',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.white.withOpacity(0.7),
+                  ],
                 ),
               ),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );
   }
 
-  Widget _buildAnimatedLetter(String letter, double delay) {
+  Widget _buildAnimatedLetter(String letter, double delay, double fontSize) {
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
@@ -187,8 +232,8 @@ class _SplashScreenState extends State<SplashScreen>
             opacity: opacity,
             child: Text(
               letter,
-              style: const TextStyle(
-                fontSize: 64,
+              style: TextStyle(
+                fontSize: fontSize,
                 fontWeight: FontWeight.bold,
                 color: Colors.blue,
                 letterSpacing: 2,
