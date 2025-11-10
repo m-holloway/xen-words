@@ -317,10 +317,15 @@ class _RelativeTouchSliderState extends State<RelativeTouchSlider> {
     
     // Calculate delta value
     final delta = _getDeltaValue();
-    final newValue = (_startValue! + delta).clamp(
+    var newValue = (_startValue! + delta).clamp(
       widget.parameter.min,
       widget.parameter.max,
     );
+    
+    // Round to integer if parameter is int type
+    if (widget.parameter.type == ParameterType.int) {
+      newValue = newValue.round().toDouble();
+    }
     
     // Update parameter
     DirectorTuner.instance.setParameter(widget.director, widget.paramName, newValue);

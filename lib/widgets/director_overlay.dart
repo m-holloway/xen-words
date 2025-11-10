@@ -1,3 +1,4 @@
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../services/director_tuner.dart';
@@ -371,10 +372,47 @@ class _DirectorOverlayState extends State<DirectorOverlay> {
         return;
       }
       
-      // Handle numeric parameters
+      // Handle integer parameters - always adjust by 1
+      if (param.type == ParameterType.int) {
+        final intValue = (currentValue is num ? currentValue : param.defaultValue as num).toInt();
+        final step = delta > 0 ? 1 : -1; // Always step by 1 for integers
+        final newValue = (intValue + step).clamp(param.min.toInt(), param.max.toInt());
+        tuner.setParameter(_currentDirector, param.name, newValue);
+        widget.onValueChanged();
+        return;
+      }
+      
+      // Handle double parameters with adaptive step sizing
       final numValue = currentValue is num ? currentValue : (param.defaultValue as num);
       final range = param.max - param.min;
-      final newValue = (numValue + (delta * range)).clamp(param.min, param.max);
+      
+      // Calculate adaptive step size for better precision across all ranges
+      // Use smaller steps for small ranges, reasonable steps for large ranges
+      double step;
+      
+      if (range <= 1.0) {
+        // Small range (0-1): use percentage of range
+        step = delta * range;
+      } else if (range <= 10.0) {
+        // Medium range (1-10): use 1% of range for fine, 10% for coarse
+        step = delta * range;
+      } else if (range <= 100.0) {
+        // Larger range (10-100): cap step size to reasonable value
+        // 0.01 delta (fine) = 0.1-1.0 step, 0.1 delta (coarse) = 1-10 step
+        step = delta * math.min(range, 100.0);
+      } else {
+        // Very large range (100+): use logarithmic-ish scaling
+        // Make adjustments proportional to current value magnitude, but with min/max bounds
+        final magnitude = math.max(numValue.abs(), 1.0);
+        final baseStep = delta * magnitude;
+        
+        // Clamp step to reasonable bounds (0.5% to 5% of range)
+        final minStep = range * 0.005;
+        final maxStep = range * 0.05;
+        step = baseStep.clamp(minStep, maxStep);
+      }
+      
+      final newValue = (numValue + step).clamp(param.min, param.max);
       tuner.setParameter(_currentDirector, param.name, newValue);
       widget.onValueChanged();
     }
@@ -481,9 +519,10 @@ class _DirectorOverlayState extends State<DirectorOverlay> {
     return Positioned(
       top: 50,
       left: 50,
+      right: 50,
       child: Container(
-        constraints: const BoxConstraints(maxWidth: 400, maxHeight: 600),
-        padding: const EdgeInsets.all(16),
+        constraints: const BoxConstraints(maxWidth: 500, maxHeight: 600),
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: Colors.black87,
           borderRadius: BorderRadius.circular(8),
@@ -530,6 +569,7 @@ class _DirectorOverlayState extends State<DirectorOverlay> {
                       child: Row(
                         children: [
                           Expanded(
+                            flex: 3,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -538,24 +578,36 @@ class _DirectorOverlayState extends State<DirectorOverlay> {
                                   style: TextStyle(
                                     color: isSelected ? Colors.white : Colors.white70,
                                     fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                                    fontSize: 13,
                                   ),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
                                 ),
                                 if (param.description != null)
                                   Text(
                                     param.description!,
                                     style: const TextStyle(
                                       color: Colors.white54,
-                                      fontSize: 11,
+                                      fontSize: 10,
                                     ),
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
                                   ),
                               ],
                             ),
                           ),
-                          Text(
-                            _formatValue(currentValue, param),
-                            style: TextStyle(
-                              color: isSelected ? Colors.white : Colors.white60,
-                              fontSize: 12,
+                          const SizedBox(width: 8),
+                          Flexible(
+                            flex: 1,
+                            child: Text(
+                              _formatValue(currentValue, param),
+                              style: TextStyle(
+                                color: isSelected ? Colors.white : Colors.white60,
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.right,
+                              overflow: TextOverflow.visible,
                             ),
                           ),
                         ],

@@ -33,7 +33,7 @@ class CameraDirector {
   
   // Effective working values (tune these!)
   static double get characterHeight => DirectorTuner.instance.getValue('camera', 'characterHeight', 2.0);
-  static double get characterCenterHeight => DirectorTuner.instance.getValue('camera', 'characterCenterHeight', 1.1);
+  static double get characterCenterHeight => DirectorTuner.instance.getValue('camera', 'characterCenterHeight', 0.7);
   static double get characterEyeLevel => DirectorTuner.instance.getValue('camera', 'characterEyeLevel', 1.3);
   
   // For reference: Model bounding box from validation

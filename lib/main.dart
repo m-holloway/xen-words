@@ -9,6 +9,7 @@ import 'widgets/game_screen.dart';
 import 'widgets/splash_screen.dart';
 import 'widgets/lighting_director.dart';
 import 'widgets/camera_director.dart';
+import 'widgets/render_quality_director.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,6 +17,7 @@ void main() async {
   // Initialize DirectorTuner and register parameters
   LightingDirector.registerParameters();
   CameraDirector.registerParameters();
+  RenderQualityDirector.registerParameters();
   
   // Load saved defaults from previous sessions
   await DirectorTuner.instance.loadDefaults();

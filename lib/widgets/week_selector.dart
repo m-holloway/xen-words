@@ -66,28 +66,37 @@ class _WeekSelectorState extends State<WeekSelector> {
           ),
         ],
       ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          // Week Number Display - Large and clear
-          Text(
-            'Week $_currentWeek',
-            style: const TextStyle(
-              fontSize: 64,
-              fontWeight: FontWeight.bold,
-              color: Colors.blue,
-              letterSpacing: 3,
-            ),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            '$wordsInWeek words',
-            style: TextStyle(
-              fontSize: 22,
-              color: Colors.grey.shade600,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          // Responsive font sizes based on container width
+          final weekFontSize = (constraints.maxWidth * 0.16).clamp(48.0, 64.0);
+          final wordsFontSize = (constraints.maxWidth * 0.055).clamp(18.0, 22.0);
+          
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Week Number Display - Large and clear
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  'Week $_currentWeek',
+                  style: TextStyle(
+                    fontSize: weekFontSize,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
+                    letterSpacing: 3,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 12),
+              Text(
+                '$wordsInWeek words',
+                style: TextStyle(
+                  fontSize: wordsFontSize,
+                  color: Colors.grey.shade600,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
           const SizedBox(height: 48),
           
           // Simple week adjustment buttons - large and intuitive
@@ -169,44 +178,60 @@ class _WeekSelectorState extends State<WeekSelector> {
           const SizedBox(height: 48),
           
           // Start Game Button - Large and prominent
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: widget.isStarting ? null : widget.onStartGame,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: widget.isStarting 
-                    ? Colors.grey 
-                    : Colors.green,
-                foregroundColor: Colors.white,
-                padding: const EdgeInsets.symmetric(vertical: 24),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                elevation: widget.isStarting ? 2 : 6,
-                shadowColor: widget.isStarting 
-                    ? Colors.grey.withOpacity(0.2)
-                    : Colors.green.withOpacity(0.4),
-              ),
-              child: widget.isStarting
-                  ? const SizedBox(
-                      width: 24,
-                      height: 24,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 3,
-                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                      ),
-                    )
-                  : const Text(
-                      'Start Game',
-                      style: TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 1.5,
-                      ),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              // Responsive font size based on container width
+              final buttonFontSize = (constraints.maxWidth * 0.085).clamp(24.0, 32.0);
+              final verticalPadding = (constraints.maxWidth * 0.06).clamp(16.0, 24.0);
+              
+              return SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: widget.isStarting ? null : widget.onStartGame,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: widget.isStarting 
+                        ? Colors.grey 
+                        : Colors.green,
+                    foregroundColor: Colors.white,
+                    padding: EdgeInsets.symmetric(vertical: verticalPadding),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
                     ),
-            ),
+                    elevation: widget.isStarting ? 2 : 6,
+                    shadowColor: widget.isStarting 
+                        ? Colors.grey.withOpacity(0.2)
+                        : Colors.green.withOpacity(0.4),
+                  ),
+                  child: widget.isStarting
+                      ? const SizedBox(
+                          width: 24,
+                          height: 24,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 3,
+                            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                          ),
+                        )
+                      : FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            'Start Game',
+                            maxLines: 1,
+                            softWrap: false,
+                            overflow: TextOverflow.visible,
+                            style: TextStyle(
+                              fontSize: buttonFontSize,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 1.5,
+                            ),
+                          ),
+                        ),
+                ),
+              );
+            },
           ),
-        ],
+            ],
+          );
+        },
       ),
     );
   }

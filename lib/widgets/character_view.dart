@@ -13,6 +13,7 @@ import '../services/director_tuner.dart';
 import 'camera_config.dart';
 import 'camera_director.dart';
 import 'lighting_director.dart';
+import 'render_quality_director.dart';
 import 'rug_loading_overlay.dart';
 
 /// Widget for displaying and animating the 3D character using Thermion
@@ -59,6 +60,37 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
   bool? _lastRimCastsShadows;
   double? _lastMasterBrightness;
   bool? _lastShadowsEnabled;
+  int? _lastShadowType;
+  
+  // Track last render quality settings to detect changes
+  bool? _lastPostProcessingEnabled;
+  double? _lastShadowPenumbraScale;
+  double? _lastShadowPenumbraRatioScale;
+  bool? _lastMsaaEnabled;
+  bool? _lastFxaaEnabled;
+  bool? _lastTaaEnabled;
+  bool? _lastBloomEnabled;
+  double? _lastBloomStrength;
+  int? _lastToneMapperType;
+  bool? _lastFrustumCullingEnabled;
+  bool? _lastFogEnabled;
+  double? _lastFogDistance;
+  double? _lastFogCutoffDistance;
+  double? _lastFogMaximumOpacity;
+  double? _lastFogDensity;
+  double? _lastFogHeight;
+  double? _lastFogHeightFalloff;
+  double? _lastFogInScatteringStart;
+  double? _lastFogInScatteringSize;
+  bool? _lastFogColorFromIbl;
+  double? _lastFogColorR;
+  double? _lastFogColorG;
+  double? _lastFogColorB;
+  
+  // Camera exposure tracking
+  double? _lastCameraAperture;
+  double? _lastCameraShutterSpeed;
+  double? _lastCameraISO;
   
   // Debounce timer for lighting updates to prevent accumulation
   Timer? _lightingUpdateTimer;
@@ -304,11 +336,12 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       // Too soon since last update, debounce it
       _lightingUpdateTimer?.cancel();
       _lightingUpdateTimer = Timer(_minLightingUpdateInterval, () {
-        _lastLightingUpdate = DateTime.now();
-        _updateLighting();
-        _updateCameraForTuner();
-        _updateRugPosition();
-      });
+      _lastLightingUpdate = DateTime.now();
+      _updateLighting();
+      _updateCameraForTuner();
+      _updateRugPosition();
+      _updateCameraExposure();
+    });
       return;
     }
     
@@ -325,6 +358,9 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       
       // Update rug position if rug offset changed
       _updateRugPosition();
+      
+      // Update camera exposure if exposure parameters changed
+      _updateCameraExposure();
     });
   }
   
@@ -354,9 +390,73 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       
       final currentMasterBrightness = LightingDirector.masterBrightness;
       final currentShadowsEnabled = LightingDirector.shadowsEnabled;
+      final currentShadowType = LightingDirector.shadowType;
+      
+      // Get current render quality settings
+      final currentPostProcessing = RenderQualityDirector.postProcessingEnabled;
+      final currentPenumbraScale = RenderQualityDirector.shadowPenumbraScale;
+      final currentPenumbraRatio = RenderQualityDirector.shadowPenumbraRatioScale;
+      final currentMsaa = RenderQualityDirector.msaaEnabled;
+      final currentFxaa = RenderQualityDirector.fxaaEnabled;
+      final currentTaa = RenderQualityDirector.taaEnabled;
+      final currentBloomEnabled = RenderQualityDirector.bloomEnabled;
+      final currentBloomStrength = RenderQualityDirector.bloomStrength;
+      final currentToneMapper = RenderQualityDirector.toneMapperType;
+      final currentFrustumCulling = RenderQualityDirector.frustumCullingEnabled;
+      final currentFogEnabled = RenderQualityDirector.fogEnabled;
+      final currentFogDistance = RenderQualityDirector.fogDistance;
+      final currentFogCutoffDistance = RenderQualityDirector.fogCutoffDistance;
+      final currentFogMaximumOpacity = RenderQualityDirector.fogMaximumOpacity;
+      final currentFogDensity = RenderQualityDirector.fogDensity;
+      final currentFogHeight = RenderQualityDirector.fogHeight;
+      final currentFogHeightFalloff = RenderQualityDirector.fogHeightFalloff;
+      final currentFogInScatteringStart = RenderQualityDirector.fogInScatteringStart;
+      final currentFogInScatteringSize = RenderQualityDirector.fogInScatteringSize;
+      final currentFogColorFromIbl = RenderQualityDirector.fogColorFromIbl;
+      final currentFogColorR = RenderQualityDirector.fogColorR;
+      final currentFogColorG = RenderQualityDirector.fogColorG;
+      final currentFogColorB = RenderQualityDirector.fogColorB;
       
       // Check which lights changed (with thresholds for numeric values)
-      final shadowsChanged = currentShadowsEnabled != _lastShadowsEnabled;
+      final shadowsChanged = currentShadowsEnabled != _lastShadowsEnabled || currentShadowType != _lastShadowType;
+      
+      // Check if render quality settings changed
+      final renderQualityChanged = currentPostProcessing != _lastPostProcessingEnabled ||
+          (currentPenumbraScale - (_lastShadowPenumbraScale ?? currentPenumbraScale)).abs() > 0.01 ||
+          (currentPenumbraRatio - (_lastShadowPenumbraRatioScale ?? currentPenumbraRatio)).abs() > 0.01 ||
+          currentMsaa != _lastMsaaEnabled ||
+          currentFxaa != _lastFxaaEnabled ||
+          currentTaa != _lastTaaEnabled ||
+          currentBloomEnabled != _lastBloomEnabled ||
+          (currentBloomStrength - (_lastBloomStrength ?? currentBloomStrength)).abs() > 0.01 ||
+          currentToneMapper != _lastToneMapperType ||
+          currentFrustumCulling != _lastFrustumCullingEnabled ||
+          currentFogEnabled != _lastFogEnabled ||
+          (currentFogDistance - (_lastFogDistance ?? currentFogDistance)).abs() > 0.1 ||
+          (currentFogCutoffDistance - (_lastFogCutoffDistance ?? currentFogCutoffDistance)).abs() > 1.0 ||
+          (currentFogMaximumOpacity - (_lastFogMaximumOpacity ?? currentFogMaximumOpacity)).abs() > 0.01 ||
+          (currentFogDensity - (_lastFogDensity ?? currentFogDensity)).abs() > 0.01 ||
+          (currentFogHeight - (_lastFogHeight ?? currentFogHeight)).abs() > 0.1 ||
+          (currentFogHeightFalloff - (_lastFogHeightFalloff ?? currentFogHeightFalloff)).abs() > 0.01 ||
+          (currentFogInScatteringStart - (_lastFogInScatteringStart ?? currentFogInScatteringStart)).abs() > 0.1 ||
+          (currentFogInScatteringSize - (_lastFogInScatteringSize ?? currentFogInScatteringSize)).abs() > 0.01 ||
+          currentFogColorFromIbl != _lastFogColorFromIbl ||
+          (currentFogColorR - (_lastFogColorR ?? currentFogColorR)).abs() > 0.01 ||
+          (currentFogColorG - (_lastFogColorG ?? currentFogColorG)).abs() > 0.01 ||
+          (currentFogColorB - (_lastFogColorB ?? currentFogColorB)).abs() > 0.01;
+      
+      if (renderQualityChanged) {
+        print('🔍 Render quality change detected!');
+        print('   Post: $_lastPostProcessingEnabled -> $currentPostProcessing');
+        print('   Penumbra: $_lastShadowPenumbraScale -> $currentPenumbraScale');
+        print('   MSAA: $_lastMsaaEnabled -> $currentMsaa');
+        print('   FXAA: $_lastFxaaEnabled -> $currentFxaa');
+        print('   TAA: $_lastTaaEnabled -> $currentTaa');
+        print('   Bloom: $_lastBloomEnabled -> $currentBloomEnabled (${_lastBloomStrength} -> $currentBloomStrength)');
+        print('   ToneMapper: $_lastToneMapperType -> $currentToneMapper');
+        print('   Frustum: $_lastFrustumCullingEnabled -> $currentFrustumCulling');
+        print('   Fog: $_lastFogEnabled -> $currentFogEnabled');
+      }
       
       final masterBrightnessChanged = _lastMasterBrightness == null || 
           (_lastMasterBrightness! - currentMasterBrightness).abs() > 0.01;
@@ -386,7 +486,7 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
           masterBrightnessChanged;
       
       // If nothing changed, skip the update entirely
-      if (!shadowsChanged && !primaryChanged && !fillChanged && !rimChanged && _primaryLight != null) {
+      if (!shadowsChanged && !renderQualityChanged && !primaryChanged && !fillChanged && !rimChanged && _primaryLight != null) {
         return;
       }
       
@@ -394,12 +494,96 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       if (shadowsChanged) {
         if (currentShadowsEnabled) {
           await _viewer!.setShadowsEnabled(true);
-          await _viewer!.setShadowType(ShadowType.PCF);
+          final shadowType = LightingDirector.getShadowTypeEnum();
+          await _viewer!.setShadowType(shadowType);
         } else {
           await _viewer!.setShadowsEnabled(false);
         }
         _lastShadowsEnabled = currentShadowsEnabled;
-        print('🔄 Shadow settings updated: $currentShadowsEnabled');
+        _lastShadowType = currentShadowType;
+        print('🔄 Shadow settings updated: enabled=$currentShadowsEnabled, type=${LightingDirector.getShadowTypeEnum()}');
+      }
+      
+      // Update render quality settings
+      if (renderQualityChanged) {
+        await _viewer!.setPostProcessing(currentPostProcessing);
+        print('   ✅ Post-processing: $currentPostProcessing');
+        
+        await _viewer!.setSoftShadowOptions(currentPenumbraScale, currentPenumbraRatio);
+        print('   ✅ Soft shadows: penumbra=$currentPenumbraScale, ratio=$currentPenumbraRatio');
+        
+        await _viewer!.setAntiAliasing(currentMsaa, currentFxaa, currentTaa);
+        print('   ✅ Anti-aliasing: MSAA=$currentMsaa, FXAA=$currentFxaa, TAA=$currentTaa');
+        
+        await _viewer!.setBloom(currentBloomEnabled, currentBloomStrength);
+        print('   ✅ Bloom: enabled=$currentBloomEnabled, strength=$currentBloomStrength');
+        if (currentBloomEnabled && !currentPostProcessing) {
+          print('   ⚠️  WARNING: Bloom requires post-processing to be enabled!');
+        }
+        if (currentBloomEnabled && currentBloomStrength < 0.3) {
+          print('   ℹ️  Note: Bloom strength <0.3 may be too subtle to see');
+        }
+        if (currentBloomEnabled && currentBloomStrength > 3.0) {
+          print('   🔥 Extreme bloom: strength=${currentBloomStrength.toStringAsFixed(1)} (may be overwhelming!)');
+        }
+        
+        await _viewer!.setToneMapping(RenderQualityDirector.getToneMapperEnum());
+        print('   ✅ Tone mapping: ${RenderQualityDirector.getToneMapperEnum()}');
+        
+        await _viewer!.setViewFrustumCulling(currentFrustumCulling);
+        print('   ✅ Frustum culling: $currentFrustumCulling');
+        
+        // Fog (accessed via viewer.view)
+        if (currentFogEnabled) {
+          final fogOptions = FogOptions(
+            enabled: true,
+            distance: currentFogDistance,
+            cutOffDistance: currentFogCutoffDistance,
+            maximumOpacity: currentFogMaximumOpacity,
+            density: currentFogDensity,
+            height: currentFogHeight,
+            heightFalloff: currentFogHeightFalloff,
+            inScatteringStart: currentFogInScatteringStart,
+            inScatteringSize: currentFogInScatteringSize,
+            fogColorFromIbl: currentFogColorFromIbl,
+            linearColor: Vector3(currentFogColorR, currentFogColorG, currentFogColorB),
+          );
+          await _viewer!.view.setFogOptions(fogOptions);
+          print('   ✅ Fog: ENABLED');
+          print('      Distance: $currentFogDistance → ${currentFogCutoffDistance == 1000.0 ? "∞" : currentFogCutoffDistance}');
+          print('      Opacity: $currentFogMaximumOpacity, Density: $currentFogDensity');
+          print('      Height: $currentFogHeight, Falloff: $currentFogHeightFalloff');
+        } else if (_lastFogEnabled == true && !currentFogEnabled) {
+          // Only disable if it was previously enabled
+          await _viewer!.view.setFogOptions(FogOptions(enabled: false));
+          print('   ✅ Fog: DISABLED');
+        }
+        
+        _lastPostProcessingEnabled = currentPostProcessing;
+        _lastShadowPenumbraScale = currentPenumbraScale;
+        _lastShadowPenumbraRatioScale = currentPenumbraRatio;
+        _lastMsaaEnabled = currentMsaa;
+        _lastFxaaEnabled = currentFxaa;
+        _lastTaaEnabled = currentTaa;
+        _lastBloomEnabled = currentBloomEnabled;
+        _lastBloomStrength = currentBloomStrength;
+        _lastToneMapperType = currentToneMapper;
+        _lastFrustumCullingEnabled = currentFrustumCulling;
+        _lastFogEnabled = currentFogEnabled;
+        _lastFogDistance = currentFogDistance;
+        _lastFogCutoffDistance = currentFogCutoffDistance;
+        _lastFogMaximumOpacity = currentFogMaximumOpacity;
+        _lastFogDensity = currentFogDensity;
+        _lastFogHeight = currentFogHeight;
+        _lastFogHeightFalloff = currentFogHeightFalloff;
+        _lastFogInScatteringStart = currentFogInScatteringStart;
+        _lastFogInScatteringSize = currentFogInScatteringSize;
+        _lastFogColorFromIbl = currentFogColorFromIbl;
+        _lastFogColorR = currentFogColorR;
+        _lastFogColorG = currentFogColorG;
+        _lastFogColorB = currentFogColorB;
+        
+        print('🔄 Render quality update complete!');
       }
       
       // CRITICAL BUG FIX: Only recreate lights that actually changed!
@@ -477,6 +661,39 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
     // Also update camera animation controller durations if transition speeds changed
     // These will be applied on the next transition
     // (Current transition will continue with its original duration)
+  }
+  
+  /// Update camera exposure based on current tuner values
+  /// Adjusts scene brightness by controlling aperture, shutter speed, and ISO
+  Future<void> _updateCameraExposure() async {
+    if (_viewer == null) return;
+    
+    try {
+      final currentAperture = RenderQualityDirector.cameraAperture;
+      final currentShutterSpeed = RenderQualityDirector.cameraShutterSpeed;
+      final currentISO = RenderQualityDirector.cameraISO;
+      
+      // Check if exposure parameters changed (use small thresholds for floating point comparison)
+      final apertureChanged = _lastCameraAperture == null || 
+          (currentAperture - _lastCameraAperture!).abs() > 0.01;
+      final shutterSpeedChanged = _lastCameraShutterSpeed == null ||
+          (currentShutterSpeed - _lastCameraShutterSpeed!).abs() > 0.0001;  // ~1/10000 difference
+      final isoChanged = _lastCameraISO == null ||
+          (currentISO - _lastCameraISO!).abs() > 1.0;
+      
+      if (apertureChanged || shutterSpeedChanged || isoChanged) {
+        final camera = await _viewer!.view.getCamera();
+        await camera.setExposure(currentAperture, currentShutterSpeed, currentISO);
+        
+        _lastCameraAperture = currentAperture;
+        _lastCameraShutterSpeed = currentShutterSpeed;
+        _lastCameraISO = currentISO;
+        
+        print('📷 Camera exposure updated: f/${currentAperture.toStringAsFixed(1)}, 1/${(1.0/currentShutterSpeed).toStringAsFixed(0)}s, ISO ${currentISO.toStringAsFixed(0)}');
+      }
+    } catch (e) {
+      print('⚠️ Error updating camera exposure: $e');
+    }
   }
   
   /// Update rug position based on current rugYOffset value
@@ -877,14 +1094,59 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
         print('🎨 LIGHTING SETUP');
         print('═══════════════════════════════════════');
         
+        // APPLY RENDER QUALITY SETTINGS
+        // This includes post-processing, anti-aliasing, bloom, tone mapping, shadows, etc.
+        await RenderQualityDirector.applyToViewer(viewer);
+        
+        // LOAD SKYBOX if enabled
+        if (RenderQualityDirector.skyboxEnabled) {
+          try {
+            await viewer.loadSkybox(RenderQualityDirector.skyboxPath);
+            print('🌅 Skybox loaded: ${RenderQualityDirector.skyboxPath}');
+            
+            // Rotate skybox if needed
+            if (RenderQualityDirector.skyboxRotation != 0.0) {
+              final rotationRadians = RenderQualityDirector.skyboxRotation * (3.14159265 / 180.0);
+              await viewer.rotateIbl(Matrix3.rotationY(rotationRadians));
+              print('   Rotated: ${RenderQualityDirector.skyboxRotation}°');
+            }
+            
+            // Set camera exposure for proper skybox brightness
+            // Thermion default (f/16, 1/125s, ISO 100) is for bright outdoor sun
+            // Our default (f/2.8, 1/125s, ISO 100) provides better skybox visibility
+            // Tunable via director overlay: render.cameraAperture, render.cameraShutterSpeed, render.cameraISO
+            final camera = await viewer.view.getCamera();
+            await camera.setExposure(
+              RenderQualityDirector.cameraAperture,      // f-stop (lower = brighter)
+              RenderQualityDirector.cameraShutterSpeed,  // seconds
+              RenderQualityDirector.cameraISO            // ISO (higher = brighter)
+            );
+            print('📷 Camera exposure set: f/${RenderQualityDirector.cameraAperture.toStringAsFixed(1)}, 1/${(1.0/RenderQualityDirector.cameraShutterSpeed).toStringAsFixed(0)}s, ISO ${RenderQualityDirector.cameraISO.toStringAsFixed(0)}');
+          
+          } catch (e) {
+            print('⚠️  Failed to load skybox: $e');
+          }
+        }
+        
+        // LOAD IBL (Image-Based Lighting) if enabled
+        if (RenderQualityDirector.iblEnabled) {
+          try {
+            await viewer.loadIbl(RenderQualityDirector.iblPath, intensity: RenderQualityDirector.iblIntensity);
+            print('💡 IBL loaded: ${RenderQualityDirector.iblPath}');
+            print('   Intensity: ${RenderQualityDirector.iblIntensity}');
+          } catch (e) {
+            print('⚠️  Failed to load IBL: $e');
+          }
+        }
+        
         // ENABLE SHADOWS ON THE VIEWER (Master switch!)
         // Shadows are DISABLED by default in Thermion - must explicitly enable
         if (LightingDirector.shadowsEnabled) {
           await viewer.setShadowsEnabled(true);
-          await viewer.setShadowType(ShadowType.PCF); // Percentage Closer Filtering for soft shadows
+          final shadowType = LightingDirector.getShadowTypeEnum();
+          await viewer.setShadowType(shadowType);
           print('🌑 SHADOWS: GLOBALLY ENABLED');
-          print('   Shadow Type: PCF (soft shadows)');
-          print('   Shadow Map Size: ${LightingDirector.shadowMapSize}');
+          print('   Shadow Type: $shadowType');
         }
         
         // PRIMARY LIGHT: Main illumination (sun/window light from backdrop)
@@ -1596,19 +1858,21 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
   Widget build(BuildContext context) {
     // Always full-screen for maximum character presence
     return Container(
-      decoration: const BoxDecoration(
-        // Natural sky gradient that complements the wood floor
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Color(0xFF4A90E2), // Deeper blue at top
-            Color(0xFF6BB6FF), // Medium blue in middle
-            Color(0xFFA8D5FF), // Lighter blue at bottom (horizon)
-          ],
-          stops: [0.0, 0.5, 1.0],
-        ),
-      ),
+      decoration: RenderQualityDirector.skyboxEnabled 
+        ? null  // No gradient when skybox is enabled - let the skybox show through!
+        : const BoxDecoration(
+            // Natural sky gradient that complements the wood floor (fallback when no skybox)
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color(0xFF4A90E2), // Deeper blue at top
+                Color(0xFF6BB6FF), // Medium blue in middle
+                Color(0xFFA8D5FF), // Lighter blue at bottom (horizon)
+              ],
+              stops: [0.0, 0.5, 1.0],
+            ),
+          ),
       child: ViewerWidget(
           // Don't provide assetPath - we'll load it ourselves in onViewerAvailable to avoid double loading
           assetPath: null,
@@ -1620,18 +1884,20 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
           // Lights are added programmatically in onViewerAvailable for better control
           onViewerAvailable: _onViewerAvailable,
           initial: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Color(0xFF4A90E2), // Deeper blue
-                  Color(0xFF6BB6FF), // Medium blue
-                  Color(0xFFA8D5FF), // Lighter blue
-                ],
-              ),
-            ),
-            child: Center(
+            decoration: RenderQualityDirector.skyboxEnabled
+              ? const BoxDecoration(color: Colors.black)  // Black background while skybox loads
+              : const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color(0xFF4A90E2), // Deeper blue
+                      Color(0xFF6BB6FF), // Medium blue
+                      Color(0xFFA8D5FF), // Lighter blue
+                    ],
+                  ),
+                ),
+            child: const Center(
               child: CircularProgressIndicator(
                 strokeWidth: 2,
                 valueColor: AlwaysStoppedAnimation<Color>(Colors.white70),

@@ -93,7 +93,7 @@ class _DirectorReportState extends State<DirectorReport> {
       right: 20,
       left: 20,
       child: Container(
-        constraints: const BoxConstraints(maxWidth: 380, maxHeight: 600),
+        constraints: const BoxConstraints(maxWidth: 450, maxHeight: 600),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: Colors.black.withOpacity(0.85),
@@ -183,14 +183,30 @@ class _DirectorReportState extends State<DirectorReport> {
                                 child: Row(
                                   children: [
                                     Expanded(
+                                      flex: 2,
                                       child: Text(
-                                        '${item.director}.${item.paramName}: $formattedBaseline → $formattedCurrent',
+                                        '${item.director}.${item.paramName}',
                                         style: TextStyle(
                                           color: isSelected ? Colors.white : Colors.white70,
                                           fontSize: 11,
                                           fontFamily: 'monospace',
                                           fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                                         ),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 8),
+                                    Flexible(
+                                      flex: 1,
+                                      child: Text(
+                                        '$formattedBaseline → $formattedCurrent',
+                                        style: TextStyle(
+                                          color: isSelected ? Colors.white : Colors.white60,
+                                          fontSize: 11,
+                                          fontFamily: 'monospace',
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        textAlign: TextAlign.right,
                                       ),
                                     ),
                                     if (widget.onNavigateToParam != null)

@@ -248,33 +248,41 @@ class _WordDisplayState extends State<WordDisplay> with TickerProviderStateMixin
     final isFailing = widget.gameState == GameState.failing;
 
     // Wrap word display with enhanced visual treatment for better visibility
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 40),
-      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 24),
-      decoration: BoxDecoration(
-        // Semi-transparent background
-        color: Colors.black.withOpacity(0.5),
-        borderRadius: BorderRadius.circular(24),
-        // Glow effect
-        boxShadow: [
-          BoxShadow(
-            color: Colors.white.withOpacity(0.3),
-            blurRadius: 30,
-            spreadRadius: 2,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // Responsive margins and padding based on screen width
+        final screenWidth = constraints.maxWidth;
+        final horizontalMargin = (screenWidth * 0.05).clamp(16.0, 40.0);
+        final horizontalPadding = (screenWidth * 0.08).clamp(20.0, 40.0);
+        final verticalPadding = (screenWidth * 0.04).clamp(16.0, 24.0);
+        
+        return Container(
+          margin: EdgeInsets.symmetric(horizontal: horizontalMargin),
+          padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding),
+          decoration: BoxDecoration(
+            // Semi-transparent background
+            color: Colors.black.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(24),
+            // Glow effect
+            boxShadow: [
+              BoxShadow(
+                color: Colors.white.withOpacity(0.3),
+                blurRadius: 30,
+                spreadRadius: 2,
+              ),
+              BoxShadow(
+                color: Colors.purple.withOpacity(0.4),
+                blurRadius: 20,
+                spreadRadius: -5,
+              ),
+            ],
+            // Subtle border for definition
+            border: Border.all(
+              color: Colors.white.withOpacity(0.3),
+              width: 1.5,
+            ),
           ),
-          BoxShadow(
-            color: Colors.purple.withOpacity(0.4),
-            blurRadius: 20,
-            spreadRadius: -5,
-          ),
-        ],
-        // Subtle border for definition
-        border: Border.all(
-          color: Colors.white.withOpacity(0.3),
-          width: 1.5,
-        ),
-      ),
-      child: GestureDetector(
+          child: GestureDetector(
       onTap: widget.onTap,
       child: AnimatedBuilder(
         animation: Listenable.merge([_animationController, _transitionController, _outlineAnimationController, _wordFadeInController]),
@@ -426,7 +434,9 @@ class _WordDisplayState extends State<WordDisplay> with TickerProviderStateMixin
       hz: _failureShakeHz,
       offset: Offset(_failureShakeOffset, 0),
     ),
-    ); // Close the outer Container
+    );
+      },
+    ); // Close LayoutBuilder
   }
 }
 

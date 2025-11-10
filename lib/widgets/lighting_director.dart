@@ -217,25 +217,17 @@ class LightingDirector {
   /// Must be true for any shadows to render (even if lights have castShadows = true)
   static bool get shadowsEnabled => DirectorTuner.instance.getValue('lighting', 'shadowsEnabled', true);
   
-  /// SHADOW MAP SIZE
-  /// Resolution of shadow texture (higher = sharper shadows, more memory)
-  /// Common values: 512, 1024, 2048, 4096
-  /// Start with 1024, increase if shadows look blocky
-  static int get shadowMapSize => DirectorTuner.instance.getValue('lighting', 'shadowMapSize', 4096);
-  
   /// SHADOW TYPE
-  /// PCF = Percentage Closer Filtering (soft shadows) - RECOMMENDED
-  /// VSM = Variance Shadow Maps (very soft, can have artifacts/light bleeding)
-  /// PCSS = PCF with Soft Shadows (high quality, more expensive)
-  /// Start with PCF for most natural look
-  /// Note: Uses Thermion's ShadowType enum, not our local one
-  static const String shadowType = 'PCF'; // Will be mapped to Thermion's ShadowType.PCF
-  
-  /// SHADOW SOFTNESS (for PCF shadows)
-  /// How soft/hard shadow edges appear
-  /// 0.0 = hard shadows, 1.0 = very soft shadows
-  /// Good range: 0.3-0.7 for natural look
-  static double get shadowSoftness => DirectorTuner.instance.getValue('lighting', 'shadowSoftness', 0.5);
+  /// Controls the shadow rendering algorithm
+  /// 
+  /// Options (in order of soft to hard):
+  /// - VSM (0): Variance Shadow Maps - Softest, may have light bleeding, VERY SLOW
+  /// - PCSS (1): Percentage Closer Soft Shadows - High quality soft shadows, expensive
+  /// - PCF (2): Percentage Closer Filtering - Crisp, sharp shadows, FAST (recommended)
+  /// - DPCF (3): Directional PCF - Another filtering variant
+  /// 
+  /// Recommended: PCF (2) for best performance/quality balance
+  static int get shadowType => DirectorTuner.instance.getValue('lighting', 'shadowType', 2).toInt();
   
   // ========================================================================
   // 🎭 LIGHTING SCENARIOS (Presets for Different Moods)
@@ -289,13 +281,28 @@ class LightingDirector {
     
     // Shadows
     DirectorTuner.register('lighting', 'shadowsEnabled', min: 0.0, max: 1.0, defaultValue: true, type: ParameterType.bool);
-    DirectorTuner.register('lighting', 'shadowMapSize', min: 256.0, max: 8192.0, defaultValue: 4096.0, type: ParameterType.int);
-    DirectorTuner.register('lighting', 'shadowSoftness', min: 0.0, max: 1.0, defaultValue: 0.5, unit: 'softness');
+    DirectorTuner.register('lighting', 'shadowType', min: 0.0, max: 3.0, defaultValue: 2.0, type: ParameterType.int, unit: '0=VSM,1=PCSS,2=PCF,3=DPCF');
   }
   
   // ========================================================================
   // 🛠️ HELPER METHODS (Don't edit these, edit values above)
   // ========================================================================
+  
+  /// Map shadow type integer to Thermion ShadowType enum
+  static ShadowType getShadowTypeEnum() {
+    switch (shadowType) {
+      case 0:
+        return ShadowType.VSM;
+      case 1:
+        return ShadowType.PCSS;
+      case 2:
+        return ShadowType.PCF;
+      case 3:
+        return ShadowType.DPCF;
+      default:
+        return ShadowType.VSM; // Default to VSM
+    }
+  }
   
   /// Create the primary (sun/window) light
   static DirectLight createPrimaryLight() {

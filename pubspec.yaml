@@ -65,6 +65,9 @@ flutter:
     - assets/models/library/
     - assets/models/exports/
     - assets/sherpa-onnx-models/sherpa-onnx-streaming-zipformer-en-2023-06-26/
+    - assets/skybox/
+    - assets/skybox/skybox_ibl.ktx
+    - assets/skybox/skybox_skybox.ktx
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

@@ -387,77 +387,101 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
       case GameState.completed:
         // Hide celebration emoji and "Play Again" button during fireworks
         final showPlayAgain = controller.fireworksController.isDone;
-        return Column(
-          children: [
-            const SizedBox(height: 20),
-            // Celebration emoji at top (only show after fireworks complete)
-            // Bigger and translucent
-            if (showPlayAgain)
-              Opacity(
-                opacity: 0.6, // Translucent
-                child: const Text(
-                  '🎉',
-                  style: TextStyle(fontSize: 150), // Bigger (was 100)
-                ),
-              ),
+        return LayoutBuilder(
+          builder: (context, constraints) {
+            // Responsive emoji size based on screen width
+            final emojiFontSize = (constraints.maxWidth * 0.3).clamp(100.0, 150.0);
+            
+            return Column(
+              children: [
+                const SizedBox(height: 20),
+                // Celebration emoji at top (only show after fireworks complete)
+                // Bigger and translucent
+                if (showPlayAgain)
+                  Opacity(
+                    opacity: 0.6, // Translucent
+                    child: Text(
+                      '🎉',
+                      style: TextStyle(fontSize: emojiFontSize),
+                    ),
+                  ),
             // Play Again button below emoji (when fireworks are done)
             if (showPlayAgain) ...[
               const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    // Glow effect like word board
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.green.withOpacity(0.5),
-                        blurRadius: 30,
-                        spreadRadius: 2,
-                      ),
-                      BoxShadow(
-                        color: Colors.white.withOpacity(0.3),
-                        blurRadius: 20,
-                        spreadRadius: -5,
-                      ),
-                    ],
-                  ),
-                  child: ElevatedButton(
-                    onPressed: () async {
-                      await WakelockPlus.disable();
-                      controller.resetGame();
-                      // Reset all game state flags so UI is ready for next game
-                      setState(() {
-                        _gameHasStarted = false;
-                        _isStartingGame = false;
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 64,
-                        vertical: 24,
-                      ),
-                      shape: RoundedRectangleBorder(
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  // Responsive sizing based on screen width
+                  final screenWidth = constraints.maxWidth;
+                  final buttonFontSize = (screenWidth * 0.085).clamp(24.0, 32.0);
+                  final buttonHorizontalPadding = (screenWidth * 0.12).clamp(32.0, 64.0);
+                  final buttonVerticalPadding = (screenWidth * 0.04).clamp(16.0, 24.0);
+                  final containerHorizontalPadding = (screenWidth * 0.08).clamp(20.0, 40.0);
+                  
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: containerHorizontalPadding),
+                    child: Container(
+                      decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
+                        // Glow effect like word board
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.green.withOpacity(0.5),
+                            blurRadius: 30,
+                            spreadRadius: 2,
+                          ),
+                          BoxShadow(
+                            color: Colors.white.withOpacity(0.3),
+                            blurRadius: 20,
+                            spreadRadius: -5,
+                          ),
+                        ],
                       ),
-                      elevation: 0, // Remove default elevation, using custom glow instead
-                    ),
-                    child: const Text(
-                      'Play Again',
-                      style: TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          await WakelockPlus.disable();
+                          controller.resetGame();
+                          // Reset all game state flags so UI is ready for next game
+                          setState(() {
+                            _gameHasStarted = false;
+                            _isStartingGame = false;
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.green,
+                          foregroundColor: Colors.white,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: buttonHorizontalPadding,
+                            vertical: buttonVerticalPadding,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          elevation: 0, // Remove default elevation, using custom glow instead
+                        ),
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            'Play Again',
+                            maxLines: 1,
+                            softWrap: false,
+                            overflow: TextOverflow.visible,
+                            style: TextStyle(
+                              fontSize: buttonFontSize,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
+                  );
+                },
               ),
             ],
-            // Spacer to fill remaining space
-            const Spacer(),
-          ],
+                // Spacer to fill remaining space
+                const Spacer(),
+              ],
+            );
+          },
         );
     }
   }
