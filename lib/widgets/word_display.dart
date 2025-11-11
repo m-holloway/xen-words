@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../controllers/game_controller.dart';
+import '../utils/app_logger.dart';
 
 /// Widget for displaying the current word with clean, elegant animations
 class WordDisplay extends StatefulWidget {
@@ -85,6 +86,10 @@ class _WordDisplayState extends State<WordDisplay> with TickerProviderStateMixin
   String? _celebratedWord;
   
   DateTime? _celebrationStartTime;
+  
+  // GlobalKeys for measuring layout sizes
+  final GlobalKey _containerKey = GlobalKey();
+  final GlobalKey _stackKey = GlobalKey();
 
   @override
   void initState() {
@@ -225,11 +230,21 @@ class _WordDisplayState extends State<WordDisplay> with TickerProviderStateMixin
     // Use LayoutBuilder to get proper size constraints
     return LayoutBuilder(
       builder: (context, constraints) {
+        // Log constraints received by the outline
+        if (AppLogger.enableLayoutDebug) {
+          AppLogger.layout.d('🖼️  OUTLINE LayoutBuilder constraints: maxW=${constraints.maxWidth.toStringAsFixed(1)}, maxH=${constraints.maxHeight.toStringAsFixed(1)}, scale=${scale.toStringAsFixed(2)}');
+        }
+        
         // Use a large but finite size that can accommodate scaled text
         final size = Size(
           constraints.maxWidth.isFinite ? constraints.maxWidth : 2000,
           constraints.maxHeight.isFinite ? constraints.maxHeight : 1000,
         );
+        
+        if (AppLogger.enableLayoutDebug) {
+          AppLogger.layout.d('🎨 CUSTOMPAINT size: ${size.width.toStringAsFixed(1)} x ${size.height.toStringAsFixed(1)}');
+        }
+        
         return CustomPaint(
           size: size,
           painter: _TextOutlinePainter(
@@ -250,13 +265,29 @@ class _WordDisplayState extends State<WordDisplay> with TickerProviderStateMixin
     // Wrap word display with enhanced visual treatment for better visibility
     return LayoutBuilder(
       builder: (context, constraints) {
+        // Log incoming constraints
+        if (AppLogger.enableLayoutDebug) {
+          AppLogger.layout.d('📐 OUTER LayoutBuilder constraints: maxW=${constraints.maxWidth.toStringAsFixed(1)}, maxH=${constraints.maxHeight.toStringAsFixed(1)}, celebrating=$_wasCelebrating');
+        }
+        
         // Responsive margins and padding based on screen width
         final screenWidth = constraints.maxWidth;
         final horizontalMargin = (screenWidth * 0.05).clamp(16.0, 40.0);
         final horizontalPadding = (screenWidth * 0.08).clamp(20.0, 40.0);
         final verticalPadding = (screenWidth * 0.04).clamp(16.0, 24.0);
         
+        // Schedule postFrameCallback to measure actual rendered size
+        if (AppLogger.enableLayoutDebug) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            final renderBox = _containerKey.currentContext?.findRenderObject() as RenderBox?;
+            if (renderBox != null) {
+              AppLogger.layout.d('📦 CONTAINER actual size: ${renderBox.size.width.toStringAsFixed(1)} x ${renderBox.size.height.toStringAsFixed(1)}, celebrating=$_wasCelebrating');
+            }
+          });
+        }
+        
         return Container(
+          key: _containerKey,
           margin: EdgeInsets.symmetric(horizontal: horizontalMargin),
           padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding),
           decoration: BoxDecoration(
@@ -355,7 +386,18 @@ class _WordDisplayState extends State<WordDisplay> with TickerProviderStateMixin
             
             final wordToShow = _celebratedWord ?? widget.word;
             
+            // Schedule postFrameCallback to measure Stack size during celebration
+            if (AppLogger.enableLayoutDebug) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                final renderBox = _stackKey.currentContext?.findRenderObject() as RenderBox?;
+                if (renderBox != null) {
+                  AppLogger.layout.d('🎉 STACK actual size: ${renderBox.size.width.toStringAsFixed(1)} x ${renderBox.size.height.toStringAsFixed(1)}, scale=${outlineScale.toStringAsFixed(2)}');
+                }
+              });
+            }
+            
             return Stack(
+                  key: _stackKey,
                   alignment: Alignment.center,
                   clipBehavior: Clip.none,
                   children: [

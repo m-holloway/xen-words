@@ -6,6 +6,7 @@ import '../services/audio_player_service.dart';
 import '../services/speech_recognizer_interface.dart';
 import '../services/preferences_service.dart';
 import '../widgets/fireworks_overlay.dart';
+import '../utils/app_logger.dart';
 
 enum GameState {
   initial,      // Before game starts
@@ -65,14 +66,14 @@ class GameController extends ChangeNotifier {
   /// Completes initialization immediately - speech recognition will initialize when user starts game
   /// This keeps the splash screen responsive
   void onSplashModelLoaded() {
-    print('🎉 3D model loaded on splash screen - completing initialization');
+    AppLogger.game.emoji('🎉', '3D model loaded on splash screen - completing initialization');
     
     // Complete initialization future immediately - splash screen can transition
     // Speech recognition will initialize when user clicks "Start Game" (handled in game_screen.dart)
     // This prevents blocking the main thread during splash screen
     if (!_initializationCompleter.isCompleted) {
       _initializationCompleter.complete();
-      print('✅ Splash screen can transition - speech recognition will initialize on Start Game');
+      AppLogger.game.success('Splash screen can transition - speech recognition will initialize on Start Game');
     }
   }
 
@@ -83,7 +84,7 @@ class GameController extends ChangeNotifier {
       _currentWeek = _settings!.currentWeek;
       notifyListeners();
     } catch (e) {
-      print('Error loading settings: $e');
+      AppLogger.storage.e('Error loading settings', error: e);
       // Keep default settings if loading fails
     }
   }
@@ -163,19 +164,19 @@ class GameController extends ChangeNotifier {
     try {
       final hasPermission = await speechRecognizer.requestPermission();
       if (!hasPermission) {
-        print('Microphone permission denied');
+        AppLogger.speech.w('Microphone permission denied');
         return false;
       }
 
       final initialized = await speechRecognizer.initialize();
       if (!initialized) {
-        print('Failed to initialize speech recognizer');
+        AppLogger.speech.e('Failed to initialize speech recognizer');
         return false;
       }
 
       return true;
     } catch (e) {
-      print('Error initializing speech recognizer: $e');
+      AppLogger.speech.e('Error initializing speech recognizer', error: e);
       return false;
     }
   }
@@ -189,8 +190,8 @@ class GameController extends ChangeNotifier {
     _currentWordIndex = -1;
     _shuffledIndices = WordList.generateShuffledIndicesForWeek(_currentWeek);
     
-    print('🎮 Starting game for week $_currentWeek');
-    print('🎮 Shuffled indices: $_shuffledIndices');
+    AppLogger.game.emoji('🎮', 'Starting game for week $_currentWeek');
+    AppLogger.game.d('Shuffled indices: $_shuffledIndices');
 
     // Transition UI immediately to playing state (but word not shown yet)
     // This makes the start screen disappear immediately
@@ -201,7 +202,7 @@ class GameController extends ChangeNotifier {
     // This prevents the user from speaking over the audio
     final audioComplete = Completer<void>();
     await audioService.playGameStart(onComplete: () {
-      print('🎵 Game start audio complete');
+      AppLogger.audio.emoji('🎵', 'Game start audio complete');
       audioComplete.complete();
     });
     await audioComplete.future;
@@ -223,7 +224,7 @@ class GameController extends ChangeNotifier {
     if (_currentWordIndex < _shuffledIndices.length - 1) {
       _currentWordIndex++;
       _state = GameState.playing;
-      print('📖 Displaying word $_currentWordIndex: $currentWord');
+      AppLogger.game.emoji('📖', 'Displaying word $_currentWordIndex: $currentWord');
       notifyListeners();
     } else {
       _completeGame();
@@ -232,7 +233,7 @@ class GameController extends ChangeNotifier {
 
   /// Enable microphone listening
   Future<void> _enableMicrophone() async {
-    print('🎤 Enabling microphone...');
+    AppLogger.speech.emoji('🎤', 'Enabling microphone...');
     _isMicrophoneEnabled = true;
     notifyListeners();
     
@@ -243,7 +244,7 @@ class GameController extends ChangeNotifier {
 
   /// Disable microphone listening
   Future<void> _disableMicrophone() async {
-    print('🎤 Disabling microphone...');
+    AppLogger.speech.emoji('🎤', 'Disabling microphone...');
     _isMicrophoneEnabled = false;
     notifyListeners();
     await speechRecognizer.stopListening();
@@ -253,7 +254,7 @@ class GameController extends ChangeNotifier {
   /// This is different from _disableMicrophone - it's temporary and can be resumed
   Future<void> pauseMicrophone() async {
     if (_isMicrophoneEnabled) {
-      print('⏸️ Pausing microphone (app backgrounded)');
+      AppLogger.speech.emoji('⏸️', 'Pausing microphone (app backgrounded)');
       await _disableMicrophone();
     }
   }
@@ -265,7 +266,7 @@ class GameController extends ChangeNotifier {
         _state == GameState.celebrating ||
         _state == GameState.failing) {
       if (!_isMicrophoneEnabled) {
-        print('▶️ Resuming microphone (app resumed)');
+        AppLogger.speech.emoji('▶️', 'Resuming microphone (app resumed)');
         await _enableMicrophone();
       }
     }
@@ -273,43 +274,43 @@ class GameController extends ChangeNotifier {
 
   /// Start listening for speech
   Future<void> _startListening() async {
-    print('🎤 Starting continuous listening...');
+    AppLogger.speech.emoji('🎤', 'Starting continuous listening...');
     try {
       // Pass expected word for context-aware matching
       await speechRecognizer.startListening(
         onResult: _handleSpeechResult,
         onPartial: _handlePartialResult,
         onError: (error) {
-          print('❌ Speech recognition error: $error');
+          AppLogger.speech.e('Speech recognition error: $error');
         },
         expectedWord: currentWord,  // Pass expected word for better matching
       );
-      print('✅ Continuous listening started (will auto-restart)');
+      AppLogger.speech.success('Continuous listening started (will auto-restart)');
     } catch (e) {
-      print('❌ Error starting speech recognition: $e');
+      AppLogger.speech.e('Error starting speech recognition', error: e);
     }
   }
 
   /// Handle partial speech recognition results
   void _handlePartialResult(PartialSpeechResult result) {
-    print('Partial result: ${result.partial}');
+    AppLogger.speech.v('Partial result: ${result.partial}');
   }
 
   /// Handle final speech recognition results
   void _handleSpeechResult(SpeechRecognitionResult result) {
     if (_state != GameState.playing) {
-      print('⚠️  Ignoring result, not in playing state: $_state');
+      AppLogger.speech.w('Ignoring result, not in playing state: $_state');
       return;
     }
 
     // Only process non-empty results (empty ones are handled by auto-restart in speech recognizer)
     if (result.text.isEmpty) {
-      print('⚠️  Empty result ignored (auto-restart will handle)');
+      AppLogger.speech.w('Empty result ignored (auto-restart will handle)');
       return;
     }
 
     final expectedWord = currentWord.toLowerCase();
-    print('📝 Result: ${result.text}, Expected: $expectedWord');
+    AppLogger.speech.emoji('📝', 'Result: ${result.text}, Expected: $expectedWord');
 
     bool gotExpected = false;
 
@@ -332,10 +333,10 @@ class GameController extends ChangeNotifier {
 
     // Handle result
     if (gotExpected) {
-      print('✅ Correct word!');
+      AppLogger.game.success('Correct word!');
       _playCelebration();
     } else {
-      print('❌ Wrong word');
+      AppLogger.game.emoji('❌', 'Wrong word');
       _playFailure();
     }
     // Speech recognizer will auto-restart listening after this
@@ -352,7 +353,7 @@ class GameController extends ChangeNotifier {
     fireworksController.launchSingle(null);
 
     audioService.playWordSuccess(onComplete: () async {
-      print('🎵 Success audio complete, moving to next word...');
+      AppLogger.audio.emoji('🎵', 'Success audio complete, moving to next word...');
       _displayNextWord();
       await _enableMicrophone();
     });
@@ -369,7 +370,7 @@ class GameController extends ChangeNotifier {
     
     // Start audio playback right after (minimal delay from state change)
     audioService.playWordMiss(onComplete: () async {
-      print('🎵 Miss audio complete, continuing...');
+      AppLogger.audio.emoji('🎵', 'Miss audio complete, continuing...');
       _state = GameState.playing;
       notifyListeners();
       // Re-enable microphone after audio completes
@@ -387,18 +388,18 @@ class GameController extends ChangeNotifier {
     fireworksController.launchMultiple(null, count: 7);
 
     audioService.playGameComplete();
-    print('🎉 Game completed!');
+    AppLogger.game.emoji('🎉', 'Game completed!');
   }
 
   /// Play word pronunciation hint
   Future<void> playWordHint() async {
     if (currentWord.isNotEmpty && _state == GameState.playing) {
-      print('💡 Playing hint for: $currentWord');
+      AppLogger.audio.emoji('💡', 'Playing hint for: $currentWord');
       await _disableMicrophone();
       await audioService.playWordPronunciation(
         currentWord,
         onComplete: () async {
-          print('💡 Hint complete, re-enabling microphone');
+          AppLogger.audio.emoji('💡', 'Hint complete, re-enabling microphone');
           await _enableMicrophone();
         },
       );
@@ -412,7 +413,7 @@ class GameController extends ChangeNotifier {
     _currentWordIndex = -1;
     _shuffledIndices = [];
     notifyListeners();
-    print('🔄 Game reset');
+    AppLogger.game.progress('Game reset');
   }
 
   @override

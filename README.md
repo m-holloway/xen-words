@@ -41,7 +41,10 @@ A Flutter-based educational app for helping children learn sight words through s
 - ✅ Fully responsive layouts for all iOS/Android devices
 - ✅ Personalized child name on rug with custom fonts
 - ✅ Settings persistence with memory slots
-- 📝 See `docs/RESPONSIVE_LAYOUT_GUIDE.md` for layout guidelines
+- ✅ Comprehensive logging system with domain-specific loggers
+- 📝 See `LAYOUT.md` for layout best practices and debugging
+- 📝 See `LOGGING.md` for logging guidelines
+- 📝 See `docs/RESPONSIVE_LAYOUT_GUIDE.md` for legacy layout guidelines
 - 📝 See `docs/SKYBOX_SETUP.md` for rendering details
 
 ## Project Structure
@@ -79,6 +82,7 @@ lib/
   │   ├── relative_touch_slider.dart     # Touch-based parameter adjustment
   │   └── goto_command.dart              # Quick parameter navigation
   └── utils/
+      ├── app_logger.dart                # Centralized logging system
       └── color_generator.dart           # HSL color generation
 
 assets/
@@ -270,7 +274,9 @@ Live parameter tuning system for development and fine-tuning:
 - Export JSON reports of all changes
 - All changes persist across app sessions
 
-### Responsive Layout
+### Layout & Animation Best Practices
+
+#### Responsive Layout
 **All UI components are fully responsive** across iOS and Android devices in both portrait and landscape orientations. For detailed guidelines and best practices when creating new UI components, see:
 
 📖 **[Responsive Layout Guide](docs/RESPONSIVE_LAYOUT_GUIDE.md)**
@@ -287,6 +293,133 @@ The guide includes:
 - Common responsive patterns and code snippets
 - Testing strategy for different devices
 - Quick reference checklist for all UI work
+
+#### Layout Constraints vs Visual Overflow
+When building animated UI components, it's critical to understand the difference between **layout constraints** (which affect parent widget sizing) and **visual overflow** (which only affects rendering):
+
+**The Problem:**
+- Flutter's layout system uses constraints to determine widget sizes
+- Unbounded widgets like `Stack` require explicit size constraints from their parent
+- Animations that scale beyond bounds can cause `RenderFlex overflow` exceptions
+- However, clipping these animations destroys the desired visual effect
+
+**The Solution:**
+Apply constraints for layout, but allow visual overflow for animations:
+
+```dart
+// ✅ CORRECT: Fixed height for layout, but allow visual overflow
+SizedBox(
+  width: double.infinity,
+  height: 150,  // Constrains layout - prevents parent overflow
+  child: Stack(
+    alignment: Alignment.center,
+    clipBehavior: Clip.none,  // Allows visual rendering beyond bounds
+    children: [
+      // Scaling animation renders beyond SizedBox without affecting layout
+      Transform.scale(
+        scale: outlineScale,  // Can exceed 1.0 without layout issues
+        child: AnimatedWidget(...),
+      ),
+    ],
+  ),
+)
+
+// ❌ INCORRECT: Clipping destroys the visual effect
+ClipRect(  // Don't clip scaling animations
+  child: Stack(...),
+)
+
+// ❌ INCORRECT: No height constraint causes parent overflow
+Stack(  // Parent widgets get unbounded constraints
+  children: [Transform.scale(...)],
+)
+```
+
+**Key Principles:**
+1. **Provide explicit constraints** to prevent layout exceptions (`SizedBox`, `ConstrainedBox`, `Container` with fixed dimensions)
+2. **Use `Clip.none`** on `Stack` to allow visual overflow beyond bounds
+3. **Never wrap scaling animations in `ClipRect`** unless clipping is the desired effect
+4. **Distinguish layout space from render space**: Layout determines parent sizing, rendering can exceed layout bounds
+
+**Real-World Example:**
+The word celebration animation scales a ghost outline from 1.0x to 5.0x while floating upward. The `SizedBox` with `height: 150` prevents the parent `Column` from overflowing, while `Stack(clipBehavior: Clip.none)` allows the scaled outline to render beyond the 150px bounds without causing layout issues. See `lib/widgets/word_display.dart` lines 350-380 for implementation.
+
+## Documentation for Developers & AI Agents
+
+### Essential Reading for New Contributors
+
+When working on this project, please familiarize yourself with these guides:
+
+#### 1. **Layout Best Practices** → [`LAYOUT.md`](LAYOUT.md)
+**Read this when:**
+- Creating new UI widgets
+- Debugging layout issues (overflow errors, unwanted sizing)
+- Optimizing for different screen sizes (iOS/Android/tablets)
+- Working with animations that affect layout
+- Dealing with memory issues related to rendering
+
+**Covers:**
+- Cross-platform layout patterns
+- Performance-first widget selection
+- Memory management (CustomPaint sizing, texture optimization)
+- Special cases: scaling animations and visual overflow
+- Comprehensive debugging workflow with logging
+- Lessons learned from real bugs
+
+#### 2. **Logging Guidelines** → [`LOGGING.md`](LOGGING.md)
+**Read this when:**
+- Adding any debug output (⚠️ **NEVER use `print()`**)
+- Investigating bugs or unexpected behavior
+- Profiling performance
+- Debugging state transitions
+
+**Covers:**
+- Why AppLogger vs print()
+- Domain-specific loggers (game, speech, audio, rendering, etc.)
+- Log levels (trace, debug, info, warning, error, fatal)
+- Configuration for different environments
+- Performance considerations
+- Debugging workflows with log filtering
+
+#### 3. **Legacy Documentation**
+- `docs/RESPONSIVE_LAYOUT_GUIDE.md` - Earlier layout patterns (still relevant)
+- `docs/SKYBOX_SETUP.md` - IBL and skybox rendering details
+- `3D_INTEGRATION.md` - Thermion/Filament integration
+
+### Quick Start for AI Agents
+
+1. **Use AppLogger, never print()**
+   ```dart
+   // ❌ NEVER
+   print('Game started');
+   
+   // ✅ ALWAYS
+   AppLogger.game.i('Game started');
+   ```
+
+2. **Choose the right logger domain:**
+   - `AppLogger.game` - Game logic, words, scoring
+   - `AppLogger.speech` - Speech recognition
+   - `AppLogger.audio` - Sound effects
+   - `AppLogger.ui` - UI interactions
+   - `AppLogger.layout` - Layout debugging (when enabled)
+   - See `LOGGING.md` for complete list
+
+3. **For layout issues:**
+   - Enable: `AppLogger.enableLayoutDebug = true` in `main.dart`
+   - Add measurements with GlobalKeys and postFrameCallback
+   - See `LAYOUT.md` "Debugging Layout Issues" section
+
+4. **For scaling animations:**
+   - Use `Stack` with `clipBehavior: Clip.none`
+   - Put scaled content in `Positioned.fill`
+   - See `LAYOUT.md` "Special Cases: Scaling Animations"
+
+5. **Memory-sensitive operations:**
+   - CustomPaint: clamp size to `.clamp(100, 800)`
+   - Textures: prefer 512×512 over 1024×1024
+   - Cache generated assets when possible
+   - See `LAYOUT.md` "Memory Management"
 
 ## Testing
 

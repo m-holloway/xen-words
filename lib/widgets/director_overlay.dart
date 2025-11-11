@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../services/director_tuner.dart';
 import '../models/tunable_parameter.dart';
+import '../utils/app_logger.dart';
 import 'relative_touch_slider.dart';
 import 'goto_command.dart';
 import 'director_report.dart';
@@ -49,18 +50,18 @@ class _DirectorOverlayState extends State<DirectorOverlay> {
   @override
   void initState() {
     super.initState();
-    print('🎹 DirectorOverlay: initState called');
+    AppLogger.ui.d('DirectorOverlay: initState called');
     final tuner = DirectorTuner.instance;
     final directors = tuner.getDirectors();
-    print('🎹 DirectorOverlay: Found ${directors.length} directors: $directors');
+    AppLogger.ui.d('DirectorOverlay: Found ${directors.length} directors');
     if (directors.isNotEmpty) {
       _currentDirector = directors.first;
-      print('🎹 DirectorOverlay: Initial director set to $_currentDirector');
+      AppLogger.ui.d('DirectorOverlay: Initial director set to $_currentDirector');
     }
     
-    // Listen to focus changes for debugging
+    // Listen to focus changes for debugging (trace level - very verbose)
     _focusNode.addListener(() {
-      print('🎹 DirectorOverlay: Focus changed - hasFocus: ${_focusNode.hasFocus}, hasPrimaryFocus: ${_focusNode.hasPrimaryFocus}');
+      AppLogger.ui.t('DirectorOverlay: Focus changed - hasFocus: ${_focusNode.hasFocus}');
     });
     
     // Listen to toggle signal from DirectorTuner
@@ -68,13 +69,13 @@ class _DirectorOverlayState extends State<DirectorOverlay> {
     
     // Try to request focus immediately
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      print('🎹 DirectorOverlay: Requesting initial focus');
+      AppLogger.ui.t('DirectorOverlay: Requesting initial focus');
       _focusNode.requestFocus();
     });
   }
   
   void _onToggleSignal() {
-    print('🎹 DirectorOverlay: Toggle signal received! Current state: $_state');
+    AppLogger.ui.d('DirectorOverlay: Toggle signal received! Current state: $_state');
     _toggleOverlay();
   }
   
@@ -91,47 +92,40 @@ class _DirectorOverlayState extends State<DirectorOverlay> {
     setState(() {
       final wasHidden = _state == OverlayState.hidden;
       _state = wasHidden ? OverlayState.browse : OverlayState.hidden;
-      print('🎹 DirectorOverlay: State changed to $_state');
+      AppLogger.ui.i('DirectorOverlay: State changed to $_state');
       
       // Request focus when showing overlay
       if (wasHidden) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           _focusNode.requestFocus();
-          print('🎹 DirectorOverlay: Focus requested');
+          AppLogger.ui.t('DirectorOverlay: Focus requested');
         });
       }
     });
   }
   
   KeyEventResult _handleKeyEvent(FocusNode node, KeyEvent event) {
-    // Debug logging for all key events
-    print('🎹 DirectorOverlay: Key event received - type: ${event.runtimeType}, logicalKey: ${event.logicalKey}, state: $_state');
+    // Debug logging for key events (trace level - verbose)
+    AppLogger.ui.t('DirectorOverlay: Key event - ${event.logicalKey}, state: $_state');
     
     if (event is KeyDownEvent) {
-      print('🎹 DirectorOverlay: KeyDownEvent - logicalKey: ${event.logicalKey}, keyLabel: ${event.logicalKey.keyLabel}');
-      
       if (event.logicalKey == LogicalKeyboardKey.keyD) {
-        print('🎹 DirectorOverlay: D key pressed! Toggling overlay from $_state');
+        AppLogger.ui.d('DirectorOverlay: D key pressed! Toggling overlay from $_state');
         _toggleOverlay();
         return KeyEventResult.handled;
       } else if (_state == OverlayState.browse) {
-        print('🎹 DirectorOverlay: Handling browse key');
         _handleBrowseKey(event);
         return KeyEventResult.handled;
       } else if (_state == OverlayState.adjust) {
-        print('🎹 DirectorOverlay: Handling adjust key');
         _handleAdjustKey(event);
         return KeyEventResult.handled;
       } else if (_state == OverlayState.goto) {
-        print('🎹 DirectorOverlay: Handling goto key');
         _handleGotoKey(event);
         return KeyEventResult.handled;
       } else if (_state == OverlayState.report) {
-        print('🎹 DirectorOverlay: Handling report key');
         _handleReportKey(event);
         return KeyEventResult.handled;
       } else {
-        print('🎹 DirectorOverlay: Key ignored (overlay is hidden)');
         return KeyEventResult.ignored;
       }
     }
@@ -180,7 +174,7 @@ class _DirectorOverlayState extends State<DirectorOverlay> {
   }
   
   void _handleBrowseKey(KeyEvent event) {
-    print('🎹 DirectorOverlay: _handleBrowseKey - logicalKey: ${event.logicalKey}');
+    AppLogger.ui.t('DirectorOverlay: _handleBrowseKey - ${event.logicalKey}');
     final tuner = DirectorTuner.instance;
     final directors = tuner.getDirectors();
     final params = tuner.getParameters(_currentDirector);
@@ -256,7 +250,7 @@ class _DirectorOverlayState extends State<DirectorOverlay> {
       setState(() {
         _state = _previousState ?? OverlayState.browse;
         _previousState = null; // Clear previous state
-        print('🎹 DirectorOverlay: Back pressed, returning to $_state');
+        AppLogger.ui.d('DirectorOverlay: Back pressed, returning to $_state');
       });
     } else if (event.logicalKey == LogicalKeyboardKey.delete ||
                event.logicalKey == LogicalKeyboardKey.backspace) {
@@ -265,7 +259,7 @@ class _DirectorOverlayState extends State<DirectorOverlay> {
       final params = tuner.getParameters(_currentDirector);
       if (_selectedParamIndex >= 0 && _selectedParamIndex < params.length) {
         final param = params[_selectedParamIndex];
-        print('🎹 DirectorOverlay: Resetting ${param.name} to default value: ${param.defaultValue}');
+        AppLogger.ui.d('DirectorOverlay: Resetting ${param.name} to default: ${param.defaultValue}');
         tuner.resetParameter(_currentDirector, param.name);
         widget.onValueChanged();
       }
@@ -442,14 +436,14 @@ class _DirectorOverlayState extends State<DirectorOverlay> {
         _currentDirector = director;
         _selectedParamIndex = index;
         _state = OverlayState.adjust;
-        print('🎹 DirectorOverlay: Navigating to adjust mode for $director.$paramName');
+        AppLogger.ui.d('DirectorOverlay: Navigating to adjust mode for $director.$paramName');
       });
     }
   }
   
   @override
   Widget build(BuildContext context) {
-    print('🎹 DirectorOverlay: build() called, state: $_state');
+    // Removed excessive build logging - only log state changes in _toggleOverlay
     
     // Use Shortcuts widget for reliable keyboard handling
     // Always render it so it can receive key events even when hidden
@@ -461,7 +455,7 @@ class _DirectorOverlayState extends State<DirectorOverlay> {
         actions: {
           _ToggleDirectorIntent: CallbackAction<_ToggleDirectorIntent>(
             onInvoke: (_) {
-              print('🎹 DirectorOverlay: Shortcut triggered! Toggling overlay');
+              AppLogger.ui.d('DirectorOverlay: Shortcut triggered! Toggling overlay');
               _toggleOverlay();
               return null;
             },
@@ -474,7 +468,7 @@ class _DirectorOverlayState extends State<DirectorOverlay> {
           onKeyEvent: _handleKeyEvent,
           child: Builder(
             builder: (context) {
-              print('🎹 DirectorOverlay: Builder called, hasFocus: ${_focusNode.hasFocus}');
+              // Removed excessive Builder logging - was being called every frame
               
               // In adjust mode, use very transparent background so scene is visible
               // In other modes, use darker background for UI visibility
@@ -486,7 +480,7 @@ class _DirectorOverlayState extends State<DirectorOverlay> {
                   ? const SizedBox.shrink()
                   : GestureDetector(
                       onTap: () {
-                        print('🎹 DirectorOverlay: Tap detected, requesting focus');
+                        AppLogger.ui.t('DirectorOverlay: Tap detected, requesting focus');
                         _focusNode.requestFocus();
                       },
                       child: Container(

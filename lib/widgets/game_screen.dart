@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 import '../controllers/game_controller.dart';
 import '../services/director_tuner.dart';
+import '../utils/app_logger.dart';
 import 'word_display.dart';
 import 'week_selector.dart';
 import 'settings_page.dart';
@@ -81,7 +82,7 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
         if (controller.state == GameState.playing ||
             controller.state == GameState.celebrating ||
             controller.state == GameState.failing) {
-          print('📱 App resumed - resuming microphone');
+          AppLogger.system.i('📱 App resumed - resuming microphone');
           controller.resumeMicrophone();
         }
         break;
@@ -91,7 +92,7 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
       case AppLifecycleState.hidden:
         // App went to background - pause microphone (only if we were in foreground)
         if (wasInForeground && controller.isMicrophoneEnabled) {
-          print('📱 App backgrounded - pausing microphone');
+          AppLogger.system.i('📱 App backgrounded - pausing microphone');
           controller.pauseMicrophone();
         }
         break;
@@ -168,7 +169,7 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
       _isStartingGame = false;
     });
     
-    print('🔙 Exited game, returning to menu');
+    AppLogger.game.i('🔙 Exited game, returning to menu');
   }
 
   @override
@@ -199,7 +200,7 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                   actions: {
                     _ToggleDirectorIntent: CallbackAction<_ToggleDirectorIntent>(
                       onInvoke: (_) {
-                        print('🎹 GameScreen: Shortcut triggered! Calling DirectorTuner.toggleOverlay()');
+                        AppLogger.ui.d('🎹 Director shortcut triggered');
                         DirectorTuner.instance.toggleOverlay();
                         return null;
                       },

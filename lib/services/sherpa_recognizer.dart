@@ -7,6 +7,7 @@ import 'package:path/path.dart' as path;
 import 'package:record/record.dart';
 import 'package:sherpa_onnx/sherpa_onnx.dart' as sherpa;
 import 'speech_recognizer_interface.dart';
+import '../utils/app_logger.dart';
 
 /// Speech recognition implementation using Sherpa-ONNX with vocabulary restriction
 /// Works on both iOS and Android with real-time streaming ASR
@@ -106,38 +107,38 @@ class SherpaRecognizer implements ISpeechRecognizer {
   Future<bool> initialize() async {
     // If already initialized, return immediately
     if (_isInitialized && _recognizer != null) {
-      print('✅ Sherpa-ONNX already initialized, skipping...');
+      AppLogger.speech.i('Sherpa-ONNX already initialized, skipping...');
       return true;
     }
     
     try {
-      print('🎤 Initializing Sherpa-ONNX...');
+      AppLogger.speech.i('🎤 Initializing Sherpa-ONNX...');
 
       // Initialize native bindings FIRST - required before creating recognizer
       // This is a native call that may block, so we yield immediately after
-      print('🔧 Initializing native bindings...');
+      AppLogger.speech.d('Initializing native bindings...');
       sherpa.initBindings();
-      print('✅ Native bindings initialized');
+      AppLogger.speech.d('Native bindings initialized');
       
       // Yield to UI thread to keep animations smooth (60fps = ~16ms per frame)
       await Future.delayed(const Duration(milliseconds: 16));
 
       // Copy assets to device storage and get file paths
       // Use cached directory if available (files already copied from background init)
-      print('📦 Copying/verifying model assets...');
+      AppLogger.speech.d('Copying/verifying model assets...');
       final modelDir = _cachedModelDir ?? await _copyAssetsToDeviceStorage();
       if (modelDir != null) {
         _cachedModelDir = modelDir;
       }
       if (modelDir == null) {
-        print('❌ Failed to copy model assets to device storage');
+        AppLogger.speech.e('Failed to copy model assets to device storage');
         return false;
       }
       
       // Yield to UI thread
       await Future.delayed(const Duration(milliseconds: 16));
       
-      print('📁 Model directory: $modelDir');
+      AppLogger.speech.d('Model directory: $modelDir');
       
       // Verify all model files exist
       final encoderPath = path.join(modelDir, 'encoder-epoch-99-avg-1-chunk-16-left-128.int8.onnx');
@@ -152,39 +153,39 @@ class SherpaRecognizer implements ISpeechRecognizer {
       final tokensFile = File(tokensPath);
       
       if (!await encoderFile.exists()) {
-        print('❌ Encoder file not found: $encoderPath');
+        AppLogger.speech.e('Encoder file not found: $encoderPath');
         return false;
       }
       await Future.delayed(const Duration(milliseconds: 8));
       
       if (!await decoderFile.exists()) {
-        print('❌ Decoder file not found: $decoderPath');
+        AppLogger.speech.e('Decoder file not found: $decoderPath');
         return false;
       }
       await Future.delayed(const Duration(milliseconds: 8));
       
       if (!await joinerFile.exists()) {
-        print('❌ Joiner file not found: $joinerPath');
+        AppLogger.speech.e('Joiner file not found: $joinerPath');
         return false;
       }
       await Future.delayed(const Duration(milliseconds: 8));
       
       if (!await tokensFile.exists()) {
-        print('❌ Tokens file not found: $tokensPath');
+        AppLogger.speech.e('Tokens file not found: $tokensPath');
         return false;
       }
       
       // Yield to UI thread before file size checks (these can be slow)
       await Future.delayed(const Duration(milliseconds: 16));
       
-      print('✅ All model files verified');
-      print('   Encoder: ${encoderFile.path} (${await encoderFile.length()} bytes)');
+      AppLogger.speech.i('All model files verified');
+      AppLogger.speech.d('  Encoder: ${encoderFile.path} (${await encoderFile.length()} bytes)');
       await Future.delayed(const Duration(milliseconds: 8));
-      print('   Decoder: ${decoderFile.path} (${await decoderFile.length()} bytes)');
+      AppLogger.speech.d('  Decoder: ${decoderFile.path} (${await decoderFile.length()} bytes)');
       await Future.delayed(const Duration(milliseconds: 8));
-      print('   Joiner: ${joinerFile.path} (${await joinerFile.length()} bytes)');
+      AppLogger.speech.d('  Joiner: ${joinerFile.path} (${await joinerFile.length()} bytes)');
       await Future.delayed(const Duration(milliseconds: 8));
-      print('   Tokens: ${tokensFile.path} (${await tokensFile.length()} bytes)');
+      AppLogger.speech.d('  Tokens: ${tokensFile.path} (${await tokensFile.length()} bytes)');
       
       // Yield before heavy recognizer creation - give UI multiple frames
       await Future.delayed(const Duration(milliseconds: 50));
@@ -192,7 +193,7 @@ class SherpaRecognizer implements ISpeechRecognizer {
       // Create recognizer configuration for streaming ASR
       // Note: Hotwords don't work with BPE token models (tokens.txt contains sub-word units, not words)
       // We'll rely on post-processing filtering and homonym correction instead
-      print('🔧 Creating recognizer configuration...');
+      AppLogger.speech.d('Creating recognizer configuration...');
       
       // Yield during config creation to keep UI responsive
       await Future.delayed(const Duration(milliseconds: 16));
@@ -225,10 +226,10 @@ class SherpaRecognizer implements ISpeechRecognizer {
       
       // Multiple yields before creating recognizer (this is a VERY heavy native operation)
       // The native call will block, but at least we've given UI time to render
-      print('⚠️ About to create recognizer - this may block for 10-15 seconds...');
+      AppLogger.speech.w('About to create recognizer - this may block for 10-15 seconds...');
       await Future.delayed(const Duration(milliseconds: 100));
       
-      print('🔧 Creating recognizer...');
+      AppLogger.speech.d('Creating recognizer...');
       // Create recognizer - this is a synchronous native call that WILL block the main thread
       // Unfortunately, there's no way to make this async or move it to an isolate
       // The native library doesn't support background initialization
@@ -237,18 +238,17 @@ class SherpaRecognizer implements ISpeechRecognizer {
       // Yield after recognizer creation
       await Future.delayed(const Duration(milliseconds: 50));
       
-      print('🔧 Creating stream...');
+      AppLogger.speech.d('Creating stream...');
       // Create stream for recognition
       _stream = _recognizer!.createStream();
       
       _isInitialized = true;
-      print('✅ Sherpa-ONNX initialized successfully');
-      print('   Model: Streaming Zipformer English (int8)');
-      print('   Vocabulary: ${_sightWords.length} sight words');
+      AppLogger.speech.i('✅ Sherpa-ONNX initialized successfully');
+      AppLogger.speech.i('  Model: Streaming Zipformer English (int8)');
+      AppLogger.speech.i('  Vocabulary: ${_sightWords.length} sight words');
       return true;
     } catch (e, stackTrace) {
-      print('❌ Error initializing Sherpa-ONNX: $e');
-      print('❌ Stack trace: $stackTrace');
+      AppLogger.speech.e('Error initializing Sherpa-ONNX: $e', error: e, stackTrace: stackTrace);
       _onError?.call(e.toString());
       return false;
     }
@@ -289,14 +289,14 @@ class SherpaRecognizer implements ISpeechRecognizer {
       
       // Only copy if needed
       if (filesToCopy.isEmpty) {
-        print('📋 All model files already exist');
+        AppLogger.speech.d('All model files already exist');
         return modelDir.path;
       }
       
       // Copy files in background (yield to UI thread periodically)
       for (int i = 0; i < filesToCopy.length; i++) {
         final fileName = filesToCopy[i];
-        print('📋 Copying model file ${i + 1}/${filesToCopy.length}: $fileName');
+        AppLogger.speech.d('Copying model file ${i + 1}/${filesToCopy.length}: $fileName');
         
         final targetFile = File(path.join(modelDir.path, fileName));
         final assetPath = 'assets/sherpa-onnx-models/sherpa-onnx-streaming-zipformer-en-2023-06-26/$fileName';
@@ -308,12 +308,12 @@ class SherpaRecognizer implements ISpeechRecognizer {
         // Yield to UI thread every file
         await Future.delayed(Duration.zero);
         
-        print('✅ Copied: $fileName');
+        AppLogger.speech.d('Copied: $fileName');
       }
       
       return modelDir.path;
     } catch (e) {
-      print('❌ Error copying assets: $e');
+      AppLogger.speech.e('Error copying assets: $e', error: e);
       return null;
     }
   }
@@ -333,14 +333,14 @@ class SherpaRecognizer implements ISpeechRecognizer {
     // Store expected word for context-aware matching
     _expectedWord = expectedWord?.toLowerCase();
     if (_recognizer == null) {
-      print('❌ Recognizer not initialized');
+      AppLogger.speech.e('Recognizer not initialized');
       onError?.call('Recognizer not initialized');
       return;
     }
     
     // Ensure we're not already listening
     if (_isListening) {
-      print('⚠️ Already listening, stopping first...');
+      AppLogger.speech.w('Already listening, stopping first...');
       // Cancel timer FIRST to prevent processing old results
       _resultCheckTimer?.cancel();
       _resultCheckTimer = null;
@@ -353,7 +353,7 @@ class SherpaRecognizer implements ISpeechRecognizer {
     // This ensures no audio data from the previous word can leak through
     // The old stream may still have buffered audio that hasn't been processed
     if (_stream != null) {
-      print('🗑️ Discarding old stream to prevent stale audio data');
+      AppLogger.speech.d('Discarding old stream to prevent stale audio data');
       // Note: We don't need to explicitly dispose streams in Sherpa-ONNX
       // Just create a new one and let the old one be garbage collected
       _stream = null;
@@ -361,7 +361,7 @@ class SherpaRecognizer implements ISpeechRecognizer {
     
     // Create a completely fresh stream for this word
     _stream = _recognizer!.createStream();
-    print('🔄 Created NEW recognition stream (sequence: $currentSequence)');
+    AppLogger.speech.d('Created NEW recognition stream (sequence: $currentSequence)');
     
     // Reset early recognition tracking
     _stablePartialCount = 0;
@@ -375,7 +375,7 @@ class SherpaRecognizer implements ISpeechRecognizer {
     try {
       // Check microphone permission
       if (!await _recorder.hasPermission()) {
-        print('❌ No microphone permission');
+        AppLogger.speech.e('No microphone permission');
         _onError?.call('Microphone permission denied');
         return;
       }
@@ -398,13 +398,13 @@ class SherpaRecognizer implements ISpeechRecognizer {
       );
       
       _isListening = true;
-      print('🎤 Sherpa-ONNX listening started (vocabulary restricted to ${_sightWords.length} words)');
+      AppLogger.speech.i('🎤 Listening started (vocabulary: ${_sightWords.length} words)');
       
       // Process audio stream
       _audioSubscription = stream.listen(
         _processAudioData,
         onError: (error) {
-          print('❌ Audio stream error: $error');
+          AppLogger.speech.e('Audio stream error: $error', error: error);
           _onError?.call(error.toString());
         },
         cancelOnError: false,
@@ -414,7 +414,7 @@ class SherpaRecognizer implements ISpeechRecognizer {
       _startResultChecking();
       
     } catch (e) {
-      print('❌ Error starting audio: $e');
+      AppLogger.speech.e('Error starting audio: $e', error: e);
       _isListening = false;
       _onError?.call(e.toString());
     }
@@ -439,7 +439,7 @@ class SherpaRecognizer implements ISpeechRecognizer {
       );
       
     } catch (e) {
-      print('❌ Error processing audio data: $e');
+      AppLogger.speech.e('Error processing audio data: $e', error: e);
     }
   }
   
@@ -476,7 +476,7 @@ class SherpaRecognizer implements ISpeechRecognizer {
     _resultCheckTimer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
       // Check if sequence has changed (new word displayed) - ignore old results
       if (timerSequence != _expectedWordSequence) {
-        print('⚠️ Ignoring stale result (sequence $timerSequence vs current $_expectedWordSequence)');
+        AppLogger.speech.d('Ignoring stale result (sequence $timerSequence vs current $_expectedWordSequence)');
         timer.cancel();
         return;
       }
@@ -498,29 +498,29 @@ class SherpaRecognizer implements ISpeechRecognizer {
           
           // Double-check sequence hasn't changed while processing
           if (timerSequence != _expectedWordSequence) {
-            print('⚠️ Ignoring stale endpoint result (sequence $timerSequence vs current $_expectedWordSequence)');
+            AppLogger.speech.d('Ignoring stale endpoint result (sequence $timerSequence vs current $_expectedWordSequence)');
             _recognizer!.reset(_stream!);
             return;
           }
           
           if (result.text.isNotEmpty || result.tokens.isNotEmpty) {
-            // COMPREHENSIVE DEBUG LOGGING
-            print('═══════════════════════════════════════════════════════');
-            print('📥 RECOGNITION RESULT (sequence: $timerSequence)');
-            print('   Expected word: "${_expectedWord ?? "none"}"');
-            print('   Top result text: "${result.text}"');
-            print('   Tokens (${result.tokens.length}): ${result.tokens}');
-            if (result.timestamps.isNotEmpty) {
-              print('   Timestamps: ${result.timestamps.map((t) => t.toStringAsFixed(2)).join(", ")}s');
+            // Detailed recognition logging
+            AppLogger.speech.t('═══════════════════════════════════════════════════════');
+            AppLogger.speech.d('📥 RECOGNITION RESULT (sequence: $timerSequence)');
+            AppLogger.speech.d('  Expected: "${_expectedWord ?? "none"}"');
+            AppLogger.speech.d('  Result: "${result.text}"');
+            AppLogger.speech.t('  Tokens (${result.tokens.length}): ${result.tokens}');
+            if (result.timestamps.isNotEmpty && AppLogger.enablePerformanceLogging) {
+              AppLogger.speech.t('  Timestamps: ${result.timestamps.map((t) => t.toStringAsFixed(2)).join(", ")}s');
             }
             
             // Analyze token combinations (BPE tokens might split words)
             final reconstructedWords = _reconstructWordsFromTokens(result.tokens);
-            print('   Reconstructed words from tokens: $reconstructedWords');
+            AppLogger.speech.t('  Reconstructed: $reconstructedWords');
             
             // Check all sight words found in recognition
             final foundSightWords = _findAllSightWordsInRecognition(result.text, result.tokens, reconstructedWords);
-            print('   Sight words detected: $foundSightWords');
+            AppLogger.speech.t('  Sight words detected: $foundSightWords');
             
             // With modified_beam_search, tokens represent the best path from 8 explored paths
             // Check if expected word appears in ANY form (token, text, or reconstructed)
@@ -533,7 +533,7 @@ class SherpaRecognizer implements ISpeechRecognizer {
               for (final word in reconstructedWords) {
                 final normalizedWord = word.toLowerCase();
                 if (expectedHomonyms.contains(normalizedWord)) {
-                  print('✅ Expected word "$_expectedWord" found in reconstructed words');
+                  AppLogger.speech.d('✅ Match: "$_expectedWord" found in reconstructed words');
                   _onResult?.call(SpeechRecognitionResult(
                     text: _expectedWord!,
                     alternatives: _buildAlternatives(foundSightWords, _expectedWord!),
@@ -544,7 +544,7 @@ class SherpaRecognizer implements ISpeechRecognizer {
                 
                 final corrected = _applyHomonymCorrection(normalizedWord);
                 if (corrected == _expectedWord) {
-                  print('✅ Expected word "$_expectedWord" found via homonym correction in reconstructed: "$word" -> "$_expectedWord"');
+                  AppLogger.speech.d('✅ Match via homonym: "$word" -> "$_expectedWord"');
                   _onResult?.call(SpeechRecognitionResult(
                     text: _expectedWord!,
                     alternatives: _buildAlternatives(foundSightWords, _expectedWord!),
@@ -557,7 +557,7 @@ class SherpaRecognizer implements ISpeechRecognizer {
               // Check individual tokens
               for (final token in normalizedTokens) {
                 if (expectedHomonyms.contains(token)) {
-                  print('✅ Expected word "$_expectedWord" found in token: "$token"');
+                  AppLogger.speech.d('✅ Match: "$_expectedWord" found in token: "$token"');
                   _onResult?.call(SpeechRecognitionResult(
                     text: _expectedWord!,
                     alternatives: _buildAlternatives(foundSightWords, _expectedWord!),
@@ -568,7 +568,7 @@ class SherpaRecognizer implements ISpeechRecognizer {
                 
                 final corrected = _applyHomonymCorrection(token);
                 if (corrected == _expectedWord) {
-                  print('✅ Expected word "$_expectedWord" found via homonym correction in token: "$token" -> "$_expectedWord"');
+                  AppLogger.speech.d('✅ Match via homonym in token: "$token" -> "$_expectedWord"');
                   _onResult?.call(SpeechRecognitionResult(
                     text: _expectedWord!,
                     alternatives: _buildAlternatives(foundSightWords, _expectedWord!),
@@ -583,17 +583,17 @@ class SherpaRecognizer implements ISpeechRecognizer {
             final matchedWord = _findMatchingSightWord(result.text, result.tokens, _expectedWord);
             
             if (matchedWord != null) {
-              print('✅ MATCHED: "$matchedWord"');
-              print('═══════════════════════════════════════════════════════');
+              AppLogger.speech.i('✅ MATCHED: "$matchedWord"');
+              AppLogger.speech.t('═══════════════════════════════════════════════════════');
               _onResult?.call(SpeechRecognitionResult(
                 text: matchedWord,
                 alternatives: _buildAlternatives(foundSightWords, matchedWord),
               ));
             } else {
-              print('❌ NO MATCH - Top result: "${result.text}"');
-              print('   Reconstructed: $reconstructedWords');
-              print('   Found sight words: $foundSightWords');
-              print('═══════════════════════════════════════════════════════');
+              AppLogger.speech.w('❌ NO MATCH - Result: "${result.text}"');
+              AppLogger.speech.t('  Reconstructed: $reconstructedWords');
+              AppLogger.speech.t('  Found sight words: $foundSightWords');
+              AppLogger.speech.t('═══════════════════════════════════════════════════════');
               // Still return the result so the game can handle it as incorrect
               _onResult?.call(SpeechRecognitionResult(
                 text: result.text,
@@ -618,7 +618,7 @@ class SherpaRecognizer implements ISpeechRecognizer {
             
             // Check for early recognition: if partial result matches expected word and is stable
             if (_expectedWord != null && _shouldReturnEarly(partialText, partialResult.tokens)) {
-              print('⚡ Early recognition: "$partialText" matches expected "$_expectedWord" (sequence: $timerSequence)');
+              AppLogger.speech.d('⚡ Early recognition: "$partialText" (sequence: $timerSequence)');
               final matchedWord = _findMatchingSightWord(partialText, partialResult.tokens, _expectedWord);
               if (matchedWord != null) {
                 _onResult?.call(SpeechRecognitionResult(
@@ -638,7 +638,7 @@ class SherpaRecognizer implements ISpeechRecognizer {
           }
         }
       } catch (e) {
-        print('❌ Error checking results: $e');
+        AppLogger.speech.e('Error checking results: $e', error: e);
       }
     });
   }
@@ -657,7 +657,7 @@ class SherpaRecognizer implements ISpeechRecognizer {
     // Split text into words for checking
     final words = cleaned.split(RegExp(r'\s+'));
     
-    print('🔍 Matching: text="$cleaned", tokens=$normalizedTokens, expected="$expectedWord"');
+    AppLogger.speech.t('🔍 Matching: text="$cleaned", tokens=$normalizedTokens, expected="$expectedWord"');
     
     // If we have an expected word, prioritize it and its homonyms VERY aggressively
     // CRITICAL: We must check the FULL recognized phrase for similarity BEFORE
@@ -672,13 +672,13 @@ class SherpaRecognizer implements ISpeechRecognizer {
       final fullTextLower = cleaned.toLowerCase();
       final correctedFullText = _applyHomonymCorrection(fullTextLower);
       if (correctedFullText == expectedWord) {
-        print('✅ Full text homonym correction matches expected: "$fullTextLower" -> "$expectedWord"');
+        AppLogger.speech.d('✅ Full text homonym: "$fullTextLower" -> "$expectedWord"');
         return expectedWord;
       }
       
       // Check if full text is similar-sounding to expected word
       if (_areWordsSimilar(fullTextLower, expectedWord)) {
-        print('✅ Full text similar to expected: "$fullTextLower" -> "$expectedWord"');
+        AppLogger.speech.d('✅ Full text similar: "$fullTextLower" -> "$expectedWord"');
         return expectedWord;
       }
       
@@ -689,11 +689,11 @@ class SherpaRecognizer implements ISpeechRecognizer {
       for (final reconWord in reconstructedWords) {
         final corrected = _applyHomonymCorrection(reconWord.toLowerCase());
         if (corrected == expectedWord || expectedHomonyms.contains(reconWord.toLowerCase())) {
-          print('✅ Reconstructed word matches expected: "$reconWord" -> "$expectedWord"');
+          AppLogger.speech.d('✅ Reconstructed match: "$reconWord" -> "$expectedWord"');
           return expectedWord;
         }
         if (_areWordsSimilar(reconWord.toLowerCase(), expectedWord)) {
-          print('✅ Reconstructed word similar to expected: "$reconWord" -> "$expectedWord"');
+          AppLogger.speech.d('✅ Reconstructed similar: "$reconWord" -> "$expectedWord"');
           return expectedWord;
         }
       }
@@ -709,11 +709,11 @@ class SherpaRecognizer implements ISpeechRecognizer {
       for (final recognizedWord in allRecognizedWords) {
         final corrected = _applyHomonymCorrection(recognizedWord.toLowerCase());
         if (corrected == expectedWord) {
-          print('✅ Homonym correction matches expected: "$recognizedWord" -> "$expectedWord"');
+          AppLogger.speech.d('✅ Homonym match: "$recognizedWord" -> "$expectedWord"');
           return expectedWord;
         }
         if (_areWordsSimilar(recognizedWord.toLowerCase(), expectedWord)) {
-          print('✅ Similar-sounding word detected, preferring expected: "$recognizedWord" -> "$expectedWord"');
+          AppLogger.speech.d('✅ Similar word: "$recognizedWord" -> "$expectedWord"');
           return expectedWord;
         }
       }
@@ -726,12 +726,12 @@ class SherpaRecognizer implements ISpeechRecognizer {
             // Check if the single letter is the last letter of the expected word
             // (e.g., "N" for "in", "M" for "am")
             if (token.toLowerCase() == expectedWord.toLowerCase()[expectedWord.length - 1]) {
-              print('✅ Single-letter token matches end of expected word: "$token" in "$expectedWord"');
+              AppLogger.speech.d('✅ Single letter end: "$token" in "$expectedWord"');
               return expectedWord;
             }
             // Also check if it's the first letter for very short words
             if (expectedWord.length == 2 && token.toLowerCase() == expectedWord.toLowerCase()[0]) {
-              print('✅ Single-letter token matches start of expected word: "$token" in "$expectedWord"');
+              AppLogger.speech.d('✅ Single letter start: "$token" in "$expectedWord"');
               return expectedWord;
             }
           }
@@ -742,7 +742,7 @@ class SherpaRecognizer implements ISpeechRecognizer {
       for (final token in normalizedTokens) {
         final normalizedToken = token.toLowerCase();
         if (expectedHomonyms.contains(normalizedToken)) {
-          print('✅ Expected word match in token: "$token" -> "$expectedWord"');
+          AppLogger.speech.d('✅ Token match: "$token" -> "$expectedWord"');
           return expectedWord;
         }
       }
@@ -750,14 +750,14 @@ class SherpaRecognizer implements ISpeechRecognizer {
       // Check text words for expected word or its homonyms (only if no other match found)
       for (final word in words) {
         if (expectedHomonyms.contains(word.toLowerCase())) {
-          print('✅ Expected word match in text: "$word" -> "$expectedWord"');
+          AppLogger.speech.d('✅ Text match: "$word" -> "$expectedWord"');
           return expectedWord;
         }
       }
       
       // If we have an expected word but no match found, return null
       // Don't match other sight words when we have an expected word
-      print('⚠️ Expected word "$expectedWord" not found in recognition');
+      AppLogger.speech.t('Expected word "$expectedWord" not found in recognition');
       return null;
     }
     
@@ -765,14 +765,14 @@ class SherpaRecognizer implements ISpeechRecognizer {
     for (final token in normalizedTokens) {
       // Direct match in tokens
       if (_sightWords.contains(token)) {
-        print('✅ Direct token match: "$token"');
+        AppLogger.speech.d('✅ Direct token: "$token"');
         return token;
       }
       
       // Check homonyms in tokens
       final corrected = _applyHomonymCorrection(token);
       if (corrected != null && _sightWords.contains(corrected)) {
-        print('🔄 Homonym correction in token: "$token" -> "$corrected"');
+        AppLogger.speech.d('🔄 Token homonym: "$token" -> "$corrected"');
         return corrected;
       }
     }
@@ -780,21 +780,21 @@ class SherpaRecognizer implements ISpeechRecognizer {
     // Fallback: check text (for cases where tokens might be incomplete)
     // Direct exact match
     if (_sightWords.contains(cleaned)) {
-      print('✅ Direct text match: "$cleaned"');
+      AppLogger.speech.d('✅ Direct text: "$cleaned"');
       return cleaned;
     }
     
     // Use words already split above
     for (final word in words) {
       if (_sightWords.contains(word)) {
-        print('✅ Word match in text: "$word"');
+        AppLogger.speech.d('✅ Word in text: "$word"');
         return word;
       }
       
       // Check homonyms in text
       final corrected = _applyHomonymCorrection(word);
       if (corrected != null && _sightWords.contains(corrected)) {
-        print('🔄 Homonym correction in text: "$word" -> "$corrected"');
+        AppLogger.speech.d('🔄 Text homonym: "$word" -> "$corrected"');
         return corrected;
       }
     }
@@ -804,7 +804,7 @@ class SherpaRecognizer implements ISpeechRecognizer {
     final combinedTokens = normalizedTokens.join('');
     final corrected = _applyHomonymCorrection(combinedTokens);
     if (corrected != null && _sightWords.contains(corrected)) {
-      print('🔄 Combined tokens correction: "$combinedTokens" -> "$corrected"');
+      AppLogger.speech.d('🔄 Combined tokens: "$combinedTokens" -> "$corrected"');
       return corrected;
     }
     
@@ -1012,7 +1012,7 @@ class SherpaRecognizer implements ISpeechRecognizer {
 
   @override
   Future<void> stopListening() async {
-    print('🛑 Stopping Sherpa-ONNX...');
+    AppLogger.speech.d('Stopping Sherpa-ONNX...');
     _shouldKeepListening = false;
     _isListening = false;
 
@@ -1030,19 +1030,19 @@ class SherpaRecognizer implements ISpeechRecognizer {
         await _recorder.stop();
       }
     } catch (e) {
-      print('⚠️ Error stopping recorder: $e');
+      AppLogger.speech.w('Error stopping recorder: $e', error: e);
     }
 
     // Clear the stream reference - we'll create a new one next time
     // This ensures no stale audio data can leak through
     _stream = null;
-    print('🗑️ Cleared stream reference');
+    AppLogger.speech.d('Cleared stream reference');
 
     // Clear partial result tracking
     _stablePartialCount = 0;
     _lastPartialText = null;
 
-    print('✅ Sherpa-ONNX stopped');
+    AppLogger.speech.i('Sherpa-ONNX stopped');
   }
 
   @override
@@ -1056,13 +1056,13 @@ class SherpaRecognizer implements ISpeechRecognizer {
     try {
       final hasPermission = await _recorder.hasPermission();
       if (!hasPermission) {
-        print('⚠️ Microphone permission not granted');
+        AppLogger.speech.w('Microphone permission not granted');
       } else {
-        print('✅ Microphone permission granted');
+        AppLogger.speech.i('Microphone permission granted');
       }
       return hasPermission;
     } catch (e) {
-      print('❌ Error checking microphone permission: $e');
+      AppLogger.speech.e('Error checking microphone permission: $e', error: e);
       return false;
     }
   }

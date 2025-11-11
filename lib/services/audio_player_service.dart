@@ -1,4 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
+import '../utils/app_logger.dart';
 
 /// Service for managing audio playback in the app
 class AudioPlayerService {
@@ -23,7 +24,7 @@ class AudioPlayerService {
         });
       }
     } catch (e) {
-      print('Error playing sound effect: $e');
+      AppLogger.audio.e('Error playing sound effect: $e', error: e);
       onComplete?.call();
     }
   }
@@ -61,7 +62,7 @@ class AudioPlayerService {
         });
       }
     } catch (e) {
-      print('Error playing word pronunciation for "$word": $e');
+      AppLogger.audio.e('Error playing word pronunciation for "$word": $e', error: e);
       onComplete?.call();
     }
   }

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:math' as math;
 import 'dart:ui' as ui;
 import 'dart:typed_data';
@@ -8,13 +9,13 @@ import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:thermion_flutter/thermion_flutter.dart';
 import '../controllers/game_controller.dart';
+import '../utils/app_logger.dart';
 import '../utils/glb_texture_replacer.dart';
 import '../services/director_tuner.dart';
 import 'camera_config.dart';
 import 'camera_director.dart';
 import 'lighting_director.dart';
 import 'render_quality_director.dart';
-import 'rug_loading_overlay.dart';
 
 /// Widget for displaying and animating the 3D character using Thermion
 /// Now supports dynamic sizing based on game state for more engaging presentation
@@ -446,7 +447,7 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
           (currentFogColorB - (_lastFogColorB ?? currentFogColorB)).abs() > 0.01;
       
       if (renderQualityChanged) {
-        print('🔍 Render quality change detected!');
+        AppLogger.rendering.t('🔍 Render quality change detected!');
         print('   Post: $_lastPostProcessingEnabled -> $currentPostProcessing');
         print('   Penumbra: $_lastShadowPenumbraScale -> $currentPenumbraScale');
         print('   MSAA: $_lastMsaaEnabled -> $currentMsaa');
@@ -501,37 +502,37 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
         }
         _lastShadowsEnabled = currentShadowsEnabled;
         _lastShadowType = currentShadowType;
-        print('🔄 Shadow settings updated: enabled=$currentShadowsEnabled, type=${LightingDirector.getShadowTypeEnum()}');
+        AppLogger.rendering.d('🔄 Shadow settings updated: enabled=$currentShadowsEnabled, type=${LightingDirector.getShadowTypeEnum()}');
       }
       
       // Update render quality settings
       if (renderQualityChanged) {
         await _viewer!.setPostProcessing(currentPostProcessing);
-        print('   ✅ Post-processing: $currentPostProcessing');
+        AppLogger.rendering.t('   ✅ Post-processing: $currentPostProcessing');
         
         await _viewer!.setSoftShadowOptions(currentPenumbraScale, currentPenumbraRatio);
-        print('   ✅ Soft shadows: penumbra=$currentPenumbraScale, ratio=$currentPenumbraRatio');
+        AppLogger.rendering.t('   ✅ Soft shadows: penumbra=$currentPenumbraScale, ratio=$currentPenumbraRatio');
         
         await _viewer!.setAntiAliasing(currentMsaa, currentFxaa, currentTaa);
-        print('   ✅ Anti-aliasing: MSAA=$currentMsaa, FXAA=$currentFxaa, TAA=$currentTaa');
+        AppLogger.rendering.t('   ✅ Anti-aliasing: MSAA=$currentMsaa, FXAA=$currentFxaa, TAA=$currentTaa');
         
         await _viewer!.setBloom(currentBloomEnabled, currentBloomStrength);
-        print('   ✅ Bloom: enabled=$currentBloomEnabled, strength=$currentBloomStrength');
+        AppLogger.rendering.t('   ✅ Bloom: enabled=$currentBloomEnabled, strength=$currentBloomStrength');
         if (currentBloomEnabled && !currentPostProcessing) {
-          print('   ⚠️  WARNING: Bloom requires post-processing to be enabled!');
+          AppLogger.rendering.w('   ⚠️  WARNING: Bloom requires post-processing to be enabled!');
         }
         if (currentBloomEnabled && currentBloomStrength < 0.3) {
-          print('   ℹ️  Note: Bloom strength <0.3 may be too subtle to see');
+          AppLogger.rendering.t('   ℹ️  Note: Bloom strength <0.3 may be too subtle to see');
         }
         if (currentBloomEnabled && currentBloomStrength > 3.0) {
-          print('   🔥 Extreme bloom: strength=${currentBloomStrength.toStringAsFixed(1)} (may be overwhelming!)');
+          AppLogger.rendering.w('   🔥 Extreme bloom: strength=${currentBloomStrength.toStringAsFixed(1)} (may be overwhelming!)');
         }
         
         await _viewer!.setToneMapping(RenderQualityDirector.getToneMapperEnum());
-        print('   ✅ Tone mapping: ${RenderQualityDirector.getToneMapperEnum()}');
+        AppLogger.rendering.t('   ✅ Tone mapping: ${RenderQualityDirector.getToneMapperEnum()}');
         
         await _viewer!.setViewFrustumCulling(currentFrustumCulling);
-        print('   ✅ Frustum culling: $currentFrustumCulling');
+        AppLogger.rendering.t('   ✅ Frustum culling: $currentFrustumCulling');
         
         // Fog (accessed via viewer.view)
         if (currentFogEnabled) {
@@ -549,14 +550,14 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
             linearColor: Vector3(currentFogColorR, currentFogColorG, currentFogColorB),
           );
           await _viewer!.view.setFogOptions(fogOptions);
-          print('   ✅ Fog: ENABLED');
-          print('      Distance: $currentFogDistance → ${currentFogCutoffDistance == 1000.0 ? "∞" : currentFogCutoffDistance}');
-          print('      Opacity: $currentFogMaximumOpacity, Density: $currentFogDensity');
-          print('      Height: $currentFogHeight, Falloff: $currentFogHeightFalloff');
+          AppLogger.rendering.t('   ✅ Fog: ENABLED');
+          AppLogger.rendering.t('      Distance: $currentFogDistance → ${currentFogCutoffDistance == 1000.0 ? "∞" : currentFogCutoffDistance}');
+          AppLogger.rendering.t('      Opacity: $currentFogMaximumOpacity, Density: $currentFogDensity');
+          AppLogger.rendering.t('      Height: $currentFogHeight, Falloff: $currentFogHeightFalloff');
         } else if (_lastFogEnabled == true && !currentFogEnabled) {
           // Only disable if it was previously enabled
           await _viewer!.view.setFogOptions(FogOptions(enabled: false));
-          print('   ✅ Fog: DISABLED');
+          AppLogger.rendering.t('   ✅ Fog: DISABLED');
         }
         
         _lastPostProcessingEnabled = currentPostProcessing;
@@ -583,7 +584,7 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
         _lastFogColorG = currentFogColorG;
         _lastFogColorB = currentFogColorB;
         
-        print('🔄 Render quality update complete!');
+        AppLogger.rendering.d('🔄 Render quality update complete!');
       }
       
       // CRITICAL BUG FIX: Only recreate lights that actually changed!
@@ -625,13 +626,13 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       _lastMasterBrightness = currentMasterBrightness;
       
       if (updatedLights.isNotEmpty) {
-        print('🔄 Lights updated: ${updatedLights.join(", ")}');
+        AppLogger.rendering.d('🔄 Lights updated: ${updatedLights.join(", ")}');
       }
       
       // Note: Thermion still accumulates lights over time, but this fix dramatically reduces it
       // by only adding lights that actually changed, not all three every time.
     } catch (e) {
-      print('⚠️ Error updating lighting: $e');
+      AppLogger.rendering.w('⚠️ Error updating lighting: $e');
     }
   }
   
@@ -692,7 +693,7 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
         print('📷 Camera exposure updated: f/${currentAperture.toStringAsFixed(1)}, 1/${(1.0/currentShutterSpeed).toStringAsFixed(0)}s, ISO ${currentISO.toStringAsFixed(0)}');
       }
     } catch (e) {
-      print('⚠️ Error updating camera exposure: $e');
+      AppLogger.rendering.w('⚠️ Error updating camera exposure: $e');
     }
   }
   
@@ -712,9 +713,9 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
         _asset!.setTransform(Matrix4.identity()..translate(0.0, characterY, 0.0));
       }
       
-      print('🔄 Floor updated: Rug Y=${LightingDirector.rugYOffset}, Character Y=${LightingDirector.rugYOffset + LightingDirector.characterHeightAboveRug}');
+      AppLogger.rendering.d('🔄 Floor updated: Rug Y=${LightingDirector.rugYOffset}, Character Y=${LightingDirector.rugYOffset + LightingDirector.characterHeightAboveRug}');
     } catch (e) {
-      print('⚠️ Could not update floor level: $e');
+      AppLogger.rendering.w('⚠️ Could not update floor level: $e');
     }
   }
   
@@ -875,13 +876,13 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
             
             _selectedCelebrationAnimation = candidate;
             animationName = candidate;
-            print('🎉 Random celebration animation selected: name="$animationName" (from ${_celebrationAnimations.length} options)');
+            AppLogger.animation.d('🎉 Random celebration animation selected: name="$animationName" (from ${_celebrationAnimations.length} options)');
           }
         } else {
           // Fallback until celebration animations are loaded
           animationName = "combined_Cheering (4)-rabbit";
           _selectedCelebrationAnimation = animationName;
-          print('⚠️ No celebration animations discovered, using fallback: "$animationName"');
+          AppLogger.rendering.w('⚠️ No celebration animations discovered, using fallback: "$animationName"');
         }
         break;
         
@@ -909,13 +910,13 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
             
             _selectedFailureAnimation = candidate;
             animationName = candidate;
-            print('🎲 Random failure animation selected: name="$animationName" (from ${_failureAnimations.length} options)');
+            AppLogger.animation.d('🎲 Random failure animation selected: name="$animationName" (from ${_failureAnimations.length} options)');
           }
         } else {
           // Fallback until failure animations are loaded
           animationName = "combined_Defeat-rabbit";
           _selectedFailureAnimation = animationName;
-          print('⚠️ No failure animations discovered, using fallback: "$animationName"');
+          AppLogger.rendering.w('⚠️ No failure animations discovered, using fallback: "$animationName"');
         }
         break;
         
@@ -954,13 +955,13 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
             
             _selectedCompletionAnimation = candidate;
             animationName = candidate;
-            print('🎊 Random completion animation selected: name="$animationName" (from ${_completionAnimations.length} options)');
+            AppLogger.animation.d('🎊 Random completion animation selected: name="$animationName" (from ${_completionAnimations.length} options)');
           }
         } else {
           // Fallback until completion animations are loaded
           animationName = "combined_Dancing-rabbit";
           _selectedCompletionAnimation = animationName;
-          print('⚠️ No completion animations discovered, using fallback: "$animationName"');
+          AppLogger.rendering.w('⚠️ No completion animations discovered, using fallback: "$animationName"');
         }
         break;
         
@@ -971,7 +972,7 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
     
     // Debug: Log animation name for troubleshooting
     if (animationName != _currentAnimation) {
-      print('🎬 Character animation: ${widget.gameState} → "$animationName"');
+      AppLogger.animation.d('🎬 Character animation: ${widget.gameState} → "$animationName"');
     }
     
     return animationName;
@@ -1005,7 +1006,7 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
           crossfade: 0.3, // Smooth transition
         );
       } else {
-        print('⚠️ Animation "$_currentAnimation" not found in GLB. Available: ${availableAnimations.take(10).join(", ")}...');
+        AppLogger.rendering.w('⚠️ Animation "$_currentAnimation" not found in GLB. Available: ${availableAnimations.take(10).join(", ")}...');
         // Fallback: Find appropriate animation based on game state
         String fallback = '';
         if (widget.gameState == GameState.celebrating) {
@@ -1046,12 +1047,12 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
         }
         
         if (fallback.isNotEmpty) {
-          print('🔄 Using fallback animation: "$fallback"');
+          AppLogger.rendering.d('🔄 Using fallback animation: "$fallback"');
           await _asset!.playGltfAnimationByName(fallback, loop: true, crossfade: 0.3);
         }
       }
     } catch (e) {
-        print('❌ Error playing animation "$_currentAnimation": $e');
+        AppLogger.rendering.e('❌ Error playing animation "$_currentAnimation": $e');
     }
   }
 
@@ -1124,7 +1125,7 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
             print('📷 Camera exposure set: f/${RenderQualityDirector.cameraAperture.toStringAsFixed(1)}, 1/${(1.0/RenderQualityDirector.cameraShutterSpeed).toStringAsFixed(0)}s, ISO ${RenderQualityDirector.cameraISO.toStringAsFixed(0)}');
           
           } catch (e) {
-            print('⚠️  Failed to load skybox: $e');
+            AppLogger.rendering.w('⚠️  Failed to load skybox: $e');
           }
         }
         
@@ -1132,10 +1133,10 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
         if (RenderQualityDirector.iblEnabled) {
           try {
             await viewer.loadIbl(RenderQualityDirector.iblPath, intensity: RenderQualityDirector.iblIntensity);
-            print('💡 IBL loaded: ${RenderQualityDirector.iblPath}');
+            AppLogger.lighting.d('💡 IBL loaded: ${RenderQualityDirector.iblPath}');
             print('   Intensity: ${RenderQualityDirector.iblIntensity}');
           } catch (e) {
-            print('⚠️  Failed to load IBL: $e');
+            AppLogger.rendering.w('⚠️  Failed to load IBL: $e');
           }
         }
         
@@ -1163,7 +1164,7 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
         _fillLight = LightingDirector.createFillLight();
         await viewer.addDirectLight(_fillLight!);
         print('');
-        print('💡 FILL LIGHT:');
+        AppLogger.lighting.d('💡 FILL LIGHT:');
         print('   Intensity: ${LightingDirector.fillIntensity}');
         print('   Color Temp: ${LightingDirector.fillColorTemp}K');
         
@@ -1180,12 +1181,12 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       }
       
       // Load the complete game scene (includes ground, backdrop, rug, books, plants)
-      print('🔄 About to load game scene...');
+      AppLogger.rendering.d('🔄 About to load game scene...');
       await _loadGameScene(viewer);
       print('✓ Game scene load complete');
       
       // Create personalized rug texture and apply it
-      print('🔄 About to load personalized rug...');
+      AppLogger.rendering.d('🔄 About to load personalized rug...');
       await _createPersonalizedRug(viewer);
       print('✓ Rug load attempt complete');
       
@@ -1231,7 +1232,7 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       
       setState(() {});
     } catch (e) {
-      print('❌ Error loading 3D model: $e');
+      AppLogger.rendering.e('❌ Error loading 3D model: $e');
     }
   }
 
@@ -1273,7 +1274,7 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       final availableAnimations = await _asset!.getGltfAnimationNames();
       
       // Debug: Print all available animations to see what we're working with
-      print('🔍 All available animations in GLB (${availableAnimations.length} total):');
+      AppLogger.rendering.t('🔍 All available animations in GLB (${availableAnimations.length} total):');
       for (final anim in availableAnimations) {
         print('   - $anim');
       }
@@ -1316,9 +1317,9 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       // Shuffle for variety
       _failureAnimations.shuffle();
       
-      print('🎬 Found ${_failureAnimations.length} failure animations: ${_failureAnimations.join(", ")}');
+        AppLogger.animation.i('🎬 Found ${_failureAnimations.length} failure animations: ${_failureAnimations.join(", ")}');
     } catch (e) {
-      print('⚠️ Error discovering failure animations: $e');
+      AppLogger.rendering.w('⚠️ Error discovering failure animations: $e');
       _failureAnimations = [];
     }
   }
@@ -1373,7 +1374,7 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       
       print('🎉 Found ${_celebrationAnimations.length} celebration animations: ${_celebrationAnimations.join(", ")}');
     } catch (e) {
-      print('⚠️ Error discovering celebration animations: $e');
+      AppLogger.rendering.w('⚠️ Error discovering celebration animations: $e');
       _celebrationAnimations = [];
     }
   }
@@ -1433,7 +1434,7 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       
       print('🎊 Found ${_completionAnimations.length} completion animations: ${_completionAnimations.join(", ")}');
     } catch (e) {
-      print('⚠️ Error discovering completion animations: $e');
+      AppLogger.rendering.w('⚠️ Error discovering completion animations: $e');
       _completionAnimations = [];
     }
   }
@@ -1464,9 +1465,9 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       _idleAnimations.shuffle();
       _currentIdleIndex = 0;
       
-      print('🎬 Found ${_idleAnimations.length} idle animations: ${_idleAnimations.join(", ")}');
+        AppLogger.animation.i('🎬 Found ${_idleAnimations.length} idle animations: ${_idleAnimations.join(", ")}');
     } catch (e) {
-      print('⚠️ Error discovering idle animations: $e');
+      AppLogger.rendering.w('⚠️ Error discovering idle animations: $e');
       _idleAnimations = [];
     }
   }
@@ -1571,7 +1572,7 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       
       // Provide recommendations
       if (heightDiff > 0.1 || centerDiff > 0.1 || eyeDiff > 0.1) {
-        print('💡 RECOMMENDATION: Update camera_director.dart with actual values:');
+        AppLogger.lighting.d('💡 RECOMMENDATION: Update camera_director.dart with actual values:');
         print('');
         print('   static const double characterHeight = ${actualHeight.toStringAsFixed(2)};');
         print('   static const double characterCenterHeight = ${actualCenter.toStringAsFixed(2)};');
@@ -1579,14 +1580,14 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
         print('');
         print('   This will improve camera framing accuracy!');
       } else {
-        print('✅ Current values are close enough! Camera framing should be accurate.');
+        AppLogger.rendering.i('✅ Current values are close enough! Camera framing should be accurate.');
       }
       
       print('════════════════════════════════════════════════════════');
       print('');
       
     } catch (e) {
-      print('⚠️ Could not validate character dimensions: $e');
+      AppLogger.rendering.w('⚠️ Could not validate character dimensions: $e');
       print('   Current camera config values are guesses and may need adjustment.');
     }
   }
@@ -1620,9 +1621,9 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
         addToScene: true,
       );
       
-      print('✅ Game scene loaded (includes ground, backdrop, rug, books, plants)');
+      AppLogger.rendering.i('✅ Game scene loaded (includes ground, backdrop, rug, books, plants)');
     } catch (e) {
-      print('⚠️ Game scene loading failed: $e');
+      AppLogger.rendering.w('⚠️ Game scene loading failed: $e');
       // Fallback to just ground plane if GameScene fails
       try {
         print('📐 Falling back to ground plane...');
@@ -1630,9 +1631,9 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
           'assets/models/GroundPlane.glb',
           addToScene: true,
         );
-        print('✅ Ground plane loaded (fallback)');
+        AppLogger.rendering.i('✅ Ground plane loaded (fallback)');
       } catch (e2) {
-        print('⚠️ Ground plane fallback also failed: $e2');
+        AppLogger.rendering.w('⚠️ Ground plane fallback also failed: $e2');
       }
     }
   }
@@ -1641,12 +1642,8 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
   /// Generates texture at runtime and modifies GLB before loading
   Future<void> _createPersonalizedRug(ThermionViewer viewer) async {
     print('═══════════════════════════════════════');
-    print('🎨 GENERATING PERSONALIZED RUG');
+    print('🎨 PERSONALIZED RUG SETUP');
     print('═══════════════════════════════════════');
-    
-    // Show loading overlay
-    OverlayEntry? loadingOverlay;
-    String? errorMessage;
     
     try {
       // Get name and font from game controller settings
@@ -1655,48 +1652,46 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       final fontFamily = controller.settings?.rugFontFamily ?? 'Quicksand';
       
       if (name.isEmpty) {
-        print('⚠️ No child name set, using default');
+        AppLogger.rendering.w('⚠️ No child name set, using default');
         return; // Skip rug generation if no name
-      }
-      
-      print('👤 Generating rug for: $name (font: $fontFamily)');
-      
-      // Generate texture PNG using dart:ui Canvas
-      final texturePng = await _generateRugTexture(name, fontFamily);
-      print('✅ Generated texture: ${texturePng.length} bytes');
-      
-      // Show loading overlay
-      if (mounted) {
-        loadingOverlay = OverlayEntry(
-          builder: (context) => RugLoadingOverlay(
-            childName: name,
-            errorMessage: errorMessage,
-          ),
-        );
-        Overlay.of(context).insert(loadingOverlay);
       }
       
       // Get cache directory for modified GLB
       final cacheDir = await getTemporaryDirectory();
-      final modifiedRugPath = '${cacheDir.path}/PersonalizedRug_$name.glb';
+      final modifiedRugPath = '${cacheDir.path}/PersonalizedRug_${name}_$fontFamily.glb';
+      final cacheFile = File(modifiedRugPath);
       
-      print('📝 Modifying GLB with personalized texture...');
-      
-      // Replace texture in template GLB
-      final success = await GlbTextureReplacer.replaceTexture(
-        templateAssetPath: 'assets/models/library/Rug.glb',
-        newTexturePng: texturePng,
-        outputPath: modifiedRugPath,
-      );
-      
-      if (!success) {
-        errorMessage = 'Failed to modify GLB template';
-        print('❌ $errorMessage');
-        throw Exception(errorMessage);
+      // Check if cached rug already exists - avoid unnecessary regeneration
+      if (await cacheFile.exists()) {
+        AppLogger.rendering.i('✅ Using cached rug: $name (font: $fontFamily)');
+        print('📦 Cached rug found: $modifiedRugPath');
+      } else {
+        AppLogger.rendering.i('🎨 Generating new rug: $name (font: $fontFamily)');
+        print('👤 Generating rug texture for: $name (font: $fontFamily)');
+        
+        // Generate texture PNG using dart:ui Canvas
+        final texturePng = await _generateRugTexture(name, fontFamily);
+        AppLogger.rendering.i('✅ Generated texture: ${texturePng.length} bytes');
+        
+        print('📝 Modifying GLB with personalized texture...');
+        
+        // Replace texture in template GLB
+        final success = await GlbTextureReplacer.replaceTexture(
+          templateAssetPath: 'assets/models/library/Rug.glb',
+          newTexturePng: texturePng,
+          outputPath: modifiedRugPath,
+        );
+        
+        if (!success) {
+          AppLogger.rendering.e('❌ Failed to modify GLB template');
+          throw Exception('Failed to modify GLB template');
+        }
+        
+        AppLogger.rendering.i('✅ Modified GLB created: $modifiedRugPath');
       }
       
-      print('✅ Modified GLB created: $modifiedRugPath');
-      print('🔄 Loading personalized rug into scene...');
+      print('📦 Loading rug from: $modifiedRugPath');
+      AppLogger.rendering.d('🔄 Loading personalized rug into scene...');
       
       // Load the modified GLB with personalized texture
       _rugAsset = await viewer.loadGltf(
@@ -1712,40 +1707,25 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       try {
         // Set the rug's vertical position to be nearly on the ground
         await _rugAsset!.setTransform(Matrix4.identity()..translate(0.0, LightingDirector.rugYOffset, 0.0));
-        print('✅ Rug position adjusted');
+        AppLogger.rendering.i('✅ Rug position adjusted');
       } catch (e) {
-        print('⚠️ Could not adjust rug position: $e');
+        AppLogger.rendering.w('⚠️ Could not adjust rug position: $e');
         print('   Rug may appear elevated - this is a known limitation');
       }
       
       print('═══════════════════════════════════════');
-      print('✅ PERSONALIZED RUG LOADED SUCCESSFULLY!');
+      AppLogger.rendering.i('✅ PERSONALIZED RUG LOADED SUCCESSFULLY!');
       print('   Name: "$name"');
       print('   GLB: $modifiedRugPath');
       print('   Position: (0, ${LightingDirector.rugYOffset}, 0)');
       print('═══════════════════════════════════════');
       
-      // Remove loading overlay on success
-      loadingOverlay?.remove();
-      loadingOverlay = null;
-      
     } catch (e, stackTrace) {
       print('═══════════════════════════════════════');
-      print('❌ RUG GENERATION/LOADING FAILED!');
+      AppLogger.rendering.e('❌ RUG GENERATION/LOADING FAILED!');
       print('Error: $e');
       print('Stack trace: $stackTrace');
       print('═══════════════════════════════════════');
-      
-      // Update overlay with error
-      if (loadingOverlay != null && mounted) {
-        errorMessage = e.toString();
-        loadingOverlay.markNeedsBuild();
-        
-        // Auto-dismiss after 3 seconds
-        Future.delayed(const Duration(seconds: 3), () {
-          loadingOverlay?.remove();
-        });
-      }
       
       // Rug is optional, so we continue even if it fails
     }
@@ -1754,7 +1734,7 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
   /// Generate rug texture PNG with personalized name
   /// Returns PNG bytes
   Future<Uint8List> _generateRugTexture(String name, String fontFamily) async {
-    const size = 1024;
+    const size = 512;  // Reduced from 1024 to minimize memory usage
     final recorder = ui.PictureRecorder();
     final canvas = Canvas(recorder);
     final paint = Paint();
@@ -1780,9 +1760,9 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
       );
     }
     
-    // Get font style based on selected font family
-    final welcomeStyle = _getRugFontStyle(fontFamily, 80, FontWeight.w600);
-    final nameStyle = _getRugFontStyle(fontFamily, 120, FontWeight.w700);
+    // Get font style based on selected font family (scaled for 512x512 canvas)
+    final welcomeStyle = _getRugFontStyle(fontFamily, 40, FontWeight.w600);
+    final nameStyle = _getRugFontStyle(fontFamily, 60, FontWeight.w700);
     
     // Draw "Welcome" (first line - warm greeting)
     final welcomeTextPainter = TextPainter(
@@ -1798,7 +1778,7 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
     welcomeTextPainter.layout();
     welcomeTextPainter.paint(
       canvas,
-      Offset(size / 2 - welcomeTextPainter.width / 2, size / 2 - 140),
+      Offset(size / 2 - welcomeTextPainter.width / 2, size / 2 - 70),  // Scaled for 512x512
     );
     
     // Draw child's name (second line - THE STAR!)
@@ -1815,7 +1795,7 @@ class _CharacterViewState extends State<CharacterView> with TickerProviderStateM
     nameTextPainter.layout();
     nameTextPainter.paint(
       canvas,
-      Offset(size / 2 - nameTextPainter.width / 2, size / 2 + 60),
+      Offset(size / 2 - nameTextPainter.width / 2, size / 2 + 30),  // Scaled for 512x512
     );
     
     // Convert to image
