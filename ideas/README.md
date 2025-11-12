@@ -34,6 +34,17 @@ This folder contains transformative feature concepts that could significantly di
    - Adapt to visual, auditory, kinesthetic learners
    - Impact: 5/5 | Feasibility: 4/5 | Timeline: 6-8 weeks
 
+### 📈 Growth & Strategy
+8. **[Social Proof & Viral Mechanics](08_social_proof_mechanics.md)** ⭐⭐⭐⭐⭐
+   - 30-day transformation challenge with shareable results
+   - Impact: 5/5 | Feasibility: 4/5 | Timeline: 4-6 weeks (Post-MVP)
+
+## Supporting Documents
+
+- **[Getting Started Guide](GETTING_STARTED.md)** - How to use this folder and which ideas to explore first
+- **[Decision Framework](DECISION_FRAMEWORK.md)** - Prioritization criteria and build vs. wait decisions
+- **[AR Brainstorm Prompt](AR_BRAINSTORM_PROMPT.md)** - Conversational prompt for exploring AR space with LLMs
+
 ## Implementation Roadmap
 
 ### Phase 1: Foundation (Months 1-2)
@@ -63,12 +74,21 @@ Each idea was evaluated on:
 4. **Alignment with Vision** - Fits family-centered learning philosophy?
 5. **Development Timeline** - Reasonable scope?
 
-## Next Steps
+## How to Use This Folder
 
-1. Review each idea document
-2. Prioritize based on current goals
-3. Create detailed implementation plans for selected ideas
-4. Begin prototype development
+1. **Start here**: Read [GETTING_STARTED.md](GETTING_STARTED.md) for an overview
+2. **Prioritize**: Use [DECISION_FRAMEWORK.md](DECISION_FRAMEWORK.md) to choose what to build
+3. **Explore AR**: Use [AR_BRAINSTORM_PROMPT.md](AR_BRAINSTORM_PROMPT.md) to ideate with LLMs
+4. **Deep dive**: Read individual idea documents (15-30 min each)
+5. **Validate**: Prototype and test with real users
+6. **Build**: Follow the implementation roadmaps in each document
+
+## Quick Decision Guide
+
+**Want to build NOW?** → Start with [AI Tutor Personality](05_ai_tutor_personality.md)  
+**Want maximum wow?** → Start with [AR Word Hunt](03_ar_word_hunt.md)  
+**Want fast wins?** → Start with [Personalized Stories](01_personalized_stories.md)  
+**Want viral growth?** → Plan for [Social Proof Mechanics](08_social_proof_mechanics.md) (post-MVP)
 
 ---
 
