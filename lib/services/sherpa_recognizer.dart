@@ -8,6 +8,7 @@ import 'package:record/record.dart';
 import 'package:sherpa_onnx/sherpa_onnx.dart' as sherpa;
 import 'speech_recognizer_interface.dart';
 import '../utils/app_logger.dart';
+import 'sight_word_homophones.dart';
 
 /// Speech recognition implementation using Sherpa-ONNX with vocabulary restriction
 /// Works on both iOS and Android with real-time streaming ASR
@@ -51,57 +52,42 @@ class SherpaRecognizer implements ISpeechRecognizer {
     'white', 'brown'
   ];
   
-  // Enhanced homonym map with phoneme-based similar-sounding word corrections
-  // Focus on actual homonyms and common ASR confusions for similar-sounding words
-  static const Map<String, String> _homonymMap = {
-    // True homonyms (words that sound the same)
-    'two': 'to',
-    'too': 'to',
-    'sea': 'see',
-    'c': 'see',       // Single letter 'c' when saying "see" - very common
-    'bee': 'be',
-    'four': 'for',
-    'read': 'red',
-    'blew': 'blue',
-    'their': 'there',
-    'they\'re': 'there',
-    'eye': 'i',
-    'aye': 'i',       // "aye" often detected when saying "i"
-    'i\'ve': 'i',      // "I've" detected as just "i"
-    'grey': 'gray',
-    
-    // Common ASR misrecognitions for short words
-    'm': 'am',        // Single 'm' when saying "am" - very common
-    'em': 'am',       // Another common misdetection for "am"
-    'im': 'am',       // "I'm" detected as just "im"
-    'i\'m': 'am',     // "I'm" detected
-    
-    // Similar-sounding word confusions (phoneme-based)
-    'dead': 'did',    // d-ED vs d-ID sound similar
-    'dad': 'did',     // d-AD vs d-ID
-    'and': 'in',      // a-ND vs i-N (common confusion)
-    'end': 'in',      // e-ND vs i-N
-    'an': 'in',       // a-N vs i-N
-    'n': 'in',        // Single 'n' when saying "in" - very common partial detection
-    'en': 'in',       // e-N vs i-N
-    'it\'s': 'it',    // "it's" detected as "it"
-    'its': 'it',      // "its" detected as "it"
-    'had': 'has',     // h-AD vs h-AS
-    'has': 'had',     // Sometimes reversed
-    'him': 'in',      // h-IM vs i-N (similar endings)
-    'then': 'when',   // th-EN vs wh-EN
-    'than': 'then',   // th-AN vs th-EN
-    'were': 'where',  // w-ERE vs wh-ERE (if "where" was in vocab)
-    'what': 'that',   // wh-AT vs th-AT
-    'luck': 'look',   // l-UH-k vs l-UH-k (very similar)
-    'lock': 'look',   // l-AH-k vs l-UH-k
-    'ah': 'of',       // AH vs UH-v (short vowel confusion)
-    'off': 'of',      // AW-f vs UH-v
-    'have': 'of',     // h-AE-v vs UH-v (sometimes confused)
-  };
+  // Use comprehensive CMUdict-generated homophone map (3500+ mappings)
+  // Generated from phonetic dictionary with exact and near-homophones
+  // This provides much more robust homophone handling than the manual map
+  static const Map<String, String> _homonymMap = sightWordHomophoneMap;
 
   // Cache for model directory to avoid re-copying on subsequent initializations
   static String? _cachedModelDir;
+  
+  /// Benchmark homophone map performance (optional - for testing only)
+  /// Run this once to verify performance on your device
+  static void benchmarkHomophoneMap() {
+    final stopwatch = Stopwatch()..start();
+    
+    // Test 10,000 lookups with common words
+    const testWords = ['work', 'wire', 'sea', 'sea', 'aye', 'four', 'blew', 'their', 'nonexistent', 'xyz'];
+    for (int i = 0; i < 10000; i++) {
+      for (final word in testWords) {
+        _homonymMap[word.toLowerCase()];
+      }
+    }
+    
+    stopwatch.stop();
+    final totalMicroseconds = stopwatch.elapsedMicroseconds;
+    final lookupsPerformed = 10000 * testWords.length;
+    final avgPerLookup = totalMicroseconds / lookupsPerformed;
+    
+    AppLogger.speech.i('┌─────────────────────────────────────────────────────────');
+    AppLogger.speech.i('│ HOMOPHONE MAP BENCHMARK');
+    AppLogger.speech.i('├─────────────────────────────────────────────────────────');
+    AppLogger.speech.i('│ Total lookups:        ${lookupsPerformed.toString().padLeft(10)}');
+    AppLogger.speech.i('│ Total time:           ${totalMicroseconds.toString().padLeft(10)} μs');
+    AppLogger.speech.i('│ Avg per lookup:       ${avgPerLookup.toStringAsFixed(3).padLeft(10)} μs');
+    AppLogger.speech.i('│ Map size:             ${_homonymMap.length.toString().padLeft(10)} entries');
+    AppLogger.speech.i('└─────────────────────────────────────────────────────────');
+    AppLogger.speech.i('Expected: <1 μs per lookup on modern mobile devices');
+  }
   
   @override
   Future<bool> initialize() async {
@@ -398,14 +384,22 @@ class SherpaRecognizer implements ISpeechRecognizer {
       );
       
       _isListening = true;
+      _audioChunksReceived = 0;
+      _lastAudioReceived = null;
       AppLogger.speech.i('🎤 Listening started (vocabulary: ${_sightWords.length} words)');
       
       // Process audio stream
       _audioSubscription = stream.listen(
         _processAudioData,
         onError: (error) {
-          AppLogger.speech.e('Audio stream error: $error', error: error);
+          AppLogger.speech.e('⚠️ Audio stream error: $error', error: error);
           _onError?.call(error.toString());
+        },
+        onDone: () {
+          AppLogger.speech.w('⚠️ Audio stream ended unexpectedly (chunks received: $_audioChunksReceived)');
+          if (_shouldKeepListening) {
+            AppLogger.speech.w('Stream ended while still supposed to be listening - possible stall!');
+          }
         },
         cancelOnError: false,
       );
@@ -420,9 +414,32 @@ class SherpaRecognizer implements ISpeechRecognizer {
     }
   }
   
+  // Track when we last received audio (for debugging stalls)
+  DateTime? _lastAudioReceived;
+  int _audioChunksReceived = 0;
+  
   void _processAudioData(Uint8List audioData) {
     if (_stream == null || _recognizer == null || !_shouldKeepListening) {
+      AppLogger.speech.t('Ignoring audio: stream=${_stream != null}, recognizer=${_recognizer != null}, shouldListen=$_shouldKeepListening');
       return;
+    }
+    
+    // Track audio reception
+    final now = DateTime.now();
+    _audioChunksReceived++;
+    
+    // Log if we haven't received audio in a while (potential stall detection)
+    if (_lastAudioReceived != null) {
+      final gap = now.difference(_lastAudioReceived!);
+      if (gap.inSeconds >= 5) {
+        AppLogger.speech.w('⚠️ Audio gap detected: ${gap.inSeconds}s since last chunk (total chunks: $_audioChunksReceived)');
+      }
+    }
+    _lastAudioReceived = now;
+    
+    // Log periodically to confirm audio is flowing
+    if (_audioChunksReceived % 50 == 0) {
+      AppLogger.speech.t('🎤 Audio flowing: received $_audioChunksReceived chunks (${audioData.length} bytes)');
     }
     
     try {
@@ -439,7 +456,7 @@ class SherpaRecognizer implements ISpeechRecognizer {
       );
       
     } catch (e) {
-      AppLogger.speech.e('Error processing audio data: $e', error: e);
+      AppLogger.speech.e('Error processing audio data (chunk $_audioChunksReceived): $e', error: e);
     }
   }
   
@@ -718,25 +735,8 @@ class SherpaRecognizer implements ISpeechRecognizer {
         }
       }
       
-      // Special handling for short expected words (2-3 letters) with single-letter tokens
-      // This handles cases like "N" when saying "in", "M" when saying "am", etc.
-      if (expectedWord.length <= 3 && expectedWord.length >= 2) {
-        for (final token in normalizedTokens) {
-          if (token.length == 1) {
-            // Check if the single letter is the last letter of the expected word
-            // (e.g., "N" for "in", "M" for "am")
-            if (token.toLowerCase() == expectedWord.toLowerCase()[expectedWord.length - 1]) {
-              AppLogger.speech.d('✅ Single letter end: "$token" in "$expectedWord"');
-              return expectedWord;
-            }
-            // Also check if it's the first letter for very short words
-            if (expectedWord.length == 2 && token.toLowerCase() == expectedWord.toLowerCase()[0]) {
-              AppLogger.speech.d('✅ Single letter start: "$token" in "$expectedWord"');
-              return expectedWord;
-            }
-          }
-        }
-      }
+      // Note: Partial matching logic removed as comprehensive homophone map now handles
+      // single-letter matches (e.g., 'm' -> 'am', 'c' -> 'see') through CMUdict-generated mappings
       
       // Check tokens for expected word or its homonyms (only if no other match found)
       for (final token in normalizedTokens) {
