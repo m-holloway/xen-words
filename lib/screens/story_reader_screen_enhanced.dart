@@ -147,10 +147,10 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     
     setState(() {
       _isListening = true;
-      _currentTargetWord = null;  // No specific target, tracking sequence
+      _currentTargetWord = 'tracking';  // Indicate we're in tracking mode
     });
     
-    AppLogger.speech.d('📖 Tracking parent narration (${_narrationWords.length} words)');
+    AppLogger.speech.d('📖 Continuous tracking: ${_narrationWords.length} words total');
     
     final controller = context.read<GameController>();
     
@@ -158,17 +158,49 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       await controller.speechRecognizer.startListening(
         onResult: (result) => _handleNarrationResult(result),
         onPartial: (partial) {
-          // Optionally show partial recognition feedback
-          AppLogger.speech.v('Narration partial: ${partial.partial}');
+          // CRITICAL: Use partial results for real-time tracking!
+          _handleNarrationPartial(partial.partial);
         },
         onError: (error) {
           AppLogger.speech.e('Narration recognition error: $error');
         },
-        expectedWord: null,  // No specific word expected
+        expectedWord: null,  // No specific word expected - open listening
       );
-      AppLogger.speech.success('📖 Narration tracking active');
+      AppLogger.speech.success('📖 Real-time tracking ACTIVE');
     } catch (e) {
       AppLogger.speech.e('Failed to start narration tracking', error: e);
+    }
+  }
+  
+  void _handleNarrationPartial(String partialText) {
+    if (!_isListening || partialText.isEmpty) {
+      return;
+    }
+    
+    final spokenWords = partialText.toLowerCase()
+        .replaceAll(RegExp(r'[^\w\s]'), ' ')
+        .split(RegExp(r'\s+'))
+        .where((w) => w.isNotEmpty)
+        .toList();
+    
+    if (spokenWords.isEmpty) return;
+    
+    AppLogger.speech.v('📖 Partial: ${spokenWords.join(" ")}');
+    
+    // Try to find where parent is in the text based on partial results
+    // Look for the BEST match in upcoming text
+    final newPosition = _findBestPositionFromPartial(spokenWords);
+    
+    if (newPosition != null && newPosition > _currentWordIndex) {
+      setState(() {
+        _currentWordIndex = newPosition;
+      });
+      
+      AppLogger.speech.v('📖 → Position ${_currentWordIndex + 1}/${_narrationWords.length}');
+      
+      // Check for target words in the partial
+      final currentBeat = widget.story.beats[_currentBeatIndex];
+      _checkForValidatedTargetWords(currentBeat, spokenWords);
     }
   }
   
@@ -202,29 +234,68 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     }
   }
   
-  int? _findBestMatchInSequence(List<String> spokenWords) {
-    // Look for the best match in the next few words of narration
-    // This is forgiving - allows skips, extras, and background noise
+  int? _findBestPositionFromPartial(List<String> spokenWords) {
+    // FLEXIBLE SLIDING WINDOW APPROACH:
+    // Find the best match for the spoken phrase anywhere in upcoming text
+    // This allows skipping ahead if parent skips words or we miss them
     
-    final lookAhead = 10;  // Check next 10 words max
-    final endIndex = (_currentWordIndex + lookAhead).clamp(0, _narrationWords.length);
+    if (spokenWords.isEmpty) return null;
     
-    // Find the furthest matching word in sequence
-    int? bestMatch;
+    // Look ahead more aggressively - parent might be several words ahead
+    final lookAhead = 20;
+    final startIndex = _currentWordIndex;
+    final endIndex = (startIndex + lookAhead).clamp(0, _narrationWords.length);
     
-    for (int i = _currentWordIndex; i < endIndex; i++) {
-      final narrationWord = _narrationWords[i];
+    int? bestPosition;
+    int bestScore = 0;
+    
+    // Try to find the best match by looking for sequences of matching words
+    for (int i = startIndex; i < endIndex; i++) {
+      int score = 0;
+      int matchedWords = 0;
       
-      // Check if any spoken word matches this narration word
-      for (final spokenWord in spokenWords) {
+      // Check if we can match a sequence starting at position i
+      for (int j = 0; j < spokenWords.length && (i + j) < _narrationWords.length; j++) {
+        final spokenWord = spokenWords[j];
+        final narrationWord = _narrationWords[i + j];
+        
         if (_wordsMatch(spokenWord, narrationWord)) {
-          bestMatch = i;
-          // Don't break - keep looking for further matches
+          matchedWords++;
+          // Give more weight to consecutive matches
+          score += (j == 0) ? 3 : 2;  // First word match is worth more
+        } else if (matchedWords > 0) {
+          // Allow one skip/mismatch but reduce score
+          score -= 1;
         }
+      }
+      
+      // Also check for any individual strong matches at this position
+      for (final spokenWord in spokenWords) {
+        for (int k = 0; k < 3 && (i + k) < _narrationWords.length; k++) {
+          if (_wordsMatch(spokenWord, _narrationWords[i + k])) {
+            score += 1;
+            break;
+          }
+        }
+      }
+      
+      if (score > bestScore) {
+        bestScore = score;
+        bestPosition = i;
       }
     }
     
-    return bestMatch;
+    // Only return position if we have reasonable confidence (score > 2)
+    if (bestScore >= 2 && bestPosition != null) {
+      return bestPosition;
+    }
+    
+    return null;
+  }
+  
+  int? _findBestMatchInSequence(List<String> spokenWords) {
+    // Fallback method for final results (less aggressive than partial)
+    return _findBestPositionFromPartial(spokenWords);
   }
   
   bool _wordsMatch(String spoken, String expected) {
@@ -659,11 +730,14 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
               child: Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: Colors.deepPurple.withOpacity(0.95),
+                  color: _currentTargetWord == 'tracking' 
+                      ? Colors.blue.withOpacity(0.95)
+                      : Colors.deepPurple.withOpacity(0.95),
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.deepPurple.withOpacity(0.3),
+                      color: (_currentTargetWord == 'tracking' ? Colors.blue : Colors.deepPurple)
+                          .withOpacity(0.3),
                       blurRadius: 12,
                       offset: const Offset(0, 4),
                     ),
@@ -679,7 +753,9 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
                         const SizedBox(width: 8),
                         Flexible(
                           child: Text(
-                            'Listening for "$_currentTargetWord"...',
+                            _currentTargetWord == 'tracking'
+                                ? '📖 Tracking parent reading... (${_currentWordIndex + 1}/${_narrationWords.length})'
+                                : 'Listening for "$_currentTargetWord"...',
                             style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
                             textAlign: TextAlign.center,
                           ),
@@ -693,55 +769,59 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
                         color: Colors.white.withOpacity(0.1),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: const Text(
-                        '👂 Speak the word now!',
-                        style: TextStyle(
+                      child: Text(
+                        _currentTargetWord == 'tracking'
+                            ? '📚 Reading along with you!'
+                            : '👂 Speak the word now!',
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
-                    const SizedBox(height: 12),
-                    const Text(
-                      'Manual override (if needed):',
-                      style: TextStyle(color: Colors.white70, fontSize: 11),
-                    ),
-                    const SizedBox(height: 6),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TextButton.icon(
-                          onPressed: () {
-                            if (_currentTargetWord != null) {
-                              _onWordRecognized(_currentTargetWord!, correct: true);
-                            }
-                          },
-                          icon: const Icon(Icons.check_circle, size: 16),
-                          label: const Text('Mark Correct'),
-                          style: TextButton.styleFrom(
-                            backgroundColor: Colors.green.withOpacity(0.2),
-                            foregroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    if (_currentTargetWord != 'tracking') ...[
+                      const SizedBox(height: 12),
+                      const Text(
+                        'Manual override (if needed):',
+                        style: TextStyle(color: Colors.white70, fontSize: 11),
+                      ),
+                      const SizedBox(height: 6),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextButton.icon(
+                            onPressed: () {
+                              if (_currentTargetWord != null && _currentTargetWord != 'tracking') {
+                                _onWordRecognized(_currentTargetWord!, correct: true);
+                              }
+                            },
+                            icon: const Icon(Icons.check_circle, size: 16),
+                            label: const Text('Mark Correct'),
+                            style: TextButton.styleFrom(
+                              backgroundColor: Colors.green.withOpacity(0.2),
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                            ),
                           ),
-                        ),
-                        const SizedBox(width: 8),
-                        TextButton.icon(
-                          onPressed: () {
-                            if (_currentTargetWord != null) {
-                              _onWordRecognized(_currentTargetWord!, correct: false, heard: 'manual skip');
-                            }
-                          },
-                          icon: const Icon(Icons.skip_next, size: 16),
-                          label: const Text('Skip'),
-                          style: TextButton.styleFrom(
-                            backgroundColor: Colors.orange.withOpacity(0.2),
-                            foregroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          const SizedBox(width: 8),
+                          TextButton.icon(
+                            onPressed: () {
+                              if (_currentTargetWord != null && _currentTargetWord != 'tracking') {
+                                _onWordRecognized(_currentTargetWord!, correct: false, heard: 'manual skip');
+                              }
+                            },
+                            icon: const Icon(Icons.skip_next, size: 16),
+                            label: const Text('Skip'),
+                            style: TextButton.styleFrom(
+                              backgroundColor: Colors.orange.withOpacity(0.2),
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
+                        ],
+                      ),
+                    ],
                   ],
                 ),
               ),
