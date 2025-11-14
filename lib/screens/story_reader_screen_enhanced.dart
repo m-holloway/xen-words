@@ -1,3 +1,4 @@
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/story_models.dart';
@@ -249,62 +250,81 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   }
   
   int? _findBestPositionFromPartial(List<String> spokenWords) {
-    // FLEXIBLE SLIDING WINDOW APPROACH:
-    // Find the best match for the spoken phrase anywhere in upcoming text
-    // This allows skipping ahead if parent skips words or we miss them
+    // SEQUENTIAL PHRASE MATCHING - Require consecutive words, small lookahead
+    // This prevents jumping from background noise matches
     
     if (spokenWords.isEmpty) return null;
     
-    // Look ahead more aggressively - parent might be several words ahead
-    final lookAhead = 20;
+    // STRICT CONSTRAINT: Only look ahead 3-5 words
+    // This prevents matching random words from background conversation
+    final lookAhead = 5;
     final startIndex = _currentWordIndex;
     final endIndex = (startIndex + lookAhead).clamp(0, _narrationWords.length);
     
+    AppLogger.speech.v('🔍 Analyzing: "${spokenWords.join(" ")}" (${spokenWords.length} words)');
+    AppLogger.speech.v('🔍 Looking in window: $_currentWordIndex → $endIndex');
+    
     int? bestPosition;
     int bestScore = 0;
+    int bestConsecutiveMatches = 0;
     
-    // Try to find the best match by looking for sequences of matching words
+    // Try each position in the small lookahead window
     for (int i = startIndex; i < endIndex; i++) {
       int score = 0;
-      int matchedWords = 0;
+      int consecutiveMatches = 0;
+      int longestStreak = 0;
+      int currentStreak = 0;
       
-      // Check if we can match a sequence starting at position i
-      for (int j = 0; j < spokenWords.length && (i + j) < _narrationWords.length; j++) {
+      // Try to match sequences starting at position i
+      final maxCheck = math.min(spokenWords.length, _narrationWords.length - i);
+      
+      for (int j = 0; j < maxCheck; j++) {
         final spokenWord = spokenWords[j];
         final narrationWord = _narrationWords[i + j];
         
         if (_wordsMatch(spokenWord, narrationWord)) {
-          matchedWords++;
-          // Give more weight to consecutive matches
-          score += (j == 0) ? 3 : 2;  // First word match is worth more
-        } else if (matchedWords > 0) {
-          // Allow one skip/mismatch but reduce score
-          score -= 1;
-        }
-      }
-      
-      // Also check for any individual strong matches at this position
-      for (final spokenWord in spokenWords) {
-        for (int k = 0; k < 3 && (i + k) < _narrationWords.length; k++) {
-          if (_wordsMatch(spokenWord, _narrationWords[i + k])) {
-            score += 1;
-            break;
+          // Match found!
+          currentStreak++;
+          consecutiveMatches++;
+          longestStreak = math.max(longestStreak, currentStreak);
+          
+          // Weight consecutive matches heavily (this is the key!)
+          score += currentStreak * 3;  // 3, 6, 9, 12... for consecutive matches
+        } else {
+          // Break in sequence - reset streak but allow ONE skip
+          if (currentStreak > 0 && j < maxCheck - 1) {
+            // Allow one word skip, but penalize
+            score -= 2;
           }
+          currentStreak = 0;
         }
       }
       
-      if (score > bestScore) {
-        bestScore = score;
-        bestPosition = i;
+      AppLogger.speech.v('   Pos $i: score=$score, consecutive=$longestStreak, matches=$consecutiveMatches');
+      
+      // CRITICAL: Require at least 2 consecutive words to be considered
+      if (longestStreak >= 2) {
+        if (score > bestScore || 
+            (score == bestScore && longestStreak > bestConsecutiveMatches)) {
+          bestScore = score;
+          bestPosition = i;
+          bestConsecutiveMatches = longestStreak;
+        }
       }
     }
     
-    // Only return position if we have reasonable confidence (score > 2)
-    if (bestScore >= 2 && bestPosition != null) {
-      return bestPosition;
-    }
+    // CONFIDENCE THRESHOLD: Need strong consecutive matches
+    // Require: At least 2 consecutive words AND good score
+    final minConsecutive = 2;
+    final minScore = 6;  // At least 2 consecutive matches (3+3 or better)
     
-    return null;
+    if (bestConsecutiveMatches >= minConsecutive && bestScore >= minScore) {
+      AppLogger.speech.i('✅ ADVANCE: pos=$bestPosition, score=$bestScore, consecutive=$bestConsecutiveMatches');
+      return bestPosition;
+    } else {
+      AppLogger.speech.v('⏸️ HOLD: score=$bestScore, consecutive=$bestConsecutiveMatches (need >=$minScore score, >=$minConsecutive consecutive)');
+      return null;  // Don't advance - not confident enough
+    }
   }
   
   int? _findBestMatchInSequence(List<String> spokenWords) {
