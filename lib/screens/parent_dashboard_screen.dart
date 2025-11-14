@@ -9,7 +9,7 @@ import '../widgets/simple_progress_hero.dart';
 import '../widgets/progress_timeline_widget.dart';
 import '../widgets/action_words_widget.dart';
 import '../widgets/word_detail_dialog.dart';
-import 'story_reader_screen.dart';
+import 'story_reader_screen_enhanced.dart';
 
 /// Parent dashboard showing child's learning progress
 /// Protected by parental gate in game_screen.dart
@@ -452,7 +452,7 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
     
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => StoryReaderScreen(
+        builder: (context) => StoryReaderScreenEnhanced(
           story: sampleStory,
           profileId: _activeProfile?.id ?? 'guest',
           childName: childName,
