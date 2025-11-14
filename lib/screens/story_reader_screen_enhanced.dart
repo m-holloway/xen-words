@@ -954,107 +954,198 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   }
   
   Widget _buildHighlightedText(String text, List<String> targetWords) {
-    // Build text with SUPER PROMINENT word-by-word highlighting for kids
+    // Build text with SLIDING WINDOW - only show relevant words, not overwhelming
     
     AppLogger.speech.v('🎨 Building highlighted text: ${_narrationWords.length} words, current=$_currentWordIndex');
-    
-    // Split text into words, show them in a wrapped layout with big boxes
-    final words = <Widget>[];
-    int wordIndex = 0;
     
     // Parse into clean words
     final segments = text.split(RegExp(r'\s+'));
     
+    // SLIDING WINDOW: Show only ~12 words at a time
+    // - Previous 4 words (with checkmarks)
+    // - Current word (BIG)
+    // - Next 7 words (preview)
+    
+    final beforeCurrent = 4;
+    final afterCurrent = 7;
+    
+    final startIndex = (_currentWordIndex - beforeCurrent).clamp(0, segments.length);
+    final endIndex = (_currentWordIndex + afterCurrent + 1).clamp(0, segments.length);
+    
+    final words = <Widget>[];
+    
+    // Check if we're at the end
+    final isComplete = _currentWordIndex >= segments.length - 1;
+    
+    if (isComplete) {
+      // Show completion message
+      return Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: Colors.green.shade100,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: Colors.green.shade600, width: 3),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.check_circle, color: Colors.green.shade700, size: 32),
+                const SizedBox(width: 12),
+                Text(
+                  'Reading complete! ✨',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green.shade900,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 16),
+          ElevatedButton(
+            onPressed: _nextBeat,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.green.shade600,
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+            child: const Text(
+              'Continue →',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ],
+      );
+    }
+    
+    int wordIndex = 0;
+    
     for (final segment in segments) {
       if (segment.trim().isEmpty) continue;
+      
+      // Only show words in the sliding window
+      if (wordIndex < startIndex || wordIndex >= endIndex) {
+        wordIndex++;
+        continue;
+      }
       
       // Remove trailing punctuation for matching
       final cleanWord = segment.toLowerCase().replaceAll(RegExp(r'[^\w]'), '');
       final isTargetWord = targetWords.any((t) => t.toLowerCase() == cleanWord);
       
       final isCurrent = wordIndex == _currentWordIndex;
-      final isUnread = wordIndex > _currentWordIndex;
+      final isRead = wordIndex < _currentWordIndex;
       
       Widget wordWidget;
       
       if (isTargetWord) {
-        // Target words - special treatment
+        // Target words - special amber/green boxes
         final isValidated = _validatedWords[cleanWord] ?? false;
-        wordWidget = Container(
-          margin: const EdgeInsets.all(4),
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-          decoration: BoxDecoration(
-            color: isValidated ? Colors.green.shade100 : Colors.amber.shade100,
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(
-              color: isValidated ? Colors.green.shade600 : Colors.amber.shade600,
-              width: 3,
+        wordWidget = GestureDetector(
+          onTap: () => _jumpToWord(wordIndex),
+          child: Container(
+            margin: const EdgeInsets.all(4),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            decoration: BoxDecoration(
+              color: isValidated ? Colors.green.shade100 : Colors.amber.shade100,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                color: isValidated ? Colors.green.shade600 : Colors.amber.shade600,
+                width: 3,
+              ),
             ),
-          ),
-          child: Text(
-            segment,
-            style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              color: isValidated ? Colors.green.shade900 : Colors.orange.shade900,
+            child: Text(
+              segment,
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
+                color: isValidated ? Colors.green.shade900 : Colors.orange.shade900,
+              ),
             ),
           ),
         );
       } else if (isCurrent) {
-        // CURRENT WORD - Make it SUPER obvious!
-        wordWidget = Container(
-          margin: const EdgeInsets.all(4),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-          decoration: BoxDecoration(
-            color: Colors.blue.shade600,
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(
-              color: Colors.blue.shade900,
-              width: 4,
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.blue.shade300,
-                blurRadius: 12,
-                spreadRadius: 2,
+        // CURRENT WORD - BIG BLUE BOX
+        wordWidget = GestureDetector(
+          onTap: () => _jumpToWord(wordIndex),
+          child: Container(
+            margin: const EdgeInsets.all(4),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            decoration: BoxDecoration(
+              color: Colors.blue.shade600,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(
+                color: Colors.blue.shade900,
+                width: 4,
               ),
-            ],
-          ),
-          child: Text(
-            segment,
-            style: const TextStyle(
-              fontSize: 32,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-              letterSpacing: 1.2,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.blue.shade300,
+                  blurRadius: 12,
+                  spreadRadius: 2,
+                ),
+              ],
+            ),
+            child: Text(
+              segment,
+              style: const TextStyle(
+                fontSize: 34,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                letterSpacing: 1.2,
+              ),
             ),
           ),
         );
-      } else if (isUnread) {
-        // Unread - subtle
-        wordWidget = Container(
-          margin: const EdgeInsets.all(4),
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-          child: Text(
-            segment,
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.normal,
-              color: Colors.grey.shade400,
+      } else if (isRead) {
+        // Read - with checkmark
+        wordWidget = GestureDetector(
+          onTap: () => _jumpToWord(wordIndex),
+          child: Container(
+            margin: const EdgeInsets.all(4),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+            decoration: BoxDecoration(
+              color: Colors.grey.shade100,
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: Colors.grey.shade300, width: 2),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.check, color: Colors.green.shade600, size: 16),
+                const SizedBox(width: 4),
+                Text(
+                  segment,
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.grey.shade700,
+                  ),
+                ),
+              ],
             ),
           ),
         );
       } else {
-        // Read - normal
-        wordWidget = Container(
-          margin: const EdgeInsets.all(4),
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-          child: Text(
-            segment,
-            style: const TextStyle(
-              fontSize: 26,
-              fontWeight: FontWeight.w500,
-              color: Colors.black87,
+        // Unread - dimmed preview
+        wordWidget = GestureDetector(
+          onTap: () => _jumpToWord(wordIndex),
+          child: Container(
+            margin: const EdgeInsets.all(4),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+            child: Text(
+              segment,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.normal,
+                color: Colors.grey.shade400,
+              ),
             ),
           ),
         );
@@ -1064,13 +1155,36 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       wordIndex++;
     }
     
-    return Wrap(
-      alignment: WrapAlignment.center,
-      crossAxisAlignment: WrapCrossAlignment.center,
-      spacing: 8,
-      runSpacing: 12,
-      children: words,
+    return Column(
+      children: [
+        Wrap(
+          alignment: WrapAlignment.center,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          spacing: 6,
+          runSpacing: 10,
+          children: words,
+        ),
+        if (startIndex > 0 || endIndex < segments.length)
+          Padding(
+            padding: const EdgeInsets.only(top: 16),
+            child: Text(
+              '${startIndex > 0 ? "..." : ""} Showing words ${startIndex + 1}-${endIndex} of ${segments.length} ${endIndex < segments.length ? "..." : ""}',
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.grey.shade600,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+          ),
+      ],
     );
+  }
+  
+  void _jumpToWord(int wordIndex) {
+    AppLogger.speech.d('🔄 Jumping to word $wordIndex');
+    setState(() {
+      _currentWordIndex = wordIndex;
+    });
   }
   
   Widget _buildEnhancedChildTurnBubble(StoryBeat beat) {
