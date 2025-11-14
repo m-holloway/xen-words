@@ -45,6 +45,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   // ignore: unused_field
   int _lastConfirmedPosition = 0; // STT-confirmed position (for logging)
   Set<int> _confirmedWordIndices = {}; // Words confirmed by STT (for UI checkmarks)
+  bool _vadAnchored = false;  // Has STT confirmed reading started?
   
   // Legacy voice recognition state (for STT anchoring + child turns)
   bool _isListening = false;
@@ -144,24 +145,29 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     _vadEstimatedPosition = 0;
     _lastConfirmedPosition = 0;
     _confirmedWordIndices.clear();
+    _vadAnchored = false;  // Wait for STT to confirm reading started
     
     AppLogger.speech.d('📖 Parsed ${_narrationWords.length} words from narration');
     AppLogger.speech.d('📖 First 5 words: ${_narrationWords.take(5).join(", ")}');
+    AppLogger.speech.i('🔒 VAD waiting for STT anchor before displaying position...');
     
     // PHASE 1: Initialize VAD tracker for real-time estimation
     _alignmentTracker.initialize(
       words: _narrationWords,
       onWordAdvance: (wordIndex) {
         if (mounted) {
-          // Store VAD estimate
+          // Always store VAD estimate
           _vadEstimatedPosition = wordIndex;
           
-          // Update display position (tentative)
-          setState(() {
-            _currentWordIndex = wordIndex;
-          });
-          
-          AppLogger.speech.v('⚡ VAD estimate: word ${wordIndex + 1}/${_narrationWords.length}');
+          // Only update display if we've been anchored by STT
+          if (_vadAnchored) {
+            setState(() {
+              _currentWordIndex = wordIndex;
+            });
+            AppLogger.speech.v('⚡ VAD estimate: word ${wordIndex + 1}/${_narrationWords.length}');
+          } else {
+            AppLogger.speech.v('⚡ VAD counting (not anchored yet): ${wordIndex + 1}/${_narrationWords.length}');
+          }
         }
       },
       onEnergyUpdate: (energy) {
@@ -295,8 +301,12 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       }
     }
     
-    // Apply anchor if we found a good match (at least 2 consecutive words)
-    if (bestMatchLength >= 2 && bestMatchStart >= 0) {
+    // Apply anchor if we found a good match
+    // For INITIAL anchor: accept 1+ words (just need to confirm start)
+    // For SUBSEQUENT anchors: require 2+ words (more confidence for drift correction)
+    final minMatchLength = _vadAnchored ? 2 : 1;
+    
+    if (bestMatchLength >= minMatchLength && bestMatchStart >= 0) {
       AppLogger.speech.i('⚓ ANCHOR: Found ${bestMatchLength} words at position $bestMatchStart');
       AppLogger.speech.i('   Words: ${_narrationWords.sublist(bestMatchStart, bestMatchStart + bestMatchLength).join(" ")}');
       
@@ -308,6 +318,25 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       // Update confirmed position
       final newConfirmedPosition = bestMatchStart + bestMatchLength - 1;
       
+      // FIRST ANCHOR: Confirms reading has started!
+      if (!_vadAnchored) {
+        AppLogger.speech.success('🔓 INITIAL ANCHOR CONFIRMED! Reading started at word ${bestMatchStart + 1}');
+        AppLogger.speech.i('   "${_narrationWords[bestMatchStart]}" recognized - enabling VAD tracking!');
+        
+        _vadAnchored = true;
+        _vadEstimatedPosition = newConfirmedPosition;
+        _lastConfirmedPosition = newConfirmedPosition;
+        
+        setState(() {
+          _currentWordIndex = newConfirmedPosition;
+        });
+        
+        // Check for target words
+        _checkForValidatedTargetWords(beat, spokenWords);
+        return;
+      }
+      
+      // SUBSEQUENT ANCHORS: Drift correction
       // If VAD has drifted significantly, adjust it
       if ((_vadEstimatedPosition - newConfirmedPosition).abs() > 3) {
         AppLogger.speech.w('⚠️ VAD drift detected! VAD=$_vadEstimatedPosition, STT=$newConfirmedPosition');
@@ -1026,7 +1055,9 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
                         Flexible(
                           child: Text(
                             _isTracking
-                                ? '⚡ VAD: ${_vadEstimatedPosition + 1}/${_narrationWords.length} | ⚓ STT: ${_confirmedWordIndices.length} confirmed ${_currentEnergy > 0.01 ? "🔊" : ""}'
+                                ? _vadAnchored
+                                    ? '⚡ VAD: ${_vadEstimatedPosition + 1}/${_narrationWords.length} | ⚓ STT: ${_confirmedWordIndices.length} confirmed ${_currentEnergy > 0.01 ? "🔊" : ""}'
+                                    : '🔒 Waiting for first word... ${_currentEnergy > 0.01 ? "🔊" : "🎤"}'
                                 : _currentTargetWord != null
                                     ? 'Listening for "$_currentTargetWord"...'
                                     : 'Ready',
