@@ -1048,23 +1048,13 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   }
   
   Widget _buildHighlightedText(String text, List<String> targetWords) {
-    // Build text with SLIDING WINDOW - only show relevant words, not overwhelming
+    // Simple word-by-word highlighting with VAD alignment
+    // Show ALL words, highlight current position
     
     AppLogger.speech.v('🎨 Building highlighted text: ${_narrationWords.length} words, current=$_currentWordIndex');
     
     // Parse into clean words
     final segments = text.split(RegExp(r'\s+'));
-    
-    // SLIDING WINDOW: Show only ~12 words at a time
-    // - Previous 4 words (with checkmarks)
-    // - Current word (BIG)
-    // - Next 7 words (preview)
-    
-    final beforeCurrent = 4;
-    final afterCurrent = 7;
-    
-    final startIndex = (_currentWordIndex - beforeCurrent).clamp(0, segments.length);
-    final endIndex = (_currentWordIndex + afterCurrent + 1).clamp(0, segments.length);
     
     final words = <Widget>[];
     
@@ -1123,12 +1113,6 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     for (final segment in segments) {
       if (segment.trim().isEmpty) continue;
       
-      // Only show words in the sliding window
-      if (wordIndex < startIndex || wordIndex >= endIndex) {
-        wordIndex++;
-        continue;
-      }
-      
       // Remove trailing punctuation for matching
       final cleanWord = segment.toLowerCase().replaceAll(RegExp(r'[^\w]'), '');
       final isTargetWord = targetWords.any((t) => t.toLowerCase() == cleanWord);
@@ -1165,61 +1149,60 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
           ),
         );
       } else if (isCurrent) {
-        // CURRENT WORD - BIG BLUE BOX
+        // CURRENT WORD - Prominent blue highlight
         wordWidget = GestureDetector(
           onTap: () => _jumpToWord(wordIndex),
           child: Container(
-            margin: const EdgeInsets.all(4),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            margin: const EdgeInsets.all(3),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
               color: Colors.blue.shade600,
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(12),
               border: Border.all(
                 color: Colors.blue.shade900,
-                width: 4,
+                width: 3,
               ),
               boxShadow: [
                 BoxShadow(
                   color: Colors.blue.shade300,
-                  blurRadius: 12,
-                  spreadRadius: 2,
+                  blurRadius: 8,
+                  spreadRadius: 1,
                 ),
               ],
             ),
             child: Text(
               segment,
               style: const TextStyle(
-                fontSize: 34,
+                fontSize: 24,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
-                letterSpacing: 1.2,
+                letterSpacing: 0.5,
               ),
             ),
           ),
         );
       } else if (isRead) {
-        // Read - with checkmark
+        // Read - with checkmark (smaller, subtle)
         wordWidget = GestureDetector(
           onTap: () => _jumpToWord(wordIndex),
           child: Container(
-            margin: const EdgeInsets.all(4),
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+            margin: const EdgeInsets.all(2),
+            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
             decoration: BoxDecoration(
-              color: Colors.grey.shade100,
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.grey.shade300, width: 2),
+              color: Colors.grey.shade50,
+              borderRadius: BorderRadius.circular(8),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(Icons.check, color: Colors.green.shade600, size: 16),
-                const SizedBox(width: 4),
+                Icon(Icons.check, color: Colors.green.shade400, size: 12),
+                const SizedBox(width: 3),
                 Text(
                   segment,
                   style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.grey.shade700,
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.grey.shade600,
                   ),
                 ),
               ],
@@ -1227,16 +1210,16 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
           ),
         );
       } else {
-        // Unread - dimmed preview
+        // Unread - dimmed
         wordWidget = GestureDetector(
           onTap: () => _jumpToWord(wordIndex),
           child: Container(
-            margin: const EdgeInsets.all(4),
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+            margin: const EdgeInsets.all(2),
+            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
             child: Text(
               segment,
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 18,
                 fontWeight: FontWeight.normal,
                 color: Colors.grey.shade400,
               ),
@@ -1249,28 +1232,12 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       wordIndex++;
     }
     
-    return Column(
-      children: [
-        Wrap(
-          alignment: WrapAlignment.center,
-          crossAxisAlignment: WrapCrossAlignment.center,
-          spacing: 6,
-          runSpacing: 10,
-          children: words,
-        ),
-        if (startIndex > 0 || endIndex < segments.length)
-          Padding(
-            padding: const EdgeInsets.only(top: 16),
-            child: Text(
-              '${startIndex > 0 ? "..." : ""} Showing words ${startIndex + 1}-${endIndex} of ${segments.length} ${endIndex < segments.length ? "..." : ""}',
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.grey.shade600,
-                fontStyle: FontStyle.italic,
-              ),
-            ),
-          ),
-      ],
+    return Wrap(
+      alignment: WrapAlignment.center,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      spacing: 6,
+      runSpacing: 10,
+      children: words,
     );
   }
   
