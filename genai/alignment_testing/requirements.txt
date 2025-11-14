@@ -25,6 +25,9 @@ matplotlib>=3.7.0
 numpy>=1.24.0
 pandas>=2.0.0
 
+# Speech recognition for ground truth
+openai-whisper>=20230314
+
 # Utilities
 tqdm>=4.65.0  # Progress bars
 pyyaml>=6.0  # Config files
