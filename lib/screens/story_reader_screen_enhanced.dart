@@ -250,8 +250,10 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   }
   
   int? _findBestPositionFromPartial(List<String> spokenWords) {
-    // SEQUENTIAL PHRASE MATCHING - Require consecutive words, small lookahead
-    // This prevents jumping from background noise matches
+    // HYBRID CONFIDENCE MATCHING:
+    // - High confidence (exact match) → 1 word OK
+    // - Medium confidence (fuzzy) → 2+ words required
+    // - Small lookahead window to prevent jumping
     
     if (spokenWords.isEmpty) return null;
     
@@ -267,13 +269,14 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     int? bestPosition;
     int bestScore = 0;
     int bestConsecutiveMatches = 0;
+    bool bestHasHighConfidence = false;
     
     // Try each position in the small lookahead window
     for (int i = startIndex; i < endIndex; i++) {
       int score = 0;
-      int consecutiveMatches = 0;
       int longestStreak = 0;
       int currentStreak = 0;
+      bool hasHighConfidenceMatch = false;
       
       // Try to match sequences starting at position i
       final maxCheck = math.min(spokenWords.length, _narrationWords.length - i);
@@ -285,11 +288,18 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
         if (_wordsMatch(spokenWord, narrationWord)) {
           // Match found!
           currentStreak++;
-          consecutiveMatches++;
           longestStreak = math.max(longestStreak, currentStreak);
           
-          // Weight consecutive matches heavily (this is the key!)
-          score += currentStreak * 3;  // 3, 6, 9, 12... for consecutive matches
+          // Check confidence level
+          final isHighConfidence = _isHighConfidenceMatch(spokenWord, narrationWord);
+          if (isHighConfidence) {
+            hasHighConfidenceMatch = true;
+            // High confidence match gets bonus
+            score += currentStreak * 4;  // 4, 8, 12, 16...
+          } else {
+            // Regular match
+            score += currentStreak * 3;  // 3, 6, 9, 12...
+          }
         } else {
           // Break in sequence - reset streak but allow ONE skip
           if (currentStreak > 0 && j < maxCheck - 1) {
@@ -300,31 +310,38 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
         }
       }
       
-      AppLogger.speech.v('   Pos $i: score=$score, consecutive=$longestStreak, matches=$consecutiveMatches');
+      AppLogger.speech.v('   Pos $i: score=$score, consecutive=$longestStreak, highConf=$hasHighConfidenceMatch');
       
-      // CRITICAL: Require at least 2 consecutive words to be considered
-      if (longestStreak >= 2) {
+      // Update best if this is better
+      if (longestStreak >= 1) {  // At least 1 match required
         if (score > bestScore || 
             (score == bestScore && longestStreak > bestConsecutiveMatches)) {
           bestScore = score;
           bestPosition = i;
           bestConsecutiveMatches = longestStreak;
+          bestHasHighConfidence = hasHighConfidenceMatch;
         }
       }
     }
     
-    // CONFIDENCE THRESHOLD: Need strong consecutive matches
-    // Require: At least 2 consecutive words AND good score
-    final minConsecutive = 2;
-    final minScore = 6;  // At least 2 consecutive matches (3+3 or better)
+    // HYBRID CONFIDENCE THRESHOLD:
+    // High confidence: 1 word OK if score >= 4 (exact match)
+    // Medium confidence: 2+ words required with score >= 6
+    bool shouldAdvance = false;
     
-    if (bestConsecutiveMatches >= minConsecutive && bestScore >= minScore) {
-      AppLogger.speech.i('✅ ADVANCE: pos=$bestPosition, score=$bestScore, consecutive=$bestConsecutiveMatches');
-      return bestPosition;
+    if (bestHasHighConfidence && bestConsecutiveMatches >= 1 && bestScore >= 4) {
+      // Single high-confidence word can advance (e.g., "YOU" → "you")
+      shouldAdvance = true;
+      AppLogger.speech.i('✅ ADVANCE (HIGH CONF): pos=$bestPosition, score=$bestScore, consecutive=$bestConsecutiveMatches');
+    } else if (bestConsecutiveMatches >= 2 && bestScore >= 6) {
+      // Multiple words with moderate confidence
+      shouldAdvance = true;
+      AppLogger.speech.i('✅ ADVANCE (MULTI WORD): pos=$bestPosition, score=$bestScore, consecutive=$bestConsecutiveMatches');
     } else {
-      AppLogger.speech.v('⏸️ HOLD: score=$bestScore, consecutive=$bestConsecutiveMatches (need >=$minScore score, >=$minConsecutive consecutive)');
-      return null;  // Don't advance - not confident enough
+      AppLogger.speech.v('⏸️ HOLD: score=$bestScore, consecutive=$bestConsecutiveMatches, highConf=$bestHasHighConfidence');
     }
+    
+    return shouldAdvance ? bestPosition : null;
   }
   
   int? _findBestMatchInSequence(List<String> spokenWords) {
@@ -347,6 +364,14 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     }
     
     return false;
+  }
+  
+  /// Check if match is high confidence (exact match, not homonym/fuzzy)
+  bool _isHighConfidenceMatch(String spoken, String expected) {
+    // Only exact matches or very close prefix matches are high confidence
+    return spoken == expected || 
+           (spoken.length >= 3 && expected.startsWith(spoken)) ||
+           (expected.length >= 3 && spoken.startsWith(expected));
   }
   
   void _checkForValidatedTargetWords(StoryBeat beat, List<String> spokenWords) {

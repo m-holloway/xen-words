@@ -825,8 +825,20 @@ class SherpaRecognizer implements ISpeechRecognizer {
   }
   
   /// Apply homonym correction to a word
+  /// Only applies to words >= 3 characters to avoid false positives from noise
   String? _applyHomonymCorrection(String word) {
-    return _homonymMap[word.toLowerCase()];
+    final normalized = word.toLowerCase();
+    
+    // CRITICAL: Ignore very short words (1-2 chars) for homonym matching
+    // These create false positives from background noise:
+    // - "CATTLE" → "ca" → "see" ❌
+    // - "TWELVE" → "el" → "as" ❌  
+    // - "C" → "see" ❌
+    if (normalized.length < 3) {
+      return null;
+    }
+    
+    return _homonymMap[normalized];
   }
   
   /// Get all homonyms that map to a given sight word
