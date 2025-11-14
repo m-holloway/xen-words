@@ -1,0 +1,31 @@
+# Speech-Text Alignment Testing Dependencies
+
+# Audio processing
+librosa>=0.10.0
+soundfile>=0.12.0
+scipy>=1.10.0
+
+# Forced alignment (choose one or test multiple)
+# gentle  # Uncomment if using Gentle (may need separate install)
+# montreal-forced-aligner  # Uncomment if using MFA
+
+# Feature extraction
+python_speech_features>=0.6
+pyaudio>=0.2.13  # Optional: for live testing
+
+# DTW and alignment
+fastdtw>=0.3.4
+dtw-python>=1.3.0
+
+# Phoneme tools
+phonemizer>=3.2.1  # Text to phoneme conversion
+
+# Analysis and visualization
+matplotlib>=3.7.0
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Utilities
+tqdm>=4.65.0  # Progress bars
+pyyaml>=6.0  # Config files
+
