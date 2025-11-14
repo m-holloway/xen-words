@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../models/story_models.dart';
 import '../models/coaching_session.dart';
+import '../models/word_list.dart';
+import '../controllers/game_controller.dart';
+import '../services/speech_recognizer_interface.dart';
 import '../widgets/fireworks_overlay.dart';
 import '../utils/app_logger.dart';
 
@@ -94,7 +98,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     }
   }
   
-  void _startListeningForWord(String word) {
+  void _startListeningForWord(String word) async {
     setState(() {
       _isListening = true;
       _currentTargetWord = word;
@@ -102,13 +106,71 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     
     AppLogger.speech.emoji('🎤', 'Listening for: $word');
     
-    // TODO: Integrate actual Sherpa recognition
-    // For now, waiting for parent to manually validate via button
-    // (No auto-advance - parent controls the flow)
+    // Integrate actual Sherpa recognition
+    final controller = context.read<GameController>();
+    
+    try {
+      await controller.speechRecognizer.startListening(
+        onResult: (result) => _handleSpeechResult(result, word),
+        onPartial: (partial) {
+          AppLogger.speech.v('Partial: ${partial.partial}');
+        },
+        onError: (error) {
+          AppLogger.speech.e('Recognition error: $error');
+        },
+        expectedWord: word,
+      );
+      AppLogger.speech.success('Voice recognition started for: $word');
+    } catch (e) {
+      AppLogger.speech.e('Failed to start voice recognition', error: e);
+    }
   }
   
-  void _stopListening() {
+  void _handleSpeechResult(SpeechRecognitionResult result, String expectedWord) {
+    if (!_isListening || _currentTargetWord != expectedWord) {
+      AppLogger.speech.w('Ignoring stale result');
+      return;
+    }
+    
+    // Check if result matches expected word
+    if (result.text.isEmpty) {
+      AppLogger.speech.w('Empty result, ignoring');
+      return;
+    }
+    
+    final expectedLower = expectedWord.toLowerCase();
+    bool gotExpected = false;
+    
+    // Check main result
+    if (WordList.phraseContainsWord(result.text, expectedLower)) {
+      gotExpected = true;
+    }
+    
+    // Check alternatives
+    if (!gotExpected && result.alternatives.isNotEmpty) {
+      for (final alt in result.alternatives) {
+        if (alt.text.isNotEmpty && WordList.phraseContainsWord(alt.text, expectedLower)) {
+          gotExpected = true;
+          break;
+        }
+      }
+    }
+    
+    if (gotExpected) {
+      AppLogger.speech.success('Recognized: $expectedWord');
+      _onWordRecognized(expectedWord, correct: true);
+    } else {
+      AppLogger.speech.w('Did not recognize expected word. Heard: ${result.text}');
+      // Don't auto-fail - let parent use buttons or wait for next attempt
+      // Recognition will auto-restart
+    }
+  }
+  
+  void _stopListening() async {
     if (_isListening) {
+      final controller = context.read<GameController>();
+      await controller.speechRecognizer.stopListening();
+      
       setState(() {
         _isListening = false;
         _currentTargetWord = null;
@@ -426,42 +488,58 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
                         ),
                       ],
                     ),
+                    const SizedBox(height: 8),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Text(
+                        '👂 Speak the word now!',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
                     const SizedBox(height: 12),
                     const Text(
-                      'Testing mode - Tap to simulate:',
-                      style: TextStyle(color: Colors.white70, fontSize: 12),
+                      'Manual override (if needed):',
+                      style: TextStyle(color: Colors.white70, fontSize: 11),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 6),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        ElevatedButton.icon(
+                        TextButton.icon(
                           onPressed: () {
                             if (_currentTargetWord != null) {
                               _onWordRecognized(_currentTargetWord!, correct: true);
                             }
                           },
-                          icon: const Icon(Icons.check_circle, size: 18),
-                          label: const Text('Success'),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.green,
+                          icon: const Icon(Icons.check_circle, size: 16),
+                          label: const Text('Mark Correct'),
+                          style: TextButton.styleFrom(
+                            backgroundColor: Colors.green.withOpacity(0.2),
                             foregroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                           ),
                         ),
-                        const SizedBox(width: 12),
-                        ElevatedButton.icon(
+                        const SizedBox(width: 8),
+                        TextButton.icon(
                           onPressed: () {
                             if (_currentTargetWord != null) {
-                              _onWordRecognized(_currentTargetWord!, correct: false, heard: 'test');
+                              _onWordRecognized(_currentTargetWord!, correct: false, heard: 'manual skip');
                             }
                           },
-                          icon: const Icon(Icons.close, size: 18),
-                          label: const Text('Fail'),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.orange,
+                          icon: const Icon(Icons.skip_next, size: 16),
+                          label: const Text('Skip'),
+                          style: TextButton.styleFrom(
+                            backgroundColor: Colors.orange.withOpacity(0.2),
                             foregroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                           ),
                         ),
                       ],
