@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/learning_progress.dart';
 import '../models/child_profile.dart';
+import '../models/story_models.dart';
 import '../services/preferences_service.dart';
 import '../services/profile_service.dart';
 import '../utils/app_logger.dart';
@@ -8,6 +9,7 @@ import '../widgets/simple_progress_hero.dart';
 import '../widgets/progress_timeline_widget.dart';
 import '../widgets/action_words_widget.dart';
 import '../widgets/word_detail_dialog.dart';
+import 'story_reader_screen.dart';
 
 /// Parent dashboard showing child's learning progress
 /// Protected by parental gate in game_screen.dart
@@ -401,7 +403,7 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
           ElevatedButton(
             onPressed: () {
               Navigator.pop(context);
-              // TODO: Navigate to StoryReaderScreen
+              _startStoryReader(context, progress, childName);
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.deepPurple,
@@ -439,6 +441,132 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
       'word': w.word,
       'mastery': w.successRate,
     }).toList();
+  }
+  
+  void _startStoryReader(BuildContext context, LearningProgress progress, String childName) {
+    // For now, create a sample story
+    // TODO: Call StoryService to generate via GenAI
+    final sampleStory = _createSampleStory(childName);
+    
+    AppLogger.system.d('Launching story reader for: $childName');
+    
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => StoryReaderScreen(
+          story: sampleStory,
+          profileId: _activeProfile?.id ?? 'guest',
+          childName: childName,
+        ),
+      ),
+    );
+  }
+  
+  StoryChapter _createSampleStory(String childName) {
+    // Sample story based on our test generation
+    return StoryChapter(
+      id: 'sample_${DateTime.now().millisecondsSinceEpoch}',
+      title: '$childName and the Sparkling Path',
+      beats: [
+        StoryBeat(
+          id: 'beat_1',
+          type: BeatType.narration,
+          text: 'You are $childName, and today you see a glowing trail outside your window—shimmering like stardust! Your heart jumps with excitement. What could it lead to?',
+          speaker: Speaker.parent,
+        ),
+        StoryBeat(
+          id: 'beat_2',
+          type: BeatType.childTurn,
+          text: 'Now $childName, can you say the word "you"?',
+          speaker: Speaker.coach,
+          targetWords: ['you'],
+          coachPhrase: 'That\'s you—awesome!',
+        ),
+        StoryBeat(
+          id: 'beat_3',
+          type: BeatType.narration,
+          text: 'You put on your rainbow boots, ready to go on an adventure. The sparkles wiggle like they\'re waving at you, saying, "Come on, you can do it!"',
+          speaker: Speaker.parent,
+        ),
+        StoryBeat(
+          id: 'beat_4',
+          type: BeatType.childTurn,
+          text: 'Can you say the word "go"?',
+          speaker: Speaker.coach,
+          targetWords: ['go'],
+          coachPhrase: 'You\'ve got the power to go!',
+        ),
+        StoryBeat(
+          id: 'beat_5',
+          type: BeatType.narration,
+          text: 'The path splits! One side hums like a happy bee, the other whispers like the wind. What should you do? You stop and wonder.',
+          speaker: Speaker.parent,
+        ),
+        StoryBeat(
+          id: 'beat_6',
+          type: BeatType.celebration,
+          text: 'Yay! You said "go" when you were ready—just like $childName is ready to go on this big adventure!',
+          speaker: Speaker.parent,
+        ),
+        StoryBeat(
+          id: 'beat_7',
+          type: BeatType.childTurn,
+          text: 'Now $childName, say the word "see"!',
+          speaker: Speaker.coach,
+          targetWords: ['see'],
+          coachPhrase: 'Perfect! You can see the adventure ahead!',
+        ),
+        StoryBeat(
+          id: 'beat_8',
+          type: BeatType.narration,
+          text: 'You choose the humming path. It\'s bumpy and twisty, and you trip once—but you get back up. What matters is you keep trying.',
+          speaker: Speaker.parent,
+        ),
+        StoryBeat(
+          id: 'beat_9',
+          type: BeatType.coachIntervention,
+          text: 'This word is a little tricky—"what." Watch my lips: WH-AT. Can you say "what"?',
+          speaker: Speaker.coach,
+          targetWords: ['what'],
+          coachPhrase: 'You\'re doing so well—try it again!',
+        ),
+        StoryBeat(
+          id: 'beat_10',
+          type: BeatType.narration,
+          text: 'A tiny fox with silver paws appears. "You\'re stuck?" he asks. "I know what helps—teamwork!" Your eyes light up. What a kind friend!',
+          speaker: Speaker.parent,
+        ),
+        StoryBeat(
+          id: 'beat_11',
+          type: BeatType.celebration,
+          text: 'You did it! You said "see," "go," and "what"—just in time! Together, you and the fox see the treasure: a garden glowing with laughter flowers! You all go home heroes!',
+          speaker: Speaker.parent,
+        ),
+      ],
+      choicePoints: [
+        ChoicePoint(
+          id: 'choice_1',
+          beatIndex: 5,
+          promptText: 'What should $childName do?',
+          choices: [
+            StoryChoice(
+              id: 'choice_1a',
+              previewText: 'Follow the humming path',
+              choiceText: 'Choose the humming path',
+            ),
+            StoryChoice(
+              id: 'choice_1b',
+              previewText: 'Try the whispering wind trail',
+              choiceText: 'Choose the wind trail',
+            ),
+          ],
+        ),
+      ],
+      metadata: {
+        'chapter_num': 1,
+        'theme': 'adventure',
+        'tone': 'encouraging',
+      },
+    );
   }
   
   Widget _buildViewAllWordsButton(BuildContext context, LearningProgress progress) {
