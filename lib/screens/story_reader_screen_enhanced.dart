@@ -846,8 +846,8 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   }
   
   Widget _buildBeatWidget(StoryBeat beat) {
-    // Use enhanced narration for narration beats with target words
-    if (beat.type == BeatType.narration && beat.targetWords.isNotEmpty) {
+    // Use enhanced narration for ALL narration beats (with or without target words)
+    if (beat.type == BeatType.narration) {
       return _buildEnhancedNarrationBubble(beat);
     }
     
@@ -858,8 +858,6 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     
     // Use standard bubbles for other types
     switch (beat.type) {
-      case BeatType.narration:
-        return _buildStandardNarrationBubble(beat);
       case BeatType.coachIntervention:
         return _buildCoachBubble(beat);
       case BeatType.celebration:
@@ -870,6 +868,12 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   }
   
   Widget _buildEnhancedNarrationBubble(StoryBeat beat) {
+    // If narration words not yet parsed, parse them now
+    if (_narrationWords.isEmpty) {
+      AppLogger.speech.w('⚠️ Narration words not yet parsed, parsing now');
+      _narrationWords = _parseNarrationWords(beat.text);
+    }
+    
     return Container(
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
@@ -891,20 +895,15 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
                 child: const Icon(Icons.person, color: Colors.blue, size: 28),
               ),
               const SizedBox(width: 14),
-              const Text(
-                'Parent reads:',
-                style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue, fontSize: 16),
+              Text(
+                '📖 Parent reads (word ${_currentWordIndex + 1}/${_narrationWords.length}):',
+                style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.blue, fontSize: 16),
               ),
             ],
           ),
           const SizedBox(height: 20),
-          // Constrained width for fewer words per line
-          Center(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 500),
-              child: _buildHighlightedText(beat.text, beat.targetWords),
-            ),
-          ),
+          // Full width for word boxes
+          _buildHighlightedText(beat.text, beat.targetWords),
           const SizedBox(height: 24),
           // Show progress of validated words
           if (beat.targetWords.isNotEmpty)
@@ -957,14 +956,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   Widget _buildHighlightedText(String text, List<String> targetWords) {
     // Build text with SUPER PROMINENT word-by-word highlighting for kids
     
-    if (_narrationWords.isEmpty) {
-      // Fallback if not parsed yet
-      return Text(
-        text,
-        style: const TextStyle(fontSize: 28, height: 2.0, color: Colors.black87),
-        textAlign: TextAlign.center,
-      );
-    }
+    AppLogger.speech.v('🎨 Building highlighted text: ${_narrationWords.length} words, current=$_currentWordIndex');
     
     // Split text into words, show them in a wrapped layout with big boxes
     final words = <Widget>[];
