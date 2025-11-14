@@ -39,6 +39,10 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   String? _currentTargetWord;
   Map<String, bool> _validatedWords = {}; // word -> validated
   
+  // Word tracking for parent narration
+  List<String> _narrationWords = [];  // All words in current narration
+  int _currentWordIndex = 0;  // Which word parent is currently on
+  
   @override
   void initState() {
     super.initState();
@@ -107,15 +111,158 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     if (currentBeat.type == BeatType.childTurn && currentBeat.targetWords.isNotEmpty) {
       _startListeningForWord(currentBeat.targetWords.first);
     }
-    // Auto-start for narration beats with target words
-    else if (currentBeat.type == BeatType.narration && currentBeat.targetWords.isNotEmpty) {
-      final firstUnvalidated = currentBeat.targetWords
-          .where((w) => !(_validatedWords[w] ?? false))
-          .firstOrNull;
-      if (firstUnvalidated != null) {
-        Future.delayed(const Duration(milliseconds: 500), () {
-          _startListeningForWord(firstUnvalidated);
-        });
+    // Auto-start for narration beats - track parent's reading
+    else if (currentBeat.type == BeatType.narration) {
+      _startNarrationTracking(currentBeat);
+    }
+  }
+  
+  void _startNarrationTracking(StoryBeat beat) {
+    // Parse all words from narration text
+    _narrationWords = _parseNarrationWords(beat.text);
+    _currentWordIndex = 0;
+    
+    // Start continuous listening for parent's reading
+    Future.delayed(const Duration(milliseconds: 500), () {
+      if (mounted) {
+        _startListeningForNarration();
+      }
+    });
+  }
+  
+  List<String> _parseNarrationWords(String text) {
+    // Remove punctuation and split into words
+    final cleaned = text.toLowerCase()
+        .replaceAll(RegExp(r'[^\w\s]'), ' ')
+        .trim();
+    return cleaned.split(RegExp(r'\s+'))
+        .where((w) => w.isNotEmpty)
+        .toList();
+  }
+  
+  void _startListeningForNarration() async {
+    if (!_recognizerInitialized) {
+      return;
+    }
+    
+    setState(() {
+      _isListening = true;
+      _currentTargetWord = null;  // No specific target, tracking sequence
+    });
+    
+    AppLogger.speech.d('📖 Tracking parent narration (${_narrationWords.length} words)');
+    
+    final controller = context.read<GameController>();
+    
+    try {
+      await controller.speechRecognizer.startListening(
+        onResult: (result) => _handleNarrationResult(result),
+        onPartial: (partial) {
+          // Optionally show partial recognition feedback
+          AppLogger.speech.v('Narration partial: ${partial.partial}');
+        },
+        onError: (error) {
+          AppLogger.speech.e('Narration recognition error: $error');
+        },
+        expectedWord: null,  // No specific word expected
+      );
+      AppLogger.speech.success('📖 Narration tracking active');
+    } catch (e) {
+      AppLogger.speech.e('Failed to start narration tracking', error: e);
+    }
+  }
+  
+  void _handleNarrationResult(SpeechRecognitionResult result) {
+    if (!_isListening || result.text.isEmpty) {
+      return;
+    }
+    
+    final spokenWords = result.text.toLowerCase()
+        .replaceAll(RegExp(r'[^\w\s]'), ' ')
+        .split(RegExp(r'\s+'))
+        .where((w) => w.isNotEmpty)
+        .toList();
+    
+    AppLogger.speech.v('📖 Heard: ${spokenWords.join(" ")} (at position $_currentWordIndex/${_narrationWords.length})');
+    
+    // Try to match spoken words to upcoming narration words
+    final matchedIndex = _findBestMatchInSequence(spokenWords);
+    
+    if (matchedIndex != null && matchedIndex > _currentWordIndex) {
+      // Advance to the matched word
+      setState(() {
+        _currentWordIndex = matchedIndex;
+      });
+      
+      AppLogger.speech.d('📖 Advanced to word ${_currentWordIndex + 1}/${_narrationWords.length}: "${_narrationWords[_currentWordIndex]}"');
+      
+      // Check if we've validated any target words
+      final currentBeat = widget.story.beats[_currentBeatIndex];
+      _checkForValidatedTargetWords(currentBeat, spokenWords);
+    }
+  }
+  
+  int? _findBestMatchInSequence(List<String> spokenWords) {
+    // Look for the best match in the next few words of narration
+    // This is forgiving - allows skips, extras, and background noise
+    
+    final lookAhead = 10;  // Check next 10 words max
+    final endIndex = (_currentWordIndex + lookAhead).clamp(0, _narrationWords.length);
+    
+    // Find the furthest matching word in sequence
+    int? bestMatch;
+    
+    for (int i = _currentWordIndex; i < endIndex; i++) {
+      final narrationWord = _narrationWords[i];
+      
+      // Check if any spoken word matches this narration word
+      for (final spokenWord in spokenWords) {
+        if (_wordsMatch(spokenWord, narrationWord)) {
+          bestMatch = i;
+          // Don't break - keep looking for further matches
+        }
+      }
+    }
+    
+    return bestMatch;
+  }
+  
+  bool _wordsMatch(String spoken, String expected) {
+    // Simple matching - exact or very close
+    if (spoken == expected) return true;
+    
+    // Handle common variations (plurals, tense)
+    if (spoken.startsWith(expected) || expected.startsWith(spoken)) {
+      return true;
+    }
+    
+    // Homophone check (from WordList if available)
+    if (WordList.phraseContainsWord(spoken, expected)) {
+      return true;
+    }
+    
+    return false;
+  }
+  
+  void _checkForValidatedTargetWords(StoryBeat beat, List<String> spokenWords) {
+    // Check if any target words were spoken
+    for (final targetWord in beat.targetWords) {
+      if (!(_validatedWords[targetWord] ?? false)) {
+        for (final spoken in spokenWords) {
+          if (_wordsMatch(spoken, targetWord)) {
+            // Target word was spoken! Validate it
+            setState(() {
+              _validatedWords[targetWord] = true;
+            });
+            
+            // Launch fireworks!
+            _fireworksController.launchSingle(MediaQuery.of(context).size);
+            _recordWordAttempt(targetWord, true);
+            
+            AppLogger.system.emoji('✨', 'Target word validated during narration: $targetWord');
+            break;
+          }
+        }
       }
     }
   }
@@ -630,11 +777,11 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   
   Widget _buildEnhancedNarrationBubble(StoryBeat beat) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: Colors.blue.shade50,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.blue.shade200, width: 2),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Colors.blue.shade300, width: 3),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -642,81 +789,167 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
           Row(
             children: [
               Container(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: Colors.blue.shade100,
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Icon(Icons.person, color: Colors.blue, size: 24),
+                child: const Icon(Icons.person, color: Colors.blue, size: 28),
               ),
-              const SizedBox(width: 12),
+              const SizedBox(width: 14),
               const Text(
                 'Parent reads:',
-                style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue, fontSize: 14),
+                style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue, fontSize: 16),
               ),
             ],
           ),
-          const SizedBox(height: 12),
-          _buildHighlightedText(beat.text, beat.targetWords),
-          const SizedBox(height: 16),
+          const SizedBox(height: 20),
+          // Constrained width for fewer words per line
+          Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 500),
+              child: _buildHighlightedText(beat.text, beat.targetWords),
+            ),
+          ),
+          const SizedBox(height: 24),
           // Show progress of validated words
-          Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children: beat.targetWords.map((word) {
-              final isValidated = _validatedWords[word] ?? false;
-              final isListening = _isListening && _currentTargetWord == word;
-              
-              return Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                decoration: BoxDecoration(
-                  color: isValidated
-                      ? Colors.green.shade100
-                      : isListening
-                          ? Colors.amber.shade100
-                          : Colors.grey.shade200,
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(
-                    color: isValidated
-                        ? Colors.green
-                        : isListening
-                            ? Colors.amber
-                            : Colors.grey,
-                    width: 2,
-                  ),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    if (isValidated)
-                      const Icon(Icons.check_circle, color: Colors.green, size: 16)
-                    else if (isListening)
-                      const Icon(Icons.mic, color: Colors.amber, size: 16)
-                    else
-                      const Icon(Icons.circle_outlined, color: Colors.grey, size: 16),
-                    const SizedBox(width: 4),
-                    Text(
-                      word,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: isValidated ? Colors.green.shade900 : Colors.black87,
+          if (beat.targetWords.isNotEmpty)
+            Center(
+              child: Wrap(
+                spacing: 12,
+                runSpacing: 12,
+                alignment: WrapAlignment.center,
+                children: beat.targetWords.map((word) {
+                  final isValidated = _validatedWords[word] ?? false;
+                  
+                  return Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    decoration: BoxDecoration(
+                      color: isValidated ? Colors.green.shade100 : Colors.grey.shade200,
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
+                        color: isValidated ? Colors.green : Colors.grey,
+                        width: 3,
                       ),
                     ),
-                  ],
-                ),
-              );
-            }).toList(),
-          ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          isValidated ? Icons.check_circle : Icons.circle_outlined,
+                          color: isValidated ? Colors.green : Colors.grey,
+                          size: 20,
+                        ),
+                        const SizedBox(width: 6),
+                        Text(
+                          word.toUpperCase(),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: isValidated ? Colors.green.shade900 : Colors.black87,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }).toList(),
+              ),
+            ),
         ],
       ),
     );
   }
   
   Widget _buildHighlightedText(String text, List<String> targetWords) {
-    // Simple version: just show text (can enhance later with RichText)
-    return Text(
-      text,
-      style: const TextStyle(fontSize: 18, height: 1.5, color: Colors.black87),
+    // Build text with word-by-word highlighting for reading tracking
+    
+    if (_narrationWords.isEmpty) {
+      // Fallback if not parsed yet
+      return Text(
+        text,
+        style: const TextStyle(fontSize: 18, height: 1.5, color: Colors.black87),
+      );
+    }
+    
+    // Split original text into words preserving punctuation/spacing
+    final words = text.split(RegExp(r'(\s+)'));
+    final spans = <TextSpan>[];
+    
+    int wordIndex = 0;  // Track actual words (not spaces)
+    
+    for (final segment in words) {
+      if (segment.trim().isEmpty) {
+        // It's whitespace - preserve it
+        spans.add(TextSpan(text: segment));
+        continue;
+      }
+      
+      // It's a word - check if it's a target word
+      final cleanWord = segment.toLowerCase().replaceAll(RegExp(r'[^\w]'), '');
+      final isTargetWord = targetWords.any((t) => t.toLowerCase() == cleanWord);
+      
+      if (isTargetWord) {
+        // Target words get special amber box treatment
+        spans.add(TextSpan(
+          text: segment,
+          style: TextStyle(
+            fontSize: 24,  // Match larger child-friendly size
+            fontWeight: FontWeight.bold,
+            color: (_validatedWords[cleanWord] ?? false) 
+                ? Colors.green.shade900 
+                : Colors.orange.shade900,
+            backgroundColor: (_validatedWords[cleanWord] ?? false)
+                ? Colors.green.shade100
+                : Colors.amber.shade100,
+            decoration: (_validatedWords[cleanWord] ?? false)
+                ? TextDecoration.none
+                : TextDecoration.underline,
+          ),
+        ));
+      } else {
+        // Regular word - apply reading tracking highlight
+        final isCurrent = wordIndex == _currentWordIndex;
+        final isUnread = wordIndex > _currentWordIndex;
+        
+        Color? backgroundColor;
+        Color textColor = Colors.black87;
+        FontWeight fontWeight = FontWeight.normal;
+        double fontSize = 22;  // Larger default for child-friendly
+        
+        if (isCurrent) {
+          // Current word - highlighted
+          backgroundColor = Colors.blue.shade100;
+          textColor = Colors.blue.shade900;
+          fontWeight = FontWeight.bold;
+          fontSize = 24;
+        } else if (isUnread) {
+          // Unread - dimmed
+          textColor = Colors.grey.shade400;
+        } else {
+          // Read - normal
+          textColor = Colors.black87;
+        }
+        
+        spans.add(TextSpan(
+          text: segment,
+          style: TextStyle(
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+            color: textColor,
+            backgroundColor: backgroundColor,
+            height: 1.5,
+          ),
+        ));
+      }
+      
+      wordIndex++;
+    }
+    
+    return RichText(
+      text: TextSpan(
+        children: spans,
+        style: const TextStyle(fontSize: 22, height: 1.8, fontFamily: 'Roboto'),
+      ),
     );
   }
   
