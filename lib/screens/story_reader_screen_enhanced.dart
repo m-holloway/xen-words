@@ -277,15 +277,16 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     // Find where these words appear in the narration
     // FLEXIBLE MATCHING: Wide window, allow gaps, phonetic matching
     
-    // If not anchored yet: search entire beginning (parent just started)
+    // If not anchored yet: search ONLY beginning (parent must start at beginning!)
     // If anchored: search around VAD estimate (may have drifted)
     final searchStart = _vadAnchored ? math.max(0, _vadEstimatedPosition - 10) : 0;
     final searchEnd = _vadAnchored 
         ? math.min(_narrationWords.length, _vadEstimatedPosition + 15)
-        : math.min(_narrationWords.length, 15);  // First ~15 words for initial anchor
+        : math.min(_narrationWords.length, 5);  // First 5 words ONLY for initial anchor
     
-    AppLogger.speech.v('🔍 Searching for: ${spokenWords.join(", ")}');
-    AppLogger.speech.v('   In range: [$searchStart, $searchEnd) of ${_narrationWords.length} words');
+    AppLogger.speech.d('🔍 Searching for: ${spokenWords.join(", ")}');
+    AppLogger.speech.d('   In range: [$searchStart, $searchEnd) of ${_narrationWords.length} words');
+    AppLogger.speech.d('   Anchored: $_vadAnchored');
     
     // Find best match allowing gaps
     int bestMatchStart = -1;
@@ -306,13 +307,15 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
         for (int lookahead = 0; lookahead < 3 && (narratonPos + lookahead) < _narrationWords.length; lookahead++) {
           final matchQuality = _getMatchQuality(spokenWords[j], _narrationWords[narratonPos + lookahead]);
           
+          AppLogger.speech.v('      Testing "${spokenWords[j]}" vs "${_narrationWords[narratonPos + lookahead]}" = ${matchQuality.toStringAsFixed(2)}');
+          
           if (matchQuality > 0.5) {  // At least 50% match
             matchLength++;
             matchScore += matchQuality;
             narratonPos += lookahead + 1;
             foundMatch = true;
             
-            AppLogger.speech.v('   ✓ "${spokenWords[j]}" → "${_narrationWords[narratonPos - 1]}" (quality: ${matchQuality.toStringAsFixed(2)})');
+            AppLogger.speech.d('   ✓ "${spokenWords[j]}" → "${_narrationWords[narratonPos - 1]}" (quality: ${matchQuality.toStringAsFixed(2)})');
             break;
           }
         }
@@ -337,16 +340,22 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     final minMatchLength = _vadAnchored ? 2 : 1;
     
     if (bestMatchLength >= minMatchLength && bestMatchStart >= 0) {
+      final newConfirmedPosition = bestMatchStart + bestMatchLength - 1;
+      
+      // Prevent duplicate anchors - must be forward progress
+      if (_vadAnchored && newConfirmedPosition <= _lastConfirmedPosition) {
+        AppLogger.speech.v('⏭️  Skipping duplicate anchor at position $bestMatchStart (already confirmed up to $_lastConfirmedPosition)');
+        return;
+      }
+      
       AppLogger.speech.i('⚓ ANCHOR: Found ${bestMatchLength} words at position $bestMatchStart');
       AppLogger.speech.i('   Words: ${_narrationWords.sublist(bestMatchStart, bestMatchStart + bestMatchLength).join(" ")}');
+      AppLogger.speech.i('   Match score: ${bestMatchScore.toStringAsFixed(2)}');
       
       // Mark these words as confirmed
       for (int i = 0; i < bestMatchLength; i++) {
         _confirmedWordIndices.add(bestMatchStart + i);
       }
-      
-      // Update confirmed position
-      final newConfirmedPosition = bestMatchStart + bestMatchLength - 1;
       
       // FIRST ANCHOR: Confirms reading has started!
       if (!_vadAnchored) {
@@ -472,12 +481,14 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       // Same syllable count = strong signal!
       score = math.max(score, 0.7);
       
-      AppLogger.speech.v('   📊 Syllable match: "$spoken" ($spokenSyllables) ≈ "$expected" ($expectedSyllables)');
+      AppLogger.speech.v('   📊 Syllable match: "$spoken" ($spokenSyllables) ≈ "$expected" ($expectedSyllables) → +0.7');
     } else {
       // Syllable mismatch = penalty
       final syllableDiff = (spokenSyllables - expectedSyllables).abs();
       final syllablePenalty = syllableDiff / math.max(spokenSyllables, expectedSyllables);
       score = math.max(0.0, score - syllablePenalty * 0.3);
+      
+      AppLogger.speech.v('   📊 Syllable mismatch: "$spoken" ($spokenSyllables) ≠ "$expected" ($expectedSyllables) → -${(syllablePenalty * 0.3).toStringAsFixed(2)}');
     }
     
     // First letter matching (common in STT errors)
