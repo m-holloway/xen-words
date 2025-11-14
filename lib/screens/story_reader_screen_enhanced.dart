@@ -107,13 +107,19 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   void _checkAndStartListening() {
     final currentBeat = widget.story.beats[_currentBeatIndex];
     
+    AppLogger.speech.d('📖 Beat ${_currentBeatIndex + 1}: Type=${currentBeat.type}, Text="${currentBeat.text.substring(0, 30)}..."');
+    
     // Auto-start for child turn beats
     if (currentBeat.type == BeatType.childTurn && currentBeat.targetWords.isNotEmpty) {
+      AppLogger.speech.d('👦 Child turn detected, listening for: ${currentBeat.targetWords.first}');
       _startListeningForWord(currentBeat.targetWords.first);
     }
     // Auto-start for narration beats - track parent's reading
     else if (currentBeat.type == BeatType.narration) {
+      AppLogger.speech.d('📚 Narration beat detected, starting tracking');
       _startNarrationTracking(currentBeat);
+    } else {
+      AppLogger.speech.d('ℹ️ Other beat type: ${currentBeat.type}');
     }
   }
   
@@ -121,6 +127,14 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     // Parse all words from narration text
     _narrationWords = _parseNarrationWords(beat.text);
     _currentWordIndex = 0;
+    
+    AppLogger.speech.d('📖 Parsed ${_narrationWords.length} words from narration');
+    AppLogger.speech.d('📖 First 5 words: ${_narrationWords.take(5).join(", ")}');
+    
+    // Force UI update to show initial state
+    setState(() {
+      // Trigger rebuild with narration words loaded
+    });
     
     // Start continuous listening for parent's reading
     Future.delayed(const Duration(milliseconds: 500), () {
@@ -941,95 +955,129 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   }
   
   Widget _buildHighlightedText(String text, List<String> targetWords) {
-    // Build text with word-by-word highlighting for reading tracking
+    // Build text with SUPER PROMINENT word-by-word highlighting for kids
     
     if (_narrationWords.isEmpty) {
       // Fallback if not parsed yet
       return Text(
         text,
-        style: const TextStyle(fontSize: 18, height: 1.5, color: Colors.black87),
+        style: const TextStyle(fontSize: 28, height: 2.0, color: Colors.black87),
+        textAlign: TextAlign.center,
       );
     }
     
-    // Split original text into words preserving punctuation/spacing
-    final words = text.split(RegExp(r'(\s+)'));
-    final spans = <TextSpan>[];
+    // Split text into words, show them in a wrapped layout with big boxes
+    final words = <Widget>[];
+    int wordIndex = 0;
     
-    int wordIndex = 0;  // Track actual words (not spaces)
+    // Parse into clean words
+    final segments = text.split(RegExp(r'\s+'));
     
-    for (final segment in words) {
-      if (segment.trim().isEmpty) {
-        // It's whitespace - preserve it
-        spans.add(TextSpan(text: segment));
-        continue;
-      }
+    for (final segment in segments) {
+      if (segment.trim().isEmpty) continue;
       
-      // It's a word - check if it's a target word
+      // Remove trailing punctuation for matching
       final cleanWord = segment.toLowerCase().replaceAll(RegExp(r'[^\w]'), '');
       final isTargetWord = targetWords.any((t) => t.toLowerCase() == cleanWord);
       
+      final isCurrent = wordIndex == _currentWordIndex;
+      final isUnread = wordIndex > _currentWordIndex;
+      
+      Widget wordWidget;
+      
       if (isTargetWord) {
-        // Target words get special amber box treatment
-        spans.add(TextSpan(
-          text: segment,
-          style: TextStyle(
-            fontSize: 24,  // Match larger child-friendly size
-            fontWeight: FontWeight.bold,
-            color: (_validatedWords[cleanWord] ?? false) 
-                ? Colors.green.shade900 
-                : Colors.orange.shade900,
-            backgroundColor: (_validatedWords[cleanWord] ?? false)
-                ? Colors.green.shade100
-                : Colors.amber.shade100,
-            decoration: (_validatedWords[cleanWord] ?? false)
-                ? TextDecoration.none
-                : TextDecoration.underline,
+        // Target words - special treatment
+        final isValidated = _validatedWords[cleanWord] ?? false;
+        wordWidget = Container(
+          margin: const EdgeInsets.all(4),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          decoration: BoxDecoration(
+            color: isValidated ? Colors.green.shade100 : Colors.amber.shade100,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: isValidated ? Colors.green.shade600 : Colors.amber.shade600,
+              width: 3,
+            ),
           ),
-        ));
+          child: Text(
+            segment,
+            style: TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+              color: isValidated ? Colors.green.shade900 : Colors.orange.shade900,
+            ),
+          ),
+        );
+      } else if (isCurrent) {
+        // CURRENT WORD - Make it SUPER obvious!
+        wordWidget = Container(
+          margin: const EdgeInsets.all(4),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          decoration: BoxDecoration(
+            color: Colors.blue.shade600,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: Colors.blue.shade900,
+              width: 4,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.blue.shade300,
+                blurRadius: 12,
+                spreadRadius: 2,
+              ),
+            ],
+          ),
+          child: Text(
+            segment,
+            style: const TextStyle(
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              letterSpacing: 1.2,
+            ),
+          ),
+        );
+      } else if (isUnread) {
+        // Unread - subtle
+        wordWidget = Container(
+          margin: const EdgeInsets.all(4),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+          child: Text(
+            segment,
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.normal,
+              color: Colors.grey.shade400,
+            ),
+          ),
+        );
       } else {
-        // Regular word - apply reading tracking highlight
-        final isCurrent = wordIndex == _currentWordIndex;
-        final isUnread = wordIndex > _currentWordIndex;
-        
-        Color? backgroundColor;
-        Color textColor = Colors.black87;
-        FontWeight fontWeight = FontWeight.normal;
-        double fontSize = 22;  // Larger default for child-friendly
-        
-        if (isCurrent) {
-          // Current word - highlighted
-          backgroundColor = Colors.blue.shade100;
-          textColor = Colors.blue.shade900;
-          fontWeight = FontWeight.bold;
-          fontSize = 24;
-        } else if (isUnread) {
-          // Unread - dimmed
-          textColor = Colors.grey.shade400;
-        } else {
-          // Read - normal
-          textColor = Colors.black87;
-        }
-        
-        spans.add(TextSpan(
-          text: segment,
-          style: TextStyle(
-            fontSize: fontSize,
-            fontWeight: fontWeight,
-            color: textColor,
-            backgroundColor: backgroundColor,
-            height: 1.5,
+        // Read - normal
+        wordWidget = Container(
+          margin: const EdgeInsets.all(4),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+          child: Text(
+            segment,
+            style: const TextStyle(
+              fontSize: 26,
+              fontWeight: FontWeight.w500,
+              color: Colors.black87,
+            ),
           ),
-        ));
+        );
       }
       
+      words.add(wordWidget);
       wordIndex++;
     }
     
-    return RichText(
-      text: TextSpan(
-        children: spans,
-        style: const TextStyle(fontSize: 22, height: 1.8, fontFamily: 'Roboto'),
-      ),
+    return Wrap(
+      alignment: WrapAlignment.center,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      spacing: 8,
+      runSpacing: 12,
+      children: words,
     );
   }
   
