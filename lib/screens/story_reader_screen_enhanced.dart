@@ -6,6 +6,7 @@ import '../models/coaching_session.dart';
 import '../models/word_list.dart';
 import '../controllers/game_controller.dart';
 import '../services/speech_recognizer_interface.dart';
+import '../services/voice_alignment_tracker.dart';
 import '../widgets/fireworks_overlay.dart';
 import '../utils/app_logger.dart';
 
@@ -34,7 +35,12 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   late Animation<double> _fadeAnimation;
   final FireworksController _fireworksController = FireworksController();
   
-  // Voice recognition state
+  // Voice alignment tracking (NEW: VAD+Syllable approach)
+  final VoiceAlignmentTracker _alignmentTracker = VoiceAlignmentTracker();
+  bool _isTracking = false;
+  double _currentEnergy = 0.0;
+  
+  // Legacy voice recognition state (for child turns)
   bool _isListening = false;
   bool _recognizerInitialized = false;
   String? _currentTargetWord;
@@ -102,6 +108,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   void dispose() {
     _fadeController.dispose();
     _stopListening();
+    _alignmentTracker.dispose();
     super.dispose();
   }
   
@@ -124,7 +131,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     }
   }
   
-  void _startNarrationTracking(StoryBeat beat) {
+  void _startNarrationTracking(StoryBeat beat) async {
     // Parse all words from narration text
     _narrationWords = _parseNarrationWords(beat.text);
     _currentWordIndex = 0;
@@ -132,17 +139,45 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     AppLogger.speech.d('📖 Parsed ${_narrationWords.length} words from narration');
     AppLogger.speech.d('📖 First 5 words: ${_narrationWords.take(5).join(", ")}');
     
+    // Initialize alignment tracker with word sequence
+    _alignmentTracker.initialize(
+      words: _narrationWords,
+      onWordAdvance: (wordIndex) {
+        if (mounted) {
+          setState(() {
+            _currentWordIndex = wordIndex;
+          });
+          
+          // Check if any target words were spoken
+          _checkForValidatedTargetWords(beat, [_narrationWords[wordIndex]]);
+        }
+      },
+      onEnergyUpdate: (energy) {
+        if (mounted) {
+          setState(() {
+            _currentEnergy = energy;
+          });
+        }
+      },
+    );
+    
     // Force UI update to show initial state
     setState(() {
       // Trigger rebuild with narration words loaded
     });
     
-    // Start continuous listening for parent's reading
-    Future.delayed(const Duration(milliseconds: 500), () {
-      if (mounted) {
-        _startListeningForNarration();
-      }
-    });
+    // Start voice alignment tracking
+    AppLogger.speech.i('🎯 Starting VAD+Syllable alignment tracking...');
+    final started = await _alignmentTracker.startTracking();
+    
+    if (started) {
+      setState(() {
+        _isTracking = true;
+      });
+      AppLogger.speech.success('✅ Voice alignment tracking active!');
+    } else {
+      AppLogger.speech.e('❌ Failed to start voice alignment tracking');
+    }
   }
   
   List<String> _parseNarrationWords(String text) {
@@ -155,6 +190,8 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
         .toList();
   }
   
+  // DEPRECATED: Replaced by VoiceAlignmentTracker
+  // ignore: unused_element
   void _startListeningForNarration() async {
     if (!_recognizerInitialized) {
       return;
@@ -475,6 +512,16 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   }
   
   void _stopListening() async {
+    // Stop alignment tracking
+    if (_isTracking) {
+      await _alignmentTracker.stopTracking();
+      setState(() {
+        _isTracking = false;
+      });
+      AppLogger.speech.d('Stopped alignment tracking');
+    }
+    
+    // Stop legacy STT listening (for child turns)
     if (_isListening) {
       final controller = context.read<GameController>();
       await controller.speechRecognizer.stopListening();
@@ -483,7 +530,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
         _isListening = false;
         _currentTargetWord = null;
       });
-      AppLogger.speech.d('Stopped listening');
+      AppLogger.speech.d('Stopped STT listening');
     }
   }
   
@@ -812,9 +859,11 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
                         const SizedBox(width: 8),
                         Flexible(
                           child: Text(
-                            _currentTargetWord == 'tracking'
-                                ? '📖 Tracking parent reading... (${_currentWordIndex + 1}/${_narrationWords.length})'
-                                : 'Listening for "$_currentTargetWord"...',
+                            _isTracking
+                                ? '🎯 VAD Alignment: Word ${_currentWordIndex + 1}/${_narrationWords.length} ${_currentEnergy > 0.01 ? "🔊" : ""}'
+                                : _currentTargetWord != null
+                                    ? 'Listening for "$_currentTargetWord"...'
+                                    : 'Ready',
                             style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
                             textAlign: TextAlign.center,
                           ),
