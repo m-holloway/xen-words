@@ -35,12 +35,18 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   late Animation<double> _fadeAnimation;
   final FireworksController _fireworksController = FireworksController();
   
-  // Voice alignment tracking (NEW: VAD+Syllable approach)
+  // HYBRID ALIGNMENT: VAD (fast estimate) + STT (anchoring/validation)
   final VoiceAlignmentTracker _alignmentTracker = VoiceAlignmentTracker();
   bool _isTracking = false;
   double _currentEnergy = 0.0;
   
-  // Legacy voice recognition state (for child turns)
+  // Dual position tracking
+  int _vadEstimatedPosition = 0;  // VAD's real-time estimate (may drift)
+  // ignore: unused_field
+  int _lastConfirmedPosition = 0; // STT-confirmed position (for logging)
+  Set<int> _confirmedWordIndices = {}; // Words confirmed by STT (for UI checkmarks)
+  
+  // Legacy voice recognition state (for STT anchoring + child turns)
   bool _isListening = false;
   bool _recognizerInitialized = false;
   String? _currentTargetWord;
@@ -48,7 +54,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   
   // Word tracking for parent narration
   List<String> _narrationWords = [];  // All words in current narration
-  int _currentWordIndex = 0;  // Which word parent is currently on
+  int _currentWordIndex = 0;  // Current display position (blend of VAD + STT)
   
   @override
   void initState() {
@@ -135,21 +141,27 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     // Parse all words from narration text
     _narrationWords = _parseNarrationWords(beat.text);
     _currentWordIndex = 0;
+    _vadEstimatedPosition = 0;
+    _lastConfirmedPosition = 0;
+    _confirmedWordIndices.clear();
     
     AppLogger.speech.d('📖 Parsed ${_narrationWords.length} words from narration');
     AppLogger.speech.d('📖 First 5 words: ${_narrationWords.take(5).join(", ")}');
     
-    // Initialize alignment tracker with word sequence
+    // PHASE 1: Initialize VAD tracker for real-time estimation
     _alignmentTracker.initialize(
       words: _narrationWords,
       onWordAdvance: (wordIndex) {
         if (mounted) {
+          // Store VAD estimate
+          _vadEstimatedPosition = wordIndex;
+          
+          // Update display position (tentative)
           setState(() {
             _currentWordIndex = wordIndex;
           });
           
-          // Check if any target words were spoken
-          _checkForValidatedTargetWords(beat, [_narrationWords[wordIndex]]);
+          AppLogger.speech.v('⚡ VAD estimate: word ${wordIndex + 1}/${_narrationWords.length}');
         }
       },
       onEnergyUpdate: (energy) {
@@ -166,18 +178,23 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       // Trigger rebuild with narration words loaded
     });
     
-    // Start voice alignment tracking
-    AppLogger.speech.i('🎯 Starting VAD+Syllable alignment tracking...');
-    final started = await _alignmentTracker.startTracking();
+    // Start VAD tracking (Phase 1: fast estimate)
+    AppLogger.speech.i('⚡ PHASE 1: Starting VAD real-time estimation...');
+    final vadStarted = await _alignmentTracker.startTracking();
     
-    if (started) {
+    if (vadStarted) {
       setState(() {
         _isTracking = true;
       });
-      AppLogger.speech.success('✅ Voice alignment tracking active!');
+      AppLogger.speech.success('✅ VAD real-time tracking active!');
     } else {
-      AppLogger.speech.e('❌ Failed to start voice alignment tracking');
+      AppLogger.speech.e('❌ Failed to start VAD tracking');
+      return;
     }
+    
+    // PHASE 2: Start STT for anchoring/validation (runs in parallel)
+    AppLogger.speech.i('⚓ PHASE 2: Starting STT anchoring...');
+    _startSttAnchoring(beat);
   }
   
   List<String> _parseNarrationWords(String text) {
@@ -190,7 +207,154 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
         .toList();
   }
   
-  // DEPRECATED: Replaced by VoiceAlignmentTracker
+  void _startSttAnchoring(StoryBeat beat) async {
+    if (!_recognizerInitialized) {
+      AppLogger.speech.w('STT not initialized, skipping anchoring');
+      return;
+    }
+    
+    final controller = context.read<GameController>();
+    
+    try {
+      // Start listening with partial results for anchoring
+      await controller.speechRecognizer.startListening(
+        onResult: (result) => _handleSttAnchor(result, beat),
+        onPartial: (partial) => _handleSttAnchorPartial(partial.partial, beat),
+        onError: (error) {
+          AppLogger.speech.w('STT anchoring error (non-critical): $error');
+        },
+        expectedWord: null,  // Open listening
+      );
+      
+      setState(() {
+        _isListening = true;
+      });
+      
+      AppLogger.speech.i('⚓ STT anchoring active (validates VAD estimates)');
+    } catch (e) {
+      AppLogger.speech.w('Could not start STT anchoring: $e');
+      // Not critical - VAD will continue working
+    }
+  }
+  
+  void _handleSttAnchorPartial(String partialText, StoryBeat beat) {
+    if (partialText.isEmpty || _narrationWords.isEmpty) return;
+    
+    final spokenWords = partialText.toLowerCase()
+        .replaceAll(RegExp(r'[^\w\s]'), ' ')
+        .split(RegExp(r'\s+'))
+        .where((w) => w.isNotEmpty)
+        .toList();
+    
+    if (spokenWords.isEmpty) return;
+    
+    // Try to find anchor points in the text
+    _findAndApplyAnchors(spokenWords, beat);
+  }
+  
+  void _handleSttAnchor(SpeechRecognitionResult result, StoryBeat beat) {
+    if (result.text.isEmpty) return;
+    
+    final spokenWords = result.text.toLowerCase()
+        .replaceAll(RegExp(r'[^\w\s]'), ' ')
+        .split(RegExp(r'\s+'))
+        .where((w) => w.isNotEmpty)
+        .toList();
+    
+    AppLogger.speech.d('⚓ STT heard: ${spokenWords.join(" ")}');
+    
+    // Apply anchors from final result
+    _findAndApplyAnchors(spokenWords, beat);
+  }
+  
+  void _findAndApplyAnchors(List<String> spokenWords, StoryBeat beat) {
+    // Find where these words appear in the narration
+    // Look in a window around VAD estimate (VAD may have drifted)
+    
+    final searchStart = math.max(0, _vadEstimatedPosition - 5);
+    final searchEnd = math.min(_narrationWords.length, _vadEstimatedPosition + 10);
+    
+    // Find longest consecutive match in search window
+    int bestMatchStart = -1;
+    int bestMatchLength = 0;
+    
+    for (int i = searchStart; i < searchEnd; i++) {
+      int matchLength = 0;
+      
+      for (int j = 0; j < spokenWords.length && (i + j) < _narrationWords.length; j++) {
+        if (_wordsMatch(spokenWords[j], _narrationWords[i + j])) {
+          matchLength++;
+        } else {
+          break;  // Consecutive match broken
+        }
+      }
+      
+      if (matchLength > bestMatchLength) {
+        bestMatchLength = matchLength;
+        bestMatchStart = i;
+      }
+    }
+    
+    // Apply anchor if we found a good match (at least 2 consecutive words)
+    if (bestMatchLength >= 2 && bestMatchStart >= 0) {
+      AppLogger.speech.i('⚓ ANCHOR: Found ${bestMatchLength} words at position $bestMatchStart');
+      AppLogger.speech.i('   Words: ${_narrationWords.sublist(bestMatchStart, bestMatchStart + bestMatchLength).join(" ")}');
+      
+      // Mark these words as confirmed
+      for (int i = 0; i < bestMatchLength; i++) {
+        _confirmedWordIndices.add(bestMatchStart + i);
+      }
+      
+      // Update confirmed position
+      final newConfirmedPosition = bestMatchStart + bestMatchLength - 1;
+      
+      // If VAD has drifted significantly, adjust it
+      if ((_vadEstimatedPosition - newConfirmedPosition).abs() > 3) {
+        AppLogger.speech.w('⚠️ VAD drift detected! VAD=$_vadEstimatedPosition, STT=$newConfirmedPosition');
+        AppLogger.speech.i('🔄 Correcting VAD position to match STT anchor');
+        
+        // Don't jump backwards unless very far off
+        if (newConfirmedPosition > _vadEstimatedPosition || 
+            (_vadEstimatedPosition - newConfirmedPosition) > 5) {
+          _vadEstimatedPosition = newConfirmedPosition;
+          _lastConfirmedPosition = newConfirmedPosition;
+          
+          setState(() {
+            _currentWordIndex = newConfirmedPosition;
+          });
+        }
+      } else {
+        // Small drift - just note the confirmed position
+        _lastConfirmedPosition = newConfirmedPosition;
+        
+        setState(() {
+          // Trigger UI update to show confirmed words
+        });
+      }
+      
+      // Check for target words
+      _checkForValidatedTargetWords(beat, spokenWords);
+    }
+  }
+  
+  bool _wordsMatch(String spoken, String expected) {
+    // Simple matching for anchoring
+    if (spoken == expected) return true;
+    
+    // Handle common variations
+    if (spoken.startsWith(expected) || expected.startsWith(spoken)) {
+      return true;
+    }
+    
+    // Homophone check
+    if (WordList.phraseContainsWord(spoken, expected)) {
+      return true;
+    }
+    
+    return false;
+  }
+  
+  // DEPRECATED: Old STT-only methods (replaced by hybrid VAD+STT)
   // ignore: unused_element
   void _startListeningForNarration() async {
     if (!_recognizerInitialized) {
@@ -386,7 +550,9 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     return _findBestPositionFromPartial(spokenWords);
   }
   
-  bool _wordsMatch(String spoken, String expected) {
+  // DEPRECATED: Duplicate _wordsMatch (see line 339 for active version)
+  // ignore: unused_element
+  bool _wordsMatchOld(String spoken, String expected) {
     // Simple matching - exact or very close
     if (spoken == expected) return true;
     
@@ -860,12 +1026,14 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
                         Flexible(
                           child: Text(
                             _isTracking
-                                ? '🎯 VAD Alignment: Word ${_currentWordIndex + 1}/${_narrationWords.length} ${_currentEnergy > 0.01 ? "🔊" : ""}'
+                                ? '⚡ VAD: ${_vadEstimatedPosition + 1}/${_narrationWords.length} | ⚓ STT: ${_confirmedWordIndices.length} confirmed ${_currentEnergy > 0.01 ? "🔊" : ""}'
                                 : _currentTargetWord != null
                                     ? 'Listening for "$_currentTargetWord"...'
                                     : 'Ready',
-                            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+                            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 13),
                             textAlign: TextAlign.center,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                       ],
@@ -1119,6 +1287,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       
       final isCurrent = wordIndex == _currentWordIndex;
       final isRead = wordIndex < _currentWordIndex;
+      final isConfirmed = _confirmedWordIndices.contains(wordIndex);
       
       Widget wordWidget;
       
@@ -1149,38 +1318,74 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
           ),
         );
       } else if (isCurrent) {
-        // CURRENT WORD - Prominent blue highlight
-        wordWidget = GestureDetector(
-          onTap: () => _jumpToWord(wordIndex),
-          child: Container(
-            margin: const EdgeInsets.all(3),
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            decoration: BoxDecoration(
-              color: Colors.blue.shade600,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(
-                color: Colors.blue.shade900,
-                width: 3,
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.blue.shade300,
-                  blurRadius: 8,
-                  spreadRadius: 1,
+        // CURRENT WORD - Different styling for VAD estimate vs STT-confirmed
+        if (isConfirmed) {
+          // STT-CONFIRMED: Solid blue with checkmark
+          wordWidget = GestureDetector(
+            onTap: () => _jumpToWord(wordIndex),
+            child: Container(
+              margin: const EdgeInsets.all(3),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              decoration: BoxDecoration(
+                color: Colors.blue.shade700,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: Colors.blue.shade900,
+                  width: 3,
                 ),
-              ],
-            ),
-            child: Text(
-              segment,
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                letterSpacing: 0.5,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.blue.shade300,
+                    blurRadius: 8,
+                    spreadRadius: 1,
+                  ),
+                ],
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.check_circle, color: Colors.white, size: 16),
+                  const SizedBox(width: 4),
+                  Text(
+                    segment,
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      letterSpacing: 0.5,
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
-        );
+          );
+        } else {
+          // VAD ESTIMATE: Lighter blue, tentative (no checkmark yet)
+          wordWidget = GestureDetector(
+            onTap: () => _jumpToWord(wordIndex),
+            child: Container(
+              margin: const EdgeInsets.all(3),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              decoration: BoxDecoration(
+                color: Colors.blue.shade300,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: Colors.blue.shade400,
+                  width: 2,
+                ),
+              ),
+              child: Text(
+                segment,
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue.shade900,
+                  letterSpacing: 0.5,
+                ),
+              ),
+            ),
+          );
+        }
       } else if (isRead) {
         // Read - with checkmark (smaller, subtle)
         wordWidget = GestureDetector(
