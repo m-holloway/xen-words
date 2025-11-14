@@ -34,6 +34,8 @@ class SherpaRecognizer implements ISpeechRecognizer {
   String? _lastPartialText;
   int _stablePartialCount = 0;  // Count of consecutive identical partial results
   static const int _stablePartialThreshold = 3;  // Return result after 3 stable partials (300ms)
+  DateTime? _listeningStartTime;  // Track when we started listening
+  static const int _minimumListeningDurationMs = 500;  // Minimum 500ms of audio before matching
   
   // Sequence number to track which word we're expecting results for
   // This prevents old results from being processed after a new word is displayed
@@ -352,6 +354,7 @@ class SherpaRecognizer implements ISpeechRecognizer {
     // Reset early recognition tracking
     _stablePartialCount = 0;
     _lastPartialText = null;
+    _listeningStartTime = DateTime.now();  // Track when we started
     
     _onResult = onResult;
     _onPartial = onPartial;
@@ -634,8 +637,15 @@ class SherpaRecognizer implements ISpeechRecognizer {
             final partialText = partialResult.text.trim();
             
             // Check for early recognition: if partial result matches expected word and is stable
-            if (_expectedWord != null && _shouldReturnEarly(partialText, partialResult.tokens)) {
-              AppLogger.speech.d('⚡ Early recognition: "$partialText" (sequence: $timerSequence)');
+            // CRITICAL: Require minimum listening duration to avoid matching ambient noise
+            final elapsedMs = _listeningStartTime != null 
+                ? DateTime.now().difference(_listeningStartTime!).inMilliseconds 
+                : 0;
+            
+            if (elapsedMs >= _minimumListeningDurationMs && 
+                _expectedWord != null && 
+                _shouldReturnEarly(partialText, partialResult.tokens)) {
+              AppLogger.speech.d('⚡ Early recognition: "$partialText" after ${elapsedMs}ms (sequence: $timerSequence)');
               final matchedWord = _findMatchingSightWord(partialText, partialResult.tokens, _expectedWord);
               if (matchedWord != null) {
                 _onResult?.call(SpeechRecognitionResult(
@@ -647,6 +657,8 @@ class SherpaRecognizer implements ISpeechRecognizer {
                 _lastPartialText = null;
                 return;  // Exit early from timer callback
               }
+            } else if (elapsedMs < _minimumListeningDurationMs && partialText.isNotEmpty) {
+              AppLogger.speech.v('Partial "$partialText" ignored - only ${elapsedMs}ms elapsed (need $_minimumListeningDurationMs)');
             }
             
             _onPartial?.call(PartialSpeechResult(
@@ -950,20 +962,13 @@ class SherpaRecognizer implements ISpeechRecognizer {
       return true;
     }
     
-    // Check for similar endings (common source of confusion)
-    if (w1.length >= 2 && w2.length >= 2) {
-      final w1End = w1.substring(w1.length - 2);
-      final w2End = w2.substring(w2.length - 2);
-      if (w1End == w2End && w1.length <= 4 && w2.length <= 4) {
-        // Short words with same ending are likely confused
-        return true;
-      }
-    }
+    // DISABLED: Similar endings check was too aggressive
+    // Was matching "ho" to "go" because both end with "o"
+    // Only use explicit homonym mappings for reliability
     
-    // Check for same first letter and similar length (for short words)
-    if (w1.length <= 3 && w2.length <= 3 && w1[0] == w2[0]) {
-      return true;
-    }
+    // DISABLED: Same first letter check was too aggressive
+    // Was matching too many unrelated short words
+    // Only use explicit homonym mappings for reliability
     
     return false;
   }
