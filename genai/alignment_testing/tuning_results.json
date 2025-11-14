@@ -1,0 +1,108 @@
+{
+  "best_params": {
+    "syllables_per_word": 2.5,
+    "min_peak_distance": 0.25,
+    "energy_threshold": 0.005
+  },
+  "best_result": {
+    "mean_error": 4.304,
+    "median_error": 2.472,
+    "std_dev": 4.189552720756716,
+    "mean_latency": -3.6291764705882352,
+    "within_250ms": 5.88235294117647,
+    "within_500ms": 11.76470588235294,
+    "within_1s": 17.647058823529413
+  },
+  "all_results": [
+    {
+      "params": {
+        "syllables_per_word": 2.5,
+        "min_peak_distance": 0.25,
+        "energy_threshold": 0.005
+      },
+      "mean_error": 4.304,
+      "within_500ms": 11.76470588235294
+    },
+    {
+      "params": {
+        "syllables_per_word": 2.5,
+        "min_peak_distance": 0.25,
+        "energy_threshold": 0.01
+      },
+      "mean_error": 4.304,
+      "within_500ms": 11.76470588235294
+    },
+    {
+      "params": {
+        "syllables_per_word": 2.5,
+        "min_peak_distance": 0.25,
+        "energy_threshold": 0.02
+      },
+      "mean_error": 4.304,
+      "within_500ms": 11.76470588235294
+    },
+    {
+      "params": {
+        "syllables_per_word": 2.5,
+        "min_peak_distance": 0.25,
+        "energy_threshold": 0.03
+      },
+      "mean_error": 4.304,
+      "within_500ms": 11.76470588235294
+    },
+    {
+      "params": {
+        "syllables_per_word": 3.5,
+        "min_peak_distance": 0.1,
+        "energy_threshold": 0.005
+      },
+      "mean_error": 4.349176470588236,
+      "within_500ms": 11.76470588235294
+    },
+    {
+      "params": {
+        "syllables_per_word": 3.5,
+        "min_peak_distance": 0.1,
+        "energy_threshold": 0.01
+      },
+      "mean_error": 4.349176470588236,
+      "within_500ms": 11.76470588235294
+    },
+    {
+      "params": {
+        "syllables_per_word": 3.5,
+        "min_peak_distance": 0.1,
+        "energy_threshold": 0.02
+      },
+      "mean_error": 4.349176470588236,
+      "within_500ms": 11.76470588235294
+    },
+    {
+      "params": {
+        "syllables_per_word": 3.5,
+        "min_peak_distance": 0.1,
+        "energy_threshold": 0.03
+      },
+      "mean_error": 4.349176470588236,
+      "within_500ms": 11.76470588235294
+    },
+    {
+      "params": {
+        "syllables_per_word": 3.0,
+        "min_peak_distance": 0.2,
+        "energy_threshold": 0.005
+      },
+      "mean_error": 4.360941176470588,
+      "within_500ms": 17.647058823529413
+    },
+    {
+      "params": {
+        "syllables_per_word": 3.0,
+        "min_peak_distance": 0.2,
+        "energy_threshold": 0.01
+      },
+      "mean_error": 4.360941176470588,
+      "within_500ms": 17.647058823529413
+    }
+  ]
+}
