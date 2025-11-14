@@ -35,6 +35,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   
   // Voice recognition state
   bool _isListening = false;
+  bool _recognizerInitialized = false;
   String? _currentTargetWord;
   Map<String, bool> _validatedWords = {}; // word -> validated
   
@@ -63,12 +64,33 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     
     _fadeController.forward();
     
-    // Auto-start listening if beat has target words
+    // Initialize speech recognizer and start listening
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _checkAndStartListening();
+      _initializeAndStartListening();
     });
     
     AppLogger.system.d('Enhanced story reader opened: ${widget.story.title}');
+  }
+  
+  Future<void> _initializeAndStartListening() async {
+    // Initialize speech recognizer first
+    final controller = context.read<GameController>();
+    
+    AppLogger.speech.d('Initializing speech recognizer for story...');
+    final initialized = await controller.initializeSpeechRecognizer();
+    
+    if (initialized) {
+      setState(() {
+        _recognizerInitialized = true;
+      });
+      AppLogger.speech.success('Speech recognizer initialized successfully');
+      
+      // Now check if we should start listening
+      _checkAndStartListening();
+    } else {
+      AppLogger.speech.e('Failed to initialize speech recognizer');
+      // Show error to user?
+    }
   }
   
   @override
@@ -99,12 +121,17 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   }
   
   void _startListeningForWord(String word) async {
+    if (!_recognizerInitialized) {
+      AppLogger.speech.w('Cannot start listening - recognizer not initialized');
+      return;
+    }
+    
     setState(() {
       _isListening = true;
       _currentTargetWord = word;
     });
     
-    AppLogger.speech.emoji('🎤', 'Listening for: $word');
+    AppLogger.speech.emoji('🎤', 'Starting to listen for: $word');
     
     // Integrate actual Sherpa recognition
     final controller = context.read<GameController>();
@@ -120,9 +147,13 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
         },
         expectedWord: word,
       );
-      AppLogger.speech.success('Voice recognition started for: $word');
+      AppLogger.speech.success('🎤 Voice recognition ACTIVE for: $word');
     } catch (e) {
       AppLogger.speech.e('Failed to start voice recognition', error: e);
+      setState(() {
+        _isListening = false;
+        _currentTargetWord = null;
+      });
     }
   }
   
@@ -400,6 +431,26 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
         backgroundColor: Colors.deepPurple,
         foregroundColor: Colors.white,
         actions: [
+          // Show mic status in app bar
+          if (!_recognizerInitialized)
+            const Padding(
+              padding: EdgeInsets.only(right: 12),
+              child: Center(
+                child: SizedBox(
+                  width: 16,
+                  height: 16,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                  ),
+                ),
+              ),
+            ),
+          if (_recognizerInitialized)
+            const Padding(
+              padding: EdgeInsets.only(right: 12),
+              child: Icon(Icons.mic, size: 20),
+            ),
           Center(
             child: Padding(
               padding: const EdgeInsets.only(right: 16),
