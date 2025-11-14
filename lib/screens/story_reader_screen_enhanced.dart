@@ -275,29 +275,59 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   
   void _findAndApplyAnchors(List<String> spokenWords, StoryBeat beat) {
     // Find where these words appear in the narration
-    // Look in a window around VAD estimate (VAD may have drifted)
+    // FLEXIBLE MATCHING: Wide window, allow gaps, phonetic matching
     
-    final searchStart = math.max(0, _vadEstimatedPosition - 5);
-    final searchEnd = math.min(_narrationWords.length, _vadEstimatedPosition + 10);
+    // If not anchored yet: search entire beginning (parent just started)
+    // If anchored: search around VAD estimate (may have drifted)
+    final searchStart = _vadAnchored ? math.max(0, _vadEstimatedPosition - 10) : 0;
+    final searchEnd = _vadAnchored 
+        ? math.min(_narrationWords.length, _vadEstimatedPosition + 15)
+        : math.min(_narrationWords.length, 15);  // First ~15 words for initial anchor
     
-    // Find longest consecutive match in search window
+    AppLogger.speech.v('🔍 Searching for: ${spokenWords.join(", ")}');
+    AppLogger.speech.v('   In range: [$searchStart, $searchEnd) of ${_narrationWords.length} words');
+    
+    // Find best match allowing gaps
     int bestMatchStart = -1;
     int bestMatchLength = 0;
+    double bestMatchScore = 0.0;
     
     for (int i = searchStart; i < searchEnd; i++) {
+      // Try to match spoken words starting at position i
+      // Allow skips/gaps in the sequence
       int matchLength = 0;
+      double matchScore = 0.0;
+      int narratonPos = i;
       
-      for (int j = 0; j < spokenWords.length && (i + j) < _narrationWords.length; j++) {
-        if (_wordsMatch(spokenWords[j], _narrationWords[i + j])) {
-          matchLength++;
-        } else {
-          break;  // Consecutive match broken
+      for (int j = 0; j < spokenWords.length && narratonPos < _narrationWords.length; j++) {
+        bool foundMatch = false;
+        
+        // Look ahead up to 3 words to find this spoken word
+        for (int lookahead = 0; lookahead < 3 && (narratonPos + lookahead) < _narrationWords.length; lookahead++) {
+          final matchQuality = _getMatchQuality(spokenWords[j], _narrationWords[narratonPos + lookahead]);
+          
+          if (matchQuality > 0.5) {  // At least 50% match
+            matchLength++;
+            matchScore += matchQuality;
+            narratonPos += lookahead + 1;
+            foundMatch = true;
+            
+            AppLogger.speech.v('   ✓ "${spokenWords[j]}" → "${_narrationWords[narratonPos - 1]}" (quality: ${matchQuality.toStringAsFixed(2)})');
+            break;
+          }
+        }
+        
+        if (!foundMatch) {
+          // Skip this spoken word (might be noise)
+          narratonPos++;
         }
       }
       
-      if (matchLength > bestMatchLength) {
+      if (matchLength > bestMatchLength || 
+          (matchLength == bestMatchLength && matchScore > bestMatchScore)) {
         bestMatchLength = matchLength;
         bestMatchStart = i;
+        bestMatchScore = matchScore;
       }
     }
     
@@ -381,6 +411,92 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     }
     
     return false;
+  }
+  
+  /// Count syllables in a word (simple vowel cluster counting)
+  int _countSyllables(String word) {
+    if (word.isEmpty) return 0;
+    
+    final cleaned = word.toLowerCase().replaceAll(RegExp(r'[^a-z]'), '');
+    if (cleaned.isEmpty) return 0;
+    
+    // Count vowel groups (consecutive vowels = 1 syllable)
+    int syllables = 0;
+    bool inVowelGroup = false;
+    
+    for (int i = 0; i < cleaned.length; i++) {
+      final isVowel = 'aeiouy'.contains(cleaned[i]);
+      
+      if (isVowel && !inVowelGroup) {
+        syllables++;
+        inVowelGroup = true;
+      } else if (!isVowel) {
+        inVowelGroup = false;
+      }
+    }
+    
+    // Handle silent 'e' at end
+    if (syllables > 1 && cleaned.endsWith('e') && cleaned.length > 2) {
+      final beforeE = cleaned[cleaned.length - 2];
+      if (!'aeiouy'.contains(beforeE)) {
+        syllables--;
+      }
+    }
+    
+    // Every word has at least 1 syllable
+    return math.max(1, syllables);
+  }
+  
+  /// Get match quality between spoken and expected word (0.0 to 1.0)
+  /// Uses text similarity + syllable count + phonetic rules
+  double _getMatchQuality(String spoken, String expected) {
+    spoken = spoken.toLowerCase();
+    expected = expected.toLowerCase();
+    
+    // Perfect match
+    if (spoken == expected) return 1.0;
+    
+    double score = 0.0;
+    
+    // Prefix/suffix matching (partial credit)
+    if (spoken.startsWith(expected) || expected.startsWith(spoken)) {
+      final overlapLength = math.min(spoken.length, expected.length);
+      score = math.max(score, overlapLength / math.max(spoken.length, expected.length) * 0.8);
+    }
+    
+    // Syllable count matching (CRITICAL for phonetic similarity!)
+    final spokenSyllables = _countSyllables(spoken);
+    final expectedSyllables = _countSyllables(expected);
+    
+    if (spokenSyllables == expectedSyllables) {
+      // Same syllable count = strong signal!
+      score = math.max(score, 0.7);
+      
+      AppLogger.speech.v('   📊 Syllable match: "$spoken" ($spokenSyllables) ≈ "$expected" ($expectedSyllables)');
+    } else {
+      // Syllable mismatch = penalty
+      final syllableDiff = (spokenSyllables - expectedSyllables).abs();
+      final syllablePenalty = syllableDiff / math.max(spokenSyllables, expectedSyllables);
+      score = math.max(0.0, score - syllablePenalty * 0.3);
+    }
+    
+    // First letter matching (common in STT errors)
+    if (spoken.isNotEmpty && expected.isNotEmpty && spoken[0] == expected[0]) {
+      score += 0.2;
+    }
+    
+    // Homophone check (from WordList)
+    if (WordList.phraseContainsWord(spoken, expected)) {
+      score = math.max(score, 0.9);
+    }
+    
+    // Length similarity
+    final lengthDiff = (spoken.length - expected.length).abs();
+    if (lengthDiff <= 2) {
+      score += 0.1;
+    }
+    
+    return math.min(1.0, score);
   }
   
   // DEPRECATED: Old STT-only methods (replaced by hybrid VAD+STT)
