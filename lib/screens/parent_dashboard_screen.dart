@@ -168,7 +168,12 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
           
           const SizedBox(height: 20),
           
-          // 2. TIMELINE - Visual progress over time
+          // 2. PRIMARY ACTION - Start Story Time
+          _buildStoryTimeButton(context, progress, childName),
+          
+          const SizedBox(height: 20),
+          
+          // 3. TIMELINE - Visual progress over time
           ProgressTimelineWidget(
             progress: progress,
           ),
@@ -193,6 +198,247 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
         ],
       ),
     );
+  }
+  
+  Widget _buildStoryTimeButton(BuildContext context, LearningProgress progress, String childName) {
+    // Calculate milestone progress
+    // For now, unlock story every 5 words mastered
+    final wordsMastered = progress.wordProgress.values.where((w) => w.isMastered).length;
+    final nextMilestone = ((wordsMastered ~/ 5) + 1) * 5;
+    final wordsUntilStory = nextMilestone - wordsMastered;
+    
+    // Check if story is unlocked
+    final storyUnlocked = wordsUntilStory <= 0 || progress.totalSessions >= 3;
+    
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: storyUnlocked
+              ? [Colors.purple.shade400, Colors.deepPurple.shade600]
+              : [Colors.grey.shade400, Colors.grey.shade600],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: storyUnlocked
+                ? Colors.deepPurple.withOpacity(0.3)
+                : Colors.grey.withOpacity(0.2),
+            blurRadius: 12,
+            offset: const Offset(0, 6),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: storyUnlocked ? () => _launchStoryTime(context, progress, childName) : null,
+          borderRadius: BorderRadius.circular(20),
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: const Icon(
+                        Icons.auto_stories,
+                        size: 40,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Story Time',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            storyUnlocked
+                                ? 'Read together with $childName!'
+                                : 'Complete $wordsUntilStory more ${wordsUntilStory == 1 ? "word" : "words"} to unlock',
+                            style: TextStyle(
+                              color: Colors.white.withOpacity(0.9),
+                              fontSize: 14,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    if (storyUnlocked)
+                      const Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.white,
+                        size: 24,
+                      ),
+                  ],
+                ),
+                if (!storyUnlocked) ...[
+                  const SizedBox(height: 16),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: LinearProgressIndicator(
+                      value: wordsMastered / nextMilestone,
+                      backgroundColor: Colors.white.withOpacity(0.3),
+                      valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
+                      minHeight: 8,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    '$wordsMastered / $nextMilestone words mastered',
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.8),
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+  
+  void _launchStoryTime(BuildContext context, LearningProgress progress, String childName) {
+    // TODO: Navigate to story reader screen
+    // For now, show a placeholder message
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Row(
+          children: [
+            Icon(Icons.auto_stories, color: Colors.deepPurple),
+            SizedBox(width: 12),
+            Text('Story Time!'),
+          ],
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Get ready for an adventure with $childName!',
+              style: const TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              'The story will feature:',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            ..._selectStoryWords(progress).map((word) => Padding(
+              padding: const EdgeInsets.only(left: 16, top: 4),
+              child: Row(
+                children: [
+                  Icon(
+                    word['mastery'] >= 0.8
+                        ? Icons.check_circle
+                        : word['mastery'] >= 0.5
+                            ? Icons.circle
+                            : Icons.circle_outlined,
+                    size: 16,
+                    color: word['mastery'] >= 0.8
+                        ? Colors.green
+                        : word['mastery'] >= 0.5
+                            ? Colors.orange
+                            : Colors.red,
+                  ),
+                  const SizedBox(width: 8),
+                  Text(
+                    '${word['word']} (${(word['mastery'] * 100).toStringAsFixed(0)}%)',
+                  ),
+                ],
+              ),
+            )),
+            const SizedBox(height: 16),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.blue.shade50,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: Colors.blue.shade200),
+              ),
+              child: const Row(
+                children: [
+                  Icon(Icons.info_outline, color: Colors.blue, size: 20),
+                  SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      'Story reader UI coming next!',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 13,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Close'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+              // TODO: Navigate to StoryReaderScreen
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.deepPurple,
+              foregroundColor: Colors.white,
+            ),
+            child: const Text('Start Story'),
+          ),
+        ],
+      ),
+    );
+  }
+  
+  List<Map<String, dynamic>> _selectStoryWords(LearningProgress progress) {
+    final allWords = progress.wordProgress.values.toList();
+    
+    if (allWords.isEmpty) {
+      return [
+        {'word': 'you', 'mastery': 0.5},
+        {'word': 'see', 'mastery': 0.5},
+        {'word': 'go', 'mastery': 0.5},
+      ];
+    }
+    
+    // Separate by mastery level
+    final easy = allWords.where((w) => w.successRate >= 0.7).toList();
+    final challenging = allWords.where((w) => w.successRate < 0.7).toList();
+    
+    // Select 3 easy, 2 challenging (60/40 split)
+    final selectedEasy = (easy..shuffle()).take(3).toList();
+    final selectedChallenging = (challenging..shuffle()).take(2).toList();
+    
+    final selected = [...selectedEasy, ...selectedChallenging];
+    
+    return selected.map((w) => {
+      'word': w.word,
+      'mastery': w.successRate,
+    }).toList();
   }
   
   Widget _buildViewAllWordsButton(BuildContext context, LearningProgress progress) {
