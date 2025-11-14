@@ -1,0 +1,953 @@
+{
+  "script": "You are Adalyn, and today you went to see a glowing trail outside your window. You put on your rainbow boots and open the door. The sparkling path leads to a big tree. You follow it and find a little fairy. She is sitting on a flower. The fairy looks at you and smiles. She has magic dust in her hands.",
+  "audio_file": "../../test_audio/reading_with_noise.wav",
+  "noise_file": null,
+  "snr_db": null,
+  "results": [
+    {
+      "approach": "MFCC+DTW",
+      "words_aligned": 61,
+      "total_words": 61,
+      "accuracy": 1.0,
+      "latency_ms": 541.4328575134277,
+      "real_time_factor": 0.01390667330228908,
+      "timestamps": [
+        {
+          "word": "you",
+          "start": 0.064,
+          "end": 0.32
+        },
+        {
+          "word": "are",
+          "start": 0.384,
+          "end": 0.544
+        },
+        {
+          "word": "adalyn,",
+          "start": 0.832,
+          "end": 1.056
+        },
+        {
+          "word": "and",
+          "start": 1.216,
+          "end": 1.376
+        },
+        {
+          "word": "today",
+          "start": 1.472,
+          "end": 1.6
+        },
+        {
+          "word": "you",
+          "start": 1.728,
+          "end": 1.92
+        },
+        {
+          "word": "went",
+          "start": 2.016,
+          "end": 2.144
+        },
+        {
+          "word": "to",
+          "start": 2.208,
+          "end": 2.368
+        },
+        {
+          "word": "see",
+          "start": 2.432,
+          "end": 2.496
+        },
+        {
+          "word": "a",
+          "start": 2.624,
+          "end": 2.72
+        },
+        {
+          "word": "glowing",
+          "start": 2.752,
+          "end": 3.136
+        },
+        {
+          "word": "trail",
+          "start": 3.264,
+          "end": 3.744
+        },
+        {
+          "word": "outside",
+          "start": 3.808,
+          "end": 4.032
+        },
+        {
+          "word": "your",
+          "start": 4.704,
+          "end": 4.736
+        },
+        {
+          "word": "window.",
+          "start": 5.28,
+          "end": 6.24
+        },
+        {
+          "word": "you",
+          "start": 6.272,
+          "end": 6.848
+        },
+        {
+          "word": "put",
+          "start": 7.04,
+          "end": 7.136
+        },
+        {
+          "word": "on",
+          "start": 7.296,
+          "end": 7.456
+        },
+        {
+          "word": "your",
+          "start": 7.904,
+          "end": 9.152
+        },
+        {
+          "word": "rainbow",
+          "start": 9.536,
+          "end": 9.664
+        },
+        {
+          "word": "boots",
+          "start": 9.856,
+          "end": 10.176
+        },
+        {
+          "word": "and",
+          "start": 10.208,
+          "end": 11.072
+        },
+        {
+          "word": "open",
+          "start": 11.264,
+          "end": 11.296
+        },
+        {
+          "word": "the",
+          "start": 12.064,
+          "end": 13.632
+        },
+        {
+          "word": "door.",
+          "start": 13.728,
+          "end": 14.72
+        },
+        {
+          "word": "the",
+          "start": 15.104,
+          "end": 15.552
+        },
+        {
+          "word": "sparkling",
+          "start": 15.616,
+          "end": 15.808
+        },
+        {
+          "word": "path",
+          "start": 15.904,
+          "end": 16.736
+        },
+        {
+          "word": "leads",
+          "start": 16.864,
+          "end": 16.992
+        },
+        {
+          "word": "to",
+          "start": 17.12,
+          "end": 17.248
+        },
+        {
+          "word": "a",
+          "start": 17.6,
+          "end": 17.696
+        },
+        {
+          "word": "big",
+          "start": 17.792,
+          "end": 18.368
+        },
+        {
+          "word": "tree.",
+          "start": 18.4,
+          "end": 18.688
+        },
+        {
+          "word": "you",
+          "start": 18.816,
+          "end": 18.976
+        },
+        {
+          "word": "follow",
+          "start": 19.072,
+          "end": 19.104
+        },
+        {
+          "word": "it",
+          "start": 19.296,
+          "end": 19.488
+        },
+        {
+          "word": "and",
+          "start": 19.872,
+          "end": 20.416
+        },
+        {
+          "word": "find",
+          "start": 20.448,
+          "end": 20.736
+        },
+        {
+          "word": "a",
+          "start": 20.832,
+          "end": 20.96
+        },
+        {
+          "word": "little",
+          "start": 20.992,
+          "end": 21.76
+        },
+        {
+          "word": "fairy.",
+          "start": 21.792,
+          "end": 21.824
+        },
+        {
+          "word": "she",
+          "start": 22.432,
+          "end": 22.688
+        },
+        {
+          "word": "is",
+          "start": 22.784,
+          "end": 23.264
+        },
+        {
+          "word": "sitting",
+          "start": 23.456,
+          "end": 23.488
+        },
+        {
+          "word": "on",
+          "start": 23.68,
+          "end": 24.512
+        },
+        {
+          "word": "a",
+          "start": 24.768,
+          "end": 25.344
+        },
+        {
+          "word": "flower.",
+          "start": 25.664,
+          "end": 26.048
+        },
+        {
+          "word": "the",
+          "start": 26.56,
+          "end": 26.848
+        },
+        {
+          "word": "fairy",
+          "start": 26.976,
+          "end": 27.232
+        },
+        {
+          "word": "looks",
+          "start": 27.264,
+          "end": 27.424
+        },
+        {
+          "word": "at",
+          "start": 27.968,
+          "end": 28.896
+        },
+        {
+          "word": "you",
+          "start": 28.992,
+          "end": 29.248
+        },
+        {
+          "word": "and",
+          "start": 29.28,
+          "end": 29.472
+        },
+        {
+          "word": "smiles.",
+          "start": 29.568,
+          "end": 29.664
+        },
+        {
+          "word": "she",
+          "start": 30.24,
+          "end": 30.272
+        },
+        {
+          "word": "has",
+          "start": 30.784,
+          "end": 30.944
+        },
+        {
+          "word": "magic",
+          "start": 31.104,
+          "end": 31.2
+        },
+        {
+          "word": "dust",
+          "start": 31.232,
+          "end": 31.744
+        },
+        {
+          "word": "in",
+          "start": 32.0,
+          "end": 32.128
+        },
+        {
+          "word": "her",
+          "start": 32.256,
+          "end": 32.448
+        },
+        {
+          "word": "hands.",
+          "start": 32.544,
+          "end": 32.736
+        }
+      ]
+    },
+    {
+      "approach": "Onset Detection",
+      "words_aligned": 61,
+      "total_words": 61,
+      "accuracy": 1.0,
+      "latency_ms": 1775.3362655639648,
+      "real_time_factor": 0.045599414783007865,
+      "timestamps": [
+        {
+          "word": "you",
+          "start": 0.064,
+          "end": 0.064
+        },
+        {
+          "word": "are",
+          "start": 0.064,
+          "end": 1.792
+        },
+        {
+          "word": "adalyn,",
+          "start": 1.792,
+          "end": 1.792
+        },
+        {
+          "word": "and",
+          "start": 1.792,
+          "end": 3.296
+        },
+        {
+          "word": "today",
+          "start": 3.296,
+          "end": 3.584
+        },
+        {
+          "word": "you",
+          "start": 3.584,
+          "end": 3.584
+        },
+        {
+          "word": "went",
+          "start": 3.584,
+          "end": 3.808
+        },
+        {
+          "word": "to",
+          "start": 3.808,
+          "end": 4.48
+        },
+        {
+          "word": "see",
+          "start": 4.48,
+          "end": 5.472
+        },
+        {
+          "word": "a",
+          "start": 5.472,
+          "end": 5.6
+        },
+        {
+          "word": "glowing",
+          "start": 5.6,
+          "end": 6.016
+        },
+        {
+          "word": "trail",
+          "start": 6.016,
+          "end": 6.016
+        },
+        {
+          "word": "outside",
+          "start": 6.016,
+          "end": 6.272
+        },
+        {
+          "word": "your",
+          "start": 6.272,
+          "end": 6.272
+        },
+        {
+          "word": "window.",
+          "start": 6.272,
+          "end": 6.688
+        },
+        {
+          "word": "you",
+          "start": 6.688,
+          "end": 6.944
+        },
+        {
+          "word": "put",
+          "start": 6.944,
+          "end": 6.944
+        },
+        {
+          "word": "on",
+          "start": 6.944,
+          "end": 7.168
+        },
+        {
+          "word": "your",
+          "start": 7.168,
+          "end": 7.488
+        },
+        {
+          "word": "rainbow",
+          "start": 7.488,
+          "end": 7.968
+        },
+        {
+          "word": "boots",
+          "start": 7.968,
+          "end": 8.768
+        },
+        {
+          "word": "and",
+          "start": 8.768,
+          "end": 8.768
+        },
+        {
+          "word": "open",
+          "start": 8.768,
+          "end": 9.6
+        },
+        {
+          "word": "the",
+          "start": 9.6,
+          "end": 9.952
+        },
+        {
+          "word": "door.",
+          "start": 9.952,
+          "end": 10.08
+        },
+        {
+          "word": "the",
+          "start": 10.08,
+          "end": 10.4
+        },
+        {
+          "word": "sparkling",
+          "start": 10.4,
+          "end": 10.528
+        },
+        {
+          "word": "path",
+          "start": 10.528,
+          "end": 10.528
+        },
+        {
+          "word": "leads",
+          "start": 10.528,
+          "end": 10.752
+        },
+        {
+          "word": "to",
+          "start": 10.752,
+          "end": 10.976
+        },
+        {
+          "word": "a",
+          "start": 10.976,
+          "end": 11.872
+        },
+        {
+          "word": "big",
+          "start": 11.872,
+          "end": 13.312
+        },
+        {
+          "word": "tree.",
+          "start": 13.312,
+          "end": 13.312
+        },
+        {
+          "word": "you",
+          "start": 13.312,
+          "end": 13.472
+        },
+        {
+          "word": "follow",
+          "start": 13.472,
+          "end": 13.632
+        },
+        {
+          "word": "it",
+          "start": 13.632,
+          "end": 13.728
+        },
+        {
+          "word": "and",
+          "start": 13.728,
+          "end": 14.208
+        },
+        {
+          "word": "find",
+          "start": 14.208,
+          "end": 14.432
+        },
+        {
+          "word": "a",
+          "start": 14.432,
+          "end": 14.752
+        },
+        {
+          "word": "little",
+          "start": 14.752,
+          "end": 15.232
+        },
+        {
+          "word": "fairy.",
+          "start": 15.232,
+          "end": 15.232
+        },
+        {
+          "word": "she",
+          "start": 15.232,
+          "end": 15.904
+        },
+        {
+          "word": "is",
+          "start": 15.904,
+          "end": 16.16
+        },
+        {
+          "word": "sitting",
+          "start": 16.16,
+          "end": 16.16
+        },
+        {
+          "word": "on",
+          "start": 16.16,
+          "end": 16.288
+        },
+        {
+          "word": "a",
+          "start": 16.288,
+          "end": 17.088
+        },
+        {
+          "word": "flower.",
+          "start": 17.088,
+          "end": 17.088
+        },
+        {
+          "word": "the",
+          "start": 17.088,
+          "end": 17.6
+        },
+        {
+          "word": "fairy",
+          "start": 17.6,
+          "end": 17.792
+        },
+        {
+          "word": "looks",
+          "start": 17.792,
+          "end": 17.792
+        },
+        {
+          "word": "at",
+          "start": 17.792,
+          "end": 17.952
+        },
+        {
+          "word": "you",
+          "start": 17.952,
+          "end": 18.08
+        },
+        {
+          "word": "and",
+          "start": 18.08,
+          "end": 18.272
+        },
+        {
+          "word": "smiles.",
+          "start": 18.272,
+          "end": 18.592
+        },
+        {
+          "word": "she",
+          "start": 18.592,
+          "end": 19.68
+        },
+        {
+          "word": "has",
+          "start": 19.68,
+          "end": 19.68
+        },
+        {
+          "word": "magic",
+          "start": 19.68,
+          "end": 19.872
+        },
+        {
+          "word": "dust",
+          "start": 19.872,
+          "end": 20.0
+        },
+        {
+          "word": "in",
+          "start": 20.0,
+          "end": 20.128
+        },
+        {
+          "word": "her",
+          "start": 20.128,
+          "end": 20.128
+        },
+        {
+          "word": "hands.",
+          "start": 20.128,
+          "end": 20.992
+        }
+      ]
+    },
+    {
+      "approach": "VAD+Syllable",
+      "words_aligned": 61,
+      "total_words": 61,
+      "accuracy": 1.0,
+      "latency_ms": 1.4629364013671875,
+      "real_time_factor": 3.757544137471446e-05,
+      "timestamps": [
+        {
+          "word": "you",
+          "start": 0.176,
+          "end": 0.928
+        },
+        {
+          "word": "are",
+          "start": 0.928,
+          "end": 1.296
+        },
+        {
+          "word": "adalyn,",
+          "start": 1.296,
+          "end": 1.824
+        },
+        {
+          "word": "and",
+          "start": 1.824,
+          "end": 2.528
+        },
+        {
+          "word": "today",
+          "start": 2.528,
+          "end": 2.96
+        },
+        {
+          "word": "you",
+          "start": 2.96,
+          "end": 3.568
+        },
+        {
+          "word": "went",
+          "start": 3.568,
+          "end": 4.752
+        },
+        {
+          "word": "to",
+          "start": 4.752,
+          "end": 5.36
+        },
+        {
+          "word": "see",
+          "start": 5.36,
+          "end": 5.856
+        },
+        {
+          "word": "a",
+          "start": 5.856,
+          "end": 6.384
+        },
+        {
+          "word": "glowing",
+          "start": 6.384,
+          "end": 7.12
+        },
+        {
+          "word": "trail",
+          "start": 7.12,
+          "end": 7.568
+        },
+        {
+          "word": "outside",
+          "start": 7.568,
+          "end": 8.176
+        },
+        {
+          "word": "your",
+          "start": 8.176,
+          "end": 8.88
+        },
+        {
+          "word": "window.",
+          "start": 8.88,
+          "end": 9.28
+        },
+        {
+          "word": "you",
+          "start": 9.28,
+          "end": 9.616
+        },
+        {
+          "word": "put",
+          "start": 9.616,
+          "end": 10.128
+        },
+        {
+          "word": "on",
+          "start": 10.128,
+          "end": 10.56
+        },
+        {
+          "word": "your",
+          "start": 10.56,
+          "end": 10.992
+        },
+        {
+          "word": "rainbow",
+          "start": 10.992,
+          "end": 11.792
+        },
+        {
+          "word": "boots",
+          "start": 11.792,
+          "end": 12.56
+        },
+        {
+          "word": "and",
+          "start": 12.56,
+          "end": 13.056
+        },
+        {
+          "word": "open",
+          "start": 13.056,
+          "end": 13.504
+        },
+        {
+          "word": "the",
+          "start": 13.504,
+          "end": 14.288
+        },
+        {
+          "word": "door.",
+          "start": 14.288,
+          "end": 14.72
+        },
+        {
+          "word": "the",
+          "start": 14.72,
+          "end": 15.504
+        },
+        {
+          "word": "sparkling",
+          "start": 15.504,
+          "end": 16.064
+        },
+        {
+          "word": "path",
+          "start": 16.064,
+          "end": 17.184
+        },
+        {
+          "word": "leads",
+          "start": 17.184,
+          "end": 17.648
+        },
+        {
+          "word": "to",
+          "start": 17.648,
+          "end": 18.144
+        },
+        {
+          "word": "a",
+          "start": 18.144,
+          "end": 19.136
+        },
+        {
+          "word": "big",
+          "start": 19.136,
+          "end": 19.984
+        },
+        {
+          "word": "tree.",
+          "start": 19.984,
+          "end": 20.368
+        },
+        {
+          "word": "you",
+          "start": 20.368,
+          "end": 21.264
+        },
+        {
+          "word": "follow",
+          "start": 21.264,
+          "end": 21.776
+        },
+        {
+          "word": "it",
+          "start": 21.776,
+          "end": 22.592
+        },
+        {
+          "word": "and",
+          "start": 22.592,
+          "end": 23.488
+        },
+        {
+          "word": "find",
+          "start": 23.488,
+          "end": 24.256
+        },
+        {
+          "word": "a",
+          "start": 24.256,
+          "end": 24.88
+        },
+        {
+          "word": "little",
+          "start": 24.88,
+          "end": 25.6
+        },
+        {
+          "word": "fairy.",
+          "start": 25.6,
+          "end": 26.672
+        },
+        {
+          "word": "she",
+          "start": 26.672,
+          "end": 27.088
+        },
+        {
+          "word": "is",
+          "start": 27.088,
+          "end": 28.128
+        },
+        {
+          "word": "sitting",
+          "start": 28.128,
+          "end": 28.736
+        },
+        {
+          "word": "on",
+          "start": 28.736,
+          "end": 29.648
+        },
+        {
+          "word": "a",
+          "start": 29.648,
+          "end": 30.304
+        },
+        {
+          "word": "flower.",
+          "start": 30.304,
+          "end": 30.688
+        },
+        {
+          "word": "the",
+          "start": 30.688,
+          "end": 31.36
+        },
+        {
+          "word": "fairy",
+          "start": 31.36,
+          "end": 31.856
+        },
+        {
+          "word": "looks",
+          "start": 31.856,
+          "end": 32.336
+        },
+        {
+          "word": "at",
+          "start": 32.336,
+          "end": 33.008
+        },
+        {
+          "word": "you",
+          "start": 33.008,
+          "end": 33.568
+        },
+        {
+          "word": "and",
+          "start": 33.568,
+          "end": 34.16
+        },
+        {
+          "word": "smiles.",
+          "start": 34.16,
+          "end": 34.736
+        },
+        {
+          "word": "she",
+          "start": 34.736,
+          "end": 35.376
+        },
+        {
+          "word": "has",
+          "start": 35.376,
+          "end": 35.92
+        },
+        {
+          "word": "magic",
+          "start": 35.92,
+          "end": 36.672
+        },
+        {
+          "word": "dust",
+          "start": 36.672,
+          "end": 37.456
+        },
+        {
+          "word": "in",
+          "start": 37.456,
+          "end": 37.856
+        },
+        {
+          "word": "her",
+          "start": 37.856,
+          "end": 38.336
+        },
+        {
+          "word": "hands.",
+          "start": 38.336,
+          "end": 38.836
+        }
+      ]
+    }
+  ]
+}
