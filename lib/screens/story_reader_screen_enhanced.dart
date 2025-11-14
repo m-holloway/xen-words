@@ -103,12 +103,8 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     AppLogger.speech.emoji('🎤', 'Listening for: $word');
     
     // TODO: Integrate actual Sherpa recognition
-    // For now, simulate recognition after 2 seconds for testing
-    Future.delayed(const Duration(seconds: 2), () {
-      if (_isListening && _currentTargetWord == word) {
-        _onWordRecognized(word, correct: true);
-      }
-    });
+    // For now, waiting for parent to manually validate via button
+    // (No auto-advance - parent controls the flow)
   }
   
   void _stopListening() {
@@ -151,17 +147,9 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
             _startListeningForWord(remainingWords.first);
           }
         });
-      } else {
-        // All words validated in this beat!
-        if (currentBeat.type == BeatType.childTurn) {
-          // Auto-advance for child turns
-          Future.delayed(const Duration(milliseconds: 2000), () {
-            if (mounted) {
-              _nextBeat();
-            }
-          });
-        }
       }
+      // All words validated - parent will tap "Continue" to advance
+      // (No auto-advance - parent controls the flow)
     } else {
       // Recognition failed
       _showRetryDialog(expected: word, heard: heard);
@@ -402,37 +390,83 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
           // Fireworks overlay
           FireworksOverlay(controller: _fireworksController),
           
-          // Listening indicator
+          // Listening indicator with manual test buttons
           if (_isListening)
             Positioned(
               bottom: 20,
-              left: 0,
-              right: 0,
-              child: Center(
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                  decoration: BoxDecoration(
-                    color: Colors.deepPurple.withOpacity(0.9),
-                    borderRadius: BorderRadius.circular(30),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.deepPurple.withOpacity(0.3),
-                        blurRadius: 8,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Icon(Icons.mic, color: Colors.white, size: 20),
-                      const SizedBox(width: 8),
-                      Text(
-                        'Listening for "$_currentTargetWord"...',
-                        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
-                      ),
-                    ],
-                  ),
+              left: 16,
+              right: 16,
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.deepPurple.withOpacity(0.95),
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.deepPurple.withOpacity(0.3),
+                      blurRadius: 12,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(Icons.mic, color: Colors.white, size: 20),
+                        const SizedBox(width: 8),
+                        Flexible(
+                          child: Text(
+                            'Listening for "$_currentTargetWord"...',
+                            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    const Text(
+                      'Testing mode - Tap to simulate:',
+                      style: TextStyle(color: Colors.white70, fontSize: 12),
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton.icon(
+                          onPressed: () {
+                            if (_currentTargetWord != null) {
+                              _onWordRecognized(_currentTargetWord!, correct: true);
+                            }
+                          },
+                          icon: const Icon(Icons.check_circle, size: 18),
+                          label: const Text('Success'),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.green,
+                            foregroundColor: Colors.white,
+                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        ElevatedButton.icon(
+                          onPressed: () {
+                            if (_currentTargetWord != null) {
+                              _onWordRecognized(_currentTargetWord!, correct: false, heard: 'test');
+                            }
+                          },
+                          icon: const Icon(Icons.close, size: 18),
+                          label: const Text('Fail'),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.orange,
+                            foregroundColor: Colors.white,
+                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -855,24 +889,36 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     final allValidated = beat.targetWords.isEmpty ||
         beat.targetWords.every((w) => _validatedWords[w] ?? false);
     
-    if (!allValidated) {
-      // Don't show continue button until all words are validated
-      return const SizedBox.shrink();
-    }
-    
+    // Always show continue button - parent controls the flow
+    // Show different style if words aren't validated yet
     return ElevatedButton(
       onPressed: _nextBeat,
       style: ElevatedButton.styleFrom(
-        backgroundColor: isLastBeat ? Colors.green : Colors.deepPurple,
+        backgroundColor: isLastBeat 
+            ? Colors.green 
+            : (allValidated ? Colors.deepPurple : Colors.grey),
         foregroundColor: Colors.white,
         padding: const EdgeInsets.symmetric(vertical: 16),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
       ),
-      child: Text(
-        isLastBeat ? 'Finish Story 🎉' : 'Continue →',
-        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            isLastBeat ? 'Finish Story 🎉' : 'Continue →',
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+          if (!allValidated && beat.targetWords.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(top: 4),
+              child: Text(
+                '(${beat.targetWords.where((w) => !(_validatedWords[w] ?? false)).length} word${beat.targetWords.where((w) => !(_validatedWords[w] ?? false)).length > 1 ? 's' : ''} remaining)',
+                style: const TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
+              ),
+            ),
+        ],
       ),
     );
   }
