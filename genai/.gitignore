@@ -1,0 +1,21 @@
+# Never commit real API keys
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# Generated content
+generated_audio/*.wav
+generated_audio/*.mp3
+stories_cache/
+
+# Docker
+*.log
+

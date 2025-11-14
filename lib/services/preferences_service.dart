@@ -1,5 +1,8 @@
+import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/app_settings.dart';
+import '../models/learning_progress.dart';
+import '../utils/app_logger.dart';
 
 /// Service for managing app preferences
 class PreferencesService {
@@ -10,6 +13,8 @@ class PreferencesService {
   static const String _keyLastAdvanceDate = 'last_advance_date';
   static const String _keyChildName = 'child_name';
   static const String _keyRugFontFamily = 'rug_font_family';
+  static const String _keyLearningProgress = 'learning_progress';
+  static const String _keyOnboardingComplete = 'onboarding_complete';
 
   /// Load settings from preferences
   Future<AppSettings> loadSettings() async {
@@ -89,6 +94,57 @@ class PreferencesService {
       autoAdvanceEnabled: enabled,
       advanceDayOfWeek: dayOfWeek,
     ));
+  }
+  
+  /// Load learning progress
+  Future<LearningProgress?> loadProgress() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final progressJson = prefs.getString(_keyLearningProgress);
+      
+      if (progressJson == null) {
+        return null;
+      }
+      
+      final data = jsonDecode(progressJson) as Map<String, dynamic>;
+      return LearningProgress.fromJson(data);
+    } catch (e) {
+      AppLogger.storage.e('Error loading progress', error: e);
+      return null;
+    }
+  }
+  
+  /// Save learning progress
+  Future<void> saveProgress(LearningProgress progress) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final progressJson = jsonEncode(progress.toJson());
+      await prefs.setString(_keyLearningProgress, progressJson);
+      AppLogger.storage.d('Saved learning progress');
+    } catch (e) {
+      AppLogger.storage.e('Error saving progress', error: e);
+      rethrow;
+    }
+  }
+  
+  /// Check if onboarding is complete
+  Future<bool> isOnboardingComplete() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool(_keyOnboardingComplete) ?? false;
+  }
+  
+  /// Set onboarding complete status
+  Future<void> setOnboardingComplete(bool complete) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_keyOnboardingComplete, complete);
+    AppLogger.ui.i('Onboarding complete set to: $complete');
+  }
+  
+  /// Clear all app data (for "Delete All Data" feature)
+  Future<void> clearAllData() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
+    AppLogger.storage.i('All app data cleared');
   }
 }
 

@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  story_generator:
+    build: ./story_generator
+    ports:
+      - "8001:8001"
+    env_file:
+      - .env
+    volumes:
+      # Hot reload: changes to source code reflect immediately
+      - ./story_generator/src:/app/src
+      - ./story_generator/src/prompts:/app/prompts:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  tts_service:
+    build: ./tts_service
+    ports:
+      - "8002:8002"
+    env_file:
+      - .env
+    volumes:
+      - ./tts_service/src:/app/src
+      - ./generated_audio:/app/output
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  default:
+    name: xen-words-genai
+

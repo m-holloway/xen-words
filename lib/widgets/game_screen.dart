@@ -12,6 +12,7 @@ import 'character_view.dart';
 import 'fireworks_overlay.dart';
 import 'progress_bar.dart';
 import 'director_overlay.dart';
+import 'parental_gate.dart';
 
 /// Intent for toggling director overlay
 class _ToggleDirectorIntent extends Intent {
@@ -221,16 +222,17 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                     child: _buildMainContent(controller),
                   ),
                   
-                  // Settings button (only shown in initial state)
+                  // Settings button (only shown in initial state, protected by parental gate)
                   if (controller.state == GameState.initial)
                     Positioned(
                       top: 20,
                       right: 20,
-                      child: IconButton(
-                        icon: const Icon(Icons.settings, size: 32),
-                        color: Colors.white,
-                        onPressed: () => _openSettings(context, controller),
-                        tooltip: 'Settings',
+                      child: ParentalGatedIconButton(
+                        icon: Icons.settings,
+                        tooltip: 'Settings (Adult Only)',
+                        gateTitle: 'Settings - Adult Verification',
+                        gateMessage: 'This prevents children from changing settings. Please solve:',
+                        onPassed: () => _openSettings(context, controller),
                       ),
                     ),
                   
@@ -317,7 +319,7 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                             // Only start game if initialization succeeded
                             // Don't show week selector again - go straight to game
                             await WakelockPlus.enable();
-                            controller.beginRound();
+                            await controller.beginRound();
                           } else if (mounted) {
                             // Reset if initialization failed
                             setState(() {

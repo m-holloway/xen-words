@@ -1,7 +1,14 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../models/app_settings.dart';
+import '../models/child_profile.dart';
 import '../models/word_list.dart';
+import '../screens/parent_dashboard_screen.dart';
+import '../screens/profile_selector_screen.dart';
+import '../services/preferences_service.dart';
+import '../services/profile_service.dart';
+import '../widgets/profile_editor_dialog.dart';
 
 /// Settings page for parents with advanced configuration options
 class SettingsPage extends StatefulWidget {
@@ -29,11 +36,80 @@ class _SettingsPageState extends State<SettingsPage> {
     'Friday',
     'Saturday',
   ];
+  
+  ChildProfile? _activeProfile;
+  bool _isGuest = false;
+  bool _profilesLoading = true;
 
   @override
   void initState() {
     super.initState();
     _settings = widget.initialSettings;
+    _loadActiveProfile();
+  }
+  
+  Future<void> _loadActiveProfile() async {
+    setState(() => _profilesLoading = true);
+    try {
+      final profileService = ProfileService();
+      final isGuest = await profileService.isGuestMode();
+      
+      if (isGuest) {
+        setState(() {
+          _isGuest = true;
+          _activeProfile = null;
+          _profilesLoading = false;
+        });
+      } else {
+        final activeProfileId = await profileService.getActiveProfileId();
+        if (activeProfileId != null) {
+          final profiles = await profileService.loadProfiles();
+          final profile = profiles.where((p) => p.id == activeProfileId).firstOrNull;
+          setState(() {
+            _activeProfile = profile;
+            _isGuest = false;
+            _profilesLoading = false;
+          });
+        } else {
+          setState(() => _profilesLoading = false);
+        }
+      }
+    } catch (e) {
+      setState(() => _profilesLoading = false);
+    }
+  }
+  
+  Future<void> _switchProfile() async {
+    // Navigate to profile selector
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ProfileSelectorScreen(
+          onProfileSelected: () {
+            Navigator.of(context).pop(true);
+          },
+        ),
+      ),
+    );
+    
+    // If profile was selected, pop back to home screen to reload
+    if (result == true && context.mounted) {
+      Navigator.of(context).popUntil((route) => route.isFirst);
+    }
+  }
+  
+  Future<void> _editActiveProfile() async {
+    if (_activeProfile == null) return;
+    
+    final editedProfile = await showDialog<ChildProfile>(
+      context: context,
+      builder: (context) => ProfileEditorDialog(profile: _activeProfile),
+    );
+    
+    if (editedProfile != null) {
+      await ProfileService().updateProfile(editedProfile);
+      _loadActiveProfile();
+    }
   }
 
   void _updateSettings(AppSettings newSettings) {
@@ -59,6 +135,57 @@ class _SettingsPageState extends State<SettingsPage> {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
+          // Active Profile Card
+          if (!_profilesLoading)
+            _buildSection(
+              title: 'Active Profile',
+              icon: Icons.person,
+              children: [
+                _buildCard(
+                  child: _isGuest
+                      ? _buildGuestProfileCard()
+                      : _activeProfile != null
+                          ? _buildActiveProfileCard(_activeProfile!)
+                          : _buildNoProfileCard(),
+                ),
+              ],
+            ),
+          
+          const SizedBox(height: 16),
+          
+          // Progress Dashboard Link
+          _buildCard(
+            child: ListTile(
+              leading: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.deepPurple.shade50,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: const Icon(Icons.dashboard, color: Colors.deepPurple, size: 28),
+              ),
+              title: const Text(
+                'Progress Dashboard',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              subtitle: const Text('View your child\'s learning progress and stats'),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ParentDashboardScreen(),
+                  ),
+                );
+              },
+            ),
+          ),
+
+          const SizedBox(height: 24),
+
           // Personalization Section
           _buildSection(
             title: 'Personalization',
@@ -68,13 +195,19 @@ class _SettingsPageState extends State<SettingsPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Child\'s First Name',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black87,
-                      ),
+                    Row(
+                      children: [
+                        const Expanded(
+                          child: Text(
+                            'Child\'s First Name',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black87,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 8),
                     Text(
@@ -83,6 +216,8 @@ class _SettingsPageState extends State<SettingsPage> {
                         fontSize: 14,
                         color: Colors.grey.shade600,
                       ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 16),
                     TextField(
@@ -377,6 +512,104 @@ class _SettingsPageState extends State<SettingsPage> {
             ],
           ),
 
+          // Developer Section (Debug mode only)
+          if (kDebugMode) ...[
+            const SizedBox(height: 24),
+            _buildSection(
+              title: '🔧 Developer Tools',
+              icon: Icons.code,
+              children: [
+                _buildCard(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Colors.orange.shade50,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: Colors.orange.shade200),
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(Icons.warning_amber, color: Colors.orange.shade700),
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: Text(
+                                'Development Mode Only - Not visible in production',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.orange.shade900,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      ElevatedButton.icon(
+                        onPressed: () async {
+                          // Show confirmation dialog
+                          final confirm = await showDialog<bool>(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: const Text('Reset Onboarding'),
+                              content: const Text(
+                                'This will reset the onboarding flag and show the welcome flow again on next app restart.\n\nContinue?'
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context, false),
+                                  child: const Text('Cancel'),
+                                ),
+                                ElevatedButton(
+                                  onPressed: () => Navigator.pop(context, true),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.orange,
+                                  ),
+                                  child: const Text('Reset'),
+                                ),
+                              ],
+                            ),
+                          );
+
+                          if (confirm == true) {
+                            await PreferencesService().setOnboardingComplete(false);
+                            if (context.mounted) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Onboarding reset! Restart the app to see the welcome flow.'),
+                                  backgroundColor: Colors.green,
+                                  duration: Duration(seconds: 3),
+                                ),
+                              );
+                            }
+                          }
+                        },
+                        icon: const Icon(Icons.replay),
+                        label: const Text('Reset Onboarding'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.orange,
+                          foregroundColor: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      Text(
+                        'Use this to test the onboarding flow without clearing all app data.',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey.shade600,
+                          fontStyle: FontStyle.italic,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ],
+
           const SizedBox(height: 32),
         ],
       ),
@@ -565,6 +798,172 @@ class _SettingsPageState extends State<SettingsPage> {
       default:
         return GoogleFonts.quicksand(fontWeight: FontWeight.w700);
     }
+  }
+  
+  Widget _buildActiveProfileCard(ChildProfile profile) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            // Avatar
+            Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                color: profile.color,
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: Text(
+                  profile.emoji,
+                  style: const TextStyle(fontSize: 32),
+                ),
+              ),
+            ),
+            const SizedBox(width: 16),
+            
+            // Name and age
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    profile.name,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  if (profile.ageYears != null)
+                    Text(
+                      'Age ${profile.ageYears}',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey.shade600,
+                      ),
+                    ),
+                ],
+              ),
+            ),
+            
+            // Actions
+            IconButton(
+              icon: const Icon(Icons.edit),
+              onPressed: _editActiveProfile,
+              tooltip: 'Edit Profile',
+            ),
+          ],
+        ),
+        const Divider(height: 24),
+        ElevatedButton.icon(
+          onPressed: _switchProfile,
+          icon: const Icon(Icons.swap_horiz),
+          label: const Text('Switch Profile'),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.deepPurple,
+            foregroundColor: Colors.white,
+          ),
+        ),
+      ],
+    );
+  }
+  
+  Widget _buildGuestProfileCard() {
+    return Column(
+      children: [
+        Row(
+          children: [
+            // Guest icon
+            Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                color: Colors.grey.shade300,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                Icons.person_outline,
+                size: 32,
+                color: Colors.grey.shade600,
+              ),
+            ),
+            const SizedBox(width: 16),
+            
+            // Guest label
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Guest',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    'Quick play mode - progress not saved',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey.shade600,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        const Divider(height: 24),
+        ElevatedButton.icon(
+          onPressed: _switchProfile,
+          icon: const Icon(Icons.person_add),
+          label: const Text('Create or Select Profile'),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.deepPurple,
+            foregroundColor: Colors.white,
+          ),
+        ),
+      ],
+    );
+  }
+  
+  Widget _buildNoProfileCard() {
+    return Column(
+      children: [
+        Icon(
+          Icons.person_off,
+          size: 48,
+          color: Colors.grey.shade400,
+        ),
+        const SizedBox(height: 16),
+        const Text(
+          'No Active Profile',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Select or create a profile to track progress',
+          style: TextStyle(
+            fontSize: 14,
+            color: Colors.grey.shade600,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 16),
+        ElevatedButton.icon(
+          onPressed: _switchProfile,
+          icon: const Icon(Icons.person_add),
+          label: const Text('Select Profile'),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.deepPurple,
+            foregroundColor: Colors.white,
+          ),
+        ),
+      ],
+    );
   }
 }
 
