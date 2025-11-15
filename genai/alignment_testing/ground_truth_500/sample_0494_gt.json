@@ -1,0 +1,128 @@
+{
+  "audio_file": "sample_0494.flac",
+  "wav_file": "sample_0494.wav",
+  "transcript": "But by the large s of celestial graces, which have such lofty vapors for their rain that near to them, our sight approaches not.",
+  "word_timings": [
+    {
+      "word": "But",
+      "start": 0.0,
+      "end": 0.46
+    },
+    {
+      "word": "by",
+      "start": 0.46,
+      "end": 0.7
+    },
+    {
+      "word": "the",
+      "start": 0.7,
+      "end": 0.84
+    },
+    {
+      "word": "large",
+      "start": 0.84,
+      "end": 1.12
+    },
+    {
+      "word": "s",
+      "start": 1.12,
+      "end": 1.36
+    },
+    {
+      "word": "of",
+      "start": 1.36,
+      "end": 1.68
+    },
+    {
+      "word": "celestial",
+      "start": 1.68,
+      "end": 2.22
+    },
+    {
+      "word": "graces,",
+      "start": 2.22,
+      "end": 2.86
+    },
+    {
+      "word": "which",
+      "start": 3.12,
+      "end": 3.3
+    },
+    {
+      "word": "have",
+      "start": 3.3,
+      "end": 3.54
+    },
+    {
+      "word": "such",
+      "start": 3.54,
+      "end": 3.84
+    },
+    {
+      "word": "lofty",
+      "start": 3.84,
+      "end": 4.56
+    },
+    {
+      "word": "vapors",
+      "start": 4.56,
+      "end": 5.04
+    },
+    {
+      "word": "for",
+      "start": 5.04,
+      "end": 5.22
+    },
+    {
+      "word": "their",
+      "start": 5.22,
+      "end": 5.4
+    },
+    {
+      "word": "rain",
+      "start": 5.4,
+      "end": 5.7
+    },
+    {
+      "word": "that",
+      "start": 5.7,
+      "end": 5.9
+    },
+    {
+      "word": "near",
+      "start": 5.9,
+      "end": 6.18
+    },
+    {
+      "word": "to",
+      "start": 6.18,
+      "end": 6.42
+    },
+    {
+      "word": "them,",
+      "start": 6.42,
+      "end": 6.68
+    },
+    {
+      "word": "our",
+      "start": 7.04,
+      "end": 7.16
+    },
+    {
+      "word": "sight",
+      "start": 7.16,
+      "end": 7.5
+    },
+    {
+      "word": "approaches",
+      "start": 7.5,
+      "end": 8.04
+    },
+    {
+      "word": "not.",
+      "start": 8.04,
+      "end": 8.38
+    }
+  ],
+  "duration": 8.38
+}

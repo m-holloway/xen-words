@@ -1,0 +1,93 @@
+{
+  "audio_file": "sample_0398.flac",
+  "wav_file": "sample_0398.wav",
+  "transcript": "Mr. Verlock perceived with some surprise that he did not know really what to say to Stevie.",
+  "word_timings": [
+    {
+      "word": "Mr.",
+      "start": 0.0,
+      "end": 0.76
+    },
+    {
+      "word": "Verlock",
+      "start": 0.82,
+      "end": 1.06
+    },
+    {
+      "word": "perceived",
+      "start": 1.06,
+      "end": 1.48
+    },
+    {
+      "word": "with",
+      "start": 1.48,
+      "end": 1.74
+    },
+    {
+      "word": "some",
+      "start": 1.74,
+      "end": 1.98
+    },
+    {
+      "word": "surprise",
+      "start": 1.98,
+      "end": 2.42
+    },
+    {
+      "word": "that",
+      "start": 2.42,
+      "end": 2.64
+    },
+    {
+      "word": "he",
+      "start": 2.64,
+      "end": 2.72
+    },
+    {
+      "word": "did",
+      "start": 2.72,
+      "end": 2.86
+    },
+    {
+      "word": "not",
+      "start": 2.86,
+      "end": 3.02
+    },
+    {
+      "word": "know",
+      "start": 3.02,
+      "end": 3.22
+    },
+    {
+      "word": "really",
+      "start": 3.22,
+      "end": 3.54
+    },
+    {
+      "word": "what",
+      "start": 3.54,
+      "end": 3.72
+    },
+    {
+      "word": "to",
+      "start": 3.72,
+      "end": 3.86
+    },
+    {
+      "word": "say",
+      "start": 3.86,
+      "end": 4.08
+    },
+    {
+      "word": "to",
+      "start": 4.08,
+      "end": 4.2
+    },
+    {
+      "word": "Stevie.",
+      "start": 4.2,
+      "end": 4.52
+    }
+  ],
+  "duration": 4.52
+}

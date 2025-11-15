@@ -1,0 +1,88 @@
+{
+  "audio_file": "sample_0115.flac",
+  "wav_file": "sample_0115.wav",
+  "transcript": "Lastly, the royal brothers fell themselves victims to the epidemic, which so sadly signalizes their reign.",
+  "word_timings": [
+    {
+      "word": "Lastly,",
+      "start": 0.0,
+      "end": 1.02
+    },
+    {
+      "word": "the",
+      "start": 1.52,
+      "end": 1.6
+    },
+    {
+      "word": "royal",
+      "start": 1.6,
+      "end": 1.82
+    },
+    {
+      "word": "brothers",
+      "start": 1.82,
+      "end": 2.14
+    },
+    {
+      "word": "fell",
+      "start": 2.14,
+      "end": 2.44
+    },
+    {
+      "word": "themselves",
+      "start": 2.44,
+      "end": 2.82
+    },
+    {
+      "word": "victims",
+      "start": 2.82,
+      "end": 3.46
+    },
+    {
+      "word": "to",
+      "start": 3.46,
+      "end": 3.72
+    },
+    {
+      "word": "the",
+      "start": 3.72,
+      "end": 3.84
+    },
+    {
+      "word": "epidemic,",
+      "start": 3.84,
+      "end": 4.3
+    },
+    {
+      "word": "which",
+      "start": 4.68,
+      "end": 4.82
+    },
+    {
+      "word": "so",
+      "start": 4.82,
+      "end": 4.96
+    },
+    {
+      "word": "sadly",
+      "start": 4.96,
+      "end": 5.3
+    },
+    {
+      "word": "signalizes",
+      "start": 5.3,
+      "end": 6.28
+    },
+    {
+      "word": "their",
+      "start": 6.28,
+      "end": 6.58
+    },
+    {
+      "word": "reign.",
+      "start": 6.58,
+      "end": 6.94
+    }
+  ],
+  "duration": 6.94
+}

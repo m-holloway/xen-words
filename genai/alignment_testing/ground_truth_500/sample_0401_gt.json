@@ -1,0 +1,88 @@
+{
+  "audio_file": "sample_0401.flac",
+  "wav_file": "sample_0401.wav",
+  "transcript": "He closed the door behind their backs with restrained violence. Turn the key, shot the bolt.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.64
+    },
+    {
+      "word": "closed",
+      "start": 0.64,
+      "end": 0.84
+    },
+    {
+      "word": "the",
+      "start": 0.84,
+      "end": 1.08
+    },
+    {
+      "word": "door",
+      "start": 1.08,
+      "end": 1.22
+    },
+    {
+      "word": "behind",
+      "start": 1.22,
+      "end": 1.58
+    },
+    {
+      "word": "their",
+      "start": 1.58,
+      "end": 1.78
+    },
+    {
+      "word": "backs",
+      "start": 1.78,
+      "end": 2.06
+    },
+    {
+      "word": "with",
+      "start": 2.06,
+      "end": 2.26
+    },
+    {
+      "word": "restrained",
+      "start": 2.26,
+      "end": 2.72
+    },
+    {
+      "word": "violence.",
+      "start": 2.72,
+      "end": 3.14
+    },
+    {
+      "word": "Turn",
+      "start": 3.52,
+      "end": 3.74
+    },
+    {
+      "word": "the",
+      "start": 3.74,
+      "end": 3.9
+    },
+    {
+      "word": "key,",
+      "start": 3.9,
+      "end": 4.12
+    },
+    {
+      "word": "shot",
+      "start": 4.5,
+      "end": 4.68
+    },
+    {
+      "word": "the",
+      "start": 4.68,
+      "end": 4.88
+    },
+    {
+      "word": "bolt.",
+      "start": 4.88,
+      "end": 5.08
+    }
+  ],
+  "duration": 5.08
+}

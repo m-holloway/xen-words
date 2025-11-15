@@ -1,0 +1,88 @@
+{
+  "audio_file": "sample_0079.flac",
+  "wav_file": "sample_0079.wav",
+  "transcript": "She had some slight gift of observation and that sense so rich in every woman intuition",
+  "word_timings": [
+    {
+      "word": "She",
+      "start": 0.0,
+      "end": 0.48
+    },
+    {
+      "word": "had",
+      "start": 0.48,
+      "end": 0.7
+    },
+    {
+      "word": "some",
+      "start": 0.7,
+      "end": 0.98
+    },
+    {
+      "word": "slight",
+      "start": 0.98,
+      "end": 1.24
+    },
+    {
+      "word": "gift",
+      "start": 1.24,
+      "end": 1.48
+    },
+    {
+      "word": "of",
+      "start": 1.48,
+      "end": 1.72
+    },
+    {
+      "word": "observation",
+      "start": 1.72,
+      "end": 2.18
+    },
+    {
+      "word": "and",
+      "start": 2.18,
+      "end": 2.78
+    },
+    {
+      "word": "that",
+      "start": 2.78,
+      "end": 2.94
+    },
+    {
+      "word": "sense",
+      "start": 2.94,
+      "end": 3.38
+    },
+    {
+      "word": "so",
+      "start": 3.38,
+      "end": 3.88
+    },
+    {
+      "word": "rich",
+      "start": 3.88,
+      "end": 4.12
+    },
+    {
+      "word": "in",
+      "start": 4.12,
+      "end": 4.26
+    },
+    {
+      "word": "every",
+      "start": 4.26,
+      "end": 4.46
+    },
+    {
+      "word": "woman",
+      "start": 4.46,
+      "end": 4.78
+    },
+    {
+      "word": "intuition",
+      "start": 4.78,
+      "end": 5.42
+    }
+  ],
+  "duration": 5.42
+}

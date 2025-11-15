@@ -1,0 +1,83 @@
+{
+  "audio_file": "sample_0076.flac",
+  "wav_file": "sample_0076.wav",
+  "transcript": "Many began to explain, but her husband took this part of the conversation to himself.",
+  "word_timings": [
+    {
+      "word": "Many",
+      "start": 0.0,
+      "end": 0.66
+    },
+    {
+      "word": "began",
+      "start": 0.66,
+      "end": 1.06
+    },
+    {
+      "word": "to",
+      "start": 1.06,
+      "end": 1.28
+    },
+    {
+      "word": "explain,",
+      "start": 1.28,
+      "end": 1.6
+    },
+    {
+      "word": "but",
+      "start": 1.8,
+      "end": 1.88
+    },
+    {
+      "word": "her",
+      "start": 1.88,
+      "end": 2.04
+    },
+    {
+      "word": "husband",
+      "start": 2.04,
+      "end": 2.34
+    },
+    {
+      "word": "took",
+      "start": 2.34,
+      "end": 2.6
+    },
+    {
+      "word": "this",
+      "start": 2.6,
+      "end": 2.84
+    },
+    {
+      "word": "part",
+      "start": 2.84,
+      "end": 3.02
+    },
+    {
+      "word": "of",
+      "start": 3.02,
+      "end": 3.16
+    },
+    {
+      "word": "the",
+      "start": 3.16,
+      "end": 3.26
+    },
+    {
+      "word": "conversation",
+      "start": 3.26,
+      "end": 3.8
+    },
+    {
+      "word": "to",
+      "start": 3.8,
+      "end": 4.06
+    },
+    {
+      "word": "himself.",
+      "start": 4.06,
+      "end": 4.52
+    }
+  ],
+  "duration": 4.52
+}

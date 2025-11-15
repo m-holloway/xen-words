@@ -1,0 +1,208 @@
+{
+  "audio_file": "sample_0406.flac",
+  "wav_file": "sample_0406.wav",
+  "transcript": "With his elbow presenting no appearance of a joint, but more like a bend in a dummy's limb thrown over the back of a chair, he leaned forward slightly over his short and enormous thighs to spit into the grate.",
+  "word_timings": [
+    {
+      "word": "With",
+      "start": 0.0,
+      "end": 0.46
+    },
+    {
+      "word": "his",
+      "start": 0.46,
+      "end": 0.6
+    },
+    {
+      "word": "elbow",
+      "start": 0.6,
+      "end": 0.82
+    },
+    {
+      "word": "presenting",
+      "start": 0.82,
+      "end": 1.28
+    },
+    {
+      "word": "no",
+      "start": 1.28,
+      "end": 1.6
+    },
+    {
+      "word": "appearance",
+      "start": 1.6,
+      "end": 2.06
+    },
+    {
+      "word": "of",
+      "start": 2.06,
+      "end": 2.26
+    },
+    {
+      "word": "a",
+      "start": 2.26,
+      "end": 2.38
+    },
+    {
+      "word": "joint,",
+      "start": 2.38,
+      "end": 2.7
+    },
+    {
+      "word": "but",
+      "start": 2.9,
+      "end": 2.98
+    },
+    {
+      "word": "more",
+      "start": 2.98,
+      "end": 3.16
+    },
+    {
+      "word": "like",
+      "start": 3.16,
+      "end": 3.34
+    },
+    {
+      "word": "a",
+      "start": 3.34,
+      "end": 3.52
+    },
+    {
+      "word": "bend",
+      "start": 3.52,
+      "end": 3.7
+    },
+    {
+      "word": "in",
+      "start": 3.7,
+      "end": 3.88
+    },
+    {
+      "word": "a",
+      "start": 3.88,
+      "end": 3.98
+    },
+    {
+      "word": "dummy's",
+      "start": 3.98,
+      "end": 4.36
+    },
+    {
+      "word": "limb",
+      "start": 4.36,
+      "end": 4.56
+    },
+    {
+      "word": "thrown",
+      "start": 4.56,
+      "end": 4.96
+    },
+    {
+      "word": "over",
+      "start": 4.96,
+      "end": 5.2
+    },
+    {
+      "word": "the",
+      "start": 5.2,
+      "end": 5.3
+    },
+    {
+      "word": "back",
+      "start": 5.3,
+      "end": 5.5
+    },
+    {
+      "word": "of",
+      "start": 5.5,
+      "end": 5.66
+    },
+    {
+      "word": "a",
+      "start": 5.66,
+      "end": 5.8
+    },
+    {
+      "word": "chair,",
+      "start": 5.8,
+      "end": 6.02
+    },
+    {
+      "word": "he",
+      "start": 6.56,
+      "end": 6.64
+    },
+    {
+      "word": "leaned",
+      "start": 6.64,
+      "end": 6.9
+    },
+    {
+      "word": "forward",
+      "start": 6.9,
+      "end": 7.22
+    },
+    {
+      "word": "slightly",
+      "start": 7.22,
+      "end": 7.56
+    },
+    {
+      "word": "over",
+      "start": 7.56,
+      "end": 7.9
+    },
+    {
+      "word": "his",
+      "start": 7.9,
+      "end": 8.08
+    },
+    {
+      "word": "short",
+      "start": 8.08,
+      "end": 8.32
+    },
+    {
+      "word": "and",
+      "start": 8.32,
+      "end": 8.5
+    },
+    {
+      "word": "enormous",
+      "start": 8.5,
+      "end": 8.82
+    },
+    {
+      "word": "thighs",
+      "start": 8.82,
+      "end": 9.24
+    },
+    {
+      "word": "to",
+      "start": 9.24,
+      "end": 9.52
+    },
+    {
+      "word": "spit",
+      "start": 9.52,
+      "end": 9.74
+    },
+    {
+      "word": "into",
+      "start": 9.74,
+      "end": 10.06
+    },
+    {
+      "word": "the",
+      "start": 10.06,
+      "end": 10.2
+    },
+    {
+      "word": "grate.",
+      "start": 10.2,
+      "end": 10.42
+    }
+  ],
+  "duration": 10.42
+}

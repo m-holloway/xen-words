@@ -1,0 +1,58 @@
+{
+  "audio_file": "sample_0243.flac",
+  "wav_file": "sample_0243.wav",
+  "transcript": "They tried and vane to break down the great doors.",
+  "word_timings": [
+    {
+      "word": "They",
+      "start": 0.0,
+      "end": 0.34
+    },
+    {
+      "word": "tried",
+      "start": 0.34,
+      "end": 0.74
+    },
+    {
+      "word": "and",
+      "start": 0.74,
+      "end": 0.96
+    },
+    {
+      "word": "vane",
+      "start": 0.96,
+      "end": 1.22
+    },
+    {
+      "word": "to",
+      "start": 1.22,
+      "end": 1.42
+    },
+    {
+      "word": "break",
+      "start": 1.42,
+      "end": 1.64
+    },
+    {
+      "word": "down",
+      "start": 1.64,
+      "end": 1.88
+    },
+    {
+      "word": "the",
+      "start": 1.88,
+      "end": 2.06
+    },
+    {
+      "word": "great",
+      "start": 2.06,
+      "end": 2.26
+    },
+    {
+      "word": "doors.",
+      "start": 2.26,
+      "end": 2.6
+    }
+  ],
+  "duration": 2.6
+}

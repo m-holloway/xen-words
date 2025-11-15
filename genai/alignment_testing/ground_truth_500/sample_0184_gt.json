@@ -1,0 +1,88 @@
+{
+  "audio_file": "sample_0184.flac",
+  "wav_file": "sample_0184.wav",
+  "transcript": "Oh, rejoin the degarotipus, because like an old lady's cup of tea, it is water bewitched.",
+  "word_timings": [
+    {
+      "word": "Oh,",
+      "start": 0.0,
+      "end": 0.74
+    },
+    {
+      "word": "rejoin",
+      "start": 1.08,
+      "end": 1.36
+    },
+    {
+      "word": "the",
+      "start": 1.36,
+      "end": 1.48
+    },
+    {
+      "word": "degarotipus,",
+      "start": 1.48,
+      "end": 2.24
+    },
+    {
+      "word": "because",
+      "start": 2.64,
+      "end": 2.88
+    },
+    {
+      "word": "like",
+      "start": 2.88,
+      "end": 3.22
+    },
+    {
+      "word": "an",
+      "start": 3.22,
+      "end": 3.42
+    },
+    {
+      "word": "old",
+      "start": 3.42,
+      "end": 3.58
+    },
+    {
+      "word": "lady's",
+      "start": 3.58,
+      "end": 3.98
+    },
+    {
+      "word": "cup",
+      "start": 3.98,
+      "end": 4.08
+    },
+    {
+      "word": "of",
+      "start": 4.08,
+      "end": 4.28
+    },
+    {
+      "word": "tea,",
+      "start": 4.28,
+      "end": 4.5
+    },
+    {
+      "word": "it",
+      "start": 4.96,
+      "end": 5.04
+    },
+    {
+      "word": "is",
+      "start": 5.04,
+      "end": 5.18
+    },
+    {
+      "word": "water",
+      "start": 5.18,
+      "end": 5.48
+    },
+    {
+      "word": "bewitched.",
+      "start": 5.48,
+      "end": 6.04
+    }
+  ],
+  "duration": 6.04
+}

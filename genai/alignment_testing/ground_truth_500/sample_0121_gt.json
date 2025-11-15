@@ -1,0 +1,98 @@
+{
+  "audio_file": "sample_0121.flac",
+  "wav_file": "sample_0121.wav",
+  "transcript": "As leading to the mention of other interesting events, we must set this enrolled clearly before the reader.",
+  "word_timings": [
+    {
+      "word": "As",
+      "start": 0.0,
+      "end": 0.64
+    },
+    {
+      "word": "leading",
+      "start": 0.64,
+      "end": 0.88
+    },
+    {
+      "word": "to",
+      "start": 0.88,
+      "end": 1.1
+    },
+    {
+      "word": "the",
+      "start": 1.1,
+      "end": 1.2
+    },
+    {
+      "word": "mention",
+      "start": 1.2,
+      "end": 1.48
+    },
+    {
+      "word": "of",
+      "start": 1.48,
+      "end": 1.66
+    },
+    {
+      "word": "other",
+      "start": 1.66,
+      "end": 1.92
+    },
+    {
+      "word": "interesting",
+      "start": 1.92,
+      "end": 2.4
+    },
+    {
+      "word": "events,",
+      "start": 2.4,
+      "end": 2.8
+    },
+    {
+      "word": "we",
+      "start": 3.42,
+      "end": 3.58
+    },
+    {
+      "word": "must",
+      "start": 3.58,
+      "end": 3.74
+    },
+    {
+      "word": "set",
+      "start": 3.74,
+      "end": 3.98
+    },
+    {
+      "word": "this",
+      "start": 3.98,
+      "end": 4.26
+    },
+    {
+      "word": "enrolled",
+      "start": 4.26,
+      "end": 4.56
+    },
+    {
+      "word": "clearly",
+      "start": 4.56,
+      "end": 5.08
+    },
+    {
+      "word": "before",
+      "start": 5.08,
+      "end": 5.5
+    },
+    {
+      "word": "the",
+      "start": 5.5,
+      "end": 5.7
+    },
+    {
+      "word": "reader.",
+      "start": 5.7,
+      "end": 5.94
+    }
+  ],
+  "duration": 5.94
+}

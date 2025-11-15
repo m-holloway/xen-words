@@ -1,0 +1,198 @@
+{
+  "audio_file": "sample_0132.flac",
+  "wav_file": "sample_0132.wav",
+  "transcript": "The first thing either of them noticed was a new sound that broke into the clean air. Louder than they had ever heard it before. The bell of the monastery of their own village ringing for early prayers.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.6
+    },
+    {
+      "word": "first",
+      "start": 0.6,
+      "end": 0.86
+    },
+    {
+      "word": "thing",
+      "start": 0.86,
+      "end": 1.04
+    },
+    {
+      "word": "either",
+      "start": 1.04,
+      "end": 1.38
+    },
+    {
+      "word": "of",
+      "start": 1.38,
+      "end": 1.56
+    },
+    {
+      "word": "them",
+      "start": 1.56,
+      "end": 1.66
+    },
+    {
+      "word": "noticed",
+      "start": 1.66,
+      "end": 1.96
+    },
+    {
+      "word": "was",
+      "start": 1.96,
+      "end": 2.26
+    },
+    {
+      "word": "a",
+      "start": 2.26,
+      "end": 2.4
+    },
+    {
+      "word": "new",
+      "start": 2.4,
+      "end": 2.54
+    },
+    {
+      "word": "sound",
+      "start": 2.54,
+      "end": 2.98
+    },
+    {
+      "word": "that",
+      "start": 2.98,
+      "end": 3.24
+    },
+    {
+      "word": "broke",
+      "start": 3.24,
+      "end": 3.5
+    },
+    {
+      "word": "into",
+      "start": 3.5,
+      "end": 3.78
+    },
+    {
+      "word": "the",
+      "start": 3.78,
+      "end": 3.92
+    },
+    {
+      "word": "clean",
+      "start": 3.92,
+      "end": 4.2
+    },
+    {
+      "word": "air.",
+      "start": 4.2,
+      "end": 4.6
+    },
+    {
+      "word": "Louder",
+      "start": 5.4,
+      "end": 5.86
+    },
+    {
+      "word": "than",
+      "start": 5.86,
+      "end": 6.1
+    },
+    {
+      "word": "they",
+      "start": 6.1,
+      "end": 6.34
+    },
+    {
+      "word": "had",
+      "start": 6.34,
+      "end": 7.86
+    },
+    {
+      "word": "ever",
+      "start": 7.86,
+      "end": 8.1
+    },
+    {
+      "word": "heard",
+      "start": 8.1,
+      "end": 8.34
+    },
+    {
+      "word": "it",
+      "start": 8.34,
+      "end": 8.48
+    },
+    {
+      "word": "before.",
+      "start": 8.48,
+      "end": 8.9
+    },
+    {
+      "word": "The",
+      "start": 9.36,
+      "end": 9.44
+    },
+    {
+      "word": "bell",
+      "start": 9.44,
+      "end": 9.7
+    },
+    {
+      "word": "of",
+      "start": 9.7,
+      "end": 9.88
+    },
+    {
+      "word": "the",
+      "start": 9.88,
+      "end": 9.98
+    },
+    {
+      "word": "monastery",
+      "start": 9.98,
+      "end": 10.42
+    },
+    {
+      "word": "of",
+      "start": 10.42,
+      "end": 10.76
+    },
+    {
+      "word": "their",
+      "start": 10.76,
+      "end": 10.88
+    },
+    {
+      "word": "own",
+      "start": 10.88,
+      "end": 11.08
+    },
+    {
+      "word": "village",
+      "start": 11.08,
+      "end": 11.42
+    },
+    {
+      "word": "ringing",
+      "start": 11.42,
+      "end": 11.98
+    },
+    {
+      "word": "for",
+      "start": 11.98,
+      "end": 12.32
+    },
+    {
+      "word": "early",
+      "start": 12.32,
+      "end": 12.6
+    },
+    {
+      "word": "prayers.",
+      "start": 12.6,
+      "end": 13.02
+    }
+  ],
+  "duration": 13.02
+}

@@ -1,0 +1,133 @@
+{
+  "audio_file": "sample_0349.flac",
+  "wav_file": "sample_0349.wav",
+  "transcript": "In aristocratic countries, the great possess immense privileges upon which their pride rests without seeking to rely upon the lesser advantages which accruise at them.",
+  "word_timings": [
+    {
+      "word": "In",
+      "start": 0.0,
+      "end": 0.66
+    },
+    {
+      "word": "aristocratic",
+      "start": 0.66,
+      "end": 1.14
+    },
+    {
+      "word": "countries,",
+      "start": 1.14,
+      "end": 1.64
+    },
+    {
+      "word": "the",
+      "start": 1.9,
+      "end": 1.98
+    },
+    {
+      "word": "great",
+      "start": 1.98,
+      "end": 2.24
+    },
+    {
+      "word": "possess",
+      "start": 2.24,
+      "end": 2.7
+    },
+    {
+      "word": "immense",
+      "start": 2.7,
+      "end": 3.28
+    },
+    {
+      "word": "privileges",
+      "start": 3.28,
+      "end": 3.92
+    },
+    {
+      "word": "upon",
+      "start": 3.92,
+      "end": 4.52
+    },
+    {
+      "word": "which",
+      "start": 4.52,
+      "end": 4.74
+    },
+    {
+      "word": "their",
+      "start": 4.74,
+      "end": 4.92
+    },
+    {
+      "word": "pride",
+      "start": 4.92,
+      "end": 5.24
+    },
+    {
+      "word": "rests",
+      "start": 5.24,
+      "end": 5.64
+    },
+    {
+      "word": "without",
+      "start": 5.64,
+      "end": 6.1
+    },
+    {
+      "word": "seeking",
+      "start": 6.1,
+      "end": 6.58
+    },
+    {
+      "word": "to",
+      "start": 6.58,
+      "end": 6.8
+    },
+    {
+      "word": "rely",
+      "start": 6.8,
+      "end": 7.04
+    },
+    {
+      "word": "upon",
+      "start": 7.04,
+      "end": 7.28
+    },
+    {
+      "word": "the",
+      "start": 7.28,
+      "end": 7.4
+    },
+    {
+      "word": "lesser",
+      "start": 7.4,
+      "end": 7.64
+    },
+    {
+      "word": "advantages",
+      "start": 7.64,
+      "end": 8.12
+    },
+    {
+      "word": "which",
+      "start": 8.12,
+      "end": 8.44
+    },
+    {
+      "word": "accruise",
+      "start": 8.44,
+      "end": 8.82
+    },
+    {
+      "word": "at",
+      "start": 8.82,
+      "end": 8.92
+    },
+    {
+      "word": "them.",
+      "start": 8.92,
+      "end": 9.08
+    }
+  ],
+  "duration": 9.08
+}

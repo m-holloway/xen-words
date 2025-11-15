@@ -1,0 +1,38 @@
+{
+  "audio_file": "sample_0094.flac",
+  "wav_file": "sample_0094.wav",
+  "transcript": "These vast buildings, what were they?",
+  "word_timings": [
+    {
+      "word": "These",
+      "start": 0.0,
+      "end": 0.72
+    },
+    {
+      "word": "vast",
+      "start": 0.72,
+      "end": 1.06
+    },
+    {
+      "word": "buildings,",
+      "start": 1.06,
+      "end": 1.5
+    },
+    {
+      "word": "what",
+      "start": 1.9,
+      "end": 2.18
+    },
+    {
+      "word": "were",
+      "start": 2.18,
+      "end": 2.36
+    },
+    {
+      "word": "they?",
+      "start": 2.36,
+      "end": 2.62
+    }
+  ],
+  "duration": 2.62
+}

@@ -1,0 +1,168 @@
+{
+  "audio_file": "sample_0158.flac",
+  "wav_file": "sample_0158.wav",
+  "transcript": "Something happened to the hindmost sledge. The driver lost control. He was probably very drunk. The horses left the road. The sledge was caught up in a clump of trees and overturned.",
+  "word_timings": [
+    {
+      "word": "Something",
+      "start": 0.0,
+      "end": 0.86
+    },
+    {
+      "word": "happened",
+      "start": 0.86,
+      "end": 1.22
+    },
+    {
+      "word": "to",
+      "start": 1.22,
+      "end": 1.4
+    },
+    {
+      "word": "the",
+      "start": 1.4,
+      "end": 1.52
+    },
+    {
+      "word": "hindmost",
+      "start": 1.52,
+      "end": 1.88
+    },
+    {
+      "word": "sledge.",
+      "start": 1.88,
+      "end": 2.38
+    },
+    {
+      "word": "The",
+      "start": 2.8,
+      "end": 2.86
+    },
+    {
+      "word": "driver",
+      "start": 2.86,
+      "end": 3.08
+    },
+    {
+      "word": "lost",
+      "start": 3.08,
+      "end": 3.34
+    },
+    {
+      "word": "control.",
+      "start": 3.34,
+      "end": 3.82
+    },
+    {
+      "word": "He",
+      "start": 4.38,
+      "end": 4.56
+    },
+    {
+      "word": "was",
+      "start": 4.56,
+      "end": 4.64
+    },
+    {
+      "word": "probably",
+      "start": 4.64,
+      "end": 5.0
+    },
+    {
+      "word": "very",
+      "start": 5.0,
+      "end": 5.32
+    },
+    {
+      "word": "drunk.",
+      "start": 5.32,
+      "end": 5.64
+    },
+    {
+      "word": "The",
+      "start": 6.22,
+      "end": 6.32
+    },
+    {
+      "word": "horses",
+      "start": 6.32,
+      "end": 6.56
+    },
+    {
+      "word": "left",
+      "start": 6.56,
+      "end": 6.8
+    },
+    {
+      "word": "the",
+      "start": 6.8,
+      "end": 7.0
+    },
+    {
+      "word": "road.",
+      "start": 7.0,
+      "end": 7.22
+    },
+    {
+      "word": "The",
+      "start": 7.42,
+      "end": 7.48
+    },
+    {
+      "word": "sledge",
+      "start": 7.48,
+      "end": 7.76
+    },
+    {
+      "word": "was",
+      "start": 7.76,
+      "end": 7.9
+    },
+    {
+      "word": "caught",
+      "start": 7.9,
+      "end": 8.1
+    },
+    {
+      "word": "up",
+      "start": 8.1,
+      "end": 8.4
+    },
+    {
+      "word": "in",
+      "start": 8.4,
+      "end": 8.66
+    },
+    {
+      "word": "a",
+      "start": 8.66,
+      "end": 8.74
+    },
+    {
+      "word": "clump",
+      "start": 8.74,
+      "end": 9.0
+    },
+    {
+      "word": "of",
+      "start": 9.0,
+      "end": 9.2
+    },
+    {
+      "word": "trees",
+      "start": 9.2,
+      "end": 9.44
+    },
+    {
+      "word": "and",
+      "start": 9.44,
+      "end": 9.7
+    },
+    {
+      "word": "overturned.",
+      "start": 9.7,
+      "end": 10.42
+    }
+  ],
+  "duration": 10.42
+}

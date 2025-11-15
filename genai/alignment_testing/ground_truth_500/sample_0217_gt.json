@@ -1,0 +1,103 @@
+{
+  "audio_file": "sample_0217.flac",
+  "wav_file": "sample_0217.wav",
+  "transcript": "Here we have the man, Sly, Settle, Hard, Imperious, and with all cold as ice. Look at that eye.",
+  "word_timings": [
+    {
+      "word": "Here",
+      "start": 0.0,
+      "end": 0.68
+    },
+    {
+      "word": "we",
+      "start": 0.68,
+      "end": 0.82
+    },
+    {
+      "word": "have",
+      "start": 0.82,
+      "end": 1.02
+    },
+    {
+      "word": "the",
+      "start": 1.02,
+      "end": 1.22
+    },
+    {
+      "word": "man,",
+      "start": 1.22,
+      "end": 1.48
+    },
+    {
+      "word": "Sly,",
+      "start": 1.86,
+      "end": 2.14
+    },
+    {
+      "word": "Settle,",
+      "start": 2.68,
+      "end": 2.84
+    },
+    {
+      "word": "Hard,",
+      "start": 3.36,
+      "end": 3.52
+    },
+    {
+      "word": "Imperious,",
+      "start": 4.04,
+      "end": 4.6
+    },
+    {
+      "word": "and",
+      "start": 5.2,
+      "end": 5.28
+    },
+    {
+      "word": "with",
+      "start": 5.28,
+      "end": 5.48
+    },
+    {
+      "word": "all",
+      "start": 5.48,
+      "end": 5.68
+    },
+    {
+      "word": "cold",
+      "start": 5.68,
+      "end": 5.92
+    },
+    {
+      "word": "as",
+      "start": 5.92,
+      "end": 6.12
+    },
+    {
+      "word": "ice.",
+      "start": 6.12,
+      "end": 6.34
+    },
+    {
+      "word": "Look",
+      "start": 7.3,
+      "end": 7.46
+    },
+    {
+      "word": "at",
+      "start": 7.46,
+      "end": 7.6
+    },
+    {
+      "word": "that",
+      "start": 7.6,
+      "end": 7.74
+    },
+    {
+      "word": "eye.",
+      "start": 7.74,
+      "end": 8.02
+    }
+  ],
+  "duration": 8.02
+}

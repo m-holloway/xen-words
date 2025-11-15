@@ -1,0 +1,68 @@
+{
+  "audio_file": "sample_0277.flac",
+  "wav_file": "sample_0277.wav",
+  "transcript": "Go back to the regiment he said smiling all will be needed.",
+  "word_timings": [
+    {
+      "word": "Go",
+      "start": 0.0,
+      "end": 0.54
+    },
+    {
+      "word": "back",
+      "start": 0.54,
+      "end": 0.74
+    },
+    {
+      "word": "to",
+      "start": 0.74,
+      "end": 0.9
+    },
+    {
+      "word": "the",
+      "start": 0.9,
+      "end": 1.04
+    },
+    {
+      "word": "regiment",
+      "start": 1.04,
+      "end": 1.32
+    },
+    {
+      "word": "he",
+      "start": 1.32,
+      "end": 1.6
+    },
+    {
+      "word": "said",
+      "start": 1.6,
+      "end": 1.84
+    },
+    {
+      "word": "smiling",
+      "start": 1.84,
+      "end": 2.32
+    },
+    {
+      "word": "all",
+      "start": 2.32,
+      "end": 3.02
+    },
+    {
+      "word": "will",
+      "start": 3.02,
+      "end": 3.22
+    },
+    {
+      "word": "be",
+      "start": 3.22,
+      "end": 3.4
+    },
+    {
+      "word": "needed.",
+      "start": 3.4,
+      "end": 3.7
+    }
+  ],
+  "duration": 3.7
+}

@@ -1,0 +1,68 @@
+{
+  "audio_file": "sample_0135.flac",
+  "wav_file": "sample_0135.wav",
+  "transcript": "Now, his middle horse was being almost dragged by the other two.",
+  "word_timings": [
+    {
+      "word": "Now,",
+      "start": 0.0,
+      "end": 0.68
+    },
+    {
+      "word": "his",
+      "start": 0.78,
+      "end": 0.86
+    },
+    {
+      "word": "middle",
+      "start": 0.86,
+      "end": 1.04
+    },
+    {
+      "word": "horse",
+      "start": 1.04,
+      "end": 1.32
+    },
+    {
+      "word": "was",
+      "start": 1.32,
+      "end": 1.52
+    },
+    {
+      "word": "being",
+      "start": 1.52,
+      "end": 1.74
+    },
+    {
+      "word": "almost",
+      "start": 1.74,
+      "end": 2.06
+    },
+    {
+      "word": "dragged",
+      "start": 2.06,
+      "end": 2.38
+    },
+    {
+      "word": "by",
+      "start": 2.38,
+      "end": 2.62
+    },
+    {
+      "word": "the",
+      "start": 2.62,
+      "end": 2.76
+    },
+    {
+      "word": "other",
+      "start": 2.76,
+      "end": 2.9
+    },
+    {
+      "word": "two.",
+      "start": 2.9,
+      "end": 3.22
+    }
+  ],
+  "duration": 3.22
+}

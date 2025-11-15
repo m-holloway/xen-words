@@ -1,0 +1,273 @@
+{
+  "audio_file": "sample_0205.flac",
+  "wav_file": "sample_0205.wav",
+  "transcript": "The white double rose bush had evidently been propped up anew against the house since the commencement of the season, and the pear tree and three damson trees, which, except a row of current bushes, constituted the only varieties of fruit, poor marks of the recent amputation of several superfluous or defective limbs.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.64
+    },
+    {
+      "word": "white",
+      "start": 0.64,
+      "end": 0.88
+    },
+    {
+      "word": "double",
+      "start": 0.88,
+      "end": 1.18
+    },
+    {
+      "word": "rose",
+      "start": 1.18,
+      "end": 1.46
+    },
+    {
+      "word": "bush",
+      "start": 1.46,
+      "end": 1.76
+    },
+    {
+      "word": "had",
+      "start": 1.76,
+      "end": 2.2
+    },
+    {
+      "word": "evidently",
+      "start": 2.2,
+      "end": 2.76
+    },
+    {
+      "word": "been",
+      "start": 2.76,
+      "end": 2.94
+    },
+    {
+      "word": "propped",
+      "start": 2.94,
+      "end": 3.3
+    },
+    {
+      "word": "up",
+      "start": 3.3,
+      "end": 3.42
+    },
+    {
+      "word": "anew",
+      "start": 3.42,
+      "end": 3.82
+    },
+    {
+      "word": "against",
+      "start": 3.82,
+      "end": 4.12
+    },
+    {
+      "word": "the",
+      "start": 4.12,
+      "end": 4.34
+    },
+    {
+      "word": "house",
+      "start": 4.34,
+      "end": 4.54
+    },
+    {
+      "word": "since",
+      "start": 4.54,
+      "end": 5.16
+    },
+    {
+      "word": "the",
+      "start": 5.16,
+      "end": 5.36
+    },
+    {
+      "word": "commencement",
+      "start": 5.36,
+      "end": 5.7
+    },
+    {
+      "word": "of",
+      "start": 5.7,
+      "end": 5.92
+    },
+    {
+      "word": "the",
+      "start": 5.92,
+      "end": 6.04
+    },
+    {
+      "word": "season,",
+      "start": 6.04,
+      "end": 6.4
+    },
+    {
+      "word": "and",
+      "start": 7.16,
+      "end": 7.28
+    },
+    {
+      "word": "the",
+      "start": 7.28,
+      "end": 7.42
+    },
+    {
+      "word": "pear",
+      "start": 7.42,
+      "end": 7.6
+    },
+    {
+      "word": "tree",
+      "start": 7.6,
+      "end": 7.88
+    },
+    {
+      "word": "and",
+      "start": 7.88,
+      "end": 8.18
+    },
+    {
+      "word": "three",
+      "start": 8.18,
+      "end": 8.4
+    },
+    {
+      "word": "damson",
+      "start": 8.4,
+      "end": 8.78
+    },
+    {
+      "word": "trees,",
+      "start": 8.78,
+      "end": 9.1
+    },
+    {
+      "word": "which,",
+      "start": 9.64,
+      "end": 9.96
+    },
+    {
+      "word": "except",
+      "start": 10.08,
+      "end": 10.32
+    },
+    {
+      "word": "a",
+      "start": 10.32,
+      "end": 10.52
+    },
+    {
+      "word": "row",
+      "start": 10.52,
+      "end": 10.64
+    },
+    {
+      "word": "of",
+      "start": 10.64,
+      "end": 10.8
+    },
+    {
+      "word": "current",
+      "start": 10.8,
+      "end": 11.02
+    },
+    {
+      "word": "bushes,",
+      "start": 11.02,
+      "end": 11.46
+    },
+    {
+      "word": "constituted",
+      "start": 12.18,
+      "end": 12.68
+    },
+    {
+      "word": "the",
+      "start": 12.68,
+      "end": 12.86
+    },
+    {
+      "word": "only",
+      "start": 12.86,
+      "end": 13.1
+    },
+    {
+      "word": "varieties",
+      "start": 13.1,
+      "end": 13.6
+    },
+    {
+      "word": "of",
+      "start": 13.6,
+      "end": 13.8
+    },
+    {
+      "word": "fruit,",
+      "start": 13.8,
+      "end": 14.16
+    },
+    {
+      "word": "poor",
+      "start": 14.76,
+      "end": 14.98
+    },
+    {
+      "word": "marks",
+      "start": 14.98,
+      "end": 15.28
+    },
+    {
+      "word": "of",
+      "start": 15.28,
+      "end": 15.46
+    },
+    {
+      "word": "the",
+      "start": 15.46,
+      "end": 15.6
+    },
+    {
+      "word": "recent",
+      "start": 15.6,
+      "end": 15.9
+    },
+    {
+      "word": "amputation",
+      "start": 15.9,
+      "end": 16.64
+    },
+    {
+      "word": "of",
+      "start": 16.64,
+      "end": 17.08
+    },
+    {
+      "word": "several",
+      "start": 17.08,
+      "end": 17.42
+    },
+    {
+      "word": "superfluous",
+      "start": 17.42,
+      "end": 18.16
+    },
+    {
+      "word": "or",
+      "start": 18.16,
+      "end": 18.3
+    },
+    {
+      "word": "defective",
+      "start": 18.3,
+      "end": 18.82
+    },
+    {
+      "word": "limbs.",
+      "start": 18.82,
+      "end": 19.0
+    }
+  ],
+  "duration": 19.0
+}

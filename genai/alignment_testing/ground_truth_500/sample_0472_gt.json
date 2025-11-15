@@ -1,0 +1,23 @@
+{
+  "audio_file": "sample_0472.flac",
+  "wav_file": "sample_0472.wav",
+  "transcript": "as morale. Yes.",
+  "word_timings": [
+    {
+      "word": "as",
+      "start": 0.0,
+      "end": 0.3
+    },
+    {
+      "word": "morale.",
+      "start": 0.3,
+      "end": 0.62
+    },
+    {
+      "word": "Yes.",
+      "start": 1.36,
+      "end": 1.76
+    }
+  ],
+  "duration": 1.76
+}

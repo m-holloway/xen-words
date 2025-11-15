@@ -1,0 +1,48 @@
+{
+  "audio_file": "sample_0147.flac",
+  "wav_file": "sample_0147.wav",
+  "transcript": "Peter, crouching in the front seat saw nothing.",
+  "word_timings": [
+    {
+      "word": "Peter,",
+      "start": 0.0,
+      "end": 0.72
+    },
+    {
+      "word": "crouching",
+      "start": 1.02,
+      "end": 1.46
+    },
+    {
+      "word": "in",
+      "start": 1.46,
+      "end": 1.54
+    },
+    {
+      "word": "the",
+      "start": 1.54,
+      "end": 1.62
+    },
+    {
+      "word": "front",
+      "start": 1.62,
+      "end": 1.82
+    },
+    {
+      "word": "seat",
+      "start": 1.82,
+      "end": 2.12
+    },
+    {
+      "word": "saw",
+      "start": 2.12,
+      "end": 2.4
+    },
+    {
+      "word": "nothing.",
+      "start": 2.4,
+      "end": 2.78
+    }
+  ],
+  "duration": 2.78
+}

@@ -1,0 +1,128 @@
+{
+  "audio_file": "sample_0191.flac",
+  "wav_file": "sample_0191.wav",
+  "transcript": "It was evident that the race had degenerated, like many a noble race besides, in consequence of too strict watchfulness to keep it pure.",
+  "word_timings": [
+    {
+      "word": "It",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "was",
+      "start": 0.62,
+      "end": 0.78
+    },
+    {
+      "word": "evident",
+      "start": 0.78,
+      "end": 1.12
+    },
+    {
+      "word": "that",
+      "start": 1.12,
+      "end": 1.5
+    },
+    {
+      "word": "the",
+      "start": 1.5,
+      "end": 1.66
+    },
+    {
+      "word": "race",
+      "start": 1.66,
+      "end": 1.8
+    },
+    {
+      "word": "had",
+      "start": 1.8,
+      "end": 2.0
+    },
+    {
+      "word": "degenerated,",
+      "start": 2.0,
+      "end": 2.68
+    },
+    {
+      "word": "like",
+      "start": 3.02,
+      "end": 3.3
+    },
+    {
+      "word": "many",
+      "start": 3.3,
+      "end": 3.6
+    },
+    {
+      "word": "a",
+      "start": 3.6,
+      "end": 3.72
+    },
+    {
+      "word": "noble",
+      "start": 3.72,
+      "end": 3.94
+    },
+    {
+      "word": "race",
+      "start": 3.94,
+      "end": 4.18
+    },
+    {
+      "word": "besides,",
+      "start": 4.18,
+      "end": 4.76
+    },
+    {
+      "word": "in",
+      "start": 5.38,
+      "end": 5.48
+    },
+    {
+      "word": "consequence",
+      "start": 5.48,
+      "end": 5.94
+    },
+    {
+      "word": "of",
+      "start": 5.94,
+      "end": 6.2
+    },
+    {
+      "word": "too",
+      "start": 6.2,
+      "end": 6.38
+    },
+    {
+      "word": "strict",
+      "start": 6.38,
+      "end": 6.68
+    },
+    {
+      "word": "watchfulness",
+      "start": 6.68,
+      "end": 7.32
+    },
+    {
+      "word": "to",
+      "start": 7.32,
+      "end": 7.66
+    },
+    {
+      "word": "keep",
+      "start": 7.66,
+      "end": 7.82
+    },
+    {
+      "word": "it",
+      "start": 7.82,
+      "end": 7.96
+    },
+    {
+      "word": "pure.",
+      "start": 7.96,
+      "end": 8.24
+    }
+  ],
+  "duration": 8.24
+}

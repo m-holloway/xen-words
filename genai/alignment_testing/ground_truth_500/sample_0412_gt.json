@@ -1,0 +1,28 @@
+{
+  "audio_file": "sample_0412.flac",
+  "wav_file": "sample_0412.wav",
+  "transcript": "very characteristic, perfectly typical.",
+  "word_timings": [
+    {
+      "word": "very",
+      "start": 0.0,
+      "end": 0.3
+    },
+    {
+      "word": "characteristic,",
+      "start": 0.3,
+      "end": 0.92
+    },
+    {
+      "word": "perfectly",
+      "start": 1.42,
+      "end": 1.72
+    },
+    {
+      "word": "typical.",
+      "start": 1.72,
+      "end": 2.1
+    }
+  ],
+  "duration": 2.1
+}

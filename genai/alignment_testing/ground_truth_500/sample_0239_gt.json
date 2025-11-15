@@ -1,0 +1,123 @@
+{
+  "audio_file": "sample_0239.flac",
+  "wav_file": "sample_0239.wav",
+  "transcript": "Every year, at a certain day of a certain month, he went away to a distant city to collect money when an account.",
+  "word_timings": [
+    {
+      "word": "Every",
+      "start": 0.0,
+      "end": 0.58
+    },
+    {
+      "word": "year,",
+      "start": 0.58,
+      "end": 0.94
+    },
+    {
+      "word": "at",
+      "start": 1.3,
+      "end": 1.36
+    },
+    {
+      "word": "a",
+      "start": 1.36,
+      "end": 1.46
+    },
+    {
+      "word": "certain",
+      "start": 1.46,
+      "end": 1.72
+    },
+    {
+      "word": "day",
+      "start": 1.72,
+      "end": 2.06
+    },
+    {
+      "word": "of",
+      "start": 2.06,
+      "end": 2.44
+    },
+    {
+      "word": "a",
+      "start": 2.44,
+      "end": 2.54
+    },
+    {
+      "word": "certain",
+      "start": 2.54,
+      "end": 2.8
+    },
+    {
+      "word": "month,",
+      "start": 2.8,
+      "end": 3.28
+    },
+    {
+      "word": "he",
+      "start": 3.62,
+      "end": 3.82
+    },
+    {
+      "word": "went",
+      "start": 3.82,
+      "end": 3.96
+    },
+    {
+      "word": "away",
+      "start": 3.96,
+      "end": 4.24
+    },
+    {
+      "word": "to",
+      "start": 4.24,
+      "end": 4.4
+    },
+    {
+      "word": "a",
+      "start": 4.4,
+      "end": 4.48
+    },
+    {
+      "word": "distant",
+      "start": 4.48,
+      "end": 4.74
+    },
+    {
+      "word": "city",
+      "start": 4.74,
+      "end": 5.18
+    },
+    {
+      "word": "to",
+      "start": 5.18,
+      "end": 5.46
+    },
+    {
+      "word": "collect",
+      "start": 5.46,
+      "end": 5.7
+    },
+    {
+      "word": "money",
+      "start": 5.7,
+      "end": 6.12
+    },
+    {
+      "word": "when",
+      "start": 6.12,
+      "end": 6.38
+    },
+    {
+      "word": "an",
+      "start": 6.38,
+      "end": 6.5
+    },
+    {
+      "word": "account.",
+      "start": 6.5,
+      "end": 6.72
+    }
+  ],
+  "duration": 6.72
+}

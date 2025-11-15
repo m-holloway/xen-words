@@ -1,0 +1,98 @@
+{
+  "audio_file": "sample_0197.flac",
+  "wav_file": "sample_0197.wav",
+  "transcript": "Since you are a friend of my cousin Hebsibos, you should ask her to show you the picture.",
+  "word_timings": [
+    {
+      "word": "Since",
+      "start": 0.0,
+      "end": 0.38
+    },
+    {
+      "word": "you",
+      "start": 0.38,
+      "end": 0.54
+    },
+    {
+      "word": "are",
+      "start": 0.54,
+      "end": 0.64
+    },
+    {
+      "word": "a",
+      "start": 0.64,
+      "end": 0.74
+    },
+    {
+      "word": "friend",
+      "start": 0.74,
+      "end": 0.96
+    },
+    {
+      "word": "of",
+      "start": 0.96,
+      "end": 1.16
+    },
+    {
+      "word": "my",
+      "start": 1.16,
+      "end": 1.26
+    },
+    {
+      "word": "cousin",
+      "start": 1.26,
+      "end": 1.54
+    },
+    {
+      "word": "Hebsibos,",
+      "start": 1.54,
+      "end": 2.14
+    },
+    {
+      "word": "you",
+      "start": 2.58,
+      "end": 2.7
+    },
+    {
+      "word": "should",
+      "start": 2.7,
+      "end": 2.86
+    },
+    {
+      "word": "ask",
+      "start": 2.86,
+      "end": 3.1
+    },
+    {
+      "word": "her",
+      "start": 3.1,
+      "end": 3.28
+    },
+    {
+      "word": "to",
+      "start": 3.28,
+      "end": 3.46
+    },
+    {
+      "word": "show",
+      "start": 3.46,
+      "end": 3.62
+    },
+    {
+      "word": "you",
+      "start": 3.62,
+      "end": 3.76
+    },
+    {
+      "word": "the",
+      "start": 3.76,
+      "end": 3.86
+    },
+    {
+      "word": "picture.",
+      "start": 3.86,
+      "end": 4.16
+    }
+  ],
+  "duration": 4.16
+}

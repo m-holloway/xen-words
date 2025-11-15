@@ -1,0 +1,88 @@
+{
+  "audio_file": "sample_0058.flac",
+  "wav_file": "sample_0058.wav",
+  "transcript": "He was beaten for tonight and he might just as well make the best of it.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.64
+    },
+    {
+      "word": "was",
+      "start": 0.64,
+      "end": 0.8
+    },
+    {
+      "word": "beaten",
+      "start": 0.8,
+      "end": 1.04
+    },
+    {
+      "word": "for",
+      "start": 1.04,
+      "end": 1.24
+    },
+    {
+      "word": "tonight",
+      "start": 1.24,
+      "end": 1.54
+    },
+    {
+      "word": "and",
+      "start": 1.54,
+      "end": 1.82
+    },
+    {
+      "word": "he",
+      "start": 1.82,
+      "end": 1.9
+    },
+    {
+      "word": "might",
+      "start": 1.9,
+      "end": 2.04
+    },
+    {
+      "word": "just",
+      "start": 2.04,
+      "end": 2.24
+    },
+    {
+      "word": "as",
+      "start": 2.24,
+      "end": 2.42
+    },
+    {
+      "word": "well",
+      "start": 2.42,
+      "end": 2.56
+    },
+    {
+      "word": "make",
+      "start": 2.56,
+      "end": 2.72
+    },
+    {
+      "word": "the",
+      "start": 2.72,
+      "end": 2.88
+    },
+    {
+      "word": "best",
+      "start": 2.88,
+      "end": 3.1
+    },
+    {
+      "word": "of",
+      "start": 3.1,
+      "end": 3.22
+    },
+    {
+      "word": "it.",
+      "start": 3.22,
+      "end": 3.38
+    }
+  ],
+  "duration": 3.38
+}

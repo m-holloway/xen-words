@@ -1,0 +1,68 @@
+{
+  "audio_file": "sample_0045.flac",
+  "wav_file": "sample_0045.wav",
+  "transcript": "If he didn't go and see them, they would sue him promptly.",
+  "word_timings": [
+    {
+      "word": "If",
+      "start": 0.0,
+      "end": 0.42
+    },
+    {
+      "word": "he",
+      "start": 0.42,
+      "end": 0.5
+    },
+    {
+      "word": "didn't",
+      "start": 0.5,
+      "end": 0.74
+    },
+    {
+      "word": "go",
+      "start": 0.74,
+      "end": 0.86
+    },
+    {
+      "word": "and",
+      "start": 0.86,
+      "end": 1.04
+    },
+    {
+      "word": "see",
+      "start": 1.04,
+      "end": 1.2
+    },
+    {
+      "word": "them,",
+      "start": 1.2,
+      "end": 1.4
+    },
+    {
+      "word": "they",
+      "start": 1.58,
+      "end": 1.66
+    },
+    {
+      "word": "would",
+      "start": 1.66,
+      "end": 1.8
+    },
+    {
+      "word": "sue",
+      "start": 1.8,
+      "end": 1.96
+    },
+    {
+      "word": "him",
+      "start": 1.96,
+      "end": 2.12
+    },
+    {
+      "word": "promptly.",
+      "start": 2.12,
+      "end": 2.5
+    }
+  ],
+  "duration": 2.5
+}

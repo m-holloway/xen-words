@@ -1,0 +1,98 @@
+{
+  "audio_file": "sample_0272.flac",
+  "wav_file": "sample_0272.wav",
+  "transcript": "It required months and great events to make grant the hero of the army which he afterward became.",
+  "word_timings": [
+    {
+      "word": "It",
+      "start": 0.0,
+      "end": 0.4
+    },
+    {
+      "word": "required",
+      "start": 0.4,
+      "end": 0.8
+    },
+    {
+      "word": "months",
+      "start": 0.8,
+      "end": 1.4
+    },
+    {
+      "word": "and",
+      "start": 1.4,
+      "end": 1.8
+    },
+    {
+      "word": "great",
+      "start": 1.8,
+      "end": 2.1
+    },
+    {
+      "word": "events",
+      "start": 2.1,
+      "end": 2.5
+    },
+    {
+      "word": "to",
+      "start": 2.5,
+      "end": 2.84
+    },
+    {
+      "word": "make",
+      "start": 2.84,
+      "end": 3.08
+    },
+    {
+      "word": "grant",
+      "start": 3.08,
+      "end": 3.36
+    },
+    {
+      "word": "the",
+      "start": 3.36,
+      "end": 3.66
+    },
+    {
+      "word": "hero",
+      "start": 3.66,
+      "end": 3.98
+    },
+    {
+      "word": "of",
+      "start": 3.98,
+      "end": 4.2
+    },
+    {
+      "word": "the",
+      "start": 4.2,
+      "end": 4.34
+    },
+    {
+      "word": "army",
+      "start": 4.34,
+      "end": 4.68
+    },
+    {
+      "word": "which",
+      "start": 4.68,
+      "end": 5.02
+    },
+    {
+      "word": "he",
+      "start": 5.02,
+      "end": 5.16
+    },
+    {
+      "word": "afterward",
+      "start": 5.16,
+      "end": 5.58
+    },
+    {
+      "word": "became.",
+      "start": 5.58,
+      "end": 5.96
+    }
+  ],
+  "duration": 5.96
+}

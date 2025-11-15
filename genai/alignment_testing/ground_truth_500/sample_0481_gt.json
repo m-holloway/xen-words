@@ -1,0 +1,133 @@
+{
+  "audio_file": "sample_0481.flac",
+  "wav_file": "sample_0481.wav",
+  "transcript": "The nearest, said the district doctor, is a good Italian abay who lives next door to you. Shall I call on him as I pass?",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.38
+    },
+    {
+      "word": "nearest,",
+      "start": 0.38,
+      "end": 0.76
+    },
+    {
+      "word": "said",
+      "start": 0.88,
+      "end": 1.08
+    },
+    {
+      "word": "the",
+      "start": 1.08,
+      "end": 1.2
+    },
+    {
+      "word": "district",
+      "start": 1.2,
+      "end": 1.44
+    },
+    {
+      "word": "doctor,",
+      "start": 1.44,
+      "end": 1.86
+    },
+    {
+      "word": "is",
+      "start": 1.98,
+      "end": 2.06
+    },
+    {
+      "word": "a",
+      "start": 2.06,
+      "end": 2.16
+    },
+    {
+      "word": "good",
+      "start": 2.16,
+      "end": 2.28
+    },
+    {
+      "word": "Italian",
+      "start": 2.28,
+      "end": 2.7
+    },
+    {
+      "word": "abay",
+      "start": 2.7,
+      "end": 3.08
+    },
+    {
+      "word": "who",
+      "start": 3.08,
+      "end": 3.26
+    },
+    {
+      "word": "lives",
+      "start": 3.26,
+      "end": 3.44
+    },
+    {
+      "word": "next",
+      "start": 3.44,
+      "end": 3.62
+    },
+    {
+      "word": "door",
+      "start": 3.62,
+      "end": 3.84
+    },
+    {
+      "word": "to",
+      "start": 3.84,
+      "end": 3.98
+    },
+    {
+      "word": "you.",
+      "start": 3.98,
+      "end": 4.18
+    },
+    {
+      "word": "Shall",
+      "start": 4.38,
+      "end": 4.46
+    },
+    {
+      "word": "I",
+      "start": 4.46,
+      "end": 4.6
+    },
+    {
+      "word": "call",
+      "start": 4.6,
+      "end": 4.78
+    },
+    {
+      "word": "on",
+      "start": 4.78,
+      "end": 4.96
+    },
+    {
+      "word": "him",
+      "start": 4.96,
+      "end": 5.12
+    },
+    {
+      "word": "as",
+      "start": 5.12,
+      "end": 5.28
+    },
+    {
+      "word": "I",
+      "start": 5.28,
+      "end": 5.36
+    },
+    {
+      "word": "pass?",
+      "start": 5.36,
+      "end": 5.58
+    }
+  ],
+  "duration": 5.58
+}

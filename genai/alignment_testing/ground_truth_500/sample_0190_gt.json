@@ -1,0 +1,178 @@
+{
+  "audio_file": "sample_0190.flac",
+  "wav_file": "sample_0190.wav",
+  "transcript": "The enclosure had formerly been very extensive, but was now contracted within small compass, and hemmed about partly by high wooden fences, and partly by the outbuildings of houses that stood on another street.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.3
+    },
+    {
+      "word": "enclosure",
+      "start": 0.3,
+      "end": 0.74
+    },
+    {
+      "word": "had",
+      "start": 0.74,
+      "end": 0.98
+    },
+    {
+      "word": "formerly",
+      "start": 0.98,
+      "end": 1.3
+    },
+    {
+      "word": "been",
+      "start": 1.3,
+      "end": 1.52
+    },
+    {
+      "word": "very",
+      "start": 1.52,
+      "end": 1.8
+    },
+    {
+      "word": "extensive,",
+      "start": 1.8,
+      "end": 2.32
+    },
+    {
+      "word": "but",
+      "start": 2.84,
+      "end": 2.94
+    },
+    {
+      "word": "was",
+      "start": 2.94,
+      "end": 3.12
+    },
+    {
+      "word": "now",
+      "start": 3.12,
+      "end": 3.34
+    },
+    {
+      "word": "contracted",
+      "start": 3.34,
+      "end": 3.86
+    },
+    {
+      "word": "within",
+      "start": 3.86,
+      "end": 4.18
+    },
+    {
+      "word": "small",
+      "start": 4.18,
+      "end": 4.52
+    },
+    {
+      "word": "compass,",
+      "start": 4.52,
+      "end": 4.88
+    },
+    {
+      "word": "and",
+      "start": 5.48,
+      "end": 5.56
+    },
+    {
+      "word": "hemmed",
+      "start": 5.56,
+      "end": 5.84
+    },
+    {
+      "word": "about",
+      "start": 5.84,
+      "end": 6.1
+    },
+    {
+      "word": "partly",
+      "start": 6.1,
+      "end": 6.58
+    },
+    {
+      "word": "by",
+      "start": 6.58,
+      "end": 6.76
+    },
+    {
+      "word": "high",
+      "start": 6.76,
+      "end": 6.98
+    },
+    {
+      "word": "wooden",
+      "start": 6.98,
+      "end": 7.24
+    },
+    {
+      "word": "fences,",
+      "start": 7.24,
+      "end": 7.6
+    },
+    {
+      "word": "and",
+      "start": 8.28,
+      "end": 8.48
+    },
+    {
+      "word": "partly",
+      "start": 8.48,
+      "end": 8.76
+    },
+    {
+      "word": "by",
+      "start": 8.76,
+      "end": 8.92
+    },
+    {
+      "word": "the",
+      "start": 8.92,
+      "end": 9.06
+    },
+    {
+      "word": "outbuildings",
+      "start": 9.06,
+      "end": 9.62
+    },
+    {
+      "word": "of",
+      "start": 9.62,
+      "end": 9.72
+    },
+    {
+      "word": "houses",
+      "start": 9.72,
+      "end": 10.02
+    },
+    {
+      "word": "that",
+      "start": 10.02,
+      "end": 10.5
+    },
+    {
+      "word": "stood",
+      "start": 10.5,
+      "end": 10.7
+    },
+    {
+      "word": "on",
+      "start": 10.7,
+      "end": 10.84
+    },
+    {
+      "word": "another",
+      "start": 10.84,
+      "end": 11.06
+    },
+    {
+      "word": "street.",
+      "start": 11.06,
+      "end": 11.4
+    }
+  ],
+  "duration": 11.4
+}

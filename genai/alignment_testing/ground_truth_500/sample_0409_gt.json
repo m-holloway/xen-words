@@ -1,0 +1,183 @@
+{
+  "audio_file": "sample_0409.flac",
+  "wav_file": "sample_0409.wav",
+  "transcript": "The light thrown down by the shade fell dazzlingly on the white pillow, sunk by the weight of her head, reposing with closed eyes and dark hair, done up in several plates for the night.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.56
+    },
+    {
+      "word": "light",
+      "start": 0.56,
+      "end": 0.76
+    },
+    {
+      "word": "thrown",
+      "start": 0.76,
+      "end": 1.04
+    },
+    {
+      "word": "down",
+      "start": 1.04,
+      "end": 1.28
+    },
+    {
+      "word": "by",
+      "start": 1.28,
+      "end": 1.5
+    },
+    {
+      "word": "the",
+      "start": 1.5,
+      "end": 1.7
+    },
+    {
+      "word": "shade",
+      "start": 1.7,
+      "end": 1.86
+    },
+    {
+      "word": "fell",
+      "start": 1.86,
+      "end": 2.18
+    },
+    {
+      "word": "dazzlingly",
+      "start": 2.18,
+      "end": 2.88
+    },
+    {
+      "word": "on",
+      "start": 2.88,
+      "end": 3.02
+    },
+    {
+      "word": "the",
+      "start": 3.02,
+      "end": 3.14
+    },
+    {
+      "word": "white",
+      "start": 3.14,
+      "end": 3.34
+    },
+    {
+      "word": "pillow,",
+      "start": 3.34,
+      "end": 3.68
+    },
+    {
+      "word": "sunk",
+      "start": 3.88,
+      "end": 4.02
+    },
+    {
+      "word": "by",
+      "start": 4.02,
+      "end": 4.28
+    },
+    {
+      "word": "the",
+      "start": 4.28,
+      "end": 4.4
+    },
+    {
+      "word": "weight",
+      "start": 4.4,
+      "end": 4.56
+    },
+    {
+      "word": "of",
+      "start": 4.56,
+      "end": 4.74
+    },
+    {
+      "word": "her",
+      "start": 4.74,
+      "end": 4.88
+    },
+    {
+      "word": "head,",
+      "start": 4.88,
+      "end": 5.14
+    },
+    {
+      "word": "reposing",
+      "start": 5.26,
+      "end": 5.6
+    },
+    {
+      "word": "with",
+      "start": 5.6,
+      "end": 5.78
+    },
+    {
+      "word": "closed",
+      "start": 5.78,
+      "end": 6.02
+    },
+    {
+      "word": "eyes",
+      "start": 6.02,
+      "end": 6.52
+    },
+    {
+      "word": "and",
+      "start": 6.52,
+      "end": 6.74
+    },
+    {
+      "word": "dark",
+      "start": 6.74,
+      "end": 6.96
+    },
+    {
+      "word": "hair,",
+      "start": 6.96,
+      "end": 7.26
+    },
+    {
+      "word": "done",
+      "start": 7.42,
+      "end": 7.48
+    },
+    {
+      "word": "up",
+      "start": 7.48,
+      "end": 7.66
+    },
+    {
+      "word": "in",
+      "start": 7.66,
+      "end": 7.76
+    },
+    {
+      "word": "several",
+      "start": 7.76,
+      "end": 8.02
+    },
+    {
+      "word": "plates",
+      "start": 8.02,
+      "end": 8.32
+    },
+    {
+      "word": "for",
+      "start": 8.32,
+      "end": 8.58
+    },
+    {
+      "word": "the",
+      "start": 8.58,
+      "end": 8.68
+    },
+    {
+      "word": "night.",
+      "start": 8.68,
+      "end": 8.9
+    }
+  ],
+  "duration": 8.9
+}

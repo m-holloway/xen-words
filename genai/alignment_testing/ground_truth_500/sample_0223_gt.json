@@ -1,0 +1,38 @@
+{
+  "audio_file": "sample_0223.flac",
+  "wav_file": "sample_0223.wav",
+  "transcript": "She did not altogether like him.",
+  "word_timings": [
+    {
+      "word": "She",
+      "start": 0.0,
+      "end": 0.68
+    },
+    {
+      "word": "did",
+      "start": 0.68,
+      "end": 0.82
+    },
+    {
+      "word": "not",
+      "start": 0.82,
+      "end": 0.98
+    },
+    {
+      "word": "altogether",
+      "start": 0.98,
+      "end": 1.42
+    },
+    {
+      "word": "like",
+      "start": 1.42,
+      "end": 1.76
+    },
+    {
+      "word": "him.",
+      "start": 1.76,
+      "end": 2.02
+    }
+  ],
+  "duration": 2.02
+}

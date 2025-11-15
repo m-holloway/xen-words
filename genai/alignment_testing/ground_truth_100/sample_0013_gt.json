@@ -1,0 +1,108 @@
+{
+  "audio_file": "sample_0013.flac",
+  "wav_file": "sample_0013.wav",
+  "transcript": "While the danger had not lessened, it had not as yet materialized, and with him no news was good news.",
+  "word_timings": [
+    {
+      "word": "While",
+      "start": 0.0,
+      "end": 0.56
+    },
+    {
+      "word": "the",
+      "start": 0.56,
+      "end": 0.68
+    },
+    {
+      "word": "danger",
+      "start": 0.68,
+      "end": 0.92
+    },
+    {
+      "word": "had",
+      "start": 0.92,
+      "end": 1.14
+    },
+    {
+      "word": "not",
+      "start": 1.14,
+      "end": 1.3
+    },
+    {
+      "word": "lessened,",
+      "start": 1.3,
+      "end": 1.78
+    },
+    {
+      "word": "it",
+      "start": 1.88,
+      "end": 1.96
+    },
+    {
+      "word": "had",
+      "start": 1.96,
+      "end": 2.1
+    },
+    {
+      "word": "not",
+      "start": 2.1,
+      "end": 2.3
+    },
+    {
+      "word": "as",
+      "start": 2.3,
+      "end": 2.54
+    },
+    {
+      "word": "yet",
+      "start": 2.54,
+      "end": 2.7
+    },
+    {
+      "word": "materialized,",
+      "start": 2.7,
+      "end": 3.6
+    },
+    {
+      "word": "and",
+      "start": 3.76,
+      "end": 3.84
+    },
+    {
+      "word": "with",
+      "start": 3.84,
+      "end": 4.0
+    },
+    {
+      "word": "him",
+      "start": 4.0,
+      "end": 4.24
+    },
+    {
+      "word": "no",
+      "start": 4.24,
+      "end": 4.46
+    },
+    {
+      "word": "news",
+      "start": 4.46,
+      "end": 4.78
+    },
+    {
+      "word": "was",
+      "start": 4.78,
+      "end": 4.96
+    },
+    {
+      "word": "good",
+      "start": 4.96,
+      "end": 5.16
+    },
+    {
+      "word": "news.",
+      "start": 5.16,
+      "end": 5.52
+    }
+  ],
+  "duration": 5.52
+}

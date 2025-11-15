@@ -1,0 +1,83 @@
+{
+  "audio_file": "sample_0266.flac",
+  "wav_file": "sample_0266.wav",
+  "transcript": "It was not a question of who was dead or wounded, but who was not?",
+  "word_timings": [
+    {
+      "word": "It",
+      "start": 0.0,
+      "end": 0.5
+    },
+    {
+      "word": "was",
+      "start": 0.5,
+      "end": 0.6
+    },
+    {
+      "word": "not",
+      "start": 0.6,
+      "end": 0.8
+    },
+    {
+      "word": "a",
+      "start": 0.8,
+      "end": 0.94
+    },
+    {
+      "word": "question",
+      "start": 0.94,
+      "end": 1.26
+    },
+    {
+      "word": "of",
+      "start": 1.26,
+      "end": 1.44
+    },
+    {
+      "word": "who",
+      "start": 1.44,
+      "end": 1.66
+    },
+    {
+      "word": "was",
+      "start": 1.66,
+      "end": 1.88
+    },
+    {
+      "word": "dead",
+      "start": 1.88,
+      "end": 2.04
+    },
+    {
+      "word": "or",
+      "start": 2.04,
+      "end": 2.2
+    },
+    {
+      "word": "wounded,",
+      "start": 2.2,
+      "end": 2.5
+    },
+    {
+      "word": "but",
+      "start": 2.7,
+      "end": 2.8
+    },
+    {
+      "word": "who",
+      "start": 2.8,
+      "end": 2.94
+    },
+    {
+      "word": "was",
+      "start": 2.94,
+      "end": 3.08
+    },
+    {
+      "word": "not?",
+      "start": 3.08,
+      "end": 3.36
+    }
+  ],
+  "duration": 3.36
+}

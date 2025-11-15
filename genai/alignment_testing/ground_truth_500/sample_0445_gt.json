@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0445.flac",
+  "wav_file": "sample_0445.wav",
+  "transcript": "With the insight of a kindred temperament, he pronounced his verdict.",
+  "word_timings": [
+    {
+      "word": "With",
+      "start": 0.0,
+      "end": 0.5
+    },
+    {
+      "word": "the",
+      "start": 0.5,
+      "end": 0.66
+    },
+    {
+      "word": "insight",
+      "start": 0.66,
+      "end": 1.02
+    },
+    {
+      "word": "of",
+      "start": 1.02,
+      "end": 1.28
+    },
+    {
+      "word": "a",
+      "start": 1.28,
+      "end": 1.38
+    },
+    {
+      "word": "kindred",
+      "start": 1.38,
+      "end": 1.74
+    },
+    {
+      "word": "temperament,",
+      "start": 1.74,
+      "end": 2.28
+    },
+    {
+      "word": "he",
+      "start": 2.56,
+      "end": 2.64
+    },
+    {
+      "word": "pronounced",
+      "start": 2.64,
+      "end": 3.02
+    },
+    {
+      "word": "his",
+      "start": 3.02,
+      "end": 3.22
+    },
+    {
+      "word": "verdict.",
+      "start": 3.22,
+      "end": 3.46
+    }
+  ],
+  "duration": 3.46
+}

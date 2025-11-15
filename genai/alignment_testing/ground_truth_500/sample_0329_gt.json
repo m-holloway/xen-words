@@ -1,0 +1,108 @@
+{
+  "audio_file": "sample_0329.flac",
+  "wav_file": "sample_0329.wav",
+  "transcript": "We stood panting on the edge of the ravine, looking down at the trees and bushes that grew below us.",
+  "word_timings": [
+    {
+      "word": "We",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "stood",
+      "start": 0.62,
+      "end": 0.84
+    },
+    {
+      "word": "panting",
+      "start": 0.84,
+      "end": 1.32
+    },
+    {
+      "word": "on",
+      "start": 1.32,
+      "end": 1.42
+    },
+    {
+      "word": "the",
+      "start": 1.42,
+      "end": 1.52
+    },
+    {
+      "word": "edge",
+      "start": 1.52,
+      "end": 1.78
+    },
+    {
+      "word": "of",
+      "start": 1.78,
+      "end": 1.9
+    },
+    {
+      "word": "the",
+      "start": 1.9,
+      "end": 1.98
+    },
+    {
+      "word": "ravine,",
+      "start": 1.98,
+      "end": 2.46
+    },
+    {
+      "word": "looking",
+      "start": 3.0,
+      "end": 3.18
+    },
+    {
+      "word": "down",
+      "start": 3.18,
+      "end": 3.48
+    },
+    {
+      "word": "at",
+      "start": 3.48,
+      "end": 3.62
+    },
+    {
+      "word": "the",
+      "start": 3.62,
+      "end": 3.74
+    },
+    {
+      "word": "trees",
+      "start": 3.74,
+      "end": 4.0
+    },
+    {
+      "word": "and",
+      "start": 4.0,
+      "end": 4.26
+    },
+    {
+      "word": "bushes",
+      "start": 4.26,
+      "end": 4.58
+    },
+    {
+      "word": "that",
+      "start": 4.58,
+      "end": 4.86
+    },
+    {
+      "word": "grew",
+      "start": 4.86,
+      "end": 5.02
+    },
+    {
+      "word": "below",
+      "start": 5.02,
+      "end": 5.28
+    },
+    {
+      "word": "us.",
+      "start": 5.28,
+      "end": 5.66
+    }
+  ],
+  "duration": 5.66
+}

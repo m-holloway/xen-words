@@ -1,0 +1,68 @@
+{
+  "audio_file": "sample_0052.flac",
+  "wav_file": "sample_0052.wav",
+  "transcript": "he would go to her and tell her all his family complications.",
+  "word_timings": [
+    {
+      "word": "he",
+      "start": 0.0,
+      "end": 0.34
+    },
+    {
+      "word": "would",
+      "start": 0.34,
+      "end": 0.44
+    },
+    {
+      "word": "go",
+      "start": 0.44,
+      "end": 0.58
+    },
+    {
+      "word": "to",
+      "start": 0.58,
+      "end": 0.74
+    },
+    {
+      "word": "her",
+      "start": 0.74,
+      "end": 0.88
+    },
+    {
+      "word": "and",
+      "start": 0.88,
+      "end": 1.06
+    },
+    {
+      "word": "tell",
+      "start": 1.06,
+      "end": 1.24
+    },
+    {
+      "word": "her",
+      "start": 1.24,
+      "end": 1.48
+    },
+    {
+      "word": "all",
+      "start": 1.48,
+      "end": 1.94
+    },
+    {
+      "word": "his",
+      "start": 1.94,
+      "end": 2.16
+    },
+    {
+      "word": "family",
+      "start": 2.16,
+      "end": 2.4
+    },
+    {
+      "word": "complications.",
+      "start": 2.4,
+      "end": 3.0
+    }
+  ],
+  "duration": 3.0
+}

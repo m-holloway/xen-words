@@ -1,0 +1,58 @@
+{
+  "audio_file": "sample_0307.flac",
+  "wav_file": "sample_0307.wav",
+  "transcript": "She got up on her knees and wrung her hands.",
+  "word_timings": [
+    {
+      "word": "She",
+      "start": 0.0,
+      "end": 0.68
+    },
+    {
+      "word": "got",
+      "start": 0.68,
+      "end": 0.88
+    },
+    {
+      "word": "up",
+      "start": 0.88,
+      "end": 1.12
+    },
+    {
+      "word": "on",
+      "start": 1.12,
+      "end": 1.28
+    },
+    {
+      "word": "her",
+      "start": 1.28,
+      "end": 1.44
+    },
+    {
+      "word": "knees",
+      "start": 1.44,
+      "end": 1.68
+    },
+    {
+      "word": "and",
+      "start": 1.68,
+      "end": 1.86
+    },
+    {
+      "word": "wrung",
+      "start": 1.86,
+      "end": 2.08
+    },
+    {
+      "word": "her",
+      "start": 2.08,
+      "end": 2.24
+    },
+    {
+      "word": "hands.",
+      "start": 2.24,
+      "end": 2.64
+    }
+  ],
+  "duration": 2.64
+}

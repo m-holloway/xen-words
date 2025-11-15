@@ -1,0 +1,88 @@
+{
+  "audio_file": "sample_0042.flac",
+  "wav_file": "sample_0042.wav",
+  "transcript": "So here it was, spread out clear before him, and now he knew what to expect.",
+  "word_timings": [
+    {
+      "word": "So",
+      "start": 0.0,
+      "end": 0.68
+    },
+    {
+      "word": "here",
+      "start": 0.68,
+      "end": 0.86
+    },
+    {
+      "word": "it",
+      "start": 0.86,
+      "end": 1.02
+    },
+    {
+      "word": "was,",
+      "start": 1.02,
+      "end": 1.18
+    },
+    {
+      "word": "spread",
+      "start": 1.36,
+      "end": 1.48
+    },
+    {
+      "word": "out",
+      "start": 1.48,
+      "end": 1.62
+    },
+    {
+      "word": "clear",
+      "start": 1.62,
+      "end": 1.82
+    },
+    {
+      "word": "before",
+      "start": 1.82,
+      "end": 2.14
+    },
+    {
+      "word": "him,",
+      "start": 2.14,
+      "end": 2.4
+    },
+    {
+      "word": "and",
+      "start": 2.7,
+      "end": 2.78
+    },
+    {
+      "word": "now",
+      "start": 2.78,
+      "end": 2.92
+    },
+    {
+      "word": "he",
+      "start": 2.92,
+      "end": 3.1
+    },
+    {
+      "word": "knew",
+      "start": 3.1,
+      "end": 3.22
+    },
+    {
+      "word": "what",
+      "start": 3.22,
+      "end": 3.4
+    },
+    {
+      "word": "to",
+      "start": 3.4,
+      "end": 3.56
+    },
+    {
+      "word": "expect.",
+      "start": 3.56,
+      "end": 3.88
+    }
+  ],
+  "duration": 3.88
+}

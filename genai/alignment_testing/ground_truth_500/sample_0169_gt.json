@@ -1,0 +1,78 @@
+{
+  "audio_file": "sample_0169.flac",
+  "wav_file": "sample_0169.wav",
+  "transcript": "The loss of his two friends had a depressing effect upon old Mr. Shamarida.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "loss",
+      "start": 0.62,
+      "end": 0.82
+    },
+    {
+      "word": "of",
+      "start": 0.82,
+      "end": 1.04
+    },
+    {
+      "word": "his",
+      "start": 1.04,
+      "end": 1.16
+    },
+    {
+      "word": "two",
+      "start": 1.16,
+      "end": 1.36
+    },
+    {
+      "word": "friends",
+      "start": 1.36,
+      "end": 1.68
+    },
+    {
+      "word": "had",
+      "start": 1.68,
+      "end": 1.86
+    },
+    {
+      "word": "a",
+      "start": 1.86,
+      "end": 1.94
+    },
+    {
+      "word": "depressing",
+      "start": 1.94,
+      "end": 2.28
+    },
+    {
+      "word": "effect",
+      "start": 2.28,
+      "end": 2.68
+    },
+    {
+      "word": "upon",
+      "start": 2.68,
+      "end": 3.14
+    },
+    {
+      "word": "old",
+      "start": 3.14,
+      "end": 3.4
+    },
+    {
+      "word": "Mr.",
+      "start": 3.4,
+      "end": 3.7
+    },
+    {
+      "word": "Shamarida.",
+      "start": 3.88,
+      "end": 4.24
+    }
+  ],
+  "duration": 4.24
+}

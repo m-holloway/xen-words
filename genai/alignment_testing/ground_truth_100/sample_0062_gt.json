@@ -1,0 +1,68 @@
+{
+  "audio_file": "sample_0062.flac",
+  "wav_file": "sample_0062.wav",
+  "transcript": "Then he called Harry, the boy of all work around the place.",
+  "word_timings": [
+    {
+      "word": "Then",
+      "start": 0.0,
+      "end": 0.66
+    },
+    {
+      "word": "he",
+      "start": 0.66,
+      "end": 0.8
+    },
+    {
+      "word": "called",
+      "start": 0.8,
+      "end": 0.96
+    },
+    {
+      "word": "Harry,",
+      "start": 0.96,
+      "end": 1.24
+    },
+    {
+      "word": "the",
+      "start": 1.6,
+      "end": 1.64
+    },
+    {
+      "word": "boy",
+      "start": 1.64,
+      "end": 1.84
+    },
+    {
+      "word": "of",
+      "start": 1.84,
+      "end": 1.98
+    },
+    {
+      "word": "all",
+      "start": 1.98,
+      "end": 2.08
+    },
+    {
+      "word": "work",
+      "start": 2.08,
+      "end": 2.28
+    },
+    {
+      "word": "around",
+      "start": 2.28,
+      "end": 2.52
+    },
+    {
+      "word": "the",
+      "start": 2.52,
+      "end": 2.64
+    },
+    {
+      "word": "place.",
+      "start": 2.64,
+      "end": 2.88
+    }
+  ],
+  "duration": 2.88
+}

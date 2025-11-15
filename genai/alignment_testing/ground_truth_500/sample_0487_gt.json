@@ -1,0 +1,113 @@
+{
+  "audio_file": "sample_0487.flac",
+  "wav_file": "sample_0487.wav",
+  "transcript": "It was something terrible to witness the silent agony, the mute despair of Nautier whose tears silently rolled on his cheeks.",
+  "word_timings": [
+    {
+      "word": "It",
+      "start": 0.0,
+      "end": 0.52
+    },
+    {
+      "word": "was",
+      "start": 0.52,
+      "end": 0.62
+    },
+    {
+      "word": "something",
+      "start": 0.62,
+      "end": 0.88
+    },
+    {
+      "word": "terrible",
+      "start": 0.88,
+      "end": 1.2
+    },
+    {
+      "word": "to",
+      "start": 1.2,
+      "end": 1.38
+    },
+    {
+      "word": "witness",
+      "start": 1.38,
+      "end": 1.62
+    },
+    {
+      "word": "the",
+      "start": 1.62,
+      "end": 1.9
+    },
+    {
+      "word": "silent",
+      "start": 1.9,
+      "end": 2.2
+    },
+    {
+      "word": "agony,",
+      "start": 2.2,
+      "end": 2.68
+    },
+    {
+      "word": "the",
+      "start": 2.98,
+      "end": 3.06
+    },
+    {
+      "word": "mute",
+      "start": 3.06,
+      "end": 3.3
+    },
+    {
+      "word": "despair",
+      "start": 3.3,
+      "end": 3.74
+    },
+    {
+      "word": "of",
+      "start": 3.74,
+      "end": 4.02
+    },
+    {
+      "word": "Nautier",
+      "start": 4.02,
+      "end": 4.36
+    },
+    {
+      "word": "whose",
+      "start": 4.36,
+      "end": 4.62
+    },
+    {
+      "word": "tears",
+      "start": 4.62,
+      "end": 4.94
+    },
+    {
+      "word": "silently",
+      "start": 4.94,
+      "end": 5.52
+    },
+    {
+      "word": "rolled",
+      "start": 5.52,
+      "end": 5.78
+    },
+    {
+      "word": "on",
+      "start": 5.78,
+      "end": 6.04
+    },
+    {
+      "word": "his",
+      "start": 6.04,
+      "end": 6.24
+    },
+    {
+      "word": "cheeks.",
+      "start": 6.24,
+      "end": 6.6
+    }
+  ],
+  "duration": 6.6
+}

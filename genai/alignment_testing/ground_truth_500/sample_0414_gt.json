@@ -1,0 +1,108 @@
+{
+  "audio_file": "sample_0414.flac",
+  "wav_file": "sample_0414.wav",
+  "transcript": "The famous terrorist had never in his life raised personally as much as his little finger against the social edifice.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.52
+    },
+    {
+      "word": "famous",
+      "start": 0.52,
+      "end": 0.86
+    },
+    {
+      "word": "terrorist",
+      "start": 0.86,
+      "end": 1.24
+    },
+    {
+      "word": "had",
+      "start": 1.24,
+      "end": 1.6
+    },
+    {
+      "word": "never",
+      "start": 1.6,
+      "end": 1.9
+    },
+    {
+      "word": "in",
+      "start": 1.9,
+      "end": 2.08
+    },
+    {
+      "word": "his",
+      "start": 2.08,
+      "end": 2.26
+    },
+    {
+      "word": "life",
+      "start": 2.26,
+      "end": 2.64
+    },
+    {
+      "word": "raised",
+      "start": 2.64,
+      "end": 3.22
+    },
+    {
+      "word": "personally",
+      "start": 3.22,
+      "end": 3.7
+    },
+    {
+      "word": "as",
+      "start": 3.7,
+      "end": 3.9
+    },
+    {
+      "word": "much",
+      "start": 3.9,
+      "end": 4.16
+    },
+    {
+      "word": "as",
+      "start": 4.16,
+      "end": 4.38
+    },
+    {
+      "word": "his",
+      "start": 4.38,
+      "end": 4.54
+    },
+    {
+      "word": "little",
+      "start": 4.54,
+      "end": 4.74
+    },
+    {
+      "word": "finger",
+      "start": 4.74,
+      "end": 5.08
+    },
+    {
+      "word": "against",
+      "start": 5.08,
+      "end": 5.46
+    },
+    {
+      "word": "the",
+      "start": 5.46,
+      "end": 5.66
+    },
+    {
+      "word": "social",
+      "start": 5.66,
+      "end": 6.0
+    },
+    {
+      "word": "edifice.",
+      "start": 6.0,
+      "end": 6.4
+    }
+  ],
+  "duration": 6.4
+}

@@ -1,0 +1,78 @@
+{
+  "audio_file": "sample_0328.flac",
+  "wav_file": "sample_0328.wav",
+  "transcript": "She looked at me, her eyes fairly blazing with things she could not say.",
+  "word_timings": [
+    {
+      "word": "She",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "looked",
+      "start": 0.62,
+      "end": 0.82
+    },
+    {
+      "word": "at",
+      "start": 0.82,
+      "end": 0.96
+    },
+    {
+      "word": "me,",
+      "start": 0.96,
+      "end": 1.12
+    },
+    {
+      "word": "her",
+      "start": 1.52,
+      "end": 1.64
+    },
+    {
+      "word": "eyes",
+      "start": 1.64,
+      "end": 1.92
+    },
+    {
+      "word": "fairly",
+      "start": 1.92,
+      "end": 2.26
+    },
+    {
+      "word": "blazing",
+      "start": 2.26,
+      "end": 2.76
+    },
+    {
+      "word": "with",
+      "start": 2.76,
+      "end": 2.96
+    },
+    {
+      "word": "things",
+      "start": 2.96,
+      "end": 3.3
+    },
+    {
+      "word": "she",
+      "start": 3.3,
+      "end": 3.58
+    },
+    {
+      "word": "could",
+      "start": 3.58,
+      "end": 3.72
+    },
+    {
+      "word": "not",
+      "start": 3.72,
+      "end": 3.9
+    },
+    {
+      "word": "say.",
+      "start": 3.9,
+      "end": 4.26
+    }
+  ],
+  "duration": 4.26
+}

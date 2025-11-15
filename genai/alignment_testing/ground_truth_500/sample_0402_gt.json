@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0402.flac",
+  "wav_file": "sample_0402.wav",
+  "transcript": "That boy hears too much of what is talked about here.",
+  "word_timings": [
+    {
+      "word": "That",
+      "start": 0.0,
+      "end": 0.46
+    },
+    {
+      "word": "boy",
+      "start": 0.46,
+      "end": 0.64
+    },
+    {
+      "word": "hears",
+      "start": 0.64,
+      "end": 0.92
+    },
+    {
+      "word": "too",
+      "start": 0.92,
+      "end": 1.12
+    },
+    {
+      "word": "much",
+      "start": 1.12,
+      "end": 1.28
+    },
+    {
+      "word": "of",
+      "start": 1.28,
+      "end": 1.42
+    },
+    {
+      "word": "what",
+      "start": 1.42,
+      "end": 1.54
+    },
+    {
+      "word": "is",
+      "start": 1.54,
+      "end": 1.66
+    },
+    {
+      "word": "talked",
+      "start": 1.66,
+      "end": 1.86
+    },
+    {
+      "word": "about",
+      "start": 1.86,
+      "end": 2.16
+    },
+    {
+      "word": "here.",
+      "start": 2.16,
+      "end": 2.46
+    }
+  ],
+  "duration": 2.46
+}

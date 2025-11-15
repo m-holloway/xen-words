@@ -1,0 +1,98 @@
+{
+  "audio_file": "sample_0394.flac",
+  "wav_file": "sample_0394.wav",
+  "transcript": "This dread led him to make the remark that Stevie had disregarded his suggestion to go to bed.",
+  "word_timings": [
+    {
+      "word": "This",
+      "start": 0.0,
+      "end": 0.54
+    },
+    {
+      "word": "dread",
+      "start": 0.54,
+      "end": 0.84
+    },
+    {
+      "word": "led",
+      "start": 0.84,
+      "end": 1.06
+    },
+    {
+      "word": "him",
+      "start": 1.06,
+      "end": 1.28
+    },
+    {
+      "word": "to",
+      "start": 1.28,
+      "end": 1.46
+    },
+    {
+      "word": "make",
+      "start": 1.46,
+      "end": 1.62
+    },
+    {
+      "word": "the",
+      "start": 1.62,
+      "end": 1.78
+    },
+    {
+      "word": "remark",
+      "start": 1.78,
+      "end": 1.96
+    },
+    {
+      "word": "that",
+      "start": 1.96,
+      "end": 2.28
+    },
+    {
+      "word": "Stevie",
+      "start": 2.28,
+      "end": 2.58
+    },
+    {
+      "word": "had",
+      "start": 2.58,
+      "end": 2.82
+    },
+    {
+      "word": "disregarded",
+      "start": 2.82,
+      "end": 3.38
+    },
+    {
+      "word": "his",
+      "start": 3.38,
+      "end": 3.58
+    },
+    {
+      "word": "suggestion",
+      "start": 3.58,
+      "end": 3.98
+    },
+    {
+      "word": "to",
+      "start": 3.98,
+      "end": 4.24
+    },
+    {
+      "word": "go",
+      "start": 4.24,
+      "end": 4.38
+    },
+    {
+      "word": "to",
+      "start": 4.38,
+      "end": 4.48
+    },
+    {
+      "word": "bed.",
+      "start": 4.48,
+      "end": 4.64
+    }
+  ],
+  "duration": 4.64
+}

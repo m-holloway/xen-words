@@ -1,0 +1,58 @@
+{
+  "audio_file": "sample_0356.flac",
+  "wav_file": "sample_0356.wav",
+  "transcript": "I look at my watch. It's a quarter to eleven.",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.46
+    },
+    {
+      "word": "look",
+      "start": 0.46,
+      "end": 0.54
+    },
+    {
+      "word": "at",
+      "start": 0.54,
+      "end": 0.64
+    },
+    {
+      "word": "my",
+      "start": 0.64,
+      "end": 0.8
+    },
+    {
+      "word": "watch.",
+      "start": 0.8,
+      "end": 1.2
+    },
+    {
+      "word": "It's",
+      "start": 1.58,
+      "end": 1.74
+    },
+    {
+      "word": "a",
+      "start": 1.74,
+      "end": 1.78
+    },
+    {
+      "word": "quarter",
+      "start": 1.78,
+      "end": 1.96
+    },
+    {
+      "word": "to",
+      "start": 1.96,
+      "end": 2.14
+    },
+    {
+      "word": "eleven.",
+      "start": 2.14,
+      "end": 2.42
+    }
+  ],
+  "duration": 2.42
+}

@@ -1,0 +1,93 @@
+{
+  "audio_file": "sample_0112.flac",
+  "wav_file": "sample_0112.wav",
+  "transcript": "The poets of succeeding ages have dwelt much in detail on the occurrences of this memorable day.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "poets",
+      "start": 0.62,
+      "end": 0.92
+    },
+    {
+      "word": "of",
+      "start": 0.92,
+      "end": 1.2
+    },
+    {
+      "word": "succeeding",
+      "start": 1.2,
+      "end": 1.6
+    },
+    {
+      "word": "ages",
+      "start": 1.6,
+      "end": 2.0
+    },
+    {
+      "word": "have",
+      "start": 2.0,
+      "end": 2.26
+    },
+    {
+      "word": "dwelt",
+      "start": 2.26,
+      "end": 2.56
+    },
+    {
+      "word": "much",
+      "start": 2.56,
+      "end": 3.02
+    },
+    {
+      "word": "in",
+      "start": 3.02,
+      "end": 3.16
+    },
+    {
+      "word": "detail",
+      "start": 3.16,
+      "end": 3.56
+    },
+    {
+      "word": "on",
+      "start": 3.56,
+      "end": 3.8
+    },
+    {
+      "word": "the",
+      "start": 3.8,
+      "end": 3.92
+    },
+    {
+      "word": "occurrences",
+      "start": 3.92,
+      "end": 4.52
+    },
+    {
+      "word": "of",
+      "start": 4.52,
+      "end": 4.76
+    },
+    {
+      "word": "this",
+      "start": 4.76,
+      "end": 4.96
+    },
+    {
+      "word": "memorable",
+      "start": 4.96,
+      "end": 5.34
+    },
+    {
+      "word": "day.",
+      "start": 5.34,
+      "end": 5.8
+    }
+  ],
+  "duration": 5.8
+}

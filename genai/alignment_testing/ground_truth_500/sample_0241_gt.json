@@ -1,0 +1,163 @@
+{
+  "audio_file": "sample_0241.flac",
+  "wav_file": "sample_0241.wav",
+  "transcript": "It's surely a terrible storm outside, so the merchant's eldest daughter, as the wind rattled the tiles of the roof and the rain beat in torrents against the doors and windows.",
+  "word_timings": [
+    {
+      "word": "It's",
+      "start": 0.0,
+      "end": 0.76
+    },
+    {
+      "word": "surely",
+      "start": 0.76,
+      "end": 1.04
+    },
+    {
+      "word": "a",
+      "start": 1.04,
+      "end": 1.22
+    },
+    {
+      "word": "terrible",
+      "start": 1.22,
+      "end": 1.66
+    },
+    {
+      "word": "storm",
+      "start": 1.66,
+      "end": 2.02
+    },
+    {
+      "word": "outside,",
+      "start": 2.02,
+      "end": 2.62
+    },
+    {
+      "word": "so",
+      "start": 2.98,
+      "end": 3.12
+    },
+    {
+      "word": "the",
+      "start": 3.12,
+      "end": 3.24
+    },
+    {
+      "word": "merchant's",
+      "start": 3.24,
+      "end": 3.76
+    },
+    {
+      "word": "eldest",
+      "start": 3.76,
+      "end": 3.94
+    },
+    {
+      "word": "daughter,",
+      "start": 3.94,
+      "end": 4.38
+    },
+    {
+      "word": "as",
+      "start": 4.8,
+      "end": 4.94
+    },
+    {
+      "word": "the",
+      "start": 4.94,
+      "end": 5.08
+    },
+    {
+      "word": "wind",
+      "start": 5.08,
+      "end": 5.3
+    },
+    {
+      "word": "rattled",
+      "start": 5.3,
+      "end": 5.78
+    },
+    {
+      "word": "the",
+      "start": 5.78,
+      "end": 5.94
+    },
+    {
+      "word": "tiles",
+      "start": 5.94,
+      "end": 6.32
+    },
+    {
+      "word": "of",
+      "start": 6.32,
+      "end": 6.52
+    },
+    {
+      "word": "the",
+      "start": 6.52,
+      "end": 6.66
+    },
+    {
+      "word": "roof",
+      "start": 6.66,
+      "end": 6.92
+    },
+    {
+      "word": "and",
+      "start": 6.92,
+      "end": 7.42
+    },
+    {
+      "word": "the",
+      "start": 7.42,
+      "end": 7.54
+    },
+    {
+      "word": "rain",
+      "start": 7.54,
+      "end": 7.76
+    },
+    {
+      "word": "beat",
+      "start": 7.76,
+      "end": 8.06
+    },
+    {
+      "word": "in",
+      "start": 8.06,
+      "end": 8.32
+    },
+    {
+      "word": "torrents",
+      "start": 8.32,
+      "end": 8.86
+    },
+    {
+      "word": "against",
+      "start": 8.86,
+      "end": 9.02
+    },
+    {
+      "word": "the",
+      "start": 9.02,
+      "end": 9.26
+    },
+    {
+      "word": "doors",
+      "start": 9.26,
+      "end": 9.48
+    },
+    {
+      "word": "and",
+      "start": 9.48,
+      "end": 9.7
+    },
+    {
+      "word": "windows.",
+      "start": 9.7,
+      "end": 10.06
+    }
+  ],
+  "duration": 10.06
+}

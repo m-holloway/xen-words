@@ -1,0 +1,168 @@
+{
+  "audio_file": "sample_0440.flac",
+  "wav_file": "sample_0440.wav",
+  "transcript": "Stevie swallowed the terrifying statement with an audible gulp, and at once, as though it had been swift poison, sank limply in a sitting posture on the steps of the kitchen door.",
+  "word_timings": [
+    {
+      "word": "Stevie",
+      "start": 0.0,
+      "end": 0.68
+    },
+    {
+      "word": "swallowed",
+      "start": 0.68,
+      "end": 1.08
+    },
+    {
+      "word": "the",
+      "start": 1.08,
+      "end": 1.34
+    },
+    {
+      "word": "terrifying",
+      "start": 1.34,
+      "end": 1.7
+    },
+    {
+      "word": "statement",
+      "start": 1.7,
+      "end": 2.18
+    },
+    {
+      "word": "with",
+      "start": 2.18,
+      "end": 2.38
+    },
+    {
+      "word": "an",
+      "start": 2.38,
+      "end": 2.52
+    },
+    {
+      "word": "audible",
+      "start": 2.52,
+      "end": 2.78
+    },
+    {
+      "word": "gulp,",
+      "start": 2.78,
+      "end": 3.12
+    },
+    {
+      "word": "and",
+      "start": 3.66,
+      "end": 3.78
+    },
+    {
+      "word": "at",
+      "start": 3.78,
+      "end": 3.94
+    },
+    {
+      "word": "once,",
+      "start": 3.94,
+      "end": 4.24
+    },
+    {
+      "word": "as",
+      "start": 4.56,
+      "end": 4.82
+    },
+    {
+      "word": "though",
+      "start": 4.82,
+      "end": 5.0
+    },
+    {
+      "word": "it",
+      "start": 5.0,
+      "end": 5.1
+    },
+    {
+      "word": "had",
+      "start": 5.1,
+      "end": 5.18
+    },
+    {
+      "word": "been",
+      "start": 5.18,
+      "end": 5.36
+    },
+    {
+      "word": "swift",
+      "start": 5.36,
+      "end": 5.6
+    },
+    {
+      "word": "poison,",
+      "start": 5.6,
+      "end": 6.14
+    },
+    {
+      "word": "sank",
+      "start": 6.58,
+      "end": 6.84
+    },
+    {
+      "word": "limply",
+      "start": 6.84,
+      "end": 7.2
+    },
+    {
+      "word": "in",
+      "start": 7.2,
+      "end": 7.34
+    },
+    {
+      "word": "a",
+      "start": 7.34,
+      "end": 7.42
+    },
+    {
+      "word": "sitting",
+      "start": 7.42,
+      "end": 7.68
+    },
+    {
+      "word": "posture",
+      "start": 7.68,
+      "end": 8.1
+    },
+    {
+      "word": "on",
+      "start": 8.1,
+      "end": 8.3
+    },
+    {
+      "word": "the",
+      "start": 8.3,
+      "end": 8.4
+    },
+    {
+      "word": "steps",
+      "start": 8.4,
+      "end": 8.64
+    },
+    {
+      "word": "of",
+      "start": 8.64,
+      "end": 8.82
+    },
+    {
+      "word": "the",
+      "start": 8.82,
+      "end": 8.94
+    },
+    {
+      "word": "kitchen",
+      "start": 8.94,
+      "end": 9.16
+    },
+    {
+      "word": "door.",
+      "start": 9.16,
+      "end": 9.46
+    }
+  ],
+  "duration": 9.46
+}

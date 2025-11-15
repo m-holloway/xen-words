@@ -1,0 +1,58 @@
+{
+  "audio_file": "sample_0231.flac",
+  "wav_file": "sample_0231.wav",
+  "transcript": "Long ago, they lived in Merchant who had three daughters.",
+  "word_timings": [
+    {
+      "word": "Long",
+      "start": 0.0,
+      "end": 0.74
+    },
+    {
+      "word": "ago,",
+      "start": 0.74,
+      "end": 1.06
+    },
+    {
+      "word": "they",
+      "start": 1.3,
+      "end": 1.36
+    },
+    {
+      "word": "lived",
+      "start": 1.36,
+      "end": 1.56
+    },
+    {
+      "word": "in",
+      "start": 1.56,
+      "end": 1.72
+    },
+    {
+      "word": "Merchant",
+      "start": 1.72,
+      "end": 2.0
+    },
+    {
+      "word": "who",
+      "start": 2.0,
+      "end": 2.24
+    },
+    {
+      "word": "had",
+      "start": 2.24,
+      "end": 2.36
+    },
+    {
+      "word": "three",
+      "start": 2.36,
+      "end": 2.64
+    },
+    {
+      "word": "daughters.",
+      "start": 2.64,
+      "end": 2.98
+    }
+  ],
+  "duration": 2.98
+}

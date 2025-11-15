@@ -1,0 +1,68 @@
+{
+  "audio_file": "sample_0195.flac",
+  "wav_file": "sample_0195.wav",
+  "transcript": "but put it on the table in the corner of the passage.",
+  "word_timings": [
+    {
+      "word": "but",
+      "start": 0.0,
+      "end": 0.36
+    },
+    {
+      "word": "put",
+      "start": 0.36,
+      "end": 0.56
+    },
+    {
+      "word": "it",
+      "start": 0.56,
+      "end": 0.68
+    },
+    {
+      "word": "on",
+      "start": 0.68,
+      "end": 0.76
+    },
+    {
+      "word": "the",
+      "start": 0.76,
+      "end": 0.88
+    },
+    {
+      "word": "table",
+      "start": 0.88,
+      "end": 1.22
+    },
+    {
+      "word": "in",
+      "start": 1.22,
+      "end": 1.38
+    },
+    {
+      "word": "the",
+      "start": 1.38,
+      "end": 1.48
+    },
+    {
+      "word": "corner",
+      "start": 1.48,
+      "end": 1.76
+    },
+    {
+      "word": "of",
+      "start": 1.76,
+      "end": 1.94
+    },
+    {
+      "word": "the",
+      "start": 1.94,
+      "end": 2.02
+    },
+    {
+      "word": "passage.",
+      "start": 2.02,
+      "end": 2.42
+    }
+  ],
+  "duration": 2.42
+}

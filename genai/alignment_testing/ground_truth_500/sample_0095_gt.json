@@ -1,0 +1,48 @@
+{
+  "audio_file": "sample_0095.flac",
+  "wav_file": "sample_0095.wav",
+  "transcript": "Otto Fuchs was the first one we met.",
+  "word_timings": [
+    {
+      "word": "Otto",
+      "start": 0.0,
+      "end": 0.7
+    },
+    {
+      "word": "Fuchs",
+      "start": 0.7,
+      "end": 1.04
+    },
+    {
+      "word": "was",
+      "start": 1.04,
+      "end": 1.24
+    },
+    {
+      "word": "the",
+      "start": 1.24,
+      "end": 1.36
+    },
+    {
+      "word": "first",
+      "start": 1.36,
+      "end": 1.6
+    },
+    {
+      "word": "one",
+      "start": 1.6,
+      "end": 1.8
+    },
+    {
+      "word": "we",
+      "start": 1.8,
+      "end": 1.92
+    },
+    {
+      "word": "met.",
+      "start": 1.92,
+      "end": 2.14
+    }
+  ],
+  "duration": 2.14
+}

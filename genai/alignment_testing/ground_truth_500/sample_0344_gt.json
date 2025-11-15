@@ -1,0 +1,188 @@
+{
+  "audio_file": "sample_0344.flac",
+  "wav_file": "sample_0344.wav",
+  "transcript": "They stand unmoved in their solitary greatness, well assured that they are seen of all the world without any effort to show themselves off, and that no one will attempt to drive them from that position.",
+  "word_timings": [
+    {
+      "word": "They",
+      "start": 0.0,
+      "end": 0.44
+    },
+    {
+      "word": "stand",
+      "start": 0.44,
+      "end": 0.72
+    },
+    {
+      "word": "unmoved",
+      "start": 0.72,
+      "end": 1.36
+    },
+    {
+      "word": "in",
+      "start": 1.36,
+      "end": 1.46
+    },
+    {
+      "word": "their",
+      "start": 1.46,
+      "end": 1.62
+    },
+    {
+      "word": "solitary",
+      "start": 1.62,
+      "end": 2.0
+    },
+    {
+      "word": "greatness,",
+      "start": 2.0,
+      "end": 2.6
+    },
+    {
+      "word": "well",
+      "start": 3.04,
+      "end": 3.28
+    },
+    {
+      "word": "assured",
+      "start": 3.28,
+      "end": 3.56
+    },
+    {
+      "word": "that",
+      "start": 3.56,
+      "end": 3.86
+    },
+    {
+      "word": "they",
+      "start": 3.86,
+      "end": 4.0
+    },
+    {
+      "word": "are",
+      "start": 4.0,
+      "end": 4.08
+    },
+    {
+      "word": "seen",
+      "start": 4.08,
+      "end": 4.36
+    },
+    {
+      "word": "of",
+      "start": 4.36,
+      "end": 4.58
+    },
+    {
+      "word": "all",
+      "start": 4.58,
+      "end": 4.8
+    },
+    {
+      "word": "the",
+      "start": 4.8,
+      "end": 4.92
+    },
+    {
+      "word": "world",
+      "start": 4.92,
+      "end": 5.28
+    },
+    {
+      "word": "without",
+      "start": 5.28,
+      "end": 5.6
+    },
+    {
+      "word": "any",
+      "start": 5.6,
+      "end": 5.92
+    },
+    {
+      "word": "effort",
+      "start": 5.92,
+      "end": 6.18
+    },
+    {
+      "word": "to",
+      "start": 6.18,
+      "end": 6.34
+    },
+    {
+      "word": "show",
+      "start": 6.34,
+      "end": 6.5
+    },
+    {
+      "word": "themselves",
+      "start": 6.5,
+      "end": 6.78
+    },
+    {
+      "word": "off,",
+      "start": 6.78,
+      "end": 7.22
+    },
+    {
+      "word": "and",
+      "start": 7.66,
+      "end": 7.72
+    },
+    {
+      "word": "that",
+      "start": 7.72,
+      "end": 7.82
+    },
+    {
+      "word": "no",
+      "start": 7.82,
+      "end": 8.04
+    },
+    {
+      "word": "one",
+      "start": 8.04,
+      "end": 8.16
+    },
+    {
+      "word": "will",
+      "start": 8.16,
+      "end": 8.28
+    },
+    {
+      "word": "attempt",
+      "start": 8.28,
+      "end": 8.54
+    },
+    {
+      "word": "to",
+      "start": 8.54,
+      "end": 8.74
+    },
+    {
+      "word": "drive",
+      "start": 8.74,
+      "end": 8.96
+    },
+    {
+      "word": "them",
+      "start": 8.96,
+      "end": 9.16
+    },
+    {
+      "word": "from",
+      "start": 9.16,
+      "end": 9.34
+    },
+    {
+      "word": "that",
+      "start": 9.34,
+      "end": 9.5
+    },
+    {
+      "word": "position.",
+      "start": 9.5,
+      "end": 9.92
+    }
+  ],
+  "duration": 9.92
+}

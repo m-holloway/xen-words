@@ -1,0 +1,188 @@
+{
+  "audio_file": "sample_0028.flac",
+  "wav_file": "sample_0028.wav",
+  "transcript": "By the time he reached his own street, he was keenly alive to the difficulties of his situation and wished over and over that some solution would offer itself, that he could see his way out.",
+  "word_timings": [
+    {
+      "word": "By",
+      "start": 0.0,
+      "end": 0.46
+    },
+    {
+      "word": "the",
+      "start": 0.46,
+      "end": 0.58
+    },
+    {
+      "word": "time",
+      "start": 0.58,
+      "end": 0.78
+    },
+    {
+      "word": "he",
+      "start": 0.78,
+      "end": 0.96
+    },
+    {
+      "word": "reached",
+      "start": 0.96,
+      "end": 1.16
+    },
+    {
+      "word": "his",
+      "start": 1.16,
+      "end": 1.4
+    },
+    {
+      "word": "own",
+      "start": 1.4,
+      "end": 1.58
+    },
+    {
+      "word": "street,",
+      "start": 1.58,
+      "end": 1.88
+    },
+    {
+      "word": "he",
+      "start": 2.12,
+      "end": 2.14
+    },
+    {
+      "word": "was",
+      "start": 2.14,
+      "end": 2.26
+    },
+    {
+      "word": "keenly",
+      "start": 2.26,
+      "end": 2.62
+    },
+    {
+      "word": "alive",
+      "start": 2.62,
+      "end": 2.94
+    },
+    {
+      "word": "to",
+      "start": 2.94,
+      "end": 3.16
+    },
+    {
+      "word": "the",
+      "start": 3.16,
+      "end": 3.3
+    },
+    {
+      "word": "difficulties",
+      "start": 3.3,
+      "end": 3.82
+    },
+    {
+      "word": "of",
+      "start": 3.82,
+      "end": 4.16
+    },
+    {
+      "word": "his",
+      "start": 4.16,
+      "end": 4.32
+    },
+    {
+      "word": "situation",
+      "start": 4.32,
+      "end": 4.98
+    },
+    {
+      "word": "and",
+      "start": 4.98,
+      "end": 5.56
+    },
+    {
+      "word": "wished",
+      "start": 5.56,
+      "end": 5.78
+    },
+    {
+      "word": "over",
+      "start": 5.78,
+      "end": 6.08
+    },
+    {
+      "word": "and",
+      "start": 6.08,
+      "end": 6.22
+    },
+    {
+      "word": "over",
+      "start": 6.22,
+      "end": 6.5
+    },
+    {
+      "word": "that",
+      "start": 6.5,
+      "end": 6.68
+    },
+    {
+      "word": "some",
+      "start": 6.68,
+      "end": 6.92
+    },
+    {
+      "word": "solution",
+      "start": 6.92,
+      "end": 7.38
+    },
+    {
+      "word": "would",
+      "start": 7.38,
+      "end": 7.6
+    },
+    {
+      "word": "offer",
+      "start": 7.6,
+      "end": 7.94
+    },
+    {
+      "word": "itself,",
+      "start": 7.94,
+      "end": 8.42
+    },
+    {
+      "word": "that",
+      "start": 8.8,
+      "end": 9.1
+    },
+    {
+      "word": "he",
+      "start": 9.1,
+      "end": 9.24
+    },
+    {
+      "word": "could",
+      "start": 9.24,
+      "end": 9.38
+    },
+    {
+      "word": "see",
+      "start": 9.38,
+      "end": 9.58
+    },
+    {
+      "word": "his",
+      "start": 9.58,
+      "end": 9.8
+    },
+    {
+      "word": "way",
+      "start": 9.8,
+      "end": 9.98
+    },
+    {
+      "word": "out.",
+      "start": 9.98,
+      "end": 10.36
+    }
+  ],
+  "duration": 10.36
+}

@@ -1,0 +1,43 @@
+{
+  "audio_file": "sample_0370.flac",
+  "wav_file": "sample_0370.wav",
+  "transcript": "It's your fault, mop it up yourself.",
+  "word_timings": [
+    {
+      "word": "It's",
+      "start": 0.30000000000000016,
+      "end": 0.58
+    },
+    {
+      "word": "your",
+      "start": 0.58,
+      "end": 0.7
+    },
+    {
+      "word": "fault,",
+      "start": 0.7,
+      "end": 1.1
+    },
+    {
+      "word": "mop",
+      "start": 1.24,
+      "end": 1.36
+    },
+    {
+      "word": "it",
+      "start": 1.36,
+      "end": 1.48
+    },
+    {
+      "word": "up",
+      "start": 1.48,
+      "end": 1.56
+    },
+    {
+      "word": "yourself.",
+      "start": 1.56,
+      "end": 1.92
+    }
+  ],
+  "duration": 1.92
+}

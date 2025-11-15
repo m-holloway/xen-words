@@ -1,0 +1,143 @@
+{
+  "audio_file": "sample_0264.flac",
+  "wav_file": "sample_0264.wav",
+  "transcript": "One daring rebel was shot down and bayoneted, clear behind the line of company B, where he had broken through to seize the flag of my regiment.",
+  "word_timings": [
+    {
+      "word": "One",
+      "start": 0.0,
+      "end": 0.68
+    },
+    {
+      "word": "daring",
+      "start": 0.68,
+      "end": 1.04
+    },
+    {
+      "word": "rebel",
+      "start": 1.04,
+      "end": 1.44
+    },
+    {
+      "word": "was",
+      "start": 1.44,
+      "end": 1.74
+    },
+    {
+      "word": "shot",
+      "start": 1.74,
+      "end": 1.98
+    },
+    {
+      "word": "down",
+      "start": 1.98,
+      "end": 2.3
+    },
+    {
+      "word": "and",
+      "start": 2.3,
+      "end": 2.54
+    },
+    {
+      "word": "bayoneted,",
+      "start": 2.54,
+      "end": 3.06
+    },
+    {
+      "word": "clear",
+      "start": 3.42,
+      "end": 3.64
+    },
+    {
+      "word": "behind",
+      "start": 3.64,
+      "end": 4.02
+    },
+    {
+      "word": "the",
+      "start": 4.02,
+      "end": 4.22
+    },
+    {
+      "word": "line",
+      "start": 4.22,
+      "end": 4.44
+    },
+    {
+      "word": "of",
+      "start": 4.44,
+      "end": 4.62
+    },
+    {
+      "word": "company",
+      "start": 4.62,
+      "end": 4.96
+    },
+    {
+      "word": "B,",
+      "start": 4.96,
+      "end": 5.26
+    },
+    {
+      "word": "where",
+      "start": 5.74,
+      "end": 5.96
+    },
+    {
+      "word": "he",
+      "start": 5.96,
+      "end": 6.12
+    },
+    {
+      "word": "had",
+      "start": 6.12,
+      "end": 6.26
+    },
+    {
+      "word": "broken",
+      "start": 6.26,
+      "end": 6.54
+    },
+    {
+      "word": "through",
+      "start": 6.54,
+      "end": 6.88
+    },
+    {
+      "word": "to",
+      "start": 6.88,
+      "end": 7.06
+    },
+    {
+      "word": "seize",
+      "start": 7.06,
+      "end": 7.3
+    },
+    {
+      "word": "the",
+      "start": 7.3,
+      "end": 7.54
+    },
+    {
+      "word": "flag",
+      "start": 7.54,
+      "end": 7.8
+    },
+    {
+      "word": "of",
+      "start": 7.8,
+      "end": 8.02
+    },
+    {
+      "word": "my",
+      "start": 8.02,
+      "end": 8.2
+    },
+    {
+      "word": "regiment.",
+      "start": 8.2,
+      "end": 8.62
+    }
+  ],
+  "duration": 8.62
+}

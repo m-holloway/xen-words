@@ -1,0 +1,43 @@
+{
+  "audio_file": "sample_0002.flac",
+  "wav_file": "sample_0002.wav",
+  "transcript": "Then he rang the bell. No answer.",
+  "word_timings": [
+    {
+      "word": "Then",
+      "start": 0.0,
+      "end": 0.42
+    },
+    {
+      "word": "he",
+      "start": 0.42,
+      "end": 0.58
+    },
+    {
+      "word": "rang",
+      "start": 0.58,
+      "end": 0.72
+    },
+    {
+      "word": "the",
+      "start": 0.72,
+      "end": 0.9
+    },
+    {
+      "word": "bell.",
+      "start": 0.9,
+      "end": 1.18
+    },
+    {
+      "word": "No",
+      "start": 1.7,
+      "end": 1.9
+    },
+    {
+      "word": "answer.",
+      "start": 1.9,
+      "end": 2.32
+    }
+  ],
+  "duration": 2.32
+}

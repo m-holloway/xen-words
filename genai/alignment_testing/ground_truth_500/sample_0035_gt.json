@@ -1,0 +1,73 @@
+{
+  "audio_file": "sample_0035.flac",
+  "wav_file": "sample_0035.wav",
+  "transcript": "He saw a busy Saturday ushered out, the Sabbath in, and nothing done.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.4
+    },
+    {
+      "word": "saw",
+      "start": 0.4,
+      "end": 0.56
+    },
+    {
+      "word": "a",
+      "start": 0.56,
+      "end": 0.68
+    },
+    {
+      "word": "busy",
+      "start": 0.68,
+      "end": 0.9
+    },
+    {
+      "word": "Saturday",
+      "start": 0.9,
+      "end": 1.36
+    },
+    {
+      "word": "ushered",
+      "start": 1.36,
+      "end": 1.88
+    },
+    {
+      "word": "out,",
+      "start": 1.88,
+      "end": 2.06
+    },
+    {
+      "word": "the",
+      "start": 2.38,
+      "end": 2.46
+    },
+    {
+      "word": "Sabbath",
+      "start": 2.46,
+      "end": 2.72
+    },
+    {
+      "word": "in,",
+      "start": 2.72,
+      "end": 3.04
+    },
+    {
+      "word": "and",
+      "start": 3.46,
+      "end": 3.62
+    },
+    {
+      "word": "nothing",
+      "start": 3.62,
+      "end": 3.88
+    },
+    {
+      "word": "done.",
+      "start": 3.88,
+      "end": 4.18
+    }
+  ],
+  "duration": 4.18
+}

@@ -1,0 +1,53 @@
+{
+  "audio_file": "sample_0182.flac",
+  "wav_file": "sample_0182.wav",
+  "transcript": "TV merely glanced at it and gave it back.",
+  "word_timings": [
+    {
+      "word": "TV",
+      "start": 0.0,
+      "end": 0.66
+    },
+    {
+      "word": "merely",
+      "start": 0.66,
+      "end": 0.96
+    },
+    {
+      "word": "glanced",
+      "start": 0.96,
+      "end": 1.36
+    },
+    {
+      "word": "at",
+      "start": 1.36,
+      "end": 1.5
+    },
+    {
+      "word": "it",
+      "start": 1.5,
+      "end": 1.6
+    },
+    {
+      "word": "and",
+      "start": 1.6,
+      "end": 1.8
+    },
+    {
+      "word": "gave",
+      "start": 1.8,
+      "end": 1.96
+    },
+    {
+      "word": "it",
+      "start": 1.96,
+      "end": 2.1
+    },
+    {
+      "word": "back.",
+      "start": 2.1,
+      "end": 2.4
+    }
+  ],
+  "duration": 2.4
+}

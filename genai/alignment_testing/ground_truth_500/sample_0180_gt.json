@@ -1,0 +1,73 @@
+{
+  "audio_file": "sample_0180.flac",
+  "wav_file": "sample_0180.wav",
+  "transcript": "It now contained only Shanty Claire, his two wives, and a solitary chicken.",
+  "word_timings": [
+    {
+      "word": "It",
+      "start": 0.0,
+      "end": 0.6
+    },
+    {
+      "word": "now",
+      "start": 0.6,
+      "end": 0.84
+    },
+    {
+      "word": "contained",
+      "start": 0.84,
+      "end": 1.22
+    },
+    {
+      "word": "only",
+      "start": 1.22,
+      "end": 1.58
+    },
+    {
+      "word": "Shanty",
+      "start": 1.58,
+      "end": 1.96
+    },
+    {
+      "word": "Claire,",
+      "start": 1.96,
+      "end": 2.2
+    },
+    {
+      "word": "his",
+      "start": 2.58,
+      "end": 2.68
+    },
+    {
+      "word": "two",
+      "start": 2.68,
+      "end": 2.92
+    },
+    {
+      "word": "wives,",
+      "start": 2.92,
+      "end": 3.28
+    },
+    {
+      "word": "and",
+      "start": 3.74,
+      "end": 3.78
+    },
+    {
+      "word": "a",
+      "start": 3.78,
+      "end": 3.88
+    },
+    {
+      "word": "solitary",
+      "start": 3.88,
+      "end": 4.28
+    },
+    {
+      "word": "chicken.",
+      "start": 4.28,
+      "end": 4.66
+    }
+  ],
+  "duration": 4.66
+}

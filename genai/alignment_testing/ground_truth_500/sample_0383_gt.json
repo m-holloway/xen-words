@@ -1,0 +1,38 @@
+{
+  "audio_file": "sample_0383.flac",
+  "wav_file": "sample_0383.wav",
+  "transcript": "As Karl Junt, he grouts savagely.",
+  "word_timings": [
+    {
+      "word": "As",
+      "start": 0.0,
+      "end": 0.58
+    },
+    {
+      "word": "Karl",
+      "start": 0.58,
+      "end": 0.88
+    },
+    {
+      "word": "Junt,",
+      "start": 0.88,
+      "end": 1.26
+    },
+    {
+      "word": "he",
+      "start": 1.38,
+      "end": 1.44
+    },
+    {
+      "word": "grouts",
+      "start": 1.44,
+      "end": 1.76
+    },
+    {
+      "word": "savagely.",
+      "start": 1.76,
+      "end": 2.32
+    }
+  ],
+  "duration": 2.32
+}

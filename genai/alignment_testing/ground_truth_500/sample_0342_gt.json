@@ -1,0 +1,128 @@
+{
+  "audio_file": "sample_0342.flac",
+  "wav_file": "sample_0342.wav",
+  "transcript": "If I applaud the freedom which its inhabitants enjoy, he answers, freedom is a fine thing, but few nations are worthy to enjoy it.",
+  "word_timings": [
+    {
+      "word": "If",
+      "start": 0.0,
+      "end": 0.54
+    },
+    {
+      "word": "I",
+      "start": 0.54,
+      "end": 0.66
+    },
+    {
+      "word": "applaud",
+      "start": 0.66,
+      "end": 1.02
+    },
+    {
+      "word": "the",
+      "start": 1.02,
+      "end": 1.24
+    },
+    {
+      "word": "freedom",
+      "start": 1.24,
+      "end": 1.58
+    },
+    {
+      "word": "which",
+      "start": 1.58,
+      "end": 2.04
+    },
+    {
+      "word": "its",
+      "start": 2.04,
+      "end": 2.22
+    },
+    {
+      "word": "inhabitants",
+      "start": 2.22,
+      "end": 2.72
+    },
+    {
+      "word": "enjoy,",
+      "start": 2.72,
+      "end": 3.32
+    },
+    {
+      "word": "he",
+      "start": 3.4,
+      "end": 3.54
+    },
+    {
+      "word": "answers,",
+      "start": 3.54,
+      "end": 3.84
+    },
+    {
+      "word": "freedom",
+      "start": 4.58,
+      "end": 5.02
+    },
+    {
+      "word": "is",
+      "start": 5.02,
+      "end": 5.18
+    },
+    {
+      "word": "a",
+      "start": 5.18,
+      "end": 5.26
+    },
+    {
+      "word": "fine",
+      "start": 5.26,
+      "end": 5.5
+    },
+    {
+      "word": "thing,",
+      "start": 5.5,
+      "end": 5.82
+    },
+    {
+      "word": "but",
+      "start": 6.26,
+      "end": 6.36
+    },
+    {
+      "word": "few",
+      "start": 6.36,
+      "end": 6.64
+    },
+    {
+      "word": "nations",
+      "start": 6.64,
+      "end": 6.98
+    },
+    {
+      "word": "are",
+      "start": 6.98,
+      "end": 7.18
+    },
+    {
+      "word": "worthy",
+      "start": 7.18,
+      "end": 7.46
+    },
+    {
+      "word": "to",
+      "start": 7.46,
+      "end": 7.66
+    },
+    {
+      "word": "enjoy",
+      "start": 7.66,
+      "end": 7.96
+    },
+    {
+      "word": "it.",
+      "start": 7.96,
+      "end": 8.12
+    }
+  ],
+  "duration": 8.12
+}

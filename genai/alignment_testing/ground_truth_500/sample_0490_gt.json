@@ -1,0 +1,38 @@
+{
+  "audio_file": "sample_0490.flac",
+  "wav_file": "sample_0490.wav",
+  "transcript": "Do you know the assassin? Esmeral?",
+  "word_timings": [
+    {
+      "word": "Do",
+      "start": 0.0,
+      "end": 0.44
+    },
+    {
+      "word": "you",
+      "start": 0.44,
+      "end": 0.56
+    },
+    {
+      "word": "know",
+      "start": 0.56,
+      "end": 0.74
+    },
+    {
+      "word": "the",
+      "start": 0.74,
+      "end": 0.92
+    },
+    {
+      "word": "assassin?",
+      "start": 0.92,
+      "end": 1.34
+    },
+    {
+      "word": "Esmeral?",
+      "start": 1.76,
+      "end": 2.3
+    }
+  ],
+  "duration": 2.3
+}

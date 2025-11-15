@@ -1,0 +1,188 @@
+{
+  "audio_file": "sample_0415.flac",
+  "wav_file": "sample_0415.wav",
+  "transcript": "The sheet of paper covered with circles dropped out of his fingers, and here remains staring at the old terrorist, as have rooted suddenly to the spot by his morbid horror and dread of physical pain.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.66
+    },
+    {
+      "word": "sheet",
+      "start": 0.66,
+      "end": 0.8
+    },
+    {
+      "word": "of",
+      "start": 0.8,
+      "end": 0.9
+    },
+    {
+      "word": "paper",
+      "start": 0.9,
+      "end": 1.08
+    },
+    {
+      "word": "covered",
+      "start": 1.08,
+      "end": 1.52
+    },
+    {
+      "word": "with",
+      "start": 1.52,
+      "end": 1.72
+    },
+    {
+      "word": "circles",
+      "start": 1.72,
+      "end": 1.9
+    },
+    {
+      "word": "dropped",
+      "start": 1.9,
+      "end": 2.32
+    },
+    {
+      "word": "out",
+      "start": 2.32,
+      "end": 2.58
+    },
+    {
+      "word": "of",
+      "start": 2.58,
+      "end": 2.68
+    },
+    {
+      "word": "his",
+      "start": 2.68,
+      "end": 2.82
+    },
+    {
+      "word": "fingers,",
+      "start": 2.82,
+      "end": 3.08
+    },
+    {
+      "word": "and",
+      "start": 3.64,
+      "end": 3.82
+    },
+    {
+      "word": "here",
+      "start": 3.82,
+      "end": 3.94
+    },
+    {
+      "word": "remains",
+      "start": 3.94,
+      "end": 4.22
+    },
+    {
+      "word": "staring",
+      "start": 4.22,
+      "end": 4.74
+    },
+    {
+      "word": "at",
+      "start": 4.74,
+      "end": 4.9
+    },
+    {
+      "word": "the",
+      "start": 4.9,
+      "end": 5.04
+    },
+    {
+      "word": "old",
+      "start": 5.04,
+      "end": 5.2
+    },
+    {
+      "word": "terrorist,",
+      "start": 5.2,
+      "end": 5.6
+    },
+    {
+      "word": "as",
+      "start": 6.26,
+      "end": 6.38
+    },
+    {
+      "word": "have",
+      "start": 6.38,
+      "end": 6.48
+    },
+    {
+      "word": "rooted",
+      "start": 6.48,
+      "end": 6.72
+    },
+    {
+      "word": "suddenly",
+      "start": 6.72,
+      "end": 7.1
+    },
+    {
+      "word": "to",
+      "start": 7.1,
+      "end": 7.42
+    },
+    {
+      "word": "the",
+      "start": 7.42,
+      "end": 7.58
+    },
+    {
+      "word": "spot",
+      "start": 7.58,
+      "end": 7.9
+    },
+    {
+      "word": "by",
+      "start": 7.9,
+      "end": 8.14
+    },
+    {
+      "word": "his",
+      "start": 8.14,
+      "end": 8.32
+    },
+    {
+      "word": "morbid",
+      "start": 8.32,
+      "end": 8.7
+    },
+    {
+      "word": "horror",
+      "start": 8.7,
+      "end": 8.98
+    },
+    {
+      "word": "and",
+      "start": 8.98,
+      "end": 9.48
+    },
+    {
+      "word": "dread",
+      "start": 9.48,
+      "end": 9.76
+    },
+    {
+      "word": "of",
+      "start": 9.76,
+      "end": 9.9
+    },
+    {
+      "word": "physical",
+      "start": 9.9,
+      "end": 10.2
+    },
+    {
+      "word": "pain.",
+      "start": 10.2,
+      "end": 10.58
+    }
+  ],
+  "duration": 10.58
+}

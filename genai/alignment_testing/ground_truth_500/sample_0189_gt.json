@@ -1,0 +1,228 @@
+{
+  "audio_file": "sample_0189.flac",
+  "wav_file": "sample_0189.wav",
+  "transcript": "There were also a few species of antique and hereditary flowers and no very flourishing condition, but scrupulously weeded, as if some person, either out of love or curiosity, had been anxious to bring them to such perfection as they were capable of attaining.",
+  "word_timings": [
+    {
+      "word": "There",
+      "start": 0.0,
+      "end": 0.58
+    },
+    {
+      "word": "were",
+      "start": 0.58,
+      "end": 0.7
+    },
+    {
+      "word": "also",
+      "start": 0.7,
+      "end": 1.04
+    },
+    {
+      "word": "a",
+      "start": 1.04,
+      "end": 1.2
+    },
+    {
+      "word": "few",
+      "start": 1.2,
+      "end": 1.34
+    },
+    {
+      "word": "species",
+      "start": 1.34,
+      "end": 1.74
+    },
+    {
+      "word": "of",
+      "start": 1.74,
+      "end": 2.0
+    },
+    {
+      "word": "antique",
+      "start": 2.0,
+      "end": 2.3
+    },
+    {
+      "word": "and",
+      "start": 2.3,
+      "end": 2.58
+    },
+    {
+      "word": "hereditary",
+      "start": 2.58,
+      "end": 3.02
+    },
+    {
+      "word": "flowers",
+      "start": 3.02,
+      "end": 3.48
+    },
+    {
+      "word": "and",
+      "start": 3.48,
+      "end": 4.08
+    },
+    {
+      "word": "no",
+      "start": 4.08,
+      "end": 4.26
+    },
+    {
+      "word": "very",
+      "start": 4.26,
+      "end": 4.54
+    },
+    {
+      "word": "flourishing",
+      "start": 4.54,
+      "end": 5.0
+    },
+    {
+      "word": "condition,",
+      "start": 5.0,
+      "end": 5.48
+    },
+    {
+      "word": "but",
+      "start": 6.2,
+      "end": 6.4
+    },
+    {
+      "word": "scrupulously",
+      "start": 6.4,
+      "end": 6.9
+    },
+    {
+      "word": "weeded,",
+      "start": 6.9,
+      "end": 7.36
+    },
+    {
+      "word": "as",
+      "start": 8.02,
+      "end": 8.22
+    },
+    {
+      "word": "if",
+      "start": 8.22,
+      "end": 8.32
+    },
+    {
+      "word": "some",
+      "start": 8.32,
+      "end": 8.62
+    },
+    {
+      "word": "person,",
+      "start": 8.62,
+      "end": 9.02
+    },
+    {
+      "word": "either",
+      "start": 9.38,
+      "end": 9.62
+    },
+    {
+      "word": "out",
+      "start": 9.62,
+      "end": 9.8
+    },
+    {
+      "word": "of",
+      "start": 9.8,
+      "end": 9.92
+    },
+    {
+      "word": "love",
+      "start": 9.92,
+      "end": 10.12
+    },
+    {
+      "word": "or",
+      "start": 10.12,
+      "end": 10.32
+    },
+    {
+      "word": "curiosity,",
+      "start": 10.32,
+      "end": 10.96
+    },
+    {
+      "word": "had",
+      "start": 11.6,
+      "end": 11.7
+    },
+    {
+      "word": "been",
+      "start": 11.7,
+      "end": 11.84
+    },
+    {
+      "word": "anxious",
+      "start": 11.84,
+      "end": 12.2
+    },
+    {
+      "word": "to",
+      "start": 12.2,
+      "end": 12.44
+    },
+    {
+      "word": "bring",
+      "start": 12.44,
+      "end": 12.6
+    },
+    {
+      "word": "them",
+      "start": 12.6,
+      "end": 12.76
+    },
+    {
+      "word": "to",
+      "start": 12.76,
+      "end": 12.88
+    },
+    {
+      "word": "such",
+      "start": 12.88,
+      "end": 13.1
+    },
+    {
+      "word": "perfection",
+      "start": 13.1,
+      "end": 13.66
+    },
+    {
+      "word": "as",
+      "start": 13.66,
+      "end": 14.22
+    },
+    {
+      "word": "they",
+      "start": 14.22,
+      "end": 14.34
+    },
+    {
+      "word": "were",
+      "start": 14.34,
+      "end": 14.44
+    },
+    {
+      "word": "capable",
+      "start": 14.44,
+      "end": 14.76
+    },
+    {
+      "word": "of",
+      "start": 14.76,
+      "end": 15.04
+    },
+    {
+      "word": "attaining.",
+      "start": 15.04,
+      "end": 15.38
+    }
+  ],
+  "duration": 15.38
+}

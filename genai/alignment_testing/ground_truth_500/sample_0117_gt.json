@@ -1,0 +1,323 @@
+{
+  "audio_file": "sample_0117.flac",
+  "wav_file": "sample_0117.wav",
+  "transcript": "While the liberated exiles rejoiced on the plane of Meef, the tent of the Abbott of Iona was pitched on the wrath of Tara, a fact which would seem to indicate that already, in little more than a century since the interdict had fallen on it, the edifices which made so fine a show in the days of Patrick were ruined and uninhabitable.",
+  "word_timings": [
+    {
+      "word": "While",
+      "start": 0.0,
+      "end": 0.66
+    },
+    {
+      "word": "the",
+      "start": 0.66,
+      "end": 0.78
+    },
+    {
+      "word": "liberated",
+      "start": 0.78,
+      "end": 1.22
+    },
+    {
+      "word": "exiles",
+      "start": 1.22,
+      "end": 1.78
+    },
+    {
+      "word": "rejoiced",
+      "start": 1.78,
+      "end": 2.42
+    },
+    {
+      "word": "on",
+      "start": 2.42,
+      "end": 2.54
+    },
+    {
+      "word": "the",
+      "start": 2.54,
+      "end": 2.64
+    },
+    {
+      "word": "plane",
+      "start": 2.64,
+      "end": 2.88
+    },
+    {
+      "word": "of",
+      "start": 2.88,
+      "end": 3.1
+    },
+    {
+      "word": "Meef,",
+      "start": 3.1,
+      "end": 3.5
+    },
+    {
+      "word": "the",
+      "start": 3.9,
+      "end": 3.98
+    },
+    {
+      "word": "tent",
+      "start": 3.98,
+      "end": 4.22
+    },
+    {
+      "word": "of",
+      "start": 4.22,
+      "end": 4.44
+    },
+    {
+      "word": "the",
+      "start": 4.44,
+      "end": 4.58
+    },
+    {
+      "word": "Abbott",
+      "start": 4.58,
+      "end": 4.84
+    },
+    {
+      "word": "of",
+      "start": 4.84,
+      "end": 4.96
+    },
+    {
+      "word": "Iona",
+      "start": 4.96,
+      "end": 5.32
+    },
+    {
+      "word": "was",
+      "start": 5.32,
+      "end": 5.58
+    },
+    {
+      "word": "pitched",
+      "start": 5.58,
+      "end": 6.02
+    },
+    {
+      "word": "on",
+      "start": 6.02,
+      "end": 6.28
+    },
+    {
+      "word": "the",
+      "start": 6.28,
+      "end": 6.38
+    },
+    {
+      "word": "wrath",
+      "start": 6.38,
+      "end": 6.58
+    },
+    {
+      "word": "of",
+      "start": 6.58,
+      "end": 6.84
+    },
+    {
+      "word": "Tara,",
+      "start": 6.84,
+      "end": 7.12
+    },
+    {
+      "word": "a",
+      "start": 7.7,
+      "end": 8.0
+    },
+    {
+      "word": "fact",
+      "start": 8.0,
+      "end": 8.28
+    },
+    {
+      "word": "which",
+      "start": 8.28,
+      "end": 8.66
+    },
+    {
+      "word": "would",
+      "start": 8.66,
+      "end": 8.8
+    },
+    {
+      "word": "seem",
+      "start": 8.8,
+      "end": 9.02
+    },
+    {
+      "word": "to",
+      "start": 9.02,
+      "end": 9.2
+    },
+    {
+      "word": "indicate",
+      "start": 9.2,
+      "end": 9.62
+    },
+    {
+      "word": "that",
+      "start": 9.62,
+      "end": 9.98
+    },
+    {
+      "word": "already,",
+      "start": 9.98,
+      "end": 10.48
+    },
+    {
+      "word": "in",
+      "start": 10.86,
+      "end": 10.96
+    },
+    {
+      "word": "little",
+      "start": 10.96,
+      "end": 11.18
+    },
+    {
+      "word": "more",
+      "start": 11.18,
+      "end": 11.44
+    },
+    {
+      "word": "than",
+      "start": 11.44,
+      "end": 11.6
+    },
+    {
+      "word": "a",
+      "start": 11.6,
+      "end": 11.7
+    },
+    {
+      "word": "century",
+      "start": 11.7,
+      "end": 12.16
+    },
+    {
+      "word": "since",
+      "start": 12.16,
+      "end": 12.48
+    },
+    {
+      "word": "the",
+      "start": 12.48,
+      "end": 12.68
+    },
+    {
+      "word": "interdict",
+      "start": 12.68,
+      "end": 13.12
+    },
+    {
+      "word": "had",
+      "start": 13.12,
+      "end": 13.26
+    },
+    {
+      "word": "fallen",
+      "start": 13.26,
+      "end": 13.6
+    },
+    {
+      "word": "on",
+      "start": 13.6,
+      "end": 13.84
+    },
+    {
+      "word": "it,",
+      "start": 13.84,
+      "end": 14.1
+    },
+    {
+      "word": "the",
+      "start": 14.64,
+      "end": 14.74
+    },
+    {
+      "word": "edifices",
+      "start": 14.74,
+      "end": 15.28
+    },
+    {
+      "word": "which",
+      "start": 15.28,
+      "end": 15.48
+    },
+    {
+      "word": "made",
+      "start": 15.48,
+      "end": 15.7
+    },
+    {
+      "word": "so",
+      "start": 15.7,
+      "end": 15.92
+    },
+    {
+      "word": "fine",
+      "start": 15.92,
+      "end": 16.22
+    },
+    {
+      "word": "a",
+      "start": 16.22,
+      "end": 16.38
+    },
+    {
+      "word": "show",
+      "start": 16.38,
+      "end": 16.68
+    },
+    {
+      "word": "in",
+      "start": 16.68,
+      "end": 16.98
+    },
+    {
+      "word": "the",
+      "start": 16.98,
+      "end": 17.06
+    },
+    {
+      "word": "days",
+      "start": 17.06,
+      "end": 17.26
+    },
+    {
+      "word": "of",
+      "start": 17.26,
+      "end": 17.44
+    },
+    {
+      "word": "Patrick",
+      "start": 17.44,
+      "end": 17.84
+    },
+    {
+      "word": "were",
+      "start": 17.84,
+      "end": 18.42
+    },
+    {
+      "word": "ruined",
+      "start": 18.42,
+      "end": 18.82
+    },
+    {
+      "word": "and",
+      "start": 18.82,
+      "end": 19.06
+    },
+    {
+      "word": "uninhabitable.",
+      "start": 19.06,
+      "end": 19.78
+    }
+  ],
+  "duration": 19.78
+}

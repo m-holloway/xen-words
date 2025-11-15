@@ -1,0 +1,88 @@
+{
+  "audio_file": "sample_0423.flac",
+  "wav_file": "sample_0423.wav",
+  "transcript": "He stood still in the middle of the parlor and looked into the kitchen in silence.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.46
+    },
+    {
+      "word": "stood",
+      "start": 0.46,
+      "end": 0.64
+    },
+    {
+      "word": "still",
+      "start": 0.64,
+      "end": 1.04
+    },
+    {
+      "word": "in",
+      "start": 1.04,
+      "end": 1.22
+    },
+    {
+      "word": "the",
+      "start": 1.22,
+      "end": 1.3
+    },
+    {
+      "word": "middle",
+      "start": 1.3,
+      "end": 1.48
+    },
+    {
+      "word": "of",
+      "start": 1.48,
+      "end": 1.68
+    },
+    {
+      "word": "the",
+      "start": 1.68,
+      "end": 1.82
+    },
+    {
+      "word": "parlor",
+      "start": 1.82,
+      "end": 2.16
+    },
+    {
+      "word": "and",
+      "start": 2.16,
+      "end": 2.62
+    },
+    {
+      "word": "looked",
+      "start": 2.62,
+      "end": 2.74
+    },
+    {
+      "word": "into",
+      "start": 2.74,
+      "end": 2.96
+    },
+    {
+      "word": "the",
+      "start": 2.96,
+      "end": 3.1
+    },
+    {
+      "word": "kitchen",
+      "start": 3.1,
+      "end": 3.4
+    },
+    {
+      "word": "in",
+      "start": 3.4,
+      "end": 3.68
+    },
+    {
+      "word": "silence.",
+      "start": 3.68,
+      "end": 4.0
+    }
+  ],
+  "duration": 4.0
+}

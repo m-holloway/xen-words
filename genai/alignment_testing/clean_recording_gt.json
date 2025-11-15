@@ -1,0 +1,373 @@
+{
+  "audio": "../../test_audio/clean_recording.wav",
+  "text": " You are Adelene, and today you went to see a glowing trail outside your window. You put on your rainbow boots and open the door. The sparkling path leads to a big tree. You follow it and find a little fairy. She is sitting on a flower. The fairy looks at you and smiles. She has magic dust in her hands.",
+  "words": [
+    {
+      "word": "you",
+      "start": 1.0999999999999974,
+      "end": 2.14,
+      "confidence": 0.7247581481933594
+    },
+    {
+      "word": "are",
+      "start": 2.14,
+      "end": 2.88,
+      "confidence": 0.9509493708610535
+    },
+    {
+      "word": "adelene,",
+      "start": 2.88,
+      "end": 3.48,
+      "confidence": 0.3697938521703084
+    },
+    {
+      "word": "and",
+      "start": 3.84,
+      "end": 4.46,
+      "confidence": 0.9824895858764648
+    },
+    {
+      "word": "today",
+      "start": 4.46,
+      "end": 4.84,
+      "confidence": 0.9950424432754517
+    },
+    {
+      "word": "you",
+      "start": 4.84,
+      "end": 5.9,
+      "confidence": 0.8479995131492615
+    },
+    {
+      "word": "went",
+      "start": 5.9,
+      "end": 6.62,
+      "confidence": 0.9819238781929016
+    },
+    {
+      "word": "to",
+      "start": 6.62,
+      "end": 7.14,
+      "confidence": 0.9908964037895203
+    },
+    {
+      "word": "see",
+      "start": 7.14,
+      "end": 7.56,
+      "confidence": 0.9843860268592834
+    },
+    {
+      "word": "a",
+      "start": 7.56,
+      "end": 8.24,
+      "confidence": 0.9902839064598083
+    },
+    {
+      "word": "glowing",
+      "start": 8.24,
+      "end": 8.8,
+      "confidence": 0.9834529757499695
+    },
+    {
+      "word": "trail",
+      "start": 8.8,
+      "end": 9.34,
+      "confidence": 0.9896377325057983
+    },
+    {
+      "word": "outside",
+      "start": 9.34,
+      "end": 10.18,
+      "confidence": 0.990298330783844
+    },
+    {
+      "word": "your",
+      "start": 10.18,
+      "end": 10.56,
+      "confidence": 0.9926053285598755
+    },
+    {
+      "word": "window.",
+      "start": 10.56,
+      "end": 10.96,
+      "confidence": 0.9985876083374023
+    },
+    {
+      "word": "you",
+      "start": 11.819999999999999,
+      "end": 12.34,
+      "confidence": 0.9922512173652649
+    },
+    {
+      "word": "put",
+      "start": 12.34,
+      "end": 12.64,
+      "confidence": 0.9989125728607178
+    },
+    {
+      "word": "on",
+      "start": 12.64,
+      "end": 13.04,
+      "confidence": 0.9948613047599792
+    },
+    {
+      "word": "your",
+      "start": 13.04,
+      "end": 13.48,
+      "confidence": 0.9913353323936462
+    },
+    {
+      "word": "rainbow",
+      "start": 13.48,
+      "end": 14.06,
+      "confidence": 0.9415075182914734
+    },
+    {
+      "word": "boots",
+      "start": 14.06,
+      "end": 14.7,
+      "confidence": 0.9825432896614075
+    },
+    {
+      "word": "and",
+      "start": 14.7,
+      "end": 15.14,
+      "confidence": 0.941859781742096
+    },
+    {
+      "word": "open",
+      "start": 15.14,
+      "end": 15.54,
+      "confidence": 0.9512485265731812
+    },
+    {
+      "word": "the",
+      "start": 15.54,
+      "end": 15.9,
+      "confidence": 0.9982929825782776
+    },
+    {
+      "word": "door.",
+      "start": 15.9,
+      "end": 16.18,
+      "confidence": 0.9988431930541992
+    },
+    {
+      "word": "the",
+      "start": 17.14,
+      "end": 17.68,
+      "confidence": 0.9887929558753967
+    },
+    {
+      "word": "sparkling",
+      "start": 17.68,
+      "end": 18.2,
+      "confidence": 0.9040583968162537
+    },
+    {
+      "word": "path",
+      "start": 18.2,
+      "end": 18.78,
+      "confidence": 0.9946094751358032
+    },
+    {
+      "word": "leads",
+      "start": 18.78,
+      "end": 19.28,
+      "confidence": 0.9983652234077454
+    },
+    {
+      "word": "to",
+      "start": 19.28,
+      "end": 19.74,
+      "confidence": 0.9980233907699585
+    },
+    {
+      "word": "a",
+      "start": 19.74,
+      "end": 19.98,
+      "confidence": 0.9975908994674683
+    },
+    {
+      "word": "big",
+      "start": 19.98,
+      "end": 20.4,
+      "confidence": 0.9974159002304077
+    },
+    {
+      "word": "tree.",
+      "start": 20.4,
+      "end": 21.2,
+      "confidence": 0.9958817958831787
+    },
+    {
+      "word": "you",
+      "start": 22.2,
+      "end": 22.48,
+      "confidence": 0.9933591485023499
+    },
+    {
+      "word": "follow",
+      "start": 22.48,
+      "end": 22.9,
+      "confidence": 0.9989901185035706
+    },
+    {
+      "word": "it",
+      "start": 22.9,
+      "end": 23.24,
+      "confidence": 0.996020495891571
+    },
+    {
+      "word": "and",
+      "start": 23.24,
+      "end": 23.9,
+      "confidence": 0.8460652828216553
+    },
+    {
+      "word": "find",
+      "start": 23.9,
+      "end": 24.48,
+      "confidence": 0.9969911575317383
+    },
+    {
+      "word": "a",
+      "start": 24.48,
+      "end": 24.92,
+      "confidence": 0.998079776763916
+    },
+    {
+      "word": "little",
+      "start": 24.92,
+      "end": 25.38,
+      "confidence": 0.9958581328392029
+    },
+    {
+      "word": "fairy.",
+      "start": 25.38,
+      "end": 26.08,
+      "confidence": 0.7966278195381165
+    },
+    {
+      "word": "she",
+      "start": 26.08,
+      "end": 27.28,
+      "confidence": 0.26253554224967957
+    },
+    {
+      "word": "is",
+      "start": 27.28,
+      "end": 27.56,
+      "confidence": 0.9812415838241577
+    },
+    {
+      "word": "sitting",
+      "start": 27.56,
+      "end": 27.96,
+      "confidence": 0.9853723645210266
+    },
+    {
+      "word": "on",
+      "start": 27.96,
+      "end": 28.9,
+      "confidence": 0.9920518398284912
+    },
+    {
+      "word": "a",
+      "start": 28.9,
+      "end": 29.34,
+      "confidence": 0.9941781759262085
+    },
+    {
+      "word": "flower.",
+      "start": 29.34,
+      "end": 29.88,
+      "confidence": 0.982043981552124
+    },
+    {
+      "word": "the",
+      "start": 30.6,
+      "end": 31.38,
+      "confidence": 0.9783703684806824
+    },
+    {
+      "word": "fairy",
+      "start": 31.38,
+      "end": 31.88,
+      "confidence": 0.8770982623100281
+    },
+    {
+      "word": "looks",
+      "start": 31.88,
+      "end": 32.54,
+      "confidence": 0.9891934990882874
+    },
+    {
+      "word": "at",
+      "start": 32.54,
+      "end": 32.8,
+      "confidence": 0.9985703229904175
+    },
+    {
+      "word": "you",
+      "start": 32.8,
+      "end": 33.14,
+      "confidence": 0.9990274906158447
+    },
+    {
+      "word": "and",
+      "start": 33.14,
+      "end": 33.4,
+      "confidence": 0.9289430975914001
+    },
+    {
+      "word": "smiles.",
+      "start": 33.4,
+      "end": 33.92,
+      "confidence": 0.9912474751472473
+    },
+    {
+      "word": "she",
+      "start": 34.9,
+      "end": 35.32,
+      "confidence": 0.9898327589035034
+    },
+    {
+      "word": "has",
+      "start": 35.32,
+      "end": 35.8,
+      "confidence": 0.9970083832740784
+    },
+    {
+      "word": "magic",
+      "start": 35.8,
+      "end": 36.52,
+      "confidence": 0.9507378339767456
+    },
+    {
+      "word": "dust",
+      "start": 36.52,
+      "end": 36.96,
+      "confidence": 0.9883458614349365
+    },
+    {
+      "word": "in",
+      "start": 36.96,
+      "end": 37.38,
+      "confidence": 0.9954574108123779
+    },
+    {
+      "word": "her",
+      "start": 37.38,
+      "end": 37.64,
+      "confidence": 0.9984253644943237
+    },
+    {
+      "word": "hands.",
+      "start": 37.64,
+      "end": 38.26,
+      "confidence": 0.986132025718689
+    }
+  ],
+  "duration": 0
+}

@@ -1,0 +1,123 @@
+{
+  "audio_file": "sample_0299.flac",
+  "wav_file": "sample_0299.wav",
+  "transcript": "Ah, father,\" said Hansel. I am looking at my white cat, sitting upon the roof of the house, and trying to say goodbye.",
+  "word_timings": [
+    {
+      "word": "Ah,",
+      "start": 0.0,
+      "end": 0.68
+    },
+    {
+      "word": "father,\"",
+      "start": 0.84,
+      "end": 1.46
+    },
+    {
+      "word": "said",
+      "start": 1.46,
+      "end": 1.62
+    },
+    {
+      "word": "Hansel.",
+      "start": 1.62,
+      "end": 2.04
+    },
+    {
+      "word": "I",
+      "start": 2.58,
+      "end": 2.68
+    },
+    {
+      "word": "am",
+      "start": 2.68,
+      "end": 2.8
+    },
+    {
+      "word": "looking",
+      "start": 2.8,
+      "end": 3.08
+    },
+    {
+      "word": "at",
+      "start": 3.08,
+      "end": 3.24
+    },
+    {
+      "word": "my",
+      "start": 3.24,
+      "end": 3.38
+    },
+    {
+      "word": "white",
+      "start": 3.38,
+      "end": 3.66
+    },
+    {
+      "word": "cat,",
+      "start": 3.66,
+      "end": 3.96
+    },
+    {
+      "word": "sitting",
+      "start": 4.38,
+      "end": 4.56
+    },
+    {
+      "word": "upon",
+      "start": 4.56,
+      "end": 4.84
+    },
+    {
+      "word": "the",
+      "start": 4.84,
+      "end": 5.04
+    },
+    {
+      "word": "roof",
+      "start": 5.04,
+      "end": 5.24
+    },
+    {
+      "word": "of",
+      "start": 5.24,
+      "end": 5.38
+    },
+    {
+      "word": "the",
+      "start": 5.38,
+      "end": 5.56
+    },
+    {
+      "word": "house,",
+      "start": 5.56,
+      "end": 5.78
+    },
+    {
+      "word": "and",
+      "start": 6.18,
+      "end": 6.28
+    },
+    {
+      "word": "trying",
+      "start": 6.28,
+      "end": 6.52
+    },
+    {
+      "word": "to",
+      "start": 6.52,
+      "end": 6.7
+    },
+    {
+      "word": "say",
+      "start": 6.7,
+      "end": 6.86
+    },
+    {
+      "word": "goodbye.",
+      "start": 6.86,
+      "end": 7.18
+    }
+  ],
+  "duration": 7.18
+}

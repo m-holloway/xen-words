@@ -1,0 +1,58 @@
+{
+  "audio_file": "sample_0072.flac",
+  "wav_file": "sample_0072.wav",
+  "transcript": "It seemed as if his family troubles were just beginning.",
+  "word_timings": [
+    {
+      "word": "It",
+      "start": 0.0,
+      "end": 0.28
+    },
+    {
+      "word": "seemed",
+      "start": 0.28,
+      "end": 0.48
+    },
+    {
+      "word": "as",
+      "start": 0.48,
+      "end": 0.7
+    },
+    {
+      "word": "if",
+      "start": 0.7,
+      "end": 0.84
+    },
+    {
+      "word": "his",
+      "start": 0.84,
+      "end": 1.0
+    },
+    {
+      "word": "family",
+      "start": 1.0,
+      "end": 1.26
+    },
+    {
+      "word": "troubles",
+      "start": 1.26,
+      "end": 1.6
+    },
+    {
+      "word": "were",
+      "start": 1.6,
+      "end": 1.84
+    },
+    {
+      "word": "just",
+      "start": 1.84,
+      "end": 1.98
+    },
+    {
+      "word": "beginning.",
+      "start": 1.98,
+      "end": 2.4
+    }
+  ],
+  "duration": 2.4
+}

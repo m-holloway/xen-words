@@ -1,0 +1,48 @@
+{
+  "audio_file": "sample_0233.flac",
+  "wav_file": "sample_0233.wav",
+  "transcript": "Perhaps we can outlet her yet, cry another.",
+  "word_timings": [
+    {
+      "word": "Perhaps",
+      "start": 0.40000000000000013,
+      "end": 0.8
+    },
+    {
+      "word": "we",
+      "start": 0.8,
+      "end": 1.0
+    },
+    {
+      "word": "can",
+      "start": 1.0,
+      "end": 1.12
+    },
+    {
+      "word": "outlet",
+      "start": 1.12,
+      "end": 1.32
+    },
+    {
+      "word": "her",
+      "start": 1.32,
+      "end": 1.6
+    },
+    {
+      "word": "yet,",
+      "start": 1.6,
+      "end": 1.8
+    },
+    {
+      "word": "cry",
+      "start": 1.92,
+      "end": 2.1
+    },
+    {
+      "word": "another.",
+      "start": 2.1,
+      "end": 2.32
+    }
+  ],
+  "duration": 2.32
+}

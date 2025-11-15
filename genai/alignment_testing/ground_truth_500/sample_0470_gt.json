@@ -1,0 +1,33 @@
+{
+  "audio_file": "sample_0470.flac",
+  "wav_file": "sample_0470.wav",
+  "transcript": "What do you mean, sir?",
+  "word_timings": [
+    {
+      "word": "What",
+      "start": 0.3799999999999998,
+      "end": 0.66
+    },
+    {
+      "word": "do",
+      "start": 0.66,
+      "end": 0.78
+    },
+    {
+      "word": "you",
+      "start": 0.78,
+      "end": 0.86
+    },
+    {
+      "word": "mean,",
+      "start": 0.86,
+      "end": 1.0
+    },
+    {
+      "word": "sir?",
+      "start": 1.2,
+      "end": 1.34
+    }
+  ],
+  "duration": 1.34
+}

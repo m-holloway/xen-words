@@ -1,0 +1,88 @@
+{
+  "audio_file": "sample_0068.flac",
+  "wav_file": "sample_0068.wav",
+  "transcript": "When Hirstwood got back to his office again, he was in a greater quandary than ever.",
+  "word_timings": [
+    {
+      "word": "When",
+      "start": 0.0,
+      "end": 0.66
+    },
+    {
+      "word": "Hirstwood",
+      "start": 0.66,
+      "end": 1.04
+    },
+    {
+      "word": "got",
+      "start": 1.04,
+      "end": 1.28
+    },
+    {
+      "word": "back",
+      "start": 1.28,
+      "end": 1.48
+    },
+    {
+      "word": "to",
+      "start": 1.48,
+      "end": 1.68
+    },
+    {
+      "word": "his",
+      "start": 1.68,
+      "end": 1.82
+    },
+    {
+      "word": "office",
+      "start": 1.82,
+      "end": 2.04
+    },
+    {
+      "word": "again,",
+      "start": 2.04,
+      "end": 2.38
+    },
+    {
+      "word": "he",
+      "start": 2.54,
+      "end": 2.6
+    },
+    {
+      "word": "was",
+      "start": 2.6,
+      "end": 2.72
+    },
+    {
+      "word": "in",
+      "start": 2.72,
+      "end": 2.82
+    },
+    {
+      "word": "a",
+      "start": 2.82,
+      "end": 2.88
+    },
+    {
+      "word": "greater",
+      "start": 2.88,
+      "end": 3.12
+    },
+    {
+      "word": "quandary",
+      "start": 3.12,
+      "end": 3.6
+    },
+    {
+      "word": "than",
+      "start": 3.6,
+      "end": 3.74
+    },
+    {
+      "word": "ever.",
+      "start": 3.74,
+      "end": 4.06
+    }
+  ],
+  "duration": 4.06
+}

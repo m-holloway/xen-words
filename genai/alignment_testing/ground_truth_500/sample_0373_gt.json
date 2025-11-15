@@ -1,0 +1,108 @@
+{
+  "audio_file": "sample_0373.flac",
+  "wav_file": "sample_0373.wav",
+  "transcript": "Right away when I bring home my new program, he says, how come you're taking one less course this half?",
+  "word_timings": [
+    {
+      "word": "Right",
+      "start": 0.0,
+      "end": 0.4
+    },
+    {
+      "word": "away",
+      "start": 0.4,
+      "end": 0.64
+    },
+    {
+      "word": "when",
+      "start": 0.64,
+      "end": 0.9
+    },
+    {
+      "word": "I",
+      "start": 0.9,
+      "end": 0.98
+    },
+    {
+      "word": "bring",
+      "start": 0.98,
+      "end": 1.18
+    },
+    {
+      "word": "home",
+      "start": 1.18,
+      "end": 1.4
+    },
+    {
+      "word": "my",
+      "start": 1.4,
+      "end": 1.56
+    },
+    {
+      "word": "new",
+      "start": 1.56,
+      "end": 1.68
+    },
+    {
+      "word": "program,",
+      "start": 1.68,
+      "end": 2.1
+    },
+    {
+      "word": "he",
+      "start": 2.24,
+      "end": 2.42
+    },
+    {
+      "word": "says,",
+      "start": 2.42,
+      "end": 2.66
+    },
+    {
+      "word": "how",
+      "start": 2.9,
+      "end": 3.12
+    },
+    {
+      "word": "come",
+      "start": 3.12,
+      "end": 3.26
+    },
+    {
+      "word": "you're",
+      "start": 3.26,
+      "end": 3.46
+    },
+    {
+      "word": "taking",
+      "start": 3.46,
+      "end": 3.68
+    },
+    {
+      "word": "one",
+      "start": 3.68,
+      "end": 3.92
+    },
+    {
+      "word": "less",
+      "start": 3.92,
+      "end": 4.18
+    },
+    {
+      "word": "course",
+      "start": 4.18,
+      "end": 4.42
+    },
+    {
+      "word": "this",
+      "start": 4.42,
+      "end": 4.7
+    },
+    {
+      "word": "half?",
+      "start": 4.7,
+      "end": 4.96
+    }
+  ],
+  "duration": 4.96
+}

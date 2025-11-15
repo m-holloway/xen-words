@@ -1,0 +1,48 @@
+{
+  "audio_file": "sample_0433.flac",
+  "wav_file": "sample_0433.wav",
+  "transcript": "In any case, he had not the time.",
+  "word_timings": [
+    {
+      "word": "In",
+      "start": 0.0,
+      "end": 0.5
+    },
+    {
+      "word": "any",
+      "start": 0.5,
+      "end": 0.66
+    },
+    {
+      "word": "case,",
+      "start": 0.66,
+      "end": 0.9
+    },
+    {
+      "word": "he",
+      "start": 0.98,
+      "end": 1.06
+    },
+    {
+      "word": "had",
+      "start": 1.06,
+      "end": 1.22
+    },
+    {
+      "word": "not",
+      "start": 1.22,
+      "end": 1.4
+    },
+    {
+      "word": "the",
+      "start": 1.4,
+      "end": 1.6
+    },
+    {
+      "word": "time.",
+      "start": 1.6,
+      "end": 1.92
+    }
+  ],
+  "duration": 1.92
+}

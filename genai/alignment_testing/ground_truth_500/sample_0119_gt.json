@@ -1,0 +1,153 @@
+{
+  "audio_file": "sample_0119.flac",
+  "wav_file": "sample_0119.wav",
+  "transcript": "Now every missionary that ever went out from Ayona had taught that to reduce Christians to slavery was wholly inconsistent with the belief in the doctrines of the gospel.",
+  "word_timings": [
+    {
+      "word": "Now",
+      "start": 0.0,
+      "end": 0.66
+    },
+    {
+      "word": "every",
+      "start": 0.66,
+      "end": 0.98
+    },
+    {
+      "word": "missionary",
+      "start": 0.98,
+      "end": 1.4
+    },
+    {
+      "word": "that",
+      "start": 1.4,
+      "end": 1.72
+    },
+    {
+      "word": "ever",
+      "start": 1.72,
+      "end": 2.0
+    },
+    {
+      "word": "went",
+      "start": 2.0,
+      "end": 2.18
+    },
+    {
+      "word": "out",
+      "start": 2.18,
+      "end": 2.42
+    },
+    {
+      "word": "from",
+      "start": 2.42,
+      "end": 2.64
+    },
+    {
+      "word": "Ayona",
+      "start": 2.64,
+      "end": 3.04
+    },
+    {
+      "word": "had",
+      "start": 3.04,
+      "end": 3.4
+    },
+    {
+      "word": "taught",
+      "start": 3.4,
+      "end": 3.62
+    },
+    {
+      "word": "that",
+      "start": 3.62,
+      "end": 3.86
+    },
+    {
+      "word": "to",
+      "start": 3.86,
+      "end": 4.02
+    },
+    {
+      "word": "reduce",
+      "start": 4.02,
+      "end": 4.34
+    },
+    {
+      "word": "Christians",
+      "start": 4.34,
+      "end": 4.82
+    },
+    {
+      "word": "to",
+      "start": 4.82,
+      "end": 5.14
+    },
+    {
+      "word": "slavery",
+      "start": 5.14,
+      "end": 5.5
+    },
+    {
+      "word": "was",
+      "start": 5.5,
+      "end": 5.84
+    },
+    {
+      "word": "wholly",
+      "start": 5.84,
+      "end": 6.24
+    },
+    {
+      "word": "inconsistent",
+      "start": 6.24,
+      "end": 6.84
+    },
+    {
+      "word": "with",
+      "start": 6.84,
+      "end": 7.14
+    },
+    {
+      "word": "the",
+      "start": 7.14,
+      "end": 7.22
+    },
+    {
+      "word": "belief",
+      "start": 7.22,
+      "end": 7.52
+    },
+    {
+      "word": "in",
+      "start": 7.52,
+      "end": 7.76
+    },
+    {
+      "word": "the",
+      "start": 7.76,
+      "end": 7.86
+    },
+    {
+      "word": "doctrines",
+      "start": 7.86,
+      "end": 8.54
+    },
+    {
+      "word": "of",
+      "start": 8.54,
+      "end": 8.94
+    },
+    {
+      "word": "the",
+      "start": 8.94,
+      "end": 9.06
+    },
+    {
+      "word": "gospel.",
+      "start": 9.06,
+      "end": 9.5
+    }
+  ],
+  "duration": 9.5
+}

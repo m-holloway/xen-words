@@ -1,0 +1,153 @@
+{
+  "audio_file": "sample_0263.flac",
+  "wav_file": "sample_0263.wav",
+  "transcript": "Grant was only a few miles away, but although the commander in chief, he knew nothing of the hardest fought battle of the Civil War until it was over.",
+  "word_timings": [
+    {
+      "word": "Grant",
+      "start": 0.0,
+      "end": 0.6
+    },
+    {
+      "word": "was",
+      "start": 0.6,
+      "end": 0.82
+    },
+    {
+      "word": "only",
+      "start": 0.82,
+      "end": 1.08
+    },
+    {
+      "word": "a",
+      "start": 1.08,
+      "end": 1.22
+    },
+    {
+      "word": "few",
+      "start": 1.22,
+      "end": 1.42
+    },
+    {
+      "word": "miles",
+      "start": 1.42,
+      "end": 1.66
+    },
+    {
+      "word": "away,",
+      "start": 1.66,
+      "end": 2.12
+    },
+    {
+      "word": "but",
+      "start": 2.58,
+      "end": 2.72
+    },
+    {
+      "word": "although",
+      "start": 2.72,
+      "end": 2.96
+    },
+    {
+      "word": "the",
+      "start": 2.96,
+      "end": 3.18
+    },
+    {
+      "word": "commander",
+      "start": 3.18,
+      "end": 3.6
+    },
+    {
+      "word": "in",
+      "start": 3.6,
+      "end": 3.8
+    },
+    {
+      "word": "chief,",
+      "start": 3.8,
+      "end": 4.1
+    },
+    {
+      "word": "he",
+      "start": 4.52,
+      "end": 4.64
+    },
+    {
+      "word": "knew",
+      "start": 4.64,
+      "end": 4.86
+    },
+    {
+      "word": "nothing",
+      "start": 4.86,
+      "end": 5.24
+    },
+    {
+      "word": "of",
+      "start": 5.24,
+      "end": 5.42
+    },
+    {
+      "word": "the",
+      "start": 5.42,
+      "end": 5.58
+    },
+    {
+      "word": "hardest",
+      "start": 5.58,
+      "end": 5.88
+    },
+    {
+      "word": "fought",
+      "start": 5.88,
+      "end": 6.16
+    },
+    {
+      "word": "battle",
+      "start": 6.16,
+      "end": 6.54
+    },
+    {
+      "word": "of",
+      "start": 6.54,
+      "end": 6.76
+    },
+    {
+      "word": "the",
+      "start": 6.76,
+      "end": 6.88
+    },
+    {
+      "word": "Civil",
+      "start": 6.88,
+      "end": 7.1
+    },
+    {
+      "word": "War",
+      "start": 7.1,
+      "end": 7.46
+    },
+    {
+      "word": "until",
+      "start": 7.46,
+      "end": 8.0
+    },
+    {
+      "word": "it",
+      "start": 8.0,
+      "end": 8.14
+    },
+    {
+      "word": "was",
+      "start": 8.14,
+      "end": 8.26
+    },
+    {
+      "word": "over.",
+      "start": 8.26,
+      "end": 8.52
+    }
+  ],
+  "duration": 8.52
+}

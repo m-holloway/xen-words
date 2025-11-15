@@ -1,0 +1,58 @@
+{
+  "audio_file": "sample_0252.flac",
+  "wav_file": "sample_0252.wav",
+  "transcript": "The cries and curses of the robbers filled the air.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.58
+    },
+    {
+      "word": "cries",
+      "start": 0.58,
+      "end": 0.98
+    },
+    {
+      "word": "and",
+      "start": 0.98,
+      "end": 1.24
+    },
+    {
+      "word": "curses",
+      "start": 1.24,
+      "end": 1.66
+    },
+    {
+      "word": "of",
+      "start": 1.66,
+      "end": 1.82
+    },
+    {
+      "word": "the",
+      "start": 1.82,
+      "end": 1.94
+    },
+    {
+      "word": "robbers",
+      "start": 1.94,
+      "end": 2.38
+    },
+    {
+      "word": "filled",
+      "start": 2.38,
+      "end": 2.64
+    },
+    {
+      "word": "the",
+      "start": 2.64,
+      "end": 2.86
+    },
+    {
+      "word": "air.",
+      "start": 2.86,
+      "end": 3.12
+    }
+  ],
+  "duration": 3.12
+}

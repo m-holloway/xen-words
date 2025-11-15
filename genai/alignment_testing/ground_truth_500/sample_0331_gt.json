@@ -1,0 +1,123 @@
+{
+  "audio_file": "sample_0331.flac",
+  "wav_file": "sample_0331.wav",
+  "transcript": "It was so long that it busched out behind his ears and made him look like the old portraits I remember in Virginia.",
+  "word_timings": [
+    {
+      "word": "It",
+      "start": 0.0,
+      "end": 0.48
+    },
+    {
+      "word": "was",
+      "start": 0.48,
+      "end": 0.6
+    },
+    {
+      "word": "so",
+      "start": 0.6,
+      "end": 0.82
+    },
+    {
+      "word": "long",
+      "start": 0.82,
+      "end": 1.1
+    },
+    {
+      "word": "that",
+      "start": 1.1,
+      "end": 1.28
+    },
+    {
+      "word": "it",
+      "start": 1.28,
+      "end": 1.4
+    },
+    {
+      "word": "busched",
+      "start": 1.4,
+      "end": 1.82
+    },
+    {
+      "word": "out",
+      "start": 1.82,
+      "end": 1.96
+    },
+    {
+      "word": "behind",
+      "start": 1.96,
+      "end": 2.28
+    },
+    {
+      "word": "his",
+      "start": 2.28,
+      "end": 2.54
+    },
+    {
+      "word": "ears",
+      "start": 2.54,
+      "end": 2.78
+    },
+    {
+      "word": "and",
+      "start": 2.78,
+      "end": 3.0
+    },
+    {
+      "word": "made",
+      "start": 3.0,
+      "end": 3.16
+    },
+    {
+      "word": "him",
+      "start": 3.16,
+      "end": 3.38
+    },
+    {
+      "word": "look",
+      "start": 3.38,
+      "end": 3.58
+    },
+    {
+      "word": "like",
+      "start": 3.58,
+      "end": 3.76
+    },
+    {
+      "word": "the",
+      "start": 3.76,
+      "end": 3.92
+    },
+    {
+      "word": "old",
+      "start": 3.92,
+      "end": 4.16
+    },
+    {
+      "word": "portraits",
+      "start": 4.16,
+      "end": 4.56
+    },
+    {
+      "word": "I",
+      "start": 4.56,
+      "end": 4.76
+    },
+    {
+      "word": "remember",
+      "start": 4.76,
+      "end": 5.06
+    },
+    {
+      "word": "in",
+      "start": 5.06,
+      "end": 5.24
+    },
+    {
+      "word": "Virginia.",
+      "start": 5.24,
+      "end": 5.66
+    }
+  ],
+  "duration": 5.66
+}

@@ -1,0 +1,143 @@
+{
+  "audio_file": "sample_0089.flac",
+  "wav_file": "sample_0089.wav",
+  "transcript": "To carry the sound of the little bells upon the horse cars as they tingled in and out of hearing was as pleasing as it was novel.",
+  "word_timings": [
+    {
+      "word": "To",
+      "start": 0.0,
+      "end": 0.44
+    },
+    {
+      "word": "carry",
+      "start": 0.44,
+      "end": 0.76
+    },
+    {
+      "word": "the",
+      "start": 0.76,
+      "end": 1.02
+    },
+    {
+      "word": "sound",
+      "start": 1.02,
+      "end": 1.24
+    },
+    {
+      "word": "of",
+      "start": 1.24,
+      "end": 1.4
+    },
+    {
+      "word": "the",
+      "start": 1.4,
+      "end": 1.5
+    },
+    {
+      "word": "little",
+      "start": 1.5,
+      "end": 1.72
+    },
+    {
+      "word": "bells",
+      "start": 1.72,
+      "end": 1.92
+    },
+    {
+      "word": "upon",
+      "start": 1.92,
+      "end": 2.22
+    },
+    {
+      "word": "the",
+      "start": 2.22,
+      "end": 2.42
+    },
+    {
+      "word": "horse",
+      "start": 2.42,
+      "end": 2.58
+    },
+    {
+      "word": "cars",
+      "start": 2.58,
+      "end": 2.92
+    },
+    {
+      "word": "as",
+      "start": 2.92,
+      "end": 3.26
+    },
+    {
+      "word": "they",
+      "start": 3.26,
+      "end": 3.38
+    },
+    {
+      "word": "tingled",
+      "start": 3.38,
+      "end": 3.76
+    },
+    {
+      "word": "in",
+      "start": 3.76,
+      "end": 3.94
+    },
+    {
+      "word": "and",
+      "start": 3.94,
+      "end": 4.06
+    },
+    {
+      "word": "out",
+      "start": 4.06,
+      "end": 4.3
+    },
+    {
+      "word": "of",
+      "start": 4.3,
+      "end": 4.4
+    },
+    {
+      "word": "hearing",
+      "start": 4.4,
+      "end": 4.66
+    },
+    {
+      "word": "was",
+      "start": 4.66,
+      "end": 4.98
+    },
+    {
+      "word": "as",
+      "start": 4.98,
+      "end": 5.14
+    },
+    {
+      "word": "pleasing",
+      "start": 5.14,
+      "end": 5.4
+    },
+    {
+      "word": "as",
+      "start": 5.4,
+      "end": 5.76
+    },
+    {
+      "word": "it",
+      "start": 5.76,
+      "end": 5.9
+    },
+    {
+      "word": "was",
+      "start": 5.9,
+      "end": 6.04
+    },
+    {
+      "word": "novel.",
+      "start": 6.04,
+      "end": 6.44
+    }
+  ],
+  "duration": 6.44
+}

@@ -1,0 +1,48 @@
+{
+  "audio_file": "sample_0237.flac",
+  "wav_file": "sample_0237.wav",
+  "transcript": "You shall not come into my father's house.",
+  "word_timings": [
+    {
+      "word": "You",
+      "start": 0.0,
+      "end": 0.34
+    },
+    {
+      "word": "shall",
+      "start": 0.34,
+      "end": 0.5
+    },
+    {
+      "word": "not",
+      "start": 0.5,
+      "end": 0.66
+    },
+    {
+      "word": "come",
+      "start": 0.66,
+      "end": 0.88
+    },
+    {
+      "word": "into",
+      "start": 0.88,
+      "end": 1.12
+    },
+    {
+      "word": "my",
+      "start": 1.12,
+      "end": 1.26
+    },
+    {
+      "word": "father's",
+      "start": 1.26,
+      "end": 1.7
+    },
+    {
+      "word": "house.",
+      "start": 1.7,
+      "end": 1.96
+    }
+  ],
+  "duration": 1.96
+}

@@ -1,0 +1,88 @@
+{
+  "audio_file": "sample_0455.flac",
+  "wav_file": "sample_0455.wav",
+  "transcript": "The prospect was as black as the window painted against which he was leaning his forehead.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.38
+    },
+    {
+      "word": "prospect",
+      "start": 0.38,
+      "end": 0.76
+    },
+    {
+      "word": "was",
+      "start": 0.76,
+      "end": 0.96
+    },
+    {
+      "word": "as",
+      "start": 0.96,
+      "end": 1.14
+    },
+    {
+      "word": "black",
+      "start": 1.14,
+      "end": 1.46
+    },
+    {
+      "word": "as",
+      "start": 1.46,
+      "end": 1.7
+    },
+    {
+      "word": "the",
+      "start": 1.7,
+      "end": 1.84
+    },
+    {
+      "word": "window",
+      "start": 1.84,
+      "end": 2.02
+    },
+    {
+      "word": "painted",
+      "start": 2.02,
+      "end": 2.28
+    },
+    {
+      "word": "against",
+      "start": 2.28,
+      "end": 2.64
+    },
+    {
+      "word": "which",
+      "start": 2.64,
+      "end": 2.94
+    },
+    {
+      "word": "he",
+      "start": 2.94,
+      "end": 3.12
+    },
+    {
+      "word": "was",
+      "start": 3.12,
+      "end": 3.24
+    },
+    {
+      "word": "leaning",
+      "start": 3.24,
+      "end": 3.42
+    },
+    {
+      "word": "his",
+      "start": 3.42,
+      "end": 3.64
+    },
+    {
+      "word": "forehead.",
+      "start": 3.64,
+      "end": 3.9
+    }
+  ],
+  "duration": 3.9
+}

@@ -1,0 +1,143 @@
+{
+  "audio_file": "sample_0361.flac",
+  "wav_file": "sample_0361.wav",
+  "transcript": "Somehow or other, Cat has taught them that he's in charge here, and he just chases them for fun now and again when he's not busy sleeping.",
+  "word_timings": [
+    {
+      "word": "Somehow",
+      "start": 0.0,
+      "end": 0.68
+    },
+    {
+      "word": "or",
+      "start": 0.68,
+      "end": 0.92
+    },
+    {
+      "word": "other,",
+      "start": 0.92,
+      "end": 1.16
+    },
+    {
+      "word": "Cat",
+      "start": 1.46,
+      "end": 1.7
+    },
+    {
+      "word": "has",
+      "start": 1.7,
+      "end": 1.94
+    },
+    {
+      "word": "taught",
+      "start": 1.94,
+      "end": 2.14
+    },
+    {
+      "word": "them",
+      "start": 2.14,
+      "end": 2.4
+    },
+    {
+      "word": "that",
+      "start": 2.4,
+      "end": 2.56
+    },
+    {
+      "word": "he's",
+      "start": 2.56,
+      "end": 2.88
+    },
+    {
+      "word": "in",
+      "start": 2.88,
+      "end": 2.96
+    },
+    {
+      "word": "charge",
+      "start": 2.96,
+      "end": 3.22
+    },
+    {
+      "word": "here,",
+      "start": 3.22,
+      "end": 3.52
+    },
+    {
+      "word": "and",
+      "start": 3.82,
+      "end": 3.98
+    },
+    {
+      "word": "he",
+      "start": 3.98,
+      "end": 4.12
+    },
+    {
+      "word": "just",
+      "start": 4.12,
+      "end": 4.3
+    },
+    {
+      "word": "chases",
+      "start": 4.3,
+      "end": 4.7
+    },
+    {
+      "word": "them",
+      "start": 4.7,
+      "end": 4.94
+    },
+    {
+      "word": "for",
+      "start": 4.94,
+      "end": 5.12
+    },
+    {
+      "word": "fun",
+      "start": 5.12,
+      "end": 5.36
+    },
+    {
+      "word": "now",
+      "start": 5.36,
+      "end": 5.58
+    },
+    {
+      "word": "and",
+      "start": 5.58,
+      "end": 5.72
+    },
+    {
+      "word": "again",
+      "start": 5.72,
+      "end": 5.98
+    },
+    {
+      "word": "when",
+      "start": 5.98,
+      "end": 6.28
+    },
+    {
+      "word": "he's",
+      "start": 6.28,
+      "end": 6.48
+    },
+    {
+      "word": "not",
+      "start": 6.48,
+      "end": 6.6
+    },
+    {
+      "word": "busy",
+      "start": 6.6,
+      "end": 6.86
+    },
+    {
+      "word": "sleeping.",
+      "start": 6.86,
+      "end": 7.26
+    }
+  ],
+  "duration": 7.26
+}

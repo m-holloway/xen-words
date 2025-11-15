@@ -1,0 +1,43 @@
+{
+  "audio_file": "sample_0222.flac",
+  "wav_file": "sample_0222.wav",
+  "transcript": "What an instrument is the human voice.",
+  "word_timings": [
+    {
+      "word": "What",
+      "start": 0.0,
+      "end": 0.66
+    },
+    {
+      "word": "an",
+      "start": 0.66,
+      "end": 0.82
+    },
+    {
+      "word": "instrument",
+      "start": 0.82,
+      "end": 1.22
+    },
+    {
+      "word": "is",
+      "start": 1.22,
+      "end": 1.46
+    },
+    {
+      "word": "the",
+      "start": 1.46,
+      "end": 1.62
+    },
+    {
+      "word": "human",
+      "start": 1.62,
+      "end": 1.86
+    },
+    {
+      "word": "voice.",
+      "start": 1.86,
+      "end": 2.22
+    }
+  ],
+  "duration": 2.22
+}

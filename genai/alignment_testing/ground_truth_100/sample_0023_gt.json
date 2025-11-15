@@ -1,0 +1,123 @@
+{
+  "audio_file": "sample_0023.flac",
+  "wav_file": "sample_0023.wav",
+  "transcript": "He was in a fevered state of mind, owing to the blight his wife's action threatened to cast up on his entire future.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.38
+    },
+    {
+      "word": "was",
+      "start": 0.38,
+      "end": 0.5
+    },
+    {
+      "word": "in",
+      "start": 0.5,
+      "end": 0.64
+    },
+    {
+      "word": "a",
+      "start": 0.64,
+      "end": 0.74
+    },
+    {
+      "word": "fevered",
+      "start": 0.74,
+      "end": 1.14
+    },
+    {
+      "word": "state",
+      "start": 1.14,
+      "end": 1.32
+    },
+    {
+      "word": "of",
+      "start": 1.32,
+      "end": 1.5
+    },
+    {
+      "word": "mind,",
+      "start": 1.5,
+      "end": 1.88
+    },
+    {
+      "word": "owing",
+      "start": 2.14,
+      "end": 2.34
+    },
+    {
+      "word": "to",
+      "start": 2.34,
+      "end": 2.5
+    },
+    {
+      "word": "the",
+      "start": 2.5,
+      "end": 2.64
+    },
+    {
+      "word": "blight",
+      "start": 2.64,
+      "end": 2.88
+    },
+    {
+      "word": "his",
+      "start": 2.88,
+      "end": 3.12
+    },
+    {
+      "word": "wife's",
+      "start": 3.12,
+      "end": 3.54
+    },
+    {
+      "word": "action",
+      "start": 3.54,
+      "end": 3.84
+    },
+    {
+      "word": "threatened",
+      "start": 3.84,
+      "end": 4.16
+    },
+    {
+      "word": "to",
+      "start": 4.16,
+      "end": 4.36
+    },
+    {
+      "word": "cast",
+      "start": 4.36,
+      "end": 4.6
+    },
+    {
+      "word": "up",
+      "start": 4.6,
+      "end": 4.82
+    },
+    {
+      "word": "on",
+      "start": 4.82,
+      "end": 4.94
+    },
+    {
+      "word": "his",
+      "start": 4.94,
+      "end": 5.14
+    },
+    {
+      "word": "entire",
+      "start": 5.14,
+      "end": 5.5
+    },
+    {
+      "word": "future.",
+      "start": 5.5,
+      "end": 5.98
+    }
+  ],
+  "duration": 5.98
+}

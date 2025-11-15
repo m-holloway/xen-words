@@ -1,0 +1,73 @@
+{
+  "audio_file": "sample_0159.flac",
+  "wav_file": "sample_0159.wav",
+  "transcript": "From our bench, we could see what a hollow case his body was.",
+  "word_timings": [
+    {
+      "word": "From",
+      "start": 0.0,
+      "end": 0.54
+    },
+    {
+      "word": "our",
+      "start": 0.54,
+      "end": 0.7
+    },
+    {
+      "word": "bench,",
+      "start": 0.7,
+      "end": 1.06
+    },
+    {
+      "word": "we",
+      "start": 1.16,
+      "end": 1.24
+    },
+    {
+      "word": "could",
+      "start": 1.24,
+      "end": 1.36
+    },
+    {
+      "word": "see",
+      "start": 1.36,
+      "end": 1.64
+    },
+    {
+      "word": "what",
+      "start": 1.64,
+      "end": 1.88
+    },
+    {
+      "word": "a",
+      "start": 1.88,
+      "end": 2.02
+    },
+    {
+      "word": "hollow",
+      "start": 2.02,
+      "end": 2.2
+    },
+    {
+      "word": "case",
+      "start": 2.2,
+      "end": 2.5
+    },
+    {
+      "word": "his",
+      "start": 2.5,
+      "end": 2.76
+    },
+    {
+      "word": "body",
+      "start": 2.76,
+      "end": 3.02
+    },
+    {
+      "word": "was.",
+      "start": 3.02,
+      "end": 3.34
+    }
+  ],
+  "duration": 3.34
+}

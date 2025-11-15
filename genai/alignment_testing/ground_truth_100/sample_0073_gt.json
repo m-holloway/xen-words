@@ -1,0 +1,263 @@
+{
+  "audio_file": "sample_0073.flac",
+  "wav_file": "sample_0073.wav",
+  "transcript": "Minis Flat, as the one-floor resident apartments were then being called, was in a part of West Van Buren Street inhabited by families of laborers and clerks, men who had come and were still coming, with the rush of population pouring in at the rate of 50,000 a year.",
+  "word_timings": [
+    {
+      "word": "Minis",
+      "start": 0.0,
+      "end": 0.82
+    },
+    {
+      "word": "Flat,",
+      "start": 0.82,
+      "end": 1.04
+    },
+    {
+      "word": "as",
+      "start": 1.28,
+      "end": 1.4
+    },
+    {
+      "word": "the",
+      "start": 1.4,
+      "end": 1.52
+    },
+    {
+      "word": "one",
+      "start": 1.52,
+      "end": 1.68
+    },
+    {
+      "word": "-floor",
+      "start": 1.68,
+      "end": 1.98
+    },
+    {
+      "word": "resident",
+      "start": 1.98,
+      "end": 2.32
+    },
+    {
+      "word": "apartments",
+      "start": 2.32,
+      "end": 2.74
+    },
+    {
+      "word": "were",
+      "start": 2.74,
+      "end": 3.06
+    },
+    {
+      "word": "then",
+      "start": 3.06,
+      "end": 3.32
+    },
+    {
+      "word": "being",
+      "start": 3.32,
+      "end": 3.52
+    },
+    {
+      "word": "called,",
+      "start": 3.52,
+      "end": 4.0
+    },
+    {
+      "word": "was",
+      "start": 4.32,
+      "end": 4.56
+    },
+    {
+      "word": "in",
+      "start": 4.56,
+      "end": 4.72
+    },
+    {
+      "word": "a",
+      "start": 4.72,
+      "end": 4.82
+    },
+    {
+      "word": "part",
+      "start": 4.82,
+      "end": 5.0
+    },
+    {
+      "word": "of",
+      "start": 5.0,
+      "end": 5.16
+    },
+    {
+      "word": "West",
+      "start": 5.16,
+      "end": 5.46
+    },
+    {
+      "word": "Van",
+      "start": 5.46,
+      "end": 5.64
+    },
+    {
+      "word": "Buren",
+      "start": 5.64,
+      "end": 5.98
+    },
+    {
+      "word": "Street",
+      "start": 5.98,
+      "end": 6.32
+    },
+    {
+      "word": "inhabited",
+      "start": 6.32,
+      "end": 6.86
+    },
+    {
+      "word": "by",
+      "start": 6.86,
+      "end": 7.24
+    },
+    {
+      "word": "families",
+      "start": 7.24,
+      "end": 7.66
+    },
+    {
+      "word": "of",
+      "start": 7.66,
+      "end": 7.92
+    },
+    {
+      "word": "laborers",
+      "start": 7.92,
+      "end": 8.4
+    },
+    {
+      "word": "and",
+      "start": 8.4,
+      "end": 8.54
+    },
+    {
+      "word": "clerks,",
+      "start": 8.54,
+      "end": 9.02
+    },
+    {
+      "word": "men",
+      "start": 9.34,
+      "end": 9.58
+    },
+    {
+      "word": "who",
+      "start": 9.58,
+      "end": 9.76
+    },
+    {
+      "word": "had",
+      "start": 9.76,
+      "end": 9.9
+    },
+    {
+      "word": "come",
+      "start": 9.9,
+      "end": 10.12
+    },
+    {
+      "word": "and",
+      "start": 10.12,
+      "end": 10.36
+    },
+    {
+      "word": "were",
+      "start": 10.36,
+      "end": 10.5
+    },
+    {
+      "word": "still",
+      "start": 10.5,
+      "end": 10.72
+    },
+    {
+      "word": "coming,",
+      "start": 10.72,
+      "end": 11.12
+    },
+    {
+      "word": "with",
+      "start": 11.32,
+      "end": 11.38
+    },
+    {
+      "word": "the",
+      "start": 11.38,
+      "end": 11.52
+    },
+    {
+      "word": "rush",
+      "start": 11.52,
+      "end": 11.74
+    },
+    {
+      "word": "of",
+      "start": 11.74,
+      "end": 11.9
+    },
+    {
+      "word": "population",
+      "start": 11.9,
+      "end": 12.48
+    },
+    {
+      "word": "pouring",
+      "start": 12.48,
+      "end": 12.9
+    },
+    {
+      "word": "in",
+      "start": 12.9,
+      "end": 13.18
+    },
+    {
+      "word": "at",
+      "start": 13.18,
+      "end": 13.32
+    },
+    {
+      "word": "the",
+      "start": 13.32,
+      "end": 13.42
+    },
+    {
+      "word": "rate",
+      "start": 13.42,
+      "end": 13.62
+    },
+    {
+      "word": "of",
+      "start": 13.62,
+      "end": 13.78
+    },
+    {
+      "word": "50",
+      "start": 13.78,
+      "end": 14.08
+    },
+    {
+      "word": ",000",
+      "start": 14.08,
+      "end": 14.48
+    },
+    {
+      "word": "a",
+      "start": 14.48,
+      "end": 14.62
+    },
+    {
+      "word": "year.",
+      "start": 14.62,
+      "end": 14.88
+    }
+  ],
+  "duration": 14.88
+}

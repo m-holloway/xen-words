@@ -1,0 +1,53 @@
+{
+  "audio_file": "sample_0227.flac",
+  "wav_file": "sample_0227.wav",
+  "transcript": "I promise you I will do you no harm.",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.24
+    },
+    {
+      "word": "promise",
+      "start": 0.24,
+      "end": 0.66
+    },
+    {
+      "word": "you",
+      "start": 0.66,
+      "end": 0.88
+    },
+    {
+      "word": "I",
+      "start": 0.88,
+      "end": 1.02
+    },
+    {
+      "word": "will",
+      "start": 1.02,
+      "end": 1.14
+    },
+    {
+      "word": "do",
+      "start": 1.14,
+      "end": 1.36
+    },
+    {
+      "word": "you",
+      "start": 1.36,
+      "end": 1.54
+    },
+    {
+      "word": "no",
+      "start": 1.54,
+      "end": 1.7
+    },
+    {
+      "word": "harm.",
+      "start": 1.7,
+      "end": 2.08
+    }
+  ],
+  "duration": 2.08
+}

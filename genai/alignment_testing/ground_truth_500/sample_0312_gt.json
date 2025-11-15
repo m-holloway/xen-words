@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0312.flac",
+  "wav_file": "sample_0312.wav",
+  "transcript": "He struck Ambrose on the back, and the boy smiled knowingly.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.48
+    },
+    {
+      "word": "struck",
+      "start": 0.48,
+      "end": 0.76
+    },
+    {
+      "word": "Ambrose",
+      "start": 0.76,
+      "end": 1.2
+    },
+    {
+      "word": "on",
+      "start": 1.2,
+      "end": 1.38
+    },
+    {
+      "word": "the",
+      "start": 1.38,
+      "end": 1.48
+    },
+    {
+      "word": "back,",
+      "start": 1.48,
+      "end": 1.7
+    },
+    {
+      "word": "and",
+      "start": 2.32,
+      "end": 2.42
+    },
+    {
+      "word": "the",
+      "start": 2.42,
+      "end": 2.52
+    },
+    {
+      "word": "boy",
+      "start": 2.52,
+      "end": 2.7
+    },
+    {
+      "word": "smiled",
+      "start": 2.7,
+      "end": 3.04
+    },
+    {
+      "word": "knowingly.",
+      "start": 3.04,
+      "end": 3.54
+    }
+  ],
+  "duration": 3.54
+}

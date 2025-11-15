@@ -1,0 +1,293 @@
+{
+  "audio_file": "sample_0431.flac",
+  "wav_file": "sample_0431.wav",
+  "transcript": "Down below in the quiet narrow street measured footsteps approach the house, then died away unhurried infirm, as if the passerby had started to pace out all eternity from gas lamp to gas nap in a night without end. In the drowsy ticking of the old clock on the landing, they came distinctly audible in the bedroom.",
+  "word_timings": [
+    {
+      "word": "Down",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "below",
+      "start": 0.62,
+      "end": 0.96
+    },
+    {
+      "word": "in",
+      "start": 0.96,
+      "end": 1.14
+    },
+    {
+      "word": "the",
+      "start": 1.14,
+      "end": 1.22
+    },
+    {
+      "word": "quiet",
+      "start": 1.22,
+      "end": 1.54
+    },
+    {
+      "word": "narrow",
+      "start": 1.54,
+      "end": 1.94
+    },
+    {
+      "word": "street",
+      "start": 1.94,
+      "end": 2.34
+    },
+    {
+      "word": "measured",
+      "start": 2.34,
+      "end": 2.82
+    },
+    {
+      "word": "footsteps",
+      "start": 2.82,
+      "end": 3.4
+    },
+    {
+      "word": "approach",
+      "start": 3.4,
+      "end": 3.78
+    },
+    {
+      "word": "the",
+      "start": 3.78,
+      "end": 4.04
+    },
+    {
+      "word": "house,",
+      "start": 4.04,
+      "end": 4.36
+    },
+    {
+      "word": "then",
+      "start": 4.58,
+      "end": 5.0
+    },
+    {
+      "word": "died",
+      "start": 5.0,
+      "end": 5.22
+    },
+    {
+      "word": "away",
+      "start": 5.22,
+      "end": 5.5
+    },
+    {
+      "word": "unhurried",
+      "start": 5.5,
+      "end": 6.02
+    },
+    {
+      "word": "infirm,",
+      "start": 6.02,
+      "end": 6.5
+    },
+    {
+      "word": "as",
+      "start": 6.94,
+      "end": 7.18
+    },
+    {
+      "word": "if",
+      "start": 7.18,
+      "end": 7.3
+    },
+    {
+      "word": "the",
+      "start": 7.3,
+      "end": 7.42
+    },
+    {
+      "word": "passerby",
+      "start": 7.42,
+      "end": 7.88
+    },
+    {
+      "word": "had",
+      "start": 7.88,
+      "end": 8.08
+    },
+    {
+      "word": "started",
+      "start": 8.08,
+      "end": 8.36
+    },
+    {
+      "word": "to",
+      "start": 8.36,
+      "end": 8.58
+    },
+    {
+      "word": "pace",
+      "start": 8.58,
+      "end": 8.74
+    },
+    {
+      "word": "out",
+      "start": 8.74,
+      "end": 9.12
+    },
+    {
+      "word": "all",
+      "start": 9.12,
+      "end": 9.4
+    },
+    {
+      "word": "eternity",
+      "start": 9.4,
+      "end": 9.8
+    },
+    {
+      "word": "from",
+      "start": 9.8,
+      "end": 10.16
+    },
+    {
+      "word": "gas",
+      "start": 10.16,
+      "end": 10.38
+    },
+    {
+      "word": "lamp",
+      "start": 10.38,
+      "end": 10.66
+    },
+    {
+      "word": "to",
+      "start": 10.66,
+      "end": 10.86
+    },
+    {
+      "word": "gas",
+      "start": 10.86,
+      "end": 11.02
+    },
+    {
+      "word": "nap",
+      "start": 11.02,
+      "end": 11.26
+    },
+    {
+      "word": "in",
+      "start": 11.26,
+      "end": 11.56
+    },
+    {
+      "word": "a",
+      "start": 11.56,
+      "end": 11.6
+    },
+    {
+      "word": "night",
+      "start": 11.6,
+      "end": 11.76
+    },
+    {
+      "word": "without",
+      "start": 11.76,
+      "end": 12.06
+    },
+    {
+      "word": "end.",
+      "start": 12.06,
+      "end": 12.44
+    },
+    {
+      "word": "In",
+      "start": 13.26,
+      "end": 13.32
+    },
+    {
+      "word": "the",
+      "start": 13.32,
+      "end": 13.42
+    },
+    {
+      "word": "drowsy",
+      "start": 13.42,
+      "end": 13.72
+    },
+    {
+      "word": "ticking",
+      "start": 13.72,
+      "end": 13.98
+    },
+    {
+      "word": "of",
+      "start": 13.98,
+      "end": 14.2
+    },
+    {
+      "word": "the",
+      "start": 14.2,
+      "end": 14.34
+    },
+    {
+      "word": "old",
+      "start": 14.34,
+      "end": 14.58
+    },
+    {
+      "word": "clock",
+      "start": 14.58,
+      "end": 14.92
+    },
+    {
+      "word": "on",
+      "start": 14.92,
+      "end": 15.16
+    },
+    {
+      "word": "the",
+      "start": 15.16,
+      "end": 15.28
+    },
+    {
+      "word": "landing,",
+      "start": 15.28,
+      "end": 15.66
+    },
+    {
+      "word": "they",
+      "start": 16.08,
+      "end": 16.12
+    },
+    {
+      "word": "came",
+      "start": 16.12,
+      "end": 16.3
+    },
+    {
+      "word": "distinctly",
+      "start": 16.3,
+      "end": 16.8
+    },
+    {
+      "word": "audible",
+      "start": 16.8,
+      "end": 17.04
+    },
+    {
+      "word": "in",
+      "start": 17.04,
+      "end": 17.26
+    },
+    {
+      "word": "the",
+      "start": 17.26,
+      "end": 17.34
+    },
+    {
+      "word": "bedroom.",
+      "start": 17.34,
+      "end": 17.62
+    }
+  ],
+  "duration": 17.62
+}

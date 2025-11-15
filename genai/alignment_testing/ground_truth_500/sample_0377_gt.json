@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0377.flac",
+  "wav_file": "sample_0377.wav",
+  "transcript": "You know, I'd get drafted in a year or two anyway.",
+  "word_timings": [
+    {
+      "word": "You",
+      "start": 0.0,
+      "end": 0.32
+    },
+    {
+      "word": "know,",
+      "start": 0.32,
+      "end": 0.46
+    },
+    {
+      "word": "I'd",
+      "start": 0.76,
+      "end": 0.92
+    },
+    {
+      "word": "get",
+      "start": 0.92,
+      "end": 1.0
+    },
+    {
+      "word": "drafted",
+      "start": 1.0,
+      "end": 1.32
+    },
+    {
+      "word": "in",
+      "start": 1.32,
+      "end": 1.54
+    },
+    {
+      "word": "a",
+      "start": 1.54,
+      "end": 1.56
+    },
+    {
+      "word": "year",
+      "start": 1.56,
+      "end": 1.7
+    },
+    {
+      "word": "or",
+      "start": 1.7,
+      "end": 1.84
+    },
+    {
+      "word": "two",
+      "start": 1.84,
+      "end": 1.96
+    },
+    {
+      "word": "anyway.",
+      "start": 1.96,
+      "end": 2.32
+    }
+  ],
+  "duration": 2.32
+}

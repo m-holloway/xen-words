@@ -1,0 +1,68 @@
+{
+  "audio_file": "sample_0098.flac",
+  "wav_file": "sample_0098.wav",
+  "transcript": "We decided that Antnea should ride dude home and I would walk.",
+  "word_timings": [
+    {
+      "word": "We",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "decided",
+      "start": 0.62,
+      "end": 0.96
+    },
+    {
+      "word": "that",
+      "start": 0.96,
+      "end": 1.28
+    },
+    {
+      "word": "Antnea",
+      "start": 1.28,
+      "end": 1.72
+    },
+    {
+      "word": "should",
+      "start": 1.72,
+      "end": 1.98
+    },
+    {
+      "word": "ride",
+      "start": 1.98,
+      "end": 2.18
+    },
+    {
+      "word": "dude",
+      "start": 2.18,
+      "end": 2.42
+    },
+    {
+      "word": "home",
+      "start": 2.42,
+      "end": 2.74
+    },
+    {
+      "word": "and",
+      "start": 2.74,
+      "end": 3.16
+    },
+    {
+      "word": "I",
+      "start": 3.16,
+      "end": 3.28
+    },
+    {
+      "word": "would",
+      "start": 3.28,
+      "end": 3.42
+    },
+    {
+      "word": "walk.",
+      "start": 3.42,
+      "end": 3.82
+    }
+  ],
+  "duration": 3.82
+}

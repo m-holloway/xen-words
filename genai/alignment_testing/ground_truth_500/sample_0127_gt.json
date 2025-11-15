@@ -1,0 +1,228 @@
+{
+  "audio_file": "sample_0127.flac",
+  "wav_file": "sample_0127.wav",
+  "transcript": "The Saxons of Kent and the Southern Kingdoms generally were converted by missionaries from France or Rome, or native preachers of the first or second Christian generation. Those of Northumbria recognizes their apostles St. Aiden and St. Cuthbert, two fathers from handle!!! All right.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.64
+    },
+    {
+      "word": "Saxons",
+      "start": 0.64,
+      "end": 1.06
+    },
+    {
+      "word": "of",
+      "start": 1.06,
+      "end": 1.28
+    },
+    {
+      "word": "Kent",
+      "start": 1.28,
+      "end": 1.46
+    },
+    {
+      "word": "and",
+      "start": 1.46,
+      "end": 1.9
+    },
+    {
+      "word": "the",
+      "start": 1.9,
+      "end": 2.04
+    },
+    {
+      "word": "Southern",
+      "start": 2.04,
+      "end": 2.26
+    },
+    {
+      "word": "Kingdoms",
+      "start": 2.26,
+      "end": 2.96
+    },
+    {
+      "word": "generally",
+      "start": 2.96,
+      "end": 3.34
+    },
+    {
+      "word": "were",
+      "start": 3.34,
+      "end": 3.6
+    },
+    {
+      "word": "converted",
+      "start": 3.6,
+      "end": 4.04
+    },
+    {
+      "word": "by",
+      "start": 4.04,
+      "end": 4.26
+    },
+    {
+      "word": "missionaries",
+      "start": 4.26,
+      "end": 4.86
+    },
+    {
+      "word": "from",
+      "start": 4.86,
+      "end": 5.14
+    },
+    {
+      "word": "France",
+      "start": 5.14,
+      "end": 5.44
+    },
+    {
+      "word": "or",
+      "start": 5.44,
+      "end": 5.7
+    },
+    {
+      "word": "Rome,",
+      "start": 5.7,
+      "end": 6.08
+    },
+    {
+      "word": "or",
+      "start": 6.6,
+      "end": 6.7
+    },
+    {
+      "word": "native",
+      "start": 6.7,
+      "end": 6.94
+    },
+    {
+      "word": "preachers",
+      "start": 6.94,
+      "end": 7.5
+    },
+    {
+      "word": "of",
+      "start": 7.5,
+      "end": 7.6
+    },
+    {
+      "word": "the",
+      "start": 7.6,
+      "end": 7.74
+    },
+    {
+      "word": "first",
+      "start": 7.74,
+      "end": 8.04
+    },
+    {
+      "word": "or",
+      "start": 8.04,
+      "end": 8.24
+    },
+    {
+      "word": "second",
+      "start": 8.24,
+      "end": 8.58
+    },
+    {
+      "word": "Christian",
+      "start": 8.58,
+      "end": 9.02
+    },
+    {
+      "word": "generation.",
+      "start": 9.02,
+      "end": 9.68
+    },
+    {
+      "word": "Those",
+      "start": 10.78,
+      "end": 11.14
+    },
+    {
+      "word": "of",
+      "start": 11.14,
+      "end": 11.36
+    },
+    {
+      "word": "Northumbria",
+      "start": 11.36,
+      "end": 11.92
+    },
+    {
+      "word": "recognizes",
+      "start": 11.92,
+      "end": 12.54
+    },
+    {
+      "word": "their",
+      "start": 12.54,
+      "end": 12.86
+    },
+    {
+      "word": "apostles",
+      "start": 12.86,
+      "end": 13.32
+    },
+    {
+      "word": "St.",
+      "start": 13.32,
+      "end": 13.66
+    },
+    {
+      "word": "Aiden",
+      "start": 13.8,
+      "end": 14.0
+    },
+    {
+      "word": "and",
+      "start": 14.0,
+      "end": 14.22
+    },
+    {
+      "word": "St.",
+      "start": 14.22,
+      "end": 14.42
+    },
+    {
+      "word": "Cuthbert,",
+      "start": 14.58,
+      "end": 14.94
+    },
+    {
+      "word": "two",
+      "start": 15.5,
+      "end": 15.64
+    },
+    {
+      "word": "fathers",
+      "start": 15.64,
+      "end": 15.98
+    },
+    {
+      "word": "from",
+      "start": 15.98,
+      "end": 16.22
+    },
+    {
+      "word": "handle!!!",
+      "start": 16.22,
+      "end": 16.74
+    },
+    {
+      "word": "All",
+      "start": 16.74,
+      "end": 17.3
+    },
+    {
+      "word": "right.",
+      "start": 17.3,
+      "end": 17.3
+    }
+  ],
+  "duration": 17.3
+}

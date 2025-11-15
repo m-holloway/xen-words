@@ -1,0 +1,108 @@
+{
+  "audio_file": "sample_0020.flac",
+  "wav_file": "sample_0020.wav",
+  "transcript": "He knew her well enough to know that when she had decided upon a plan she would follow it up.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.44
+    },
+    {
+      "word": "knew",
+      "start": 0.44,
+      "end": 0.62
+    },
+    {
+      "word": "her",
+      "start": 0.62,
+      "end": 0.8
+    },
+    {
+      "word": "well",
+      "start": 0.8,
+      "end": 0.96
+    },
+    {
+      "word": "enough",
+      "start": 0.96,
+      "end": 1.18
+    },
+    {
+      "word": "to",
+      "start": 1.18,
+      "end": 1.4
+    },
+    {
+      "word": "know",
+      "start": 1.4,
+      "end": 1.56
+    },
+    {
+      "word": "that",
+      "start": 1.56,
+      "end": 1.74
+    },
+    {
+      "word": "when",
+      "start": 1.74,
+      "end": 1.9
+    },
+    {
+      "word": "she",
+      "start": 1.9,
+      "end": 2.08
+    },
+    {
+      "word": "had",
+      "start": 2.08,
+      "end": 2.18
+    },
+    {
+      "word": "decided",
+      "start": 2.18,
+      "end": 2.46
+    },
+    {
+      "word": "upon",
+      "start": 2.46,
+      "end": 2.84
+    },
+    {
+      "word": "a",
+      "start": 2.84,
+      "end": 3.02
+    },
+    {
+      "word": "plan",
+      "start": 3.02,
+      "end": 3.2
+    },
+    {
+      "word": "she",
+      "start": 3.2,
+      "end": 3.46
+    },
+    {
+      "word": "would",
+      "start": 3.46,
+      "end": 3.62
+    },
+    {
+      "word": "follow",
+      "start": 3.62,
+      "end": 3.86
+    },
+    {
+      "word": "it",
+      "start": 3.86,
+      "end": 4.04
+    },
+    {
+      "word": "up.",
+      "start": 4.04,
+      "end": 4.28
+    }
+  ],
+  "duration": 4.28
+}

@@ -1,0 +1,33 @@
+{
+  "audio_file": "sample_0103.flac",
+  "wav_file": "sample_0103.wav",
+  "transcript": "I don't winked at me.",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.66
+    },
+    {
+      "word": "don't",
+      "start": 0.66,
+      "end": 0.74
+    },
+    {
+      "word": "winked",
+      "start": 0.74,
+      "end": 1.1
+    },
+    {
+      "word": "at",
+      "start": 1.1,
+      "end": 1.1
+    },
+    {
+      "word": "me.",
+      "start": 1.1,
+      "end": 1.28
+    }
+  ],
+  "duration": 1.28
+}

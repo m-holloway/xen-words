@@ -1,0 +1,143 @@
+{
+  "audio_file": "sample_0238.flac",
+  "wav_file": "sample_0238.wav",
+  "transcript": "How do you know, Astor Father? I am older and wiser than you are, and I know that there are many evils which might come upon you.",
+  "word_timings": [
+    {
+      "word": "How",
+      "start": 0.0,
+      "end": 0.7
+    },
+    {
+      "word": "do",
+      "start": 0.7,
+      "end": 0.82
+    },
+    {
+      "word": "you",
+      "start": 0.82,
+      "end": 0.96
+    },
+    {
+      "word": "know,",
+      "start": 0.96,
+      "end": 1.2
+    },
+    {
+      "word": "Astor",
+      "start": 1.42,
+      "end": 1.78
+    },
+    {
+      "word": "Father?",
+      "start": 1.78,
+      "end": 1.98
+    },
+    {
+      "word": "I",
+      "start": 2.3,
+      "end": 2.36
+    },
+    {
+      "word": "am",
+      "start": 2.36,
+      "end": 2.5
+    },
+    {
+      "word": "older",
+      "start": 2.5,
+      "end": 2.82
+    },
+    {
+      "word": "and",
+      "start": 2.82,
+      "end": 3.06
+    },
+    {
+      "word": "wiser",
+      "start": 3.06,
+      "end": 3.48
+    },
+    {
+      "word": "than",
+      "start": 3.48,
+      "end": 3.68
+    },
+    {
+      "word": "you",
+      "start": 3.68,
+      "end": 3.92
+    },
+    {
+      "word": "are,",
+      "start": 3.92,
+      "end": 4.16
+    },
+    {
+      "word": "and",
+      "start": 4.56,
+      "end": 4.72
+    },
+    {
+      "word": "I",
+      "start": 4.72,
+      "end": 4.9
+    },
+    {
+      "word": "know",
+      "start": 4.9,
+      "end": 5.06
+    },
+    {
+      "word": "that",
+      "start": 5.06,
+      "end": 5.2
+    },
+    {
+      "word": "there",
+      "start": 5.2,
+      "end": 5.36
+    },
+    {
+      "word": "are",
+      "start": 5.36,
+      "end": 5.46
+    },
+    {
+      "word": "many",
+      "start": 5.46,
+      "end": 5.72
+    },
+    {
+      "word": "evils",
+      "start": 5.72,
+      "end": 6.26
+    },
+    {
+      "word": "which",
+      "start": 6.26,
+      "end": 6.46
+    },
+    {
+      "word": "might",
+      "start": 6.46,
+      "end": 6.66
+    },
+    {
+      "word": "come",
+      "start": 6.66,
+      "end": 6.88
+    },
+    {
+      "word": "upon",
+      "start": 6.88,
+      "end": 7.22
+    },
+    {
+      "word": "you.",
+      "start": 7.22,
+      "end": 7.5
+    }
+  ],
+  "duration": 7.5
+}

@@ -1,0 +1,73 @@
+{
+  "audio_file": "sample_0083.flac",
+  "wav_file": "sample_0083.wav",
+  "transcript": "One could see that he was very much wrapped up in his offspring.",
+  "word_timings": [
+    {
+      "word": "One",
+      "start": 0.0,
+      "end": 0.34
+    },
+    {
+      "word": "could",
+      "start": 0.34,
+      "end": 0.5
+    },
+    {
+      "word": "see",
+      "start": 0.5,
+      "end": 0.7
+    },
+    {
+      "word": "that",
+      "start": 0.7,
+      "end": 0.86
+    },
+    {
+      "word": "he",
+      "start": 0.86,
+      "end": 1.02
+    },
+    {
+      "word": "was",
+      "start": 1.02,
+      "end": 1.16
+    },
+    {
+      "word": "very",
+      "start": 1.16,
+      "end": 1.4
+    },
+    {
+      "word": "much",
+      "start": 1.4,
+      "end": 1.64
+    },
+    {
+      "word": "wrapped",
+      "start": 1.64,
+      "end": 1.82
+    },
+    {
+      "word": "up",
+      "start": 1.82,
+      "end": 2.1
+    },
+    {
+      "word": "in",
+      "start": 2.1,
+      "end": 2.22
+    },
+    {
+      "word": "his",
+      "start": 2.22,
+      "end": 2.42
+    },
+    {
+      "word": "offspring.",
+      "start": 2.42,
+      "end": 2.76
+    }
+  ],
+  "duration": 2.76
+}

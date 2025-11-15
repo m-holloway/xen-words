@@ -1,0 +1,83 @@
+{
+  "audio_file": "sample_0152.flac",
+  "wav_file": "sample_0152.wav",
+  "transcript": "The road was clear and white and the groom's three blacks went like the wind.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.36
+    },
+    {
+      "word": "road",
+      "start": 0.36,
+      "end": 0.58
+    },
+    {
+      "word": "was",
+      "start": 0.58,
+      "end": 0.8
+    },
+    {
+      "word": "clear",
+      "start": 0.8,
+      "end": 1.04
+    },
+    {
+      "word": "and",
+      "start": 1.04,
+      "end": 1.24
+    },
+    {
+      "word": "white",
+      "start": 1.24,
+      "end": 1.48
+    },
+    {
+      "word": "and",
+      "start": 1.48,
+      "end": 1.72
+    },
+    {
+      "word": "the",
+      "start": 1.72,
+      "end": 1.82
+    },
+    {
+      "word": "groom's",
+      "start": 1.82,
+      "end": 2.18
+    },
+    {
+      "word": "three",
+      "start": 2.18,
+      "end": 2.42
+    },
+    {
+      "word": "blacks",
+      "start": 2.42,
+      "end": 2.82
+    },
+    {
+      "word": "went",
+      "start": 2.82,
+      "end": 3.22
+    },
+    {
+      "word": "like",
+      "start": 3.22,
+      "end": 3.44
+    },
+    {
+      "word": "the",
+      "start": 3.44,
+      "end": 3.58
+    },
+    {
+      "word": "wind.",
+      "start": 3.58,
+      "end": 3.92
+    }
+  ],
+  "duration": 3.92
+}

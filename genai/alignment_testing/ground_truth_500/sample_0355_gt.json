@@ -1,0 +1,28 @@
+{
+  "audio_file": "sample_0355.flac",
+  "wav_file": "sample_0355.wav",
+  "transcript": "So, he cares. Huh.",
+  "word_timings": [
+    {
+      "word": "So,",
+      "start": 0.0,
+      "end": 0.82
+    },
+    {
+      "word": "he",
+      "start": 1.14,
+      "end": 1.22
+    },
+    {
+      "word": "cares.",
+      "start": 1.22,
+      "end": 1.54
+    },
+    {
+      "word": "Huh.",
+      "start": 2.28,
+      "end": 2.7
+    }
+  ],
+  "duration": 2.7
+}

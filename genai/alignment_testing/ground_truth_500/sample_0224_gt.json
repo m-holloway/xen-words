@@ -1,0 +1,118 @@
+{
+  "audio_file": "sample_0224.flac",
+  "wav_file": "sample_0224.wav",
+  "transcript": "If the original is still in the world, I think he might defy the Sun to make him look stern and hard.",
+  "word_timings": [
+    {
+      "word": "If",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "the",
+      "start": 0.62,
+      "end": 0.74
+    },
+    {
+      "word": "original",
+      "start": 0.74,
+      "end": 1.02
+    },
+    {
+      "word": "is",
+      "start": 1.02,
+      "end": 1.2
+    },
+    {
+      "word": "still",
+      "start": 1.2,
+      "end": 1.36
+    },
+    {
+      "word": "in",
+      "start": 1.36,
+      "end": 1.48
+    },
+    {
+      "word": "the",
+      "start": 1.48,
+      "end": 1.54
+    },
+    {
+      "word": "world,",
+      "start": 1.54,
+      "end": 1.78
+    },
+    {
+      "word": "I",
+      "start": 2.12,
+      "end": 2.16
+    },
+    {
+      "word": "think",
+      "start": 2.16,
+      "end": 2.4
+    },
+    {
+      "word": "he",
+      "start": 2.4,
+      "end": 2.62
+    },
+    {
+      "word": "might",
+      "start": 2.62,
+      "end": 2.8
+    },
+    {
+      "word": "defy",
+      "start": 2.8,
+      "end": 3.16
+    },
+    {
+      "word": "the",
+      "start": 3.16,
+      "end": 3.32
+    },
+    {
+      "word": "Sun",
+      "start": 3.32,
+      "end": 3.56
+    },
+    {
+      "word": "to",
+      "start": 3.56,
+      "end": 4.02
+    },
+    {
+      "word": "make",
+      "start": 4.02,
+      "end": 4.16
+    },
+    {
+      "word": "him",
+      "start": 4.16,
+      "end": 4.34
+    },
+    {
+      "word": "look",
+      "start": 4.34,
+      "end": 4.46
+    },
+    {
+      "word": "stern",
+      "start": 4.46,
+      "end": 4.8
+    },
+    {
+      "word": "and",
+      "start": 4.8,
+      "end": 4.96
+    },
+    {
+      "word": "hard.",
+      "start": 4.96,
+      "end": 5.2
+    }
+  ],
+  "duration": 5.2
+}

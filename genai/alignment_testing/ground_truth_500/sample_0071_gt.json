@@ -1,0 +1,78 @@
+{
+  "audio_file": "sample_0071.flac",
+  "wav_file": "sample_0071.wav",
+  "transcript": "On Wednesday, he received another polite note from McGregor James and Hay. It read.",
+  "word_timings": [
+    {
+      "word": "On",
+      "start": 0.0,
+      "end": 0.44
+    },
+    {
+      "word": "Wednesday,",
+      "start": 0.44,
+      "end": 0.72
+    },
+    {
+      "word": "he",
+      "start": 0.74,
+      "end": 0.9
+    },
+    {
+      "word": "received",
+      "start": 0.9,
+      "end": 1.12
+    },
+    {
+      "word": "another",
+      "start": 1.12,
+      "end": 1.48
+    },
+    {
+      "word": "polite",
+      "start": 1.48,
+      "end": 1.76
+    },
+    {
+      "word": "note",
+      "start": 1.76,
+      "end": 2.06
+    },
+    {
+      "word": "from",
+      "start": 2.06,
+      "end": 2.32
+    },
+    {
+      "word": "McGregor",
+      "start": 2.32,
+      "end": 2.76
+    },
+    {
+      "word": "James",
+      "start": 2.76,
+      "end": 3.08
+    },
+    {
+      "word": "and",
+      "start": 3.08,
+      "end": 3.3
+    },
+    {
+      "word": "Hay.",
+      "start": 3.3,
+      "end": 3.46
+    },
+    {
+      "word": "It",
+      "start": 4.18,
+      "end": 4.3
+    },
+    {
+      "word": "read.",
+      "start": 4.3,
+      "end": 4.54
+    }
+  ],
+  "duration": 4.54
+}

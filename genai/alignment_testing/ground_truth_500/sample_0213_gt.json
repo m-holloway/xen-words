@@ -1,0 +1,133 @@
+{
+  "audio_file": "sample_0213.flac",
+  "wav_file": "sample_0213.wav",
+  "transcript": "Ms. Hebsava, I suppose, will interweave the fact with her other traditions and set it down that the fowls know you to be a pension.",
+  "word_timings": [
+    {
+      "word": "Ms.",
+      "start": 0.0,
+      "end": 0.68
+    },
+    {
+      "word": "Hebsava,",
+      "start": 0.74,
+      "end": 1.06
+    },
+    {
+      "word": "I",
+      "start": 1.16,
+      "end": 1.24
+    },
+    {
+      "word": "suppose,",
+      "start": 1.24,
+      "end": 1.56
+    },
+    {
+      "word": "will",
+      "start": 2.02,
+      "end": 2.1
+    },
+    {
+      "word": "interweave",
+      "start": 2.1,
+      "end": 2.68
+    },
+    {
+      "word": "the",
+      "start": 2.68,
+      "end": 2.82
+    },
+    {
+      "word": "fact",
+      "start": 2.82,
+      "end": 3.02
+    },
+    {
+      "word": "with",
+      "start": 3.02,
+      "end": 3.24
+    },
+    {
+      "word": "her",
+      "start": 3.24,
+      "end": 3.36
+    },
+    {
+      "word": "other",
+      "start": 3.36,
+      "end": 3.6
+    },
+    {
+      "word": "traditions",
+      "start": 3.6,
+      "end": 4.04
+    },
+    {
+      "word": "and",
+      "start": 4.04,
+      "end": 4.72
+    },
+    {
+      "word": "set",
+      "start": 4.72,
+      "end": 4.9
+    },
+    {
+      "word": "it",
+      "start": 4.9,
+      "end": 5.02
+    },
+    {
+      "word": "down",
+      "start": 5.02,
+      "end": 5.22
+    },
+    {
+      "word": "that",
+      "start": 5.22,
+      "end": 5.4
+    },
+    {
+      "word": "the",
+      "start": 5.4,
+      "end": 5.54
+    },
+    {
+      "word": "fowls",
+      "start": 5.54,
+      "end": 5.92
+    },
+    {
+      "word": "know",
+      "start": 5.92,
+      "end": 6.08
+    },
+    {
+      "word": "you",
+      "start": 6.08,
+      "end": 6.3
+    },
+    {
+      "word": "to",
+      "start": 6.3,
+      "end": 6.42
+    },
+    {
+      "word": "be",
+      "start": 6.42,
+      "end": 6.54
+    },
+    {
+      "word": "a",
+      "start": 6.54,
+      "end": 6.62
+    },
+    {
+      "word": "pension.",
+      "start": 6.62,
+      "end": 6.92
+    }
+  ],
+  "duration": 6.92
+}

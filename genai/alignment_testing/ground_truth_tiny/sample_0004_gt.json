@@ -1,0 +1,83 @@
+{
+  "audio_file": "sample_0004.flac",
+  "wav_file": "sample_0004.wav",
+  "transcript": "His first impulse was to write but four words and reply. Go to the devil.",
+  "word_timings": [
+    {
+      "word": "His",
+      "start": 0.0,
+      "end": 0.52
+    },
+    {
+      "word": "first",
+      "start": 0.52,
+      "end": 0.84
+    },
+    {
+      "word": "impulse",
+      "start": 0.84,
+      "end": 1.1
+    },
+    {
+      "word": "was",
+      "start": 1.1,
+      "end": 1.38
+    },
+    {
+      "word": "to",
+      "start": 1.38,
+      "end": 1.56
+    },
+    {
+      "word": "write",
+      "start": 1.56,
+      "end": 1.68
+    },
+    {
+      "word": "but",
+      "start": 1.68,
+      "end": 1.86
+    },
+    {
+      "word": "four",
+      "start": 1.86,
+      "end": 2.08
+    },
+    {
+      "word": "words",
+      "start": 2.08,
+      "end": 2.36
+    },
+    {
+      "word": "and",
+      "start": 2.36,
+      "end": 2.54
+    },
+    {
+      "word": "reply.",
+      "start": 2.54,
+      "end": 2.84
+    },
+    {
+      "word": "Go",
+      "start": 3.22,
+      "end": 3.44
+    },
+    {
+      "word": "to",
+      "start": 3.44,
+      "end": 3.64
+    },
+    {
+      "word": "the",
+      "start": 3.64,
+      "end": 3.78
+    },
+    {
+      "word": "devil.",
+      "start": 3.78,
+      "end": 4.06
+    }
+  ],
+  "duration": 4.06
+}

@@ -1,0 +1,218 @@
+{
+  "audio_file": "sample_0452.flac",
+  "wav_file": "sample_0452.wav",
+  "transcript": "The shadow of his evil gift clung to him, yet like the smell of a deadly drug in an old vial of poison emptied now, useless, ready to be thrown away upon the rubbish heap of things that had served their time.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.64
+    },
+    {
+      "word": "shadow",
+      "start": 0.64,
+      "end": 0.9
+    },
+    {
+      "word": "of",
+      "start": 0.9,
+      "end": 1.08
+    },
+    {
+      "word": "his",
+      "start": 1.08,
+      "end": 1.2
+    },
+    {
+      "word": "evil",
+      "start": 1.2,
+      "end": 1.46
+    },
+    {
+      "word": "gift",
+      "start": 1.46,
+      "end": 1.72
+    },
+    {
+      "word": "clung",
+      "start": 1.72,
+      "end": 2.2
+    },
+    {
+      "word": "to",
+      "start": 2.2,
+      "end": 2.38
+    },
+    {
+      "word": "him,",
+      "start": 2.38,
+      "end": 2.58
+    },
+    {
+      "word": "yet",
+      "start": 3.06,
+      "end": 3.18
+    },
+    {
+      "word": "like",
+      "start": 3.18,
+      "end": 3.34
+    },
+    {
+      "word": "the",
+      "start": 3.34,
+      "end": 3.52
+    },
+    {
+      "word": "smell",
+      "start": 3.52,
+      "end": 3.8
+    },
+    {
+      "word": "of",
+      "start": 3.8,
+      "end": 4.12
+    },
+    {
+      "word": "a",
+      "start": 4.12,
+      "end": 4.22
+    },
+    {
+      "word": "deadly",
+      "start": 4.22,
+      "end": 4.44
+    },
+    {
+      "word": "drug",
+      "start": 4.44,
+      "end": 4.8
+    },
+    {
+      "word": "in",
+      "start": 4.8,
+      "end": 5.06
+    },
+    {
+      "word": "an",
+      "start": 5.06,
+      "end": 5.18
+    },
+    {
+      "word": "old",
+      "start": 5.18,
+      "end": 5.5
+    },
+    {
+      "word": "vial",
+      "start": 5.5,
+      "end": 5.94
+    },
+    {
+      "word": "of",
+      "start": 5.94,
+      "end": 6.12
+    },
+    {
+      "word": "poison",
+      "start": 6.12,
+      "end": 6.46
+    },
+    {
+      "word": "emptied",
+      "start": 6.46,
+      "end": 7.22
+    },
+    {
+      "word": "now,",
+      "start": 7.22,
+      "end": 7.44
+    },
+    {
+      "word": "useless,",
+      "start": 7.96,
+      "end": 8.24
+    },
+    {
+      "word": "ready",
+      "start": 8.92,
+      "end": 9.14
+    },
+    {
+      "word": "to",
+      "start": 9.14,
+      "end": 9.32
+    },
+    {
+      "word": "be",
+      "start": 9.32,
+      "end": 9.42
+    },
+    {
+      "word": "thrown",
+      "start": 9.42,
+      "end": 9.62
+    },
+    {
+      "word": "away",
+      "start": 9.62,
+      "end": 10.0
+    },
+    {
+      "word": "upon",
+      "start": 10.0,
+      "end": 10.42
+    },
+    {
+      "word": "the",
+      "start": 10.42,
+      "end": 10.56
+    },
+    {
+      "word": "rubbish",
+      "start": 10.56,
+      "end": 10.72
+    },
+    {
+      "word": "heap",
+      "start": 10.72,
+      "end": 11.0
+    },
+    {
+      "word": "of",
+      "start": 11.0,
+      "end": 11.5
+    },
+    {
+      "word": "things",
+      "start": 11.5,
+      "end": 11.8
+    },
+    {
+      "word": "that",
+      "start": 11.8,
+      "end": 12.02
+    },
+    {
+      "word": "had",
+      "start": 12.02,
+      "end": 12.1
+    },
+    {
+      "word": "served",
+      "start": 12.1,
+      "end": 12.4
+    },
+    {
+      "word": "their",
+      "start": 12.4,
+      "end": 12.62
+    },
+    {
+      "word": "time.",
+      "start": 12.62,
+      "end": 12.98
+    }
+  ],
+  "duration": 12.98
+}

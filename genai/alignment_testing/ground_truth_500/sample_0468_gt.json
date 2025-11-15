@@ -1,0 +1,38 @@
+{
+  "audio_file": "sample_0468.flac",
+  "wav_file": "sample_0468.wav",
+  "transcript": "But can he understand you? Yes.",
+  "word_timings": [
+    {
+      "word": "But",
+      "start": 0.0,
+      "end": 0.48
+    },
+    {
+      "word": "can",
+      "start": 0.48,
+      "end": 0.68
+    },
+    {
+      "word": "he",
+      "start": 0.68,
+      "end": 0.82
+    },
+    {
+      "word": "understand",
+      "start": 0.82,
+      "end": 1.16
+    },
+    {
+      "word": "you?",
+      "start": 1.16,
+      "end": 1.46
+    },
+    {
+      "word": "Yes.",
+      "start": 2.04,
+      "end": 2.34
+    }
+  ],
+  "duration": 2.34
+}

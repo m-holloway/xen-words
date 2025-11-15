@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0057.flac",
+  "wav_file": "sample_0057.wav",
+  "transcript": "The boy hastened away and the manager fell to his musings.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "boy",
+      "start": 0.62,
+      "end": 0.82
+    },
+    {
+      "word": "hastened",
+      "start": 0.82,
+      "end": 1.22
+    },
+    {
+      "word": "away",
+      "start": 1.22,
+      "end": 1.52
+    },
+    {
+      "word": "and",
+      "start": 1.52,
+      "end": 1.92
+    },
+    {
+      "word": "the",
+      "start": 1.92,
+      "end": 2.04
+    },
+    {
+      "word": "manager",
+      "start": 2.04,
+      "end": 2.34
+    },
+    {
+      "word": "fell",
+      "start": 2.34,
+      "end": 2.58
+    },
+    {
+      "word": "to",
+      "start": 2.58,
+      "end": 2.76
+    },
+    {
+      "word": "his",
+      "start": 2.76,
+      "end": 2.92
+    },
+    {
+      "word": "musings.",
+      "start": 2.92,
+      "end": 3.42
+    }
+  ],
+  "duration": 3.42
+}

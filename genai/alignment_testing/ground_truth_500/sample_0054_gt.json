@@ -1,0 +1,58 @@
+{
+  "audio_file": "sample_0054.flac",
+  "wav_file": "sample_0054.wav",
+  "transcript": "3 o'clock came, 4, 5, 6 and no letter.",
+  "word_timings": [
+    {
+      "word": "3",
+      "start": 0.0,
+      "end": 0.7
+    },
+    {
+      "word": "o",
+      "start": 0.7,
+      "end": 0.82
+    },
+    {
+      "word": "'clock",
+      "start": 0.82,
+      "end": 0.98
+    },
+    {
+      "word": "came,",
+      "start": 0.98,
+      "end": 1.24
+    },
+    {
+      "word": "4,",
+      "start": 1.56,
+      "end": 1.9
+    },
+    {
+      "word": "5,",
+      "start": 2.32,
+      "end": 2.6
+    },
+    {
+      "word": "6",
+      "start": 2.98,
+      "end": 3.44
+    },
+    {
+      "word": "and",
+      "start": 3.44,
+      "end": 3.98
+    },
+    {
+      "word": "no",
+      "start": 3.98,
+      "end": 4.14
+    },
+    {
+      "word": "letter.",
+      "start": 4.14,
+      "end": 4.4
+    }
+  ],
+  "duration": 4.4
+}

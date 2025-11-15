@@ -1,0 +1,78 @@
+{
+  "audio_file": "sample_0335.flac",
+  "wav_file": "sample_0335.wav",
+  "transcript": "This is more especially the case amongst those free nations which form democratic communities.",
+  "word_timings": [
+    {
+      "word": "This",
+      "start": 0.0,
+      "end": 0.54
+    },
+    {
+      "word": "is",
+      "start": 0.54,
+      "end": 0.68
+    },
+    {
+      "word": "more",
+      "start": 0.68,
+      "end": 0.84
+    },
+    {
+      "word": "especially",
+      "start": 0.84,
+      "end": 1.26
+    },
+    {
+      "word": "the",
+      "start": 1.26,
+      "end": 1.46
+    },
+    {
+      "word": "case",
+      "start": 1.46,
+      "end": 1.7
+    },
+    {
+      "word": "amongst",
+      "start": 1.7,
+      "end": 2.04
+    },
+    {
+      "word": "those",
+      "start": 2.04,
+      "end": 2.38
+    },
+    {
+      "word": "free",
+      "start": 2.38,
+      "end": 2.72
+    },
+    {
+      "word": "nations",
+      "start": 2.72,
+      "end": 3.08
+    },
+    {
+      "word": "which",
+      "start": 3.08,
+      "end": 3.48
+    },
+    {
+      "word": "form",
+      "start": 3.48,
+      "end": 3.76
+    },
+    {
+      "word": "democratic",
+      "start": 3.76,
+      "end": 4.24
+    },
+    {
+      "word": "communities.",
+      "start": 4.24,
+      "end": 4.86
+    }
+  ],
+  "duration": 4.86
+}

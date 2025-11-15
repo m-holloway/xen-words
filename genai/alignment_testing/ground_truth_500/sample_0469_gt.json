@@ -1,0 +1,253 @@
+{
+  "audio_file": "sample_0469.flac",
+  "wav_file": "sample_0469.wav",
+  "transcript": "At this moment, the whole soul of the old man seemed centered in his eyes which became bloodshot. The veins of the throat swelled. His cheeks and temples became purple as though he was struck with epilepsy. Nothing was wanting to complete this but the utterance of a cry.",
+  "word_timings": [
+    {
+      "word": "At",
+      "start": 0.0,
+      "end": 0.4
+    },
+    {
+      "word": "this",
+      "start": 0.4,
+      "end": 0.58
+    },
+    {
+      "word": "moment,",
+      "start": 0.58,
+      "end": 0.94
+    },
+    {
+      "word": "the",
+      "start": 1.16,
+      "end": 1.24
+    },
+    {
+      "word": "whole",
+      "start": 1.24,
+      "end": 1.46
+    },
+    {
+      "word": "soul",
+      "start": 1.46,
+      "end": 1.88
+    },
+    {
+      "word": "of",
+      "start": 1.88,
+      "end": 2.08
+    },
+    {
+      "word": "the",
+      "start": 2.08,
+      "end": 2.22
+    },
+    {
+      "word": "old",
+      "start": 2.22,
+      "end": 2.36
+    },
+    {
+      "word": "man",
+      "start": 2.36,
+      "end": 2.58
+    },
+    {
+      "word": "seemed",
+      "start": 2.58,
+      "end": 2.88
+    },
+    {
+      "word": "centered",
+      "start": 2.88,
+      "end": 3.28
+    },
+    {
+      "word": "in",
+      "start": 3.28,
+      "end": 3.46
+    },
+    {
+      "word": "his",
+      "start": 3.46,
+      "end": 3.6
+    },
+    {
+      "word": "eyes",
+      "start": 3.6,
+      "end": 3.92
+    },
+    {
+      "word": "which",
+      "start": 3.92,
+      "end": 4.12
+    },
+    {
+      "word": "became",
+      "start": 4.12,
+      "end": 4.5
+    },
+    {
+      "word": "bloodshot.",
+      "start": 4.5,
+      "end": 5.14
+    },
+    {
+      "word": "The",
+      "start": 5.5,
+      "end": 5.58
+    },
+    {
+      "word": "veins",
+      "start": 5.58,
+      "end": 5.8
+    },
+    {
+      "word": "of",
+      "start": 5.8,
+      "end": 5.96
+    },
+    {
+      "word": "the",
+      "start": 5.96,
+      "end": 6.08
+    },
+    {
+      "word": "throat",
+      "start": 6.08,
+      "end": 6.28
+    },
+    {
+      "word": "swelled.",
+      "start": 6.28,
+      "end": 6.8
+    },
+    {
+      "word": "His",
+      "start": 7.02,
+      "end": 7.14
+    },
+    {
+      "word": "cheeks",
+      "start": 7.14,
+      "end": 7.38
+    },
+    {
+      "word": "and",
+      "start": 7.38,
+      "end": 7.64
+    },
+    {
+      "word": "temples",
+      "start": 7.64,
+      "end": 7.92
+    },
+    {
+      "word": "became",
+      "start": 7.92,
+      "end": 8.3
+    },
+    {
+      "word": "purple",
+      "start": 8.3,
+      "end": 8.68
+    },
+    {
+      "word": "as",
+      "start": 8.68,
+      "end": 8.94
+    },
+    {
+      "word": "though",
+      "start": 8.94,
+      "end": 9.08
+    },
+    {
+      "word": "he",
+      "start": 9.08,
+      "end": 9.2
+    },
+    {
+      "word": "was",
+      "start": 9.2,
+      "end": 9.28
+    },
+    {
+      "word": "struck",
+      "start": 9.28,
+      "end": 9.52
+    },
+    {
+      "word": "with",
+      "start": 9.52,
+      "end": 9.74
+    },
+    {
+      "word": "epilepsy.",
+      "start": 9.74,
+      "end": 10.14
+    },
+    {
+      "word": "Nothing",
+      "start": 10.56,
+      "end": 10.76
+    },
+    {
+      "word": "was",
+      "start": 10.76,
+      "end": 10.98
+    },
+    {
+      "word": "wanting",
+      "start": 10.98,
+      "end": 11.28
+    },
+    {
+      "word": "to",
+      "start": 11.28,
+      "end": 11.46
+    },
+    {
+      "word": "complete",
+      "start": 11.46,
+      "end": 11.72
+    },
+    {
+      "word": "this",
+      "start": 11.72,
+      "end": 12.0
+    },
+    {
+      "word": "but",
+      "start": 12.0,
+      "end": 12.18
+    },
+    {
+      "word": "the",
+      "start": 12.18,
+      "end": 12.36
+    },
+    {
+      "word": "utterance",
+      "start": 12.36,
+      "end": 12.7
+    },
+    {
+      "word": "of",
+      "start": 12.7,
+      "end": 12.82
+    },
+    {
+      "word": "a",
+      "start": 12.82,
+      "end": 12.9
+    },
+    {
+      "word": "cry.",
+      "start": 12.9,
+      "end": 13.2
+    }
+  ],
+  "duration": 13.2
+}

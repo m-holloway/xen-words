@@ -1,0 +1,68 @@
+{
+  "audio_file": "sample_0282.flac",
+  "wav_file": "sample_0282.wav",
+  "transcript": "The cloud or rebels we had seen divided itself into three columns.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.6
+    },
+    {
+      "word": "cloud",
+      "start": 0.6,
+      "end": 0.94
+    },
+    {
+      "word": "or",
+      "start": 0.94,
+      "end": 1.12
+    },
+    {
+      "word": "rebels",
+      "start": 1.12,
+      "end": 1.4
+    },
+    {
+      "word": "we",
+      "start": 1.4,
+      "end": 1.68
+    },
+    {
+      "word": "had",
+      "start": 1.68,
+      "end": 1.82
+    },
+    {
+      "word": "seen",
+      "start": 1.82,
+      "end": 2.06
+    },
+    {
+      "word": "divided",
+      "start": 2.06,
+      "end": 2.54
+    },
+    {
+      "word": "itself",
+      "start": 2.54,
+      "end": 2.92
+    },
+    {
+      "word": "into",
+      "start": 2.92,
+      "end": 3.18
+    },
+    {
+      "word": "three",
+      "start": 3.18,
+      "end": 3.58
+    },
+    {
+      "word": "columns.",
+      "start": 3.58,
+      "end": 3.98
+    }
+  ],
+  "duration": 3.98
+}

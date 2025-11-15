@@ -1,0 +1,138 @@
+{
+  "audio_file": "sample_0250.flac",
+  "wav_file": "sample_0250.wav",
+  "transcript": "The merchant's daughter at first did not answer, but as he kept on calling to her, she finally asked him what it was that he wanted.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.6
+    },
+    {
+      "word": "merchant's",
+      "start": 0.6,
+      "end": 1.08
+    },
+    {
+      "word": "daughter",
+      "start": 1.08,
+      "end": 1.3
+    },
+    {
+      "word": "at",
+      "start": 1.3,
+      "end": 1.5
+    },
+    {
+      "word": "first",
+      "start": 1.5,
+      "end": 1.76
+    },
+    {
+      "word": "did",
+      "start": 1.76,
+      "end": 1.98
+    },
+    {
+      "word": "not",
+      "start": 1.98,
+      "end": 2.18
+    },
+    {
+      "word": "answer,",
+      "start": 2.18,
+      "end": 2.62
+    },
+    {
+      "word": "but",
+      "start": 3.12,
+      "end": 3.36
+    },
+    {
+      "word": "as",
+      "start": 3.36,
+      "end": 3.56
+    },
+    {
+      "word": "he",
+      "start": 3.56,
+      "end": 3.7
+    },
+    {
+      "word": "kept",
+      "start": 3.7,
+      "end": 3.92
+    },
+    {
+      "word": "on",
+      "start": 3.92,
+      "end": 4.1
+    },
+    {
+      "word": "calling",
+      "start": 4.1,
+      "end": 4.44
+    },
+    {
+      "word": "to",
+      "start": 4.44,
+      "end": 4.68
+    },
+    {
+      "word": "her,",
+      "start": 4.68,
+      "end": 4.92
+    },
+    {
+      "word": "she",
+      "start": 5.24,
+      "end": 5.34
+    },
+    {
+      "word": "finally",
+      "start": 5.34,
+      "end": 5.74
+    },
+    {
+      "word": "asked",
+      "start": 5.74,
+      "end": 6.12
+    },
+    {
+      "word": "him",
+      "start": 6.12,
+      "end": 6.3
+    },
+    {
+      "word": "what",
+      "start": 6.3,
+      "end": 6.44
+    },
+    {
+      "word": "it",
+      "start": 6.44,
+      "end": 6.54
+    },
+    {
+      "word": "was",
+      "start": 6.54,
+      "end": 6.72
+    },
+    {
+      "word": "that",
+      "start": 6.72,
+      "end": 6.94
+    },
+    {
+      "word": "he",
+      "start": 6.94,
+      "end": 7.04
+    },
+    {
+      "word": "wanted.",
+      "start": 7.04,
+      "end": 7.42
+    }
+  ],
+  "duration": 7.42
+}

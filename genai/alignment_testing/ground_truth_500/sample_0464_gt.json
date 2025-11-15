@@ -1,0 +1,93 @@
+{
+  "audio_file": "sample_0464.flac",
+  "wav_file": "sample_0464.wav",
+  "transcript": "But he stopped on the landing. He had not the courage to again visit the death chamber.",
+  "word_timings": [
+    {
+      "word": "But",
+      "start": 0.0,
+      "end": 0.42
+    },
+    {
+      "word": "he",
+      "start": 0.42,
+      "end": 0.62
+    },
+    {
+      "word": "stopped",
+      "start": 0.62,
+      "end": 0.84
+    },
+    {
+      "word": "on",
+      "start": 0.84,
+      "end": 1.04
+    },
+    {
+      "word": "the",
+      "start": 1.04,
+      "end": 1.12
+    },
+    {
+      "word": "landing.",
+      "start": 1.12,
+      "end": 1.42
+    },
+    {
+      "word": "He",
+      "start": 1.9,
+      "end": 2.02
+    },
+    {
+      "word": "had",
+      "start": 2.02,
+      "end": 2.18
+    },
+    {
+      "word": "not",
+      "start": 2.18,
+      "end": 2.32
+    },
+    {
+      "word": "the",
+      "start": 2.32,
+      "end": 2.46
+    },
+    {
+      "word": "courage",
+      "start": 2.46,
+      "end": 2.78
+    },
+    {
+      "word": "to",
+      "start": 2.78,
+      "end": 3.02
+    },
+    {
+      "word": "again",
+      "start": 3.02,
+      "end": 3.26
+    },
+    {
+      "word": "visit",
+      "start": 3.26,
+      "end": 3.62
+    },
+    {
+      "word": "the",
+      "start": 3.62,
+      "end": 3.82
+    },
+    {
+      "word": "death",
+      "start": 3.82,
+      "end": 4.02
+    },
+    {
+      "word": "chamber.",
+      "start": 4.02,
+      "end": 4.38
+    }
+  ],
+  "duration": 4.38
+}

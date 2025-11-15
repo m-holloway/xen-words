@@ -1,0 +1,77 @@
+════════════════════════════════════════════════════════════════
+    THE FUNDAMENTAL PROBLEM WE DISCOVERED
+════════════════════════════════════════════════════════════════
+
+WE BUILT:                         WE ACTUALLY NEED:
+┌─────────────────────┐          ┌─────────────────────┐
+│ Boundary Detector   │          │ Word Position       │
+│                     │          │ Tracker             │
+│ Input:              │          │                     │
+│  • Audio only       │          │ Input:              │
+│  • 500ms windows    │          │  • Audio + Script   │
+│                     │          │  • Streaming        │
+│ Output:             │          │                     │
+│  • "Boundary here!" │          │ Output:             │
+│  • No word ID       │          │  • "Word index: 4"  │
+│  • 750ms latency    │          │  • <100ms latency   │
+│                     │          │                     │
+│ Problem:            │          │ Benefit:            │
+│  ❌ Can't track     │          │  ✅ Direct tracking │
+│  ❌ No recovery     │          │  ✅ Self-correcting │
+│  ❌ Too slow        │          │  ✅ Fast enough     │
+└─────────────────────┘          └─────────────────────┘
+
+════════════════════════════════════════════════════════════════
+    THE SOLUTION: FORCED ALIGNMENT
+════════════════════════════════════════════════════════════════
+
+How it works:
+
+1. Parent reads: "You are Adalyn..."
+                  ↓
+2. Acoustic Model predicts: [Phoneme probabilities per frame]
+                  ↓
+3. Script provides: ["You"=[Y,UW], "are"=[AA,R], ...]
+                  ↓
+4. Alignment matches: Audio phonemes → Script phonemes
+                  ↓
+5. Output: word_index=1 (currently saying "are")
+
+
+Key differences:
+
+┌──────────────────────────────────────────────────────────────┐
+│                 Boundary Detection  |  Forced Alignment      │
+├──────────────────────────────────────────────────────────────┤
+│ Knows script?        NO              |       YES             │
+│ Output type?         Timestamp       |   Word index          │
+│ Recovers errors?     NO              |       YES             │
+│ Latency?             750ms           |     <50ms             │
+│ Training data?       LibriSpeech     |  LibriSpeech +        │
+│                                      |  Parent reading       │
+└──────────────────────────────────────────────────────────────┘
+
+
+════════════════════════════════════════════════════════════════
+    WHY WE WERE STRUGGLING
+════════════════════════════════════════════════════════════════
+
+• Boundary detection CAN'T solve word tracking
+• It's like asking "where are the doors?" when you need "which room am I in?"
+• No amount of tuning will fix a fundamental architecture mismatch
+
+════════════════════════════════════════════════════════════════
+    RECOMMENDED NEXT STEP
+════════════════════════════════════════════════════════════════
+
+Build Whisper POC (2 hours):
+  ✓ Validate forced alignment approach
+  ✓ Test on your actual audio
+  ✓ Show frame-by-frame word tracking
+  ✓ Prove it works before building lightweight version
+
+Then decide production path:
+  • Cloud-based: Use Wav2Vec2 (ready in 2-3 days)
+  • Offline: Train lightweight phoneme model (2-3 weeks)
+
+════════════════════════════════════════════════════════════════

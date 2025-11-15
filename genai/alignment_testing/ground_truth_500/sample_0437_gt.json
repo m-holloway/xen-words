@@ -1,0 +1,98 @@
+{
+  "audio_file": "sample_0437.flac",
+  "wav_file": "sample_0437.wav",
+  "transcript": "It's like your horse suddenly falling dead under you, in the midst of an uninhabited and thirsty plane.",
+  "word_timings": [
+    {
+      "word": "It's",
+      "start": 0.0,
+      "end": 0.46
+    },
+    {
+      "word": "like",
+      "start": 0.46,
+      "end": 0.56
+    },
+    {
+      "word": "your",
+      "start": 0.56,
+      "end": 0.78
+    },
+    {
+      "word": "horse",
+      "start": 0.78,
+      "end": 1.1
+    },
+    {
+      "word": "suddenly",
+      "start": 1.1,
+      "end": 1.5
+    },
+    {
+      "word": "falling",
+      "start": 1.5,
+      "end": 1.82
+    },
+    {
+      "word": "dead",
+      "start": 1.82,
+      "end": 2.18
+    },
+    {
+      "word": "under",
+      "start": 2.18,
+      "end": 2.48
+    },
+    {
+      "word": "you,",
+      "start": 2.48,
+      "end": 2.72
+    },
+    {
+      "word": "in",
+      "start": 3.1,
+      "end": 3.16
+    },
+    {
+      "word": "the",
+      "start": 3.16,
+      "end": 3.26
+    },
+    {
+      "word": "midst",
+      "start": 3.26,
+      "end": 3.46
+    },
+    {
+      "word": "of",
+      "start": 3.46,
+      "end": 3.64
+    },
+    {
+      "word": "an",
+      "start": 3.64,
+      "end": 3.8
+    },
+    {
+      "word": "uninhabited",
+      "start": 3.8,
+      "end": 4.42
+    },
+    {
+      "word": "and",
+      "start": 4.42,
+      "end": 4.86
+    },
+    {
+      "word": "thirsty",
+      "start": 4.86,
+      "end": 5.2
+    },
+    {
+      "word": "plane.",
+      "start": 5.2,
+      "end": 5.56
+    }
+  ],
+  "duration": 5.56
+}

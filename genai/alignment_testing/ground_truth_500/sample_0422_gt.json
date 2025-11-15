@@ -1,0 +1,168 @@
+{
+  "audio_file": "sample_0422.flac",
+  "wav_file": "sample_0422.wav",
+  "transcript": "When he rose painfully, the thrusting forward of a skinny, groping hand, formed by gouty swallings, suggested the effort of a morbid murderer, summoning all his remaining strength for a last stab.",
+  "word_timings": [
+    {
+      "word": "When",
+      "start": 0.0,
+      "end": 0.5
+    },
+    {
+      "word": "he",
+      "start": 0.5,
+      "end": 0.6
+    },
+    {
+      "word": "rose",
+      "start": 0.6,
+      "end": 0.84
+    },
+    {
+      "word": "painfully,",
+      "start": 0.84,
+      "end": 1.44
+    },
+    {
+      "word": "the",
+      "start": 1.84,
+      "end": 1.92
+    },
+    {
+      "word": "thrusting",
+      "start": 1.92,
+      "end": 2.26
+    },
+    {
+      "word": "forward",
+      "start": 2.26,
+      "end": 2.58
+    },
+    {
+      "word": "of",
+      "start": 2.58,
+      "end": 2.78
+    },
+    {
+      "word": "a",
+      "start": 2.78,
+      "end": 2.84
+    },
+    {
+      "word": "skinny,",
+      "start": 2.84,
+      "end": 3.14
+    },
+    {
+      "word": "groping",
+      "start": 3.42,
+      "end": 3.76
+    },
+    {
+      "word": "hand,",
+      "start": 3.76,
+      "end": 4.14
+    },
+    {
+      "word": "formed",
+      "start": 4.26,
+      "end": 4.62
+    },
+    {
+      "word": "by",
+      "start": 4.62,
+      "end": 4.88
+    },
+    {
+      "word": "gouty",
+      "start": 4.88,
+      "end": 5.3
+    },
+    {
+      "word": "swallings,",
+      "start": 5.3,
+      "end": 5.8
+    },
+    {
+      "word": "suggested",
+      "start": 6.42,
+      "end": 6.52
+    },
+    {
+      "word": "the",
+      "start": 6.52,
+      "end": 6.88
+    },
+    {
+      "word": "effort",
+      "start": 6.88,
+      "end": 7.12
+    },
+    {
+      "word": "of",
+      "start": 7.12,
+      "end": 7.34
+    },
+    {
+      "word": "a",
+      "start": 7.34,
+      "end": 7.46
+    },
+    {
+      "word": "morbid",
+      "start": 7.46,
+      "end": 7.86
+    },
+    {
+      "word": "murderer,",
+      "start": 7.86,
+      "end": 8.38
+    },
+    {
+      "word": "summoning",
+      "start": 8.98,
+      "end": 9.52
+    },
+    {
+      "word": "all",
+      "start": 9.52,
+      "end": 9.8
+    },
+    {
+      "word": "his",
+      "start": 9.8,
+      "end": 10.0
+    },
+    {
+      "word": "remaining",
+      "start": 10.0,
+      "end": 10.26
+    },
+    {
+      "word": "strength",
+      "start": 10.26,
+      "end": 10.64
+    },
+    {
+      "word": "for",
+      "start": 10.64,
+      "end": 10.92
+    },
+    {
+      "word": "a",
+      "start": 10.92,
+      "end": 11.04
+    },
+    {
+      "word": "last",
+      "start": 11.04,
+      "end": 11.28
+    },
+    {
+      "word": "stab.",
+      "start": 11.28,
+      "end": 11.7
+    }
+  ],
+  "duration": 11.7
+}

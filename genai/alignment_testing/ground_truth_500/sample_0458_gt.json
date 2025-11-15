@@ -1,0 +1,38 @@
+{
+  "audio_file": "sample_0458.flac",
+  "wav_file": "sample_0458.wav",
+  "transcript": "He had been a prisoner himself.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.46
+    },
+    {
+      "word": "had",
+      "start": 0.46,
+      "end": 0.58
+    },
+    {
+      "word": "been",
+      "start": 0.58,
+      "end": 0.7
+    },
+    {
+      "word": "a",
+      "start": 0.7,
+      "end": 0.8
+    },
+    {
+      "word": "prisoner",
+      "start": 0.8,
+      "end": 1.1
+    },
+    {
+      "word": "himself.",
+      "start": 1.1,
+      "end": 1.5
+    }
+  ],
+  "duration": 1.5
+}

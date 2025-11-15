@@ -1,0 +1,88 @@
+{
+  "audio_file": "sample_0457.flac",
+  "wav_file": "sample_0457.wav",
+  "transcript": "He glared at me as if he didn't know who I was when he went downstairs.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.6
+    },
+    {
+      "word": "glared",
+      "start": 0.6,
+      "end": 0.9
+    },
+    {
+      "word": "at",
+      "start": 0.9,
+      "end": 1.04
+    },
+    {
+      "word": "me",
+      "start": 1.04,
+      "end": 1.22
+    },
+    {
+      "word": "as",
+      "start": 1.22,
+      "end": 1.8
+    },
+    {
+      "word": "if",
+      "start": 1.8,
+      "end": 1.98
+    },
+    {
+      "word": "he",
+      "start": 1.98,
+      "end": 2.04
+    },
+    {
+      "word": "didn't",
+      "start": 2.04,
+      "end": 2.3
+    },
+    {
+      "word": "know",
+      "start": 2.3,
+      "end": 2.48
+    },
+    {
+      "word": "who",
+      "start": 2.48,
+      "end": 2.68
+    },
+    {
+      "word": "I",
+      "start": 2.68,
+      "end": 2.82
+    },
+    {
+      "word": "was",
+      "start": 2.82,
+      "end": 3.08
+    },
+    {
+      "word": "when",
+      "start": 3.08,
+      "end": 3.32
+    },
+    {
+      "word": "he",
+      "start": 3.32,
+      "end": 3.42
+    },
+    {
+      "word": "went",
+      "start": 3.42,
+      "end": 3.54
+    },
+    {
+      "word": "downstairs.",
+      "start": 3.54,
+      "end": 4.0
+    }
+  ],
+  "duration": 4.0
+}

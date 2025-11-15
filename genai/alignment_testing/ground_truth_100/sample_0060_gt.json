@@ -1,0 +1,178 @@
+{
+  "audio_file": "sample_0060.flac",
+  "wav_file": "sample_0060.wav",
+  "transcript": "He stayed at his desk long after all others had gone, and only quitted it when the night watchman on his round pulled at the front door to see if it was safely locked.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.38
+    },
+    {
+      "word": "stayed",
+      "start": 0.38,
+      "end": 0.58
+    },
+    {
+      "word": "at",
+      "start": 0.58,
+      "end": 0.78
+    },
+    {
+      "word": "his",
+      "start": 0.78,
+      "end": 0.98
+    },
+    {
+      "word": "desk",
+      "start": 0.98,
+      "end": 1.16
+    },
+    {
+      "word": "long",
+      "start": 1.16,
+      "end": 1.56
+    },
+    {
+      "word": "after",
+      "start": 1.56,
+      "end": 1.94
+    },
+    {
+      "word": "all",
+      "start": 1.94,
+      "end": 2.16
+    },
+    {
+      "word": "others",
+      "start": 2.16,
+      "end": 2.42
+    },
+    {
+      "word": "had",
+      "start": 2.42,
+      "end": 2.6
+    },
+    {
+      "word": "gone,",
+      "start": 2.6,
+      "end": 2.84
+    },
+    {
+      "word": "and",
+      "start": 3.32,
+      "end": 3.4
+    },
+    {
+      "word": "only",
+      "start": 3.4,
+      "end": 3.62
+    },
+    {
+      "word": "quitted",
+      "start": 3.62,
+      "end": 3.94
+    },
+    {
+      "word": "it",
+      "start": 3.94,
+      "end": 4.18
+    },
+    {
+      "word": "when",
+      "start": 4.18,
+      "end": 4.42
+    },
+    {
+      "word": "the",
+      "start": 4.42,
+      "end": 4.58
+    },
+    {
+      "word": "night",
+      "start": 4.58,
+      "end": 4.8
+    },
+    {
+      "word": "watchman",
+      "start": 4.8,
+      "end": 5.34
+    },
+    {
+      "word": "on",
+      "start": 5.34,
+      "end": 5.5
+    },
+    {
+      "word": "his",
+      "start": 5.5,
+      "end": 5.66
+    },
+    {
+      "word": "round",
+      "start": 5.66,
+      "end": 5.9
+    },
+    {
+      "word": "pulled",
+      "start": 5.9,
+      "end": 6.2
+    },
+    {
+      "word": "at",
+      "start": 6.2,
+      "end": 6.36
+    },
+    {
+      "word": "the",
+      "start": 6.36,
+      "end": 6.48
+    },
+    {
+      "word": "front",
+      "start": 6.48,
+      "end": 6.64
+    },
+    {
+      "word": "door",
+      "start": 6.64,
+      "end": 6.86
+    },
+    {
+      "word": "to",
+      "start": 6.86,
+      "end": 7.08
+    },
+    {
+      "word": "see",
+      "start": 7.08,
+      "end": 7.26
+    },
+    {
+      "word": "if",
+      "start": 7.26,
+      "end": 7.4
+    },
+    {
+      "word": "it",
+      "start": 7.4,
+      "end": 7.5
+    },
+    {
+      "word": "was",
+      "start": 7.5,
+      "end": 7.6
+    },
+    {
+      "word": "safely",
+      "start": 7.6,
+      "end": 7.88
+    },
+    {
+      "word": "locked.",
+      "start": 7.88,
+      "end": 8.24
+    }
+  ],
+  "duration": 8.24
+}

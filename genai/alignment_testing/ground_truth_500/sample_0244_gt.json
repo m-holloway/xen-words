@@ -1,0 +1,88 @@
+{
+  "audio_file": "sample_0244.flac",
+  "wav_file": "sample_0244.wav",
+  "transcript": "She did not stir, and he knew that the sleeping powder had thoroughly done its work.",
+  "word_timings": [
+    {
+      "word": "She",
+      "start": 0.0,
+      "end": 0.56
+    },
+    {
+      "word": "did",
+      "start": 0.56,
+      "end": 0.8
+    },
+    {
+      "word": "not",
+      "start": 0.8,
+      "end": 1.0
+    },
+    {
+      "word": "stir,",
+      "start": 1.0,
+      "end": 1.34
+    },
+    {
+      "word": "and",
+      "start": 1.74,
+      "end": 1.9
+    },
+    {
+      "word": "he",
+      "start": 1.9,
+      "end": 2.14
+    },
+    {
+      "word": "knew",
+      "start": 2.14,
+      "end": 2.32
+    },
+    {
+      "word": "that",
+      "start": 2.32,
+      "end": 2.42
+    },
+    {
+      "word": "the",
+      "start": 2.42,
+      "end": 2.58
+    },
+    {
+      "word": "sleeping",
+      "start": 2.58,
+      "end": 2.86
+    },
+    {
+      "word": "powder",
+      "start": 2.86,
+      "end": 3.24
+    },
+    {
+      "word": "had",
+      "start": 3.24,
+      "end": 3.48
+    },
+    {
+      "word": "thoroughly",
+      "start": 3.48,
+      "end": 3.94
+    },
+    {
+      "word": "done",
+      "start": 3.94,
+      "end": 4.14
+    },
+    {
+      "word": "its",
+      "start": 4.14,
+      "end": 4.34
+    },
+    {
+      "word": "work.",
+      "start": 4.34,
+      "end": 4.64
+    }
+  ],
+  "duration": 4.64
+}

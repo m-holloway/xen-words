@@ -1,0 +1,98 @@
+{
+  "audio_file": "sample_0280.flac",
+  "wav_file": "sample_0280.wav",
+  "transcript": "I remained awake all night, talking with a comrade who shared my blanket with me. Poor Jimmy King.",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.32
+    },
+    {
+      "word": "remained",
+      "start": 0.32,
+      "end": 0.6
+    },
+    {
+      "word": "awake",
+      "start": 0.6,
+      "end": 0.98
+    },
+    {
+      "word": "all",
+      "start": 0.98,
+      "end": 1.36
+    },
+    {
+      "word": "night,",
+      "start": 1.36,
+      "end": 1.64
+    },
+    {
+      "word": "talking",
+      "start": 2.06,
+      "end": 2.28
+    },
+    {
+      "word": "with",
+      "start": 2.28,
+      "end": 2.5
+    },
+    {
+      "word": "a",
+      "start": 2.5,
+      "end": 2.64
+    },
+    {
+      "word": "comrade",
+      "start": 2.64,
+      "end": 3.0
+    },
+    {
+      "word": "who",
+      "start": 3.0,
+      "end": 3.2
+    },
+    {
+      "word": "shared",
+      "start": 3.2,
+      "end": 3.46
+    },
+    {
+      "word": "my",
+      "start": 3.46,
+      "end": 3.62
+    },
+    {
+      "word": "blanket",
+      "start": 3.62,
+      "end": 3.96
+    },
+    {
+      "word": "with",
+      "start": 3.96,
+      "end": 4.2
+    },
+    {
+      "word": "me.",
+      "start": 4.2,
+      "end": 4.4
+    },
+    {
+      "word": "Poor",
+      "start": 5.06,
+      "end": 5.4
+    },
+    {
+      "word": "Jimmy",
+      "start": 5.4,
+      "end": 5.68
+    },
+    {
+      "word": "King.",
+      "start": 5.68,
+      "end": 6.0
+    }
+  ],
+  "duration": 6.0
+}

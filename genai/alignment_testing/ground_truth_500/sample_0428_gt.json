@@ -1,0 +1,53 @@
+{
+  "audio_file": "sample_0428.flac",
+  "wav_file": "sample_0428.wav",
+  "transcript": "I would call it cannibalistic. That's what it is.",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.24
+    },
+    {
+      "word": "would",
+      "start": 0.24,
+      "end": 0.34
+    },
+    {
+      "word": "call",
+      "start": 0.34,
+      "end": 0.54
+    },
+    {
+      "word": "it",
+      "start": 0.54,
+      "end": 0.66
+    },
+    {
+      "word": "cannibalistic.",
+      "start": 0.66,
+      "end": 1.3
+    },
+    {
+      "word": "That's",
+      "start": 1.76,
+      "end": 2.02
+    },
+    {
+      "word": "what",
+      "start": 2.02,
+      "end": 2.14
+    },
+    {
+      "word": "it",
+      "start": 2.14,
+      "end": 2.26
+    },
+    {
+      "word": "is.",
+      "start": 2.26,
+      "end": 2.5
+    }
+  ],
+  "duration": 2.5
+}

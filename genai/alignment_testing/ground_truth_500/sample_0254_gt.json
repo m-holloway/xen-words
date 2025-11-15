@@ -1,0 +1,38 @@
+{
+  "audio_file": "sample_0254.flac",
+  "wav_file": "sample_0254.wav",
+  "transcript": "I could not help my friend.",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.5
+    },
+    {
+      "word": "could",
+      "start": 0.5,
+      "end": 0.72
+    },
+    {
+      "word": "not",
+      "start": 0.72,
+      "end": 0.9
+    },
+    {
+      "word": "help",
+      "start": 0.9,
+      "end": 1.14
+    },
+    {
+      "word": "my",
+      "start": 1.14,
+      "end": 1.34
+    },
+    {
+      "word": "friend.",
+      "start": 1.34,
+      "end": 1.62
+    }
+  ],
+  "duration": 1.62
+}

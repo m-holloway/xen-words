@@ -1,0 +1,138 @@
+{
+  "audio_file": "sample_0424.flac",
+  "wav_file": "sample_0424.wav",
+  "transcript": "There are natures too to whose sense of justice the press exacted looms up monstrously enormous, odious, oppressive, worrying, humiliating, extortionate, intolerable. Those are the fanatics.",
+  "word_timings": [
+    {
+      "word": "There",
+      "start": 0.0,
+      "end": 0.42
+    },
+    {
+      "word": "are",
+      "start": 0.42,
+      "end": 0.52
+    },
+    {
+      "word": "natures",
+      "start": 0.52,
+      "end": 0.9
+    },
+    {
+      "word": "too",
+      "start": 0.9,
+      "end": 1.22
+    },
+    {
+      "word": "to",
+      "start": 1.22,
+      "end": 1.5
+    },
+    {
+      "word": "whose",
+      "start": 1.5,
+      "end": 1.66
+    },
+    {
+      "word": "sense",
+      "start": 1.66,
+      "end": 1.92
+    },
+    {
+      "word": "of",
+      "start": 1.92,
+      "end": 2.16
+    },
+    {
+      "word": "justice",
+      "start": 2.16,
+      "end": 2.42
+    },
+    {
+      "word": "the",
+      "start": 2.42,
+      "end": 2.64
+    },
+    {
+      "word": "press",
+      "start": 2.64,
+      "end": 2.82
+    },
+    {
+      "word": "exacted",
+      "start": 2.82,
+      "end": 3.4
+    },
+    {
+      "word": "looms",
+      "start": 3.4,
+      "end": 3.74
+    },
+    {
+      "word": "up",
+      "start": 3.74,
+      "end": 3.9
+    },
+    {
+      "word": "monstrously",
+      "start": 3.9,
+      "end": 4.4
+    },
+    {
+      "word": "enormous,",
+      "start": 4.4,
+      "end": 4.78
+    },
+    {
+      "word": "odious,",
+      "start": 5.28,
+      "end": 5.72
+    },
+    {
+      "word": "oppressive,",
+      "start": 5.88,
+      "end": 6.26
+    },
+    {
+      "word": "worrying,",
+      "start": 6.82,
+      "end": 7.04
+    },
+    {
+      "word": "humiliating,",
+      "start": 7.64,
+      "end": 8.08
+    },
+    {
+      "word": "extortionate,",
+      "start": 8.38,
+      "end": 9.06
+    },
+    {
+      "word": "intolerable.",
+      "start": 9.46,
+      "end": 9.92
+    },
+    {
+      "word": "Those",
+      "start": 10.54,
+      "end": 10.74
+    },
+    {
+      "word": "are",
+      "start": 10.74,
+      "end": 10.92
+    },
+    {
+      "word": "the",
+      "start": 10.92,
+      "end": 11.02
+    },
+    {
+      "word": "fanatics.",
+      "start": 11.02,
+      "end": 11.44
+    }
+  ],
+  "duration": 11.44
+}

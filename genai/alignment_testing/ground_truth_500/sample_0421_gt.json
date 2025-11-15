@@ -1,0 +1,38 @@
+{
+  "audio_file": "sample_0421.flac",
+  "wav_file": "sample_0421.wav",
+  "transcript": "Comment, Ossiphan's face, twitched with exasperation.",
+  "word_timings": [
+    {
+      "word": "Comment,",
+      "start": 0.0,
+      "end": 0.88
+    },
+    {
+      "word": "Ossiphan's",
+      "start": 1.08,
+      "end": 1.56
+    },
+    {
+      "word": "face,",
+      "start": 1.56,
+      "end": 1.8
+    },
+    {
+      "word": "twitched",
+      "start": 2.02,
+      "end": 2.32
+    },
+    {
+      "word": "with",
+      "start": 2.32,
+      "end": 2.42
+    },
+    {
+      "word": "exasperation.",
+      "start": 2.42,
+      "end": 3.22
+    }
+  ],
+  "duration": 3.22
+}

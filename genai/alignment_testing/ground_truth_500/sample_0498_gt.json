@@ -1,0 +1,138 @@
+{
+  "audio_file": "sample_0498.flac",
+  "wav_file": "sample_0498.wav",
+  "transcript": "Between her steps and mine were not a hundred when equally the margins gave a turn in such a way that to the east I faced.",
+  "word_timings": [
+    {
+      "word": "Between",
+      "start": 0.0,
+      "end": 0.84
+    },
+    {
+      "word": "her",
+      "start": 0.84,
+      "end": 1.1
+    },
+    {
+      "word": "steps",
+      "start": 1.1,
+      "end": 1.32
+    },
+    {
+      "word": "and",
+      "start": 1.32,
+      "end": 1.6
+    },
+    {
+      "word": "mine",
+      "start": 1.6,
+      "end": 1.84
+    },
+    {
+      "word": "were",
+      "start": 1.84,
+      "end": 2.04
+    },
+    {
+      "word": "not",
+      "start": 2.04,
+      "end": 2.26
+    },
+    {
+      "word": "a",
+      "start": 2.26,
+      "end": 2.5
+    },
+    {
+      "word": "hundred",
+      "start": 2.5,
+      "end": 2.86
+    },
+    {
+      "word": "when",
+      "start": 2.86,
+      "end": 3.2
+    },
+    {
+      "word": "equally",
+      "start": 3.2,
+      "end": 3.78
+    },
+    {
+      "word": "the",
+      "start": 3.78,
+      "end": 3.98
+    },
+    {
+      "word": "margins",
+      "start": 3.98,
+      "end": 4.32
+    },
+    {
+      "word": "gave",
+      "start": 4.32,
+      "end": 4.6
+    },
+    {
+      "word": "a",
+      "start": 4.6,
+      "end": 4.76
+    },
+    {
+      "word": "turn",
+      "start": 4.76,
+      "end": 5.06
+    },
+    {
+      "word": "in",
+      "start": 5.06,
+      "end": 5.38
+    },
+    {
+      "word": "such",
+      "start": 5.38,
+      "end": 5.62
+    },
+    {
+      "word": "a",
+      "start": 5.62,
+      "end": 5.76
+    },
+    {
+      "word": "way",
+      "start": 5.76,
+      "end": 6.08
+    },
+    {
+      "word": "that",
+      "start": 6.08,
+      "end": 6.44
+    },
+    {
+      "word": "to",
+      "start": 6.44,
+      "end": 6.64
+    },
+    {
+      "word": "the",
+      "start": 6.64,
+      "end": 6.78
+    },
+    {
+      "word": "east",
+      "start": 6.78,
+      "end": 7.18
+    },
+    {
+      "word": "I",
+      "start": 7.18,
+      "end": 7.44
+    },
+    {
+      "word": "faced.",
+      "start": 7.44,
+      "end": 7.72
+    }
+  ],
+  "duration": 7.72
+}

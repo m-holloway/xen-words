@@ -1,0 +1,78 @@
+{
+  "audio_file": "sample_0030.flac",
+  "wav_file": "sample_0030.wav",
+  "transcript": "After a time, he gave up waiting and generally headed for the Madison car.",
+  "word_timings": [
+    {
+      "word": "After",
+      "start": 0.0,
+      "end": 0.82
+    },
+    {
+      "word": "a",
+      "start": 0.82,
+      "end": 0.94
+    },
+    {
+      "word": "time,",
+      "start": 0.94,
+      "end": 1.18
+    },
+    {
+      "word": "he",
+      "start": 1.26,
+      "end": 1.32
+    },
+    {
+      "word": "gave",
+      "start": 1.32,
+      "end": 1.46
+    },
+    {
+      "word": "up",
+      "start": 1.46,
+      "end": 1.7
+    },
+    {
+      "word": "waiting",
+      "start": 1.7,
+      "end": 1.96
+    },
+    {
+      "word": "and",
+      "start": 1.96,
+      "end": 2.16
+    },
+    {
+      "word": "generally",
+      "start": 2.16,
+      "end": 2.34
+    },
+    {
+      "word": "headed",
+      "start": 2.34,
+      "end": 2.8
+    },
+    {
+      "word": "for",
+      "start": 2.8,
+      "end": 3.0
+    },
+    {
+      "word": "the",
+      "start": 3.0,
+      "end": 3.12
+    },
+    {
+      "word": "Madison",
+      "start": 3.12,
+      "end": 3.46
+    },
+    {
+      "word": "car.",
+      "start": 3.46,
+      "end": 3.76
+    }
+  ],
+  "duration": 3.76
+}

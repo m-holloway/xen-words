@@ -1,0 +1,78 @@
+{
+  "audio_file": "sample_0438.flac",
+  "wav_file": "sample_0438.wav",
+  "transcript": "I wish he had never been to school and Mrs. Verlock began again, brusquely.",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.66
+    },
+    {
+      "word": "wish",
+      "start": 0.66,
+      "end": 0.84
+    },
+    {
+      "word": "he",
+      "start": 0.84,
+      "end": 1.0
+    },
+    {
+      "word": "had",
+      "start": 1.0,
+      "end": 1.08
+    },
+    {
+      "word": "never",
+      "start": 1.08,
+      "end": 1.3
+    },
+    {
+      "word": "been",
+      "start": 1.3,
+      "end": 1.48
+    },
+    {
+      "word": "to",
+      "start": 1.48,
+      "end": 1.68
+    },
+    {
+      "word": "school",
+      "start": 1.68,
+      "end": 2.0
+    },
+    {
+      "word": "and",
+      "start": 2.0,
+      "end": 2.18
+    },
+    {
+      "word": "Mrs.",
+      "start": 2.18,
+      "end": 2.34
+    },
+    {
+      "word": "Verlock",
+      "start": 2.5,
+      "end": 2.68
+    },
+    {
+      "word": "began",
+      "start": 2.68,
+      "end": 3.02
+    },
+    {
+      "word": "again,",
+      "start": 3.02,
+      "end": 3.34
+    },
+    {
+      "word": "brusquely.",
+      "start": 3.5,
+      "end": 3.94
+    }
+  ],
+  "duration": 3.94
+}

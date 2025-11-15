@@ -1,0 +1,68 @@
+{
+  "audio_file": "sample_0336.flac",
+  "wav_file": "sample_0336.wav",
+  "transcript": "I believe the seriousness of the Americans arises partly from their pride.",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.36
+    },
+    {
+      "word": "believe",
+      "start": 0.36,
+      "end": 0.64
+    },
+    {
+      "word": "the",
+      "start": 0.64,
+      "end": 0.84
+    },
+    {
+      "word": "seriousness",
+      "start": 0.84,
+      "end": 1.24
+    },
+    {
+      "word": "of",
+      "start": 1.24,
+      "end": 1.48
+    },
+    {
+      "word": "the",
+      "start": 1.48,
+      "end": 1.62
+    },
+    {
+      "word": "Americans",
+      "start": 1.62,
+      "end": 1.96
+    },
+    {
+      "word": "arises",
+      "start": 1.96,
+      "end": 2.7
+    },
+    {
+      "word": "partly",
+      "start": 2.7,
+      "end": 3.2
+    },
+    {
+      "word": "from",
+      "start": 3.2,
+      "end": 3.42
+    },
+    {
+      "word": "their",
+      "start": 3.42,
+      "end": 3.58
+    },
+    {
+      "word": "pride.",
+      "start": 3.58,
+      "end": 4.0
+    }
+  ],
+  "duration": 4.0
+}

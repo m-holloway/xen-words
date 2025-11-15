@@ -1,0 +1,323 @@
+{
+  "audio_file": "sample_0340.flac",
+  "wav_file": "sample_0340.wav",
+  "transcript": "In aristocracies, every man has one soul object which he unceasingly pursues. But amongst democratic nations, the existence of man is more complex. The same mind will almost always embrace several objects at the same time, and these objects are frequently wholly foreign to each other. As it cannot know them all well, the mind is readily satisfied with imperfect notions of each.",
+  "word_timings": [
+    {
+      "word": "In",
+      "start": 0.0,
+      "end": 0.54
+    },
+    {
+      "word": "aristocracies,",
+      "start": 0.54,
+      "end": 1.28
+    },
+    {
+      "word": "every",
+      "start": 1.74,
+      "end": 1.94
+    },
+    {
+      "word": "man",
+      "start": 1.94,
+      "end": 2.22
+    },
+    {
+      "word": "has",
+      "start": 2.22,
+      "end": 2.38
+    },
+    {
+      "word": "one",
+      "start": 2.38,
+      "end": 2.6
+    },
+    {
+      "word": "soul",
+      "start": 2.6,
+      "end": 2.94
+    },
+    {
+      "word": "object",
+      "start": 2.94,
+      "end": 3.34
+    },
+    {
+      "word": "which",
+      "start": 3.34,
+      "end": 3.68
+    },
+    {
+      "word": "he",
+      "start": 3.68,
+      "end": 3.82
+    },
+    {
+      "word": "unceasingly",
+      "start": 3.82,
+      "end": 4.54
+    },
+    {
+      "word": "pursues.",
+      "start": 4.54,
+      "end": 5.08
+    },
+    {
+      "word": "But",
+      "start": 5.58,
+      "end": 5.74
+    },
+    {
+      "word": "amongst",
+      "start": 5.74,
+      "end": 6.04
+    },
+    {
+      "word": "democratic",
+      "start": 6.04,
+      "end": 6.44
+    },
+    {
+      "word": "nations,",
+      "start": 6.44,
+      "end": 6.96
+    },
+    {
+      "word": "the",
+      "start": 7.34,
+      "end": 7.42
+    },
+    {
+      "word": "existence",
+      "start": 7.42,
+      "end": 7.74
+    },
+    {
+      "word": "of",
+      "start": 7.74,
+      "end": 8.0
+    },
+    {
+      "word": "man",
+      "start": 8.0,
+      "end": 8.22
+    },
+    {
+      "word": "is",
+      "start": 8.22,
+      "end": 8.38
+    },
+    {
+      "word": "more",
+      "start": 8.38,
+      "end": 8.54
+    },
+    {
+      "word": "complex.",
+      "start": 8.54,
+      "end": 8.94
+    },
+    {
+      "word": "The",
+      "start": 9.54,
+      "end": 9.72
+    },
+    {
+      "word": "same",
+      "start": 9.72,
+      "end": 10.0
+    },
+    {
+      "word": "mind",
+      "start": 10.0,
+      "end": 10.38
+    },
+    {
+      "word": "will",
+      "start": 10.38,
+      "end": 10.56
+    },
+    {
+      "word": "almost",
+      "start": 10.56,
+      "end": 10.92
+    },
+    {
+      "word": "always",
+      "start": 10.92,
+      "end": 11.38
+    },
+    {
+      "word": "embrace",
+      "start": 11.38,
+      "end": 11.76
+    },
+    {
+      "word": "several",
+      "start": 11.76,
+      "end": 12.3
+    },
+    {
+      "word": "objects",
+      "start": 12.3,
+      "end": 12.68
+    },
+    {
+      "word": "at",
+      "start": 12.68,
+      "end": 12.92
+    },
+    {
+      "word": "the",
+      "start": 12.92,
+      "end": 13.02
+    },
+    {
+      "word": "same",
+      "start": 13.02,
+      "end": 13.24
+    },
+    {
+      "word": "time,",
+      "start": 13.24,
+      "end": 13.58
+    },
+    {
+      "word": "and",
+      "start": 14.04,
+      "end": 14.18
+    },
+    {
+      "word": "these",
+      "start": 14.18,
+      "end": 14.38
+    },
+    {
+      "word": "objects",
+      "start": 14.38,
+      "end": 14.68
+    },
+    {
+      "word": "are",
+      "start": 14.68,
+      "end": 15.04
+    },
+    {
+      "word": "frequently",
+      "start": 15.04,
+      "end": 15.5
+    },
+    {
+      "word": "wholly",
+      "start": 15.5,
+      "end": 15.92
+    },
+    {
+      "word": "foreign",
+      "start": 15.92,
+      "end": 16.3
+    },
+    {
+      "word": "to",
+      "start": 16.3,
+      "end": 16.5
+    },
+    {
+      "word": "each",
+      "start": 16.5,
+      "end": 16.66
+    },
+    {
+      "word": "other.",
+      "start": 16.66,
+      "end": 16.84
+    },
+    {
+      "word": "As",
+      "start": 17.34,
+      "end": 17.54
+    },
+    {
+      "word": "it",
+      "start": 17.54,
+      "end": 17.68
+    },
+    {
+      "word": "cannot",
+      "start": 17.68,
+      "end": 17.9
+    },
+    {
+      "word": "know",
+      "start": 17.9,
+      "end": 18.22
+    },
+    {
+      "word": "them",
+      "start": 18.22,
+      "end": 18.4
+    },
+    {
+      "word": "all",
+      "start": 18.4,
+      "end": 18.62
+    },
+    {
+      "word": "well,",
+      "start": 18.62,
+      "end": 18.96
+    },
+    {
+      "word": "the",
+      "start": 19.4,
+      "end": 19.46
+    },
+    {
+      "word": "mind",
+      "start": 19.46,
+      "end": 19.66
+    },
+    {
+      "word": "is",
+      "start": 19.66,
+      "end": 19.8
+    },
+    {
+      "word": "readily",
+      "start": 19.8,
+      "end": 20.08
+    },
+    {
+      "word": "satisfied",
+      "start": 20.08,
+      "end": 20.6
+    },
+    {
+      "word": "with",
+      "start": 20.6,
+      "end": 20.82
+    },
+    {
+      "word": "imperfect",
+      "start": 20.82,
+      "end": 21.26
+    },
+    {
+      "word": "notions",
+      "start": 21.26,
+      "end": 21.72
+    },
+    {
+      "word": "of",
+      "start": 21.72,
+      "end": 21.98
+    },
+    {
+      "word": "each.",
+      "start": 21.98,
+      "end": 22.28
+    }
+  ],
+  "duration": 22.28
+}

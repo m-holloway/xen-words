@@ -1,0 +1,118 @@
+{
+  "audio_file": "sample_0311.flac",
+  "wav_file": "sample_0311.wav",
+  "transcript": "Presently, against one of those banks, I saw a sort of shed, thatched with the same wine-colored grass that grew everywhere.",
+  "word_timings": [
+    {
+      "word": "Presently,",
+      "start": 0.0,
+      "end": 0.86
+    },
+    {
+      "word": "against",
+      "start": 1.32,
+      "end": 1.8
+    },
+    {
+      "word": "one",
+      "start": 1.8,
+      "end": 2.0
+    },
+    {
+      "word": "of",
+      "start": 2.0,
+      "end": 2.12
+    },
+    {
+      "word": "those",
+      "start": 2.12,
+      "end": 2.3
+    },
+    {
+      "word": "banks,",
+      "start": 2.3,
+      "end": 2.62
+    },
+    {
+      "word": "I",
+      "start": 3.36,
+      "end": 3.5
+    },
+    {
+      "word": "saw",
+      "start": 3.5,
+      "end": 3.74
+    },
+    {
+      "word": "a",
+      "start": 3.74,
+      "end": 3.9
+    },
+    {
+      "word": "sort",
+      "start": 3.9,
+      "end": 4.1
+    },
+    {
+      "word": "of",
+      "start": 4.1,
+      "end": 4.32
+    },
+    {
+      "word": "shed,",
+      "start": 4.32,
+      "end": 4.58
+    },
+    {
+      "word": "thatched",
+      "start": 5.22,
+      "end": 5.74
+    },
+    {
+      "word": "with",
+      "start": 5.74,
+      "end": 5.88
+    },
+    {
+      "word": "the",
+      "start": 5.88,
+      "end": 6.0
+    },
+    {
+      "word": "same",
+      "start": 6.0,
+      "end": 6.24
+    },
+    {
+      "word": "wine",
+      "start": 6.24,
+      "end": 6.6
+    },
+    {
+      "word": "-colored",
+      "start": 6.6,
+      "end": 7.0
+    },
+    {
+      "word": "grass",
+      "start": 7.0,
+      "end": 7.44
+    },
+    {
+      "word": "that",
+      "start": 7.44,
+      "end": 7.8
+    },
+    {
+      "word": "grew",
+      "start": 7.8,
+      "end": 7.92
+    },
+    {
+      "word": "everywhere.",
+      "start": 7.92,
+      "end": 8.36
+    }
+  ],
+  "duration": 8.36
+}

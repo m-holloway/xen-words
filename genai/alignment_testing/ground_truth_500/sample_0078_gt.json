@@ -1,0 +1,88 @@
+{
+  "audio_file": "sample_0078.flac",
+  "wav_file": "sample_0078.wav",
+  "transcript": "She wanted to make some reference to their relations upon the train, but was too timid.",
+  "word_timings": [
+    {
+      "word": "She",
+      "start": 0.0,
+      "end": 0.4
+    },
+    {
+      "word": "wanted",
+      "start": 0.4,
+      "end": 0.64
+    },
+    {
+      "word": "to",
+      "start": 0.64,
+      "end": 0.86
+    },
+    {
+      "word": "make",
+      "start": 0.86,
+      "end": 1.02
+    },
+    {
+      "word": "some",
+      "start": 1.02,
+      "end": 1.28
+    },
+    {
+      "word": "reference",
+      "start": 1.28,
+      "end": 1.66
+    },
+    {
+      "word": "to",
+      "start": 1.66,
+      "end": 1.92
+    },
+    {
+      "word": "their",
+      "start": 1.92,
+      "end": 2.06
+    },
+    {
+      "word": "relations",
+      "start": 2.06,
+      "end": 2.52
+    },
+    {
+      "word": "upon",
+      "start": 2.52,
+      "end": 2.86
+    },
+    {
+      "word": "the",
+      "start": 2.86,
+      "end": 3.04
+    },
+    {
+      "word": "train,",
+      "start": 3.04,
+      "end": 3.3
+    },
+    {
+      "word": "but",
+      "start": 3.6,
+      "end": 3.7
+    },
+    {
+      "word": "was",
+      "start": 3.7,
+      "end": 3.88
+    },
+    {
+      "word": "too",
+      "start": 3.88,
+      "end": 4.04
+    },
+    {
+      "word": "timid.",
+      "start": 4.04,
+      "end": 4.48
+    }
+  ],
+  "duration": 4.48
+}

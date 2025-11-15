@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0404.flac",
+  "wav_file": "sample_0404.wav",
+  "transcript": "His enunciation would have been almost totally unintelligible to a stranger.",
+  "word_timings": [
+    {
+      "word": "His",
+      "start": 0.0,
+      "end": 0.54
+    },
+    {
+      "word": "enunciation",
+      "start": 0.54,
+      "end": 0.94
+    },
+    {
+      "word": "would",
+      "start": 0.94,
+      "end": 1.34
+    },
+    {
+      "word": "have",
+      "start": 1.34,
+      "end": 1.48
+    },
+    {
+      "word": "been",
+      "start": 1.48,
+      "end": 1.58
+    },
+    {
+      "word": "almost",
+      "start": 1.58,
+      "end": 2.02
+    },
+    {
+      "word": "totally",
+      "start": 2.02,
+      "end": 2.48
+    },
+    {
+      "word": "unintelligible",
+      "start": 2.48,
+      "end": 3.22
+    },
+    {
+      "word": "to",
+      "start": 3.22,
+      "end": 3.54
+    },
+    {
+      "word": "a",
+      "start": 3.54,
+      "end": 3.66
+    },
+    {
+      "word": "stranger.",
+      "start": 3.66,
+      "end": 4.04
+    }
+  ],
+  "duration": 4.04
+}

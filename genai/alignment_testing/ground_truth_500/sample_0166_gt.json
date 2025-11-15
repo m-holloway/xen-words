@@ -1,0 +1,68 @@
+{
+  "audio_file": "sample_0166.flac",
+  "wav_file": "sample_0166.wav",
+  "transcript": "Peter could give no very clear account of his transactions with Cutter.",
+  "word_timings": [
+    {
+      "word": "Peter",
+      "start": 0.0,
+      "end": 0.74
+    },
+    {
+      "word": "could",
+      "start": 0.74,
+      "end": 0.94
+    },
+    {
+      "word": "give",
+      "start": 0.94,
+      "end": 1.14
+    },
+    {
+      "word": "no",
+      "start": 1.14,
+      "end": 1.4
+    },
+    {
+      "word": "very",
+      "start": 1.4,
+      "end": 1.76
+    },
+    {
+      "word": "clear",
+      "start": 1.76,
+      "end": 2.0
+    },
+    {
+      "word": "account",
+      "start": 2.0,
+      "end": 2.4
+    },
+    {
+      "word": "of",
+      "start": 2.4,
+      "end": 2.56
+    },
+    {
+      "word": "his",
+      "start": 2.56,
+      "end": 2.72
+    },
+    {
+      "word": "transactions",
+      "start": 2.72,
+      "end": 3.3
+    },
+    {
+      "word": "with",
+      "start": 3.3,
+      "end": 3.6
+    },
+    {
+      "word": "Cutter.",
+      "start": 3.6,
+      "end": 3.92
+    }
+  ],
+  "duration": 3.92
+}

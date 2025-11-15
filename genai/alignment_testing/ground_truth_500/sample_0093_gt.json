@@ -1,0 +1,88 @@
+{
+  "audio_file": "sample_0093.flac",
+  "wav_file": "sample_0093.wav",
+  "transcript": "Anything was good enough so long as it paid, say, $5 a week to begin with.",
+  "word_timings": [
+    {
+      "word": "Anything",
+      "start": 0.0,
+      "end": 0.56
+    },
+    {
+      "word": "was",
+      "start": 0.56,
+      "end": 0.82
+    },
+    {
+      "word": "good",
+      "start": 0.82,
+      "end": 1.02
+    },
+    {
+      "word": "enough",
+      "start": 1.02,
+      "end": 1.28
+    },
+    {
+      "word": "so",
+      "start": 1.28,
+      "end": 1.6
+    },
+    {
+      "word": "long",
+      "start": 1.6,
+      "end": 1.82
+    },
+    {
+      "word": "as",
+      "start": 1.82,
+      "end": 2.02
+    },
+    {
+      "word": "it",
+      "start": 2.02,
+      "end": 2.12
+    },
+    {
+      "word": "paid,",
+      "start": 2.12,
+      "end": 2.38
+    },
+    {
+      "word": "say,",
+      "start": 2.6,
+      "end": 2.92
+    },
+    {
+      "word": "$5",
+      "start": 3.2,
+      "end": 3.64
+    },
+    {
+      "word": "a",
+      "start": 3.64,
+      "end": 3.94
+    },
+    {
+      "word": "week",
+      "start": 3.94,
+      "end": 4.1
+    },
+    {
+      "word": "to",
+      "start": 4.1,
+      "end": 4.32
+    },
+    {
+      "word": "begin",
+      "start": 4.32,
+      "end": 4.56
+    },
+    {
+      "word": "with.",
+      "start": 4.56,
+      "end": 4.94
+    }
+  ],
+  "duration": 4.94
+}

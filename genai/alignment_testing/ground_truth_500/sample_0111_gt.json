@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0111.flac",
+  "wav_file": "sample_0111.wav",
+  "transcript": "I followed with a spade over my shoulder, dragging my snake.",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.58
+    },
+    {
+      "word": "followed",
+      "start": 0.58,
+      "end": 0.86
+    },
+    {
+      "word": "with",
+      "start": 0.86,
+      "end": 1.1
+    },
+    {
+      "word": "a",
+      "start": 1.1,
+      "end": 1.2
+    },
+    {
+      "word": "spade",
+      "start": 1.2,
+      "end": 1.58
+    },
+    {
+      "word": "over",
+      "start": 1.58,
+      "end": 1.72
+    },
+    {
+      "word": "my",
+      "start": 1.72,
+      "end": 1.9
+    },
+    {
+      "word": "shoulder,",
+      "start": 1.9,
+      "end": 2.32
+    },
+    {
+      "word": "dragging",
+      "start": 2.72,
+      "end": 3.02
+    },
+    {
+      "word": "my",
+      "start": 3.02,
+      "end": 3.3
+    },
+    {
+      "word": "snake.",
+      "start": 3.3,
+      "end": 3.66
+    }
+  ],
+  "duration": 3.66
+}

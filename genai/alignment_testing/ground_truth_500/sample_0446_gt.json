@@ -1,0 +1,198 @@
+{
+  "audio_file": "sample_0446.flac",
+  "wav_file": "sample_0446.wav",
+  "transcript": "There was no young man of his age in London more willing and docile than Stephen, she affirmed. None more affectionate and ready to please, and even useful, as long as people did not upset his poor head.",
+  "word_timings": [
+    {
+      "word": "There",
+      "start": 0.0,
+      "end": 0.4
+    },
+    {
+      "word": "was",
+      "start": 0.4,
+      "end": 0.56
+    },
+    {
+      "word": "no",
+      "start": 0.56,
+      "end": 0.76
+    },
+    {
+      "word": "young",
+      "start": 0.76,
+      "end": 1.04
+    },
+    {
+      "word": "man",
+      "start": 1.04,
+      "end": 1.3
+    },
+    {
+      "word": "of",
+      "start": 1.3,
+      "end": 1.52
+    },
+    {
+      "word": "his",
+      "start": 1.52,
+      "end": 1.68
+    },
+    {
+      "word": "age",
+      "start": 1.68,
+      "end": 2.02
+    },
+    {
+      "word": "in",
+      "start": 2.02,
+      "end": 2.2
+    },
+    {
+      "word": "London",
+      "start": 2.2,
+      "end": 2.38
+    },
+    {
+      "word": "more",
+      "start": 2.38,
+      "end": 2.68
+    },
+    {
+      "word": "willing",
+      "start": 2.68,
+      "end": 3.0
+    },
+    {
+      "word": "and",
+      "start": 3.0,
+      "end": 3.28
+    },
+    {
+      "word": "docile",
+      "start": 3.28,
+      "end": 3.58
+    },
+    {
+      "word": "than",
+      "start": 3.58,
+      "end": 3.76
+    },
+    {
+      "word": "Stephen,",
+      "start": 3.76,
+      "end": 4.1
+    },
+    {
+      "word": "she",
+      "start": 4.3,
+      "end": 4.44
+    },
+    {
+      "word": "affirmed.",
+      "start": 4.44,
+      "end": 4.94
+    },
+    {
+      "word": "None",
+      "start": 5.42,
+      "end": 5.64
+    },
+    {
+      "word": "more",
+      "start": 5.64,
+      "end": 5.94
+    },
+    {
+      "word": "affectionate",
+      "start": 5.94,
+      "end": 6.52
+    },
+    {
+      "word": "and",
+      "start": 6.52,
+      "end": 6.7
+    },
+    {
+      "word": "ready",
+      "start": 6.7,
+      "end": 6.88
+    },
+    {
+      "word": "to",
+      "start": 6.88,
+      "end": 7.08
+    },
+    {
+      "word": "please,",
+      "start": 7.08,
+      "end": 7.4
+    },
+    {
+      "word": "and",
+      "start": 8.0,
+      "end": 8.06
+    },
+    {
+      "word": "even",
+      "start": 8.06,
+      "end": 8.28
+    },
+    {
+      "word": "useful,",
+      "start": 8.28,
+      "end": 8.72
+    },
+    {
+      "word": "as",
+      "start": 9.06,
+      "end": 9.18
+    },
+    {
+      "word": "long",
+      "start": 9.18,
+      "end": 9.3
+    },
+    {
+      "word": "as",
+      "start": 9.3,
+      "end": 9.44
+    },
+    {
+      "word": "people",
+      "start": 9.44,
+      "end": 9.62
+    },
+    {
+      "word": "did",
+      "start": 9.62,
+      "end": 9.78
+    },
+    {
+      "word": "not",
+      "start": 9.78,
+      "end": 9.94
+    },
+    {
+      "word": "upset",
+      "start": 9.94,
+      "end": 10.26
+    },
+    {
+      "word": "his",
+      "start": 10.26,
+      "end": 10.48
+    },
+    {
+      "word": "poor",
+      "start": 10.48,
+      "end": 10.72
+    },
+    {
+      "word": "head.",
+      "start": 10.72,
+      "end": 11.06
+    }
+  ],
+  "duration": 11.06
+}

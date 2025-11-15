@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0463.flac",
+  "wav_file": "sample_0463.wav",
+  "transcript": "Morrell suffered an exclamation of horror and surprised to escape him.",
+  "word_timings": [
+    {
+      "word": "Morrell",
+      "start": 0.0,
+      "end": 0.48
+    },
+    {
+      "word": "suffered",
+      "start": 0.48,
+      "end": 0.86
+    },
+    {
+      "word": "an",
+      "start": 0.86,
+      "end": 1.08
+    },
+    {
+      "word": "exclamation",
+      "start": 1.08,
+      "end": 1.56
+    },
+    {
+      "word": "of",
+      "start": 1.56,
+      "end": 1.8
+    },
+    {
+      "word": "horror",
+      "start": 1.8,
+      "end": 2.08
+    },
+    {
+      "word": "and",
+      "start": 2.08,
+      "end": 2.24
+    },
+    {
+      "word": "surprised",
+      "start": 2.24,
+      "end": 2.68
+    },
+    {
+      "word": "to",
+      "start": 2.68,
+      "end": 2.9
+    },
+    {
+      "word": "escape",
+      "start": 2.9,
+      "end": 3.18
+    },
+    {
+      "word": "him.",
+      "start": 3.18,
+      "end": 3.36
+    }
+  ],
+  "duration": 3.36
+}

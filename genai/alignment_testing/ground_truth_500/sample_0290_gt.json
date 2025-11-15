@@ -1,0 +1,103 @@
+{
+  "audio_file": "sample_0290.flac",
+  "wav_file": "sample_0290.wav",
+  "transcript": "Gretel began to cry, but it was all useless for the old witch made her do as she wanted.",
+  "word_timings": [
+    {
+      "word": "Gretel",
+      "start": 0.0,
+      "end": 0.86
+    },
+    {
+      "word": "began",
+      "start": 0.86,
+      "end": 1.12
+    },
+    {
+      "word": "to",
+      "start": 1.12,
+      "end": 1.34
+    },
+    {
+      "word": "cry,",
+      "start": 1.34,
+      "end": 1.6
+    },
+    {
+      "word": "but",
+      "start": 2.08,
+      "end": 2.28
+    },
+    {
+      "word": "it",
+      "start": 2.28,
+      "end": 2.38
+    },
+    {
+      "word": "was",
+      "start": 2.38,
+      "end": 2.52
+    },
+    {
+      "word": "all",
+      "start": 2.52,
+      "end": 2.84
+    },
+    {
+      "word": "useless",
+      "start": 2.84,
+      "end": 3.28
+    },
+    {
+      "word": "for",
+      "start": 3.28,
+      "end": 3.88
+    },
+    {
+      "word": "the",
+      "start": 3.88,
+      "end": 3.98
+    },
+    {
+      "word": "old",
+      "start": 3.98,
+      "end": 4.32
+    },
+    {
+      "word": "witch",
+      "start": 4.32,
+      "end": 4.62
+    },
+    {
+      "word": "made",
+      "start": 4.62,
+      "end": 4.8
+    },
+    {
+      "word": "her",
+      "start": 4.8,
+      "end": 4.96
+    },
+    {
+      "word": "do",
+      "start": 4.96,
+      "end": 5.14
+    },
+    {
+      "word": "as",
+      "start": 5.14,
+      "end": 5.3
+    },
+    {
+      "word": "she",
+      "start": 5.3,
+      "end": 5.44
+    },
+    {
+      "word": "wanted.",
+      "start": 5.44,
+      "end": 5.8
+    }
+  ],
+  "duration": 5.8
+}

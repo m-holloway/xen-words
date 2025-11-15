@@ -1,0 +1,273 @@
+{
+  "audio_file": "sample_0192.flac",
+  "wav_file": "sample_0192.wav",
+  "transcript": "The distinguishing mark of the hens was the crest of lamentably scanty growth in these latter days, but so oddly and wickedly analogous to Hebsibus' turbine that Phoebe, to the poignant distress of her conscience but inevitably, was led to fancy a general resemblance between these follow-on bipeds and her respectable relative.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "distinguishing",
+      "start": 0.62,
+      "end": 1.28
+    },
+    {
+      "word": "mark",
+      "start": 1.28,
+      "end": 1.5
+    },
+    {
+      "word": "of",
+      "start": 1.5,
+      "end": 1.76
+    },
+    {
+      "word": "the",
+      "start": 1.76,
+      "end": 1.92
+    },
+    {
+      "word": "hens",
+      "start": 1.92,
+      "end": 2.26
+    },
+    {
+      "word": "was",
+      "start": 2.26,
+      "end": 2.7
+    },
+    {
+      "word": "the",
+      "start": 2.7,
+      "end": 2.86
+    },
+    {
+      "word": "crest",
+      "start": 2.86,
+      "end": 3.06
+    },
+    {
+      "word": "of",
+      "start": 3.06,
+      "end": 3.28
+    },
+    {
+      "word": "lamentably",
+      "start": 3.28,
+      "end": 3.82
+    },
+    {
+      "word": "scanty",
+      "start": 3.82,
+      "end": 4.24
+    },
+    {
+      "word": "growth",
+      "start": 4.24,
+      "end": 4.48
+    },
+    {
+      "word": "in",
+      "start": 4.48,
+      "end": 5.16
+    },
+    {
+      "word": "these",
+      "start": 5.16,
+      "end": 5.32
+    },
+    {
+      "word": "latter",
+      "start": 5.32,
+      "end": 5.52
+    },
+    {
+      "word": "days,",
+      "start": 5.52,
+      "end": 5.9
+    },
+    {
+      "word": "but",
+      "start": 6.32,
+      "end": 6.52
+    },
+    {
+      "word": "so",
+      "start": 6.52,
+      "end": 6.74
+    },
+    {
+      "word": "oddly",
+      "start": 6.74,
+      "end": 7.12
+    },
+    {
+      "word": "and",
+      "start": 7.12,
+      "end": 7.32
+    },
+    {
+      "word": "wickedly",
+      "start": 7.32,
+      "end": 7.74
+    },
+    {
+      "word": "analogous",
+      "start": 7.74,
+      "end": 8.26
+    },
+    {
+      "word": "to",
+      "start": 8.26,
+      "end": 8.38
+    },
+    {
+      "word": "Hebsibus'",
+      "start": 8.38,
+      "end": 8.8
+    },
+    {
+      "word": "turbine",
+      "start": 8.9,
+      "end": 9.16
+    },
+    {
+      "word": "that",
+      "start": 9.16,
+      "end": 9.8
+    },
+    {
+      "word": "Phoebe,",
+      "start": 9.8,
+      "end": 10.22
+    },
+    {
+      "word": "to",
+      "start": 10.56,
+      "end": 10.72
+    },
+    {
+      "word": "the",
+      "start": 10.72,
+      "end": 10.82
+    },
+    {
+      "word": "poignant",
+      "start": 10.82,
+      "end": 11.16
+    },
+    {
+      "word": "distress",
+      "start": 11.16,
+      "end": 11.52
+    },
+    {
+      "word": "of",
+      "start": 11.52,
+      "end": 11.76
+    },
+    {
+      "word": "her",
+      "start": 11.76,
+      "end": 11.84
+    },
+    {
+      "word": "conscience",
+      "start": 11.84,
+      "end": 12.24
+    },
+    {
+      "word": "but",
+      "start": 12.24,
+      "end": 12.62
+    },
+    {
+      "word": "inevitably,",
+      "start": 12.62,
+      "end": 13.06
+    },
+    {
+      "word": "was",
+      "start": 13.62,
+      "end": 13.84
+    },
+    {
+      "word": "led",
+      "start": 13.84,
+      "end": 14.02
+    },
+    {
+      "word": "to",
+      "start": 14.02,
+      "end": 14.22
+    },
+    {
+      "word": "fancy",
+      "start": 14.22,
+      "end": 14.56
+    },
+    {
+      "word": "a",
+      "start": 14.56,
+      "end": 14.72
+    },
+    {
+      "word": "general",
+      "start": 14.72,
+      "end": 14.98
+    },
+    {
+      "word": "resemblance",
+      "start": 14.98,
+      "end": 15.6
+    },
+    {
+      "word": "between",
+      "start": 15.6,
+      "end": 15.88
+    },
+    {
+      "word": "these",
+      "start": 15.88,
+      "end": 16.26
+    },
+    {
+      "word": "follow",
+      "start": 16.26,
+      "end": 16.54
+    },
+    {
+      "word": "-on",
+      "start": 16.54,
+      "end": 16.74
+    },
+    {
+      "word": "bipeds",
+      "start": 16.74,
+      "end": 17.28
+    },
+    {
+      "word": "and",
+      "start": 17.28,
+      "end": 17.78
+    },
+    {
+      "word": "her",
+      "start": 17.78,
+      "end": 17.9
+    },
+    {
+      "word": "respectable",
+      "start": 17.9,
+      "end": 18.38
+    },
+    {
+      "word": "relative.",
+      "start": 18.38,
+      "end": 18.84
+    }
+  ],
+  "duration": 18.84
+}

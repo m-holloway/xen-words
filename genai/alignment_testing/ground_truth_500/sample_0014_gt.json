@@ -1,0 +1,43 @@
+{
+  "audio_file": "sample_0014.flac",
+  "wav_file": "sample_0014.wav",
+  "transcript": "He also thought of his managerial position.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.64
+    },
+    {
+      "word": "also",
+      "start": 0.64,
+      "end": 0.92
+    },
+    {
+      "word": "thought",
+      "start": 0.92,
+      "end": 1.16
+    },
+    {
+      "word": "of",
+      "start": 1.16,
+      "end": 1.28
+    },
+    {
+      "word": "his",
+      "start": 1.28,
+      "end": 1.44
+    },
+    {
+      "word": "managerial",
+      "start": 1.44,
+      "end": 2.06
+    },
+    {
+      "word": "position.",
+      "start": 2.06,
+      "end": 2.46
+    }
+  ],
+  "duration": 2.46
+}

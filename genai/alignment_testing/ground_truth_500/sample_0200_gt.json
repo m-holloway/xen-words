@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0200.flac",
+  "wav_file": "sample_0200.wav",
+  "transcript": "There is a wonderful insight in Heaven's broad and simple sunshine.",
+  "word_timings": [
+    {
+      "word": "There",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "is",
+      "start": 0.62,
+      "end": 0.72
+    },
+    {
+      "word": "a",
+      "start": 0.72,
+      "end": 0.8
+    },
+    {
+      "word": "wonderful",
+      "start": 0.8,
+      "end": 1.12
+    },
+    {
+      "word": "insight",
+      "start": 1.12,
+      "end": 1.52
+    },
+    {
+      "word": "in",
+      "start": 1.52,
+      "end": 1.76
+    },
+    {
+      "word": "Heaven's",
+      "start": 1.76,
+      "end": 2.16
+    },
+    {
+      "word": "broad",
+      "start": 2.16,
+      "end": 2.4
+    },
+    {
+      "word": "and",
+      "start": 2.4,
+      "end": 2.56
+    },
+    {
+      "word": "simple",
+      "start": 2.56,
+      "end": 2.86
+    },
+    {
+      "word": "sunshine.",
+      "start": 2.86,
+      "end": 3.26
+    }
+  ],
+  "duration": 3.26
+}

@@ -1,0 +1,83 @@
+{
+  "audio_file": "sample_0366.flac",
+  "wav_file": "sample_0366.wav",
+  "transcript": "It's the first time Hilda has been to our house, and Tom introduces her around.",
+  "word_timings": [
+    {
+      "word": "It's",
+      "start": 0.0,
+      "end": 0.5
+    },
+    {
+      "word": "the",
+      "start": 0.5,
+      "end": 0.54
+    },
+    {
+      "word": "first",
+      "start": 0.54,
+      "end": 0.72
+    },
+    {
+      "word": "time",
+      "start": 0.72,
+      "end": 0.88
+    },
+    {
+      "word": "Hilda",
+      "start": 0.88,
+      "end": 1.14
+    },
+    {
+      "word": "has",
+      "start": 1.14,
+      "end": 1.32
+    },
+    {
+      "word": "been",
+      "start": 1.32,
+      "end": 1.44
+    },
+    {
+      "word": "to",
+      "start": 1.44,
+      "end": 1.6
+    },
+    {
+      "word": "our",
+      "start": 1.6,
+      "end": 1.7
+    },
+    {
+      "word": "house,",
+      "start": 1.7,
+      "end": 2.06
+    },
+    {
+      "word": "and",
+      "start": 2.36,
+      "end": 2.46
+    },
+    {
+      "word": "Tom",
+      "start": 2.46,
+      "end": 2.62
+    },
+    {
+      "word": "introduces",
+      "start": 2.62,
+      "end": 3.04
+    },
+    {
+      "word": "her",
+      "start": 3.04,
+      "end": 3.3
+    },
+    {
+      "word": "around.",
+      "start": 3.3,
+      "end": 3.62
+    }
+  ],
+  "duration": 3.62
+}

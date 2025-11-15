@@ -1,0 +1,103 @@
+{
+  "audio_file": "sample_0151.flac",
+  "wav_file": "sample_0151.wav",
+  "transcript": "After the ceremony at the church, the party went to a dinner given by the parents of the bride.",
+  "word_timings": [
+    {
+      "word": "After",
+      "start": 0.0,
+      "end": 0.78
+    },
+    {
+      "word": "the",
+      "start": 0.78,
+      "end": 0.96
+    },
+    {
+      "word": "ceremony",
+      "start": 0.96,
+      "end": 1.36
+    },
+    {
+      "word": "at",
+      "start": 1.36,
+      "end": 1.64
+    },
+    {
+      "word": "the",
+      "start": 1.64,
+      "end": 1.76
+    },
+    {
+      "word": "church,",
+      "start": 1.76,
+      "end": 2.16
+    },
+    {
+      "word": "the",
+      "start": 2.42,
+      "end": 2.5
+    },
+    {
+      "word": "party",
+      "start": 2.5,
+      "end": 2.76
+    },
+    {
+      "word": "went",
+      "start": 2.76,
+      "end": 2.98
+    },
+    {
+      "word": "to",
+      "start": 2.98,
+      "end": 3.18
+    },
+    {
+      "word": "a",
+      "start": 3.18,
+      "end": 3.24
+    },
+    {
+      "word": "dinner",
+      "start": 3.24,
+      "end": 3.44
+    },
+    {
+      "word": "given",
+      "start": 3.44,
+      "end": 3.74
+    },
+    {
+      "word": "by",
+      "start": 3.74,
+      "end": 3.96
+    },
+    {
+      "word": "the",
+      "start": 3.96,
+      "end": 4.08
+    },
+    {
+      "word": "parents",
+      "start": 4.08,
+      "end": 4.38
+    },
+    {
+      "word": "of",
+      "start": 4.38,
+      "end": 4.6
+    },
+    {
+      "word": "the",
+      "start": 4.6,
+      "end": 4.68
+    },
+    {
+      "word": "bride.",
+      "start": 4.68,
+      "end": 4.98
+    }
+  ],
+  "duration": 4.98
+}

@@ -1,0 +1,53 @@
+{
+  "audio_file": "sample_0372.flac",
+  "wav_file": "sample_0372.wav",
+  "transcript": "The two stray kittens gradually make themselves at home.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.54
+    },
+    {
+      "word": "two",
+      "start": 0.54,
+      "end": 0.74
+    },
+    {
+      "word": "stray",
+      "start": 0.74,
+      "end": 1.06
+    },
+    {
+      "word": "kittens",
+      "start": 1.06,
+      "end": 1.44
+    },
+    {
+      "word": "gradually",
+      "start": 1.44,
+      "end": 1.92
+    },
+    {
+      "word": "make",
+      "start": 1.92,
+      "end": 2.16
+    },
+    {
+      "word": "themselves",
+      "start": 2.16,
+      "end": 2.5
+    },
+    {
+      "word": "at",
+      "start": 2.5,
+      "end": 2.76
+    },
+    {
+      "word": "home.",
+      "start": 2.76,
+      "end": 2.96
+    }
+  ],
+  "duration": 2.96
+}

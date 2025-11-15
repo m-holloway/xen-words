@@ -1,0 +1,193 @@
+{
+  "audio_file": "sample_0330.flac",
+  "wav_file": "sample_0330.wav",
+  "transcript": "She made Mrs. Shamir to understand the friendly intention of our visit, and the Bohemian woman handled the loaves of bread, and even smelled them, and examined the pies with lively curiosity, exclaiming much good, much think.",
+  "word_timings": [
+    {
+      "word": "She",
+      "start": 0.0,
+      "end": 0.58
+    },
+    {
+      "word": "made",
+      "start": 0.58,
+      "end": 0.74
+    },
+    {
+      "word": "Mrs.",
+      "start": 0.74,
+      "end": 1.0
+    },
+    {
+      "word": "Shamir",
+      "start": 1.08,
+      "end": 1.28
+    },
+    {
+      "word": "to",
+      "start": 1.28,
+      "end": 1.42
+    },
+    {
+      "word": "understand",
+      "start": 1.42,
+      "end": 1.9
+    },
+    {
+      "word": "the",
+      "start": 1.9,
+      "end": 2.14
+    },
+    {
+      "word": "friendly",
+      "start": 2.14,
+      "end": 2.44
+    },
+    {
+      "word": "intention",
+      "start": 2.44,
+      "end": 2.86
+    },
+    {
+      "word": "of",
+      "start": 2.86,
+      "end": 3.12
+    },
+    {
+      "word": "our",
+      "start": 3.12,
+      "end": 3.2
+    },
+    {
+      "word": "visit,",
+      "start": 3.2,
+      "end": 3.54
+    },
+    {
+      "word": "and",
+      "start": 4.14,
+      "end": 4.28
+    },
+    {
+      "word": "the",
+      "start": 4.28,
+      "end": 4.4
+    },
+    {
+      "word": "Bohemian",
+      "start": 4.4,
+      "end": 4.86
+    },
+    {
+      "word": "woman",
+      "start": 4.86,
+      "end": 5.46
+    },
+    {
+      "word": "handled",
+      "start": 5.46,
+      "end": 6.0
+    },
+    {
+      "word": "the",
+      "start": 6.0,
+      "end": 6.22
+    },
+    {
+      "word": "loaves",
+      "start": 6.22,
+      "end": 6.56
+    },
+    {
+      "word": "of",
+      "start": 6.56,
+      "end": 6.66
+    },
+    {
+      "word": "bread,",
+      "start": 6.66,
+      "end": 6.94
+    },
+    {
+      "word": "and",
+      "start": 7.6,
+      "end": 7.84
+    },
+    {
+      "word": "even",
+      "start": 7.84,
+      "end": 8.12
+    },
+    {
+      "word": "smelled",
+      "start": 8.12,
+      "end": 8.42
+    },
+    {
+      "word": "them,",
+      "start": 8.42,
+      "end": 8.78
+    },
+    {
+      "word": "and",
+      "start": 9.34,
+      "end": 9.42
+    },
+    {
+      "word": "examined",
+      "start": 9.42,
+      "end": 9.86
+    },
+    {
+      "word": "the",
+      "start": 9.86,
+      "end": 10.14
+    },
+    {
+      "word": "pies",
+      "start": 10.14,
+      "end": 10.42
+    },
+    {
+      "word": "with",
+      "start": 10.42,
+      "end": 10.64
+    },
+    {
+      "word": "lively",
+      "start": 10.64,
+      "end": 11.06
+    },
+    {
+      "word": "curiosity,",
+      "start": 11.06,
+      "end": 11.76
+    },
+    {
+      "word": "exclaiming",
+      "start": 12.2,
+      "end": 12.78
+    },
+    {
+      "word": "much",
+      "start": 12.78,
+      "end": 13.06
+    },
+    {
+      "word": "good,",
+      "start": 13.06,
+      "end": 13.48
+    },
+    {
+      "word": "much",
+      "start": 13.8,
+      "end": 13.96
+    },
+    {
+      "word": "think.",
+      "start": 13.96,
+      "end": 14.24
+    }
+  ],
+  "duration": 14.24
+}

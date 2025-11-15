@@ -1,0 +1,78 @@
+{
+  "audio_file": "sample_0448.flac",
+  "wav_file": "sample_0448.wav",
+  "transcript": "His scared eyes blazed with indignation. It would hurt terribly. His mouth dropped open.",
+  "word_timings": [
+    {
+      "word": "His",
+      "start": 0.0,
+      "end": 0.36
+    },
+    {
+      "word": "scared",
+      "start": 0.36,
+      "end": 0.68
+    },
+    {
+      "word": "eyes",
+      "start": 0.68,
+      "end": 1.06
+    },
+    {
+      "word": "blazed",
+      "start": 1.06,
+      "end": 1.58
+    },
+    {
+      "word": "with",
+      "start": 1.58,
+      "end": 1.68
+    },
+    {
+      "word": "indignation.",
+      "start": 1.68,
+      "end": 2.26
+    },
+    {
+      "word": "It",
+      "start": 2.64,
+      "end": 2.74
+    },
+    {
+      "word": "would",
+      "start": 2.74,
+      "end": 2.84
+    },
+    {
+      "word": "hurt",
+      "start": 2.84,
+      "end": 3.04
+    },
+    {
+      "word": "terribly.",
+      "start": 3.04,
+      "end": 3.58
+    },
+    {
+      "word": "His",
+      "start": 4.1,
+      "end": 4.32
+    },
+    {
+      "word": "mouth",
+      "start": 4.32,
+      "end": 4.54
+    },
+    {
+      "word": "dropped",
+      "start": 4.54,
+      "end": 4.84
+    },
+    {
+      "word": "open.",
+      "start": 4.84,
+      "end": 5.22
+    }
+  ],
+  "duration": 5.22
+}

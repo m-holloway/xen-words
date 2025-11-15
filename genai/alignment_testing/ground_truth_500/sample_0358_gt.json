@@ -1,0 +1,43 @@
+{
+  "audio_file": "sample_0358.flac",
+  "wav_file": "sample_0358.wav",
+  "transcript": "I've decided to enlist in the army.",
+  "word_timings": [
+    {
+      "word": "I've",
+      "start": 0.0,
+      "end": 0.68
+    },
+    {
+      "word": "decided",
+      "start": 0.68,
+      "end": 0.94
+    },
+    {
+      "word": "to",
+      "start": 0.94,
+      "end": 1.18
+    },
+    {
+      "word": "enlist",
+      "start": 1.18,
+      "end": 1.44
+    },
+    {
+      "word": "in",
+      "start": 1.44,
+      "end": 1.62
+    },
+    {
+      "word": "the",
+      "start": 1.62,
+      "end": 1.72
+    },
+    {
+      "word": "army.",
+      "start": 1.72,
+      "end": 1.96
+    }
+  ],
+  "duration": 1.96
+}

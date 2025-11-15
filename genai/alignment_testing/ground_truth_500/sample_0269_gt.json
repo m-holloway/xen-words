@@ -1,0 +1,73 @@
+{
+  "audio_file": "sample_0269.flac",
+  "wav_file": "sample_0269.wav",
+  "transcript": "A perfect blaze of close range musketry to move them down like grass.",
+  "word_timings": [
+    {
+      "word": "A",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "perfect",
+      "start": 0.62,
+      "end": 0.98
+    },
+    {
+      "word": "blaze",
+      "start": 0.98,
+      "end": 1.48
+    },
+    {
+      "word": "of",
+      "start": 1.48,
+      "end": 1.56
+    },
+    {
+      "word": "close",
+      "start": 1.56,
+      "end": 1.84
+    },
+    {
+      "word": "range",
+      "start": 1.84,
+      "end": 2.26
+    },
+    {
+      "word": "musketry",
+      "start": 2.26,
+      "end": 2.92
+    },
+    {
+      "word": "to",
+      "start": 2.92,
+      "end": 3.32
+    },
+    {
+      "word": "move",
+      "start": 3.32,
+      "end": 3.62
+    },
+    {
+      "word": "them",
+      "start": 3.62,
+      "end": 3.88
+    },
+    {
+      "word": "down",
+      "start": 3.88,
+      "end": 4.14
+    },
+    {
+      "word": "like",
+      "start": 4.14,
+      "end": 4.36
+    },
+    {
+      "word": "grass.",
+      "start": 4.36,
+      "end": 4.64
+    }
+  ],
+  "duration": 4.64
+}

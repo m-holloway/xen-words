@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0305.flac",
+  "wav_file": "sample_0305.wav",
+  "transcript": "I noticed how white and well shaped his own hands were.",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.48
+    },
+    {
+      "word": "noticed",
+      "start": 0.48,
+      "end": 0.72
+    },
+    {
+      "word": "how",
+      "start": 0.72,
+      "end": 1.06
+    },
+    {
+      "word": "white",
+      "start": 1.06,
+      "end": 1.38
+    },
+    {
+      "word": "and",
+      "start": 1.38,
+      "end": 1.56
+    },
+    {
+      "word": "well",
+      "start": 1.56,
+      "end": 1.72
+    },
+    {
+      "word": "shaped",
+      "start": 1.72,
+      "end": 2.0
+    },
+    {
+      "word": "his",
+      "start": 2.0,
+      "end": 2.26
+    },
+    {
+      "word": "own",
+      "start": 2.26,
+      "end": 2.44
+    },
+    {
+      "word": "hands",
+      "start": 2.44,
+      "end": 2.72
+    },
+    {
+      "word": "were.",
+      "start": 2.72,
+      "end": 2.92
+    }
+  ],
+  "duration": 2.92
+}

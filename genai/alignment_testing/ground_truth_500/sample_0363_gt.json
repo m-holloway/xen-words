@@ -1,0 +1,43 @@
+{
+  "audio_file": "sample_0363.flac",
+  "wav_file": "sample_0363.wav",
+  "transcript": "Pop goes right on tuning his channel.",
+  "word_timings": [
+    {
+      "word": "Pop",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "goes",
+      "start": 0.62,
+      "end": 0.88
+    },
+    {
+      "word": "right",
+      "start": 0.88,
+      "end": 1.1
+    },
+    {
+      "word": "on",
+      "start": 1.1,
+      "end": 1.3
+    },
+    {
+      "word": "tuning",
+      "start": 1.3,
+      "end": 1.58
+    },
+    {
+      "word": "his",
+      "start": 1.58,
+      "end": 1.82
+    },
+    {
+      "word": "channel.",
+      "start": 1.82,
+      "end": 2.14
+    }
+  ],
+  "duration": 2.14
+}

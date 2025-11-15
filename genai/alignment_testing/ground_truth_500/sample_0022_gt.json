@@ -1,0 +1,83 @@
+{
+  "audio_file": "sample_0022.flac",
+  "wav_file": "sample_0022.wav",
+  "transcript": "Something had to be done. A climax was near and she would not sit idle.",
+  "word_timings": [
+    {
+      "word": "Something",
+      "start": 0.0,
+      "end": 0.5
+    },
+    {
+      "word": "had",
+      "start": 0.5,
+      "end": 0.7
+    },
+    {
+      "word": "to",
+      "start": 0.7,
+      "end": 0.84
+    },
+    {
+      "word": "be",
+      "start": 0.84,
+      "end": 0.96
+    },
+    {
+      "word": "done.",
+      "start": 0.96,
+      "end": 1.18
+    },
+    {
+      "word": "A",
+      "start": 1.36,
+      "end": 1.42
+    },
+    {
+      "word": "climax",
+      "start": 1.42,
+      "end": 1.72
+    },
+    {
+      "word": "was",
+      "start": 1.72,
+      "end": 2.04
+    },
+    {
+      "word": "near",
+      "start": 2.04,
+      "end": 2.22
+    },
+    {
+      "word": "and",
+      "start": 2.22,
+      "end": 2.46
+    },
+    {
+      "word": "she",
+      "start": 2.46,
+      "end": 2.64
+    },
+    {
+      "word": "would",
+      "start": 2.64,
+      "end": 2.76
+    },
+    {
+      "word": "not",
+      "start": 2.76,
+      "end": 2.9
+    },
+    {
+      "word": "sit",
+      "start": 2.9,
+      "end": 3.14
+    },
+    {
+      "word": "idle.",
+      "start": 3.14,
+      "end": 3.46
+    }
+  ],
+  "duration": 3.46
+}

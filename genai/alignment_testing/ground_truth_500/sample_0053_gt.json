@@ -1,0 +1,168 @@
+{
+  "audio_file": "sample_0053.flac",
+  "wav_file": "sample_0053.wav",
+  "transcript": "He did manage to bring himself into the mood to go out to carry. But when he got in Ogden Place, he thought he saw a man watching him and went away.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.24
+    },
+    {
+      "word": "did",
+      "start": 0.24,
+      "end": 0.44
+    },
+    {
+      "word": "manage",
+      "start": 0.44,
+      "end": 0.74
+    },
+    {
+      "word": "to",
+      "start": 0.74,
+      "end": 0.96
+    },
+    {
+      "word": "bring",
+      "start": 0.96,
+      "end": 1.08
+    },
+    {
+      "word": "himself",
+      "start": 1.08,
+      "end": 1.42
+    },
+    {
+      "word": "into",
+      "start": 1.42,
+      "end": 1.78
+    },
+    {
+      "word": "the",
+      "start": 1.78,
+      "end": 1.96
+    },
+    {
+      "word": "mood",
+      "start": 1.96,
+      "end": 2.14
+    },
+    {
+      "word": "to",
+      "start": 2.14,
+      "end": 2.36
+    },
+    {
+      "word": "go",
+      "start": 2.36,
+      "end": 2.52
+    },
+    {
+      "word": "out",
+      "start": 2.52,
+      "end": 2.68
+    },
+    {
+      "word": "to",
+      "start": 2.68,
+      "end": 2.84
+    },
+    {
+      "word": "carry.",
+      "start": 2.84,
+      "end": 3.1
+    },
+    {
+      "word": "But",
+      "start": 3.56,
+      "end": 3.68
+    },
+    {
+      "word": "when",
+      "start": 3.68,
+      "end": 3.8
+    },
+    {
+      "word": "he",
+      "start": 3.8,
+      "end": 3.92
+    },
+    {
+      "word": "got",
+      "start": 3.92,
+      "end": 4.06
+    },
+    {
+      "word": "in",
+      "start": 4.06,
+      "end": 4.28
+    },
+    {
+      "word": "Ogden",
+      "start": 4.28,
+      "end": 4.64
+    },
+    {
+      "word": "Place,",
+      "start": 4.64,
+      "end": 4.92
+    },
+    {
+      "word": "he",
+      "start": 5.18,
+      "end": 5.22
+    },
+    {
+      "word": "thought",
+      "start": 5.22,
+      "end": 5.4
+    },
+    {
+      "word": "he",
+      "start": 5.4,
+      "end": 5.56
+    },
+    {
+      "word": "saw",
+      "start": 5.56,
+      "end": 5.74
+    },
+    {
+      "word": "a",
+      "start": 5.74,
+      "end": 5.88
+    },
+    {
+      "word": "man",
+      "start": 5.88,
+      "end": 6.0
+    },
+    {
+      "word": "watching",
+      "start": 6.0,
+      "end": 6.36
+    },
+    {
+      "word": "him",
+      "start": 6.36,
+      "end": 6.58
+    },
+    {
+      "word": "and",
+      "start": 6.58,
+      "end": 6.78
+    },
+    {
+      "word": "went",
+      "start": 6.78,
+      "end": 6.92
+    },
+    {
+      "word": "away.",
+      "start": 6.92,
+      "end": 7.18
+    }
+  ],
+  "duration": 7.18
+}

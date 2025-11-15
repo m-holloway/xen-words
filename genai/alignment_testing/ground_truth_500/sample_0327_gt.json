@@ -1,0 +1,93 @@
+{
+  "audio_file": "sample_0327.flac",
+  "wav_file": "sample_0327.wav",
+  "transcript": "She pointed into the gold cottonwood tree behind his top we stood and said again, what name?",
+  "word_timings": [
+    {
+      "word": "She",
+      "start": 0.0,
+      "end": 0.58
+    },
+    {
+      "word": "pointed",
+      "start": 0.58,
+      "end": 0.9
+    },
+    {
+      "word": "into",
+      "start": 0.9,
+      "end": 1.26
+    },
+    {
+      "word": "the",
+      "start": 1.26,
+      "end": 1.46
+    },
+    {
+      "word": "gold",
+      "start": 1.46,
+      "end": 1.74
+    },
+    {
+      "word": "cottonwood",
+      "start": 1.74,
+      "end": 2.34
+    },
+    {
+      "word": "tree",
+      "start": 2.34,
+      "end": 2.6
+    },
+    {
+      "word": "behind",
+      "start": 2.6,
+      "end": 3.04
+    },
+    {
+      "word": "his",
+      "start": 3.04,
+      "end": 3.36
+    },
+    {
+      "word": "top",
+      "start": 3.36,
+      "end": 3.7
+    },
+    {
+      "word": "we",
+      "start": 3.7,
+      "end": 3.92
+    },
+    {
+      "word": "stood",
+      "start": 3.92,
+      "end": 4.2
+    },
+    {
+      "word": "and",
+      "start": 4.2,
+      "end": 5.2
+    },
+    {
+      "word": "said",
+      "start": 5.2,
+      "end": 5.38
+    },
+    {
+      "word": "again,",
+      "start": 5.38,
+      "end": 5.76
+    },
+    {
+      "word": "what",
+      "start": 6.0,
+      "end": 6.68
+    },
+    {
+      "word": "name?",
+      "start": 6.68,
+      "end": 6.92
+    }
+  ],
+  "duration": 6.92
+}

@@ -1,0 +1,48 @@
+{
+  "audio_file": "sample_0163.flac",
+  "wav_file": "sample_0163.wav",
+  "transcript": "The sick man raged and shook his fist.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.64
+    },
+    {
+      "word": "sick",
+      "start": 0.64,
+      "end": 0.88
+    },
+    {
+      "word": "man",
+      "start": 0.88,
+      "end": 1.12
+    },
+    {
+      "word": "raged",
+      "start": 1.12,
+      "end": 1.58
+    },
+    {
+      "word": "and",
+      "start": 1.58,
+      "end": 1.76
+    },
+    {
+      "word": "shook",
+      "start": 1.76,
+      "end": 1.98
+    },
+    {
+      "word": "his",
+      "start": 1.98,
+      "end": 2.26
+    },
+    {
+      "word": "fist.",
+      "start": 2.26,
+      "end": 2.52
+    }
+  ],
+  "duration": 2.52
+}

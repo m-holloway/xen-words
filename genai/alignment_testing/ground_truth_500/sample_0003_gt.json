@@ -1,0 +1,83 @@
+{
+  "audio_file": "sample_0003.flac",
+  "wav_file": "sample_0003.wav",
+  "transcript": "He could arrange that satisfactory for a carry would be glad to wait if necessary.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.48
+    },
+    {
+      "word": "could",
+      "start": 0.48,
+      "end": 0.62
+    },
+    {
+      "word": "arrange",
+      "start": 0.62,
+      "end": 0.88
+    },
+    {
+      "word": "that",
+      "start": 0.88,
+      "end": 1.14
+    },
+    {
+      "word": "satisfactory",
+      "start": 1.14,
+      "end": 1.6
+    },
+    {
+      "word": "for",
+      "start": 1.6,
+      "end": 2.26
+    },
+    {
+      "word": "a",
+      "start": 2.26,
+      "end": 2.48
+    },
+    {
+      "word": "carry",
+      "start": 2.48,
+      "end": 2.66
+    },
+    {
+      "word": "would",
+      "start": 2.66,
+      "end": 2.84
+    },
+    {
+      "word": "be",
+      "start": 2.84,
+      "end": 2.94
+    },
+    {
+      "word": "glad",
+      "start": 2.94,
+      "end": 3.18
+    },
+    {
+      "word": "to",
+      "start": 3.18,
+      "end": 3.38
+    },
+    {
+      "word": "wait",
+      "start": 3.38,
+      "end": 3.58
+    },
+    {
+      "word": "if",
+      "start": 3.58,
+      "end": 3.82
+    },
+    {
+      "word": "necessary.",
+      "start": 3.82,
+      "end": 4.38
+    }
+  ],
+  "duration": 4.38
+}

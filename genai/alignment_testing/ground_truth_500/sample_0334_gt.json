@@ -1,0 +1,93 @@
+{
+  "audio_file": "sample_0334.flac",
+  "wav_file": "sample_0334.wav",
+  "transcript": "Her skin was brown too, and in her cheeks she had a glow of rich dark color.",
+  "word_timings": [
+    {
+      "word": "Her",
+      "start": 0.0,
+      "end": 0.42
+    },
+    {
+      "word": "skin",
+      "start": 0.42,
+      "end": 0.64
+    },
+    {
+      "word": "was",
+      "start": 0.64,
+      "end": 0.84
+    },
+    {
+      "word": "brown",
+      "start": 0.84,
+      "end": 1.08
+    },
+    {
+      "word": "too,",
+      "start": 1.08,
+      "end": 1.4
+    },
+    {
+      "word": "and",
+      "start": 1.96,
+      "end": 2.16
+    },
+    {
+      "word": "in",
+      "start": 2.16,
+      "end": 2.26
+    },
+    {
+      "word": "her",
+      "start": 2.26,
+      "end": 2.4
+    },
+    {
+      "word": "cheeks",
+      "start": 2.4,
+      "end": 2.76
+    },
+    {
+      "word": "she",
+      "start": 2.76,
+      "end": 3.0
+    },
+    {
+      "word": "had",
+      "start": 3.0,
+      "end": 3.18
+    },
+    {
+      "word": "a",
+      "start": 3.18,
+      "end": 3.28
+    },
+    {
+      "word": "glow",
+      "start": 3.28,
+      "end": 3.48
+    },
+    {
+      "word": "of",
+      "start": 3.48,
+      "end": 3.72
+    },
+    {
+      "word": "rich",
+      "start": 3.72,
+      "end": 3.98
+    },
+    {
+      "word": "dark",
+      "start": 3.98,
+      "end": 4.28
+    },
+    {
+      "word": "color.",
+      "start": 4.28,
+      "end": 4.74
+    }
+  ],
+  "duration": 4.74
+}

@@ -1,0 +1,73 @@
+{
+  "audio_file": "sample_0070.flac",
+  "wav_file": "sample_0070.wav",
+  "transcript": "The helpless manager paced the floor and grimly endured the gloom of defeat.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.38
+    },
+    {
+      "word": "helpless",
+      "start": 0.38,
+      "end": 0.62
+    },
+    {
+      "word": "manager",
+      "start": 0.62,
+      "end": 1.22
+    },
+    {
+      "word": "paced",
+      "start": 1.22,
+      "end": 1.86
+    },
+    {
+      "word": "the",
+      "start": 1.86,
+      "end": 1.98
+    },
+    {
+      "word": "floor",
+      "start": 1.98,
+      "end": 2.18
+    },
+    {
+      "word": "and",
+      "start": 2.18,
+      "end": 2.42
+    },
+    {
+      "word": "grimly",
+      "start": 2.42,
+      "end": 2.78
+    },
+    {
+      "word": "endured",
+      "start": 2.78,
+      "end": 3.08
+    },
+    {
+      "word": "the",
+      "start": 3.08,
+      "end": 3.36
+    },
+    {
+      "word": "gloom",
+      "start": 3.36,
+      "end": 3.68
+    },
+    {
+      "word": "of",
+      "start": 3.68,
+      "end": 3.8
+    },
+    {
+      "word": "defeat.",
+      "start": 3.8,
+      "end": 4.12
+    }
+  ],
+  "duration": 4.12
+}

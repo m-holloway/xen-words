@@ -1,0 +1,88 @@
+{
+  "audio_file": "sample_0320.flac",
+  "wav_file": "sample_0320.wav",
+  "transcript": "I became somewhat embarrassed for I was used to being taken for granted by my elders.",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.48
+    },
+    {
+      "word": "became",
+      "start": 0.48,
+      "end": 0.7
+    },
+    {
+      "word": "somewhat",
+      "start": 0.7,
+      "end": 1.1
+    },
+    {
+      "word": "embarrassed",
+      "start": 1.1,
+      "end": 1.56
+    },
+    {
+      "word": "for",
+      "start": 1.56,
+      "end": 2.36
+    },
+    {
+      "word": "I",
+      "start": 2.36,
+      "end": 2.5
+    },
+    {
+      "word": "was",
+      "start": 2.5,
+      "end": 2.68
+    },
+    {
+      "word": "used",
+      "start": 2.68,
+      "end": 2.94
+    },
+    {
+      "word": "to",
+      "start": 2.94,
+      "end": 3.16
+    },
+    {
+      "word": "being",
+      "start": 3.16,
+      "end": 3.3
+    },
+    {
+      "word": "taken",
+      "start": 3.3,
+      "end": 3.66
+    },
+    {
+      "word": "for",
+      "start": 3.66,
+      "end": 3.9
+    },
+    {
+      "word": "granted",
+      "start": 3.9,
+      "end": 4.24
+    },
+    {
+      "word": "by",
+      "start": 4.24,
+      "end": 4.44
+    },
+    {
+      "word": "my",
+      "start": 4.44,
+      "end": 4.62
+    },
+    {
+      "word": "elders.",
+      "start": 4.62,
+      "end": 4.86
+    }
+  ],
+  "duration": 4.86
+}

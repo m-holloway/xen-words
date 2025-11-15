@@ -1,0 +1,58 @@
+{
+  "audio_file": "sample_0082.flac",
+  "wav_file": "sample_0082.wav",
+  "transcript": "His ambition was someday to build a house on them.",
+  "word_timings": [
+    {
+      "word": "His",
+      "start": 0.0,
+      "end": 0.48
+    },
+    {
+      "word": "ambition",
+      "start": 0.48,
+      "end": 0.88
+    },
+    {
+      "word": "was",
+      "start": 0.88,
+      "end": 1.08
+    },
+    {
+      "word": "someday",
+      "start": 1.08,
+      "end": 1.44
+    },
+    {
+      "word": "to",
+      "start": 1.44,
+      "end": 1.66
+    },
+    {
+      "word": "build",
+      "start": 1.66,
+      "end": 1.82
+    },
+    {
+      "word": "a",
+      "start": 1.82,
+      "end": 1.98
+    },
+    {
+      "word": "house",
+      "start": 1.98,
+      "end": 2.16
+    },
+    {
+      "word": "on",
+      "start": 2.16,
+      "end": 2.36
+    },
+    {
+      "word": "them.",
+      "start": 2.36,
+      "end": 2.6
+    }
+  ],
+  "duration": 2.6
+}

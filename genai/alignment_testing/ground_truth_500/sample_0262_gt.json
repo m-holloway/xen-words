@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0262.flac",
+  "wav_file": "sample_0262.wav",
+  "transcript": "15 officers of our little half regiment were dead or wounded.",
+  "word_timings": [
+    {
+      "word": "15",
+      "start": 0.0,
+      "end": 0.84
+    },
+    {
+      "word": "officers",
+      "start": 0.84,
+      "end": 1.54
+    },
+    {
+      "word": "of",
+      "start": 1.54,
+      "end": 1.86
+    },
+    {
+      "word": "our",
+      "start": 1.86,
+      "end": 2.0
+    },
+    {
+      "word": "little",
+      "start": 2.0,
+      "end": 2.24
+    },
+    {
+      "word": "half",
+      "start": 2.24,
+      "end": 2.54
+    },
+    {
+      "word": "regiment",
+      "start": 2.54,
+      "end": 2.98
+    },
+    {
+      "word": "were",
+      "start": 2.98,
+      "end": 3.26
+    },
+    {
+      "word": "dead",
+      "start": 3.26,
+      "end": 3.5
+    },
+    {
+      "word": "or",
+      "start": 3.5,
+      "end": 3.66
+    },
+    {
+      "word": "wounded.",
+      "start": 3.66,
+      "end": 4.0
+    }
+  ],
+  "duration": 4.0
+}

@@ -1,0 +1,93 @@
+{
+  "audio_file": "sample_0399.flac",
+  "wav_file": "sample_0399.wav",
+  "transcript": "Mr. Verlox and Zioides had prevented him from attaching any sense to what his wife was saying.",
+  "word_timings": [
+    {
+      "word": "Mr.",
+      "start": 0.0,
+      "end": 0.58
+    },
+    {
+      "word": "Verlox",
+      "start": 0.7,
+      "end": 1.12
+    },
+    {
+      "word": "and",
+      "start": 1.12,
+      "end": 1.32
+    },
+    {
+      "word": "Zioides",
+      "start": 1.32,
+      "end": 1.78
+    },
+    {
+      "word": "had",
+      "start": 1.78,
+      "end": 1.94
+    },
+    {
+      "word": "prevented",
+      "start": 1.94,
+      "end": 2.24
+    },
+    {
+      "word": "him",
+      "start": 2.24,
+      "end": 2.48
+    },
+    {
+      "word": "from",
+      "start": 2.48,
+      "end": 2.64
+    },
+    {
+      "word": "attaching",
+      "start": 2.64,
+      "end": 3.1
+    },
+    {
+      "word": "any",
+      "start": 3.1,
+      "end": 3.4
+    },
+    {
+      "word": "sense",
+      "start": 3.4,
+      "end": 3.64
+    },
+    {
+      "word": "to",
+      "start": 3.64,
+      "end": 3.92
+    },
+    {
+      "word": "what",
+      "start": 3.92,
+      "end": 4.04
+    },
+    {
+      "word": "his",
+      "start": 4.04,
+      "end": 4.18
+    },
+    {
+      "word": "wife",
+      "start": 4.18,
+      "end": 4.38
+    },
+    {
+      "word": "was",
+      "start": 4.38,
+      "end": 4.54
+    },
+    {
+      "word": "saying.",
+      "start": 4.54,
+      "end": 4.86
+    }
+  ],
+  "duration": 4.86
+}

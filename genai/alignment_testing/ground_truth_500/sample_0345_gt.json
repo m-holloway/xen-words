@@ -1,0 +1,233 @@
+{
+  "audio_file": "sample_0345.flac",
+  "wav_file": "sample_0345.wav",
+  "transcript": "These persons then, displayed towards each other, precisely the same pure-all jealousies which animate the men of democracies, the same eagerness to snatch the small advantages which are equals contested, and the same desire to parade ostentatiously those of which they were in possession.",
+  "word_timings": [
+    {
+      "word": "These",
+      "start": 0.0,
+      "end": 0.56
+    },
+    {
+      "word": "persons",
+      "start": 0.56,
+      "end": 1.04
+    },
+    {
+      "word": "then,",
+      "start": 1.04,
+      "end": 1.46
+    },
+    {
+      "word": "displayed",
+      "start": 1.8,
+      "end": 2.12
+    },
+    {
+      "word": "towards",
+      "start": 2.12,
+      "end": 2.48
+    },
+    {
+      "word": "each",
+      "start": 2.48,
+      "end": 2.78
+    },
+    {
+      "word": "other,",
+      "start": 2.78,
+      "end": 3.02
+    },
+    {
+      "word": "precisely",
+      "start": 3.3,
+      "end": 3.62
+    },
+    {
+      "word": "the",
+      "start": 3.62,
+      "end": 3.92
+    },
+    {
+      "word": "same",
+      "start": 3.92,
+      "end": 4.28
+    },
+    {
+      "word": "pure",
+      "start": 4.28,
+      "end": 4.54
+    },
+    {
+      "word": "-all",
+      "start": 4.54,
+      "end": 4.84
+    },
+    {
+      "word": "jealousies",
+      "start": 4.84,
+      "end": 5.54
+    },
+    {
+      "word": "which",
+      "start": 5.54,
+      "end": 5.88
+    },
+    {
+      "word": "animate",
+      "start": 5.88,
+      "end": 6.24
+    },
+    {
+      "word": "the",
+      "start": 6.24,
+      "end": 6.48
+    },
+    {
+      "word": "men",
+      "start": 6.48,
+      "end": 6.66
+    },
+    {
+      "word": "of",
+      "start": 6.66,
+      "end": 6.8
+    },
+    {
+      "word": "democracies,",
+      "start": 6.8,
+      "end": 7.38
+    },
+    {
+      "word": "the",
+      "start": 7.92,
+      "end": 8.12
+    },
+    {
+      "word": "same",
+      "start": 8.12,
+      "end": 8.5
+    },
+    {
+      "word": "eagerness",
+      "start": 8.5,
+      "end": 8.84
+    },
+    {
+      "word": "to",
+      "start": 8.84,
+      "end": 9.06
+    },
+    {
+      "word": "snatch",
+      "start": 9.06,
+      "end": 9.36
+    },
+    {
+      "word": "the",
+      "start": 9.36,
+      "end": 9.6
+    },
+    {
+      "word": "small",
+      "start": 9.6,
+      "end": 9.86
+    },
+    {
+      "word": "advantages",
+      "start": 9.86,
+      "end": 10.44
+    },
+    {
+      "word": "which",
+      "start": 10.44,
+      "end": 11.02
+    },
+    {
+      "word": "are",
+      "start": 11.02,
+      "end": 11.16
+    },
+    {
+      "word": "equals",
+      "start": 11.16,
+      "end": 11.5
+    },
+    {
+      "word": "contested,",
+      "start": 11.5,
+      "end": 12.16
+    },
+    {
+      "word": "and",
+      "start": 12.52,
+      "end": 12.78
+    },
+    {
+      "word": "the",
+      "start": 12.78,
+      "end": 12.94
+    },
+    {
+      "word": "same",
+      "start": 12.94,
+      "end": 13.18
+    },
+    {
+      "word": "desire",
+      "start": 13.18,
+      "end": 13.52
+    },
+    {
+      "word": "to",
+      "start": 13.52,
+      "end": 13.76
+    },
+    {
+      "word": "parade",
+      "start": 13.76,
+      "end": 14.14
+    },
+    {
+      "word": "ostentatiously",
+      "start": 14.14,
+      "end": 15.12
+    },
+    {
+      "word": "those",
+      "start": 15.12,
+      "end": 15.66
+    },
+    {
+      "word": "of",
+      "start": 15.66,
+      "end": 15.88
+    },
+    {
+      "word": "which",
+      "start": 15.88,
+      "end": 16.04
+    },
+    {
+      "word": "they",
+      "start": 16.04,
+      "end": 16.26
+    },
+    {
+      "word": "were",
+      "start": 16.26,
+      "end": 16.4
+    },
+    {
+      "word": "in",
+      "start": 16.4,
+      "end": 16.5
+    },
+    {
+      "word": "possession.",
+      "start": 16.5,
+      "end": 16.84
+    }
+  ],
+  "duration": 16.84
+}

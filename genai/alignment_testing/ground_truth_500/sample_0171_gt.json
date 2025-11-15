@@ -1,0 +1,23 @@
+{
+  "audio_file": "sample_0171.flac",
+  "wav_file": "sample_0171.wav",
+  "transcript": "20, 30, enough.",
+  "word_timings": [
+    {
+      "word": "20,",
+      "start": 0.0,
+      "end": 0.82
+    },
+    {
+      "word": "30,",
+      "start": 1.08,
+      "end": 1.44
+    },
+    {
+      "word": "enough.",
+      "start": 1.72,
+      "end": 1.86
+    }
+  ],
+  "duration": 1.86
+}

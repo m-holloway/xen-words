@@ -1,0 +1,68 @@
+{
+  "audio_file": "sample_0009.flac",
+  "wav_file": "sample_0009.wav",
+  "transcript": "Hurst would almost explain out loud at the insistency of this thing.",
+  "word_timings": [
+    {
+      "word": "Hurst",
+      "start": 0.0,
+      "end": 0.48
+    },
+    {
+      "word": "would",
+      "start": 0.48,
+      "end": 0.6
+    },
+    {
+      "word": "almost",
+      "start": 0.6,
+      "end": 0.86
+    },
+    {
+      "word": "explain",
+      "start": 0.86,
+      "end": 1.26
+    },
+    {
+      "word": "out",
+      "start": 1.26,
+      "end": 1.54
+    },
+    {
+      "word": "loud",
+      "start": 1.54,
+      "end": 1.8
+    },
+    {
+      "word": "at",
+      "start": 1.8,
+      "end": 1.98
+    },
+    {
+      "word": "the",
+      "start": 1.98,
+      "end": 2.1
+    },
+    {
+      "word": "insistency",
+      "start": 2.1,
+      "end": 2.72
+    },
+    {
+      "word": "of",
+      "start": 2.72,
+      "end": 2.88
+    },
+    {
+      "word": "this",
+      "start": 2.88,
+      "end": 3.08
+    },
+    {
+      "word": "thing.",
+      "start": 3.08,
+      "end": 3.28
+    }
+  ],
+  "duration": 3.28
+}

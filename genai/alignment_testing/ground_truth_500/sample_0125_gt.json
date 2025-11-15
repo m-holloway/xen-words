@@ -1,0 +1,108 @@
+{
+  "audio_file": "sample_0125.flac",
+  "wav_file": "sample_0125.wav",
+  "transcript": "The Kingdom of Northumbria, as the name implies, embraced nearly all the country from the Humber to the Pictish border.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "Kingdom",
+      "start": 0.62,
+      "end": 0.88
+    },
+    {
+      "word": "of",
+      "start": 0.88,
+      "end": 1.12
+    },
+    {
+      "word": "Northumbria,",
+      "start": 1.12,
+      "end": 1.72
+    },
+    {
+      "word": "as",
+      "start": 1.88,
+      "end": 2.0
+    },
+    {
+      "word": "the",
+      "start": 2.0,
+      "end": 2.1
+    },
+    {
+      "word": "name",
+      "start": 2.1,
+      "end": 2.26
+    },
+    {
+      "word": "implies,",
+      "start": 2.26,
+      "end": 2.82
+    },
+    {
+      "word": "embraced",
+      "start": 3.48,
+      "end": 3.7
+    },
+    {
+      "word": "nearly",
+      "start": 3.7,
+      "end": 4.08
+    },
+    {
+      "word": "all",
+      "start": 4.08,
+      "end": 4.52
+    },
+    {
+      "word": "the",
+      "start": 4.52,
+      "end": 4.7
+    },
+    {
+      "word": "country",
+      "start": 4.7,
+      "end": 5.06
+    },
+    {
+      "word": "from",
+      "start": 5.06,
+      "end": 5.3
+    },
+    {
+      "word": "the",
+      "start": 5.3,
+      "end": 5.48
+    },
+    {
+      "word": "Humber",
+      "start": 5.48,
+      "end": 5.78
+    },
+    {
+      "word": "to",
+      "start": 5.78,
+      "end": 6.0
+    },
+    {
+      "word": "the",
+      "start": 6.0,
+      "end": 6.12
+    },
+    {
+      "word": "Pictish",
+      "start": 6.12,
+      "end": 6.56
+    },
+    {
+      "word": "border.",
+      "start": 6.56,
+      "end": 6.92
+    }
+  ],
+  "duration": 6.92
+}

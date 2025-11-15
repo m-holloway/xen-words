@@ -1,0 +1,73 @@
+{
+  "audio_file": "sample_0143.flac",
+  "wav_file": "sample_0143.wav",
+  "transcript": "Antony's father uncovered one of his long, bony legs and rubbed it rhythmically.",
+  "word_timings": [
+    {
+      "word": "Antony's",
+      "start": 0.0,
+      "end": 1.0
+    },
+    {
+      "word": "father",
+      "start": 1.0,
+      "end": 1.34
+    },
+    {
+      "word": "uncovered",
+      "start": 1.34,
+      "end": 1.8
+    },
+    {
+      "word": "one",
+      "start": 1.8,
+      "end": 2.14
+    },
+    {
+      "word": "of",
+      "start": 2.14,
+      "end": 2.24
+    },
+    {
+      "word": "his",
+      "start": 2.24,
+      "end": 2.38
+    },
+    {
+      "word": "long,",
+      "start": 2.38,
+      "end": 2.62
+    },
+    {
+      "word": "bony",
+      "start": 2.78,
+      "end": 2.98
+    },
+    {
+      "word": "legs",
+      "start": 2.98,
+      "end": 3.28
+    },
+    {
+      "word": "and",
+      "start": 3.28,
+      "end": 3.54
+    },
+    {
+      "word": "rubbed",
+      "start": 3.54,
+      "end": 3.84
+    },
+    {
+      "word": "it",
+      "start": 3.84,
+      "end": 3.92
+    },
+    {
+      "word": "rhythmically.",
+      "start": 3.92,
+      "end": 4.46
+    }
+  ],
+  "duration": 4.46
+}

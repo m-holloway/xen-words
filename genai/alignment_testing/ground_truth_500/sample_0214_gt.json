@@ -1,0 +1,98 @@
+{
+  "audio_file": "sample_0214.flac",
+  "wav_file": "sample_0214.wav",
+  "transcript": "I can assure you that this is a modern face and one which you will very probably meet.",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.6
+    },
+    {
+      "word": "can",
+      "start": 0.6,
+      "end": 0.74
+    },
+    {
+      "word": "assure",
+      "start": 0.74,
+      "end": 1.0
+    },
+    {
+      "word": "you",
+      "start": 1.0,
+      "end": 1.2
+    },
+    {
+      "word": "that",
+      "start": 1.2,
+      "end": 1.34
+    },
+    {
+      "word": "this",
+      "start": 1.34,
+      "end": 1.54
+    },
+    {
+      "word": "is",
+      "start": 1.54,
+      "end": 1.68
+    },
+    {
+      "word": "a",
+      "start": 1.68,
+      "end": 1.82
+    },
+    {
+      "word": "modern",
+      "start": 1.82,
+      "end": 2.06
+    },
+    {
+      "word": "face",
+      "start": 2.06,
+      "end": 2.4
+    },
+    {
+      "word": "and",
+      "start": 2.4,
+      "end": 3.16
+    },
+    {
+      "word": "one",
+      "start": 3.16,
+      "end": 3.4
+    },
+    {
+      "word": "which",
+      "start": 3.4,
+      "end": 3.68
+    },
+    {
+      "word": "you",
+      "start": 3.68,
+      "end": 3.78
+    },
+    {
+      "word": "will",
+      "start": 3.78,
+      "end": 3.9
+    },
+    {
+      "word": "very",
+      "start": 3.9,
+      "end": 4.06
+    },
+    {
+      "word": "probably",
+      "start": 4.06,
+      "end": 4.46
+    },
+    {
+      "word": "meet.",
+      "start": 4.46,
+      "end": 4.82
+    }
+  ],
+  "duration": 4.82
+}

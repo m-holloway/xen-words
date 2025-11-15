@@ -1,0 +1,118 @@
+{
+  "audio_file": "sample_0010.flac",
+  "wav_file": "sample_0010.wav",
+  "transcript": "He would see how things turned out tomorrow and then he would talk to her. They were going to meet as usual",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.5
+    },
+    {
+      "word": "would",
+      "start": 0.5,
+      "end": 0.64
+    },
+    {
+      "word": "see",
+      "start": 0.64,
+      "end": 0.86
+    },
+    {
+      "word": "how",
+      "start": 0.86,
+      "end": 1.06
+    },
+    {
+      "word": "things",
+      "start": 1.06,
+      "end": 1.26
+    },
+    {
+      "word": "turned",
+      "start": 1.26,
+      "end": 1.48
+    },
+    {
+      "word": "out",
+      "start": 1.48,
+      "end": 1.66
+    },
+    {
+      "word": "tomorrow",
+      "start": 1.66,
+      "end": 1.98
+    },
+    {
+      "word": "and",
+      "start": 1.98,
+      "end": 2.42
+    },
+    {
+      "word": "then",
+      "start": 2.42,
+      "end": 2.56
+    },
+    {
+      "word": "he",
+      "start": 2.56,
+      "end": 2.72
+    },
+    {
+      "word": "would",
+      "start": 2.72,
+      "end": 2.8
+    },
+    {
+      "word": "talk",
+      "start": 2.8,
+      "end": 2.98
+    },
+    {
+      "word": "to",
+      "start": 2.98,
+      "end": 3.2
+    },
+    {
+      "word": "her.",
+      "start": 3.2,
+      "end": 3.38
+    },
+    {
+      "word": "They",
+      "start": 3.62,
+      "end": 3.88
+    },
+    {
+      "word": "were",
+      "start": 3.88,
+      "end": 3.98
+    },
+    {
+      "word": "going",
+      "start": 3.98,
+      "end": 4.12
+    },
+    {
+      "word": "to",
+      "start": 4.12,
+      "end": 4.26
+    },
+    {
+      "word": "meet",
+      "start": 4.26,
+      "end": 4.42
+    },
+    {
+      "word": "as",
+      "start": 4.42,
+      "end": 4.64
+    },
+    {
+      "word": "usual",
+      "start": 4.64,
+      "end": 4.98
+    }
+  ],
+  "duration": 4.98
+}

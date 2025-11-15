@@ -1,0 +1,108 @@
+{
+  "audio_file": "sample_0460.flac",
+  "wav_file": "sample_0460.wav",
+  "transcript": "The possessors of property had not only the face they awaken polyteriot, but they had also defied amongst themselves. Yes.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.58
+    },
+    {
+      "word": "possessors",
+      "start": 0.58,
+      "end": 0.96
+    },
+    {
+      "word": "of",
+      "start": 0.96,
+      "end": 1.06
+    },
+    {
+      "word": "property",
+      "start": 1.06,
+      "end": 1.46
+    },
+    {
+      "word": "had",
+      "start": 1.46,
+      "end": 1.74
+    },
+    {
+      "word": "not",
+      "start": 1.74,
+      "end": 1.88
+    },
+    {
+      "word": "only",
+      "start": 1.88,
+      "end": 2.1
+    },
+    {
+      "word": "the",
+      "start": 2.1,
+      "end": 2.24
+    },
+    {
+      "word": "face",
+      "start": 2.24,
+      "end": 2.44
+    },
+    {
+      "word": "they",
+      "start": 2.44,
+      "end": 2.64
+    },
+    {
+      "word": "awaken",
+      "start": 2.64,
+      "end": 2.94
+    },
+    {
+      "word": "polyteriot,",
+      "start": 2.94,
+      "end": 3.76
+    },
+    {
+      "word": "but",
+      "start": 4.22,
+      "end": 4.38
+    },
+    {
+      "word": "they",
+      "start": 4.38,
+      "end": 4.54
+    },
+    {
+      "word": "had",
+      "start": 4.54,
+      "end": 4.7
+    },
+    {
+      "word": "also",
+      "start": 4.7,
+      "end": 5.0
+    },
+    {
+      "word": "defied",
+      "start": 5.0,
+      "end": 5.32
+    },
+    {
+      "word": "amongst",
+      "start": 5.32,
+      "end": 5.56
+    },
+    {
+      "word": "themselves.",
+      "start": 5.56,
+      "end": 5.92
+    },
+    {
+      "word": "Yes.",
+      "start": 6.72,
+      "end": 6.98
+    }
+  ],
+  "duration": 6.98
+}

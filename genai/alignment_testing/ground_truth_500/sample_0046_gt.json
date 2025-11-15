@@ -1,0 +1,123 @@
+{
+  "audio_file": "sample_0046.flac",
+  "wav_file": "sample_0046.wav",
+  "transcript": "You take this to this address,\" he said, handing him the envelope, and give it to Mrs. Hurstwood. Yes, sir, said the boy.",
+  "word_timings": [
+    {
+      "word": "You",
+      "start": 0.0,
+      "end": 0.56
+    },
+    {
+      "word": "take",
+      "start": 0.56,
+      "end": 0.8
+    },
+    {
+      "word": "this",
+      "start": 0.8,
+      "end": 1.08
+    },
+    {
+      "word": "to",
+      "start": 1.08,
+      "end": 1.32
+    },
+    {
+      "word": "this",
+      "start": 1.32,
+      "end": 1.54
+    },
+    {
+      "word": "address,\"",
+      "start": 1.54,
+      "end": 2.08
+    },
+    {
+      "word": "he",
+      "start": 2.08,
+      "end": 2.1
+    },
+    {
+      "word": "said,",
+      "start": 2.1,
+      "end": 2.3
+    },
+    {
+      "word": "handing",
+      "start": 2.74,
+      "end": 2.92
+    },
+    {
+      "word": "him",
+      "start": 2.92,
+      "end": 3.1
+    },
+    {
+      "word": "the",
+      "start": 3.1,
+      "end": 3.26
+    },
+    {
+      "word": "envelope,",
+      "start": 3.26,
+      "end": 3.56
+    },
+    {
+      "word": "and",
+      "start": 4.02,
+      "end": 4.2
+    },
+    {
+      "word": "give",
+      "start": 4.2,
+      "end": 4.34
+    },
+    {
+      "word": "it",
+      "start": 4.34,
+      "end": 4.5
+    },
+    {
+      "word": "to",
+      "start": 4.5,
+      "end": 4.6
+    },
+    {
+      "word": "Mrs.",
+      "start": 4.6,
+      "end": 4.8
+    },
+    {
+      "word": "Hurstwood.",
+      "start": 5.02,
+      "end": 5.32
+    },
+    {
+      "word": "Yes,",
+      "start": 6.040000000000001,
+      "end": 6.4
+    },
+    {
+      "word": "sir,",
+      "start": 6.58,
+      "end": 6.68
+    },
+    {
+      "word": "said",
+      "start": 6.86,
+      "end": 6.94
+    },
+    {
+      "word": "the",
+      "start": 6.94,
+      "end": 7.06
+    },
+    {
+      "word": "boy.",
+      "start": 7.06,
+      "end": 7.24
+    }
+  ],
+  "duration": 7.24
+}

@@ -1,0 +1,73 @@
+{
+  "audio_file": "sample_0357.flac",
+  "wav_file": "sample_0357.wav",
+  "transcript": "You're getting altogether too upset about these programs. Stop it and behave yourself.",
+  "word_timings": [
+    {
+      "word": "You're",
+      "start": 0.0,
+      "end": 0.48
+    },
+    {
+      "word": "getting",
+      "start": 0.48,
+      "end": 0.64
+    },
+    {
+      "word": "altogether",
+      "start": 0.64,
+      "end": 1.14
+    },
+    {
+      "word": "too",
+      "start": 1.14,
+      "end": 1.44
+    },
+    {
+      "word": "upset",
+      "start": 1.44,
+      "end": 1.74
+    },
+    {
+      "word": "about",
+      "start": 1.74,
+      "end": 2.0
+    },
+    {
+      "word": "these",
+      "start": 2.0,
+      "end": 2.2
+    },
+    {
+      "word": "programs.",
+      "start": 2.2,
+      "end": 2.6
+    },
+    {
+      "word": "Stop",
+      "start": 3.02,
+      "end": 3.2
+    },
+    {
+      "word": "it",
+      "start": 3.2,
+      "end": 3.36
+    },
+    {
+      "word": "and",
+      "start": 3.36,
+      "end": 3.46
+    },
+    {
+      "word": "behave",
+      "start": 3.46,
+      "end": 3.68
+    },
+    {
+      "word": "yourself.",
+      "start": 3.68,
+      "end": 4.08
+    }
+  ],
+  "duration": 4.08
+}

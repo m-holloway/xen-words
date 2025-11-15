@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0021.flac",
+  "wav_file": "sample_0021.wav",
+  "transcript": "He put on his hat and looked around for his umbrella.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "put",
+      "start": 0.62,
+      "end": 0.76
+    },
+    {
+      "word": "on",
+      "start": 0.76,
+      "end": 0.92
+    },
+    {
+      "word": "his",
+      "start": 0.92,
+      "end": 1.08
+    },
+    {
+      "word": "hat",
+      "start": 1.08,
+      "end": 1.24
+    },
+    {
+      "word": "and",
+      "start": 1.24,
+      "end": 1.46
+    },
+    {
+      "word": "looked",
+      "start": 1.46,
+      "end": 1.56
+    },
+    {
+      "word": "around",
+      "start": 1.56,
+      "end": 1.86
+    },
+    {
+      "word": "for",
+      "start": 1.86,
+      "end": 2.04
+    },
+    {
+      "word": "his",
+      "start": 2.04,
+      "end": 2.18
+    },
+    {
+      "word": "umbrella.",
+      "start": 2.18,
+      "end": 2.5
+    }
+  ],
+  "duration": 2.5
+}

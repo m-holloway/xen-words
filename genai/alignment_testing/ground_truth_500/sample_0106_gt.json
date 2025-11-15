@@ -1,0 +1,143 @@
+{
+  "audio_file": "sample_0106.flac",
+  "wav_file": "sample_0106.wav",
+  "transcript": "One day when I rode over to the Shmeredas, I found Antonya starting off on foot for Russian Peter's house to borrow a spade and broached needed.",
+  "word_timings": [
+    {
+      "word": "One",
+      "start": 0.0,
+      "end": 0.68
+    },
+    {
+      "word": "day",
+      "start": 0.68,
+      "end": 0.9
+    },
+    {
+      "word": "when",
+      "start": 0.9,
+      "end": 1.08
+    },
+    {
+      "word": "I",
+      "start": 1.08,
+      "end": 1.2
+    },
+    {
+      "word": "rode",
+      "start": 1.2,
+      "end": 1.34
+    },
+    {
+      "word": "over",
+      "start": 1.34,
+      "end": 1.58
+    },
+    {
+      "word": "to",
+      "start": 1.58,
+      "end": 1.72
+    },
+    {
+      "word": "the",
+      "start": 1.72,
+      "end": 1.86
+    },
+    {
+      "word": "Shmeredas,",
+      "start": 1.86,
+      "end": 2.42
+    },
+    {
+      "word": "I",
+      "start": 2.74,
+      "end": 2.76
+    },
+    {
+      "word": "found",
+      "start": 2.76,
+      "end": 3.06
+    },
+    {
+      "word": "Antonya",
+      "start": 3.06,
+      "end": 3.6
+    },
+    {
+      "word": "starting",
+      "start": 3.6,
+      "end": 3.94
+    },
+    {
+      "word": "off",
+      "start": 3.94,
+      "end": 4.26
+    },
+    {
+      "word": "on",
+      "start": 4.26,
+      "end": 4.42
+    },
+    {
+      "word": "foot",
+      "start": 4.42,
+      "end": 4.68
+    },
+    {
+      "word": "for",
+      "start": 4.68,
+      "end": 4.96
+    },
+    {
+      "word": "Russian",
+      "start": 4.96,
+      "end": 5.26
+    },
+    {
+      "word": "Peter's",
+      "start": 5.26,
+      "end": 5.84
+    },
+    {
+      "word": "house",
+      "start": 5.84,
+      "end": 6.16
+    },
+    {
+      "word": "to",
+      "start": 6.16,
+      "end": 6.6
+    },
+    {
+      "word": "borrow",
+      "start": 6.6,
+      "end": 6.8
+    },
+    {
+      "word": "a",
+      "start": 6.8,
+      "end": 7.0
+    },
+    {
+      "word": "spade",
+      "start": 7.0,
+      "end": 7.36
+    },
+    {
+      "word": "and",
+      "start": 7.36,
+      "end": 7.56
+    },
+    {
+      "word": "broached",
+      "start": 7.56,
+      "end": 7.9
+    },
+    {
+      "word": "needed.",
+      "start": 7.9,
+      "end": 8.16
+    }
+  ],
+  "duration": 8.16
+}

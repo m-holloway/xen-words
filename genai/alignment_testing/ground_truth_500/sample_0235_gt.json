@@ -1,0 +1,53 @@
+{
+  "audio_file": "sample_0235.flac",
+  "wav_file": "sample_0235.wav",
+  "transcript": "He is old as well as poor, she said.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.52
+    },
+    {
+      "word": "is",
+      "start": 0.52,
+      "end": 0.7
+    },
+    {
+      "word": "old",
+      "start": 0.7,
+      "end": 1.04
+    },
+    {
+      "word": "as",
+      "start": 1.04,
+      "end": 1.24
+    },
+    {
+      "word": "well",
+      "start": 1.24,
+      "end": 1.4
+    },
+    {
+      "word": "as",
+      "start": 1.4,
+      "end": 1.62
+    },
+    {
+      "word": "poor,",
+      "start": 1.62,
+      "end": 1.92
+    },
+    {
+      "word": "she",
+      "start": 2.02,
+      "end": 2.18
+    },
+    {
+      "word": "said.",
+      "start": 2.18,
+      "end": 2.42
+    }
+  ],
+  "duration": 2.42
+}

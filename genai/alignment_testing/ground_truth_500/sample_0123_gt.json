@@ -1,0 +1,108 @@
+{
+  "audio_file": "sample_0123.flac",
+  "wav_file": "sample_0123.wav",
+  "transcript": "Throughout this century, the power of the Church was constantly on the increase and is visible in many important changes.",
+  "word_timings": [
+    {
+      "word": "Throughout",
+      "start": 0.0,
+      "end": 0.8
+    },
+    {
+      "word": "this",
+      "start": 0.8,
+      "end": 1.04
+    },
+    {
+      "word": "century,",
+      "start": 1.04,
+      "end": 1.46
+    },
+    {
+      "word": "the",
+      "start": 1.68,
+      "end": 1.74
+    },
+    {
+      "word": "power",
+      "start": 1.74,
+      "end": 2.04
+    },
+    {
+      "word": "of",
+      "start": 2.04,
+      "end": 2.22
+    },
+    {
+      "word": "the",
+      "start": 2.22,
+      "end": 2.3
+    },
+    {
+      "word": "Church",
+      "start": 2.3,
+      "end": 2.62
+    },
+    {
+      "word": "was",
+      "start": 2.62,
+      "end": 2.9
+    },
+    {
+      "word": "constantly",
+      "start": 2.9,
+      "end": 3.5
+    },
+    {
+      "word": "on",
+      "start": 3.5,
+      "end": 3.84
+    },
+    {
+      "word": "the",
+      "start": 3.84,
+      "end": 3.96
+    },
+    {
+      "word": "increase",
+      "start": 3.96,
+      "end": 4.46
+    },
+    {
+      "word": "and",
+      "start": 4.46,
+      "end": 5.0
+    },
+    {
+      "word": "is",
+      "start": 5.0,
+      "end": 5.14
+    },
+    {
+      "word": "visible",
+      "start": 5.14,
+      "end": 5.54
+    },
+    {
+      "word": "in",
+      "start": 5.54,
+      "end": 5.76
+    },
+    {
+      "word": "many",
+      "start": 5.76,
+      "end": 6.04
+    },
+    {
+      "word": "important",
+      "start": 6.04,
+      "end": 6.54
+    },
+    {
+      "word": "changes.",
+      "start": 6.54,
+      "end": 7.04
+    }
+  ],
+  "duration": 7.04
+}

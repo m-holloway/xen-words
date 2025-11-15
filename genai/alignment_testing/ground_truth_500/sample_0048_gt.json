@@ -1,0 +1,88 @@
+{
+  "audio_file": "sample_0048.flac",
+  "wav_file": "sample_0048.wav",
+  "transcript": "For relief, he arose and joined in the conversation with a few friends who were drinking.",
+  "word_timings": [
+    {
+      "word": "For",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "relief,",
+      "start": 0.62,
+      "end": 0.9
+    },
+    {
+      "word": "he",
+      "start": 1.12,
+      "end": 1.16
+    },
+    {
+      "word": "arose",
+      "start": 1.16,
+      "end": 1.4
+    },
+    {
+      "word": "and",
+      "start": 1.4,
+      "end": 1.58
+    },
+    {
+      "word": "joined",
+      "start": 1.58,
+      "end": 1.78
+    },
+    {
+      "word": "in",
+      "start": 1.78,
+      "end": 1.96
+    },
+    {
+      "word": "the",
+      "start": 1.96,
+      "end": 2.04
+    },
+    {
+      "word": "conversation",
+      "start": 2.04,
+      "end": 2.46
+    },
+    {
+      "word": "with",
+      "start": 2.46,
+      "end": 2.82
+    },
+    {
+      "word": "a",
+      "start": 2.82,
+      "end": 2.94
+    },
+    {
+      "word": "few",
+      "start": 2.94,
+      "end": 3.08
+    },
+    {
+      "word": "friends",
+      "start": 3.08,
+      "end": 3.4
+    },
+    {
+      "word": "who",
+      "start": 3.4,
+      "end": 3.56
+    },
+    {
+      "word": "were",
+      "start": 3.56,
+      "end": 3.64
+    },
+    {
+      "word": "drinking.",
+      "start": 3.64,
+      "end": 3.96
+    }
+  ],
+  "duration": 3.96
+}

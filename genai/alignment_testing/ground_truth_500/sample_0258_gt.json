@@ -1,0 +1,68 @@
+{
+  "audio_file": "sample_0258.flac",
+  "wav_file": "sample_0258.wav",
+  "transcript": "My friend, with many others, was being carried out to die elsewhere.",
+  "word_timings": [
+    {
+      "word": "My",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "friend,",
+      "start": 0.62,
+      "end": 1.06
+    },
+    {
+      "word": "with",
+      "start": 1.2,
+      "end": 1.32
+    },
+    {
+      "word": "many",
+      "start": 1.32,
+      "end": 1.58
+    },
+    {
+      "word": "others,",
+      "start": 1.58,
+      "end": 1.94
+    },
+    {
+      "word": "was",
+      "start": 2.22,
+      "end": 2.44
+    },
+    {
+      "word": "being",
+      "start": 2.44,
+      "end": 2.74
+    },
+    {
+      "word": "carried",
+      "start": 2.74,
+      "end": 3.12
+    },
+    {
+      "word": "out",
+      "start": 3.12,
+      "end": 3.44
+    },
+    {
+      "word": "to",
+      "start": 3.44,
+      "end": 3.76
+    },
+    {
+      "word": "die",
+      "start": 3.76,
+      "end": 4.0
+    },
+    {
+      "word": "elsewhere.",
+      "start": 4.0,
+      "end": 4.46
+    }
+  ],
+  "duration": 4.46
+}

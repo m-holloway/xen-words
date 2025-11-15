@@ -1,0 +1,68 @@
+{
+  "audio_file": "sample_0230.flac",
+  "wav_file": "sample_0230.wav",
+  "transcript": "It was the youngest one who deceived me, cried the Robert Chieftain.",
+  "word_timings": [
+    {
+      "word": "It",
+      "start": 0.0,
+      "end": 0.56
+    },
+    {
+      "word": "was",
+      "start": 0.56,
+      "end": 0.7
+    },
+    {
+      "word": "the",
+      "start": 0.7,
+      "end": 0.86
+    },
+    {
+      "word": "youngest",
+      "start": 0.86,
+      "end": 1.22
+    },
+    {
+      "word": "one",
+      "start": 1.22,
+      "end": 1.5
+    },
+    {
+      "word": "who",
+      "start": 1.5,
+      "end": 1.68
+    },
+    {
+      "word": "deceived",
+      "start": 1.68,
+      "end": 2.04
+    },
+    {
+      "word": "me,",
+      "start": 2.04,
+      "end": 2.4
+    },
+    {
+      "word": "cried",
+      "start": 2.82,
+      "end": 2.96
+    },
+    {
+      "word": "the",
+      "start": 2.96,
+      "end": 3.16
+    },
+    {
+      "word": "Robert",
+      "start": 3.16,
+      "end": 3.4
+    },
+    {
+      "word": "Chieftain.",
+      "start": 3.4,
+      "end": 3.9
+    }
+  ],
+  "duration": 3.9
+}

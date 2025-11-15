@@ -1,0 +1,98 @@
+{
+  "audio_file": "sample_0413.flac",
+  "wav_file": "sample_0413.wav",
+  "transcript": "There is no occupation that fails a man more completely than that of a secret agent of police.",
+  "word_timings": [
+    {
+      "word": "There",
+      "start": 0.0,
+      "end": 0.5
+    },
+    {
+      "word": "is",
+      "start": 0.5,
+      "end": 0.68
+    },
+    {
+      "word": "no",
+      "start": 0.68,
+      "end": 0.88
+    },
+    {
+      "word": "occupation",
+      "start": 0.88,
+      "end": 1.48
+    },
+    {
+      "word": "that",
+      "start": 1.48,
+      "end": 1.7
+    },
+    {
+      "word": "fails",
+      "start": 1.7,
+      "end": 1.96
+    },
+    {
+      "word": "a",
+      "start": 1.96,
+      "end": 2.12
+    },
+    {
+      "word": "man",
+      "start": 2.12,
+      "end": 2.3
+    },
+    {
+      "word": "more",
+      "start": 2.3,
+      "end": 2.48
+    },
+    {
+      "word": "completely",
+      "start": 2.48,
+      "end": 2.94
+    },
+    {
+      "word": "than",
+      "start": 2.94,
+      "end": 3.18
+    },
+    {
+      "word": "that",
+      "start": 3.18,
+      "end": 3.36
+    },
+    {
+      "word": "of",
+      "start": 3.36,
+      "end": 3.52
+    },
+    {
+      "word": "a",
+      "start": 3.52,
+      "end": 3.64
+    },
+    {
+      "word": "secret",
+      "start": 3.64,
+      "end": 3.94
+    },
+    {
+      "word": "agent",
+      "start": 3.94,
+      "end": 4.24
+    },
+    {
+      "word": "of",
+      "start": 4.24,
+      "end": 4.42
+    },
+    {
+      "word": "police.",
+      "start": 4.42,
+      "end": 4.72
+    }
+  ],
+  "duration": 4.72
+}

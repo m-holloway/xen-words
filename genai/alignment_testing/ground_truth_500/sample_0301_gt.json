@@ -1,0 +1,238 @@
+{
+  "audio_file": "sample_0301.flac",
+  "wav_file": "sample_0301.wav",
+  "transcript": "Creep in, said the witch, and see if it is hot enough, and then we will put in the bread. But she intended, when Greta got in, to shut up the oven and let her bake so that she might eat her as well as Hansel.",
+  "word_timings": [
+    {
+      "word": "Creep",
+      "start": 0.0,
+      "end": 0.76
+    },
+    {
+      "word": "in,",
+      "start": 0.76,
+      "end": 0.92
+    },
+    {
+      "word": "said",
+      "start": 1.1,
+      "end": 1.18
+    },
+    {
+      "word": "the",
+      "start": 1.18,
+      "end": 1.36
+    },
+    {
+      "word": "witch,",
+      "start": 1.36,
+      "end": 1.5
+    },
+    {
+      "word": "and",
+      "start": 1.92,
+      "end": 2.0
+    },
+    {
+      "word": "see",
+      "start": 2.0,
+      "end": 2.22
+    },
+    {
+      "word": "if",
+      "start": 2.22,
+      "end": 2.38
+    },
+    {
+      "word": "it",
+      "start": 2.38,
+      "end": 2.44
+    },
+    {
+      "word": "is",
+      "start": 2.44,
+      "end": 2.58
+    },
+    {
+      "word": "hot",
+      "start": 2.58,
+      "end": 2.76
+    },
+    {
+      "word": "enough,",
+      "start": 2.76,
+      "end": 3.06
+    },
+    {
+      "word": "and",
+      "start": 3.56,
+      "end": 3.7
+    },
+    {
+      "word": "then",
+      "start": 3.7,
+      "end": 3.84
+    },
+    {
+      "word": "we",
+      "start": 3.84,
+      "end": 4.1
+    },
+    {
+      "word": "will",
+      "start": 4.1,
+      "end": 4.24
+    },
+    {
+      "word": "put",
+      "start": 4.24,
+      "end": 4.5
+    },
+    {
+      "word": "in",
+      "start": 4.5,
+      "end": 4.74
+    },
+    {
+      "word": "the",
+      "start": 4.74,
+      "end": 4.88
+    },
+    {
+      "word": "bread.",
+      "start": 4.88,
+      "end": 5.14
+    },
+    {
+      "word": "But",
+      "start": 5.7,
+      "end": 6.0
+    },
+    {
+      "word": "she",
+      "start": 6.0,
+      "end": 6.22
+    },
+    {
+      "word": "intended,",
+      "start": 6.22,
+      "end": 6.68
+    },
+    {
+      "word": "when",
+      "start": 6.8,
+      "end": 6.94
+    },
+    {
+      "word": "Greta",
+      "start": 6.94,
+      "end": 7.2
+    },
+    {
+      "word": "got",
+      "start": 7.2,
+      "end": 7.42
+    },
+    {
+      "word": "in,",
+      "start": 7.42,
+      "end": 7.74
+    },
+    {
+      "word": "to",
+      "start": 8.0,
+      "end": 8.18
+    },
+    {
+      "word": "shut",
+      "start": 8.18,
+      "end": 8.44
+    },
+    {
+      "word": "up",
+      "start": 8.44,
+      "end": 8.58
+    },
+    {
+      "word": "the",
+      "start": 8.58,
+      "end": 8.76
+    },
+    {
+      "word": "oven",
+      "start": 8.76,
+      "end": 9.0
+    },
+    {
+      "word": "and",
+      "start": 9.0,
+      "end": 9.46
+    },
+    {
+      "word": "let",
+      "start": 9.46,
+      "end": 9.64
+    },
+    {
+      "word": "her",
+      "start": 9.64,
+      "end": 9.84
+    },
+    {
+      "word": "bake",
+      "start": 9.84,
+      "end": 10.08
+    },
+    {
+      "word": "so",
+      "start": 10.08,
+      "end": 10.58
+    },
+    {
+      "word": "that",
+      "start": 10.58,
+      "end": 10.7
+    },
+    {
+      "word": "she",
+      "start": 10.7,
+      "end": 10.94
+    },
+    {
+      "word": "might",
+      "start": 10.94,
+      "end": 11.1
+    },
+    {
+      "word": "eat",
+      "start": 11.1,
+      "end": 11.32
+    },
+    {
+      "word": "her",
+      "start": 11.32,
+      "end": 11.6
+    },
+    {
+      "word": "as",
+      "start": 11.6,
+      "end": 11.94
+    },
+    {
+      "word": "well",
+      "start": 11.94,
+      "end": 12.1
+    },
+    {
+      "word": "as",
+      "start": 12.1,
+      "end": 12.36
+    },
+    {
+      "word": "Hansel.",
+      "start": 12.36,
+      "end": 12.74
+    }
+  ],
+  "duration": 12.74
+}

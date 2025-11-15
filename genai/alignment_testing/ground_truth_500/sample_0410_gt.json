@@ -1,0 +1,143 @@
+{
+  "audio_file": "sample_0410.flac",
+  "wav_file": "sample_0410.wav",
+  "transcript": "Don't you think that if I had not been the optimist I am I could not have found in fifteen years some means to cut my throat?",
+  "word_timings": [
+    {
+      "word": "Don't",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "you",
+      "start": 0.62,
+      "end": 0.74
+    },
+    {
+      "word": "think",
+      "start": 0.74,
+      "end": 0.98
+    },
+    {
+      "word": "that",
+      "start": 0.98,
+      "end": 1.28
+    },
+    {
+      "word": "if",
+      "start": 1.28,
+      "end": 1.78
+    },
+    {
+      "word": "I",
+      "start": 1.78,
+      "end": 1.9
+    },
+    {
+      "word": "had",
+      "start": 1.9,
+      "end": 2.02
+    },
+    {
+      "word": "not",
+      "start": 2.02,
+      "end": 2.14
+    },
+    {
+      "word": "been",
+      "start": 2.14,
+      "end": 2.34
+    },
+    {
+      "word": "the",
+      "start": 2.34,
+      "end": 2.52
+    },
+    {
+      "word": "optimist",
+      "start": 2.52,
+      "end": 2.92
+    },
+    {
+      "word": "I",
+      "start": 2.92,
+      "end": 3.08
+    },
+    {
+      "word": "am",
+      "start": 3.08,
+      "end": 3.38
+    },
+    {
+      "word": "I",
+      "start": 3.38,
+      "end": 3.86
+    },
+    {
+      "word": "could",
+      "start": 3.86,
+      "end": 4.04
+    },
+    {
+      "word": "not",
+      "start": 4.04,
+      "end": 4.18
+    },
+    {
+      "word": "have",
+      "start": 4.18,
+      "end": 4.34
+    },
+    {
+      "word": "found",
+      "start": 4.34,
+      "end": 4.7
+    },
+    {
+      "word": "in",
+      "start": 4.7,
+      "end": 4.86
+    },
+    {
+      "word": "fifteen",
+      "start": 4.86,
+      "end": 5.2
+    },
+    {
+      "word": "years",
+      "start": 5.2,
+      "end": 5.56
+    },
+    {
+      "word": "some",
+      "start": 5.56,
+      "end": 5.86
+    },
+    {
+      "word": "means",
+      "start": 5.86,
+      "end": 6.14
+    },
+    {
+      "word": "to",
+      "start": 6.14,
+      "end": 6.3
+    },
+    {
+      "word": "cut",
+      "start": 6.3,
+      "end": 6.44
+    },
+    {
+      "word": "my",
+      "start": 6.44,
+      "end": 6.6
+    },
+    {
+      "word": "throat?",
+      "start": 6.6,
+      "end": 6.88
+    }
+  ],
+  "duration": 6.88
+}

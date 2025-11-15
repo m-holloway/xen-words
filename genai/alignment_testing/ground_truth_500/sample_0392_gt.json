@@ -1,0 +1,28 @@
+{
+  "audio_file": "sample_0392.flac",
+  "wav_file": "sample_0392.wav",
+  "transcript": "The survey was unfavorable.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.5
+    },
+    {
+      "word": "survey",
+      "start": 0.5,
+      "end": 0.82
+    },
+    {
+      "word": "was",
+      "start": 0.82,
+      "end": 1.04
+    },
+    {
+      "word": "unfavorable.",
+      "start": 1.04,
+      "end": 1.66
+    }
+  ],
+  "duration": 1.66
+}

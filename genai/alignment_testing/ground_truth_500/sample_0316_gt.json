@@ -1,0 +1,73 @@
+{
+  "audio_file": "sample_0316.flac",
+  "wav_file": "sample_0316.wav",
+  "transcript": "At that moment the father came out of the hole in the bank.",
+  "word_timings": [
+    {
+      "word": "At",
+      "start": 0.0,
+      "end": 0.68
+    },
+    {
+      "word": "that",
+      "start": 0.68,
+      "end": 0.82
+    },
+    {
+      "word": "moment",
+      "start": 0.82,
+      "end": 1.08
+    },
+    {
+      "word": "the",
+      "start": 1.08,
+      "end": 1.26
+    },
+    {
+      "word": "father",
+      "start": 1.26,
+      "end": 1.52
+    },
+    {
+      "word": "came",
+      "start": 1.52,
+      "end": 1.76
+    },
+    {
+      "word": "out",
+      "start": 1.76,
+      "end": 1.94
+    },
+    {
+      "word": "of",
+      "start": 1.94,
+      "end": 2.06
+    },
+    {
+      "word": "the",
+      "start": 2.06,
+      "end": 2.16
+    },
+    {
+      "word": "hole",
+      "start": 2.16,
+      "end": 2.32
+    },
+    {
+      "word": "in",
+      "start": 2.32,
+      "end": 2.46
+    },
+    {
+      "word": "the",
+      "start": 2.46,
+      "end": 2.56
+    },
+    {
+      "word": "bank.",
+      "start": 2.56,
+      "end": 2.78
+    }
+  ],
+  "duration": 2.78
+}

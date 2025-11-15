@@ -1,0 +1,73 @@
+{
+  "audio_file": "sample_0322.flac",
+  "wav_file": "sample_0322.wav",
+  "transcript": "You'll get fixed up comfortable after a while Mrs. Schumerida. Make good house.",
+  "word_timings": [
+    {
+      "word": "You'll",
+      "start": 0.0,
+      "end": 0.48
+    },
+    {
+      "word": "get",
+      "start": 0.48,
+      "end": 0.58
+    },
+    {
+      "word": "fixed",
+      "start": 0.58,
+      "end": 0.94
+    },
+    {
+      "word": "up",
+      "start": 0.94,
+      "end": 1.14
+    },
+    {
+      "word": "comfortable",
+      "start": 1.14,
+      "end": 1.56
+    },
+    {
+      "word": "after",
+      "start": 1.56,
+      "end": 2.06
+    },
+    {
+      "word": "a",
+      "start": 2.06,
+      "end": 2.2
+    },
+    {
+      "word": "while",
+      "start": 2.2,
+      "end": 2.42
+    },
+    {
+      "word": "Mrs.",
+      "start": 2.42,
+      "end": 2.66
+    },
+    {
+      "word": "Schumerida.",
+      "start": 2.84,
+      "end": 3.12
+    },
+    {
+      "word": "Make",
+      "start": 3.58,
+      "end": 3.7
+    },
+    {
+      "word": "good",
+      "start": 3.7,
+      "end": 4.06
+    },
+    {
+      "word": "house.",
+      "start": 4.06,
+      "end": 4.46
+    }
+  ],
+  "duration": 4.46
+}

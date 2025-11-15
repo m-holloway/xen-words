@@ -1,0 +1,58 @@
+{
+  "audio_file": "sample_0006.flac",
+  "wav_file": "sample_0006.wav",
+  "transcript": "Now what would she do about that? The confounded wretch.",
+  "word_timings": [
+    {
+      "word": "Now",
+      "start": 0.0,
+      "end": 0.02
+    },
+    {
+      "word": "what",
+      "start": 0.02,
+      "end": 0.54
+    },
+    {
+      "word": "would",
+      "start": 0.54,
+      "end": 0.64
+    },
+    {
+      "word": "she",
+      "start": 0.64,
+      "end": 0.8
+    },
+    {
+      "word": "do",
+      "start": 0.8,
+      "end": 0.94
+    },
+    {
+      "word": "about",
+      "start": 0.94,
+      "end": 1.16
+    },
+    {
+      "word": "that?",
+      "start": 1.16,
+      "end": 1.46
+    },
+    {
+      "word": "The",
+      "start": 1.92,
+      "end": 2.02
+    },
+    {
+      "word": "confounded",
+      "start": 2.02,
+      "end": 2.54
+    },
+    {
+      "word": "wretch.",
+      "start": 2.54,
+      "end": 2.94
+    }
+  ],
+  "duration": 2.94
+}

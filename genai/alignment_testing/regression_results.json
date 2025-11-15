@@ -1,0 +1,5012 @@
+{
+  "total_samples": 500,
+  "mean_accuracy": 0.9783044011544011,
+  "mean_close_accuracy": 0.9962919191919193,
+  "median_accuracy": 1.0,
+  "median_close_accuracy": 1.0,
+  "std_accuracy": 0.10567429282019213,
+  "mean_confidence": 0.8708128873903874,
+  "mean_error_words": 0.0354562049062049,
+  "per_sample_results": [
+    {
+      "file": "ground_truth_500/sample_0000_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8833333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0001_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.858888888888889,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0002_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0003_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9277777777777777,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0004_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8444444444444444,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0005_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0006_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0007_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8111111111111112,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0008_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.925,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0009_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8166666666666668,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0010_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9199999999999999,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0011_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8416666666666668,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0012_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7944444444444444,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0013_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7775000000000001,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0014_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7666666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0015_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7666666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0016_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9458333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0017_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8722222222222222,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0018_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333332,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0019_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8933333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0020_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8625,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0021_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9055555555555556,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0022_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9111111111111111,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0023_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8866666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0024_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.865,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0025_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8555555555555555,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0026_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8444444444444444,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0027_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7611111111111112,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0028_gt.json",
+      "total_steps": 8,
+      "correct": 8,
+      "close": 8,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8875,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0029_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8333333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0030_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8833333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0031_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8916666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0032_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9777777777777779,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0033_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7916666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0034_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0035_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9444444444444445,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0036_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0037_gt.json",
+      "total_steps": 3,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 0.6666666666666666,
+      "close_accuracy": 0.6666666666666666,
+      "avg_confidence": 0.6533333333333333,
+      "avg_off_by": 0.6666666666666666
+    },
+    {
+      "file": "ground_truth_500/sample_0038_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8766666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0039_gt.json",
+      "total_steps": 8,
+      "correct": 8,
+      "close": 8,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8958333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0040_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8858333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0041_gt.json",
+      "total_steps": 7,
+      "correct": 4,
+      "close": 7,
+      "accuracy": 0.5714285714285714,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9000000000000001,
+      "avg_off_by": 0.42857142857142855
+    },
+    {
+      "file": "ground_truth_500/sample_0042_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0043_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8533333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0044_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333332,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0045_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9555555555555556,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0046_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.89,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0047_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9291666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0048_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8999999999999999,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0049_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8633333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0050_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.792,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0051_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.96,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0052_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9088888888888889,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0053_gt.json",
+      "total_steps": 7,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.854761904761905,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0054_gt.json",
+      "total_steps": 2,
+      "correct": 1,
+      "close": 2,
+      "accuracy": 0.5,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9666666666666667,
+      "avg_off_by": 0.5
+    },
+    {
+      "file": "ground_truth_500/sample_0055_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9777777777777779,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0056_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0057_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7777777777777777,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0058_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0059_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8291666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0060_gt.json",
+      "total_steps": 7,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.930952380952381,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0061_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.888888888888889,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0062_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9555555555555556,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0063_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0064_gt.json",
+      "total_steps": 7,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8738095238095239,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0065_gt.json",
+      "total_steps": 1,
+      "correct": 1,
+      "close": 1,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0066_gt.json",
+      "total_steps": 1,
+      "correct": 1,
+      "close": 1,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0067_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9555555555555556,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0068_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7916666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0069_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9533333333333335,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0070_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333332,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0071_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.888888888888889,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0072_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8916666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0073_gt.json",
+      "total_steps": 11,
+      "correct": 1,
+      "close": 9,
+      "accuracy": 0.09090909090909091,
+      "close_accuracy": 0.8181818181818182,
+      "avg_confidence": 0.7615151515151516,
+      "avg_off_by": 1.2727272727272727
+    },
+    {
+      "file": "ground_truth_500/sample_0074_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.915,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0075_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7333333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0076_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7477777777777779,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0077_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8300000000000001,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0078_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8291666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0079_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8958333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0080_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9166666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0081_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8500000000000001,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0082_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0083_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9111111111111111,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0084_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0085_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8333333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0086_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.852,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0087_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9555555555555556,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0088_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.85,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0089_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8416666666666668,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0090_gt.json",
+      "total_steps": 7,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.911904761904762,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0091_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9166666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0092_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8958333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0093_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0094_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.6333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0095_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0096_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9166666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0097_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.888888888888889,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0098_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8277777777777778,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0099_gt.json",
+      "total_steps": 7,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8261904761904763,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0100_gt.json",
+      "total_steps": 7,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.860952380952381,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0101_gt.json",
+      "total_steps": 4,
+      "correct": 1,
+      "close": 4,
+      "accuracy": 0.25,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7208333333333334,
+      "avg_off_by": 0.75
+    },
+    {
+      "file": "ground_truth_500/sample_0102_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8216666666666668,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0103_gt.json",
+      "total_steps": 1,
+      "correct": 1,
+      "close": 1,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0104_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8833333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0105_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9125,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0106_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9111111111111111,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0107_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0108_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9777777777777779,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0109_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9777777777777779,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0110_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0111_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.75,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0112_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8125,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0113_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7791666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0114_gt.json",
+      "total_steps": 15,
+      "correct": 15,
+      "close": 15,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8235555555555557,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0115_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0116_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8233333333333335,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0117_gt.json",
+      "total_steps": 13,
+      "correct": 13,
+      "close": 13,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8576923076923078,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0118_gt.json",
+      "total_steps": 3,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 0.6666666666666666,
+      "close_accuracy": 0.6666666666666666,
+      "avg_confidence": 0.8166666666666668,
+      "avg_off_by": 1.0
+    },
+    {
+      "file": "ground_truth_500/sample_0119_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8083333333333335,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0120_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8053333333333335,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0121_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7608333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0122_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9291666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0123_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0124_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9027777777777777,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0125_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0126_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9166666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0127_gt.json",
+      "total_steps": 9,
+      "correct": 9,
+      "close": 9,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8592592592592593,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0128_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8999999999999999,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0129_gt.json",
+      "total_steps": 8,
+      "correct": 3,
+      "close": 8,
+      "accuracy": 0.375,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.825,
+      "avg_off_by": 0.625
+    },
+    {
+      "file": "ground_truth_500/sample_0130_gt.json",
+      "total_steps": 8,
+      "correct": 3,
+      "close": 8,
+      "accuracy": 0.375,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7229166666666667,
+      "avg_off_by": 0.625
+    },
+    {
+      "file": "ground_truth_500/sample_0131_gt.json",
+      "total_steps": 1,
+      "correct": 1,
+      "close": 1,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.6666666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0132_gt.json",
+      "total_steps": 8,
+      "correct": 8,
+      "close": 8,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.875,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0133_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0134_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0135_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7977777777777778,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0136_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8999999999999999,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0137_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0138_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7888888888888889,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0139_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7883333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0140_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0141_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333332,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0142_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8800000000000001,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0143_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9255555555555556,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0144_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9777777777777779,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0145_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0146_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9111111111111111,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0147_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.6916666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0148_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0149_gt.json",
+      "total_steps": 1,
+      "correct": 1,
+      "close": 1,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0150_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0151_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8458333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0152_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9055555555555556,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0153_gt.json",
+      "total_steps": 10,
+      "correct": 10,
+      "close": 10,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8850000000000001,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0154_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0155_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8166666666666665,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0156_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0157_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0158_gt.json",
+      "total_steps": 7,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7585714285714286,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0159_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9555555555555556,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0160_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8222222222222223,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0161_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8750000000000001,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0162_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.925,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0163_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.925,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0164_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.888888888888889,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0165_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7944444444444444,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0166_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0167_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9466666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0168_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8666666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0169_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7555555555555555,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0170_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9111111111111111,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0171_gt.json",
+      "total_steps": 1,
+      "correct": 1,
+      "close": 1,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0172_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9166666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0173_gt.json",
+      "total_steps": 10,
+      "correct": 10,
+      "close": 10,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.777,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0174_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7922222222222222,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0175_gt.json",
+      "total_steps": 11,
+      "correct": 11,
+      "close": 11,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8787878787878788,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0176_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8333333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0177_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9200000000000002,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0178_gt.json",
+      "total_steps": 11,
+      "correct": 6,
+      "close": 11,
+      "accuracy": 0.5454545454545454,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9303030303030304,
+      "avg_off_by": 0.45454545454545453
+    },
+    {
+      "file": "ground_truth_500/sample_0179_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0180_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8388888888888889,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0181_gt.json",
+      "total_steps": 10,
+      "correct": 7,
+      "close": 10,
+      "accuracy": 0.7,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8300000000000001,
+      "avg_off_by": 0.3
+    },
+    {
+      "file": "ground_truth_500/sample_0182_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0183_gt.json",
+      "total_steps": 7,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8452380952380951,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0184_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7858333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0185_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8361111111111111,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0186_gt.json",
+      "total_steps": 13,
+      "correct": 13,
+      "close": 13,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8794871794871795,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0187_gt.json",
+      "total_steps": 9,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 0.7777777777777778,
+      "close_accuracy": 0.7777777777777778,
+      "avg_confidence": 0.7774074074074073,
+      "avg_off_by": 2.2222222222222223
+    },
+    {
+      "file": "ground_truth_500/sample_0188_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9277777777777777,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0189_gt.json",
+      "total_steps": 9,
+      "correct": 9,
+      "close": 9,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8018518518518518,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0190_gt.json",
+      "total_steps": 7,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8023809523809523,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0191_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7733333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0192_gt.json",
+      "total_steps": 11,
+      "correct": 10,
+      "close": 11,
+      "accuracy": 0.9090909090909091,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.6833333333333333,
+      "avg_off_by": 0.09090909090909091
+    },
+    {
+      "file": "ground_truth_500/sample_0193_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9444444444444445,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0194_gt.json",
+      "total_steps": 7,
+      "correct": 4,
+      "close": 7,
+      "accuracy": 0.5714285714285714,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8214285714285714,
+      "avg_off_by": 0.42857142857142855
+    },
+    {
+      "file": "ground_truth_500/sample_0195_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8333333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0196_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8466666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0197_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7625,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0198_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.6666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0199_gt.json",
+      "total_steps": 7,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8738095238095239,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0200_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.75,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0201_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.82,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0202_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0203_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7461111111111111,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0204_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9277777777777777,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0205_gt.json",
+      "total_steps": 11,
+      "correct": 11,
+      "close": 11,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8372727272727272,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0206_gt.json",
+      "total_steps": 9,
+      "correct": 9,
+      "close": 9,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8537037037037037,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0207_gt.json",
+      "total_steps": 9,
+      "correct": 5,
+      "close": 9,
+      "accuracy": 0.5555555555555556,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8537037037037037,
+      "avg_off_by": 0.4444444444444444
+    },
+    {
+      "file": "ground_truth_500/sample_0208_gt.json",
+      "total_steps": 8,
+      "correct": 8,
+      "close": 8,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8645833333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0209_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7666666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0210_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9066666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0211_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.888888888888889,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0212_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0213_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7933333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0214_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9291666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0215_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9555555555555556,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0216_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7600000000000001,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0217_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9291666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0218_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8222222222222223,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0219_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.6791666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0220_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8533333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0221_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8458333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0222_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0223_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.6466666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0224_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9733333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0225_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8166666666666668,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0226_gt.json",
+      "total_steps": 7,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8942857142857142,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0227_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0228_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8583333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0229_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9833333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0230_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8222222222222223,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0231_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0232_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9291666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0233_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0234_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0235_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0236_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0237_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0238_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8044444444444444,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0239_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8800000000000001,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0240_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8611111111111112,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0241_gt.json",
+      "total_steps": 7,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9404761904761905,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0242_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9458333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0243_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0244_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.75,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0245_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8294444444444444,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0246_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7958333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0247_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.708888888888889,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0248_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8500000000000001,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0249_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.888888888888889,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0250_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9666666666666668,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0251_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9466666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0252_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.6916666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0253_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0254_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0255_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9186666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0256_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8666666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0257_gt.json",
+      "total_steps": 1,
+      "correct": 1,
+      "close": 1,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0258_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8422222222222221,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0259_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.873888888888889,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0260_gt.json",
+      "total_steps": 4,
+      "correct": 1,
+      "close": 4,
+      "accuracy": 0.25,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9,
+      "avg_off_by": 0.75
+    },
+    {
+      "file": "ground_truth_500/sample_0261_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7791666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0262_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7055555555555556,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0263_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8722222222222222,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0264_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.85,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0265_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7916666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0266_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0267_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7966666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0268_gt.json",
+      "total_steps": 7,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8857142857142856,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0269_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7555555555555555,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0270_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8166666666666668,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0271_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7958333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0272_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8625,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0273_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8611111111111112,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0274_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.888888888888889,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0275_gt.json",
+      "total_steps": 7,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.807142857142857,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0276_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0277_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.888888888888889,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0278_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8708333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0279_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0280_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8958333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0281_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8358333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0282_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8644444444444446,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0283_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9033333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0284_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0285_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8861111111111112,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0286_gt.json",
+      "total_steps": 11,
+      "correct": 11,
+      "close": 11,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8584848484848485,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0287_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9555555555555556,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0288_gt.json",
+      "total_steps": 10,
+      "correct": 10,
+      "close": 10,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8693333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0289_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9033333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0290_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9125,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0291_gt.json",
+      "total_steps": 7,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8904761904761905,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0292_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333335,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0293_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0294_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0295_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9183333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0296_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0297_gt.json",
+      "total_steps": 7,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8857142857142856,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0298_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9066666666666668,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0299_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8366666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0300_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9166666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0301_gt.json",
+      "total_steps": 10,
+      "correct": 10,
+      "close": 10,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8933333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0302_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9166666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0303_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8916666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0304_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8233333333333335,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0305_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8222222222222223,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0306_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0307_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0308_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8541666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0309_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9111111111111111,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0310_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0311_gt.json",
+      "total_steps": 5,
+      "correct": 4,
+      "close": 5,
+      "accuracy": 0.8,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8620000000000001,
+      "avg_off_by": 0.2
+    },
+    {
+      "file": "ground_truth_500/sample_0312_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8833333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0313_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7999999999999999,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0314_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0315_gt.json",
+      "total_steps": 7,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8123809523809523,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0316_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333332,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0317_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0318_gt.json",
+      "total_steps": 1,
+      "correct": 1,
+      "close": 1,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0319_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.85,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0320_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8833333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0321_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8888888888888888,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0322_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8166666666666668,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0323_gt.json",
+      "total_steps": 8,
+      "correct": 8,
+      "close": 8,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8041666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0324_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7722222222222223,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0325_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9422222222222222,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0326_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9666666666666668,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0327_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8958333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0328_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333332,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0329_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9666666666666668,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0330_gt.json",
+      "total_steps": 8,
+      "correct": 8,
+      "close": 8,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8145833333333332,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0331_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8433333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0332_gt.json",
+      "total_steps": 1,
+      "correct": 1,
+      "close": 1,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0333_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9444444444444445,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0334_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9458333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0335_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8166666666666668,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0336_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8444444444444444,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0337_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9500000000000001,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0338_gt.json",
+      "total_steps": 9,
+      "correct": 9,
+      "close": 9,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8870370370370371,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0339_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0340_gt.json",
+      "total_steps": 13,
+      "correct": 13,
+      "close": 13,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8417948717948718,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0341_gt.json",
+      "total_steps": 11,
+      "correct": 11,
+      "close": 11,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8833333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0342_gt.json",
+      "total_steps": 5,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 0.8,
+      "close_accuracy": 0.8,
+      "avg_confidence": 0.86,
+      "avg_off_by": 2.8
+    },
+    {
+      "file": "ground_truth_500/sample_0343_gt.json",
+      "total_steps": 11,
+      "correct": 11,
+      "close": 11,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8030303030303031,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0344_gt.json",
+      "total_steps": 8,
+      "correct": 8,
+      "close": 8,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9500000000000001,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0345_gt.json",
+      "total_steps": 9,
+      "correct": 3,
+      "close": 9,
+      "accuracy": 0.3333333333333333,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8055555555555556,
+      "avg_off_by": 0.6666666666666666
+    },
+    {
+      "file": "ground_truth_500/sample_0346_gt.json",
+      "total_steps": 9,
+      "correct": 5,
+      "close": 9,
+      "accuracy": 0.5555555555555556,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.824074074074074,
+      "avg_off_by": 0.4444444444444444
+    },
+    {
+      "file": "ground_truth_500/sample_0347_gt.json",
+      "total_steps": 8,
+      "correct": 8,
+      "close": 8,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8991666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0348_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7541666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0349_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7899999999999999,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0350_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7833333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0351_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.95,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0352_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8533333333333335,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0353_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9166666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0354_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9777777777777779,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0355_gt.json",
+      "total_steps": 1,
+      "correct": 1,
+      "close": 1,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0356_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0357_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7666666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0358_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7716666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0359_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9277777777777777,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0360_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0361_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8333333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0362_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.842,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0363_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0364_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8866666666666665,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0365_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.85,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0366_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7999999999999999,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0367_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0368_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0369_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0370_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0371_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8611111111111112,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0372_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0373_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9166666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0374_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9583333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0375_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8099999999999999,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0376_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8733333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0377_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8111111111111112,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0378_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8566666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0379_gt.json",
+      "total_steps": 1,
+      "correct": 1,
+      "close": 1,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0380_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9777777777777779,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0381_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333332,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0382_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8933333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0383_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0384_gt.json",
+      "total_steps": 8,
+      "correct": 8,
+      "close": 8,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.85625,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0385_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9777777777777779,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0386_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7711111111111112,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0387_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8555555555555555,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0388_gt.json",
+      "total_steps": 8,
+      "correct": 8,
+      "close": 8,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8645833333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0389_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333332,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0390_gt.json",
+      "total_steps": 4,
+      "correct": 2,
+      "close": 3,
+      "accuracy": 0.5,
+      "close_accuracy": 0.75,
+      "avg_confidence": 0.8,
+      "avg_off_by": 0.75
+    },
+    {
+      "file": "ground_truth_500/sample_0391_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.825,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0392_gt.json",
+      "total_steps": 1,
+      "correct": 1,
+      "close": 1,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0393_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9277777777777777,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0394_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8958333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0395_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.888888888888889,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0396_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0397_gt.json",
+      "total_steps": 1,
+      "correct": 1,
+      "close": 1,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0398_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7166666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0399_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9291666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0400_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8933333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0401_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7833333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0402_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9500000000000001,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0403_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.93,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0404_gt.json",
+      "total_steps": 3,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 0.6666666666666666,
+      "close_accuracy": 0.6666666666666666,
+      "avg_confidence": 0.5888888888888889,
+      "avg_off_by": 1.0
+    },
+    {
+      "file": "ground_truth_500/sample_0405_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9222222222222222,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0406_gt.json",
+      "total_steps": 8,
+      "correct": 8,
+      "close": 8,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8470833333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0407_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.825,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0408_gt.json",
+      "total_steps": 7,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7523809523809524,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0409_gt.json",
+      "total_steps": 7,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8285714285714285,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0410_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.835,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0411_gt.json",
+      "total_steps": 3,
+      "correct": 2,
+      "close": 3,
+      "accuracy": 0.6666666666666666,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7333333333333334,
+      "avg_off_by": 0.3333333333333333
+    },
+    {
+      "file": "ground_truth_500/sample_0412_gt.json",
+      "total_steps": 1,
+      "correct": 1,
+      "close": 1,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.4666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0413_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9458333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0414_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0415_gt.json",
+      "total_steps": 8,
+      "correct": 8,
+      "close": 8,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9145833333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0416_gt.json",
+      "total_steps": 1,
+      "correct": 1,
+      "close": 1,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0417_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8999999999999999,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0418_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0419_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7786666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0420_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8916666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0421_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0422_gt.json",
+      "total_steps": 7,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7714285714285714,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0423_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9458333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0424_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7972222222222222,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0425_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8777777777777778,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0426_gt.json",
+      "total_steps": 1,
+      "correct": 1,
+      "close": 1,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.5333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0427_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0428_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0429_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.6333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0430_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7833333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0431_gt.json",
+      "total_steps": 12,
+      "correct": 12,
+      "close": 12,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8249999999999998,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0432_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0433_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0434_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9866666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0435_gt.json",
+      "total_steps": 8,
+      "correct": 8,
+      "close": 8,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8395833333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0436_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7986666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0437_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9166666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0438_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333332,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0439_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9111111111111111,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0440_gt.json",
+      "total_steps": 7,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8928571428571429,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0441_gt.json",
+      "total_steps": 1,
+      "correct": 1,
+      "close": 1,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0442_gt.json",
+      "total_steps": 8,
+      "correct": 5,
+      "close": 8,
+      "accuracy": 0.625,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.85625,
+      "avg_off_by": 0.375
+    },
+    {
+      "file": "ground_truth_500/sample_0443_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9066666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0444_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9199999999999999,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0445_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8888888888888888,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0446_gt.json",
+      "total_steps": 8,
+      "correct": 8,
+      "close": 8,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8104166666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0447_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8444444444444444,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0448_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.888888888888889,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0449_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7333333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0450_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.811111111111111,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0451_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333332,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0452_gt.json",
+      "total_steps": 9,
+      "correct": 9,
+      "close": 9,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8574074074074074,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0453_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.6583333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0454_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0455_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0456_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0457_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9625,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0458_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0459_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9555555555555556,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0460_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7833333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0461_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8583333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0462_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0463_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7288888888888888,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0464_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7833333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0465_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8333333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0466_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9166666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0467_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7922222222222223,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0468_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0469_gt.json",
+      "total_steps": 10,
+      "correct": 10,
+      "close": 10,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.805,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0470_gt.json",
+      "total_steps": 1,
+      "correct": 1,
+      "close": 1,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0471_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0472_gt.json",
+      "total_steps": 1,
+      "correct": 1,
+      "close": 1,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0473_gt.json",
+      "total_steps": 12,
+      "correct": 12,
+      "close": 12,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9055555555555556,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0474_gt.json",
+      "total_steps": 10,
+      "correct": 10,
+      "close": 10,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8709999999999999,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0475_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0476_gt.json",
+      "total_steps": 1,
+      "correct": 1,
+      "close": 1,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7833333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0477_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9166666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0478_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8916666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0479_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8555555555555556,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0480_gt.json",
+      "total_steps": 7,
+      "correct": 7,
+      "close": 7,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8942857142857142,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0481_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8733333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0482_gt.json",
+      "total_steps": 4,
+      "correct": 4,
+      "close": 4,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9833333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0483_gt.json",
+      "total_steps": 1,
+      "correct": 1,
+      "close": 1,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 1.0,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0484_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7333333333333334,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0485_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7999999999999999,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0486_gt.json",
+      "total_steps": 3,
+      "correct": 3,
+      "close": 3,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7000000000000001,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0487_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8666666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0488_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0489_gt.json",
+      "total_steps": 8,
+      "correct": 8,
+      "close": 8,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.77125,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0490_gt.json",
+      "total_steps": 2,
+      "correct": 2,
+      "close": 2,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9666666666666667,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0491_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9333333333333332,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0492_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8666666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0493_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8453333333333333,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0494_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9066666666666666,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0495_gt.json",
+      "total_steps": 5,
+      "correct": 2,
+      "close": 5,
+      "accuracy": 0.4,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9200000000000002,
+      "avg_off_by": 0.6
+    },
+    {
+      "file": "ground_truth_500/sample_0496_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.7699999999999999,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0497_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9305555555555555,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0498_gt.json",
+      "total_steps": 6,
+      "correct": 6,
+      "close": 6,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.9305555555555557,
+      "avg_off_by": 0.0
+    },
+    {
+      "file": "ground_truth_500/sample_0499_gt.json",
+      "total_steps": 5,
+      "correct": 5,
+      "close": 5,
+      "accuracy": 1.0,
+      "close_accuracy": 1.0,
+      "avg_confidence": 0.8133333333333332,
+      "avg_off_by": 0.0
+    }
+  ]
+}

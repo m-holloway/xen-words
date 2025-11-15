@@ -1,0 +1,178 @@
+{
+  "audio_file": "sample_0275.flac",
+  "wav_file": "sample_0275.wav",
+  "transcript": "A week after the battle, my brother rode by there on a cavalry expedition and made the horrible discovery that hogs were eating up the bodies of our dead heroes. That too was war.",
+  "word_timings": [
+    {
+      "word": "A",
+      "start": 0.0,
+      "end": 0.46
+    },
+    {
+      "word": "week",
+      "start": 0.46,
+      "end": 0.64
+    },
+    {
+      "word": "after",
+      "start": 0.64,
+      "end": 1.0
+    },
+    {
+      "word": "the",
+      "start": 1.0,
+      "end": 1.16
+    },
+    {
+      "word": "battle,",
+      "start": 1.16,
+      "end": 1.48
+    },
+    {
+      "word": "my",
+      "start": 1.88,
+      "end": 1.96
+    },
+    {
+      "word": "brother",
+      "start": 1.96,
+      "end": 2.24
+    },
+    {
+      "word": "rode",
+      "start": 2.24,
+      "end": 2.56
+    },
+    {
+      "word": "by",
+      "start": 2.56,
+      "end": 2.84
+    },
+    {
+      "word": "there",
+      "start": 2.84,
+      "end": 3.1
+    },
+    {
+      "word": "on",
+      "start": 3.1,
+      "end": 3.28
+    },
+    {
+      "word": "a",
+      "start": 3.28,
+      "end": 3.46
+    },
+    {
+      "word": "cavalry",
+      "start": 3.46,
+      "end": 3.82
+    },
+    {
+      "word": "expedition",
+      "start": 3.82,
+      "end": 4.54
+    },
+    {
+      "word": "and",
+      "start": 4.54,
+      "end": 5.14
+    },
+    {
+      "word": "made",
+      "start": 5.14,
+      "end": 5.26
+    },
+    {
+      "word": "the",
+      "start": 5.26,
+      "end": 5.46
+    },
+    {
+      "word": "horrible",
+      "start": 5.46,
+      "end": 5.8
+    },
+    {
+      "word": "discovery",
+      "start": 5.8,
+      "end": 6.44
+    },
+    {
+      "word": "that",
+      "start": 6.44,
+      "end": 6.78
+    },
+    {
+      "word": "hogs",
+      "start": 6.78,
+      "end": 7.26
+    },
+    {
+      "word": "were",
+      "start": 7.26,
+      "end": 7.36
+    },
+    {
+      "word": "eating",
+      "start": 7.36,
+      "end": 7.6
+    },
+    {
+      "word": "up",
+      "start": 7.6,
+      "end": 7.8
+    },
+    {
+      "word": "the",
+      "start": 7.8,
+      "end": 7.92
+    },
+    {
+      "word": "bodies",
+      "start": 7.92,
+      "end": 8.2
+    },
+    {
+      "word": "of",
+      "start": 8.2,
+      "end": 8.4
+    },
+    {
+      "word": "our",
+      "start": 8.4,
+      "end": 8.54
+    },
+    {
+      "word": "dead",
+      "start": 8.54,
+      "end": 8.76
+    },
+    {
+      "word": "heroes.",
+      "start": 8.76,
+      "end": 9.18
+    },
+    {
+      "word": "That",
+      "start": 9.92,
+      "end": 10.24
+    },
+    {
+      "word": "too",
+      "start": 10.24,
+      "end": 10.6
+    },
+    {
+      "word": "was",
+      "start": 10.6,
+      "end": 10.86
+    },
+    {
+      "word": "war.",
+      "start": 10.86,
+      "end": 11.16
+    }
+  ],
+  "duration": 11.16
+}

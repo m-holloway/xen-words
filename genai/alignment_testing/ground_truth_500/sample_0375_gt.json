@@ -1,0 +1,128 @@
+{
+  "audio_file": "sample_0375.flac",
+  "wav_file": "sample_0375.wav",
+  "transcript": "I get the pillows comfortably arranged on the floor with a big bottle of soda and a bag of popcorn with an easy reach.",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.42
+    },
+    {
+      "word": "get",
+      "start": 0.42,
+      "end": 0.5
+    },
+    {
+      "word": "the",
+      "start": 0.5,
+      "end": 0.62
+    },
+    {
+      "word": "pillows",
+      "start": 0.62,
+      "end": 0.84
+    },
+    {
+      "word": "comfortably",
+      "start": 0.84,
+      "end": 1.28
+    },
+    {
+      "word": "arranged",
+      "start": 1.28,
+      "end": 1.72
+    },
+    {
+      "word": "on",
+      "start": 1.72,
+      "end": 1.94
+    },
+    {
+      "word": "the",
+      "start": 1.94,
+      "end": 2.04
+    },
+    {
+      "word": "floor",
+      "start": 2.04,
+      "end": 2.26
+    },
+    {
+      "word": "with",
+      "start": 2.26,
+      "end": 2.5
+    },
+    {
+      "word": "a",
+      "start": 2.5,
+      "end": 2.6
+    },
+    {
+      "word": "big",
+      "start": 2.6,
+      "end": 2.7
+    },
+    {
+      "word": "bottle",
+      "start": 2.7,
+      "end": 3.0
+    },
+    {
+      "word": "of",
+      "start": 3.0,
+      "end": 3.26
+    },
+    {
+      "word": "soda",
+      "start": 3.26,
+      "end": 3.4
+    },
+    {
+      "word": "and",
+      "start": 3.4,
+      "end": 3.66
+    },
+    {
+      "word": "a",
+      "start": 3.66,
+      "end": 3.74
+    },
+    {
+      "word": "bag",
+      "start": 3.74,
+      "end": 3.84
+    },
+    {
+      "word": "of",
+      "start": 3.84,
+      "end": 4.0
+    },
+    {
+      "word": "popcorn",
+      "start": 4.0,
+      "end": 4.34
+    },
+    {
+      "word": "with",
+      "start": 4.34,
+      "end": 4.58
+    },
+    {
+      "word": "an",
+      "start": 4.58,
+      "end": 4.68
+    },
+    {
+      "word": "easy",
+      "start": 4.68,
+      "end": 4.9
+    },
+    {
+      "word": "reach.",
+      "start": 4.9,
+      "end": 5.2
+    }
+  ],
+  "duration": 5.2
+}

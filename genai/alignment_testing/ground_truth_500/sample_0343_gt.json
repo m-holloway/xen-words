@@ -1,0 +1,263 @@
+{
+  "audio_file": "sample_0343.flac",
+  "wav_file": "sample_0343.wav",
+  "transcript": "In aristocratic communities, the people readily give themselves up to bursts of tumultuous and boisterous guillity, which shake off at once the recollection of their privations. The natives of democracies are not fond of being thus violently broken in upon, and they never lose sight of their own selves without regret.",
+  "word_timings": [
+    {
+      "word": "In",
+      "start": 0.0,
+      "end": 0.44
+    },
+    {
+      "word": "aristocratic",
+      "start": 0.44,
+      "end": 0.88
+    },
+    {
+      "word": "communities,",
+      "start": 0.88,
+      "end": 1.44
+    },
+    {
+      "word": "the",
+      "start": 1.82,
+      "end": 1.88
+    },
+    {
+      "word": "people",
+      "start": 1.88,
+      "end": 2.1
+    },
+    {
+      "word": "readily",
+      "start": 2.1,
+      "end": 2.48
+    },
+    {
+      "word": "give",
+      "start": 2.48,
+      "end": 2.76
+    },
+    {
+      "word": "themselves",
+      "start": 2.76,
+      "end": 3.1
+    },
+    {
+      "word": "up",
+      "start": 3.1,
+      "end": 3.34
+    },
+    {
+      "word": "to",
+      "start": 3.34,
+      "end": 3.54
+    },
+    {
+      "word": "bursts",
+      "start": 3.54,
+      "end": 3.84
+    },
+    {
+      "word": "of",
+      "start": 3.84,
+      "end": 4.1
+    },
+    {
+      "word": "tumultuous",
+      "start": 4.1,
+      "end": 4.66
+    },
+    {
+      "word": "and",
+      "start": 4.66,
+      "end": 4.84
+    },
+    {
+      "word": "boisterous",
+      "start": 4.84,
+      "end": 5.32
+    },
+    {
+      "word": "guillity,",
+      "start": 5.32,
+      "end": 5.74
+    },
+    {
+      "word": "which",
+      "start": 6.08,
+      "end": 6.26
+    },
+    {
+      "word": "shake",
+      "start": 6.26,
+      "end": 6.5
+    },
+    {
+      "word": "off",
+      "start": 6.5,
+      "end": 6.72
+    },
+    {
+      "word": "at",
+      "start": 6.72,
+      "end": 6.84
+    },
+    {
+      "word": "once",
+      "start": 6.84,
+      "end": 7.12
+    },
+    {
+      "word": "the",
+      "start": 7.12,
+      "end": 7.36
+    },
+    {
+      "word": "recollection",
+      "start": 7.36,
+      "end": 7.9
+    },
+    {
+      "word": "of",
+      "start": 7.9,
+      "end": 8.0
+    },
+    {
+      "word": "their",
+      "start": 8.0,
+      "end": 8.12
+    },
+    {
+      "word": "privations.",
+      "start": 8.12,
+      "end": 8.78
+    },
+    {
+      "word": "The",
+      "start": 9.4,
+      "end": 9.6
+    },
+    {
+      "word": "natives",
+      "start": 9.6,
+      "end": 9.86
+    },
+    {
+      "word": "of",
+      "start": 9.86,
+      "end": 10.0
+    },
+    {
+      "word": "democracies",
+      "start": 10.0,
+      "end": 10.58
+    },
+    {
+      "word": "are",
+      "start": 10.58,
+      "end": 10.96
+    },
+    {
+      "word": "not",
+      "start": 10.96,
+      "end": 11.14
+    },
+    {
+      "word": "fond",
+      "start": 11.14,
+      "end": 11.42
+    },
+    {
+      "word": "of",
+      "start": 11.42,
+      "end": 11.64
+    },
+    {
+      "word": "being",
+      "start": 11.64,
+      "end": 11.9
+    },
+    {
+      "word": "thus",
+      "start": 11.9,
+      "end": 12.14
+    },
+    {
+      "word": "violently",
+      "start": 12.14,
+      "end": 12.66
+    },
+    {
+      "word": "broken",
+      "start": 12.66,
+      "end": 12.98
+    },
+    {
+      "word": "in",
+      "start": 12.98,
+      "end": 13.14
+    },
+    {
+      "word": "upon,",
+      "start": 13.14,
+      "end": 13.38
+    },
+    {
+      "word": "and",
+      "start": 13.8,
+      "end": 13.88
+    },
+    {
+      "word": "they",
+      "start": 13.88,
+      "end": 13.96
+    },
+    {
+      "word": "never",
+      "start": 13.96,
+      "end": 14.16
+    },
+    {
+      "word": "lose",
+      "start": 14.16,
+      "end": 14.38
+    },
+    {
+      "word": "sight",
+      "start": 14.38,
+      "end": 14.64
+    },
+    {
+      "word": "of",
+      "start": 14.64,
+      "end": 14.76
+    },
+    {
+      "word": "their",
+      "start": 14.76,
+      "end": 14.88
+    },
+    {
+      "word": "own",
+      "start": 14.88,
+      "end": 15.1
+    },
+    {
+      "word": "selves",
+      "start": 15.1,
+      "end": 15.48
+    },
+    {
+      "word": "without",
+      "start": 15.48,
+      "end": 15.82
+    },
+    {
+      "word": "regret.",
+      "start": 15.82,
+      "end": 16.2
+    }
+  ],
+  "duration": 16.2
+}

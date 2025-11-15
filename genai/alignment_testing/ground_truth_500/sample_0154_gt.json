@@ -1,0 +1,43 @@
+{
+  "audio_file": "sample_0154.flac",
+  "wav_file": "sample_0154.wav",
+  "transcript": "We lay still and did not talk.",
+  "word_timings": [
+    {
+      "word": "We",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "lay",
+      "start": 0.62,
+      "end": 0.82
+    },
+    {
+      "word": "still",
+      "start": 0.82,
+      "end": 1.16
+    },
+    {
+      "word": "and",
+      "start": 1.16,
+      "end": 1.36
+    },
+    {
+      "word": "did",
+      "start": 1.36,
+      "end": 1.46
+    },
+    {
+      "word": "not",
+      "start": 1.46,
+      "end": 1.64
+    },
+    {
+      "word": "talk.",
+      "start": 1.64,
+      "end": 2.02
+    }
+  ],
+  "duration": 2.02
+}

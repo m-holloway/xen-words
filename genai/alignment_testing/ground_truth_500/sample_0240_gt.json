@@ -1,0 +1,73 @@
+{
+  "audio_file": "sample_0240.flac",
+  "wav_file": "sample_0240.wav",
+  "transcript": "Let me enter, I pray you, to pass the night under your roof.",
+  "word_timings": [
+    {
+      "word": "Let",
+      "start": 0.0,
+      "end": 0.52
+    },
+    {
+      "word": "me",
+      "start": 0.52,
+      "end": 0.72
+    },
+    {
+      "word": "enter,",
+      "start": 0.72,
+      "end": 1.16
+    },
+    {
+      "word": "I",
+      "start": 1.38,
+      "end": 1.48
+    },
+    {
+      "word": "pray",
+      "start": 1.48,
+      "end": 1.84
+    },
+    {
+      "word": "you,",
+      "start": 1.84,
+      "end": 2.26
+    },
+    {
+      "word": "to",
+      "start": 2.62,
+      "end": 2.7
+    },
+    {
+      "word": "pass",
+      "start": 2.7,
+      "end": 3.02
+    },
+    {
+      "word": "the",
+      "start": 3.02,
+      "end": 3.24
+    },
+    {
+      "word": "night",
+      "start": 3.24,
+      "end": 3.44
+    },
+    {
+      "word": "under",
+      "start": 3.44,
+      "end": 3.9
+    },
+    {
+      "word": "your",
+      "start": 3.9,
+      "end": 4.14
+    },
+    {
+      "word": "roof.",
+      "start": 4.14,
+      "end": 4.58
+    }
+  ],
+  "duration": 4.58
+}

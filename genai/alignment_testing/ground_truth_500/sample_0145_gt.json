@@ -1,0 +1,43 @@
+{
+  "audio_file": "sample_0145.flac",
+  "wav_file": "sample_0145.wav",
+  "transcript": "Wherever they went, the story followed them.",
+  "word_timings": [
+    {
+      "word": "Wherever",
+      "start": 0.0,
+      "end": 0.72
+    },
+    {
+      "word": "they",
+      "start": 0.72,
+      "end": 1.02
+    },
+    {
+      "word": "went,",
+      "start": 1.02,
+      "end": 1.26
+    },
+    {
+      "word": "the",
+      "start": 1.44,
+      "end": 1.5
+    },
+    {
+      "word": "story",
+      "start": 1.5,
+      "end": 1.78
+    },
+    {
+      "word": "followed",
+      "start": 1.78,
+      "end": 2.18
+    },
+    {
+      "word": "them.",
+      "start": 2.18,
+      "end": 2.48
+    }
+  ],
+  "duration": 2.48
+}

@@ -1,0 +1,108 @@
+{
+  "audio_file": "sample_0221.flac",
+  "wav_file": "sample_0221.wav",
+  "transcript": "Most of my likenesses do look unamiable, but the very sufficient reason, I fancy, is because the originals are so.",
+  "word_timings": [
+    {
+      "word": "Most",
+      "start": 0.0,
+      "end": 0.6
+    },
+    {
+      "word": "of",
+      "start": 0.6,
+      "end": 0.76
+    },
+    {
+      "word": "my",
+      "start": 0.76,
+      "end": 0.9
+    },
+    {
+      "word": "likenesses",
+      "start": 0.9,
+      "end": 1.3
+    },
+    {
+      "word": "do",
+      "start": 1.3,
+      "end": 1.58
+    },
+    {
+      "word": "look",
+      "start": 1.58,
+      "end": 1.86
+    },
+    {
+      "word": "unamiable,",
+      "start": 1.86,
+      "end": 2.38
+    },
+    {
+      "word": "but",
+      "start": 2.74,
+      "end": 3.02
+    },
+    {
+      "word": "the",
+      "start": 3.02,
+      "end": 3.16
+    },
+    {
+      "word": "very",
+      "start": 3.16,
+      "end": 3.38
+    },
+    {
+      "word": "sufficient",
+      "start": 3.38,
+      "end": 3.92
+    },
+    {
+      "word": "reason,",
+      "start": 3.92,
+      "end": 4.32
+    },
+    {
+      "word": "I",
+      "start": 4.54,
+      "end": 4.6
+    },
+    {
+      "word": "fancy,",
+      "start": 4.6,
+      "end": 4.98
+    },
+    {
+      "word": "is",
+      "start": 5.22,
+      "end": 5.72
+    },
+    {
+      "word": "because",
+      "start": 5.72,
+      "end": 5.94
+    },
+    {
+      "word": "the",
+      "start": 5.94,
+      "end": 6.1
+    },
+    {
+      "word": "originals",
+      "start": 6.1,
+      "end": 6.5
+    },
+    {
+      "word": "are",
+      "start": 6.5,
+      "end": 6.6
+    },
+    {
+      "word": "so.",
+      "start": 6.6,
+      "end": 6.76
+    }
+  ],
+  "duration": 6.76
+}

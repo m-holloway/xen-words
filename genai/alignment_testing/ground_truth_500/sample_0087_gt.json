@@ -1,0 +1,83 @@
+{
+  "audio_file": "sample_0087.flac",
+  "wav_file": "sample_0087.wav",
+  "transcript": "To him, the presence or absence of his wife's sister was a matter of indifference.",
+  "word_timings": [
+    {
+      "word": "To",
+      "start": 0.0,
+      "end": 0.46
+    },
+    {
+      "word": "him,",
+      "start": 0.46,
+      "end": 0.66
+    },
+    {
+      "word": "the",
+      "start": 0.8,
+      "end": 0.86
+    },
+    {
+      "word": "presence",
+      "start": 0.86,
+      "end": 1.16
+    },
+    {
+      "word": "or",
+      "start": 1.16,
+      "end": 1.42
+    },
+    {
+      "word": "absence",
+      "start": 1.42,
+      "end": 1.72
+    },
+    {
+      "word": "of",
+      "start": 1.72,
+      "end": 2.02
+    },
+    {
+      "word": "his",
+      "start": 2.02,
+      "end": 2.2
+    },
+    {
+      "word": "wife's",
+      "start": 2.2,
+      "end": 2.58
+    },
+    {
+      "word": "sister",
+      "start": 2.58,
+      "end": 2.96
+    },
+    {
+      "word": "was",
+      "start": 2.96,
+      "end": 3.32
+    },
+    {
+      "word": "a",
+      "start": 3.32,
+      "end": 3.48
+    },
+    {
+      "word": "matter",
+      "start": 3.48,
+      "end": 3.7
+    },
+    {
+      "word": "of",
+      "start": 3.7,
+      "end": 3.88
+    },
+    {
+      "word": "indifference.",
+      "start": 3.88,
+      "end": 4.5
+    }
+  ],
+  "duration": 4.5
+}

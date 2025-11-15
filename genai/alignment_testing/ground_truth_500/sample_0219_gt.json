@@ -1,0 +1,108 @@
+{
+  "audio_file": "sample_0219.flac",
+  "wav_file": "sample_0219.wav",
+  "transcript": "It is nonsense said Phoebe a little impatiently for us to talk about a picture which you have never seen.",
+  "word_timings": [
+    {
+      "word": "It",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "is",
+      "start": 0.62,
+      "end": 0.74
+    },
+    {
+      "word": "nonsense",
+      "start": 0.74,
+      "end": 1.14
+    },
+    {
+      "word": "said",
+      "start": 1.14,
+      "end": 1.5
+    },
+    {
+      "word": "Phoebe",
+      "start": 1.5,
+      "end": 1.78
+    },
+    {
+      "word": "a",
+      "start": 1.78,
+      "end": 2.0
+    },
+    {
+      "word": "little",
+      "start": 2.0,
+      "end": 2.16
+    },
+    {
+      "word": "impatiently",
+      "start": 2.16,
+      "end": 2.84
+    },
+    {
+      "word": "for",
+      "start": 2.84,
+      "end": 3.34
+    },
+    {
+      "word": "us",
+      "start": 3.34,
+      "end": 3.5
+    },
+    {
+      "word": "to",
+      "start": 3.5,
+      "end": 3.66
+    },
+    {
+      "word": "talk",
+      "start": 3.66,
+      "end": 3.88
+    },
+    {
+      "word": "about",
+      "start": 3.88,
+      "end": 4.12
+    },
+    {
+      "word": "a",
+      "start": 4.12,
+      "end": 4.24
+    },
+    {
+      "word": "picture",
+      "start": 4.24,
+      "end": 4.62
+    },
+    {
+      "word": "which",
+      "start": 4.62,
+      "end": 5.14
+    },
+    {
+      "word": "you",
+      "start": 5.14,
+      "end": 5.26
+    },
+    {
+      "word": "have",
+      "start": 5.26,
+      "end": 5.4
+    },
+    {
+      "word": "never",
+      "start": 5.4,
+      "end": 5.58
+    },
+    {
+      "word": "seen.",
+      "start": 5.58,
+      "end": 5.88
+    }
+  ],
+  "duration": 5.88
+}

@@ -1,0 +1,83 @@
+{
+  "audio_file": "sample_0164.flac",
+  "wav_file": "sample_0164.wav",
+  "transcript": "Everyone said Peter kissed the cow before she was led away by her new owner.",
+  "word_timings": [
+    {
+      "word": "Everyone",
+      "start": 0.0,
+      "end": 0.82
+    },
+    {
+      "word": "said",
+      "start": 0.82,
+      "end": 1.2
+    },
+    {
+      "word": "Peter",
+      "start": 1.2,
+      "end": 1.52
+    },
+    {
+      "word": "kissed",
+      "start": 1.52,
+      "end": 1.84
+    },
+    {
+      "word": "the",
+      "start": 1.84,
+      "end": 2.06
+    },
+    {
+      "word": "cow",
+      "start": 2.06,
+      "end": 2.22
+    },
+    {
+      "word": "before",
+      "start": 2.22,
+      "end": 2.6
+    },
+    {
+      "word": "she",
+      "start": 2.6,
+      "end": 2.86
+    },
+    {
+      "word": "was",
+      "start": 2.86,
+      "end": 3.02
+    },
+    {
+      "word": "led",
+      "start": 3.02,
+      "end": 3.16
+    },
+    {
+      "word": "away",
+      "start": 3.16,
+      "end": 3.42
+    },
+    {
+      "word": "by",
+      "start": 3.42,
+      "end": 3.62
+    },
+    {
+      "word": "her",
+      "start": 3.62,
+      "end": 3.8
+    },
+    {
+      "word": "new",
+      "start": 3.8,
+      "end": 3.96
+    },
+    {
+      "word": "owner.",
+      "start": 3.96,
+      "end": 4.26
+    }
+  ],
+  "duration": 4.26
+}

@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0450.flac",
+  "wav_file": "sample_0450.wav",
+  "transcript": "Struggle warfare was the condition of private ownership. It was fatal.",
+  "word_timings": [
+    {
+      "word": "Struggle",
+      "start": 0.0,
+      "end": 0.6
+    },
+    {
+      "word": "warfare",
+      "start": 0.6,
+      "end": 1.08
+    },
+    {
+      "word": "was",
+      "start": 1.08,
+      "end": 1.68
+    },
+    {
+      "word": "the",
+      "start": 1.68,
+      "end": 1.84
+    },
+    {
+      "word": "condition",
+      "start": 1.84,
+      "end": 2.22
+    },
+    {
+      "word": "of",
+      "start": 2.22,
+      "end": 2.52
+    },
+    {
+      "word": "private",
+      "start": 2.52,
+      "end": 2.82
+    },
+    {
+      "word": "ownership.",
+      "start": 2.82,
+      "end": 3.24
+    },
+    {
+      "word": "It",
+      "start": 3.54,
+      "end": 3.88
+    },
+    {
+      "word": "was",
+      "start": 3.88,
+      "end": 4.06
+    },
+    {
+      "word": "fatal.",
+      "start": 4.06,
+      "end": 4.38
+    }
+  ],
+  "duration": 4.38
+}

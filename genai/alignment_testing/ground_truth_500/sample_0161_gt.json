@@ -1,0 +1,138 @@
+{
+  "audio_file": "sample_0161.flac",
+  "wav_file": "sample_0161.wav",
+  "transcript": "The little house on the hillside was so much the color of the night that we could not see it as we came up the draw.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "little",
+      "start": 0.62,
+      "end": 0.8
+    },
+    {
+      "word": "house",
+      "start": 0.8,
+      "end": 1.04
+    },
+    {
+      "word": "on",
+      "start": 1.04,
+      "end": 1.22
+    },
+    {
+      "word": "the",
+      "start": 1.22,
+      "end": 1.38
+    },
+    {
+      "word": "hillside",
+      "start": 1.38,
+      "end": 1.74
+    },
+    {
+      "word": "was",
+      "start": 1.74,
+      "end": 1.94
+    },
+    {
+      "word": "so",
+      "start": 1.94,
+      "end": 2.14
+    },
+    {
+      "word": "much",
+      "start": 2.14,
+      "end": 2.38
+    },
+    {
+      "word": "the",
+      "start": 2.38,
+      "end": 2.54
+    },
+    {
+      "word": "color",
+      "start": 2.54,
+      "end": 2.78
+    },
+    {
+      "word": "of",
+      "start": 2.78,
+      "end": 2.98
+    },
+    {
+      "word": "the",
+      "start": 2.98,
+      "end": 3.08
+    },
+    {
+      "word": "night",
+      "start": 3.08,
+      "end": 3.28
+    },
+    {
+      "word": "that",
+      "start": 3.28,
+      "end": 3.5
+    },
+    {
+      "word": "we",
+      "start": 3.5,
+      "end": 3.66
+    },
+    {
+      "word": "could",
+      "start": 3.66,
+      "end": 3.76
+    },
+    {
+      "word": "not",
+      "start": 3.76,
+      "end": 3.94
+    },
+    {
+      "word": "see",
+      "start": 3.94,
+      "end": 4.26
+    },
+    {
+      "word": "it",
+      "start": 4.26,
+      "end": 4.4
+    },
+    {
+      "word": "as",
+      "start": 4.4,
+      "end": 4.52
+    },
+    {
+      "word": "we",
+      "start": 4.52,
+      "end": 4.64
+    },
+    {
+      "word": "came",
+      "start": 4.64,
+      "end": 4.86
+    },
+    {
+      "word": "up",
+      "start": 4.86,
+      "end": 5.04
+    },
+    {
+      "word": "the",
+      "start": 5.04,
+      "end": 5.2
+    },
+    {
+      "word": "draw.",
+      "start": 5.2,
+      "end": 5.46
+    }
+  ],
+  "duration": 5.46
+}

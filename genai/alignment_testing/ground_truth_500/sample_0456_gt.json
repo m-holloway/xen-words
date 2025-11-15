@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0456.flac",
+  "wav_file": "sample_0456.wav",
+  "transcript": "You would call that ladded gentleman, would you? Memble, Mr. Verlock.",
+  "word_timings": [
+    {
+      "word": "You",
+      "start": 0.0,
+      "end": 0.56
+    },
+    {
+      "word": "would",
+      "start": 0.56,
+      "end": 0.66
+    },
+    {
+      "word": "call",
+      "start": 0.66,
+      "end": 0.9
+    },
+    {
+      "word": "that",
+      "start": 0.9,
+      "end": 1.12
+    },
+    {
+      "word": "ladded",
+      "start": 1.12,
+      "end": 1.5
+    },
+    {
+      "word": "gentleman,",
+      "start": 1.5,
+      "end": 1.8
+    },
+    {
+      "word": "would",
+      "start": 2.0,
+      "end": 2.08
+    },
+    {
+      "word": "you?",
+      "start": 2.08,
+      "end": 2.28
+    },
+    {
+      "word": "Memble,",
+      "start": 2.6,
+      "end": 2.82
+    },
+    {
+      "word": "Mr.",
+      "start": 2.9,
+      "end": 3.06
+    },
+    {
+      "word": "Verlock.",
+      "start": 3.22,
+      "end": 3.4
+    }
+  ],
+  "duration": 3.4
+}

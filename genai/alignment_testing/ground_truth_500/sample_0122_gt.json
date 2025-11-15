@@ -1,0 +1,98 @@
+{
+  "audio_file": "sample_0122.flac",
+  "wav_file": "sample_0122.wav",
+  "transcript": "St. Molling survived him three years, and St. Adam Nen so intimately connected with his reign ten years.",
+  "word_timings": [
+    {
+      "word": "St.",
+      "start": 0.0,
+      "end": 0.76
+    },
+    {
+      "word": "Molling",
+      "start": 0.82,
+      "end": 1.12
+    },
+    {
+      "word": "survived",
+      "start": 1.12,
+      "end": 1.5
+    },
+    {
+      "word": "him",
+      "start": 1.5,
+      "end": 1.78
+    },
+    {
+      "word": "three",
+      "start": 1.78,
+      "end": 2.12
+    },
+    {
+      "word": "years,",
+      "start": 2.12,
+      "end": 2.48
+    },
+    {
+      "word": "and",
+      "start": 2.96,
+      "end": 3.04
+    },
+    {
+      "word": "St.",
+      "start": 3.04,
+      "end": 3.26
+    },
+    {
+      "word": "Adam",
+      "start": 3.62,
+      "end": 3.62
+    },
+    {
+      "word": "Nen",
+      "start": 3.62,
+      "end": 3.96
+    },
+    {
+      "word": "so",
+      "start": 3.96,
+      "end": 4.32
+    },
+    {
+      "word": "intimately",
+      "start": 4.32,
+      "end": 4.82
+    },
+    {
+      "word": "connected",
+      "start": 4.82,
+      "end": 5.32
+    },
+    {
+      "word": "with",
+      "start": 5.32,
+      "end": 5.56
+    },
+    {
+      "word": "his",
+      "start": 5.56,
+      "end": 5.74
+    },
+    {
+      "word": "reign",
+      "start": 5.74,
+      "end": 6.06
+    },
+    {
+      "word": "ten",
+      "start": 6.06,
+      "end": 6.7
+    },
+    {
+      "word": "years.",
+      "start": 6.7,
+      "end": 7.08
+    }
+  ],
+  "duration": 7.08
+}

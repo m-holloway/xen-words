@@ -1,0 +1,148 @@
+{
+  "audio_file": "sample_0425.flac",
+  "wav_file": "sample_0425.wav",
+  "transcript": "Lothing was all very well for these fellows who knew not Mr. Vladimir and had women to fall back upon, whereas he had a woman to provide for.",
+  "word_timings": [
+    {
+      "word": "Lothing",
+      "start": 0.0,
+      "end": 0.56
+    },
+    {
+      "word": "was",
+      "start": 0.56,
+      "end": 0.68
+    },
+    {
+      "word": "all",
+      "start": 0.68,
+      "end": 0.96
+    },
+    {
+      "word": "very",
+      "start": 0.96,
+      "end": 1.22
+    },
+    {
+      "word": "well",
+      "start": 1.22,
+      "end": 1.44
+    },
+    {
+      "word": "for",
+      "start": 1.44,
+      "end": 1.62
+    },
+    {
+      "word": "these",
+      "start": 1.62,
+      "end": 1.84
+    },
+    {
+      "word": "fellows",
+      "start": 1.84,
+      "end": 2.08
+    },
+    {
+      "word": "who",
+      "start": 2.08,
+      "end": 2.32
+    },
+    {
+      "word": "knew",
+      "start": 2.32,
+      "end": 2.46
+    },
+    {
+      "word": "not",
+      "start": 2.46,
+      "end": 2.68
+    },
+    {
+      "word": "Mr.",
+      "start": 2.68,
+      "end": 2.92
+    },
+    {
+      "word": "Vladimir",
+      "start": 3.08,
+      "end": 3.32
+    },
+    {
+      "word": "and",
+      "start": 3.32,
+      "end": 3.94
+    },
+    {
+      "word": "had",
+      "start": 3.94,
+      "end": 4.04
+    },
+    {
+      "word": "women",
+      "start": 4.04,
+      "end": 4.26
+    },
+    {
+      "word": "to",
+      "start": 4.26,
+      "end": 4.44
+    },
+    {
+      "word": "fall",
+      "start": 4.44,
+      "end": 4.62
+    },
+    {
+      "word": "back",
+      "start": 4.62,
+      "end": 4.8
+    },
+    {
+      "word": "upon,",
+      "start": 4.8,
+      "end": 5.22
+    },
+    {
+      "word": "whereas",
+      "start": 5.64,
+      "end": 5.94
+    },
+    {
+      "word": "he",
+      "start": 5.94,
+      "end": 6.18
+    },
+    {
+      "word": "had",
+      "start": 6.18,
+      "end": 6.38
+    },
+    {
+      "word": "a",
+      "start": 6.38,
+      "end": 6.46
+    },
+    {
+      "word": "woman",
+      "start": 6.46,
+      "end": 6.58
+    },
+    {
+      "word": "to",
+      "start": 6.58,
+      "end": 6.74
+    },
+    {
+      "word": "provide",
+      "start": 6.74,
+      "end": 6.96
+    },
+    {
+      "word": "for.",
+      "start": 6.96,
+      "end": 7.34
+    }
+  ],
+  "duration": 7.34
+}

@@ -1,0 +1,173 @@
+{
+  "audio_file": "sample_0199.flac",
+  "wav_file": "sample_0199.wav",
+  "transcript": "He held a hoe in his hand, and while Phoebe was gone in quest of the crumbs, had begun to busy himself with drawing up fresh earth about the roots of the tomatoes.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.56
+    },
+    {
+      "word": "held",
+      "start": 0.56,
+      "end": 0.82
+    },
+    {
+      "word": "a",
+      "start": 0.82,
+      "end": 0.96
+    },
+    {
+      "word": "hoe",
+      "start": 0.96,
+      "end": 1.1
+    },
+    {
+      "word": "in",
+      "start": 1.1,
+      "end": 1.26
+    },
+    {
+      "word": "his",
+      "start": 1.26,
+      "end": 1.42
+    },
+    {
+      "word": "hand,",
+      "start": 1.42,
+      "end": 1.72
+    },
+    {
+      "word": "and",
+      "start": 2.2,
+      "end": 2.3
+    },
+    {
+      "word": "while",
+      "start": 2.3,
+      "end": 2.48
+    },
+    {
+      "word": "Phoebe",
+      "start": 2.48,
+      "end": 2.78
+    },
+    {
+      "word": "was",
+      "start": 2.78,
+      "end": 2.98
+    },
+    {
+      "word": "gone",
+      "start": 2.98,
+      "end": 3.2
+    },
+    {
+      "word": "in",
+      "start": 3.2,
+      "end": 3.34
+    },
+    {
+      "word": "quest",
+      "start": 3.34,
+      "end": 3.52
+    },
+    {
+      "word": "of",
+      "start": 3.52,
+      "end": 3.74
+    },
+    {
+      "word": "the",
+      "start": 3.74,
+      "end": 3.84
+    },
+    {
+      "word": "crumbs,",
+      "start": 3.84,
+      "end": 4.14
+    },
+    {
+      "word": "had",
+      "start": 4.72,
+      "end": 4.8
+    },
+    {
+      "word": "begun",
+      "start": 4.8,
+      "end": 5.06
+    },
+    {
+      "word": "to",
+      "start": 5.06,
+      "end": 5.26
+    },
+    {
+      "word": "busy",
+      "start": 5.26,
+      "end": 5.46
+    },
+    {
+      "word": "himself",
+      "start": 5.46,
+      "end": 5.88
+    },
+    {
+      "word": "with",
+      "start": 5.88,
+      "end": 6.3
+    },
+    {
+      "word": "drawing",
+      "start": 6.3,
+      "end": 6.58
+    },
+    {
+      "word": "up",
+      "start": 6.58,
+      "end": 6.78
+    },
+    {
+      "word": "fresh",
+      "start": 6.78,
+      "end": 7.04
+    },
+    {
+      "word": "earth",
+      "start": 7.04,
+      "end": 7.46
+    },
+    {
+      "word": "about",
+      "start": 7.46,
+      "end": 7.9
+    },
+    {
+      "word": "the",
+      "start": 7.9,
+      "end": 8.08
+    },
+    {
+      "word": "roots",
+      "start": 8.08,
+      "end": 8.24
+    },
+    {
+      "word": "of",
+      "start": 8.24,
+      "end": 8.48
+    },
+    {
+      "word": "the",
+      "start": 8.48,
+      "end": 8.52
+    },
+    {
+      "word": "tomatoes.",
+      "start": 8.52,
+      "end": 8.84
+    }
+  ],
+  "duration": 8.84
+}

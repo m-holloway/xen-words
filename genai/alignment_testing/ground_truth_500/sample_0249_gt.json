@@ -1,0 +1,73 @@
+{
+  "audio_file": "sample_0249.flac",
+  "wav_file": "sample_0249.wav",
+  "transcript": "When she returned, his hand was sticking through the hole in the door.",
+  "word_timings": [
+    {
+      "word": "When",
+      "start": 0.0,
+      "end": 0.44
+    },
+    {
+      "word": "she",
+      "start": 0.44,
+      "end": 0.66
+    },
+    {
+      "word": "returned,",
+      "start": 0.66,
+      "end": 1.14
+    },
+    {
+      "word": "his",
+      "start": 1.46,
+      "end": 1.58
+    },
+    {
+      "word": "hand",
+      "start": 1.58,
+      "end": 1.82
+    },
+    {
+      "word": "was",
+      "start": 1.82,
+      "end": 2.0
+    },
+    {
+      "word": "sticking",
+      "start": 2.0,
+      "end": 2.34
+    },
+    {
+      "word": "through",
+      "start": 2.34,
+      "end": 2.7
+    },
+    {
+      "word": "the",
+      "start": 2.7,
+      "end": 2.88
+    },
+    {
+      "word": "hole",
+      "start": 2.88,
+      "end": 3.04
+    },
+    {
+      "word": "in",
+      "start": 3.04,
+      "end": 3.22
+    },
+    {
+      "word": "the",
+      "start": 3.22,
+      "end": 3.3
+    },
+    {
+      "word": "door.",
+      "start": 3.3,
+      "end": 3.5
+    }
+  ],
+  "duration": 3.5
+}

@@ -1,0 +1,98 @@
+{
+  "audio_file": "sample_0105.flac",
+  "wav_file": "sample_0105.wav",
+  "transcript": "There had been another black frost the night before, and the air was clear and heady is wine.",
+  "word_timings": [
+    {
+      "word": "There",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "had",
+      "start": 0.62,
+      "end": 0.72
+    },
+    {
+      "word": "been",
+      "start": 0.72,
+      "end": 0.84
+    },
+    {
+      "word": "another",
+      "start": 0.84,
+      "end": 1.18
+    },
+    {
+      "word": "black",
+      "start": 1.18,
+      "end": 1.46
+    },
+    {
+      "word": "frost",
+      "start": 1.46,
+      "end": 1.76
+    },
+    {
+      "word": "the",
+      "start": 1.76,
+      "end": 2.04
+    },
+    {
+      "word": "night",
+      "start": 2.04,
+      "end": 2.18
+    },
+    {
+      "word": "before,",
+      "start": 2.18,
+      "end": 2.6
+    },
+    {
+      "word": "and",
+      "start": 3.1,
+      "end": 3.2
+    },
+    {
+      "word": "the",
+      "start": 3.2,
+      "end": 3.34
+    },
+    {
+      "word": "air",
+      "start": 3.34,
+      "end": 3.52
+    },
+    {
+      "word": "was",
+      "start": 3.52,
+      "end": 3.74
+    },
+    {
+      "word": "clear",
+      "start": 3.74,
+      "end": 4.08
+    },
+    {
+      "word": "and",
+      "start": 4.08,
+      "end": 4.34
+    },
+    {
+      "word": "heady",
+      "start": 4.34,
+      "end": 4.66
+    },
+    {
+      "word": "is",
+      "start": 4.66,
+      "end": 4.8
+    },
+    {
+      "word": "wine.",
+      "start": 4.8,
+      "end": 5.12
+    }
+  ],
+  "duration": 5.12
+}

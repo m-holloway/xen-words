@@ -1,0 +1,103 @@
+{
+  "audio_file": "sample_0242.flac",
+  "wav_file": "sample_0242.wav",
+  "transcript": "The two eldest ate their apples, but the youngest could not eat that night. She threw the apple away.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.54
+    },
+    {
+      "word": "two",
+      "start": 0.54,
+      "end": 0.86
+    },
+    {
+      "word": "eldest",
+      "start": 0.86,
+      "end": 1.18
+    },
+    {
+      "word": "ate",
+      "start": 1.18,
+      "end": 1.5
+    },
+    {
+      "word": "their",
+      "start": 1.5,
+      "end": 1.8
+    },
+    {
+      "word": "apples,",
+      "start": 1.8,
+      "end": 2.14
+    },
+    {
+      "word": "but",
+      "start": 2.52,
+      "end": 2.82
+    },
+    {
+      "word": "the",
+      "start": 2.82,
+      "end": 3.0
+    },
+    {
+      "word": "youngest",
+      "start": 3.0,
+      "end": 3.26
+    },
+    {
+      "word": "could",
+      "start": 3.26,
+      "end": 3.56
+    },
+    {
+      "word": "not",
+      "start": 3.56,
+      "end": 3.76
+    },
+    {
+      "word": "eat",
+      "start": 3.76,
+      "end": 4.0
+    },
+    {
+      "word": "that",
+      "start": 4.0,
+      "end": 4.22
+    },
+    {
+      "word": "night.",
+      "start": 4.22,
+      "end": 4.48
+    },
+    {
+      "word": "She",
+      "start": 4.8,
+      "end": 4.98
+    },
+    {
+      "word": "threw",
+      "start": 4.98,
+      "end": 5.18
+    },
+    {
+      "word": "the",
+      "start": 5.18,
+      "end": 5.36
+    },
+    {
+      "word": "apple",
+      "start": 5.36,
+      "end": 5.58
+    },
+    {
+      "word": "away.",
+      "start": 5.58,
+      "end": 5.9
+    }
+  ],
+  "duration": 5.9
+}

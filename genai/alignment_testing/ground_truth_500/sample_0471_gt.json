@@ -1,0 +1,73 @@
+{
+  "audio_file": "sample_0471.flac",
+  "wav_file": "sample_0471.wav",
+  "transcript": "I only wish to be alone. You will excuse me, will you not?",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.38
+    },
+    {
+      "word": "only",
+      "start": 0.38,
+      "end": 0.54
+    },
+    {
+      "word": "wish",
+      "start": 0.54,
+      "end": 0.72
+    },
+    {
+      "word": "to",
+      "start": 0.72,
+      "end": 0.86
+    },
+    {
+      "word": "be",
+      "start": 0.86,
+      "end": 0.94
+    },
+    {
+      "word": "alone.",
+      "start": 0.94,
+      "end": 1.22
+    },
+    {
+      "word": "You",
+      "start": 1.56,
+      "end": 1.68
+    },
+    {
+      "word": "will",
+      "start": 1.68,
+      "end": 1.78
+    },
+    {
+      "word": "excuse",
+      "start": 1.78,
+      "end": 2.0
+    },
+    {
+      "word": "me,",
+      "start": 2.0,
+      "end": 2.28
+    },
+    {
+      "word": "will",
+      "start": 2.34,
+      "end": 2.4
+    },
+    {
+      "word": "you",
+      "start": 2.4,
+      "end": 2.5
+    },
+    {
+      "word": "not?",
+      "start": 2.5,
+      "end": 2.66
+    }
+  ],
+  "duration": 2.66
+}

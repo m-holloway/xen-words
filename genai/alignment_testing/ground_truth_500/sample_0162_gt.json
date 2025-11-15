@@ -1,0 +1,43 @@
+{
+  "audio_file": "sample_0162.flac",
+  "wav_file": "sample_0162.wav",
+  "transcript": "They were run out of their village.",
+  "word_timings": [
+    {
+      "word": "They",
+      "start": 0.0,
+      "end": 0.42
+    },
+    {
+      "word": "were",
+      "start": 0.42,
+      "end": 0.58
+    },
+    {
+      "word": "run",
+      "start": 0.58,
+      "end": 0.74
+    },
+    {
+      "word": "out",
+      "start": 0.74,
+      "end": 0.98
+    },
+    {
+      "word": "of",
+      "start": 0.98,
+      "end": 1.08
+    },
+    {
+      "word": "their",
+      "start": 1.08,
+      "end": 1.24
+    },
+    {
+      "word": "village.",
+      "start": 1.24,
+      "end": 1.56
+    }
+  ],
+  "duration": 1.56
+}

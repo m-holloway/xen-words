@@ -1,0 +1,48 @@
+{
+  "audio_file": "sample_0075.flac",
+  "wav_file": "sample_0075.wav",
+  "transcript": "The walls of the rooms were discordantly papered.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.34
+    },
+    {
+      "word": "walls",
+      "start": 0.34,
+      "end": 0.56
+    },
+    {
+      "word": "of",
+      "start": 0.56,
+      "end": 0.74
+    },
+    {
+      "word": "the",
+      "start": 0.74,
+      "end": 0.88
+    },
+    {
+      "word": "rooms",
+      "start": 0.88,
+      "end": 1.1
+    },
+    {
+      "word": "were",
+      "start": 1.1,
+      "end": 1.36
+    },
+    {
+      "word": "discordantly",
+      "start": 1.36,
+      "end": 1.98
+    },
+    {
+      "word": "papered.",
+      "start": 1.98,
+      "end": 2.58
+    }
+  ],
+  "duration": 2.58
+}

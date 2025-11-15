@@ -1,0 +1,68 @@
+{
+  "audio_file": "sample_0179.flac",
+  "wav_file": "sample_0179.wav",
+  "transcript": "I will sit in the parlour a while and collect my thoughts.",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.5
+    },
+    {
+      "word": "will",
+      "start": 0.5,
+      "end": 0.6
+    },
+    {
+      "word": "sit",
+      "start": 0.6,
+      "end": 0.82
+    },
+    {
+      "word": "in",
+      "start": 0.82,
+      "end": 0.98
+    },
+    {
+      "word": "the",
+      "start": 0.98,
+      "end": 1.08
+    },
+    {
+      "word": "parlour",
+      "start": 1.08,
+      "end": 1.42
+    },
+    {
+      "word": "a",
+      "start": 1.42,
+      "end": 1.5
+    },
+    {
+      "word": "while",
+      "start": 1.5,
+      "end": 1.74
+    },
+    {
+      "word": "and",
+      "start": 1.74,
+      "end": 2.4
+    },
+    {
+      "word": "collect",
+      "start": 2.4,
+      "end": 2.62
+    },
+    {
+      "word": "my",
+      "start": 2.62,
+      "end": 2.82
+    },
+    {
+      "word": "thoughts.",
+      "start": 2.82,
+      "end": 3.16
+    }
+  ],
+  "duration": 3.16
+}

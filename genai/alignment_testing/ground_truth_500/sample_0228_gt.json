@@ -1,0 +1,58 @@
+{
+  "audio_file": "sample_0228.flac",
+  "wav_file": "sample_0228.wav",
+  "transcript": "Have pity upon a poor unfortunate one, he called out.",
+  "word_timings": [
+    {
+      "word": "Have",
+      "start": 0.0,
+      "end": 0.84
+    },
+    {
+      "word": "pity",
+      "start": 0.84,
+      "end": 1.12
+    },
+    {
+      "word": "upon",
+      "start": 1.12,
+      "end": 1.58
+    },
+    {
+      "word": "a",
+      "start": 1.58,
+      "end": 1.78
+    },
+    {
+      "word": "poor",
+      "start": 1.78,
+      "end": 2.08
+    },
+    {
+      "word": "unfortunate",
+      "start": 2.08,
+      "end": 2.86
+    },
+    {
+      "word": "one,",
+      "start": 2.86,
+      "end": 3.26
+    },
+    {
+      "word": "he",
+      "start": 3.66,
+      "end": 3.88
+    },
+    {
+      "word": "called",
+      "start": 3.88,
+      "end": 4.1
+    },
+    {
+      "word": "out.",
+      "start": 4.1,
+      "end": 4.42
+    }
+  ],
+  "duration": 4.42
+}

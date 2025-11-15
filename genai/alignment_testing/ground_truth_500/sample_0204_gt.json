@@ -1,0 +1,73 @@
+{
+  "audio_file": "sample_0204.flac",
+  "wav_file": "sample_0204.wav",
+  "transcript": "And yet, if you could only see the benign smile of the original.",
+  "word_timings": [
+    {
+      "word": "And",
+      "start": 0.0,
+      "end": 0.56
+    },
+    {
+      "word": "yet,",
+      "start": 0.56,
+      "end": 0.72
+    },
+    {
+      "word": "if",
+      "start": 0.92,
+      "end": 1.04
+    },
+    {
+      "word": "you",
+      "start": 1.04,
+      "end": 1.12
+    },
+    {
+      "word": "could",
+      "start": 1.12,
+      "end": 1.24
+    },
+    {
+      "word": "only",
+      "start": 1.24,
+      "end": 1.48
+    },
+    {
+      "word": "see",
+      "start": 1.48,
+      "end": 1.74
+    },
+    {
+      "word": "the",
+      "start": 1.74,
+      "end": 1.88
+    },
+    {
+      "word": "benign",
+      "start": 1.88,
+      "end": 2.22
+    },
+    {
+      "word": "smile",
+      "start": 2.22,
+      "end": 2.56
+    },
+    {
+      "word": "of",
+      "start": 2.56,
+      "end": 2.82
+    },
+    {
+      "word": "the",
+      "start": 2.82,
+      "end": 2.9
+    },
+    {
+      "word": "original.",
+      "start": 2.9,
+      "end": 3.24
+    }
+  ],
+  "duration": 3.24
+}

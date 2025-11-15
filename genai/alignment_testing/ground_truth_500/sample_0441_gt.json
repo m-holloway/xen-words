@@ -1,0 +1,33 @@
+{
+  "audio_file": "sample_0441.flac",
+  "wav_file": "sample_0441.wav",
+  "transcript": "All Adilization makes life poorer.",
+  "word_timings": [
+    {
+      "word": "All",
+      "start": 0.0,
+      "end": 0.74
+    },
+    {
+      "word": "Adilization",
+      "start": 0.74,
+      "end": 1.42
+    },
+    {
+      "word": "makes",
+      "start": 1.42,
+      "end": 1.64
+    },
+    {
+      "word": "life",
+      "start": 1.64,
+      "end": 1.92
+    },
+    {
+      "word": "poorer.",
+      "start": 1.92,
+      "end": 2.3
+    }
+  ],
+  "duration": 2.3
+}

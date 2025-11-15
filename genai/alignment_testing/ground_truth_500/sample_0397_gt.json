@@ -1,0 +1,18 @@
+{
+  "audio_file": "sample_0397.flac",
+  "wav_file": "sample_0397.wav",
+  "transcript": "Comfortable deer?",
+  "word_timings": [
+    {
+      "word": "Comfortable",
+      "start": 0.0,
+      "end": 0.9
+    },
+    {
+      "word": "deer?",
+      "start": 0.9,
+      "end": 1.26
+    }
+  ],
+  "duration": 1.26
+}

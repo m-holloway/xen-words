@@ -1,0 +1,123 @@
+{
+  "audio_file": "sample_0177.flac",
+  "wav_file": "sample_0177.wav",
+  "transcript": "Phoebe wondered whose care and toil it could have been that had planted these vegetables and kept the soil so clean and orderly.",
+  "word_timings": [
+    {
+      "word": "Phoebe",
+      "start": 0.0,
+      "end": 0.78
+    },
+    {
+      "word": "wondered",
+      "start": 0.78,
+      "end": 1.12
+    },
+    {
+      "word": "whose",
+      "start": 1.12,
+      "end": 1.42
+    },
+    {
+      "word": "care",
+      "start": 1.42,
+      "end": 1.68
+    },
+    {
+      "word": "and",
+      "start": 1.68,
+      "end": 1.92
+    },
+    {
+      "word": "toil",
+      "start": 1.92,
+      "end": 2.2
+    },
+    {
+      "word": "it",
+      "start": 2.2,
+      "end": 2.44
+    },
+    {
+      "word": "could",
+      "start": 2.44,
+      "end": 2.56
+    },
+    {
+      "word": "have",
+      "start": 2.56,
+      "end": 2.72
+    },
+    {
+      "word": "been",
+      "start": 2.72,
+      "end": 2.92
+    },
+    {
+      "word": "that",
+      "start": 2.92,
+      "end": 3.36
+    },
+    {
+      "word": "had",
+      "start": 3.36,
+      "end": 3.48
+    },
+    {
+      "word": "planted",
+      "start": 3.48,
+      "end": 3.8
+    },
+    {
+      "word": "these",
+      "start": 3.8,
+      "end": 4.02
+    },
+    {
+      "word": "vegetables",
+      "start": 4.02,
+      "end": 4.42
+    },
+    {
+      "word": "and",
+      "start": 4.42,
+      "end": 5.02
+    },
+    {
+      "word": "kept",
+      "start": 5.02,
+      "end": 5.18
+    },
+    {
+      "word": "the",
+      "start": 5.18,
+      "end": 5.36
+    },
+    {
+      "word": "soil",
+      "start": 5.36,
+      "end": 5.64
+    },
+    {
+      "word": "so",
+      "start": 5.64,
+      "end": 5.88
+    },
+    {
+      "word": "clean",
+      "start": 5.88,
+      "end": 6.1
+    },
+    {
+      "word": "and",
+      "start": 6.1,
+      "end": 6.28
+    },
+    {
+      "word": "orderly.",
+      "start": 6.28,
+      "end": 6.74
+    }
+  ],
+  "duration": 6.74
+}

@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0274.flac",
+  "wav_file": "sample_0274.wav",
+  "transcript": "For some reason, the dead at Hatchee Bridge were not buried.",
+  "word_timings": [
+    {
+      "word": "For",
+      "start": 0.0,
+      "end": 0.64
+    },
+    {
+      "word": "some",
+      "start": 0.64,
+      "end": 0.9
+    },
+    {
+      "word": "reason,",
+      "start": 0.9,
+      "end": 1.42
+    },
+    {
+      "word": "the",
+      "start": 1.68,
+      "end": 1.76
+    },
+    {
+      "word": "dead",
+      "start": 1.76,
+      "end": 1.98
+    },
+    {
+      "word": "at",
+      "start": 1.98,
+      "end": 2.1
+    },
+    {
+      "word": "Hatchee",
+      "start": 2.1,
+      "end": 2.48
+    },
+    {
+      "word": "Bridge",
+      "start": 2.48,
+      "end": 2.7
+    },
+    {
+      "word": "were",
+      "start": 2.7,
+      "end": 2.92
+    },
+    {
+      "word": "not",
+      "start": 2.92,
+      "end": 3.1
+    },
+    {
+      "word": "buried.",
+      "start": 3.1,
+      "end": 3.42
+    }
+  ],
+  "duration": 3.42
+}

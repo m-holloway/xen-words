@@ -1,0 +1,83 @@
+{
+  "audio_file": "sample_0141.flac",
+  "wav_file": "sample_0141.wav",
+  "transcript": "This cabin was his hermitage until the winter snow was penned him in his cave.",
+  "word_timings": [
+    {
+      "word": "This",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "cabin",
+      "start": 0.62,
+      "end": 0.92
+    },
+    {
+      "word": "was",
+      "start": 0.92,
+      "end": 1.16
+    },
+    {
+      "word": "his",
+      "start": 1.16,
+      "end": 1.36
+    },
+    {
+      "word": "hermitage",
+      "start": 1.36,
+      "end": 1.86
+    },
+    {
+      "word": "until",
+      "start": 1.86,
+      "end": 2.12
+    },
+    {
+      "word": "the",
+      "start": 2.12,
+      "end": 2.3
+    },
+    {
+      "word": "winter",
+      "start": 2.3,
+      "end": 2.52
+    },
+    {
+      "word": "snow",
+      "start": 2.52,
+      "end": 2.86
+    },
+    {
+      "word": "was",
+      "start": 2.86,
+      "end": 3.12
+    },
+    {
+      "word": "penned",
+      "start": 3.12,
+      "end": 3.5
+    },
+    {
+      "word": "him",
+      "start": 3.5,
+      "end": 3.6
+    },
+    {
+      "word": "in",
+      "start": 3.6,
+      "end": 3.74
+    },
+    {
+      "word": "his",
+      "start": 3.74,
+      "end": 3.92
+    },
+    {
+      "word": "cave.",
+      "start": 3.92,
+      "end": 4.18
+    }
+  ],
+  "duration": 4.18
+}

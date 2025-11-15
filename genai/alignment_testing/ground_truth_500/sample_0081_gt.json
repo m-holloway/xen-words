@@ -1,0 +1,83 @@
+{
+  "audio_file": "sample_0081.flac",
+  "wav_file": "sample_0081.wav",
+  "transcript": "The floors were covered with matting and the hall laid with a thin rag carpet.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.26
+    },
+    {
+      "word": "floors",
+      "start": 0.26,
+      "end": 0.52
+    },
+    {
+      "word": "were",
+      "start": 0.52,
+      "end": 0.74
+    },
+    {
+      "word": "covered",
+      "start": 0.74,
+      "end": 1.02
+    },
+    {
+      "word": "with",
+      "start": 1.02,
+      "end": 1.3
+    },
+    {
+      "word": "matting",
+      "start": 1.3,
+      "end": 1.66
+    },
+    {
+      "word": "and",
+      "start": 1.66,
+      "end": 1.94
+    },
+    {
+      "word": "the",
+      "start": 1.94,
+      "end": 2.12
+    },
+    {
+      "word": "hall",
+      "start": 2.12,
+      "end": 2.26
+    },
+    {
+      "word": "laid",
+      "start": 2.26,
+      "end": 2.52
+    },
+    {
+      "word": "with",
+      "start": 2.52,
+      "end": 2.72
+    },
+    {
+      "word": "a",
+      "start": 2.72,
+      "end": 2.86
+    },
+    {
+      "word": "thin",
+      "start": 2.86,
+      "end": 3.1
+    },
+    {
+      "word": "rag",
+      "start": 3.1,
+      "end": 3.34
+    },
+    {
+      "word": "carpet.",
+      "start": 3.34,
+      "end": 3.86
+    }
+  ],
+  "duration": 3.86
+}

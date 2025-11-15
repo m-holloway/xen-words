@@ -1,0 +1,83 @@
+{
+  "audio_file": "sample_0097.flac",
+  "wav_file": "sample_0097.wav",
+  "transcript": "You could stand right up and talk to you. He good. Did he fight hard?",
+  "word_timings": [
+    {
+      "word": "You",
+      "start": 0.0,
+      "end": 0.48
+    },
+    {
+      "word": "could",
+      "start": 0.48,
+      "end": 0.6
+    },
+    {
+      "word": "stand",
+      "start": 0.6,
+      "end": 0.84
+    },
+    {
+      "word": "right",
+      "start": 0.84,
+      "end": 1.12
+    },
+    {
+      "word": "up",
+      "start": 1.12,
+      "end": 1.28
+    },
+    {
+      "word": "and",
+      "start": 1.28,
+      "end": 1.42
+    },
+    {
+      "word": "talk",
+      "start": 1.42,
+      "end": 1.62
+    },
+    {
+      "word": "to",
+      "start": 1.62,
+      "end": 1.84
+    },
+    {
+      "word": "you.",
+      "start": 1.84,
+      "end": 2.04
+    },
+    {
+      "word": "He",
+      "start": 2.26,
+      "end": 2.5
+    },
+    {
+      "word": "good.",
+      "start": 2.5,
+      "end": 2.76
+    },
+    {
+      "word": "Did",
+      "start": 3.04,
+      "end": 3.28
+    },
+    {
+      "word": "he",
+      "start": 3.28,
+      "end": 3.36
+    },
+    {
+      "word": "fight",
+      "start": 3.36,
+      "end": 3.56
+    },
+    {
+      "word": "hard?",
+      "start": 3.56,
+      "end": 3.9
+    }
+  ],
+  "duration": 3.9
+}

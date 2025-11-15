@@ -1,0 +1,133 @@
+{
+  "audio_file": "sample_0167.flac",
+  "wav_file": "sample_0167.wav",
+  "transcript": "She asked Peter to wait a moment, and when she came back from the kitchen, she brought a bag of sandwiches and donuts for us.",
+  "word_timings": [
+    {
+      "word": "She",
+      "start": 0.0,
+      "end": 0.56
+    },
+    {
+      "word": "asked",
+      "start": 0.56,
+      "end": 0.84
+    },
+    {
+      "word": "Peter",
+      "start": 0.84,
+      "end": 1.06
+    },
+    {
+      "word": "to",
+      "start": 1.06,
+      "end": 1.3
+    },
+    {
+      "word": "wait",
+      "start": 1.3,
+      "end": 1.48
+    },
+    {
+      "word": "a",
+      "start": 1.48,
+      "end": 1.58
+    },
+    {
+      "word": "moment,",
+      "start": 1.58,
+      "end": 1.88
+    },
+    {
+      "word": "and",
+      "start": 2.3,
+      "end": 2.42
+    },
+    {
+      "word": "when",
+      "start": 2.42,
+      "end": 2.52
+    },
+    {
+      "word": "she",
+      "start": 2.52,
+      "end": 2.68
+    },
+    {
+      "word": "came",
+      "start": 2.68,
+      "end": 2.9
+    },
+    {
+      "word": "back",
+      "start": 2.9,
+      "end": 3.1
+    },
+    {
+      "word": "from",
+      "start": 3.1,
+      "end": 3.32
+    },
+    {
+      "word": "the",
+      "start": 3.32,
+      "end": 3.46
+    },
+    {
+      "word": "kitchen,",
+      "start": 3.46,
+      "end": 3.74
+    },
+    {
+      "word": "she",
+      "start": 4.04,
+      "end": 4.1
+    },
+    {
+      "word": "brought",
+      "start": 4.1,
+      "end": 4.32
+    },
+    {
+      "word": "a",
+      "start": 4.32,
+      "end": 4.5
+    },
+    {
+      "word": "bag",
+      "start": 4.5,
+      "end": 4.64
+    },
+    {
+      "word": "of",
+      "start": 4.64,
+      "end": 4.84
+    },
+    {
+      "word": "sandwiches",
+      "start": 4.84,
+      "end": 5.18
+    },
+    {
+      "word": "and",
+      "start": 5.18,
+      "end": 5.56
+    },
+    {
+      "word": "donuts",
+      "start": 5.56,
+      "end": 5.72
+    },
+    {
+      "word": "for",
+      "start": 5.72,
+      "end": 6.08
+    },
+    {
+      "word": "us.",
+      "start": 6.08,
+      "end": 6.36
+    }
+  ],
+  "duration": 6.36
+}

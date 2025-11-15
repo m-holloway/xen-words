@@ -1,0 +1,173 @@
+{
+  "audio_file": "sample_0090.flac",
+  "wav_file": "sample_0090.wav",
+  "transcript": "She asked many for ink and paper, which were upon the mantle in the dining room. And when the latter had gone to bed at 10, got out Drew's card and wrote him.",
+  "word_timings": [
+    {
+      "word": "She",
+      "start": 0.0,
+      "end": 0.46
+    },
+    {
+      "word": "asked",
+      "start": 0.46,
+      "end": 0.7
+    },
+    {
+      "word": "many",
+      "start": 0.7,
+      "end": 1.0
+    },
+    {
+      "word": "for",
+      "start": 1.0,
+      "end": 1.3
+    },
+    {
+      "word": "ink",
+      "start": 1.3,
+      "end": 1.54
+    },
+    {
+      "word": "and",
+      "start": 1.54,
+      "end": 1.68
+    },
+    {
+      "word": "paper,",
+      "start": 1.68,
+      "end": 2.0
+    },
+    {
+      "word": "which",
+      "start": 2.16,
+      "end": 2.3
+    },
+    {
+      "word": "were",
+      "start": 2.3,
+      "end": 2.42
+    },
+    {
+      "word": "upon",
+      "start": 2.42,
+      "end": 2.7
+    },
+    {
+      "word": "the",
+      "start": 2.7,
+      "end": 2.84
+    },
+    {
+      "word": "mantle",
+      "start": 2.84,
+      "end": 3.14
+    },
+    {
+      "word": "in",
+      "start": 3.14,
+      "end": 3.34
+    },
+    {
+      "word": "the",
+      "start": 3.34,
+      "end": 3.44
+    },
+    {
+      "word": "dining",
+      "start": 3.44,
+      "end": 3.68
+    },
+    {
+      "word": "room.",
+      "start": 3.68,
+      "end": 4.04
+    },
+    {
+      "word": "And",
+      "start": 4.4,
+      "end": 4.6
+    },
+    {
+      "word": "when",
+      "start": 4.6,
+      "end": 4.72
+    },
+    {
+      "word": "the",
+      "start": 4.72,
+      "end": 4.88
+    },
+    {
+      "word": "latter",
+      "start": 4.88,
+      "end": 5.12
+    },
+    {
+      "word": "had",
+      "start": 5.12,
+      "end": 5.34
+    },
+    {
+      "word": "gone",
+      "start": 5.34,
+      "end": 5.54
+    },
+    {
+      "word": "to",
+      "start": 5.54,
+      "end": 5.78
+    },
+    {
+      "word": "bed",
+      "start": 5.78,
+      "end": 5.92
+    },
+    {
+      "word": "at",
+      "start": 5.92,
+      "end": 6.1
+    },
+    {
+      "word": "10,",
+      "start": 6.1,
+      "end": 6.38
+    },
+    {
+      "word": "got",
+      "start": 6.64,
+      "end": 6.74
+    },
+    {
+      "word": "out",
+      "start": 6.74,
+      "end": 6.9
+    },
+    {
+      "word": "Drew's",
+      "start": 6.9,
+      "end": 7.28
+    },
+    {
+      "word": "card",
+      "start": 7.28,
+      "end": 7.5
+    },
+    {
+      "word": "and",
+      "start": 7.5,
+      "end": 7.7
+    },
+    {
+      "word": "wrote",
+      "start": 7.7,
+      "end": 7.84
+    },
+    {
+      "word": "him.",
+      "start": 7.84,
+      "end": 8.14
+    }
+  ],
+  "duration": 8.14
+}

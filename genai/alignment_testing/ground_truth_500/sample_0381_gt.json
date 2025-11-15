@@ -1,0 +1,68 @@
+{
+  "audio_file": "sample_0381.flac",
+  "wav_file": "sample_0381.wav",
+  "transcript": "It was Carl Yunt, who was heard, implacable to his last breath.",
+  "word_timings": [
+    {
+      "word": "It",
+      "start": 0.0,
+      "end": 0.58
+    },
+    {
+      "word": "was",
+      "start": 0.58,
+      "end": 0.74
+    },
+    {
+      "word": "Carl",
+      "start": 0.74,
+      "end": 1.04
+    },
+    {
+      "word": "Yunt,",
+      "start": 1.04,
+      "end": 1.44
+    },
+    {
+      "word": "who",
+      "start": 1.98,
+      "end": 2.02
+    },
+    {
+      "word": "was",
+      "start": 2.02,
+      "end": 2.2
+    },
+    {
+      "word": "heard,",
+      "start": 2.2,
+      "end": 2.56
+    },
+    {
+      "word": "implacable",
+      "start": 3.04,
+      "end": 3.52
+    },
+    {
+      "word": "to",
+      "start": 3.52,
+      "end": 3.74
+    },
+    {
+      "word": "his",
+      "start": 3.74,
+      "end": 3.88
+    },
+    {
+      "word": "last",
+      "start": 3.88,
+      "end": 4.1
+    },
+    {
+      "word": "breath.",
+      "start": 4.1,
+      "end": 4.42
+    }
+  ],
+  "duration": 4.42
+}

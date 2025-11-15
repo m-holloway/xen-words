@@ -1,0 +1,68 @@
+{
+  "audio_file": "sample_0486.flac",
+  "wav_file": "sample_0486.wav",
+  "transcript": "Noitier was near the bed, pale, motionless, and silent as the corpse.",
+  "word_timings": [
+    {
+      "word": "Noitier",
+      "start": 0.0,
+      "end": 0.6
+    },
+    {
+      "word": "was",
+      "start": 0.6,
+      "end": 0.78
+    },
+    {
+      "word": "near",
+      "start": 0.78,
+      "end": 0.9
+    },
+    {
+      "word": "the",
+      "start": 0.9,
+      "end": 1.06
+    },
+    {
+      "word": "bed,",
+      "start": 1.06,
+      "end": 1.28
+    },
+    {
+      "word": "pale,",
+      "start": 1.58,
+      "end": 1.8
+    },
+    {
+      "word": "motionless,",
+      "start": 2.24,
+      "end": 2.66
+    },
+    {
+      "word": "and",
+      "start": 3.04,
+      "end": 3.14
+    },
+    {
+      "word": "silent",
+      "start": 3.14,
+      "end": 3.52
+    },
+    {
+      "word": "as",
+      "start": 3.52,
+      "end": 3.8
+    },
+    {
+      "word": "the",
+      "start": 3.8,
+      "end": 3.92
+    },
+    {
+      "word": "corpse.",
+      "start": 3.92,
+      "end": 4.2
+    }
+  ],
+  "duration": 4.2
+}

@@ -1,0 +1,43 @@
+{
+  "audio_file": "sample_0374.flac",
+  "wav_file": "sample_0374.wav",
+  "transcript": "Here's to you a long happy life.",
+  "word_timings": [
+    {
+      "word": "Here's",
+      "start": 0.0,
+      "end": 0.88
+    },
+    {
+      "word": "to",
+      "start": 0.88,
+      "end": 0.96
+    },
+    {
+      "word": "you",
+      "start": 0.96,
+      "end": 1.12
+    },
+    {
+      "word": "a",
+      "start": 1.12,
+      "end": 1.44
+    },
+    {
+      "word": "long",
+      "start": 1.44,
+      "end": 1.72
+    },
+    {
+      "word": "happy",
+      "start": 1.72,
+      "end": 2.08
+    },
+    {
+      "word": "life.",
+      "start": 2.08,
+      "end": 2.5
+    }
+  ],
+  "duration": 2.5
+}

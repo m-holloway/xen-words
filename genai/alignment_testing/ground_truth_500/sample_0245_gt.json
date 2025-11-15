@@ -1,0 +1,138 @@
+{
+  "audio_file": "sample_0245.flac",
+  "wav_file": "sample_0245.wav",
+  "transcript": "While they were talking, the beggar had taken the apples, which the girls were to eat for dessert, and had sprinkled a sleeping powder over them.",
+  "word_timings": [
+    {
+      "word": "While",
+      "start": 0.0,
+      "end": 0.66
+    },
+    {
+      "word": "they",
+      "start": 0.66,
+      "end": 0.8
+    },
+    {
+      "word": "were",
+      "start": 0.8,
+      "end": 0.92
+    },
+    {
+      "word": "talking,",
+      "start": 0.92,
+      "end": 1.3
+    },
+    {
+      "word": "the",
+      "start": 1.5,
+      "end": 1.58
+    },
+    {
+      "word": "beggar",
+      "start": 1.58,
+      "end": 1.88
+    },
+    {
+      "word": "had",
+      "start": 1.88,
+      "end": 2.02
+    },
+    {
+      "word": "taken",
+      "start": 2.02,
+      "end": 2.3
+    },
+    {
+      "word": "the",
+      "start": 2.3,
+      "end": 2.54
+    },
+    {
+      "word": "apples,",
+      "start": 2.54,
+      "end": 2.8
+    },
+    {
+      "word": "which",
+      "start": 3.1,
+      "end": 3.36
+    },
+    {
+      "word": "the",
+      "start": 3.36,
+      "end": 3.52
+    },
+    {
+      "word": "girls",
+      "start": 3.52,
+      "end": 3.78
+    },
+    {
+      "word": "were",
+      "start": 3.78,
+      "end": 3.98
+    },
+    {
+      "word": "to",
+      "start": 3.98,
+      "end": 4.14
+    },
+    {
+      "word": "eat",
+      "start": 4.14,
+      "end": 4.32
+    },
+    {
+      "word": "for",
+      "start": 4.32,
+      "end": 4.52
+    },
+    {
+      "word": "dessert,",
+      "start": 4.52,
+      "end": 4.88
+    },
+    {
+      "word": "and",
+      "start": 5.36,
+      "end": 5.44
+    },
+    {
+      "word": "had",
+      "start": 5.44,
+      "end": 5.58
+    },
+    {
+      "word": "sprinkled",
+      "start": 5.58,
+      "end": 6.18
+    },
+    {
+      "word": "a",
+      "start": 6.18,
+      "end": 6.46
+    },
+    {
+      "word": "sleeping",
+      "start": 6.46,
+      "end": 6.84
+    },
+    {
+      "word": "powder",
+      "start": 6.84,
+      "end": 7.22
+    },
+    {
+      "word": "over",
+      "start": 7.22,
+      "end": 7.58
+    },
+    {
+      "word": "them.",
+      "start": 7.58,
+      "end": 7.82
+    }
+  ],
+  "duration": 7.82
+}

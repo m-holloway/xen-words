@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0287.flac",
+  "wav_file": "sample_0287.wav",
+  "transcript": "and she got up and put her head into the oven.",
+  "word_timings": [
+    {
+      "word": "and",
+      "start": 0.0,
+      "end": 0.3
+    },
+    {
+      "word": "she",
+      "start": 0.3,
+      "end": 0.46
+    },
+    {
+      "word": "got",
+      "start": 0.46,
+      "end": 0.66
+    },
+    {
+      "word": "up",
+      "start": 0.66,
+      "end": 0.94
+    },
+    {
+      "word": "and",
+      "start": 0.94,
+      "end": 1.22
+    },
+    {
+      "word": "put",
+      "start": 1.22,
+      "end": 1.38
+    },
+    {
+      "word": "her",
+      "start": 1.38,
+      "end": 1.52
+    },
+    {
+      "word": "head",
+      "start": 1.52,
+      "end": 1.72
+    },
+    {
+      "word": "into",
+      "start": 1.72,
+      "end": 1.92
+    },
+    {
+      "word": "the",
+      "start": 1.92,
+      "end": 2.08
+    },
+    {
+      "word": "oven.",
+      "start": 2.08,
+      "end": 2.28
+    }
+  ],
+  "duration": 2.28
+}

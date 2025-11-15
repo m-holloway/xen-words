@@ -1,0 +1,43 @@
+{
+  "audio_file": "sample_0418.flac",
+  "wav_file": "sample_0418.wav",
+  "transcript": "He was not satisfied with his friends.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.5
+    },
+    {
+      "word": "was",
+      "start": 0.5,
+      "end": 0.62
+    },
+    {
+      "word": "not",
+      "start": 0.62,
+      "end": 0.82
+    },
+    {
+      "word": "satisfied",
+      "start": 0.82,
+      "end": 1.32
+    },
+    {
+      "word": "with",
+      "start": 1.32,
+      "end": 1.52
+    },
+    {
+      "word": "his",
+      "start": 1.52,
+      "end": 1.66
+    },
+    {
+      "word": "friends.",
+      "start": 1.66,
+      "end": 2.0
+    }
+  ],
+  "duration": 2.0
+}

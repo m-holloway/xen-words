@@ -1,0 +1,38 @@
+{
+  "audio_file": "sample_0453.flac",
+  "wav_file": "sample_0453.wav",
+  "transcript": "and why indulge in prophetic fantasies.",
+  "word_timings": [
+    {
+      "word": "and",
+      "start": 0.0,
+      "end": 0.4
+    },
+    {
+      "word": "why",
+      "start": 0.4,
+      "end": 0.56
+    },
+    {
+      "word": "indulge",
+      "start": 0.56,
+      "end": 0.98
+    },
+    {
+      "word": "in",
+      "start": 0.98,
+      "end": 1.06
+    },
+    {
+      "word": "prophetic",
+      "start": 1.06,
+      "end": 1.36
+    },
+    {
+      "word": "fantasies.",
+      "start": 1.36,
+      "end": 2.1
+    }
+  ],
+  "duration": 2.1
+}

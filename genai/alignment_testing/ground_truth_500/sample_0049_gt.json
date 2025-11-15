@@ -1,0 +1,118 @@
+{
+  "audio_file": "sample_0049.flac",
+  "wav_file": "sample_0049.wav",
+  "transcript": "He was getting some big comfort out of a good cigar, but it was no penetra for the ill which affected him.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.4
+    },
+    {
+      "word": "was",
+      "start": 0.4,
+      "end": 0.54
+    },
+    {
+      "word": "getting",
+      "start": 0.54,
+      "end": 0.7
+    },
+    {
+      "word": "some",
+      "start": 0.7,
+      "end": 0.94
+    },
+    {
+      "word": "big",
+      "start": 0.94,
+      "end": 1.16
+    },
+    {
+      "word": "comfort",
+      "start": 1.16,
+      "end": 1.54
+    },
+    {
+      "word": "out",
+      "start": 1.54,
+      "end": 1.76
+    },
+    {
+      "word": "of",
+      "start": 1.76,
+      "end": 1.84
+    },
+    {
+      "word": "a",
+      "start": 1.84,
+      "end": 1.94
+    },
+    {
+      "word": "good",
+      "start": 1.94,
+      "end": 2.08
+    },
+    {
+      "word": "cigar,",
+      "start": 2.08,
+      "end": 2.42
+    },
+    {
+      "word": "but",
+      "start": 2.94,
+      "end": 3.12
+    },
+    {
+      "word": "it",
+      "start": 3.12,
+      "end": 3.28
+    },
+    {
+      "word": "was",
+      "start": 3.28,
+      "end": 3.38
+    },
+    {
+      "word": "no",
+      "start": 3.38,
+      "end": 3.54
+    },
+    {
+      "word": "penetra",
+      "start": 3.54,
+      "end": 3.94
+    },
+    {
+      "word": "for",
+      "start": 3.94,
+      "end": 4.14
+    },
+    {
+      "word": "the",
+      "start": 4.14,
+      "end": 4.3
+    },
+    {
+      "word": "ill",
+      "start": 4.3,
+      "end": 4.46
+    },
+    {
+      "word": "which",
+      "start": 4.46,
+      "end": 4.66
+    },
+    {
+      "word": "affected",
+      "start": 4.66,
+      "end": 5.02
+    },
+    {
+      "word": "him.",
+      "start": 5.02,
+      "end": 5.3
+    }
+  ],
+  "duration": 5.3
+}

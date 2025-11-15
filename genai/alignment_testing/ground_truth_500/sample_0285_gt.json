@@ -1,0 +1,153 @@
+{
+  "audio_file": "sample_0285.flac",
+  "wav_file": "sample_0285.wav",
+  "transcript": "come in and stop with me and no harm shall come to you.\" And so saying, she took them both by the hand and led them into her cottage.",
+  "word_timings": [
+    {
+      "word": "come",
+      "start": 0.0,
+      "end": 0.36
+    },
+    {
+      "word": "in",
+      "start": 0.36,
+      "end": 0.46
+    },
+    {
+      "word": "and",
+      "start": 0.46,
+      "end": 0.64
+    },
+    {
+      "word": "stop",
+      "start": 0.64,
+      "end": 0.96
+    },
+    {
+      "word": "with",
+      "start": 0.96,
+      "end": 1.22
+    },
+    {
+      "word": "me",
+      "start": 1.22,
+      "end": 1.44
+    },
+    {
+      "word": "and",
+      "start": 1.44,
+      "end": 1.92
+    },
+    {
+      "word": "no",
+      "start": 1.92,
+      "end": 2.16
+    },
+    {
+      "word": "harm",
+      "start": 2.16,
+      "end": 2.4
+    },
+    {
+      "word": "shall",
+      "start": 2.4,
+      "end": 2.62
+    },
+    {
+      "word": "come",
+      "start": 2.62,
+      "end": 2.86
+    },
+    {
+      "word": "to",
+      "start": 2.86,
+      "end": 3.1
+    },
+    {
+      "word": "you.\"",
+      "start": 3.1,
+      "end": 3.4
+    },
+    {
+      "word": "And",
+      "start": 4.06,
+      "end": 4.38
+    },
+    {
+      "word": "so",
+      "start": 4.38,
+      "end": 4.54
+    },
+    {
+      "word": "saying,",
+      "start": 4.54,
+      "end": 4.92
+    },
+    {
+      "word": "she",
+      "start": 5.3,
+      "end": 5.4
+    },
+    {
+      "word": "took",
+      "start": 5.4,
+      "end": 5.54
+    },
+    {
+      "word": "them",
+      "start": 5.54,
+      "end": 5.7
+    },
+    {
+      "word": "both",
+      "start": 5.7,
+      "end": 5.96
+    },
+    {
+      "word": "by",
+      "start": 5.96,
+      "end": 6.16
+    },
+    {
+      "word": "the",
+      "start": 6.16,
+      "end": 6.3
+    },
+    {
+      "word": "hand",
+      "start": 6.3,
+      "end": 6.56
+    },
+    {
+      "word": "and",
+      "start": 6.56,
+      "end": 6.94
+    },
+    {
+      "word": "led",
+      "start": 6.94,
+      "end": 7.08
+    },
+    {
+      "word": "them",
+      "start": 7.08,
+      "end": 7.26
+    },
+    {
+      "word": "into",
+      "start": 7.26,
+      "end": 7.54
+    },
+    {
+      "word": "her",
+      "start": 7.54,
+      "end": 7.7
+    },
+    {
+      "word": "cottage.",
+      "start": 7.7,
+      "end": 8.02
+    }
+  ],
+  "duration": 8.02
+}

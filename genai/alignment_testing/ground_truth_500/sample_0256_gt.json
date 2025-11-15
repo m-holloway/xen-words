@@ -1,0 +1,83 @@
+{
+  "audio_file": "sample_0256.flac",
+  "wav_file": "sample_0256.wav",
+  "transcript": "Indeed, we of the rank and file had little confidence in grant in those days.",
+  "word_timings": [
+    {
+      "word": "Indeed,",
+      "start": 0.0,
+      "end": 0.9
+    },
+    {
+      "word": "we",
+      "start": 1.34,
+      "end": 1.44
+    },
+    {
+      "word": "of",
+      "start": 1.44,
+      "end": 1.6
+    },
+    {
+      "word": "the",
+      "start": 1.6,
+      "end": 1.74
+    },
+    {
+      "word": "rank",
+      "start": 1.74,
+      "end": 1.98
+    },
+    {
+      "word": "and",
+      "start": 1.98,
+      "end": 2.16
+    },
+    {
+      "word": "file",
+      "start": 2.16,
+      "end": 2.44
+    },
+    {
+      "word": "had",
+      "start": 2.44,
+      "end": 2.72
+    },
+    {
+      "word": "little",
+      "start": 2.72,
+      "end": 2.94
+    },
+    {
+      "word": "confidence",
+      "start": 2.94,
+      "end": 3.5
+    },
+    {
+      "word": "in",
+      "start": 3.5,
+      "end": 3.78
+    },
+    {
+      "word": "grant",
+      "start": 3.78,
+      "end": 4.04
+    },
+    {
+      "word": "in",
+      "start": 4.04,
+      "end": 4.18
+    },
+    {
+      "word": "those",
+      "start": 4.18,
+      "end": 4.34
+    },
+    {
+      "word": "days.",
+      "start": 4.34,
+      "end": 4.66
+    }
+  ],
+  "duration": 4.66
+}

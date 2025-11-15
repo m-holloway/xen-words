@@ -1,0 +1,123 @@
+{
+  "audio_file": "sample_0116.flac",
+  "wav_file": "sample_0116.wav",
+  "transcript": "It is pretty clear also that the last rally of druidism against Christianity took place behind his banner on the plane of Moira.",
+  "word_timings": [
+    {
+      "word": "It",
+      "start": 0.0,
+      "end": 0.64
+    },
+    {
+      "word": "is",
+      "start": 0.64,
+      "end": 0.76
+    },
+    {
+      "word": "pretty",
+      "start": 0.76,
+      "end": 1.04
+    },
+    {
+      "word": "clear",
+      "start": 1.04,
+      "end": 1.38
+    },
+    {
+      "word": "also",
+      "start": 1.38,
+      "end": 1.9
+    },
+    {
+      "word": "that",
+      "start": 1.9,
+      "end": 2.3
+    },
+    {
+      "word": "the",
+      "start": 2.3,
+      "end": 2.44
+    },
+    {
+      "word": "last",
+      "start": 2.44,
+      "end": 2.82
+    },
+    {
+      "word": "rally",
+      "start": 2.82,
+      "end": 3.16
+    },
+    {
+      "word": "of",
+      "start": 3.16,
+      "end": 3.44
+    },
+    {
+      "word": "druidism",
+      "start": 3.44,
+      "end": 3.98
+    },
+    {
+      "word": "against",
+      "start": 3.98,
+      "end": 4.48
+    },
+    {
+      "word": "Christianity",
+      "start": 4.48,
+      "end": 5.26
+    },
+    {
+      "word": "took",
+      "start": 5.26,
+      "end": 5.94
+    },
+    {
+      "word": "place",
+      "start": 5.94,
+      "end": 6.32
+    },
+    {
+      "word": "behind",
+      "start": 6.32,
+      "end": 6.82
+    },
+    {
+      "word": "his",
+      "start": 6.82,
+      "end": 7.08
+    },
+    {
+      "word": "banner",
+      "start": 7.08,
+      "end": 7.4
+    },
+    {
+      "word": "on",
+      "start": 7.4,
+      "end": 7.82
+    },
+    {
+      "word": "the",
+      "start": 7.82,
+      "end": 7.94
+    },
+    {
+      "word": "plane",
+      "start": 7.94,
+      "end": 8.18
+    },
+    {
+      "word": "of",
+      "start": 8.18,
+      "end": 8.38
+    },
+    {
+      "word": "Moira.",
+      "start": 8.38,
+      "end": 8.68
+    }
+  ],
+  "duration": 8.68
+}

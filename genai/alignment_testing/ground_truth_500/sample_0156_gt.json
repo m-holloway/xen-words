@@ -1,0 +1,53 @@
+{
+  "audio_file": "sample_0156.flac",
+  "wav_file": "sample_0156.wav",
+  "transcript": "and the wolves' pavolast, enough for all of us.",
+  "word_timings": [
+    {
+      "word": "and",
+      "start": 0.0,
+      "end": 0.66
+    },
+    {
+      "word": "the",
+      "start": 0.66,
+      "end": 0.78
+    },
+    {
+      "word": "wolves'",
+      "start": 0.78,
+      "end": 1.08
+    },
+    {
+      "word": "pavolast,",
+      "start": 1.36,
+      "end": 2.02
+    },
+    {
+      "word": "enough",
+      "start": 2.82,
+      "end": 3.1
+    },
+    {
+      "word": "for",
+      "start": 3.1,
+      "end": 4.24
+    },
+    {
+      "word": "all",
+      "start": 4.24,
+      "end": 4.42
+    },
+    {
+      "word": "of",
+      "start": 4.42,
+      "end": 4.58
+    },
+    {
+      "word": "us.",
+      "start": 4.58,
+      "end": 4.88
+    }
+  ],
+  "duration": 4.88
+}

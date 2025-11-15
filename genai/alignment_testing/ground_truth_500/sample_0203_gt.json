@@ -1,0 +1,158 @@
+{
+  "audio_file": "sample_0203.flac",
+  "wav_file": "sample_0203.wav",
+  "transcript": "Is there nothing wild in the eye, continued wholegrave? So earnestly that it embarrassed Phoebe, as did also the quiet freedom with which she resumed on their so recent acquaintance.",
+  "word_timings": [
+    {
+      "word": "Is",
+      "start": 0.0,
+      "end": 0.64
+    },
+    {
+      "word": "there",
+      "start": 0.64,
+      "end": 0.76
+    },
+    {
+      "word": "nothing",
+      "start": 0.76,
+      "end": 1.04
+    },
+    {
+      "word": "wild",
+      "start": 1.04,
+      "end": 1.4
+    },
+    {
+      "word": "in",
+      "start": 1.4,
+      "end": 1.62
+    },
+    {
+      "word": "the",
+      "start": 1.62,
+      "end": 1.76
+    },
+    {
+      "word": "eye,",
+      "start": 1.76,
+      "end": 1.98
+    },
+    {
+      "word": "continued",
+      "start": 2.28,
+      "end": 2.6
+    },
+    {
+      "word": "wholegrave?",
+      "start": 2.6,
+      "end": 3.2
+    },
+    {
+      "word": "So",
+      "start": 3.56,
+      "end": 3.76
+    },
+    {
+      "word": "earnestly",
+      "start": 3.76,
+      "end": 4.28
+    },
+    {
+      "word": "that",
+      "start": 4.28,
+      "end": 4.44
+    },
+    {
+      "word": "it",
+      "start": 4.44,
+      "end": 4.52
+    },
+    {
+      "word": "embarrassed",
+      "start": 4.52,
+      "end": 4.9
+    },
+    {
+      "word": "Phoebe,",
+      "start": 4.9,
+      "end": 5.32
+    },
+    {
+      "word": "as",
+      "start": 6.02,
+      "end": 6.26
+    },
+    {
+      "word": "did",
+      "start": 6.26,
+      "end": 6.38
+    },
+    {
+      "word": "also",
+      "start": 6.38,
+      "end": 6.66
+    },
+    {
+      "word": "the",
+      "start": 6.66,
+      "end": 6.84
+    },
+    {
+      "word": "quiet",
+      "start": 6.84,
+      "end": 7.08
+    },
+    {
+      "word": "freedom",
+      "start": 7.08,
+      "end": 7.5
+    },
+    {
+      "word": "with",
+      "start": 7.5,
+      "end": 7.7
+    },
+    {
+      "word": "which",
+      "start": 7.7,
+      "end": 7.9
+    },
+    {
+      "word": "she",
+      "start": 7.9,
+      "end": 8.18
+    },
+    {
+      "word": "resumed",
+      "start": 8.18,
+      "end": 8.46
+    },
+    {
+      "word": "on",
+      "start": 8.46,
+      "end": 8.58
+    },
+    {
+      "word": "their",
+      "start": 8.58,
+      "end": 8.72
+    },
+    {
+      "word": "so",
+      "start": 8.72,
+      "end": 8.9
+    },
+    {
+      "word": "recent",
+      "start": 8.9,
+      "end": 9.2
+    },
+    {
+      "word": "acquaintance.",
+      "start": 9.2,
+      "end": 9.9
+    }
+  ],
+  "duration": 9.9
+}

@@ -1,0 +1,123 @@
+{
+  "audio_file": "sample_0403.flac",
+  "wav_file": "sample_0403.wav",
+  "transcript": "McAllis, the ticket of leave apostle, smiled vaguely with his glued lips. His pasty moon face drooped under the weight of Malancholyo scent.",
+  "word_timings": [
+    {
+      "word": "McAllis,",
+      "start": 0.0,
+      "end": 1.08
+    },
+    {
+      "word": "the",
+      "start": 1.52,
+      "end": 1.62
+    },
+    {
+      "word": "ticket",
+      "start": 1.62,
+      "end": 1.88
+    },
+    {
+      "word": "of",
+      "start": 1.88,
+      "end": 2.1
+    },
+    {
+      "word": "leave",
+      "start": 2.1,
+      "end": 2.18
+    },
+    {
+      "word": "apostle,",
+      "start": 2.18,
+      "end": 2.66
+    },
+    {
+      "word": "smiled",
+      "start": 3.18,
+      "end": 3.44
+    },
+    {
+      "word": "vaguely",
+      "start": 3.44,
+      "end": 3.8
+    },
+    {
+      "word": "with",
+      "start": 3.8,
+      "end": 3.96
+    },
+    {
+      "word": "his",
+      "start": 3.96,
+      "end": 4.1
+    },
+    {
+      "word": "glued",
+      "start": 4.1,
+      "end": 4.34
+    },
+    {
+      "word": "lips.",
+      "start": 4.34,
+      "end": 4.72
+    },
+    {
+      "word": "His",
+      "start": 5.38,
+      "end": 5.48
+    },
+    {
+      "word": "pasty",
+      "start": 5.48,
+      "end": 5.94
+    },
+    {
+      "word": "moon",
+      "start": 5.94,
+      "end": 6.12
+    },
+    {
+      "word": "face",
+      "start": 6.12,
+      "end": 6.48
+    },
+    {
+      "word": "drooped",
+      "start": 6.48,
+      "end": 6.94
+    },
+    {
+      "word": "under",
+      "start": 6.94,
+      "end": 7.18
+    },
+    {
+      "word": "the",
+      "start": 7.18,
+      "end": 7.34
+    },
+    {
+      "word": "weight",
+      "start": 7.34,
+      "end": 7.48
+    },
+    {
+      "word": "of",
+      "start": 7.48,
+      "end": 7.76
+    },
+    {
+      "word": "Malancholyo",
+      "start": 7.76,
+      "end": 8.48
+    },
+    {
+      "word": "scent.",
+      "start": 8.48,
+      "end": 8.8
+    }
+  ],
+  "duration": 8.8
+}

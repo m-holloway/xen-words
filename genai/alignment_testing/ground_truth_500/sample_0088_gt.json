@@ -1,0 +1,138 @@
+{
+  "audio_file": "sample_0088.flac",
+  "wav_file": "sample_0088.wav",
+  "transcript": "It gave an imposing appearance to most of the wholesale houses whose offices were up on the ground floor and in plain view of the street.",
+  "word_timings": [
+    {
+      "word": "It",
+      "start": 0.0,
+      "end": 0.26
+    },
+    {
+      "word": "gave",
+      "start": 0.26,
+      "end": 0.4
+    },
+    {
+      "word": "an",
+      "start": 0.4,
+      "end": 0.58
+    },
+    {
+      "word": "imposing",
+      "start": 0.58,
+      "end": 0.98
+    },
+    {
+      "word": "appearance",
+      "start": 0.98,
+      "end": 1.46
+    },
+    {
+      "word": "to",
+      "start": 1.46,
+      "end": 1.76
+    },
+    {
+      "word": "most",
+      "start": 1.76,
+      "end": 1.96
+    },
+    {
+      "word": "of",
+      "start": 1.96,
+      "end": 2.14
+    },
+    {
+      "word": "the",
+      "start": 2.14,
+      "end": 2.26
+    },
+    {
+      "word": "wholesale",
+      "start": 2.26,
+      "end": 2.56
+    },
+    {
+      "word": "houses",
+      "start": 2.56,
+      "end": 3.1
+    },
+    {
+      "word": "whose",
+      "start": 3.1,
+      "end": 3.56
+    },
+    {
+      "word": "offices",
+      "start": 3.56,
+      "end": 4.1
+    },
+    {
+      "word": "were",
+      "start": 4.1,
+      "end": 4.36
+    },
+    {
+      "word": "up",
+      "start": 4.36,
+      "end": 4.52
+    },
+    {
+      "word": "on",
+      "start": 4.52,
+      "end": 4.64
+    },
+    {
+      "word": "the",
+      "start": 4.64,
+      "end": 4.78
+    },
+    {
+      "word": "ground",
+      "start": 4.78,
+      "end": 4.98
+    },
+    {
+      "word": "floor",
+      "start": 4.98,
+      "end": 5.32
+    },
+    {
+      "word": "and",
+      "start": 5.32,
+      "end": 5.6
+    },
+    {
+      "word": "in",
+      "start": 5.6,
+      "end": 5.78
+    },
+    {
+      "word": "plain",
+      "start": 5.78,
+      "end": 5.98
+    },
+    {
+      "word": "view",
+      "start": 5.98,
+      "end": 6.26
+    },
+    {
+      "word": "of",
+      "start": 6.26,
+      "end": 6.42
+    },
+    {
+      "word": "the",
+      "start": 6.42,
+      "end": 6.56
+    },
+    {
+      "word": "street.",
+      "start": 6.56,
+      "end": 6.88
+    }
+  ],
+  "duration": 6.88
+}

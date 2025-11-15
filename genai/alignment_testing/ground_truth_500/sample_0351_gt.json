@@ -1,0 +1,108 @@
+{
+  "audio_file": "sample_0351.flac",
+  "wav_file": "sample_0351.wav",
+  "transcript": "Sometimes schools do let kids take a lot of soft courses, and then they're out on a limb later. Huh.",
+  "word_timings": [
+    {
+      "word": "Sometimes",
+      "start": 0.0,
+      "end": 0.58
+    },
+    {
+      "word": "schools",
+      "start": 0.58,
+      "end": 0.94
+    },
+    {
+      "word": "do",
+      "start": 0.94,
+      "end": 1.24
+    },
+    {
+      "word": "let",
+      "start": 1.24,
+      "end": 1.42
+    },
+    {
+      "word": "kids",
+      "start": 1.42,
+      "end": 1.66
+    },
+    {
+      "word": "take",
+      "start": 1.66,
+      "end": 1.96
+    },
+    {
+      "word": "a",
+      "start": 1.96,
+      "end": 2.2
+    },
+    {
+      "word": "lot",
+      "start": 2.2,
+      "end": 2.38
+    },
+    {
+      "word": "of",
+      "start": 2.38,
+      "end": 2.6
+    },
+    {
+      "word": "soft",
+      "start": 2.6,
+      "end": 2.82
+    },
+    {
+      "word": "courses,",
+      "start": 2.82,
+      "end": 3.28
+    },
+    {
+      "word": "and",
+      "start": 3.6,
+      "end": 3.96
+    },
+    {
+      "word": "then",
+      "start": 3.96,
+      "end": 4.06
+    },
+    {
+      "word": "they're",
+      "start": 4.06,
+      "end": 4.2
+    },
+    {
+      "word": "out",
+      "start": 4.2,
+      "end": 4.32
+    },
+    {
+      "word": "on",
+      "start": 4.32,
+      "end": 4.46
+    },
+    {
+      "word": "a",
+      "start": 4.46,
+      "end": 4.56
+    },
+    {
+      "word": "limb",
+      "start": 4.56,
+      "end": 4.74
+    },
+    {
+      "word": "later.",
+      "start": 4.74,
+      "end": 5.1
+    },
+    {
+      "word": "Huh.",
+      "start": 5.84,
+      "end": 6.16
+    }
+  ],
+  "duration": 6.16
+}

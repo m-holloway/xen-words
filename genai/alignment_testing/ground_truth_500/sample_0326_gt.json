@@ -1,0 +1,98 @@
+{
+  "audio_file": "sample_0326.flac",
+  "wav_file": "sample_0326.wav",
+  "transcript": "When I came up, he touched my shoulder and looked searchingly down into my face for several seconds.",
+  "word_timings": [
+    {
+      "word": "When",
+      "start": 0.0,
+      "end": 0.64
+    },
+    {
+      "word": "I",
+      "start": 0.64,
+      "end": 0.78
+    },
+    {
+      "word": "came",
+      "start": 0.78,
+      "end": 1.0
+    },
+    {
+      "word": "up,",
+      "start": 1.0,
+      "end": 1.14
+    },
+    {
+      "word": "he",
+      "start": 1.3,
+      "end": 1.32
+    },
+    {
+      "word": "touched",
+      "start": 1.32,
+      "end": 1.54
+    },
+    {
+      "word": "my",
+      "start": 1.54,
+      "end": 1.76
+    },
+    {
+      "word": "shoulder",
+      "start": 1.76,
+      "end": 2.06
+    },
+    {
+      "word": "and",
+      "start": 2.06,
+      "end": 2.76
+    },
+    {
+      "word": "looked",
+      "start": 2.76,
+      "end": 2.94
+    },
+    {
+      "word": "searchingly",
+      "start": 2.94,
+      "end": 3.54
+    },
+    {
+      "word": "down",
+      "start": 3.54,
+      "end": 3.78
+    },
+    {
+      "word": "into",
+      "start": 3.78,
+      "end": 3.98
+    },
+    {
+      "word": "my",
+      "start": 3.98,
+      "end": 4.16
+    },
+    {
+      "word": "face",
+      "start": 4.16,
+      "end": 4.44
+    },
+    {
+      "word": "for",
+      "start": 4.44,
+      "end": 4.62
+    },
+    {
+      "word": "several",
+      "start": 4.62,
+      "end": 4.86
+    },
+    {
+      "word": "seconds.",
+      "start": 4.86,
+      "end": 5.22
+    }
+  ],
+  "duration": 5.22
+}

@@ -1,0 +1,163 @@
+{
+  "audio_file": "sample_0100.flac",
+  "wav_file": "sample_0100.wav",
+  "transcript": "I explained to Antonya how this meant that he was 24 years old, that he must have been there when white men first came, left on from buffalo and Indian times.",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.52
+    },
+    {
+      "word": "explained",
+      "start": 0.52,
+      "end": 0.88
+    },
+    {
+      "word": "to",
+      "start": 0.88,
+      "end": 1.14
+    },
+    {
+      "word": "Antonya",
+      "start": 1.14,
+      "end": 1.62
+    },
+    {
+      "word": "how",
+      "start": 1.62,
+      "end": 1.78
+    },
+    {
+      "word": "this",
+      "start": 1.78,
+      "end": 2.0
+    },
+    {
+      "word": "meant",
+      "start": 2.0,
+      "end": 2.22
+    },
+    {
+      "word": "that",
+      "start": 2.22,
+      "end": 2.42
+    },
+    {
+      "word": "he",
+      "start": 2.42,
+      "end": 2.52
+    },
+    {
+      "word": "was",
+      "start": 2.52,
+      "end": 2.62
+    },
+    {
+      "word": "24",
+      "start": 2.62,
+      "end": 3.08
+    },
+    {
+      "word": "years",
+      "start": 3.08,
+      "end": 3.36
+    },
+    {
+      "word": "old,",
+      "start": 3.36,
+      "end": 3.84
+    },
+    {
+      "word": "that",
+      "start": 4.12,
+      "end": 4.32
+    },
+    {
+      "word": "he",
+      "start": 4.32,
+      "end": 4.42
+    },
+    {
+      "word": "must",
+      "start": 4.42,
+      "end": 4.62
+    },
+    {
+      "word": "have",
+      "start": 4.62,
+      "end": 4.82
+    },
+    {
+      "word": "been",
+      "start": 4.82,
+      "end": 4.96
+    },
+    {
+      "word": "there",
+      "start": 4.96,
+      "end": 5.2
+    },
+    {
+      "word": "when",
+      "start": 5.2,
+      "end": 5.38
+    },
+    {
+      "word": "white",
+      "start": 5.38,
+      "end": 5.6
+    },
+    {
+      "word": "men",
+      "start": 5.6,
+      "end": 5.76
+    },
+    {
+      "word": "first",
+      "start": 5.76,
+      "end": 6.1
+    },
+    {
+      "word": "came,",
+      "start": 6.1,
+      "end": 6.46
+    },
+    {
+      "word": "left",
+      "start": 6.96,
+      "end": 7.18
+    },
+    {
+      "word": "on",
+      "start": 7.18,
+      "end": 7.34
+    },
+    {
+      "word": "from",
+      "start": 7.34,
+      "end": 7.52
+    },
+    {
+      "word": "buffalo",
+      "start": 7.52,
+      "end": 7.78
+    },
+    {
+      "word": "and",
+      "start": 7.78,
+      "end": 8.06
+    },
+    {
+      "word": "Indian",
+      "start": 8.06,
+      "end": 8.32
+    },
+    {
+      "word": "times.",
+      "start": 8.32,
+      "end": 8.76
+    }
+  ],
+  "duration": 8.76
+}

@@ -1,0 +1,78 @@
+{
+  "audio_file": "sample_0146.flac",
+  "wav_file": "sample_0146.wav",
+  "transcript": "It seemed to me that he despised him for being so simple and docile.",
+  "word_timings": [
+    {
+      "word": "It",
+      "start": 0.0,
+      "end": 0.36
+    },
+    {
+      "word": "seemed",
+      "start": 0.36,
+      "end": 0.58
+    },
+    {
+      "word": "to",
+      "start": 0.58,
+      "end": 0.78
+    },
+    {
+      "word": "me",
+      "start": 0.78,
+      "end": 0.9
+    },
+    {
+      "word": "that",
+      "start": 0.9,
+      "end": 1.08
+    },
+    {
+      "word": "he",
+      "start": 1.08,
+      "end": 1.16
+    },
+    {
+      "word": "despised",
+      "start": 1.16,
+      "end": 1.64
+    },
+    {
+      "word": "him",
+      "start": 1.64,
+      "end": 1.86
+    },
+    {
+      "word": "for",
+      "start": 1.86,
+      "end": 2.02
+    },
+    {
+      "word": "being",
+      "start": 2.02,
+      "end": 2.22
+    },
+    {
+      "word": "so",
+      "start": 2.22,
+      "end": 2.5
+    },
+    {
+      "word": "simple",
+      "start": 2.5,
+      "end": 2.88
+    },
+    {
+      "word": "and",
+      "start": 2.88,
+      "end": 3.14
+    },
+    {
+      "word": "docile.",
+      "start": 3.14,
+      "end": 3.58
+    }
+  ],
+  "duration": 3.58
+}

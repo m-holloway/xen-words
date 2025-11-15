@@ -1,0 +1,88 @@
+{
+  "audio_file": "sample_0365.flac",
+  "wav_file": "sample_0365.wav",
+  "transcript": "I explain that I'm taking music and also biology algebra English and French. Music. He's North's.",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.48
+    },
+    {
+      "word": "explain",
+      "start": 0.48,
+      "end": 0.76
+    },
+    {
+      "word": "that",
+      "start": 0.76,
+      "end": 1.0
+    },
+    {
+      "word": "I'm",
+      "start": 1.0,
+      "end": 1.16
+    },
+    {
+      "word": "taking",
+      "start": 1.16,
+      "end": 1.34
+    },
+    {
+      "word": "music",
+      "start": 1.34,
+      "end": 1.74
+    },
+    {
+      "word": "and",
+      "start": 1.74,
+      "end": 2.1
+    },
+    {
+      "word": "also",
+      "start": 2.1,
+      "end": 2.44
+    },
+    {
+      "word": "biology",
+      "start": 2.44,
+      "end": 2.98
+    },
+    {
+      "word": "algebra",
+      "start": 2.98,
+      "end": 3.44
+    },
+    {
+      "word": "English",
+      "start": 3.44,
+      "end": 3.76
+    },
+    {
+      "word": "and",
+      "start": 3.76,
+      "end": 3.98
+    },
+    {
+      "word": "French.",
+      "start": 3.98,
+      "end": 4.18
+    },
+    {
+      "word": "Music.",
+      "start": 4.74,
+      "end": 5.12
+    },
+    {
+      "word": "He's",
+      "start": 5.48,
+      "end": 5.92
+    },
+    {
+      "word": "North's.",
+      "start": 5.92,
+      "end": 6.36
+    }
+  ],
+  "duration": 6.36
+}

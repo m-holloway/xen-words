@@ -1,0 +1,48 @@
+{
+  "audio_file": "sample_0077.flac",
+  "wav_file": "sample_0077.wav",
+  "transcript": "He seemed to be thinking of something else.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.32
+    },
+    {
+      "word": "seemed",
+      "start": 0.32,
+      "end": 0.54
+    },
+    {
+      "word": "to",
+      "start": 0.54,
+      "end": 0.7
+    },
+    {
+      "word": "be",
+      "start": 0.7,
+      "end": 0.82
+    },
+    {
+      "word": "thinking",
+      "start": 0.82,
+      "end": 1.06
+    },
+    {
+      "word": "of",
+      "start": 1.06,
+      "end": 1.28
+    },
+    {
+      "word": "something",
+      "start": 1.28,
+      "end": 1.62
+    },
+    {
+      "word": "else.",
+      "start": 1.62,
+      "end": 1.96
+    }
+  ],
+  "duration": 1.96
+}

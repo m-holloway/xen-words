@@ -1,0 +1,98 @@
+{
+  "audio_file": "sample_0092.flac",
+  "wav_file": "sample_0092.wav",
+  "transcript": "Now, now, he said walking, there, there. And there was a certain Swedish accent noticeable in his voice.",
+  "word_timings": [
+    {
+      "word": "Now,",
+      "start": 0.0,
+      "end": 0.54
+    },
+    {
+      "word": "now,",
+      "start": 0.74,
+      "end": 0.94
+    },
+    {
+      "word": "he",
+      "start": 1.24,
+      "end": 1.28
+    },
+    {
+      "word": "said",
+      "start": 1.28,
+      "end": 1.48
+    },
+    {
+      "word": "walking,",
+      "start": 1.48,
+      "end": 1.82
+    },
+    {
+      "word": "there,",
+      "start": 2.22,
+      "end": 2.42
+    },
+    {
+      "word": "there.",
+      "start": 2.6,
+      "end": 2.82
+    },
+    {
+      "word": "And",
+      "start": 3.62,
+      "end": 3.88
+    },
+    {
+      "word": "there",
+      "start": 3.88,
+      "end": 4.0
+    },
+    {
+      "word": "was",
+      "start": 4.0,
+      "end": 4.14
+    },
+    {
+      "word": "a",
+      "start": 4.14,
+      "end": 4.28
+    },
+    {
+      "word": "certain",
+      "start": 4.28,
+      "end": 4.58
+    },
+    {
+      "word": "Swedish",
+      "start": 4.58,
+      "end": 4.94
+    },
+    {
+      "word": "accent",
+      "start": 4.94,
+      "end": 5.42
+    },
+    {
+      "word": "noticeable",
+      "start": 5.42,
+      "end": 5.76
+    },
+    {
+      "word": "in",
+      "start": 5.76,
+      "end": 6.18
+    },
+    {
+      "word": "his",
+      "start": 6.18,
+      "end": 6.3
+    },
+    {
+      "word": "voice.",
+      "start": 6.3,
+      "end": 6.64
+    }
+  ],
+  "duration": 6.64
+}

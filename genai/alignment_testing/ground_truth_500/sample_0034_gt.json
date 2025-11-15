@@ -1,0 +1,93 @@
+{
+  "audio_file": "sample_0034.flac",
+  "wav_file": "sample_0034.wav",
+  "transcript": "Then he sat down in his chair and gazed without seeing, contemplating the result of his work.",
+  "word_timings": [
+    {
+      "word": "Then",
+      "start": 0.0,
+      "end": 0.38
+    },
+    {
+      "word": "he",
+      "start": 0.38,
+      "end": 0.52
+    },
+    {
+      "word": "sat",
+      "start": 0.52,
+      "end": 0.7
+    },
+    {
+      "word": "down",
+      "start": 0.7,
+      "end": 0.92
+    },
+    {
+      "word": "in",
+      "start": 0.92,
+      "end": 1.08
+    },
+    {
+      "word": "his",
+      "start": 1.08,
+      "end": 1.24
+    },
+    {
+      "word": "chair",
+      "start": 1.24,
+      "end": 1.56
+    },
+    {
+      "word": "and",
+      "start": 1.56,
+      "end": 2.14
+    },
+    {
+      "word": "gazed",
+      "start": 2.14,
+      "end": 2.46
+    },
+    {
+      "word": "without",
+      "start": 2.46,
+      "end": 2.7
+    },
+    {
+      "word": "seeing,",
+      "start": 2.7,
+      "end": 3.02
+    },
+    {
+      "word": "contemplating",
+      "start": 3.32,
+      "end": 3.8
+    },
+    {
+      "word": "the",
+      "start": 3.8,
+      "end": 3.92
+    },
+    {
+      "word": "result",
+      "start": 3.92,
+      "end": 4.18
+    },
+    {
+      "word": "of",
+      "start": 4.18,
+      "end": 4.42
+    },
+    {
+      "word": "his",
+      "start": 4.42,
+      "end": 4.54
+    },
+    {
+      "word": "work.",
+      "start": 4.54,
+      "end": 4.88
+    }
+  ],
+  "duration": 4.88
+}

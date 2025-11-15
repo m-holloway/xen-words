@@ -1,0 +1,228 @@
+{
+  "audio_file": "sample_0338.flac",
+  "wav_file": "sample_0338.wav",
+  "transcript": "Then there are, in all classes, a very large number of men constantly occupied with the series affairs of the government, and those whose thoughts are not engaged in the direction of the Commonwealth are wholly engrossed by the acquisition of a private fortune.",
+  "word_timings": [
+    {
+      "word": "Then",
+      "start": 0.0,
+      "end": 0.68
+    },
+    {
+      "word": "there",
+      "start": 0.68,
+      "end": 0.94
+    },
+    {
+      "word": "are,",
+      "start": 0.94,
+      "end": 1.14
+    },
+    {
+      "word": "in",
+      "start": 1.22,
+      "end": 1.42
+    },
+    {
+      "word": "all",
+      "start": 1.42,
+      "end": 1.66
+    },
+    {
+      "word": "classes,",
+      "start": 1.66,
+      "end": 2.14
+    },
+    {
+      "word": "a",
+      "start": 2.42,
+      "end": 2.48
+    },
+    {
+      "word": "very",
+      "start": 2.48,
+      "end": 2.74
+    },
+    {
+      "word": "large",
+      "start": 2.74,
+      "end": 3.06
+    },
+    {
+      "word": "number",
+      "start": 3.06,
+      "end": 3.38
+    },
+    {
+      "word": "of",
+      "start": 3.38,
+      "end": 3.58
+    },
+    {
+      "word": "men",
+      "start": 3.58,
+      "end": 3.84
+    },
+    {
+      "word": "constantly",
+      "start": 3.84,
+      "end": 4.3
+    },
+    {
+      "word": "occupied",
+      "start": 4.3,
+      "end": 4.8
+    },
+    {
+      "word": "with",
+      "start": 4.8,
+      "end": 5.06
+    },
+    {
+      "word": "the",
+      "start": 5.06,
+      "end": 5.2
+    },
+    {
+      "word": "series",
+      "start": 5.2,
+      "end": 5.54
+    },
+    {
+      "word": "affairs",
+      "start": 5.54,
+      "end": 5.9
+    },
+    {
+      "word": "of",
+      "start": 5.9,
+      "end": 6.08
+    },
+    {
+      "word": "the",
+      "start": 6.08,
+      "end": 6.18
+    },
+    {
+      "word": "government,",
+      "start": 6.18,
+      "end": 6.62
+    },
+    {
+      "word": "and",
+      "start": 7.16,
+      "end": 7.3
+    },
+    {
+      "word": "those",
+      "start": 7.3,
+      "end": 7.54
+    },
+    {
+      "word": "whose",
+      "start": 7.54,
+      "end": 7.76
+    },
+    {
+      "word": "thoughts",
+      "start": 7.76,
+      "end": 8.04
+    },
+    {
+      "word": "are",
+      "start": 8.04,
+      "end": 8.3
+    },
+    {
+      "word": "not",
+      "start": 8.3,
+      "end": 8.46
+    },
+    {
+      "word": "engaged",
+      "start": 8.46,
+      "end": 8.76
+    },
+    {
+      "word": "in",
+      "start": 8.76,
+      "end": 8.98
+    },
+    {
+      "word": "the",
+      "start": 8.98,
+      "end": 9.08
+    },
+    {
+      "word": "direction",
+      "start": 9.08,
+      "end": 9.36
+    },
+    {
+      "word": "of",
+      "start": 9.36,
+      "end": 9.54
+    },
+    {
+      "word": "the",
+      "start": 9.54,
+      "end": 9.62
+    },
+    {
+      "word": "Commonwealth",
+      "start": 9.62,
+      "end": 10.0
+    },
+    {
+      "word": "are",
+      "start": 10.0,
+      "end": 10.54
+    },
+    {
+      "word": "wholly",
+      "start": 10.54,
+      "end": 10.88
+    },
+    {
+      "word": "engrossed",
+      "start": 10.88,
+      "end": 11.44
+    },
+    {
+      "word": "by",
+      "start": 11.44,
+      "end": 11.52
+    },
+    {
+      "word": "the",
+      "start": 11.52,
+      "end": 11.66
+    },
+    {
+      "word": "acquisition",
+      "start": 11.66,
+      "end": 12.1
+    },
+    {
+      "word": "of",
+      "start": 12.1,
+      "end": 12.24
+    },
+    {
+      "word": "a",
+      "start": 12.24,
+      "end": 12.3
+    },
+    {
+      "word": "private",
+      "start": 12.3,
+      "end": 12.7
+    },
+    {
+      "word": "fortune.",
+      "start": 12.7,
+      "end": 13.12
+    }
+  ],
+  "duration": 13.12
+}

@@ -1,0 +1,253 @@
+{
+  "audio_file": "sample_0181.flac",
+  "wav_file": "sample_0181.wav",
+  "transcript": "The chicken crept through the pales of the coop and ran, with some show of liveliness to her feet. While Shantikler and the ladies of his household regarded her with queer, side-long glances, and then croaked one to another as if communicating their sage opinions of her character.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.5
+    },
+    {
+      "word": "chicken",
+      "start": 0.5,
+      "end": 0.72
+    },
+    {
+      "word": "crept",
+      "start": 0.72,
+      "end": 1.04
+    },
+    {
+      "word": "through",
+      "start": 1.04,
+      "end": 1.24
+    },
+    {
+      "word": "the",
+      "start": 1.24,
+      "end": 1.38
+    },
+    {
+      "word": "pales",
+      "start": 1.38,
+      "end": 1.66
+    },
+    {
+      "word": "of",
+      "start": 1.66,
+      "end": 1.74
+    },
+    {
+      "word": "the",
+      "start": 1.74,
+      "end": 1.86
+    },
+    {
+      "word": "coop",
+      "start": 1.86,
+      "end": 2.02
+    },
+    {
+      "word": "and",
+      "start": 2.02,
+      "end": 2.28
+    },
+    {
+      "word": "ran,",
+      "start": 2.28,
+      "end": 2.48
+    },
+    {
+      "word": "with",
+      "start": 2.86,
+      "end": 2.94
+    },
+    {
+      "word": "some",
+      "start": 2.94,
+      "end": 3.16
+    },
+    {
+      "word": "show",
+      "start": 3.16,
+      "end": 3.38
+    },
+    {
+      "word": "of",
+      "start": 3.38,
+      "end": 3.6
+    },
+    {
+      "word": "liveliness",
+      "start": 3.6,
+      "end": 4.06
+    },
+    {
+      "word": "to",
+      "start": 4.06,
+      "end": 4.32
+    },
+    {
+      "word": "her",
+      "start": 4.32,
+      "end": 4.46
+    },
+    {
+      "word": "feet.",
+      "start": 4.46,
+      "end": 4.74
+    },
+    {
+      "word": "While",
+      "start": 5.3,
+      "end": 5.54
+    },
+    {
+      "word": "Shantikler",
+      "start": 5.54,
+      "end": 6.08
+    },
+    {
+      "word": "and",
+      "start": 6.08,
+      "end": 6.26
+    },
+    {
+      "word": "the",
+      "start": 6.26,
+      "end": 6.34
+    },
+    {
+      "word": "ladies",
+      "start": 6.34,
+      "end": 6.56
+    },
+    {
+      "word": "of",
+      "start": 6.56,
+      "end": 6.76
+    },
+    {
+      "word": "his",
+      "start": 6.76,
+      "end": 6.88
+    },
+    {
+      "word": "household",
+      "start": 6.88,
+      "end": 7.28
+    },
+    {
+      "word": "regarded",
+      "start": 7.28,
+      "end": 7.9
+    },
+    {
+      "word": "her",
+      "start": 7.9,
+      "end": 8.16
+    },
+    {
+      "word": "with",
+      "start": 8.16,
+      "end": 8.34
+    },
+    {
+      "word": "queer,",
+      "start": 8.34,
+      "end": 8.62
+    },
+    {
+      "word": "side",
+      "start": 8.84,
+      "end": 8.98
+    },
+    {
+      "word": "-long",
+      "start": 8.98,
+      "end": 9.2
+    },
+    {
+      "word": "glances,",
+      "start": 9.2,
+      "end": 9.66
+    },
+    {
+      "word": "and",
+      "start": 10.18,
+      "end": 10.26
+    },
+    {
+      "word": "then",
+      "start": 10.26,
+      "end": 10.42
+    },
+    {
+      "word": "croaked",
+      "start": 10.42,
+      "end": 10.8
+    },
+    {
+      "word": "one",
+      "start": 10.8,
+      "end": 10.98
+    },
+    {
+      "word": "to",
+      "start": 10.98,
+      "end": 11.14
+    },
+    {
+      "word": "another",
+      "start": 11.14,
+      "end": 11.46
+    },
+    {
+      "word": "as",
+      "start": 11.46,
+      "end": 12.02
+    },
+    {
+      "word": "if",
+      "start": 12.02,
+      "end": 12.12
+    },
+    {
+      "word": "communicating",
+      "start": 12.12,
+      "end": 12.66
+    },
+    {
+      "word": "their",
+      "start": 12.66,
+      "end": 12.94
+    },
+    {
+      "word": "sage",
+      "start": 12.94,
+      "end": 13.3
+    },
+    {
+      "word": "opinions",
+      "start": 13.3,
+      "end": 13.66
+    },
+    {
+      "word": "of",
+      "start": 13.66,
+      "end": 13.92
+    },
+    {
+      "word": "her",
+      "start": 13.92,
+      "end": 14.04
+    },
+    {
+      "word": "character.",
+      "start": 14.04,
+      "end": 14.5
+    }
+  ],
+  "duration": 14.5
+}

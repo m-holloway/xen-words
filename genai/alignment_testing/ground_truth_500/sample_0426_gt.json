@@ -1,0 +1,33 @@
+{
+  "audio_file": "sample_0426.flac",
+  "wav_file": "sample_0426.wav",
+  "transcript": "L'Emprocia was an ass.",
+  "word_timings": [
+    {
+      "word": "L",
+      "start": 0.0,
+      "end": 0.42
+    },
+    {
+      "word": "'Emprocia",
+      "start": 0.42,
+      "end": 0.8
+    },
+    {
+      "word": "was",
+      "start": 0.8,
+      "end": 0.98
+    },
+    {
+      "word": "an",
+      "start": 0.98,
+      "end": 1.1
+    },
+    {
+      "word": "ass.",
+      "start": 1.1,
+      "end": 1.5
+    }
+  ],
+  "duration": 1.5
+}

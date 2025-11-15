@@ -1,0 +1,73 @@
+{
+  "audio_file": "sample_0138.flac",
+  "wav_file": "sample_0138.wav",
+  "transcript": "They worked in Chicago, Des Moines, Fort Wayne, but they were always unfortunate.",
+  "word_timings": [
+    {
+      "word": "They",
+      "start": 0.0,
+      "end": 0.42
+    },
+    {
+      "word": "worked",
+      "start": 0.42,
+      "end": 0.58
+    },
+    {
+      "word": "in",
+      "start": 0.58,
+      "end": 0.72
+    },
+    {
+      "word": "Chicago,",
+      "start": 0.72,
+      "end": 1.18
+    },
+    {
+      "word": "Des",
+      "start": 1.84,
+      "end": 1.94
+    },
+    {
+      "word": "Moines,",
+      "start": 1.94,
+      "end": 2.3
+    },
+    {
+      "word": "Fort",
+      "start": 2.84,
+      "end": 2.92
+    },
+    {
+      "word": "Wayne,",
+      "start": 2.92,
+      "end": 3.28
+    },
+    {
+      "word": "but",
+      "start": 3.72,
+      "end": 3.82
+    },
+    {
+      "word": "they",
+      "start": 3.82,
+      "end": 3.94
+    },
+    {
+      "word": "were",
+      "start": 3.94,
+      "end": 4.06
+    },
+    {
+      "word": "always",
+      "start": 4.06,
+      "end": 4.38
+    },
+    {
+      "word": "unfortunate.",
+      "start": 4.38,
+      "end": 5.0
+    }
+  ],
+  "duration": 5.0
+}

@@ -1,0 +1,48 @@
+{
+  "audio_file": "sample_0461.flac",
+  "wav_file": "sample_0461.wav",
+  "transcript": "He paused and added with a modest firmness.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.58
+    },
+    {
+      "word": "paused",
+      "start": 0.58,
+      "end": 0.94
+    },
+    {
+      "word": "and",
+      "start": 0.94,
+      "end": 1.2
+    },
+    {
+      "word": "added",
+      "start": 1.2,
+      "end": 1.46
+    },
+    {
+      "word": "with",
+      "start": 1.46,
+      "end": 1.6
+    },
+    {
+      "word": "a",
+      "start": 1.6,
+      "end": 1.7
+    },
+    {
+      "word": "modest",
+      "start": 1.7,
+      "end": 1.94
+    },
+    {
+      "word": "firmness.",
+      "start": 1.94,
+      "end": 2.54
+    }
+  ],
+  "duration": 2.54
+}

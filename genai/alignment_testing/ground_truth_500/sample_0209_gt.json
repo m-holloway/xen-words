@@ -1,0 +1,133 @@
+{
+  "audio_file": "sample_0209.flac",
+  "wav_file": "sample_0209.wav",
+  "transcript": "Bees, too, strange to say, had thought it worth their while to come hither, possibly from the range of hives besides some farmhouse miles away.",
+  "word_timings": [
+    {
+      "word": "Bees,",
+      "start": 0.0,
+      "end": 0.82
+    },
+    {
+      "word": "too,",
+      "start": 0.92,
+      "end": 1.08
+    },
+    {
+      "word": "strange",
+      "start": 1.62,
+      "end": 1.9
+    },
+    {
+      "word": "to",
+      "start": 1.9,
+      "end": 2.1
+    },
+    {
+      "word": "say,",
+      "start": 2.1,
+      "end": 2.36
+    },
+    {
+      "word": "had",
+      "start": 2.84,
+      "end": 3.02
+    },
+    {
+      "word": "thought",
+      "start": 3.02,
+      "end": 3.22
+    },
+    {
+      "word": "it",
+      "start": 3.22,
+      "end": 3.36
+    },
+    {
+      "word": "worth",
+      "start": 3.36,
+      "end": 3.54
+    },
+    {
+      "word": "their",
+      "start": 3.54,
+      "end": 3.76
+    },
+    {
+      "word": "while",
+      "start": 3.76,
+      "end": 3.98
+    },
+    {
+      "word": "to",
+      "start": 3.98,
+      "end": 4.18
+    },
+    {
+      "word": "come",
+      "start": 4.18,
+      "end": 4.38
+    },
+    {
+      "word": "hither,",
+      "start": 4.38,
+      "end": 4.68
+    },
+    {
+      "word": "possibly",
+      "start": 5.2,
+      "end": 5.54
+    },
+    {
+      "word": "from",
+      "start": 5.54,
+      "end": 5.78
+    },
+    {
+      "word": "the",
+      "start": 5.78,
+      "end": 5.88
+    },
+    {
+      "word": "range",
+      "start": 5.88,
+      "end": 6.08
+    },
+    {
+      "word": "of",
+      "start": 6.08,
+      "end": 6.32
+    },
+    {
+      "word": "hives",
+      "start": 6.32,
+      "end": 6.64
+    },
+    {
+      "word": "besides",
+      "start": 6.64,
+      "end": 6.9
+    },
+    {
+      "word": "some",
+      "start": 6.9,
+      "end": 7.22
+    },
+    {
+      "word": "farmhouse",
+      "start": 7.22,
+      "end": 7.74
+    },
+    {
+      "word": "miles",
+      "start": 7.74,
+      "end": 8.04
+    },
+    {
+      "word": "away.",
+      "start": 8.04,
+      "end": 8.4
+    }
+  ],
+  "duration": 8.4
+}

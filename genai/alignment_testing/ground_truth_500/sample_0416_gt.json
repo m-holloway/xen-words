@@ -1,0 +1,33 @@
+{
+  "audio_file": "sample_0416.flac",
+  "wav_file": "sample_0416.wav",
+  "transcript": "Yes, not at all well.",
+  "word_timings": [
+    {
+      "word": "Yes,",
+      "start": 0.0,
+      "end": 0.56
+    },
+    {
+      "word": "not",
+      "start": 0.98,
+      "end": 1.14
+    },
+    {
+      "word": "at",
+      "start": 1.14,
+      "end": 1.28
+    },
+    {
+      "word": "all",
+      "start": 1.28,
+      "end": 1.46
+    },
+    {
+      "word": "well.",
+      "start": 1.46,
+      "end": 1.7
+    }
+  ],
+  "duration": 1.7
+}

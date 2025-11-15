@@ -1,0 +1,43 @@
+{
+  "audio_file": "sample_0015.flac",
+  "wav_file": "sample_0015.wav",
+  "transcript": "How would the papers talk about it?",
+  "word_timings": [
+    {
+      "word": "How",
+      "start": 0.0,
+      "end": 0.42
+    },
+    {
+      "word": "would",
+      "start": 0.42,
+      "end": 0.56
+    },
+    {
+      "word": "the",
+      "start": 0.56,
+      "end": 0.66
+    },
+    {
+      "word": "papers",
+      "start": 0.66,
+      "end": 0.88
+    },
+    {
+      "word": "talk",
+      "start": 0.88,
+      "end": 1.2
+    },
+    {
+      "word": "about",
+      "start": 1.2,
+      "end": 1.5
+    },
+    {
+      "word": "it?",
+      "start": 1.5,
+      "end": 1.7
+    }
+  ],
+  "duration": 1.7
+}

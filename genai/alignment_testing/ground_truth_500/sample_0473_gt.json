@@ -1,0 +1,293 @@
+{
+  "audio_file": "sample_0473.flac",
+  "wav_file": "sample_0473.wav",
+  "transcript": "Daverne said Willefort. Be so kind I would see you as to accompany this gentleman. Here is the key of the door so that you can go in and out as you please. You will bring the priest with you and will oblige me by introducing him into my child's room. Do you wish to see him?",
+  "word_timings": [
+    {
+      "word": "Daverne",
+      "start": 0.6200000000000012,
+      "end": 0.9800000000000006
+    },
+    {
+      "word": "said",
+      "start": 0.9800000000000006,
+      "end": 1.34
+    },
+    {
+      "word": "Willefort.",
+      "start": 1.34,
+      "end": 1.82
+    },
+    {
+      "word": "Be",
+      "start": 2.36,
+      "end": 2.44
+    },
+    {
+      "word": "so",
+      "start": 2.44,
+      "end": 2.64
+    },
+    {
+      "word": "kind",
+      "start": 2.64,
+      "end": 2.96
+    },
+    {
+      "word": "I",
+      "start": 2.96,
+      "end": 3.14
+    },
+    {
+      "word": "would",
+      "start": 3.14,
+      "end": 3.22
+    },
+    {
+      "word": "see",
+      "start": 3.22,
+      "end": 3.4
+    },
+    {
+      "word": "you",
+      "start": 3.4,
+      "end": 3.62
+    },
+    {
+      "word": "as",
+      "start": 3.62,
+      "end": 3.82
+    },
+    {
+      "word": "to",
+      "start": 3.82,
+      "end": 3.94
+    },
+    {
+      "word": "accompany",
+      "start": 3.94,
+      "end": 4.22
+    },
+    {
+      "word": "this",
+      "start": 4.22,
+      "end": 4.46
+    },
+    {
+      "word": "gentleman.",
+      "start": 4.46,
+      "end": 4.74
+    },
+    {
+      "word": "Here",
+      "start": 5.04,
+      "end": 5.16
+    },
+    {
+      "word": "is",
+      "start": 5.16,
+      "end": 5.32
+    },
+    {
+      "word": "the",
+      "start": 5.32,
+      "end": 5.4
+    },
+    {
+      "word": "key",
+      "start": 5.4,
+      "end": 5.54
+    },
+    {
+      "word": "of",
+      "start": 5.54,
+      "end": 5.68
+    },
+    {
+      "word": "the",
+      "start": 5.68,
+      "end": 5.74
+    },
+    {
+      "word": "door",
+      "start": 5.74,
+      "end": 5.94
+    },
+    {
+      "word": "so",
+      "start": 5.94,
+      "end": 6.24
+    },
+    {
+      "word": "that",
+      "start": 6.24,
+      "end": 6.38
+    },
+    {
+      "word": "you",
+      "start": 6.38,
+      "end": 6.54
+    },
+    {
+      "word": "can",
+      "start": 6.54,
+      "end": 6.7
+    },
+    {
+      "word": "go",
+      "start": 6.7,
+      "end": 6.84
+    },
+    {
+      "word": "in",
+      "start": 6.84,
+      "end": 7.0
+    },
+    {
+      "word": "and",
+      "start": 7.0,
+      "end": 7.1
+    },
+    {
+      "word": "out",
+      "start": 7.1,
+      "end": 7.3
+    },
+    {
+      "word": "as",
+      "start": 7.3,
+      "end": 7.42
+    },
+    {
+      "word": "you",
+      "start": 7.42,
+      "end": 7.52
+    },
+    {
+      "word": "please.",
+      "start": 7.52,
+      "end": 7.8
+    },
+    {
+      "word": "You",
+      "start": 8.16,
+      "end": 8.3
+    },
+    {
+      "word": "will",
+      "start": 8.3,
+      "end": 8.38
+    },
+    {
+      "word": "bring",
+      "start": 8.38,
+      "end": 8.56
+    },
+    {
+      "word": "the",
+      "start": 8.56,
+      "end": 8.68
+    },
+    {
+      "word": "priest",
+      "start": 8.68,
+      "end": 8.88
+    },
+    {
+      "word": "with",
+      "start": 8.88,
+      "end": 9.04
+    },
+    {
+      "word": "you",
+      "start": 9.04,
+      "end": 9.24
+    },
+    {
+      "word": "and",
+      "start": 9.24,
+      "end": 9.72
+    },
+    {
+      "word": "will",
+      "start": 9.72,
+      "end": 9.86
+    },
+    {
+      "word": "oblige",
+      "start": 9.86,
+      "end": 10.26
+    },
+    {
+      "word": "me",
+      "start": 10.26,
+      "end": 10.42
+    },
+    {
+      "word": "by",
+      "start": 10.42,
+      "end": 10.54
+    },
+    {
+      "word": "introducing",
+      "start": 10.54,
+      "end": 10.86
+    },
+    {
+      "word": "him",
+      "start": 10.86,
+      "end": 11.26
+    },
+    {
+      "word": "into",
+      "start": 11.26,
+      "end": 11.5
+    },
+    {
+      "word": "my",
+      "start": 11.5,
+      "end": 11.66
+    },
+    {
+      "word": "child's",
+      "start": 11.66,
+      "end": 12.06
+    },
+    {
+      "word": "room.",
+      "start": 12.06,
+      "end": 12.24
+    },
+    {
+      "word": "Do",
+      "start": 12.8,
+      "end": 12.9
+    },
+    {
+      "word": "you",
+      "start": 12.9,
+      "end": 13.0
+    },
+    {
+      "word": "wish",
+      "start": 13.0,
+      "end": 13.16
+    },
+    {
+      "word": "to",
+      "start": 13.16,
+      "end": 13.3
+    },
+    {
+      "word": "see",
+      "start": 13.3,
+      "end": 13.46
+    },
+    {
+      "word": "him?",
+      "start": 13.46,
+      "end": 13.66
+    }
+  ],
+  "duration": 13.66
+}

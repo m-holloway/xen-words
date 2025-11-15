@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0069.flac",
+  "wav_file": "sample_0069.wav",
+  "transcript": "She would take the envelope and know that she had triumphed.",
+  "word_timings": [
+    {
+      "word": "She",
+      "start": 0.0,
+      "end": 0.4
+    },
+    {
+      "word": "would",
+      "start": 0.4,
+      "end": 0.52
+    },
+    {
+      "word": "take",
+      "start": 0.52,
+      "end": 0.68
+    },
+    {
+      "word": "the",
+      "start": 0.68,
+      "end": 0.86
+    },
+    {
+      "word": "envelope",
+      "start": 0.86,
+      "end": 1.1
+    },
+    {
+      "word": "and",
+      "start": 1.1,
+      "end": 1.54
+    },
+    {
+      "word": "know",
+      "start": 1.54,
+      "end": 1.72
+    },
+    {
+      "word": "that",
+      "start": 1.72,
+      "end": 1.86
+    },
+    {
+      "word": "she",
+      "start": 1.86,
+      "end": 2.02
+    },
+    {
+      "word": "had",
+      "start": 2.02,
+      "end": 2.16
+    },
+    {
+      "word": "triumphed.",
+      "start": 2.16,
+      "end": 2.8
+    }
+  ],
+  "duration": 2.8
+}

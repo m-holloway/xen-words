@@ -1,0 +1,33 @@
+{
+  "audio_file": "sample_0257.flac",
+  "wav_file": "sample_0257.wav",
+  "transcript": "Our brigade was fearfully outnumbered.",
+  "word_timings": [
+    {
+      "word": "Our",
+      "start": 0.0,
+      "end": 0.68
+    },
+    {
+      "word": "brigade",
+      "start": 0.68,
+      "end": 1.06
+    },
+    {
+      "word": "was",
+      "start": 1.06,
+      "end": 1.36
+    },
+    {
+      "word": "fearfully",
+      "start": 1.36,
+      "end": 1.98
+    },
+    {
+      "word": "outnumbered.",
+      "start": 1.98,
+      "end": 2.84
+    }
+  ],
+  "duration": 2.84
+}

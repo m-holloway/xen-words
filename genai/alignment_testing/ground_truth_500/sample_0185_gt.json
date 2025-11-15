@@ -1,0 +1,138 @@
+{
+  "audio_file": "sample_0185.flac",
+  "wav_file": "sample_0185.wav",
+  "transcript": "The sun, as you see, tells quite another story, and will not be coped out of it, after half a dozen patient attempts on my part.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.6
+    },
+    {
+      "word": "sun,",
+      "start": 0.6,
+      "end": 0.88
+    },
+    {
+      "word": "as",
+      "start": 0.96,
+      "end": 1.08
+    },
+    {
+      "word": "you",
+      "start": 1.08,
+      "end": 1.18
+    },
+    {
+      "word": "see,",
+      "start": 1.18,
+      "end": 1.4
+    },
+    {
+      "word": "tells",
+      "start": 1.58,
+      "end": 1.66
+    },
+    {
+      "word": "quite",
+      "start": 1.66,
+      "end": 1.98
+    },
+    {
+      "word": "another",
+      "start": 1.98,
+      "end": 2.2
+    },
+    {
+      "word": "story,",
+      "start": 2.2,
+      "end": 2.72
+    },
+    {
+      "word": "and",
+      "start": 3.22,
+      "end": 3.3
+    },
+    {
+      "word": "will",
+      "start": 3.3,
+      "end": 3.42
+    },
+    {
+      "word": "not",
+      "start": 3.42,
+      "end": 3.6
+    },
+    {
+      "word": "be",
+      "start": 3.6,
+      "end": 3.78
+    },
+    {
+      "word": "coped",
+      "start": 3.78,
+      "end": 4.14
+    },
+    {
+      "word": "out",
+      "start": 4.14,
+      "end": 4.3
+    },
+    {
+      "word": "of",
+      "start": 4.3,
+      "end": 4.42
+    },
+    {
+      "word": "it,",
+      "start": 4.42,
+      "end": 4.6
+    },
+    {
+      "word": "after",
+      "start": 5.16,
+      "end": 5.42
+    },
+    {
+      "word": "half",
+      "start": 5.42,
+      "end": 5.66
+    },
+    {
+      "word": "a",
+      "start": 5.66,
+      "end": 5.78
+    },
+    {
+      "word": "dozen",
+      "start": 5.78,
+      "end": 5.98
+    },
+    {
+      "word": "patient",
+      "start": 5.98,
+      "end": 6.36
+    },
+    {
+      "word": "attempts",
+      "start": 6.36,
+      "end": 6.72
+    },
+    {
+      "word": "on",
+      "start": 6.72,
+      "end": 7.02
+    },
+    {
+      "word": "my",
+      "start": 7.02,
+      "end": 7.18
+    },
+    {
+      "word": "part.",
+      "start": 7.18,
+      "end": 7.46
+    }
+  ],
+  "duration": 7.46
+}

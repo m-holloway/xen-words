@@ -1,0 +1,213 @@
+{
+  "audio_file": "sample_0206.flac",
+  "wav_file": "sample_0206.wav",
+  "transcript": "They kept themselves alive unquestionably and laid now and then an egg and hatched at chicken, not for any pleasure of their own, but that the world might not absolutely lose what had once been so admirable a breed of fowls.",
+  "word_timings": [
+    {
+      "word": "They",
+      "start": 0.0,
+      "end": 0.6
+    },
+    {
+      "word": "kept",
+      "start": 0.6,
+      "end": 0.78
+    },
+    {
+      "word": "themselves",
+      "start": 0.78,
+      "end": 1.16
+    },
+    {
+      "word": "alive",
+      "start": 1.16,
+      "end": 1.66
+    },
+    {
+      "word": "unquestionably",
+      "start": 1.66,
+      "end": 2.58
+    },
+    {
+      "word": "and",
+      "start": 2.58,
+      "end": 3.12
+    },
+    {
+      "word": "laid",
+      "start": 3.12,
+      "end": 3.3
+    },
+    {
+      "word": "now",
+      "start": 3.3,
+      "end": 3.58
+    },
+    {
+      "word": "and",
+      "start": 3.58,
+      "end": 3.74
+    },
+    {
+      "word": "then",
+      "start": 3.74,
+      "end": 3.86
+    },
+    {
+      "word": "an",
+      "start": 3.86,
+      "end": 4.04
+    },
+    {
+      "word": "egg",
+      "start": 4.04,
+      "end": 4.38
+    },
+    {
+      "word": "and",
+      "start": 4.38,
+      "end": 4.92
+    },
+    {
+      "word": "hatched",
+      "start": 4.92,
+      "end": 5.26
+    },
+    {
+      "word": "at",
+      "start": 5.26,
+      "end": 5.3
+    },
+    {
+      "word": "chicken,",
+      "start": 5.3,
+      "end": 5.62
+    },
+    {
+      "word": "not",
+      "start": 6.2,
+      "end": 6.42
+    },
+    {
+      "word": "for",
+      "start": 6.42,
+      "end": 6.6
+    },
+    {
+      "word": "any",
+      "start": 6.6,
+      "end": 6.8
+    },
+    {
+      "word": "pleasure",
+      "start": 6.8,
+      "end": 7.14
+    },
+    {
+      "word": "of",
+      "start": 7.14,
+      "end": 7.34
+    },
+    {
+      "word": "their",
+      "start": 7.34,
+      "end": 7.46
+    },
+    {
+      "word": "own,",
+      "start": 7.46,
+      "end": 7.78
+    },
+    {
+      "word": "but",
+      "start": 8.28,
+      "end": 8.36
+    },
+    {
+      "word": "that",
+      "start": 8.36,
+      "end": 8.5
+    },
+    {
+      "word": "the",
+      "start": 8.5,
+      "end": 8.64
+    },
+    {
+      "word": "world",
+      "start": 8.64,
+      "end": 8.9
+    },
+    {
+      "word": "might",
+      "start": 8.9,
+      "end": 9.08
+    },
+    {
+      "word": "not",
+      "start": 9.08,
+      "end": 9.32
+    },
+    {
+      "word": "absolutely",
+      "start": 9.32,
+      "end": 9.88
+    },
+    {
+      "word": "lose",
+      "start": 9.88,
+      "end": 10.44
+    },
+    {
+      "word": "what",
+      "start": 10.44,
+      "end": 11.0
+    },
+    {
+      "word": "had",
+      "start": 11.0,
+      "end": 11.14
+    },
+    {
+      "word": "once",
+      "start": 11.14,
+      "end": 11.36
+    },
+    {
+      "word": "been",
+      "start": 11.36,
+      "end": 11.54
+    },
+    {
+      "word": "so",
+      "start": 11.54,
+      "end": 11.8
+    },
+    {
+      "word": "admirable",
+      "start": 11.8,
+      "end": 12.36
+    },
+    {
+      "word": "a",
+      "start": 12.36,
+      "end": 12.56
+    },
+    {
+      "word": "breed",
+      "start": 12.56,
+      "end": 12.72
+    },
+    {
+      "word": "of",
+      "start": 12.72,
+      "end": 12.92
+    },
+    {
+      "word": "fowls.",
+      "start": 12.92,
+      "end": 13.42
+    }
+  ],
+  "duration": 13.42
+}

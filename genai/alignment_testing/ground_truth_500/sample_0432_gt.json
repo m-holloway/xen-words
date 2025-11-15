@@ -1,0 +1,38 @@
+{
+  "audio_file": "sample_0432.flac",
+  "wav_file": "sample_0432.wav",
+  "transcript": "Mr. Verluck was fully responsive now.",
+  "word_timings": [
+    {
+      "word": "Mr.",
+      "start": 0.0,
+      "end": 0.44
+    },
+    {
+      "word": "Verluck",
+      "start": 0.54,
+      "end": 0.78
+    },
+    {
+      "word": "was",
+      "start": 0.78,
+      "end": 0.98
+    },
+    {
+      "word": "fully",
+      "start": 0.98,
+      "end": 1.26
+    },
+    {
+      "word": "responsive",
+      "start": 1.26,
+      "end": 1.74
+    },
+    {
+      "word": "now.",
+      "start": 1.74,
+      "end": 2.02
+    }
+  ],
+  "duration": 2.02
+}

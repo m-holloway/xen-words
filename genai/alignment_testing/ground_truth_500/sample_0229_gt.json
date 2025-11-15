@@ -1,0 +1,98 @@
+{
+  "audio_file": "sample_0229.flac",
+  "wav_file": "sample_0229.wav",
+  "transcript": "Then she hurt him go down the stairway and unbolt the heavy doors which led into the store.",
+  "word_timings": [
+    {
+      "word": "Then",
+      "start": 0.0,
+      "end": 0.46
+    },
+    {
+      "word": "she",
+      "start": 0.46,
+      "end": 0.64
+    },
+    {
+      "word": "hurt",
+      "start": 0.64,
+      "end": 0.86
+    },
+    {
+      "word": "him",
+      "start": 0.86,
+      "end": 1.02
+    },
+    {
+      "word": "go",
+      "start": 1.02,
+      "end": 1.14
+    },
+    {
+      "word": "down",
+      "start": 1.14,
+      "end": 1.38
+    },
+    {
+      "word": "the",
+      "start": 1.38,
+      "end": 1.58
+    },
+    {
+      "word": "stairway",
+      "start": 1.58,
+      "end": 2.04
+    },
+    {
+      "word": "and",
+      "start": 2.04,
+      "end": 2.42
+    },
+    {
+      "word": "unbolt",
+      "start": 2.42,
+      "end": 2.74
+    },
+    {
+      "word": "the",
+      "start": 2.74,
+      "end": 3.0
+    },
+    {
+      "word": "heavy",
+      "start": 3.0,
+      "end": 3.24
+    },
+    {
+      "word": "doors",
+      "start": 3.24,
+      "end": 3.62
+    },
+    {
+      "word": "which",
+      "start": 3.62,
+      "end": 4.0
+    },
+    {
+      "word": "led",
+      "start": 4.0,
+      "end": 4.18
+    },
+    {
+      "word": "into",
+      "start": 4.18,
+      "end": 4.4
+    },
+    {
+      "word": "the",
+      "start": 4.4,
+      "end": 4.56
+    },
+    {
+      "word": "store.",
+      "start": 4.56,
+      "end": 4.86
+    }
+  ],
+  "duration": 4.86
+}

@@ -1,0 +1,53 @@
+{
+  "audio_file": "sample_0360.flac",
+  "wav_file": "sample_0360.wav",
+  "transcript": "I'll be lucky if I have time to breathe.",
+  "word_timings": [
+    {
+      "word": "I'll",
+      "start": 0.0,
+      "end": 0.38
+    },
+    {
+      "word": "be",
+      "start": 0.38,
+      "end": 0.48
+    },
+    {
+      "word": "lucky",
+      "start": 0.48,
+      "end": 0.74
+    },
+    {
+      "word": "if",
+      "start": 0.74,
+      "end": 0.94
+    },
+    {
+      "word": "I",
+      "start": 0.94,
+      "end": 1.04
+    },
+    {
+      "word": "have",
+      "start": 1.04,
+      "end": 1.16
+    },
+    {
+      "word": "time",
+      "start": 1.16,
+      "end": 1.42
+    },
+    {
+      "word": "to",
+      "start": 1.42,
+      "end": 1.56
+    },
+    {
+      "word": "breathe.",
+      "start": 1.56,
+      "end": 1.88
+    }
+  ],
+  "duration": 1.88
+}

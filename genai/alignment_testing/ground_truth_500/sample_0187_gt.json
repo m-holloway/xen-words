@@ -1,0 +1,218 @@
+{
+  "audio_file": "sample_0187.flac",
+  "wav_file": "sample_0187.wav",
+  "transcript": "My name is Phoebe Pension, said the girl, with a manner of some reserve, for she was aware that her new acquaintance could be no other than the daguerreotypeist, of whose lawless propensities the old maid had given her a disagreeable idea.",
+  "word_timings": [
+    {
+      "word": "My",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "name",
+      "start": 0.62,
+      "end": 0.82
+    },
+    {
+      "word": "is",
+      "start": 0.82,
+      "end": 1.02
+    },
+    {
+      "word": "Phoebe",
+      "start": 1.02,
+      "end": 1.26
+    },
+    {
+      "word": "Pension,",
+      "start": 1.26,
+      "end": 1.58
+    },
+    {
+      "word": "said",
+      "start": 1.74,
+      "end": 1.84
+    },
+    {
+      "word": "the",
+      "start": 1.84,
+      "end": 1.98
+    },
+    {
+      "word": "girl,",
+      "start": 1.98,
+      "end": 2.16
+    },
+    {
+      "word": "with",
+      "start": 2.66,
+      "end": 2.82
+    },
+    {
+      "word": "a",
+      "start": 2.82,
+      "end": 2.96
+    },
+    {
+      "word": "manner",
+      "start": 2.96,
+      "end": 3.14
+    },
+    {
+      "word": "of",
+      "start": 3.14,
+      "end": 3.34
+    },
+    {
+      "word": "some",
+      "start": 3.34,
+      "end": 3.5
+    },
+    {
+      "word": "reserve,",
+      "start": 3.5,
+      "end": 3.96
+    },
+    {
+      "word": "for",
+      "start": 4.66,
+      "end": 4.78
+    },
+    {
+      "word": "she",
+      "start": 4.78,
+      "end": 4.9
+    },
+    {
+      "word": "was",
+      "start": 4.9,
+      "end": 5.02
+    },
+    {
+      "word": "aware",
+      "start": 5.02,
+      "end": 5.26
+    },
+    {
+      "word": "that",
+      "start": 5.26,
+      "end": 5.46
+    },
+    {
+      "word": "her",
+      "start": 5.46,
+      "end": 5.6
+    },
+    {
+      "word": "new",
+      "start": 5.6,
+      "end": 5.78
+    },
+    {
+      "word": "acquaintance",
+      "start": 5.78,
+      "end": 6.3
+    },
+    {
+      "word": "could",
+      "start": 6.3,
+      "end": 6.46
+    },
+    {
+      "word": "be",
+      "start": 6.46,
+      "end": 6.56
+    },
+    {
+      "word": "no",
+      "start": 6.56,
+      "end": 6.72
+    },
+    {
+      "word": "other",
+      "start": 6.72,
+      "end": 7.04
+    },
+    {
+      "word": "than",
+      "start": 7.04,
+      "end": 7.32
+    },
+    {
+      "word": "the",
+      "start": 7.32,
+      "end": 7.46
+    },
+    {
+      "word": "daguerreotypeist,",
+      "start": 7.46,
+      "end": 8.36
+    },
+    {
+      "word": "of",
+      "start": 8.7,
+      "end": 8.82
+    },
+    {
+      "word": "whose",
+      "start": 8.82,
+      "end": 9.0
+    },
+    {
+      "word": "lawless",
+      "start": 9.0,
+      "end": 9.38
+    },
+    {
+      "word": "propensities",
+      "start": 9.38,
+      "end": 9.98
+    },
+    {
+      "word": "the",
+      "start": 9.98,
+      "end": 10.18
+    },
+    {
+      "word": "old",
+      "start": 10.18,
+      "end": 10.4
+    },
+    {
+      "word": "maid",
+      "start": 10.4,
+      "end": 10.62
+    },
+    {
+      "word": "had",
+      "start": 10.62,
+      "end": 11.12
+    },
+    {
+      "word": "given",
+      "start": 11.12,
+      "end": 11.32
+    },
+    {
+      "word": "her",
+      "start": 11.32,
+      "end": 11.5
+    },
+    {
+      "word": "a",
+      "start": 11.5,
+      "end": 11.58
+    },
+    {
+      "word": "disagreeable",
+      "start": 11.58,
+      "end": 12.2
+    },
+    {
+      "word": "idea.",
+      "start": 12.2,
+      "end": 12.58
+    }
+  ],
+  "duration": 12.58
+}

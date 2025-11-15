@@ -1,0 +1,133 @@
+{
+  "audio_file": "sample_0050.flac",
+  "wav_file": "sample_0050.wav",
+  "transcript": "He decided to write her care of the West Side Post Office and ask for an explanation, as well as to have her meet him.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.42
+    },
+    {
+      "word": "decided",
+      "start": 0.42,
+      "end": 0.7
+    },
+    {
+      "word": "to",
+      "start": 0.7,
+      "end": 1.0
+    },
+    {
+      "word": "write",
+      "start": 1.0,
+      "end": 1.14
+    },
+    {
+      "word": "her",
+      "start": 1.14,
+      "end": 1.36
+    },
+    {
+      "word": "care",
+      "start": 1.36,
+      "end": 1.6
+    },
+    {
+      "word": "of",
+      "start": 1.6,
+      "end": 1.82
+    },
+    {
+      "word": "the",
+      "start": 1.82,
+      "end": 1.92
+    },
+    {
+      "word": "West",
+      "start": 1.92,
+      "end": 2.08
+    },
+    {
+      "word": "Side",
+      "start": 2.08,
+      "end": 2.32
+    },
+    {
+      "word": "Post",
+      "start": 2.32,
+      "end": 2.54
+    },
+    {
+      "word": "Office",
+      "start": 2.54,
+      "end": 2.92
+    },
+    {
+      "word": "and",
+      "start": 2.92,
+      "end": 3.2
+    },
+    {
+      "word": "ask",
+      "start": 3.2,
+      "end": 3.42
+    },
+    {
+      "word": "for",
+      "start": 3.42,
+      "end": 3.62
+    },
+    {
+      "word": "an",
+      "start": 3.62,
+      "end": 3.72
+    },
+    {
+      "word": "explanation,",
+      "start": 3.72,
+      "end": 4.38
+    },
+    {
+      "word": "as",
+      "start": 4.74,
+      "end": 5.08
+    },
+    {
+      "word": "well",
+      "start": 5.08,
+      "end": 5.2
+    },
+    {
+      "word": "as",
+      "start": 5.2,
+      "end": 5.44
+    },
+    {
+      "word": "to",
+      "start": 5.44,
+      "end": 5.54
+    },
+    {
+      "word": "have",
+      "start": 5.54,
+      "end": 5.66
+    },
+    {
+      "word": "her",
+      "start": 5.66,
+      "end": 5.86
+    },
+    {
+      "word": "meet",
+      "start": 5.86,
+      "end": 6.04
+    },
+    {
+      "word": "him.",
+      "start": 6.04,
+      "end": 6.3
+    }
+  ],
+  "duration": 6.3
+}

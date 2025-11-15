@@ -1,0 +1,133 @@
+{
+  "audio_file": "sample_0396.flac",
+  "wav_file": "sample_0396.wav",
+  "transcript": "The comparison occurred to Mr. Reloq because he had satisfied various army horses in his time, it had now the sensation of an insipient fall.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.6
+    },
+    {
+      "word": "comparison",
+      "start": 0.6,
+      "end": 1.0
+    },
+    {
+      "word": "occurred",
+      "start": 1.0,
+      "end": 1.36
+    },
+    {
+      "word": "to",
+      "start": 1.36,
+      "end": 1.56
+    },
+    {
+      "word": "Mr.",
+      "start": 1.56,
+      "end": 1.74
+    },
+    {
+      "word": "Reloq",
+      "start": 1.88,
+      "end": 2.04
+    },
+    {
+      "word": "because",
+      "start": 2.04,
+      "end": 2.34
+    },
+    {
+      "word": "he",
+      "start": 2.34,
+      "end": 2.54
+    },
+    {
+      "word": "had",
+      "start": 2.54,
+      "end": 2.66
+    },
+    {
+      "word": "satisfied",
+      "start": 2.66,
+      "end": 2.96
+    },
+    {
+      "word": "various",
+      "start": 2.96,
+      "end": 3.58
+    },
+    {
+      "word": "army",
+      "start": 3.58,
+      "end": 3.92
+    },
+    {
+      "word": "horses",
+      "start": 3.92,
+      "end": 4.2
+    },
+    {
+      "word": "in",
+      "start": 4.2,
+      "end": 4.44
+    },
+    {
+      "word": "his",
+      "start": 4.44,
+      "end": 4.6
+    },
+    {
+      "word": "time,",
+      "start": 4.6,
+      "end": 4.88
+    },
+    {
+      "word": "it",
+      "start": 5.36,
+      "end": 5.46
+    },
+    {
+      "word": "had",
+      "start": 5.46,
+      "end": 5.58
+    },
+    {
+      "word": "now",
+      "start": 5.58,
+      "end": 5.78
+    },
+    {
+      "word": "the",
+      "start": 5.78,
+      "end": 5.94
+    },
+    {
+      "word": "sensation",
+      "start": 5.94,
+      "end": 6.34
+    },
+    {
+      "word": "of",
+      "start": 6.34,
+      "end": 6.58
+    },
+    {
+      "word": "an",
+      "start": 6.58,
+      "end": 6.68
+    },
+    {
+      "word": "insipient",
+      "start": 6.68,
+      "end": 7.16
+    },
+    {
+      "word": "fall.",
+      "start": 7.16,
+      "end": 7.46
+    }
+  ],
+  "duration": 7.46
+}

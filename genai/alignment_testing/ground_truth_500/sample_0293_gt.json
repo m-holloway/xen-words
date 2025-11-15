@@ -1,0 +1,88 @@
+{
+  "audio_file": "sample_0293.flac",
+  "wav_file": "sample_0293.wav",
+  "transcript": "Then they began to run and rushing into the house they fell upon their father's neck.",
+  "word_timings": [
+    {
+      "word": "Then",
+      "start": 0.0,
+      "end": 0.5
+    },
+    {
+      "word": "they",
+      "start": 0.5,
+      "end": 0.64
+    },
+    {
+      "word": "began",
+      "start": 0.64,
+      "end": 0.88
+    },
+    {
+      "word": "to",
+      "start": 0.88,
+      "end": 1.08
+    },
+    {
+      "word": "run",
+      "start": 1.08,
+      "end": 1.4
+    },
+    {
+      "word": "and",
+      "start": 1.4,
+      "end": 1.94
+    },
+    {
+      "word": "rushing",
+      "start": 1.94,
+      "end": 2.3
+    },
+    {
+      "word": "into",
+      "start": 2.3,
+      "end": 2.58
+    },
+    {
+      "word": "the",
+      "start": 2.58,
+      "end": 2.74
+    },
+    {
+      "word": "house",
+      "start": 2.74,
+      "end": 2.96
+    },
+    {
+      "word": "they",
+      "start": 2.96,
+      "end": 3.2
+    },
+    {
+      "word": "fell",
+      "start": 3.2,
+      "end": 3.44
+    },
+    {
+      "word": "upon",
+      "start": 3.44,
+      "end": 3.74
+    },
+    {
+      "word": "their",
+      "start": 3.74,
+      "end": 3.94
+    },
+    {
+      "word": "father's",
+      "start": 3.94,
+      "end": 4.4
+    },
+    {
+      "word": "neck.",
+      "start": 4.4,
+      "end": 4.54
+    }
+  ],
+  "duration": 4.54
+}

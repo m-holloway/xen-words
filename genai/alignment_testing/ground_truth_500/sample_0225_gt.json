@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0225.flac",
+  "wav_file": "sample_0225.wav",
+  "transcript": "Yet the original wears to common eyes a very different expression.",
+  "word_timings": [
+    {
+      "word": "Yet",
+      "start": 0.0,
+      "end": 0.64
+    },
+    {
+      "word": "the",
+      "start": 0.64,
+      "end": 0.78
+    },
+    {
+      "word": "original",
+      "start": 0.78,
+      "end": 1.16
+    },
+    {
+      "word": "wears",
+      "start": 1.16,
+      "end": 1.46
+    },
+    {
+      "word": "to",
+      "start": 1.46,
+      "end": 1.82
+    },
+    {
+      "word": "common",
+      "start": 1.82,
+      "end": 2.1
+    },
+    {
+      "word": "eyes",
+      "start": 2.1,
+      "end": 2.52
+    },
+    {
+      "word": "a",
+      "start": 2.52,
+      "end": 3.08
+    },
+    {
+      "word": "very",
+      "start": 3.08,
+      "end": 3.3
+    },
+    {
+      "word": "different",
+      "start": 3.3,
+      "end": 3.6
+    },
+    {
+      "word": "expression.",
+      "start": 3.6,
+      "end": 4.16
+    }
+  ],
+  "duration": 4.16
+}

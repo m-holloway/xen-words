@@ -1,0 +1,73 @@
+{
+  "audio_file": "sample_0109.flac",
+  "wav_file": "sample_0109.wav",
+  "transcript": "It was on one of these gravel beds that I met my adventure.",
+  "word_timings": [
+    {
+      "word": "It",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "was",
+      "start": 0.62,
+      "end": 0.72
+    },
+    {
+      "word": "on",
+      "start": 0.72,
+      "end": 0.84
+    },
+    {
+      "word": "one",
+      "start": 0.84,
+      "end": 1.02
+    },
+    {
+      "word": "of",
+      "start": 1.02,
+      "end": 1.16
+    },
+    {
+      "word": "these",
+      "start": 1.16,
+      "end": 1.36
+    },
+    {
+      "word": "gravel",
+      "start": 1.36,
+      "end": 1.66
+    },
+    {
+      "word": "beds",
+      "start": 1.66,
+      "end": 2.0
+    },
+    {
+      "word": "that",
+      "start": 2.0,
+      "end": 2.42
+    },
+    {
+      "word": "I",
+      "start": 2.42,
+      "end": 2.54
+    },
+    {
+      "word": "met",
+      "start": 2.54,
+      "end": 2.74
+    },
+    {
+      "word": "my",
+      "start": 2.74,
+      "end": 3.02
+    },
+    {
+      "word": "adventure.",
+      "start": 3.02,
+      "end": 3.48
+    }
+  ],
+  "duration": 3.48
+}

@@ -1,0 +1,173 @@
+{
+  "audio_file": "sample_0480.flac",
+  "wav_file": "sample_0480.wav",
+  "transcript": "My father has revealed the culprit's name. My father thirsts for revenge as much as you do, yet even he conjures you as I do to keep this secret. Do you not, father?",
+  "word_timings": [
+    {
+      "word": "My",
+      "start": 0.0,
+      "end": 0.26
+    },
+    {
+      "word": "father",
+      "start": 0.26,
+      "end": 0.64
+    },
+    {
+      "word": "has",
+      "start": 0.64,
+      "end": 0.84
+    },
+    {
+      "word": "revealed",
+      "start": 0.84,
+      "end": 1.14
+    },
+    {
+      "word": "the",
+      "start": 1.14,
+      "end": 1.38
+    },
+    {
+      "word": "culprit's",
+      "start": 1.38,
+      "end": 1.8
+    },
+    {
+      "word": "name.",
+      "start": 1.8,
+      "end": 1.96
+    },
+    {
+      "word": "My",
+      "start": 2.34,
+      "end": 2.42
+    },
+    {
+      "word": "father",
+      "start": 2.42,
+      "end": 2.84
+    },
+    {
+      "word": "thirsts",
+      "start": 2.84,
+      "end": 3.26
+    },
+    {
+      "word": "for",
+      "start": 3.26,
+      "end": 3.46
+    },
+    {
+      "word": "revenge",
+      "start": 3.46,
+      "end": 3.82
+    },
+    {
+      "word": "as",
+      "start": 3.82,
+      "end": 4.0
+    },
+    {
+      "word": "much",
+      "start": 4.0,
+      "end": 4.12
+    },
+    {
+      "word": "as",
+      "start": 4.12,
+      "end": 4.26
+    },
+    {
+      "word": "you",
+      "start": 4.26,
+      "end": 4.48
+    },
+    {
+      "word": "do,",
+      "start": 4.48,
+      "end": 4.66
+    },
+    {
+      "word": "yet",
+      "start": 4.84,
+      "end": 4.92
+    },
+    {
+      "word": "even",
+      "start": 4.92,
+      "end": 5.2
+    },
+    {
+      "word": "he",
+      "start": 5.2,
+      "end": 5.46
+    },
+    {
+      "word": "conjures",
+      "start": 5.46,
+      "end": 6.0
+    },
+    {
+      "word": "you",
+      "start": 6.0,
+      "end": 6.24
+    },
+    {
+      "word": "as",
+      "start": 6.24,
+      "end": 6.42
+    },
+    {
+      "word": "I",
+      "start": 6.42,
+      "end": 6.66
+    },
+    {
+      "word": "do",
+      "start": 6.66,
+      "end": 6.84
+    },
+    {
+      "word": "to",
+      "start": 6.84,
+      "end": 6.98
+    },
+    {
+      "word": "keep",
+      "start": 6.98,
+      "end": 7.16
+    },
+    {
+      "word": "this",
+      "start": 7.16,
+      "end": 7.4
+    },
+    {
+      "word": "secret.",
+      "start": 7.4,
+      "end": 7.74
+    },
+    {
+      "word": "Do",
+      "start": 8.18,
+      "end": 8.28
+    },
+    {
+      "word": "you",
+      "start": 8.28,
+      "end": 8.38
+    },
+    {
+      "word": "not,",
+      "start": 8.38,
+      "end": 8.54
+    },
+    {
+      "word": "father?",
+      "start": 8.7,
+      "end": 8.92
+    }
+  ],
+  "duration": 8.92
+}

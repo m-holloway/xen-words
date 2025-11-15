@@ -1,0 +1,48 @@
+{
+  "audio_file": "sample_0148.flac",
+  "wav_file": "sample_0148.wav",
+  "transcript": "There are only three slages left, you whispered.",
+  "word_timings": [
+    {
+      "word": "There",
+      "start": 0.0,
+      "end": 0.68
+    },
+    {
+      "word": "are",
+      "start": 0.68,
+      "end": 0.8
+    },
+    {
+      "word": "only",
+      "start": 0.8,
+      "end": 1.12
+    },
+    {
+      "word": "three",
+      "start": 1.12,
+      "end": 1.48
+    },
+    {
+      "word": "slages",
+      "start": 1.48,
+      "end": 1.9
+    },
+    {
+      "word": "left,",
+      "start": 1.9,
+      "end": 2.46
+    },
+    {
+      "word": "you",
+      "start": 2.7,
+      "end": 2.76
+    },
+    {
+      "word": "whispered.",
+      "start": 2.76,
+      "end": 3.3
+    }
+  ],
+  "duration": 3.3
+}

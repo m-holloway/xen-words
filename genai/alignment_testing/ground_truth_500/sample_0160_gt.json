@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0160.flac",
+  "wav_file": "sample_0160.wav",
+  "transcript": "The first hulls were taken up and echoed with quickening repetitions.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.48
+    },
+    {
+      "word": "first",
+      "start": 0.48,
+      "end": 0.72
+    },
+    {
+      "word": "hulls",
+      "start": 0.72,
+      "end": 1.06
+    },
+    {
+      "word": "were",
+      "start": 1.06,
+      "end": 1.14
+    },
+    {
+      "word": "taken",
+      "start": 1.14,
+      "end": 1.42
+    },
+    {
+      "word": "up",
+      "start": 1.42,
+      "end": 1.64
+    },
+    {
+      "word": "and",
+      "start": 1.64,
+      "end": 1.84
+    },
+    {
+      "word": "echoed",
+      "start": 1.84,
+      "end": 2.26
+    },
+    {
+      "word": "with",
+      "start": 2.26,
+      "end": 3.04
+    },
+    {
+      "word": "quickening",
+      "start": 3.04,
+      "end": 3.58
+    },
+    {
+      "word": "repetitions.",
+      "start": 3.58,
+      "end": 4.16
+    }
+  ],
+  "duration": 4.16
+}

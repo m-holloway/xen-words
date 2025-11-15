@@ -1,0 +1,103 @@
+{
+  "audio_file": "sample_0367.flac",
+  "wav_file": "sample_0367.wav",
+  "transcript": "When are you getting rid of these cats? I'm not fixing to start an annex to Kate's cat home.",
+  "word_timings": [
+    {
+      "word": "When",
+      "start": 0.0,
+      "end": 0.32
+    },
+    {
+      "word": "are",
+      "start": 0.32,
+      "end": 0.44
+    },
+    {
+      "word": "you",
+      "start": 0.44,
+      "end": 0.54
+    },
+    {
+      "word": "getting",
+      "start": 0.54,
+      "end": 0.74
+    },
+    {
+      "word": "rid",
+      "start": 0.74,
+      "end": 0.94
+    },
+    {
+      "word": "of",
+      "start": 0.94,
+      "end": 1.06
+    },
+    {
+      "word": "these",
+      "start": 1.06,
+      "end": 1.26
+    },
+    {
+      "word": "cats?",
+      "start": 1.26,
+      "end": 1.52
+    },
+    {
+      "word": "I'm",
+      "start": 1.92,
+      "end": 2.08
+    },
+    {
+      "word": "not",
+      "start": 2.08,
+      "end": 2.2
+    },
+    {
+      "word": "fixing",
+      "start": 2.2,
+      "end": 2.64
+    },
+    {
+      "word": "to",
+      "start": 2.64,
+      "end": 2.86
+    },
+    {
+      "word": "start",
+      "start": 2.86,
+      "end": 3.06
+    },
+    {
+      "word": "an",
+      "start": 3.06,
+      "end": 3.24
+    },
+    {
+      "word": "annex",
+      "start": 3.24,
+      "end": 3.56
+    },
+    {
+      "word": "to",
+      "start": 3.56,
+      "end": 3.78
+    },
+    {
+      "word": "Kate's",
+      "start": 3.78,
+      "end": 4.06
+    },
+    {
+      "word": "cat",
+      "start": 4.06,
+      "end": 4.26
+    },
+    {
+      "word": "home.",
+      "start": 4.26,
+      "end": 4.52
+    }
+  ],
+  "duration": 4.52
+}

@@ -1,0 +1,138 @@
+{
+  "audio_file": "sample_0333.flac",
+  "wav_file": "sample_0333.wav",
+  "transcript": "After Antonya had said the new words over and over, she wanted to give me a little chased silver ring she wore on her middle finger.",
+  "word_timings": [
+    {
+      "word": "After",
+      "start": 0.0,
+      "end": 0.82
+    },
+    {
+      "word": "Antonya",
+      "start": 0.82,
+      "end": 1.42
+    },
+    {
+      "word": "had",
+      "start": 1.42,
+      "end": 1.58
+    },
+    {
+      "word": "said",
+      "start": 1.58,
+      "end": 1.76
+    },
+    {
+      "word": "the",
+      "start": 1.76,
+      "end": 1.92
+    },
+    {
+      "word": "new",
+      "start": 1.92,
+      "end": 2.08
+    },
+    {
+      "word": "words",
+      "start": 2.08,
+      "end": 2.3
+    },
+    {
+      "word": "over",
+      "start": 2.3,
+      "end": 2.7
+    },
+    {
+      "word": "and",
+      "start": 2.7,
+      "end": 2.84
+    },
+    {
+      "word": "over,",
+      "start": 2.84,
+      "end": 3.14
+    },
+    {
+      "word": "she",
+      "start": 3.42,
+      "end": 3.6
+    },
+    {
+      "word": "wanted",
+      "start": 3.6,
+      "end": 3.86
+    },
+    {
+      "word": "to",
+      "start": 3.86,
+      "end": 4.04
+    },
+    {
+      "word": "give",
+      "start": 4.04,
+      "end": 4.2
+    },
+    {
+      "word": "me",
+      "start": 4.2,
+      "end": 4.38
+    },
+    {
+      "word": "a",
+      "start": 4.38,
+      "end": 4.5
+    },
+    {
+      "word": "little",
+      "start": 4.5,
+      "end": 4.74
+    },
+    {
+      "word": "chased",
+      "start": 4.74,
+      "end": 5.08
+    },
+    {
+      "word": "silver",
+      "start": 5.08,
+      "end": 5.52
+    },
+    {
+      "word": "ring",
+      "start": 5.52,
+      "end": 5.82
+    },
+    {
+      "word": "she",
+      "start": 5.82,
+      "end": 6.12
+    },
+    {
+      "word": "wore",
+      "start": 6.12,
+      "end": 6.32
+    },
+    {
+      "word": "on",
+      "start": 6.32,
+      "end": 6.44
+    },
+    {
+      "word": "her",
+      "start": 6.44,
+      "end": 6.54
+    },
+    {
+      "word": "middle",
+      "start": 6.54,
+      "end": 6.72
+    },
+    {
+      "word": "finger.",
+      "start": 6.72,
+      "end": 7.08
+    }
+  ],
+  "duration": 7.08
+}

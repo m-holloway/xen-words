@@ -1,0 +1,83 @@
+{
+  "audio_file": "sample_0395.flac",
+  "wav_file": "sample_0395.wav",
+  "transcript": "The old terrace turns slowly his head on a skinny neck from side to side.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.68
+    },
+    {
+      "word": "old",
+      "start": 0.68,
+      "end": 0.9
+    },
+    {
+      "word": "terrace",
+      "start": 0.9,
+      "end": 1.22
+    },
+    {
+      "word": "turns",
+      "start": 1.22,
+      "end": 1.62
+    },
+    {
+      "word": "slowly",
+      "start": 1.62,
+      "end": 1.98
+    },
+    {
+      "word": "his",
+      "start": 1.98,
+      "end": 2.26
+    },
+    {
+      "word": "head",
+      "start": 2.26,
+      "end": 2.48
+    },
+    {
+      "word": "on",
+      "start": 2.48,
+      "end": 2.62
+    },
+    {
+      "word": "a",
+      "start": 2.62,
+      "end": 2.76
+    },
+    {
+      "word": "skinny",
+      "start": 2.76,
+      "end": 3.02
+    },
+    {
+      "word": "neck",
+      "start": 3.02,
+      "end": 3.3
+    },
+    {
+      "word": "from",
+      "start": 3.3,
+      "end": 3.54
+    },
+    {
+      "word": "side",
+      "start": 3.54,
+      "end": 3.86
+    },
+    {
+      "word": "to",
+      "start": 3.86,
+      "end": 4.0
+    },
+    {
+      "word": "side.",
+      "start": 4.0,
+      "end": 4.36
+    }
+  ],
+  "duration": 4.36
+}

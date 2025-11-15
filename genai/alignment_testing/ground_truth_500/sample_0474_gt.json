@@ -1,0 +1,248 @@
+{
+  "audio_file": "sample_0474.flac",
+  "wav_file": "sample_0474.wav",
+  "transcript": "Davani, unable to bear the sight of this touching emotion, turned away, and villafort, without seeking any further explanation, and attracted towards him by the irresistible magnetism which draws us towards those who have loved the people for whom we mourn, extended his hand towards the young man.",
+  "word_timings": [
+    {
+      "word": "Davani,",
+      "start": 0.0,
+      "end": 0.8
+    },
+    {
+      "word": "unable",
+      "start": 1.12,
+      "end": 1.4
+    },
+    {
+      "word": "to",
+      "start": 1.4,
+      "end": 1.58
+    },
+    {
+      "word": "bear",
+      "start": 1.58,
+      "end": 1.74
+    },
+    {
+      "word": "the",
+      "start": 1.74,
+      "end": 1.9
+    },
+    {
+      "word": "sight",
+      "start": 1.9,
+      "end": 2.08
+    },
+    {
+      "word": "of",
+      "start": 2.08,
+      "end": 2.18
+    },
+    {
+      "word": "this",
+      "start": 2.18,
+      "end": 2.3
+    },
+    {
+      "word": "touching",
+      "start": 2.3,
+      "end": 2.58
+    },
+    {
+      "word": "emotion,",
+      "start": 2.58,
+      "end": 2.84
+    },
+    {
+      "word": "turned",
+      "start": 2.84,
+      "end": 3.18
+    },
+    {
+      "word": "away,",
+      "start": 3.18,
+      "end": 3.5
+    },
+    {
+      "word": "and",
+      "start": 3.86,
+      "end": 3.94
+    },
+    {
+      "word": "villafort,",
+      "start": 3.94,
+      "end": 4.36
+    },
+    {
+      "word": "without",
+      "start": 4.72,
+      "end": 4.92
+    },
+    {
+      "word": "seeking",
+      "start": 4.92,
+      "end": 5.34
+    },
+    {
+      "word": "any",
+      "start": 5.34,
+      "end": 5.7
+    },
+    {
+      "word": "further",
+      "start": 5.7,
+      "end": 6.04
+    },
+    {
+      "word": "explanation,",
+      "start": 6.04,
+      "end": 6.68
+    },
+    {
+      "word": "and",
+      "start": 7.02,
+      "end": 7.06
+    },
+    {
+      "word": "attracted",
+      "start": 7.06,
+      "end": 7.38
+    },
+    {
+      "word": "towards",
+      "start": 7.38,
+      "end": 7.8
+    },
+    {
+      "word": "him",
+      "start": 7.8,
+      "end": 8.02
+    },
+    {
+      "word": "by",
+      "start": 8.02,
+      "end": 8.14
+    },
+    {
+      "word": "the",
+      "start": 8.14,
+      "end": 8.26
+    },
+    {
+      "word": "irresistible",
+      "start": 8.26,
+      "end": 8.86
+    },
+    {
+      "word": "magnetism",
+      "start": 8.86,
+      "end": 9.48
+    },
+    {
+      "word": "which",
+      "start": 9.48,
+      "end": 9.68
+    },
+    {
+      "word": "draws",
+      "start": 9.68,
+      "end": 9.94
+    },
+    {
+      "word": "us",
+      "start": 9.94,
+      "end": 10.18
+    },
+    {
+      "word": "towards",
+      "start": 10.18,
+      "end": 10.46
+    },
+    {
+      "word": "those",
+      "start": 10.46,
+      "end": 10.8
+    },
+    {
+      "word": "who",
+      "start": 10.8,
+      "end": 11.08
+    },
+    {
+      "word": "have",
+      "start": 11.08,
+      "end": 11.2
+    },
+    {
+      "word": "loved",
+      "start": 11.2,
+      "end": 11.54
+    },
+    {
+      "word": "the",
+      "start": 11.54,
+      "end": 11.76
+    },
+    {
+      "word": "people",
+      "start": 11.76,
+      "end": 12.02
+    },
+    {
+      "word": "for",
+      "start": 12.02,
+      "end": 12.24
+    },
+    {
+      "word": "whom",
+      "start": 12.24,
+      "end": 12.44
+    },
+    {
+      "word": "we",
+      "start": 12.44,
+      "end": 12.6
+    },
+    {
+      "word": "mourn,",
+      "start": 12.6,
+      "end": 13.04
+    },
+    {
+      "word": "extended",
+      "start": 13.4,
+      "end": 13.86
+    },
+    {
+      "word": "his",
+      "start": 13.86,
+      "end": 14.2
+    },
+    {
+      "word": "hand",
+      "start": 14.2,
+      "end": 14.48
+    },
+    {
+      "word": "towards",
+      "start": 14.48,
+      "end": 14.74
+    },
+    {
+      "word": "the",
+      "start": 14.74,
+      "end": 14.98
+    },
+    {
+      "word": "young",
+      "start": 14.98,
+      "end": 15.12
+    },
+    {
+      "word": "man.",
+      "start": 15.12,
+      "end": 15.4
+    }
+  ],
+  "duration": 15.4
+}

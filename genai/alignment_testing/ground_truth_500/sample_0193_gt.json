@@ -1,0 +1,158 @@
+{
+  "audio_file": "sample_0193.flac",
+  "wav_file": "sample_0193.wav",
+  "transcript": "While thus dismissing her, the maiden lady stepped forward, kissed Phoebe and pressed her to her heart, which beat against the girl's bosom with a strong, high and tumultuous swell.",
+  "word_timings": [
+    {
+      "word": "While",
+      "start": 0.0,
+      "end": 0.66
+    },
+    {
+      "word": "thus",
+      "start": 0.66,
+      "end": 0.88
+    },
+    {
+      "word": "dismissing",
+      "start": 0.88,
+      "end": 1.48
+    },
+    {
+      "word": "her,",
+      "start": 1.48,
+      "end": 1.62
+    },
+    {
+      "word": "the",
+      "start": 2.12,
+      "end": 2.16
+    },
+    {
+      "word": "maiden",
+      "start": 2.16,
+      "end": 2.42
+    },
+    {
+      "word": "lady",
+      "start": 2.42,
+      "end": 2.62
+    },
+    {
+      "word": "stepped",
+      "start": 2.62,
+      "end": 2.92
+    },
+    {
+      "word": "forward,",
+      "start": 2.92,
+      "end": 3.48
+    },
+    {
+      "word": "kissed",
+      "start": 4.14,
+      "end": 4.34
+    },
+    {
+      "word": "Phoebe",
+      "start": 4.34,
+      "end": 4.7
+    },
+    {
+      "word": "and",
+      "start": 4.7,
+      "end": 5.28
+    },
+    {
+      "word": "pressed",
+      "start": 5.28,
+      "end": 5.56
+    },
+    {
+      "word": "her",
+      "start": 5.56,
+      "end": 5.7
+    },
+    {
+      "word": "to",
+      "start": 5.7,
+      "end": 5.82
+    },
+    {
+      "word": "her",
+      "start": 5.82,
+      "end": 6.02
+    },
+    {
+      "word": "heart,",
+      "start": 6.02,
+      "end": 6.32
+    },
+    {
+      "word": "which",
+      "start": 6.78,
+      "end": 6.98
+    },
+    {
+      "word": "beat",
+      "start": 6.98,
+      "end": 7.2
+    },
+    {
+      "word": "against",
+      "start": 7.2,
+      "end": 7.56
+    },
+    {
+      "word": "the",
+      "start": 7.56,
+      "end": 7.76
+    },
+    {
+      "word": "girl's",
+      "start": 7.76,
+      "end": 8.02
+    },
+    {
+      "word": "bosom",
+      "start": 8.02,
+      "end": 8.34
+    },
+    {
+      "word": "with",
+      "start": 8.34,
+      "end": 8.5
+    },
+    {
+      "word": "a",
+      "start": 8.5,
+      "end": 8.58
+    },
+    {
+      "word": "strong,",
+      "start": 8.58,
+      "end": 8.9
+    },
+    {
+      "word": "high",
+      "start": 9.24,
+      "end": 9.4
+    },
+    {
+      "word": "and",
+      "start": 9.4,
+      "end": 9.76
+    },
+    {
+      "word": "tumultuous",
+      "start": 9.76,
+      "end": 10.3
+    },
+    {
+      "word": "swell.",
+      "start": 10.3,
+      "end": 10.66
+    }
+  ],
+  "duration": 10.66
+}

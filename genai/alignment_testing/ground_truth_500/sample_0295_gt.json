@@ -1,0 +1,138 @@
+{
+  "audio_file": "sample_0295.flac",
+  "wav_file": "sample_0295.wav",
+  "transcript": "But in reality, Hansel was not looking at a cat. But every time he stopped, he dropped a pebble out of his pocket upon the path.",
+  "word_timings": [
+    {
+      "word": "But",
+      "start": 0.0,
+      "end": 0.56
+    },
+    {
+      "word": "in",
+      "start": 0.56,
+      "end": 0.68
+    },
+    {
+      "word": "reality,",
+      "start": 0.68,
+      "end": 1.18
+    },
+    {
+      "word": "Hansel",
+      "start": 1.54,
+      "end": 1.8
+    },
+    {
+      "word": "was",
+      "start": 1.8,
+      "end": 1.94
+    },
+    {
+      "word": "not",
+      "start": 1.94,
+      "end": 2.14
+    },
+    {
+      "word": "looking",
+      "start": 2.14,
+      "end": 2.44
+    },
+    {
+      "word": "at",
+      "start": 2.44,
+      "end": 2.64
+    },
+    {
+      "word": "a",
+      "start": 2.64,
+      "end": 2.72
+    },
+    {
+      "word": "cat.",
+      "start": 2.72,
+      "end": 2.9
+    },
+    {
+      "word": "But",
+      "start": 3.54,
+      "end": 3.74
+    },
+    {
+      "word": "every",
+      "start": 3.74,
+      "end": 4.0
+    },
+    {
+      "word": "time",
+      "start": 4.0,
+      "end": 4.2
+    },
+    {
+      "word": "he",
+      "start": 4.2,
+      "end": 4.36
+    },
+    {
+      "word": "stopped,",
+      "start": 4.36,
+      "end": 4.64
+    },
+    {
+      "word": "he",
+      "start": 5.04,
+      "end": 5.1
+    },
+    {
+      "word": "dropped",
+      "start": 5.1,
+      "end": 5.26
+    },
+    {
+      "word": "a",
+      "start": 5.26,
+      "end": 5.52
+    },
+    {
+      "word": "pebble",
+      "start": 5.52,
+      "end": 5.74
+    },
+    {
+      "word": "out",
+      "start": 5.74,
+      "end": 6.0
+    },
+    {
+      "word": "of",
+      "start": 6.0,
+      "end": 6.12
+    },
+    {
+      "word": "his",
+      "start": 6.12,
+      "end": 6.22
+    },
+    {
+      "word": "pocket",
+      "start": 6.22,
+      "end": 6.58
+    },
+    {
+      "word": "upon",
+      "start": 6.58,
+      "end": 6.94
+    },
+    {
+      "word": "the",
+      "start": 6.94,
+      "end": 7.12
+    },
+    {
+      "word": "path.",
+      "start": 7.12,
+      "end": 7.26
+    }
+  ],
+  "duration": 7.26
+}

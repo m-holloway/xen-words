@@ -1,0 +1,123 @@
+{
+  "audio_file": "sample_0495.flac",
+  "wav_file": "sample_0495.wav",
+  "transcript": "Not only Rome, with no such splendid car, air-gladdened africanus or Augustus, but poor to it that of the sun would be.",
+  "word_timings": [
+    {
+      "word": "Not",
+      "start": 0.0,
+      "end": 0.8
+    },
+    {
+      "word": "only",
+      "start": 0.8,
+      "end": 1.22
+    },
+    {
+      "word": "Rome,",
+      "start": 1.22,
+      "end": 1.72
+    },
+    {
+      "word": "with",
+      "start": 1.82,
+      "end": 1.96
+    },
+    {
+      "word": "no",
+      "start": 1.96,
+      "end": 2.24
+    },
+    {
+      "word": "such",
+      "start": 2.24,
+      "end": 2.6
+    },
+    {
+      "word": "splendid",
+      "start": 2.6,
+      "end": 2.98
+    },
+    {
+      "word": "car,",
+      "start": 2.98,
+      "end": 3.38
+    },
+    {
+      "word": "air",
+      "start": 3.6,
+      "end": 3.68
+    },
+    {
+      "word": "-gladdened",
+      "start": 3.68,
+      "end": 4.36
+    },
+    {
+      "word": "africanus",
+      "start": 4.36,
+      "end": 5.06
+    },
+    {
+      "word": "or",
+      "start": 5.06,
+      "end": 5.28
+    },
+    {
+      "word": "Augustus,",
+      "start": 5.28,
+      "end": 5.98
+    },
+    {
+      "word": "but",
+      "start": 6.1,
+      "end": 6.18
+    },
+    {
+      "word": "poor",
+      "start": 6.18,
+      "end": 6.56
+    },
+    {
+      "word": "to",
+      "start": 6.56,
+      "end": 6.8
+    },
+    {
+      "word": "it",
+      "start": 6.8,
+      "end": 7.0
+    },
+    {
+      "word": "that",
+      "start": 7.0,
+      "end": 7.28
+    },
+    {
+      "word": "of",
+      "start": 7.28,
+      "end": 7.44
+    },
+    {
+      "word": "the",
+      "start": 7.44,
+      "end": 7.56
+    },
+    {
+      "word": "sun",
+      "start": 7.56,
+      "end": 7.84
+    },
+    {
+      "word": "would",
+      "start": 7.84,
+      "end": 8.08
+    },
+    {
+      "word": "be.",
+      "start": 8.08,
+      "end": 8.3
+    }
+  ],
+  "duration": 8.3
+}

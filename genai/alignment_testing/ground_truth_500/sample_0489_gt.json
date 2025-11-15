@@ -1,0 +1,188 @@
+{
+  "audio_file": "sample_0489.flac",
+  "wav_file": "sample_0489.wav",
+  "transcript": "The district doctor approached with the indifference of a man accustomed to spend half his time amongst the dead. He then lifted the sheet, which was placed over the face and just unclosed to the lips.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.3
+    },
+    {
+      "word": "district",
+      "start": 0.3,
+      "end": 0.6
+    },
+    {
+      "word": "doctor",
+      "start": 0.6,
+      "end": 1.08
+    },
+    {
+      "word": "approached",
+      "start": 1.08,
+      "end": 1.48
+    },
+    {
+      "word": "with",
+      "start": 1.48,
+      "end": 1.66
+    },
+    {
+      "word": "the",
+      "start": 1.66,
+      "end": 1.76
+    },
+    {
+      "word": "indifference",
+      "start": 1.76,
+      "end": 2.16
+    },
+    {
+      "word": "of",
+      "start": 2.16,
+      "end": 2.36
+    },
+    {
+      "word": "a",
+      "start": 2.36,
+      "end": 2.44
+    },
+    {
+      "word": "man",
+      "start": 2.44,
+      "end": 2.64
+    },
+    {
+      "word": "accustomed",
+      "start": 2.64,
+      "end": 3.02
+    },
+    {
+      "word": "to",
+      "start": 3.02,
+      "end": 3.4
+    },
+    {
+      "word": "spend",
+      "start": 3.4,
+      "end": 3.6
+    },
+    {
+      "word": "half",
+      "start": 3.6,
+      "end": 3.86
+    },
+    {
+      "word": "his",
+      "start": 3.86,
+      "end": 4.08
+    },
+    {
+      "word": "time",
+      "start": 4.08,
+      "end": 4.3
+    },
+    {
+      "word": "amongst",
+      "start": 4.3,
+      "end": 4.6
+    },
+    {
+      "word": "the",
+      "start": 4.6,
+      "end": 4.84
+    },
+    {
+      "word": "dead.",
+      "start": 4.84,
+      "end": 5.08
+    },
+    {
+      "word": "He",
+      "start": 5.4,
+      "end": 5.62
+    },
+    {
+      "word": "then",
+      "start": 5.62,
+      "end": 5.8
+    },
+    {
+      "word": "lifted",
+      "start": 5.8,
+      "end": 6.08
+    },
+    {
+      "word": "the",
+      "start": 6.08,
+      "end": 6.3
+    },
+    {
+      "word": "sheet,",
+      "start": 6.3,
+      "end": 6.5
+    },
+    {
+      "word": "which",
+      "start": 6.82,
+      "end": 6.94
+    },
+    {
+      "word": "was",
+      "start": 6.94,
+      "end": 7.06
+    },
+    {
+      "word": "placed",
+      "start": 7.06,
+      "end": 7.32
+    },
+    {
+      "word": "over",
+      "start": 7.32,
+      "end": 7.52
+    },
+    {
+      "word": "the",
+      "start": 7.52,
+      "end": 7.64
+    },
+    {
+      "word": "face",
+      "start": 7.64,
+      "end": 7.94
+    },
+    {
+      "word": "and",
+      "start": 7.94,
+      "end": 8.3
+    },
+    {
+      "word": "just",
+      "start": 8.3,
+      "end": 8.52
+    },
+    {
+      "word": "unclosed",
+      "start": 8.52,
+      "end": 9.34
+    },
+    {
+      "word": "to",
+      "start": 9.34,
+      "end": 9.48
+    },
+    {
+      "word": "the",
+      "start": 9.48,
+      "end": 9.54
+    },
+    {
+      "word": "lips.",
+      "start": 9.54,
+      "end": 9.76
+    }
+  ],
+  "duration": 9.76
+}

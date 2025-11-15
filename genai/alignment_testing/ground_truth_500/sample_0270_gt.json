@@ -1,0 +1,78 @@
+{
+  "audio_file": "sample_0270.flac",
+  "wav_file": "sample_0270.wav",
+  "transcript": "He survived the war only to be murdered later on a plantation in Mississippi.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.42
+    },
+    {
+      "word": "survived",
+      "start": 0.42,
+      "end": 0.8
+    },
+    {
+      "word": "the",
+      "start": 0.8,
+      "end": 1.1
+    },
+    {
+      "word": "war",
+      "start": 1.1,
+      "end": 1.38
+    },
+    {
+      "word": "only",
+      "start": 1.38,
+      "end": 1.86
+    },
+    {
+      "word": "to",
+      "start": 1.86,
+      "end": 2.06
+    },
+    {
+      "word": "be",
+      "start": 2.06,
+      "end": 2.18
+    },
+    {
+      "word": "murdered",
+      "start": 2.18,
+      "end": 2.52
+    },
+    {
+      "word": "later",
+      "start": 2.52,
+      "end": 2.94
+    },
+    {
+      "word": "on",
+      "start": 2.94,
+      "end": 3.12
+    },
+    {
+      "word": "a",
+      "start": 3.12,
+      "end": 3.22
+    },
+    {
+      "word": "plantation",
+      "start": 3.22,
+      "end": 3.7
+    },
+    {
+      "word": "in",
+      "start": 3.7,
+      "end": 3.92
+    },
+    {
+      "word": "Mississippi.",
+      "start": 3.92,
+      "end": 4.38
+    }
+  ],
+  "duration": 4.38
+}

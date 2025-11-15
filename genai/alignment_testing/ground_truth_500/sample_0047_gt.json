@@ -1,0 +1,98 @@
+{
+  "audio_file": "sample_0047.flac",
+  "wav_file": "sample_0047.wav",
+  "transcript": "He saw that in the excitement of recent events, he had not formulated a plan upon that score.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.36
+    },
+    {
+      "word": "saw",
+      "start": 0.36,
+      "end": 0.58
+    },
+    {
+      "word": "that",
+      "start": 0.58,
+      "end": 0.76
+    },
+    {
+      "word": "in",
+      "start": 0.76,
+      "end": 0.92
+    },
+    {
+      "word": "the",
+      "start": 0.92,
+      "end": 1.04
+    },
+    {
+      "word": "excitement",
+      "start": 1.04,
+      "end": 1.42
+    },
+    {
+      "word": "of",
+      "start": 1.42,
+      "end": 1.66
+    },
+    {
+      "word": "recent",
+      "start": 1.66,
+      "end": 1.84
+    },
+    {
+      "word": "events,",
+      "start": 1.84,
+      "end": 2.22
+    },
+    {
+      "word": "he",
+      "start": 2.4,
+      "end": 2.46
+    },
+    {
+      "word": "had",
+      "start": 2.46,
+      "end": 2.58
+    },
+    {
+      "word": "not",
+      "start": 2.58,
+      "end": 2.72
+    },
+    {
+      "word": "formulated",
+      "start": 2.72,
+      "end": 3.16
+    },
+    {
+      "word": "a",
+      "start": 3.16,
+      "end": 3.36
+    },
+    {
+      "word": "plan",
+      "start": 3.36,
+      "end": 3.6
+    },
+    {
+      "word": "upon",
+      "start": 3.6,
+      "end": 3.92
+    },
+    {
+      "word": "that",
+      "start": 3.92,
+      "end": 4.12
+    },
+    {
+      "word": "score.",
+      "start": 4.12,
+      "end": 4.46
+    }
+  ],
+  "duration": 4.46
+}

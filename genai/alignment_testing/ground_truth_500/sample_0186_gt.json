@@ -1,0 +1,333 @@
+{
+  "audio_file": "sample_0186.flac",
+  "wav_file": "sample_0186.wav",
+  "transcript": "Summer squashes, almost in their golden blossom, cue combers, now evincing a tendency to spread away from the main stock and ramble far and wide. Two or three rows of string beans, and as many more that were about to festoon themselves on poles, tomatoes occupying a site so sheltered and sunny that the plants were already gigantic, and promised an early and abundant harvest.",
+  "word_timings": [
+    {
+      "word": "Summer",
+      "start": 0.0,
+      "end": 0.66
+    },
+    {
+      "word": "squashes,",
+      "start": 0.66,
+      "end": 1.14
+    },
+    {
+      "word": "almost",
+      "start": 1.5,
+      "end": 1.72
+    },
+    {
+      "word": "in",
+      "start": 1.72,
+      "end": 1.94
+    },
+    {
+      "word": "their",
+      "start": 1.94,
+      "end": 2.06
+    },
+    {
+      "word": "golden",
+      "start": 2.06,
+      "end": 2.34
+    },
+    {
+      "word": "blossom,",
+      "start": 2.34,
+      "end": 2.74
+    },
+    {
+      "word": "cue",
+      "start": 3.54,
+      "end": 3.64
+    },
+    {
+      "word": "combers,",
+      "start": 3.64,
+      "end": 4.06
+    },
+    {
+      "word": "now",
+      "start": 4.42,
+      "end": 4.52
+    },
+    {
+      "word": "evincing",
+      "start": 4.52,
+      "end": 5.0
+    },
+    {
+      "word": "a",
+      "start": 5.0,
+      "end": 5.1
+    },
+    {
+      "word": "tendency",
+      "start": 5.1,
+      "end": 5.42
+    },
+    {
+      "word": "to",
+      "start": 5.42,
+      "end": 5.76
+    },
+    {
+      "word": "spread",
+      "start": 5.76,
+      "end": 6.0
+    },
+    {
+      "word": "away",
+      "start": 6.0,
+      "end": 6.28
+    },
+    {
+      "word": "from",
+      "start": 6.28,
+      "end": 6.48
+    },
+    {
+      "word": "the",
+      "start": 6.48,
+      "end": 6.6
+    },
+    {
+      "word": "main",
+      "start": 6.6,
+      "end": 6.78
+    },
+    {
+      "word": "stock",
+      "start": 6.78,
+      "end": 7.08
+    },
+    {
+      "word": "and",
+      "start": 7.08,
+      "end": 7.62
+    },
+    {
+      "word": "ramble",
+      "start": 7.62,
+      "end": 7.96
+    },
+    {
+      "word": "far",
+      "start": 7.96,
+      "end": 8.16
+    },
+    {
+      "word": "and",
+      "start": 8.16,
+      "end": 8.3
+    },
+    {
+      "word": "wide.",
+      "start": 8.3,
+      "end": 8.58
+    },
+    {
+      "word": "Two",
+      "start": 9.4,
+      "end": 9.64
+    },
+    {
+      "word": "or",
+      "start": 9.64,
+      "end": 9.76
+    },
+    {
+      "word": "three",
+      "start": 9.76,
+      "end": 9.94
+    },
+    {
+      "word": "rows",
+      "start": 9.94,
+      "end": 10.12
+    },
+    {
+      "word": "of",
+      "start": 10.12,
+      "end": 10.38
+    },
+    {
+      "word": "string",
+      "start": 10.38,
+      "end": 10.6
+    },
+    {
+      "word": "beans,",
+      "start": 10.6,
+      "end": 10.86
+    },
+    {
+      "word": "and",
+      "start": 11.2,
+      "end": 11.36
+    },
+    {
+      "word": "as",
+      "start": 11.36,
+      "end": 11.5
+    },
+    {
+      "word": "many",
+      "start": 11.5,
+      "end": 11.72
+    },
+    {
+      "word": "more",
+      "start": 11.72,
+      "end": 11.96
+    },
+    {
+      "word": "that",
+      "start": 11.96,
+      "end": 12.12
+    },
+    {
+      "word": "were",
+      "start": 12.12,
+      "end": 12.24
+    },
+    {
+      "word": "about",
+      "start": 12.24,
+      "end": 12.48
+    },
+    {
+      "word": "to",
+      "start": 12.48,
+      "end": 12.68
+    },
+    {
+      "word": "festoon",
+      "start": 12.68,
+      "end": 13.08
+    },
+    {
+      "word": "themselves",
+      "start": 13.08,
+      "end": 13.42
+    },
+    {
+      "word": "on",
+      "start": 13.42,
+      "end": 13.76
+    },
+    {
+      "word": "poles,",
+      "start": 13.76,
+      "end": 14.08
+    },
+    {
+      "word": "tomatoes",
+      "start": 15.04,
+      "end": 15.4
+    },
+    {
+      "word": "occupying",
+      "start": 15.4,
+      "end": 16.16
+    },
+    {
+      "word": "a",
+      "start": 16.16,
+      "end": 16.26
+    },
+    {
+      "word": "site",
+      "start": 16.26,
+      "end": 16.5
+    },
+    {
+      "word": "so",
+      "start": 16.5,
+      "end": 16.76
+    },
+    {
+      "word": "sheltered",
+      "start": 16.76,
+      "end": 17.24
+    },
+    {
+      "word": "and",
+      "start": 17.24,
+      "end": 17.34
+    },
+    {
+      "word": "sunny",
+      "start": 17.34,
+      "end": 17.62
+    },
+    {
+      "word": "that",
+      "start": 17.62,
+      "end": 18.2
+    },
+    {
+      "word": "the",
+      "start": 18.2,
+      "end": 18.32
+    },
+    {
+      "word": "plants",
+      "start": 18.32,
+      "end": 18.56
+    },
+    {
+      "word": "were",
+      "start": 18.56,
+      "end": 18.78
+    },
+    {
+      "word": "already",
+      "start": 18.78,
+      "end": 19.08
+    },
+    {
+      "word": "gigantic,",
+      "start": 19.08,
+      "end": 19.6
+    },
+    {
+      "word": "and",
+      "start": 20.32,
+      "end": 20.38
+    },
+    {
+      "word": "promised",
+      "start": 20.38,
+      "end": 20.72
+    },
+    {
+      "word": "an",
+      "start": 20.72,
+      "end": 20.92
+    },
+    {
+      "word": "early",
+      "start": 20.92,
+      "end": 21.18
+    },
+    {
+      "word": "and",
+      "start": 21.18,
+      "end": 21.32
+    },
+    {
+      "word": "abundant",
+      "start": 21.32,
+      "end": 21.62
+    },
+    {
+      "word": "harvest.",
+      "start": 21.62,
+      "end": 22.0
+    }
+  ],
+  "duration": 22.0
+}

@@ -1,0 +1,68 @@
+{
+  "audio_file": "sample_0211.flac",
+  "wav_file": "sample_0211.wav",
+  "transcript": "It is like a bandage over one's eyes to come into it.",
+  "word_timings": [
+    {
+      "word": "It",
+      "start": 0.0,
+      "end": 0.46
+    },
+    {
+      "word": "is",
+      "start": 0.46,
+      "end": 0.54
+    },
+    {
+      "word": "like",
+      "start": 0.54,
+      "end": 0.68
+    },
+    {
+      "word": "a",
+      "start": 0.68,
+      "end": 0.84
+    },
+    {
+      "word": "bandage",
+      "start": 0.84,
+      "end": 1.24
+    },
+    {
+      "word": "over",
+      "start": 1.24,
+      "end": 1.44
+    },
+    {
+      "word": "one's",
+      "start": 1.44,
+      "end": 1.8
+    },
+    {
+      "word": "eyes",
+      "start": 1.8,
+      "end": 2.06
+    },
+    {
+      "word": "to",
+      "start": 2.06,
+      "end": 2.24
+    },
+    {
+      "word": "come",
+      "start": 2.24,
+      "end": 2.42
+    },
+    {
+      "word": "into",
+      "start": 2.42,
+      "end": 2.66
+    },
+    {
+      "word": "it.",
+      "start": 2.66,
+      "end": 2.88
+    }
+  ],
+  "duration": 2.88
+}

@@ -1,0 +1,123 @@
+{
+  "audio_file": "sample_0378.flac",
+  "wav_file": "sample_0378.wav",
+  "transcript": "I hear the TV going for a few minutes, then pop turns it off and goes in the kitchen to talk to mom.",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.56
+    },
+    {
+      "word": "hear",
+      "start": 0.56,
+      "end": 0.7
+    },
+    {
+      "word": "the",
+      "start": 0.7,
+      "end": 0.86
+    },
+    {
+      "word": "TV",
+      "start": 0.86,
+      "end": 1.12
+    },
+    {
+      "word": "going",
+      "start": 1.12,
+      "end": 1.48
+    },
+    {
+      "word": "for",
+      "start": 1.48,
+      "end": 1.82
+    },
+    {
+      "word": "a",
+      "start": 1.82,
+      "end": 1.92
+    },
+    {
+      "word": "few",
+      "start": 1.92,
+      "end": 2.06
+    },
+    {
+      "word": "minutes,",
+      "start": 2.06,
+      "end": 2.32
+    },
+    {
+      "word": "then",
+      "start": 2.78,
+      "end": 3.06
+    },
+    {
+      "word": "pop",
+      "start": 3.06,
+      "end": 3.24
+    },
+    {
+      "word": "turns",
+      "start": 3.24,
+      "end": 3.56
+    },
+    {
+      "word": "it",
+      "start": 3.56,
+      "end": 3.68
+    },
+    {
+      "word": "off",
+      "start": 3.68,
+      "end": 3.88
+    },
+    {
+      "word": "and",
+      "start": 3.88,
+      "end": 4.06
+    },
+    {
+      "word": "goes",
+      "start": 4.06,
+      "end": 4.24
+    },
+    {
+      "word": "in",
+      "start": 4.24,
+      "end": 4.42
+    },
+    {
+      "word": "the",
+      "start": 4.42,
+      "end": 4.5
+    },
+    {
+      "word": "kitchen",
+      "start": 4.5,
+      "end": 4.74
+    },
+    {
+      "word": "to",
+      "start": 4.74,
+      "end": 4.94
+    },
+    {
+      "word": "talk",
+      "start": 4.94,
+      "end": 5.1
+    },
+    {
+      "word": "to",
+      "start": 5.1,
+      "end": 5.26
+    },
+    {
+      "word": "mom.",
+      "start": 5.26,
+      "end": 5.46
+    }
+  ],
+  "duration": 5.46
+}

@@ -1,0 +1,133 @@
+{
+  "audio_file": "sample_0499.flac",
+  "wav_file": "sample_0499.wav",
+  "transcript": "Then, back I turned my face to those high things, which moved themselves towards us so sedately they had been distanced by new wedded brides.",
+  "word_timings": [
+    {
+      "word": "Then,",
+      "start": 0.0,
+      "end": 0.76
+    },
+    {
+      "word": "back",
+      "start": 0.96,
+      "end": 1.12
+    },
+    {
+      "word": "I",
+      "start": 1.12,
+      "end": 1.28
+    },
+    {
+      "word": "turned",
+      "start": 1.28,
+      "end": 1.5
+    },
+    {
+      "word": "my",
+      "start": 1.5,
+      "end": 1.78
+    },
+    {
+      "word": "face",
+      "start": 1.78,
+      "end": 2.08
+    },
+    {
+      "word": "to",
+      "start": 2.08,
+      "end": 2.32
+    },
+    {
+      "word": "those",
+      "start": 2.32,
+      "end": 2.54
+    },
+    {
+      "word": "high",
+      "start": 2.54,
+      "end": 2.86
+    },
+    {
+      "word": "things,",
+      "start": 2.86,
+      "end": 3.36
+    },
+    {
+      "word": "which",
+      "start": 3.58,
+      "end": 3.74
+    },
+    {
+      "word": "moved",
+      "start": 3.74,
+      "end": 4.08
+    },
+    {
+      "word": "themselves",
+      "start": 4.08,
+      "end": 4.56
+    },
+    {
+      "word": "towards",
+      "start": 4.56,
+      "end": 5.02
+    },
+    {
+      "word": "us",
+      "start": 5.02,
+      "end": 5.34
+    },
+    {
+      "word": "so",
+      "start": 5.34,
+      "end": 5.72
+    },
+    {
+      "word": "sedately",
+      "start": 5.72,
+      "end": 6.38
+    },
+    {
+      "word": "they",
+      "start": 6.38,
+      "end": 6.78
+    },
+    {
+      "word": "had",
+      "start": 6.78,
+      "end": 6.92
+    },
+    {
+      "word": "been",
+      "start": 6.92,
+      "end": 7.04
+    },
+    {
+      "word": "distanced",
+      "start": 7.04,
+      "end": 7.54
+    },
+    {
+      "word": "by",
+      "start": 7.54,
+      "end": 7.72
+    },
+    {
+      "word": "new",
+      "start": 7.72,
+      "end": 7.92
+    },
+    {
+      "word": "wedded",
+      "start": 7.92,
+      "end": 8.22
+    },
+    {
+      "word": "brides.",
+      "start": 8.22,
+      "end": 8.68
+    }
+  ],
+  "duration": 8.68
+}

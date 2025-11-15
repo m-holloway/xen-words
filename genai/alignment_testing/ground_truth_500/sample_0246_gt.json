@@ -1,0 +1,98 @@
+{
+  "audio_file": "sample_0246.flac",
+  "wav_file": "sample_0246.wav",
+  "transcript": "However, in spite of all she could say, the elder sisters opened the door and admitted the bigger.",
+  "word_timings": [
+    {
+      "word": "However,",
+      "start": 0.0,
+      "end": 0.96
+    },
+    {
+      "word": "in",
+      "start": 1.36,
+      "end": 1.46
+    },
+    {
+      "word": "spite",
+      "start": 1.46,
+      "end": 1.7
+    },
+    {
+      "word": "of",
+      "start": 1.7,
+      "end": 1.88
+    },
+    {
+      "word": "all",
+      "start": 1.88,
+      "end": 2.1
+    },
+    {
+      "word": "she",
+      "start": 2.1,
+      "end": 2.32
+    },
+    {
+      "word": "could",
+      "start": 2.32,
+      "end": 2.48
+    },
+    {
+      "word": "say,",
+      "start": 2.48,
+      "end": 2.78
+    },
+    {
+      "word": "the",
+      "start": 3.32,
+      "end": 3.42
+    },
+    {
+      "word": "elder",
+      "start": 3.42,
+      "end": 3.7
+    },
+    {
+      "word": "sisters",
+      "start": 3.7,
+      "end": 4.1
+    },
+    {
+      "word": "opened",
+      "start": 4.1,
+      "end": 4.54
+    },
+    {
+      "word": "the",
+      "start": 4.54,
+      "end": 4.82
+    },
+    {
+      "word": "door",
+      "start": 4.82,
+      "end": 5.0
+    },
+    {
+      "word": "and",
+      "start": 5.0,
+      "end": 5.3
+    },
+    {
+      "word": "admitted",
+      "start": 5.3,
+      "end": 5.64
+    },
+    {
+      "word": "the",
+      "start": 5.64,
+      "end": 5.86
+    },
+    {
+      "word": "bigger.",
+      "start": 5.86,
+      "end": 6.12
+    }
+  ],
+  "duration": 6.12
+}

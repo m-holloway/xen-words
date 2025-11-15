@@ -1,0 +1,118 @@
+{
+  "audio_file": "sample_0434.flac",
+  "wav_file": "sample_0434.wav",
+  "transcript": "His vision of truth had grown so intense that the sound of a strange voice failed to run out at this time.",
+  "word_timings": [
+    {
+      "word": "His",
+      "start": 0.0,
+      "end": 0.46
+    },
+    {
+      "word": "vision",
+      "start": 0.46,
+      "end": 0.68
+    },
+    {
+      "word": "of",
+      "start": 0.68,
+      "end": 0.86
+    },
+    {
+      "word": "truth",
+      "start": 0.86,
+      "end": 1.12
+    },
+    {
+      "word": "had",
+      "start": 1.12,
+      "end": 1.4
+    },
+    {
+      "word": "grown",
+      "start": 1.4,
+      "end": 1.64
+    },
+    {
+      "word": "so",
+      "start": 1.64,
+      "end": 1.98
+    },
+    {
+      "word": "intense",
+      "start": 1.98,
+      "end": 2.42
+    },
+    {
+      "word": "that",
+      "start": 2.42,
+      "end": 2.62
+    },
+    {
+      "word": "the",
+      "start": 2.62,
+      "end": 2.74
+    },
+    {
+      "word": "sound",
+      "start": 2.74,
+      "end": 3.0
+    },
+    {
+      "word": "of",
+      "start": 3.0,
+      "end": 3.16
+    },
+    {
+      "word": "a",
+      "start": 3.16,
+      "end": 3.24
+    },
+    {
+      "word": "strange",
+      "start": 3.24,
+      "end": 3.52
+    },
+    {
+      "word": "voice",
+      "start": 3.52,
+      "end": 3.86
+    },
+    {
+      "word": "failed",
+      "start": 3.86,
+      "end": 4.2
+    },
+    {
+      "word": "to",
+      "start": 4.2,
+      "end": 4.4
+    },
+    {
+      "word": "run",
+      "start": 4.4,
+      "end": 4.52
+    },
+    {
+      "word": "out",
+      "start": 4.52,
+      "end": 4.62
+    },
+    {
+      "word": "at",
+      "start": 4.62,
+      "end": 4.66
+    },
+    {
+      "word": "this",
+      "start": 4.66,
+      "end": 4.88
+    },
+    {
+      "word": "time.",
+      "start": 4.88,
+      "end": 5.14
+    }
+  ],
+  "duration": 5.14
+}

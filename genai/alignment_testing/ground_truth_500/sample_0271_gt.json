@@ -1,0 +1,93 @@
+{
+  "audio_file": "sample_0271.flac",
+  "wav_file": "sample_0271.wav",
+  "transcript": "No battery in the whole four years' war lost so many men and so short a time.",
+  "word_timings": [
+    {
+      "word": "No",
+      "start": 0.0,
+      "end": 0.66
+    },
+    {
+      "word": "battery",
+      "start": 0.66,
+      "end": 1.12
+    },
+    {
+      "word": "in",
+      "start": 1.12,
+      "end": 1.3
+    },
+    {
+      "word": "the",
+      "start": 1.3,
+      "end": 1.4
+    },
+    {
+      "word": "whole",
+      "start": 1.4,
+      "end": 1.66
+    },
+    {
+      "word": "four",
+      "start": 1.66,
+      "end": 2.02
+    },
+    {
+      "word": "years'",
+      "start": 2.02,
+      "end": 2.3
+    },
+    {
+      "word": "war",
+      "start": 2.58,
+      "end": 2.8
+    },
+    {
+      "word": "lost",
+      "start": 2.8,
+      "end": 3.18
+    },
+    {
+      "word": "so",
+      "start": 3.18,
+      "end": 3.48
+    },
+    {
+      "word": "many",
+      "start": 3.48,
+      "end": 3.7
+    },
+    {
+      "word": "men",
+      "start": 3.7,
+      "end": 3.98
+    },
+    {
+      "word": "and",
+      "start": 3.98,
+      "end": 4.14
+    },
+    {
+      "word": "so",
+      "start": 4.14,
+      "end": 4.4
+    },
+    {
+      "word": "short",
+      "start": 4.4,
+      "end": 4.68
+    },
+    {
+      "word": "a",
+      "start": 4.68,
+      "end": 4.86
+    },
+    {
+      "word": "time.",
+      "start": 4.86,
+      "end": 5.18
+    }
+  ],
+  "duration": 5.18
+}

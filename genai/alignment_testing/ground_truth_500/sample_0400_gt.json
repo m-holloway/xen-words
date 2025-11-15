@@ -1,0 +1,118 @@
+{
+  "audio_file": "sample_0400.flac",
+  "wav_file": "sample_0400.wav",
+  "transcript": "He took the cash box out of the door and turning to leave the shop became aware that Stevie was still downstairs.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.5
+    },
+    {
+      "word": "took",
+      "start": 0.5,
+      "end": 0.64
+    },
+    {
+      "word": "the",
+      "start": 0.64,
+      "end": 0.82
+    },
+    {
+      "word": "cash",
+      "start": 0.82,
+      "end": 1.1
+    },
+    {
+      "word": "box",
+      "start": 1.1,
+      "end": 1.28
+    },
+    {
+      "word": "out",
+      "start": 1.28,
+      "end": 1.6
+    },
+    {
+      "word": "of",
+      "start": 1.6,
+      "end": 1.68
+    },
+    {
+      "word": "the",
+      "start": 1.68,
+      "end": 1.76
+    },
+    {
+      "word": "door",
+      "start": 1.76,
+      "end": 1.98
+    },
+    {
+      "word": "and",
+      "start": 1.98,
+      "end": 2.66
+    },
+    {
+      "word": "turning",
+      "start": 2.66,
+      "end": 2.86
+    },
+    {
+      "word": "to",
+      "start": 2.86,
+      "end": 3.08
+    },
+    {
+      "word": "leave",
+      "start": 3.08,
+      "end": 3.24
+    },
+    {
+      "word": "the",
+      "start": 3.24,
+      "end": 3.42
+    },
+    {
+      "word": "shop",
+      "start": 3.42,
+      "end": 3.68
+    },
+    {
+      "word": "became",
+      "start": 3.68,
+      "end": 4.32
+    },
+    {
+      "word": "aware",
+      "start": 4.32,
+      "end": 4.58
+    },
+    {
+      "word": "that",
+      "start": 4.58,
+      "end": 4.82
+    },
+    {
+      "word": "Stevie",
+      "start": 4.82,
+      "end": 5.12
+    },
+    {
+      "word": "was",
+      "start": 5.12,
+      "end": 5.34
+    },
+    {
+      "word": "still",
+      "start": 5.34,
+      "end": 5.52
+    },
+    {
+      "word": "downstairs.",
+      "start": 5.52,
+      "end": 5.84
+    }
+  ],
+  "duration": 5.84
+}

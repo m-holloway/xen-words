@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0371.flac",
+  "wav_file": "sample_0371.wav",
+  "transcript": "Tom says thanks and looks at Hilda and she blushes. Really.",
+  "word_timings": [
+    {
+      "word": "Tom",
+      "start": 0.0,
+      "end": 0.4
+    },
+    {
+      "word": "says",
+      "start": 0.4,
+      "end": 0.6
+    },
+    {
+      "word": "thanks",
+      "start": 0.6,
+      "end": 0.98
+    },
+    {
+      "word": "and",
+      "start": 0.98,
+      "end": 1.6
+    },
+    {
+      "word": "looks",
+      "start": 1.6,
+      "end": 1.74
+    },
+    {
+      "word": "at",
+      "start": 1.74,
+      "end": 1.9
+    },
+    {
+      "word": "Hilda",
+      "start": 1.9,
+      "end": 2.1
+    },
+    {
+      "word": "and",
+      "start": 2.1,
+      "end": 2.5
+    },
+    {
+      "word": "she",
+      "start": 2.5,
+      "end": 2.62
+    },
+    {
+      "word": "blushes.",
+      "start": 2.62,
+      "end": 3.18
+    },
+    {
+      "word": "Really.",
+      "start": 3.52,
+      "end": 3.88
+    }
+  ],
+  "duration": 3.88
+}

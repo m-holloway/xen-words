@@ -1,0 +1,73 @@
+{
+  "audio_file": "sample_0118.flac",
+  "wav_file": "sample_0118.wav",
+  "transcript": "The tribute was at this period enormous. 15,000 head of cattle annually.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.58
+    },
+    {
+      "word": "tribute",
+      "start": 0.58,
+      "end": 0.88
+    },
+    {
+      "word": "was",
+      "start": 0.88,
+      "end": 1.22
+    },
+    {
+      "word": "at",
+      "start": 1.22,
+      "end": 1.48
+    },
+    {
+      "word": "this",
+      "start": 1.48,
+      "end": 1.68
+    },
+    {
+      "word": "period",
+      "start": 1.68,
+      "end": 2.16
+    },
+    {
+      "word": "enormous.",
+      "start": 2.16,
+      "end": 2.78
+    },
+    {
+      "word": "15",
+      "start": 3.76,
+      "end": 4.08
+    },
+    {
+      "word": ",000",
+      "start": 4.08,
+      "end": 4.6
+    },
+    {
+      "word": "head",
+      "start": 4.6,
+      "end": 4.82
+    },
+    {
+      "word": "of",
+      "start": 4.82,
+      "end": 4.98
+    },
+    {
+      "word": "cattle",
+      "start": 4.98,
+      "end": 5.28
+    },
+    {
+      "word": "annually.",
+      "start": 5.28,
+      "end": 5.88
+    }
+  ],
+  "duration": 5.88
+}

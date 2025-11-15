@@ -1,0 +1,58 @@
+{
+  "audio_file": "sample_0429.flac",
+  "wav_file": "sample_0429.wav",
+  "transcript": "There was an extraordinary force of suggestion in this posturing.",
+  "word_timings": [
+    {
+      "word": "There",
+      "start": 0.0,
+      "end": 0.28
+    },
+    {
+      "word": "was",
+      "start": 0.28,
+      "end": 0.4
+    },
+    {
+      "word": "an",
+      "start": 0.4,
+      "end": 0.5
+    },
+    {
+      "word": "extraordinary",
+      "start": 0.5,
+      "end": 0.94
+    },
+    {
+      "word": "force",
+      "start": 0.94,
+      "end": 1.26
+    },
+    {
+      "word": "of",
+      "start": 1.26,
+      "end": 1.4
+    },
+    {
+      "word": "suggestion",
+      "start": 1.4,
+      "end": 1.7
+    },
+    {
+      "word": "in",
+      "start": 1.7,
+      "end": 1.98
+    },
+    {
+      "word": "this",
+      "start": 1.98,
+      "end": 2.14
+    },
+    {
+      "word": "posturing.",
+      "start": 2.14,
+      "end": 2.66
+    }
+  ],
+  "duration": 2.66
+}

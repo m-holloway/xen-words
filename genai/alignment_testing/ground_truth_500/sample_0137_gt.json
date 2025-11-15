@@ -1,0 +1,58 @@
+{
+  "audio_file": "sample_0137.flac",
+  "wav_file": "sample_0137.wav",
+  "transcript": "They were within a few miles of their village now.",
+  "word_timings": [
+    {
+      "word": "They",
+      "start": 0.0,
+      "end": 0.64
+    },
+    {
+      "word": "were",
+      "start": 0.64,
+      "end": 0.74
+    },
+    {
+      "word": "within",
+      "start": 0.74,
+      "end": 0.96
+    },
+    {
+      "word": "a",
+      "start": 0.96,
+      "end": 1.06
+    },
+    {
+      "word": "few",
+      "start": 1.06,
+      "end": 1.24
+    },
+    {
+      "word": "miles",
+      "start": 1.24,
+      "end": 1.58
+    },
+    {
+      "word": "of",
+      "start": 1.58,
+      "end": 1.76
+    },
+    {
+      "word": "their",
+      "start": 1.76,
+      "end": 1.9
+    },
+    {
+      "word": "village",
+      "start": 1.9,
+      "end": 2.18
+    },
+    {
+      "word": "now.",
+      "start": 2.18,
+      "end": 2.54
+    }
+  ],
+  "duration": 2.54
+}

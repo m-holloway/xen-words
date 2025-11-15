@@ -1,0 +1,83 @@
+{
+  "audio_file": "sample_0001.flac",
+  "wav_file": "sample_0001.wav",
+  "transcript": "Many little wrinkles gather between his eyes as he contemplated this and his brown moistened.",
+  "word_timings": [
+    {
+      "word": "Many",
+      "start": 0.0,
+      "end": 0.66
+    },
+    {
+      "word": "little",
+      "start": 0.66,
+      "end": 0.94
+    },
+    {
+      "word": "wrinkles",
+      "start": 0.94,
+      "end": 1.22
+    },
+    {
+      "word": "gather",
+      "start": 1.22,
+      "end": 1.56
+    },
+    {
+      "word": "between",
+      "start": 1.56,
+      "end": 2.0
+    },
+    {
+      "word": "his",
+      "start": 2.0,
+      "end": 2.22
+    },
+    {
+      "word": "eyes",
+      "start": 2.22,
+      "end": 2.5
+    },
+    {
+      "word": "as",
+      "start": 2.5,
+      "end": 2.7
+    },
+    {
+      "word": "he",
+      "start": 2.7,
+      "end": 2.8
+    },
+    {
+      "word": "contemplated",
+      "start": 2.8,
+      "end": 3.42
+    },
+    {
+      "word": "this",
+      "start": 3.42,
+      "end": 3.7
+    },
+    {
+      "word": "and",
+      "start": 3.7,
+      "end": 4.0
+    },
+    {
+      "word": "his",
+      "start": 4.0,
+      "end": 4.12
+    },
+    {
+      "word": "brown",
+      "start": 4.12,
+      "end": 4.36
+    },
+    {
+      "word": "moistened.",
+      "start": 4.36,
+      "end": 5.02
+    }
+  ],
+  "duration": 5.02
+}

@@ -1,0 +1,93 @@
+{
+  "audio_file": "sample_0353.flac",
+  "wav_file": "sample_0353.wav",
+  "transcript": "She doesn't pick them up, but just having them in the room sure doesn't give her asthma.",
+  "word_timings": [
+    {
+      "word": "She",
+      "start": 0.0,
+      "end": 0.48
+    },
+    {
+      "word": "doesn't",
+      "start": 0.48,
+      "end": 0.74
+    },
+    {
+      "word": "pick",
+      "start": 0.74,
+      "end": 0.9
+    },
+    {
+      "word": "them",
+      "start": 0.9,
+      "end": 1.08
+    },
+    {
+      "word": "up,",
+      "start": 1.08,
+      "end": 1.3
+    },
+    {
+      "word": "but",
+      "start": 1.58,
+      "end": 1.8
+    },
+    {
+      "word": "just",
+      "start": 1.8,
+      "end": 1.94
+    },
+    {
+      "word": "having",
+      "start": 1.94,
+      "end": 2.22
+    },
+    {
+      "word": "them",
+      "start": 2.22,
+      "end": 2.42
+    },
+    {
+      "word": "in",
+      "start": 2.42,
+      "end": 2.48
+    },
+    {
+      "word": "the",
+      "start": 2.48,
+      "end": 2.6
+    },
+    {
+      "word": "room",
+      "start": 2.6,
+      "end": 2.8
+    },
+    {
+      "word": "sure",
+      "start": 2.8,
+      "end": 3.08
+    },
+    {
+      "word": "doesn't",
+      "start": 3.08,
+      "end": 3.38
+    },
+    {
+      "word": "give",
+      "start": 3.38,
+      "end": 3.46
+    },
+    {
+      "word": "her",
+      "start": 3.46,
+      "end": 3.62
+    },
+    {
+      "word": "asthma.",
+      "start": 3.62,
+      "end": 3.94
+    }
+  ],
+  "duration": 3.94
+}

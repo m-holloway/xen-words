@@ -1,0 +1,43 @@
+{
+  "audio_file": "sample_0236.flac",
+  "wav_file": "sample_0236.wav",
+  "transcript": "All my worries about you were foolish.",
+  "word_timings": [
+    {
+      "word": "All",
+      "start": 0.0,
+      "end": 0.44
+    },
+    {
+      "word": "my",
+      "start": 0.44,
+      "end": 0.64
+    },
+    {
+      "word": "worries",
+      "start": 0.64,
+      "end": 0.98
+    },
+    {
+      "word": "about",
+      "start": 0.98,
+      "end": 1.28
+    },
+    {
+      "word": "you",
+      "start": 1.28,
+      "end": 1.46
+    },
+    {
+      "word": "were",
+      "start": 1.46,
+      "end": 1.6
+    },
+    {
+      "word": "foolish.",
+      "start": 1.6,
+      "end": 1.94
+    }
+  ],
+  "duration": 1.94
+}

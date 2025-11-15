@@ -1,0 +1,38 @@
+{
+  "audio_file": "sample_0253.flac",
+  "wav_file": "sample_0253.wav",
+  "transcript": "I hasten back to the lines.",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.4
+    },
+    {
+      "word": "hasten",
+      "start": 0.4,
+      "end": 0.78
+    },
+    {
+      "word": "back",
+      "start": 0.78,
+      "end": 0.96
+    },
+    {
+      "word": "to",
+      "start": 0.96,
+      "end": 1.14
+    },
+    {
+      "word": "the",
+      "start": 1.14,
+      "end": 1.22
+    },
+    {
+      "word": "lines.",
+      "start": 1.22,
+      "end": 1.54
+    }
+  ],
+  "duration": 1.54
+}

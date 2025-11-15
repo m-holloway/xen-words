@@ -1,0 +1,58 @@
+{
+  "audio_file": "sample_0391.flac",
+  "wav_file": "sample_0391.wav",
+  "transcript": "He watched him just circulate a murmuring in the kitchen.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.46
+    },
+    {
+      "word": "watched",
+      "start": 0.46,
+      "end": 0.76
+    },
+    {
+      "word": "him",
+      "start": 0.76,
+      "end": 0.98
+    },
+    {
+      "word": "just",
+      "start": 0.98,
+      "end": 1.12
+    },
+    {
+      "word": "circulate",
+      "start": 1.12,
+      "end": 1.58
+    },
+    {
+      "word": "a",
+      "start": 1.58,
+      "end": 1.7
+    },
+    {
+      "word": "murmuring",
+      "start": 1.7,
+      "end": 2.12
+    },
+    {
+      "word": "in",
+      "start": 2.12,
+      "end": 2.26
+    },
+    {
+      "word": "the",
+      "start": 2.26,
+      "end": 2.36
+    },
+    {
+      "word": "kitchen.",
+      "start": 2.36,
+      "end": 2.64
+    }
+  ],
+  "duration": 2.64
+}

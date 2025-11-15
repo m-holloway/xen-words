@@ -1,0 +1,53 @@
+{
+  "audio_file": "sample_0085.flac",
+  "wav_file": "sample_0085.wav",
+  "transcript": "A shopgirl was the destiny prefigured for the newcomer.",
+  "word_timings": [
+    {
+      "word": "A",
+      "start": 0.0,
+      "end": 0.4
+    },
+    {
+      "word": "shopgirl",
+      "start": 0.4,
+      "end": 0.84
+    },
+    {
+      "word": "was",
+      "start": 0.84,
+      "end": 1.08
+    },
+    {
+      "word": "the",
+      "start": 1.08,
+      "end": 1.2
+    },
+    {
+      "word": "destiny",
+      "start": 1.2,
+      "end": 1.54
+    },
+    {
+      "word": "prefigured",
+      "start": 1.54,
+      "end": 2.22
+    },
+    {
+      "word": "for",
+      "start": 2.22,
+      "end": 2.38
+    },
+    {
+      "word": "the",
+      "start": 2.38,
+      "end": 2.54
+    },
+    {
+      "word": "newcomer.",
+      "start": 2.54,
+      "end": 3.06
+    }
+  ],
+  "duration": 3.06
+}

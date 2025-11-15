@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0067.flac",
+  "wav_file": "sample_0067.wav",
+  "transcript": "If he only had that letter back he wouldn't send it.",
+  "word_timings": [
+    {
+      "word": "If",
+      "start": 0.0,
+      "end": 0.66
+    },
+    {
+      "word": "he",
+      "start": 0.66,
+      "end": 0.74
+    },
+    {
+      "word": "only",
+      "start": 0.74,
+      "end": 1.02
+    },
+    {
+      "word": "had",
+      "start": 1.02,
+      "end": 1.22
+    },
+    {
+      "word": "that",
+      "start": 1.22,
+      "end": 1.42
+    },
+    {
+      "word": "letter",
+      "start": 1.42,
+      "end": 1.62
+    },
+    {
+      "word": "back",
+      "start": 1.62,
+      "end": 1.86
+    },
+    {
+      "word": "he",
+      "start": 1.86,
+      "end": 2.1
+    },
+    {
+      "word": "wouldn't",
+      "start": 2.1,
+      "end": 2.36
+    },
+    {
+      "word": "send",
+      "start": 2.36,
+      "end": 2.56
+    },
+    {
+      "word": "it.",
+      "start": 2.56,
+      "end": 2.78
+    }
+  ],
+  "duration": 2.78
+}

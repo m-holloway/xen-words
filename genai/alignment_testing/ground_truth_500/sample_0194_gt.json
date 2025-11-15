@@ -1,0 +1,163 @@
+{
+  "audio_file": "sample_0194.flac",
+  "wav_file": "sample_0194.wav",
+  "transcript": "If you would permit me, said the artist, looking at Phoebe, I should like to try whether the de-garo type can bring out disagreeable traits on a perfectly amiable face.",
+  "word_timings": [
+    {
+      "word": "If",
+      "start": 0.0,
+      "end": 0.66
+    },
+    {
+      "word": "you",
+      "start": 0.66,
+      "end": 0.78
+    },
+    {
+      "word": "would",
+      "start": 0.78,
+      "end": 0.88
+    },
+    {
+      "word": "permit",
+      "start": 0.88,
+      "end": 1.1
+    },
+    {
+      "word": "me,",
+      "start": 1.1,
+      "end": 1.4
+    },
+    {
+      "word": "said",
+      "start": 1.56,
+      "end": 1.68
+    },
+    {
+      "word": "the",
+      "start": 1.68,
+      "end": 1.8
+    },
+    {
+      "word": "artist,",
+      "start": 1.8,
+      "end": 2.06
+    },
+    {
+      "word": "looking",
+      "start": 2.34,
+      "end": 2.5
+    },
+    {
+      "word": "at",
+      "start": 2.5,
+      "end": 2.68
+    },
+    {
+      "word": "Phoebe,",
+      "start": 2.68,
+      "end": 2.96
+    },
+    {
+      "word": "I",
+      "start": 3.48,
+      "end": 3.72
+    },
+    {
+      "word": "should",
+      "start": 3.72,
+      "end": 3.88
+    },
+    {
+      "word": "like",
+      "start": 3.88,
+      "end": 4.02
+    },
+    {
+      "word": "to",
+      "start": 4.02,
+      "end": 4.18
+    },
+    {
+      "word": "try",
+      "start": 4.18,
+      "end": 4.42
+    },
+    {
+      "word": "whether",
+      "start": 4.42,
+      "end": 4.7
+    },
+    {
+      "word": "the",
+      "start": 4.7,
+      "end": 4.9
+    },
+    {
+      "word": "de",
+      "start": 4.9,
+      "end": 5.0
+    },
+    {
+      "word": "-garo",
+      "start": 5.0,
+      "end": 5.26
+    },
+    {
+      "word": "type",
+      "start": 5.26,
+      "end": 5.62
+    },
+    {
+      "word": "can",
+      "start": 5.62,
+      "end": 5.98
+    },
+    {
+      "word": "bring",
+      "start": 5.98,
+      "end": 6.16
+    },
+    {
+      "word": "out",
+      "start": 6.16,
+      "end": 6.34
+    },
+    {
+      "word": "disagreeable",
+      "start": 6.34,
+      "end": 6.94
+    },
+    {
+      "word": "traits",
+      "start": 6.94,
+      "end": 7.18
+    },
+    {
+      "word": "on",
+      "start": 7.18,
+      "end": 7.5
+    },
+    {
+      "word": "a",
+      "start": 7.5,
+      "end": 7.6
+    },
+    {
+      "word": "perfectly",
+      "start": 7.6,
+      "end": 7.94
+    },
+    {
+      "word": "amiable",
+      "start": 7.94,
+      "end": 8.44
+    },
+    {
+      "word": "face.",
+      "start": 8.44,
+      "end": 8.74
+    }
+  ],
+  "duration": 8.74
+}

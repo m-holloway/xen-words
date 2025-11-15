@@ -1,0 +1,188 @@
+{
+  "audio_file": "sample_0039.flac",
+  "wav_file": "sample_0039.wav",
+  "transcript": "It was with great opposition after two or three hours of the most urgent mental affirmation in denial, that at last he got a envelope, placed in it the requested amount, and slowly sealed it up.",
+  "word_timings": [
+    {
+      "word": "It",
+      "start": 0.0,
+      "end": 0.38
+    },
+    {
+      "word": "was",
+      "start": 0.38,
+      "end": 0.48
+    },
+    {
+      "word": "with",
+      "start": 0.48,
+      "end": 0.66
+    },
+    {
+      "word": "great",
+      "start": 0.66,
+      "end": 0.86
+    },
+    {
+      "word": "opposition",
+      "start": 0.86,
+      "end": 1.44
+    },
+    {
+      "word": "after",
+      "start": 1.44,
+      "end": 1.86
+    },
+    {
+      "word": "two",
+      "start": 1.86,
+      "end": 2.14
+    },
+    {
+      "word": "or",
+      "start": 2.14,
+      "end": 2.32
+    },
+    {
+      "word": "three",
+      "start": 2.32,
+      "end": 2.54
+    },
+    {
+      "word": "hours",
+      "start": 2.54,
+      "end": 2.84
+    },
+    {
+      "word": "of",
+      "start": 2.84,
+      "end": 3.1
+    },
+    {
+      "word": "the",
+      "start": 3.1,
+      "end": 3.22
+    },
+    {
+      "word": "most",
+      "start": 3.22,
+      "end": 3.5
+    },
+    {
+      "word": "urgent",
+      "start": 3.5,
+      "end": 3.96
+    },
+    {
+      "word": "mental",
+      "start": 3.96,
+      "end": 4.52
+    },
+    {
+      "word": "affirmation",
+      "start": 4.52,
+      "end": 5.1
+    },
+    {
+      "word": "in",
+      "start": 5.1,
+      "end": 5.26
+    },
+    {
+      "word": "denial,",
+      "start": 5.26,
+      "end": 5.62
+    },
+    {
+      "word": "that",
+      "start": 6.0,
+      "end": 6.22
+    },
+    {
+      "word": "at",
+      "start": 6.22,
+      "end": 6.32
+    },
+    {
+      "word": "last",
+      "start": 6.32,
+      "end": 6.58
+    },
+    {
+      "word": "he",
+      "start": 6.58,
+      "end": 6.8
+    },
+    {
+      "word": "got",
+      "start": 6.8,
+      "end": 6.94
+    },
+    {
+      "word": "a",
+      "start": 6.94,
+      "end": 7.1
+    },
+    {
+      "word": "envelope,",
+      "start": 7.1,
+      "end": 7.36
+    },
+    {
+      "word": "placed",
+      "start": 7.9,
+      "end": 8.12
+    },
+    {
+      "word": "in",
+      "start": 8.12,
+      "end": 8.28
+    },
+    {
+      "word": "it",
+      "start": 8.28,
+      "end": 8.38
+    },
+    {
+      "word": "the",
+      "start": 8.38,
+      "end": 8.58
+    },
+    {
+      "word": "requested",
+      "start": 8.58,
+      "end": 8.96
+    },
+    {
+      "word": "amount,",
+      "start": 8.96,
+      "end": 9.24
+    },
+    {
+      "word": "and",
+      "start": 9.72,
+      "end": 9.9
+    },
+    {
+      "word": "slowly",
+      "start": 9.9,
+      "end": 10.18
+    },
+    {
+      "word": "sealed",
+      "start": 10.18,
+      "end": 10.48
+    },
+    {
+      "word": "it",
+      "start": 10.48,
+      "end": 10.66
+    },
+    {
+      "word": "up.",
+      "start": 10.66,
+      "end": 10.9
+    }
+  ],
+  "duration": 10.9
+}

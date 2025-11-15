@@ -1,0 +1,143 @@
+{
+  "audio_file": "sample_0491.flac",
+  "wav_file": "sample_0491.wav",
+  "transcript": "To the left hand I turned, with that reliance with which the little child runs to his mother when he has fear or when he is afflicted.",
+  "word_timings": [
+    {
+      "word": "To",
+      "start": 0.0,
+      "end": 0.32
+    },
+    {
+      "word": "the",
+      "start": 0.32,
+      "end": 0.44
+    },
+    {
+      "word": "left",
+      "start": 0.44,
+      "end": 0.7
+    },
+    {
+      "word": "hand",
+      "start": 0.7,
+      "end": 1.02
+    },
+    {
+      "word": "I",
+      "start": 1.02,
+      "end": 1.2
+    },
+    {
+      "word": "turned,",
+      "start": 1.2,
+      "end": 1.52
+    },
+    {
+      "word": "with",
+      "start": 1.76,
+      "end": 1.9
+    },
+    {
+      "word": "that",
+      "start": 1.9,
+      "end": 2.18
+    },
+    {
+      "word": "reliance",
+      "start": 2.18,
+      "end": 2.72
+    },
+    {
+      "word": "with",
+      "start": 2.72,
+      "end": 2.94
+    },
+    {
+      "word": "which",
+      "start": 2.94,
+      "end": 3.18
+    },
+    {
+      "word": "the",
+      "start": 3.18,
+      "end": 3.34
+    },
+    {
+      "word": "little",
+      "start": 3.34,
+      "end": 3.52
+    },
+    {
+      "word": "child",
+      "start": 3.52,
+      "end": 3.88
+    },
+    {
+      "word": "runs",
+      "start": 3.88,
+      "end": 4.16
+    },
+    {
+      "word": "to",
+      "start": 4.16,
+      "end": 4.38
+    },
+    {
+      "word": "his",
+      "start": 4.38,
+      "end": 4.5
+    },
+    {
+      "word": "mother",
+      "start": 4.5,
+      "end": 4.76
+    },
+    {
+      "word": "when",
+      "start": 4.76,
+      "end": 4.94
+    },
+    {
+      "word": "he",
+      "start": 4.94,
+      "end": 5.12
+    },
+    {
+      "word": "has",
+      "start": 5.12,
+      "end": 5.28
+    },
+    {
+      "word": "fear",
+      "start": 5.28,
+      "end": 5.6
+    },
+    {
+      "word": "or",
+      "start": 5.6,
+      "end": 5.94
+    },
+    {
+      "word": "when",
+      "start": 5.94,
+      "end": 6.1
+    },
+    {
+      "word": "he",
+      "start": 6.1,
+      "end": 6.24
+    },
+    {
+      "word": "is",
+      "start": 6.24,
+      "end": 6.36
+    },
+    {
+      "word": "afflicted.",
+      "start": 6.36,
+      "end": 6.96
+    }
+  ],
+  "duration": 6.96
+}

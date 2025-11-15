@@ -1,0 +1,83 @@
+{
+  "audio_file": "sample_0170.flac",
+  "wav_file": "sample_0170.wav",
+  "transcript": "During the auction, he went about with his head down and never lifted his eyes.",
+  "word_timings": [
+    {
+      "word": "During",
+      "start": 0.0,
+      "end": 0.52
+    },
+    {
+      "word": "the",
+      "start": 0.52,
+      "end": 0.72
+    },
+    {
+      "word": "auction,",
+      "start": 0.72,
+      "end": 1.04
+    },
+    {
+      "word": "he",
+      "start": 1.24,
+      "end": 1.32
+    },
+    {
+      "word": "went",
+      "start": 1.32,
+      "end": 1.48
+    },
+    {
+      "word": "about",
+      "start": 1.48,
+      "end": 1.8
+    },
+    {
+      "word": "with",
+      "start": 1.8,
+      "end": 2.04
+    },
+    {
+      "word": "his",
+      "start": 2.04,
+      "end": 2.18
+    },
+    {
+      "word": "head",
+      "start": 2.18,
+      "end": 2.36
+    },
+    {
+      "word": "down",
+      "start": 2.36,
+      "end": 2.66
+    },
+    {
+      "word": "and",
+      "start": 2.66,
+      "end": 2.84
+    },
+    {
+      "word": "never",
+      "start": 2.84,
+      "end": 3.06
+    },
+    {
+      "word": "lifted",
+      "start": 3.06,
+      "end": 3.36
+    },
+    {
+      "word": "his",
+      "start": 3.36,
+      "end": 3.6
+    },
+    {
+      "word": "eyes.",
+      "start": 3.6,
+      "end": 3.9
+    }
+  ],
+  "duration": 3.9
+}

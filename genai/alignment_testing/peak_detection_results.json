@@ -1,0 +1,54 @@
+[
+  {
+    "name": "Relaxed",
+    "config": {
+      "height": 0.3,
+      "distance": 10,
+      "prominence": 0.1,
+      "name": "Relaxed"
+    },
+    "precision": 0.7537537537537538,
+    "recall": 0.0917062477164779,
+    "f1": 0.16351791530944626,
+    "n_peaks": 666
+  },
+  {
+    "name": "Balanced",
+    "config": {
+      "height": 0.4,
+      "distance": 10,
+      "prominence": 0.15,
+      "name": "Balanced"
+    },
+    "precision": 0.7976190476190477,
+    "recall": 0.08567774936061381,
+    "f1": 0.15473441108545036,
+    "n_peaks": 588
+  },
+  {
+    "name": "Strict",
+    "config": {
+      "height": 0.5,
+      "distance": 10,
+      "prominence": 0.2,
+      "name": "Strict"
+    },
+    "precision": 0.8260038240917782,
+    "recall": 0.07891852393131166,
+    "f1": 0.144072036018009,
+    "n_peaks": 523
+  },
+  {
+    "name": "Wide Gap",
+    "config": {
+      "height": 0.3,
+      "distance": 15,
+      "prominence": 0.1,
+      "name": "Wide Gap"
+    },
+    "precision": 0.7901234567901234,
+    "recall": 0.0701497990500548,
+    "f1": 0.12885906040268458,
+    "n_peaks": 486
+  }
+]

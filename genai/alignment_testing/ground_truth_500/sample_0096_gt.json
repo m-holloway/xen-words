@@ -1,0 +1,98 @@
+{
+  "audio_file": "sample_0096.flac",
+  "wav_file": "sample_0096.wav",
+  "transcript": "A faint, fetted smell came from him, and a thread of green liquid oozed from his crushed head.",
+  "word_timings": [
+    {
+      "word": "A",
+      "start": 0.0,
+      "end": 0.52
+    },
+    {
+      "word": "faint,",
+      "start": 0.52,
+      "end": 0.86
+    },
+    {
+      "word": "fetted",
+      "start": 1.04,
+      "end": 1.26
+    },
+    {
+      "word": "smell",
+      "start": 1.26,
+      "end": 1.58
+    },
+    {
+      "word": "came",
+      "start": 1.58,
+      "end": 1.94
+    },
+    {
+      "word": "from",
+      "start": 1.94,
+      "end": 2.18
+    },
+    {
+      "word": "him,",
+      "start": 2.18,
+      "end": 2.42
+    },
+    {
+      "word": "and",
+      "start": 2.78,
+      "end": 2.84
+    },
+    {
+      "word": "a",
+      "start": 2.84,
+      "end": 2.94
+    },
+    {
+      "word": "thread",
+      "start": 2.94,
+      "end": 3.2
+    },
+    {
+      "word": "of",
+      "start": 3.2,
+      "end": 3.44
+    },
+    {
+      "word": "green",
+      "start": 3.44,
+      "end": 3.66
+    },
+    {
+      "word": "liquid",
+      "start": 3.66,
+      "end": 4.08
+    },
+    {
+      "word": "oozed",
+      "start": 4.08,
+      "end": 4.58
+    },
+    {
+      "word": "from",
+      "start": 4.58,
+      "end": 4.76
+    },
+    {
+      "word": "his",
+      "start": 4.76,
+      "end": 4.94
+    },
+    {
+      "word": "crushed",
+      "start": 4.94,
+      "end": 5.36
+    },
+    {
+      "word": "head.",
+      "start": 5.36,
+      "end": 5.62
+    }
+  ],
+  "duration": 5.62
+}

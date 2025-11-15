@@ -1,0 +1,158 @@
+{
+  "audio_file": "sample_0350.flac",
+  "wav_file": "sample_0350.wav",
+  "transcript": "When an aristocracy carries on the public affairs, its national pride naturally assumes this reserved, indifferent, and haughty form, which is imitated by all the other classes of the nation.",
+  "word_timings": [
+    {
+      "word": "When",
+      "start": 0.0,
+      "end": 0.46
+    },
+    {
+      "word": "an",
+      "start": 0.46,
+      "end": 0.58
+    },
+    {
+      "word": "aristocracy",
+      "start": 0.58,
+      "end": 1.12
+    },
+    {
+      "word": "carries",
+      "start": 1.12,
+      "end": 1.54
+    },
+    {
+      "word": "on",
+      "start": 1.54,
+      "end": 1.74
+    },
+    {
+      "word": "the",
+      "start": 1.74,
+      "end": 1.86
+    },
+    {
+      "word": "public",
+      "start": 1.86,
+      "end": 2.08
+    },
+    {
+      "word": "affairs,",
+      "start": 2.08,
+      "end": 2.46
+    },
+    {
+      "word": "its",
+      "start": 2.9,
+      "end": 3.02
+    },
+    {
+      "word": "national",
+      "start": 3.02,
+      "end": 3.36
+    },
+    {
+      "word": "pride",
+      "start": 3.36,
+      "end": 3.68
+    },
+    {
+      "word": "naturally",
+      "start": 3.68,
+      "end": 4.18
+    },
+    {
+      "word": "assumes",
+      "start": 4.18,
+      "end": 4.68
+    },
+    {
+      "word": "this",
+      "start": 4.68,
+      "end": 4.96
+    },
+    {
+      "word": "reserved,",
+      "start": 4.96,
+      "end": 5.48
+    },
+    {
+      "word": "indifferent,",
+      "start": 5.68,
+      "end": 6.1
+    },
+    {
+      "word": "and",
+      "start": 6.36,
+      "end": 6.48
+    },
+    {
+      "word": "haughty",
+      "start": 6.48,
+      "end": 6.88
+    },
+    {
+      "word": "form,",
+      "start": 6.88,
+      "end": 7.14
+    },
+    {
+      "word": "which",
+      "start": 7.58,
+      "end": 7.76
+    },
+    {
+      "word": "is",
+      "start": 7.76,
+      "end": 7.86
+    },
+    {
+      "word": "imitated",
+      "start": 7.86,
+      "end": 8.24
+    },
+    {
+      "word": "by",
+      "start": 8.24,
+      "end": 8.56
+    },
+    {
+      "word": "all",
+      "start": 8.56,
+      "end": 8.78
+    },
+    {
+      "word": "the",
+      "start": 8.78,
+      "end": 8.92
+    },
+    {
+      "word": "other",
+      "start": 8.92,
+      "end": 9.06
+    },
+    {
+      "word": "classes",
+      "start": 9.06,
+      "end": 9.4
+    },
+    {
+      "word": "of",
+      "start": 9.4,
+      "end": 9.56
+    },
+    {
+      "word": "the",
+      "start": 9.56,
+      "end": 9.68
+    },
+    {
+      "word": "nation.",
+      "start": 9.68,
+      "end": 9.98
+    }
+  ],
+  "duration": 9.98
+}

@@ -1,0 +1,83 @@
+{
+  "audio_file": "sample_0000.flac",
+  "wav_file": "sample_0000.wav",
+  "transcript": "The long drizzle had begun. Pedestrians had turned up collars and trousers at the bottom.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.3
+    },
+    {
+      "word": "long",
+      "start": 0.3,
+      "end": 0.54
+    },
+    {
+      "word": "drizzle",
+      "start": 0.54,
+      "end": 0.8
+    },
+    {
+      "word": "had",
+      "start": 0.8,
+      "end": 1.04
+    },
+    {
+      "word": "begun.",
+      "start": 1.04,
+      "end": 1.38
+    },
+    {
+      "word": "Pedestrians",
+      "start": 1.74,
+      "end": 2.16
+    },
+    {
+      "word": "had",
+      "start": 2.16,
+      "end": 2.4
+    },
+    {
+      "word": "turned",
+      "start": 2.4,
+      "end": 2.6
+    },
+    {
+      "word": "up",
+      "start": 2.6,
+      "end": 2.84
+    },
+    {
+      "word": "collars",
+      "start": 2.84,
+      "end": 3.22
+    },
+    {
+      "word": "and",
+      "start": 3.22,
+      "end": 3.46
+    },
+    {
+      "word": "trousers",
+      "start": 3.46,
+      "end": 3.74
+    },
+    {
+      "word": "at",
+      "start": 3.74,
+      "end": 4.04
+    },
+    {
+      "word": "the",
+      "start": 4.04,
+      "end": 4.12
+    },
+    {
+      "word": "bottom.",
+      "start": 4.12,
+      "end": 4.42
+    }
+  ],
+  "duration": 4.42
+}

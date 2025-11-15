@@ -1,0 +1,238 @@
+{
+  "audio_file": "sample_0153.flac",
+  "wav_file": "sample_0153.wav",
+  "transcript": "Peter told his troubles to Mr. Shimera. He was unable to meet a note which fell due on the 1st of November, had to pay an exorbitant bonus on renewing it, and to give a mortgage on his pigs and horses and even his milk cow.",
+  "word_timings": [
+    {
+      "word": "Peter",
+      "start": 0.0,
+      "end": 0.76
+    },
+    {
+      "word": "told",
+      "start": 0.76,
+      "end": 1.04
+    },
+    {
+      "word": "his",
+      "start": 1.04,
+      "end": 1.26
+    },
+    {
+      "word": "troubles",
+      "start": 1.26,
+      "end": 1.54
+    },
+    {
+      "word": "to",
+      "start": 1.54,
+      "end": 1.8
+    },
+    {
+      "word": "Mr.",
+      "start": 1.8,
+      "end": 2.06
+    },
+    {
+      "word": "Shimera.",
+      "start": 2.18,
+      "end": 2.42
+    },
+    {
+      "word": "He",
+      "start": 3.66,
+      "end": 4.14
+    },
+    {
+      "word": "was",
+      "start": 4.14,
+      "end": 4.32
+    },
+    {
+      "word": "unable",
+      "start": 4.32,
+      "end": 4.58
+    },
+    {
+      "word": "to",
+      "start": 4.58,
+      "end": 4.84
+    },
+    {
+      "word": "meet",
+      "start": 4.84,
+      "end": 5.0
+    },
+    {
+      "word": "a",
+      "start": 5.0,
+      "end": 5.16
+    },
+    {
+      "word": "note",
+      "start": 5.16,
+      "end": 5.38
+    },
+    {
+      "word": "which",
+      "start": 5.38,
+      "end": 5.74
+    },
+    {
+      "word": "fell",
+      "start": 5.74,
+      "end": 5.92
+    },
+    {
+      "word": "due",
+      "start": 5.92,
+      "end": 6.18
+    },
+    {
+      "word": "on",
+      "start": 6.18,
+      "end": 6.36
+    },
+    {
+      "word": "the",
+      "start": 6.36,
+      "end": 6.48
+    },
+    {
+      "word": "1st",
+      "start": 6.48,
+      "end": 6.82
+    },
+    {
+      "word": "of",
+      "start": 6.82,
+      "end": 6.92
+    },
+    {
+      "word": "November,",
+      "start": 6.92,
+      "end": 7.34
+    },
+    {
+      "word": "had",
+      "start": 7.88,
+      "end": 8.2
+    },
+    {
+      "word": "to",
+      "start": 8.2,
+      "end": 8.34
+    },
+    {
+      "word": "pay",
+      "start": 8.34,
+      "end": 8.52
+    },
+    {
+      "word": "an",
+      "start": 8.52,
+      "end": 8.64
+    },
+    {
+      "word": "exorbitant",
+      "start": 8.64,
+      "end": 9.26
+    },
+    {
+      "word": "bonus",
+      "start": 9.26,
+      "end": 9.58
+    },
+    {
+      "word": "on",
+      "start": 9.58,
+      "end": 9.8
+    },
+    {
+      "word": "renewing",
+      "start": 9.8,
+      "end": 10.28
+    },
+    {
+      "word": "it,",
+      "start": 10.28,
+      "end": 10.48
+    },
+    {
+      "word": "and",
+      "start": 11.14,
+      "end": 11.24
+    },
+    {
+      "word": "to",
+      "start": 11.24,
+      "end": 11.34
+    },
+    {
+      "word": "give",
+      "start": 11.34,
+      "end": 11.5
+    },
+    {
+      "word": "a",
+      "start": 11.5,
+      "end": 11.64
+    },
+    {
+      "word": "mortgage",
+      "start": 11.64,
+      "end": 11.94
+    },
+    {
+      "word": "on",
+      "start": 11.94,
+      "end": 12.18
+    },
+    {
+      "word": "his",
+      "start": 12.18,
+      "end": 12.36
+    },
+    {
+      "word": "pigs",
+      "start": 12.36,
+      "end": 12.62
+    },
+    {
+      "word": "and",
+      "start": 12.62,
+      "end": 12.86
+    },
+    {
+      "word": "horses",
+      "start": 12.86,
+      "end": 13.22
+    },
+    {
+      "word": "and",
+      "start": 13.22,
+      "end": 13.54
+    },
+    {
+      "word": "even",
+      "start": 13.54,
+      "end": 13.72
+    },
+    {
+      "word": "his",
+      "start": 13.72,
+      "end": 13.92
+    },
+    {
+      "word": "milk",
+      "start": 13.92,
+      "end": 14.12
+    },
+    {
+      "word": "cow.",
+      "start": 14.12,
+      "end": 14.42
+    }
+  ],
+  "duration": 14.42
+}

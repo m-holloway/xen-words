@@ -1,0 +1,138 @@
+{
+  "audio_file": "sample_0325.flac",
+  "wav_file": "sample_0325.wav",
+  "transcript": "We were so deep in the grass that we could see nothing but the blue sky over us, and the gold tree in front of us.",
+  "word_timings": [
+    {
+      "word": "We",
+      "start": 0.0,
+      "end": 0.42
+    },
+    {
+      "word": "were",
+      "start": 0.42,
+      "end": 0.52
+    },
+    {
+      "word": "so",
+      "start": 0.52,
+      "end": 0.76
+    },
+    {
+      "word": "deep",
+      "start": 0.76,
+      "end": 1.0
+    },
+    {
+      "word": "in",
+      "start": 1.0,
+      "end": 1.2
+    },
+    {
+      "word": "the",
+      "start": 1.2,
+      "end": 1.3
+    },
+    {
+      "word": "grass",
+      "start": 1.3,
+      "end": 1.56
+    },
+    {
+      "word": "that",
+      "start": 1.56,
+      "end": 1.88
+    },
+    {
+      "word": "we",
+      "start": 1.88,
+      "end": 2.02
+    },
+    {
+      "word": "could",
+      "start": 2.02,
+      "end": 2.16
+    },
+    {
+      "word": "see",
+      "start": 2.16,
+      "end": 2.36
+    },
+    {
+      "word": "nothing",
+      "start": 2.36,
+      "end": 2.72
+    },
+    {
+      "word": "but",
+      "start": 2.72,
+      "end": 2.9
+    },
+    {
+      "word": "the",
+      "start": 2.9,
+      "end": 3.02
+    },
+    {
+      "word": "blue",
+      "start": 3.02,
+      "end": 3.2
+    },
+    {
+      "word": "sky",
+      "start": 3.2,
+      "end": 3.54
+    },
+    {
+      "word": "over",
+      "start": 3.54,
+      "end": 3.92
+    },
+    {
+      "word": "us,",
+      "start": 3.92,
+      "end": 4.28
+    },
+    {
+      "word": "and",
+      "start": 4.76,
+      "end": 4.86
+    },
+    {
+      "word": "the",
+      "start": 4.86,
+      "end": 4.98
+    },
+    {
+      "word": "gold",
+      "start": 4.98,
+      "end": 5.22
+    },
+    {
+      "word": "tree",
+      "start": 5.22,
+      "end": 5.54
+    },
+    {
+      "word": "in",
+      "start": 5.54,
+      "end": 5.7
+    },
+    {
+      "word": "front",
+      "start": 5.7,
+      "end": 5.9
+    },
+    {
+      "word": "of",
+      "start": 5.9,
+      "end": 6.1
+    },
+    {
+      "word": "us.",
+      "start": 6.1,
+      "end": 6.4
+    }
+  ],
+  "duration": 6.4
+}

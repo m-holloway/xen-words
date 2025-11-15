@@ -1,0 +1,113 @@
+{
+  "audio_file": "sample_0436.flac",
+  "wav_file": "sample_0436.wav",
+  "transcript": "Stevie, accustomed to move about disregarded, had got up from the kitchen table, carrying off his drawing to bed with him.",
+  "word_timings": [
+    {
+      "word": "Stevie,",
+      "start": 0.0,
+      "end": 0.7
+    },
+    {
+      "word": "accustomed",
+      "start": 1.1,
+      "end": 1.38
+    },
+    {
+      "word": "to",
+      "start": 1.38,
+      "end": 1.64
+    },
+    {
+      "word": "move",
+      "start": 1.64,
+      "end": 1.76
+    },
+    {
+      "word": "about",
+      "start": 1.76,
+      "end": 1.98
+    },
+    {
+      "word": "disregarded,",
+      "start": 1.98,
+      "end": 2.62
+    },
+    {
+      "word": "had",
+      "start": 3.14,
+      "end": 3.22
+    },
+    {
+      "word": "got",
+      "start": 3.22,
+      "end": 3.34
+    },
+    {
+      "word": "up",
+      "start": 3.34,
+      "end": 3.5
+    },
+    {
+      "word": "from",
+      "start": 3.5,
+      "end": 3.68
+    },
+    {
+      "word": "the",
+      "start": 3.68,
+      "end": 3.8
+    },
+    {
+      "word": "kitchen",
+      "start": 3.8,
+      "end": 4.0
+    },
+    {
+      "word": "table,",
+      "start": 4.0,
+      "end": 4.38
+    },
+    {
+      "word": "carrying",
+      "start": 4.58,
+      "end": 4.8
+    },
+    {
+      "word": "off",
+      "start": 4.8,
+      "end": 5.04
+    },
+    {
+      "word": "his",
+      "start": 5.04,
+      "end": 5.24
+    },
+    {
+      "word": "drawing",
+      "start": 5.24,
+      "end": 5.42
+    },
+    {
+      "word": "to",
+      "start": 5.42,
+      "end": 5.6
+    },
+    {
+      "word": "bed",
+      "start": 5.6,
+      "end": 5.74
+    },
+    {
+      "word": "with",
+      "start": 5.74,
+      "end": 5.92
+    },
+    {
+      "word": "him.",
+      "start": 5.92,
+      "end": 6.14
+    }
+  ],
+  "duration": 6.14
+}

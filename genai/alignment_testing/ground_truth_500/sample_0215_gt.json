@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0215.flac",
+  "wav_file": "sample_0215.wav",
+  "transcript": "Pray go to bed for I'm sure you must need rest",
+  "word_timings": [
+    {
+      "word": "Pray",
+      "start": 0.0,
+      "end": 0.48
+    },
+    {
+      "word": "go",
+      "start": 0.48,
+      "end": 0.66
+    },
+    {
+      "word": "to",
+      "start": 0.66,
+      "end": 0.8
+    },
+    {
+      "word": "bed",
+      "start": 0.8,
+      "end": 1.02
+    },
+    {
+      "word": "for",
+      "start": 1.02,
+      "end": 1.28
+    },
+    {
+      "word": "I'm",
+      "start": 1.28,
+      "end": 1.5
+    },
+    {
+      "word": "sure",
+      "start": 1.5,
+      "end": 1.76
+    },
+    {
+      "word": "you",
+      "start": 1.76,
+      "end": 2.06
+    },
+    {
+      "word": "must",
+      "start": 2.06,
+      "end": 2.24
+    },
+    {
+      "word": "need",
+      "start": 2.24,
+      "end": 2.5
+    },
+    {
+      "word": "rest",
+      "start": 2.5,
+      "end": 2.92
+    }
+  ],
+  "duration": 2.92
+}

@@ -1,0 +1,203 @@
+{
+  "audio_file": "sample_0323.flac",
+  "wav_file": "sample_0323.wav",
+  "transcript": "Fooks brought up a sack of potatoes and a piece of cured pork from the cellar, and grandmother packed some loaves of Saturday's bread, a jar of butter, and several pumpkin pies in the straw of the wagon box.",
+  "word_timings": [
+    {
+      "word": "Fooks",
+      "start": 0.0,
+      "end": 0.94
+    },
+    {
+      "word": "brought",
+      "start": 0.94,
+      "end": 1.14
+    },
+    {
+      "word": "up",
+      "start": 1.14,
+      "end": 1.32
+    },
+    {
+      "word": "a",
+      "start": 1.32,
+      "end": 1.4
+    },
+    {
+      "word": "sack",
+      "start": 1.4,
+      "end": 1.66
+    },
+    {
+      "word": "of",
+      "start": 1.66,
+      "end": 1.94
+    },
+    {
+      "word": "potatoes",
+      "start": 1.94,
+      "end": 2.34
+    },
+    {
+      "word": "and",
+      "start": 2.34,
+      "end": 3.16
+    },
+    {
+      "word": "a",
+      "start": 3.16,
+      "end": 3.3
+    },
+    {
+      "word": "piece",
+      "start": 3.3,
+      "end": 3.5
+    },
+    {
+      "word": "of",
+      "start": 3.5,
+      "end": 3.76
+    },
+    {
+      "word": "cured",
+      "start": 3.76,
+      "end": 4.04
+    },
+    {
+      "word": "pork",
+      "start": 4.04,
+      "end": 4.4
+    },
+    {
+      "word": "from",
+      "start": 4.4,
+      "end": 4.7
+    },
+    {
+      "word": "the",
+      "start": 4.7,
+      "end": 4.82
+    },
+    {
+      "word": "cellar,",
+      "start": 4.82,
+      "end": 5.26
+    },
+    {
+      "word": "and",
+      "start": 5.44,
+      "end": 6.48
+    },
+    {
+      "word": "grandmother",
+      "start": 6.48,
+      "end": 6.78
+    },
+    {
+      "word": "packed",
+      "start": 6.78,
+      "end": 7.28
+    },
+    {
+      "word": "some",
+      "start": 7.28,
+      "end": 7.64
+    },
+    {
+      "word": "loaves",
+      "start": 7.64,
+      "end": 8.14
+    },
+    {
+      "word": "of",
+      "start": 8.14,
+      "end": 8.28
+    },
+    {
+      "word": "Saturday's",
+      "start": 8.28,
+      "end": 8.82
+    },
+    {
+      "word": "bread,",
+      "start": 8.82,
+      "end": 9.04
+    },
+    {
+      "word": "a",
+      "start": 9.76,
+      "end": 9.82
+    },
+    {
+      "word": "jar",
+      "start": 9.82,
+      "end": 10.0
+    },
+    {
+      "word": "of",
+      "start": 10.0,
+      "end": 10.22
+    },
+    {
+      "word": "butter,",
+      "start": 10.22,
+      "end": 10.52
+    },
+    {
+      "word": "and",
+      "start": 10.96,
+      "end": 11.14
+    },
+    {
+      "word": "several",
+      "start": 11.14,
+      "end": 11.42
+    },
+    {
+      "word": "pumpkin",
+      "start": 11.42,
+      "end": 11.78
+    },
+    {
+      "word": "pies",
+      "start": 11.78,
+      "end": 12.26
+    },
+    {
+      "word": "in",
+      "start": 12.26,
+      "end": 12.78
+    },
+    {
+      "word": "the",
+      "start": 12.78,
+      "end": 12.88
+    },
+    {
+      "word": "straw",
+      "start": 12.88,
+      "end": 13.16
+    },
+    {
+      "word": "of",
+      "start": 13.16,
+      "end": 13.4
+    },
+    {
+      "word": "the",
+      "start": 13.4,
+      "end": 13.48
+    },
+    {
+      "word": "wagon",
+      "start": 13.48,
+      "end": 13.74
+    },
+    {
+      "word": "box.",
+      "start": 13.74,
+      "end": 14.06
+    }
+  ],
+  "duration": 14.06
+}

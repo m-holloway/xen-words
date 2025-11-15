@@ -1,0 +1,48 @@
+{
+  "audio_file": "sample_0303.flac",
+  "wav_file": "sample_0303.wav",
+  "transcript": "Dear, good God, help us now, she prayed.",
+  "word_timings": [
+    {
+      "word": "Dear,",
+      "start": 0.0,
+      "end": 0.58
+    },
+    {
+      "word": "good",
+      "start": 0.74,
+      "end": 0.9
+    },
+    {
+      "word": "God,",
+      "start": 0.9,
+      "end": 1.28
+    },
+    {
+      "word": "help",
+      "start": 1.44,
+      "end": 1.62
+    },
+    {
+      "word": "us",
+      "start": 1.62,
+      "end": 1.88
+    },
+    {
+      "word": "now,",
+      "start": 1.88,
+      "end": 2.24
+    },
+    {
+      "word": "she",
+      "start": 2.32,
+      "end": 2.5
+    },
+    {
+      "word": "prayed.",
+      "start": 2.5,
+      "end": 2.8
+    }
+  ],
+  "duration": 2.8
+}

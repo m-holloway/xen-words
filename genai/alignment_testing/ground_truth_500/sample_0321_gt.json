@@ -1,0 +1,68 @@
+{
+  "audio_file": "sample_0321.flac",
+  "wav_file": "sample_0321.wav",
+  "transcript": "It's no better than a badger hole. No proper dugout at all.",
+  "word_timings": [
+    {
+      "word": "It's",
+      "start": 0.0,
+      "end": 0.54
+    },
+    {
+      "word": "no",
+      "start": 0.54,
+      "end": 0.74
+    },
+    {
+      "word": "better",
+      "start": 0.74,
+      "end": 1.06
+    },
+    {
+      "word": "than",
+      "start": 1.06,
+      "end": 1.28
+    },
+    {
+      "word": "a",
+      "start": 1.28,
+      "end": 1.44
+    },
+    {
+      "word": "badger",
+      "start": 1.44,
+      "end": 1.76
+    },
+    {
+      "word": "hole.",
+      "start": 1.76,
+      "end": 1.98
+    },
+    {
+      "word": "No",
+      "start": 2.42,
+      "end": 2.62
+    },
+    {
+      "word": "proper",
+      "start": 2.62,
+      "end": 3.04
+    },
+    {
+      "word": "dugout",
+      "start": 3.04,
+      "end": 3.52
+    },
+    {
+      "word": "at",
+      "start": 3.52,
+      "end": 3.66
+    },
+    {
+      "word": "all.",
+      "start": 3.66,
+      "end": 4.0
+    }
+  ],
+  "duration": 4.0
+}

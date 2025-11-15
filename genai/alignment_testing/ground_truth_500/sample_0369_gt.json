@@ -1,0 +1,48 @@
+{
+  "audio_file": "sample_0369.flac",
+  "wav_file": "sample_0369.wav",
+  "transcript": "I'll have to check some more, says Tom.",
+  "word_timings": [
+    {
+      "word": "I'll",
+      "start": 0.0,
+      "end": 0.7
+    },
+    {
+      "word": "have",
+      "start": 0.7,
+      "end": 0.8
+    },
+    {
+      "word": "to",
+      "start": 0.8,
+      "end": 0.96
+    },
+    {
+      "word": "check",
+      "start": 0.96,
+      "end": 1.14
+    },
+    {
+      "word": "some",
+      "start": 1.14,
+      "end": 1.4
+    },
+    {
+      "word": "more,",
+      "start": 1.4,
+      "end": 1.58
+    },
+    {
+      "word": "says",
+      "start": 1.72,
+      "end": 1.98
+    },
+    {
+      "word": "Tom.",
+      "start": 1.98,
+      "end": 2.18
+    }
+  ],
+  "duration": 2.18
+}

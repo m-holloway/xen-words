@@ -1,0 +1,83 @@
+{
+  "audio_file": "sample_0459.flac",
+  "wav_file": "sample_0459.wav",
+  "transcript": "and ever since he had never managed to get his waitout as much as announced.",
+  "word_timings": [
+    {
+      "word": "and",
+      "start": 0.0,
+      "end": 0.48
+    },
+    {
+      "word": "ever",
+      "start": 0.48,
+      "end": 0.66
+    },
+    {
+      "word": "since",
+      "start": 0.66,
+      "end": 0.94
+    },
+    {
+      "word": "he",
+      "start": 0.94,
+      "end": 1.22
+    },
+    {
+      "word": "had",
+      "start": 1.22,
+      "end": 1.32
+    },
+    {
+      "word": "never",
+      "start": 1.32,
+      "end": 1.5
+    },
+    {
+      "word": "managed",
+      "start": 1.5,
+      "end": 1.84
+    },
+    {
+      "word": "to",
+      "start": 1.84,
+      "end": 2.04
+    },
+    {
+      "word": "get",
+      "start": 2.04,
+      "end": 2.14
+    },
+    {
+      "word": "his",
+      "start": 2.14,
+      "end": 2.28
+    },
+    {
+      "word": "waitout",
+      "start": 2.28,
+      "end": 2.7
+    },
+    {
+      "word": "as",
+      "start": 2.7,
+      "end": 2.86
+    },
+    {
+      "word": "much",
+      "start": 2.86,
+      "end": 3.06
+    },
+    {
+      "word": "as",
+      "start": 3.06,
+      "end": 3.22
+    },
+    {
+      "word": "announced.",
+      "start": 3.22,
+      "end": 3.54
+    }
+  ],
+  "duration": 3.54
+}

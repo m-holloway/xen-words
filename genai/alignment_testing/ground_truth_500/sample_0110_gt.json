@@ -1,0 +1,43 @@
+{
+  "audio_file": "sample_0110.flac",
+  "wav_file": "sample_0110.wav",
+  "transcript": "Look, Tony, that's his poison, I said.",
+  "word_timings": [
+    {
+      "word": "Look,",
+      "start": 0.0,
+      "end": 0.8
+    },
+    {
+      "word": "Tony,",
+      "start": 1.02,
+      "end": 1.18
+    },
+    {
+      "word": "that's",
+      "start": 1.72,
+      "end": 1.94
+    },
+    {
+      "word": "his",
+      "start": 1.94,
+      "end": 2.04
+    },
+    {
+      "word": "poison,",
+      "start": 2.04,
+      "end": 2.36
+    },
+    {
+      "word": "I",
+      "start": 2.36,
+      "end": 2.64
+    },
+    {
+      "word": "said.",
+      "start": 2.64,
+      "end": 2.88
+    }
+  ],
+  "duration": 2.88
+}

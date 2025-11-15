@@ -1,0 +1,59 @@
+{
+  "model": "base",
+  "total_files": 10,
+  "successful": 10,
+  "total_words": 121,
+  "total_duration": 35.24,
+  "files": [
+    {
+      "audio": "sample_0000.flac",
+      "words": 15,
+      "duration": 4.42
+    },
+    {
+      "audio": "sample_0001.flac",
+      "words": 15,
+      "duration": 5.02
+    },
+    {
+      "audio": "sample_0002.flac",
+      "words": 7,
+      "duration": 2.32
+    },
+    {
+      "audio": "sample_0003.flac",
+      "words": 15,
+      "duration": 4.38
+    },
+    {
+      "audio": "sample_0004.flac",
+      "words": 15,
+      "duration": 4.06
+    },
+    {
+      "audio": "sample_0005.flac",
+      "words": 9,
+      "duration": 3.52
+    },
+    {
+      "audio": "sample_0006.flac",
+      "words": 10,
+      "duration": 2.94
+    },
+    {
+      "audio": "sample_0007.flac",
+      "words": 13,
+      "duration": 3.26
+    },
+    {
+      "audio": "sample_0008.flac",
+      "words": 10,
+      "duration": 2.04
+    },
+    {
+      "audio": "sample_0009.flac",
+      "words": 12,
+      "duration": 3.28
+    }
+  ]
+}

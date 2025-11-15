@@ -1,0 +1,68 @@
+{
+  "audio_file": "sample_0144.flac",
+  "wav_file": "sample_0144.wav",
+  "transcript": "I could not take my eyes off the man in the bed.",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "could",
+      "start": 0.62,
+      "end": 0.74
+    },
+    {
+      "word": "not",
+      "start": 0.74,
+      "end": 0.9
+    },
+    {
+      "word": "take",
+      "start": 0.9,
+      "end": 1.1
+    },
+    {
+      "word": "my",
+      "start": 1.1,
+      "end": 1.26
+    },
+    {
+      "word": "eyes",
+      "start": 1.26,
+      "end": 1.46
+    },
+    {
+      "word": "off",
+      "start": 1.46,
+      "end": 1.68
+    },
+    {
+      "word": "the",
+      "start": 1.68,
+      "end": 1.8
+    },
+    {
+      "word": "man",
+      "start": 1.8,
+      "end": 1.96
+    },
+    {
+      "word": "in",
+      "start": 1.96,
+      "end": 2.08
+    },
+    {
+      "word": "the",
+      "start": 2.08,
+      "end": 2.16
+    },
+    {
+      "word": "bed.",
+      "start": 2.16,
+      "end": 2.38
+    }
+  ],
+  "duration": 2.38
+}

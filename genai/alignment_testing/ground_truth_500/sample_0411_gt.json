@@ -1,0 +1,78 @@
+{
+  "audio_file": "sample_0411.flac",
+  "wav_file": "sample_0411.wav",
+  "transcript": "The disdainful pout of comet-oscipens thick lips accentuated the negrotype of his face.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.54
+    },
+    {
+      "word": "disdainful",
+      "start": 0.54,
+      "end": 1.06
+    },
+    {
+      "word": "pout",
+      "start": 1.06,
+      "end": 1.36
+    },
+    {
+      "word": "of",
+      "start": 1.36,
+      "end": 1.54
+    },
+    {
+      "word": "comet",
+      "start": 1.54,
+      "end": 1.84
+    },
+    {
+      "word": "-oscipens",
+      "start": 1.84,
+      "end": 2.42
+    },
+    {
+      "word": "thick",
+      "start": 2.42,
+      "end": 2.7
+    },
+    {
+      "word": "lips",
+      "start": 2.7,
+      "end": 3.0
+    },
+    {
+      "word": "accentuated",
+      "start": 3.0,
+      "end": 3.7
+    },
+    {
+      "word": "the",
+      "start": 3.7,
+      "end": 3.9
+    },
+    {
+      "word": "negrotype",
+      "start": 3.9,
+      "end": 4.34
+    },
+    {
+      "word": "of",
+      "start": 4.34,
+      "end": 4.52
+    },
+    {
+      "word": "his",
+      "start": 4.52,
+      "end": 4.66
+    },
+    {
+      "word": "face.",
+      "start": 4.66,
+      "end": 4.9
+    }
+  ],
+  "duration": 4.9
+}

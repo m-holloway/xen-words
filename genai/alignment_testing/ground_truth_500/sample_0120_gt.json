@@ -1,0 +1,133 @@
+{
+  "audio_file": "sample_0120.flac",
+  "wav_file": "sample_0120.wav",
+  "transcript": "Here, the holy prelate of ferns met him and related a vision in which he had been instructed to demand the abolition of the impost.",
+  "word_timings": [
+    {
+      "word": "Here,",
+      "start": 0.0,
+      "end": 0.74
+    },
+    {
+      "word": "the",
+      "start": 1.04,
+      "end": 1.12
+    },
+    {
+      "word": "holy",
+      "start": 1.12,
+      "end": 1.36
+    },
+    {
+      "word": "prelate",
+      "start": 1.36,
+      "end": 1.84
+    },
+    {
+      "word": "of",
+      "start": 1.84,
+      "end": 2.02
+    },
+    {
+      "word": "ferns",
+      "start": 2.02,
+      "end": 2.44
+    },
+    {
+      "word": "met",
+      "start": 2.44,
+      "end": 2.64
+    },
+    {
+      "word": "him",
+      "start": 2.64,
+      "end": 2.98
+    },
+    {
+      "word": "and",
+      "start": 2.98,
+      "end": 3.44
+    },
+    {
+      "word": "related",
+      "start": 3.44,
+      "end": 3.8
+    },
+    {
+      "word": "a",
+      "start": 3.8,
+      "end": 4.0
+    },
+    {
+      "word": "vision",
+      "start": 4.0,
+      "end": 4.3
+    },
+    {
+      "word": "in",
+      "start": 4.3,
+      "end": 4.58
+    },
+    {
+      "word": "which",
+      "start": 4.58,
+      "end": 4.76
+    },
+    {
+      "word": "he",
+      "start": 4.76,
+      "end": 4.9
+    },
+    {
+      "word": "had",
+      "start": 4.9,
+      "end": 5.04
+    },
+    {
+      "word": "been",
+      "start": 5.04,
+      "end": 5.24
+    },
+    {
+      "word": "instructed",
+      "start": 5.24,
+      "end": 5.82
+    },
+    {
+      "word": "to",
+      "start": 5.82,
+      "end": 6.08
+    },
+    {
+      "word": "demand",
+      "start": 6.08,
+      "end": 6.32
+    },
+    {
+      "word": "the",
+      "start": 6.32,
+      "end": 6.62
+    },
+    {
+      "word": "abolition",
+      "start": 6.62,
+      "end": 7.02
+    },
+    {
+      "word": "of",
+      "start": 7.02,
+      "end": 7.24
+    },
+    {
+      "word": "the",
+      "start": 7.24,
+      "end": 7.36
+    },
+    {
+      "word": "impost.",
+      "start": 7.36,
+      "end": 7.88
+    }
+  ],
+  "duration": 7.88
+}

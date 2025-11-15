@@ -1,0 +1,123 @@
+{
+  "audio_file": "sample_0419.flac",
+  "wav_file": "sample_0419.wav",
+  "transcript": "These were but a few, and for the first time since he opened this shop he took a commercial survey of its value.",
+  "word_timings": [
+    {
+      "word": "These",
+      "start": 0.0,
+      "end": 0.58
+    },
+    {
+      "word": "were",
+      "start": 0.58,
+      "end": 0.7
+    },
+    {
+      "word": "but",
+      "start": 0.7,
+      "end": 0.88
+    },
+    {
+      "word": "a",
+      "start": 0.88,
+      "end": 1.0
+    },
+    {
+      "word": "few,",
+      "start": 1.0,
+      "end": 1.28
+    },
+    {
+      "word": "and",
+      "start": 1.78,
+      "end": 2.02
+    },
+    {
+      "word": "for",
+      "start": 2.02,
+      "end": 2.16
+    },
+    {
+      "word": "the",
+      "start": 2.16,
+      "end": 2.26
+    },
+    {
+      "word": "first",
+      "start": 2.26,
+      "end": 2.48
+    },
+    {
+      "word": "time",
+      "start": 2.48,
+      "end": 2.7
+    },
+    {
+      "word": "since",
+      "start": 2.7,
+      "end": 2.86
+    },
+    {
+      "word": "he",
+      "start": 2.86,
+      "end": 2.98
+    },
+    {
+      "word": "opened",
+      "start": 2.98,
+      "end": 3.24
+    },
+    {
+      "word": "this",
+      "start": 3.24,
+      "end": 3.46
+    },
+    {
+      "word": "shop",
+      "start": 3.46,
+      "end": 3.64
+    },
+    {
+      "word": "he",
+      "start": 3.64,
+      "end": 3.8
+    },
+    {
+      "word": "took",
+      "start": 3.8,
+      "end": 3.98
+    },
+    {
+      "word": "a",
+      "start": 3.98,
+      "end": 4.12
+    },
+    {
+      "word": "commercial",
+      "start": 4.12,
+      "end": 4.44
+    },
+    {
+      "word": "survey",
+      "start": 4.44,
+      "end": 4.92
+    },
+    {
+      "word": "of",
+      "start": 4.92,
+      "end": 5.1
+    },
+    {
+      "word": "its",
+      "start": 5.1,
+      "end": 5.24
+    },
+    {
+      "word": "value.",
+      "start": 5.24,
+      "end": 5.58
+    }
+  ],
+  "duration": 5.58
+}

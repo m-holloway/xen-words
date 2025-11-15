@@ -1,0 +1,23 @@
+{
+  "audio_file": "sample_0149.flac",
+  "wav_file": "sample_0149.wav",
+  "transcript": "Yes, how many?",
+  "word_timings": [
+    {
+      "word": "Yes,",
+      "start": 0.0,
+      "end": 0.78
+    },
+    {
+      "word": "how",
+      "start": 1.32,
+      "end": 1.96
+    },
+    {
+      "word": "many?",
+      "start": 1.96,
+      "end": 2.22
+    }
+  ],
+  "duration": 2.22
+}

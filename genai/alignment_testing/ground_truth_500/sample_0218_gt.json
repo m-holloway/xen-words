@@ -1,0 +1,68 @@
+{
+  "audio_file": "sample_0218.flac",
+  "wav_file": "sample_0218.wav",
+  "transcript": "Fewer words than before, but with the same mysterious music in them.",
+  "word_timings": [
+    {
+      "word": "Fewer",
+      "start": 0.0,
+      "end": 0.9
+    },
+    {
+      "word": "words",
+      "start": 0.9,
+      "end": 1.14
+    },
+    {
+      "word": "than",
+      "start": 1.14,
+      "end": 1.38
+    },
+    {
+      "word": "before,",
+      "start": 1.38,
+      "end": 1.76
+    },
+    {
+      "word": "but",
+      "start": 2.26,
+      "end": 2.46
+    },
+    {
+      "word": "with",
+      "start": 2.46,
+      "end": 2.6
+    },
+    {
+      "word": "the",
+      "start": 2.6,
+      "end": 2.74
+    },
+    {
+      "word": "same",
+      "start": 2.74,
+      "end": 3.02
+    },
+    {
+      "word": "mysterious",
+      "start": 3.02,
+      "end": 3.44
+    },
+    {
+      "word": "music",
+      "start": 3.44,
+      "end": 3.84
+    },
+    {
+      "word": "in",
+      "start": 3.84,
+      "end": 4.02
+    },
+    {
+      "word": "them.",
+      "start": 4.02,
+      "end": 4.2
+    }
+  ],
+  "duration": 4.2
+}

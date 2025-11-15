@@ -1,0 +1,253 @@
+{
+  "audio_file": "sample_0288.flac",
+  "wav_file": "sample_0288.wav",
+  "transcript": "He had little enough to break or bite, and once, when there was a great famine in the land, he could hardly procure even his daily bread. And as he lay thinking in his bed one night, he sighed and said to his wife, what will become of us?",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.58
+    },
+    {
+      "word": "had",
+      "start": 0.58,
+      "end": 0.74
+    },
+    {
+      "word": "little",
+      "start": 0.74,
+      "end": 0.96
+    },
+    {
+      "word": "enough",
+      "start": 0.96,
+      "end": 1.34
+    },
+    {
+      "word": "to",
+      "start": 1.34,
+      "end": 1.58
+    },
+    {
+      "word": "break",
+      "start": 1.58,
+      "end": 1.82
+    },
+    {
+      "word": "or",
+      "start": 1.82,
+      "end": 2.06
+    },
+    {
+      "word": "bite,",
+      "start": 2.06,
+      "end": 2.26
+    },
+    {
+      "word": "and",
+      "start": 2.68,
+      "end": 2.92
+    },
+    {
+      "word": "once,",
+      "start": 2.92,
+      "end": 3.16
+    },
+    {
+      "word": "when",
+      "start": 3.48,
+      "end": 3.54
+    },
+    {
+      "word": "there",
+      "start": 3.54,
+      "end": 3.66
+    },
+    {
+      "word": "was",
+      "start": 3.66,
+      "end": 3.76
+    },
+    {
+      "word": "a",
+      "start": 3.76,
+      "end": 3.84
+    },
+    {
+      "word": "great",
+      "start": 3.84,
+      "end": 4.02
+    },
+    {
+      "word": "famine",
+      "start": 4.02,
+      "end": 4.38
+    },
+    {
+      "word": "in",
+      "start": 4.38,
+      "end": 4.54
+    },
+    {
+      "word": "the",
+      "start": 4.54,
+      "end": 4.66
+    },
+    {
+      "word": "land,",
+      "start": 4.66,
+      "end": 4.96
+    },
+    {
+      "word": "he",
+      "start": 5.32,
+      "end": 5.48
+    },
+    {
+      "word": "could",
+      "start": 5.48,
+      "end": 5.62
+    },
+    {
+      "word": "hardly",
+      "start": 5.62,
+      "end": 6.0
+    },
+    {
+      "word": "procure",
+      "start": 6.0,
+      "end": 6.42
+    },
+    {
+      "word": "even",
+      "start": 6.42,
+      "end": 7.0
+    },
+    {
+      "word": "his",
+      "start": 7.0,
+      "end": 7.24
+    },
+    {
+      "word": "daily",
+      "start": 7.24,
+      "end": 7.44
+    },
+    {
+      "word": "bread.",
+      "start": 7.44,
+      "end": 7.74
+    },
+    {
+      "word": "And",
+      "start": 8.68,
+      "end": 8.98
+    },
+    {
+      "word": "as",
+      "start": 8.98,
+      "end": 9.22
+    },
+    {
+      "word": "he",
+      "start": 9.22,
+      "end": 9.34
+    },
+    {
+      "word": "lay",
+      "start": 9.34,
+      "end": 9.48
+    },
+    {
+      "word": "thinking",
+      "start": 9.48,
+      "end": 9.84
+    },
+    {
+      "word": "in",
+      "start": 9.84,
+      "end": 10.04
+    },
+    {
+      "word": "his",
+      "start": 10.04,
+      "end": 10.18
+    },
+    {
+      "word": "bed",
+      "start": 10.18,
+      "end": 10.36
+    },
+    {
+      "word": "one",
+      "start": 10.36,
+      "end": 10.64
+    },
+    {
+      "word": "night,",
+      "start": 10.64,
+      "end": 10.88
+    },
+    {
+      "word": "he",
+      "start": 11.34,
+      "end": 11.46
+    },
+    {
+      "word": "sighed",
+      "start": 11.46,
+      "end": 11.94
+    },
+    {
+      "word": "and",
+      "start": 11.94,
+      "end": 12.0
+    },
+    {
+      "word": "said",
+      "start": 12.0,
+      "end": 12.2
+    },
+    {
+      "word": "to",
+      "start": 12.2,
+      "end": 12.38
+    },
+    {
+      "word": "his",
+      "start": 12.38,
+      "end": 12.54
+    },
+    {
+      "word": "wife,",
+      "start": 12.54,
+      "end": 12.8
+    },
+    {
+      "word": "what",
+      "start": 12.8,
+      "end": 13.82
+    },
+    {
+      "word": "will",
+      "start": 13.82,
+      "end": 14.02
+    },
+    {
+      "word": "become",
+      "start": 14.02,
+      "end": 14.28
+    },
+    {
+      "word": "of",
+      "start": 14.28,
+      "end": 14.52
+    },
+    {
+      "word": "us?",
+      "start": 14.52,
+      "end": 14.86
+    }
+  ],
+  "duration": 14.86
+}

@@ -1,0 +1,58 @@
+{
+  "audio_file": "sample_0368.flac",
+  "wav_file": "sample_0368.wav",
+  "transcript": "A tall town we shouldn't come so late to tilde.",
+  "word_timings": [
+    {
+      "word": "A",
+      "start": 0.0,
+      "end": 0.64
+    },
+    {
+      "word": "tall",
+      "start": 0.64,
+      "end": 0.82
+    },
+    {
+      "word": "town",
+      "start": 0.82,
+      "end": 1.04
+    },
+    {
+      "word": "we",
+      "start": 1.04,
+      "end": 1.2
+    },
+    {
+      "word": "shouldn't",
+      "start": 1.2,
+      "end": 1.42
+    },
+    {
+      "word": "come",
+      "start": 1.42,
+      "end": 1.6
+    },
+    {
+      "word": "so",
+      "start": 1.6,
+      "end": 1.76
+    },
+    {
+      "word": "late",
+      "start": 1.76,
+      "end": 1.98
+    },
+    {
+      "word": "to",
+      "start": 1.98,
+      "end": 2.22
+    },
+    {
+      "word": "tilde.",
+      "start": 2.22,
+      "end": 2.48
+    }
+  ],
+  "duration": 2.48
+}

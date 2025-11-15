@@ -1,0 +1,208 @@
+{
+  "audio_file": "sample_0442.flac",
+  "wav_file": "sample_0442.wav",
+  "transcript": "Ah, he did not depend upon emotional excitement to keep up his belief. No declinations, no anger, no visions of blood-red flags waving, or metaphorical lured sons of vengeance rising above the horizon of a doomed society. Not he.",
+  "word_timings": [
+    {
+      "word": "Ah,",
+      "start": 0.0,
+      "end": 0.5
+    },
+    {
+      "word": "he",
+      "start": 0.64,
+      "end": 0.74
+    },
+    {
+      "word": "did",
+      "start": 0.74,
+      "end": 0.88
+    },
+    {
+      "word": "not",
+      "start": 0.88,
+      "end": 1.06
+    },
+    {
+      "word": "depend",
+      "start": 1.06,
+      "end": 1.4
+    },
+    {
+      "word": "upon",
+      "start": 1.4,
+      "end": 1.74
+    },
+    {
+      "word": "emotional",
+      "start": 1.74,
+      "end": 2.2
+    },
+    {
+      "word": "excitement",
+      "start": 2.2,
+      "end": 2.64
+    },
+    {
+      "word": "to",
+      "start": 2.64,
+      "end": 2.82
+    },
+    {
+      "word": "keep",
+      "start": 2.82,
+      "end": 2.96
+    },
+    {
+      "word": "up",
+      "start": 2.96,
+      "end": 3.14
+    },
+    {
+      "word": "his",
+      "start": 3.14,
+      "end": 3.26
+    },
+    {
+      "word": "belief.",
+      "start": 3.26,
+      "end": 3.6
+    },
+    {
+      "word": "No",
+      "start": 4.3,
+      "end": 4.4
+    },
+    {
+      "word": "declinations,",
+      "start": 4.4,
+      "end": 4.96
+    },
+    {
+      "word": "no",
+      "start": 5.34,
+      "end": 5.5
+    },
+    {
+      "word": "anger,",
+      "start": 5.5,
+      "end": 5.82
+    },
+    {
+      "word": "no",
+      "start": 6.42,
+      "end": 6.56
+    },
+    {
+      "word": "visions",
+      "start": 6.56,
+      "end": 6.88
+    },
+    {
+      "word": "of",
+      "start": 6.88,
+      "end": 7.12
+    },
+    {
+      "word": "blood",
+      "start": 7.12,
+      "end": 7.36
+    },
+    {
+      "word": "-red",
+      "start": 7.36,
+      "end": 7.6
+    },
+    {
+      "word": "flags",
+      "start": 7.6,
+      "end": 8.04
+    },
+    {
+      "word": "waving,",
+      "start": 8.04,
+      "end": 8.54
+    },
+    {
+      "word": "or",
+      "start": 9.12,
+      "end": 9.2
+    },
+    {
+      "word": "metaphorical",
+      "start": 9.2,
+      "end": 9.86
+    },
+    {
+      "word": "lured",
+      "start": 9.86,
+      "end": 10.14
+    },
+    {
+      "word": "sons",
+      "start": 10.14,
+      "end": 10.46
+    },
+    {
+      "word": "of",
+      "start": 10.46,
+      "end": 10.78
+    },
+    {
+      "word": "vengeance",
+      "start": 10.78,
+      "end": 11.06
+    },
+    {
+      "word": "rising",
+      "start": 11.06,
+      "end": 11.52
+    },
+    {
+      "word": "above",
+      "start": 11.52,
+      "end": 11.86
+    },
+    {
+      "word": "the",
+      "start": 11.86,
+      "end": 12.04
+    },
+    {
+      "word": "horizon",
+      "start": 12.04,
+      "end": 12.48
+    },
+    {
+      "word": "of",
+      "start": 12.48,
+      "end": 12.7
+    },
+    {
+      "word": "a",
+      "start": 12.7,
+      "end": 12.78
+    },
+    {
+      "word": "doomed",
+      "start": 12.78,
+      "end": 12.9
+    },
+    {
+      "word": "society.",
+      "start": 12.9,
+      "end": 13.5
+    },
+    {
+      "word": "Not",
+      "start": 14.34,
+      "end": 14.54
+    },
+    {
+      "word": "he.",
+      "start": 14.54,
+      "end": 14.78
+    }
+  ],
+  "duration": 14.78
+}

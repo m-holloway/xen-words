@@ -1,0 +1,73 @@
+{
+  "audio_file": "sample_0467.flac",
+  "wav_file": "sample_0467.wav",
+  "transcript": "Devani rushed towards the old man and made him inhale a powerful restorative.",
+  "word_timings": [
+    {
+      "word": "Devani",
+      "start": 0.0,
+      "end": 0.64
+    },
+    {
+      "word": "rushed",
+      "start": 0.64,
+      "end": 0.96
+    },
+    {
+      "word": "towards",
+      "start": 0.96,
+      "end": 1.18
+    },
+    {
+      "word": "the",
+      "start": 1.18,
+      "end": 1.38
+    },
+    {
+      "word": "old",
+      "start": 1.38,
+      "end": 1.5
+    },
+    {
+      "word": "man",
+      "start": 1.5,
+      "end": 1.7
+    },
+    {
+      "word": "and",
+      "start": 1.7,
+      "end": 1.96
+    },
+    {
+      "word": "made",
+      "start": 1.96,
+      "end": 2.12
+    },
+    {
+      "word": "him",
+      "start": 2.12,
+      "end": 2.32
+    },
+    {
+      "word": "inhale",
+      "start": 2.32,
+      "end": 2.58
+    },
+    {
+      "word": "a",
+      "start": 2.58,
+      "end": 2.78
+    },
+    {
+      "word": "powerful",
+      "start": 2.78,
+      "end": 3.12
+    },
+    {
+      "word": "restorative.",
+      "start": 3.12,
+      "end": 3.86
+    }
+  ],
+  "duration": 3.86
+}

@@ -1,0 +1,68 @@
+{
+  "audio_file": "sample_0108.flac",
+  "wav_file": "sample_0108.wav",
+  "transcript": "I never know you were so brave Jim, she went on comfortingly.",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.6
+    },
+    {
+      "word": "never",
+      "start": 0.6,
+      "end": 0.86
+    },
+    {
+      "word": "know",
+      "start": 0.86,
+      "end": 1.1
+    },
+    {
+      "word": "you",
+      "start": 1.1,
+      "end": 1.3
+    },
+    {
+      "word": "were",
+      "start": 1.3,
+      "end": 1.44
+    },
+    {
+      "word": "so",
+      "start": 1.44,
+      "end": 1.62
+    },
+    {
+      "word": "brave",
+      "start": 1.62,
+      "end": 1.98
+    },
+    {
+      "word": "Jim,",
+      "start": 1.98,
+      "end": 2.34
+    },
+    {
+      "word": "she",
+      "start": 2.88,
+      "end": 3.0
+    },
+    {
+      "word": "went",
+      "start": 3.0,
+      "end": 3.18
+    },
+    {
+      "word": "on",
+      "start": 3.18,
+      "end": 3.38
+    },
+    {
+      "word": "comfortingly.",
+      "start": 3.38,
+      "end": 4.0
+    }
+  ],
+  "duration": 4.0
+}

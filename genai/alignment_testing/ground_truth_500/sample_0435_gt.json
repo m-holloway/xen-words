@@ -1,0 +1,203 @@
+{
+  "audio_file": "sample_0435.flac",
+  "wav_file": "sample_0435.wav",
+  "transcript": "You don't understand, he began to stay in play, but stopped short, intimidated by the dead blackness of the cavernous eyes in the face, turned slowly towards him with a blind stare, as he've guided only by the sound.",
+  "word_timings": [
+    {
+      "word": "You",
+      "start": 0.0,
+      "end": 0.52
+    },
+    {
+      "word": "don't",
+      "start": 0.52,
+      "end": 0.72
+    },
+    {
+      "word": "understand,",
+      "start": 0.72,
+      "end": 1.28
+    },
+    {
+      "word": "he",
+      "start": 1.54,
+      "end": 1.6
+    },
+    {
+      "word": "began",
+      "start": 1.6,
+      "end": 1.86
+    },
+    {
+      "word": "to",
+      "start": 1.86,
+      "end": 2.02
+    },
+    {
+      "word": "stay",
+      "start": 2.02,
+      "end": 2.18
+    },
+    {
+      "word": "in",
+      "start": 2.18,
+      "end": 2.26
+    },
+    {
+      "word": "play,",
+      "start": 2.26,
+      "end": 2.44
+    },
+    {
+      "word": "but",
+      "start": 2.68,
+      "end": 2.78
+    },
+    {
+      "word": "stopped",
+      "start": 2.78,
+      "end": 3.0
+    },
+    {
+      "word": "short,",
+      "start": 3.0,
+      "end": 3.36
+    },
+    {
+      "word": "intimidated",
+      "start": 3.86,
+      "end": 4.34
+    },
+    {
+      "word": "by",
+      "start": 4.34,
+      "end": 4.58
+    },
+    {
+      "word": "the",
+      "start": 4.58,
+      "end": 4.7
+    },
+    {
+      "word": "dead",
+      "start": 4.7,
+      "end": 4.94
+    },
+    {
+      "word": "blackness",
+      "start": 4.94,
+      "end": 5.44
+    },
+    {
+      "word": "of",
+      "start": 5.44,
+      "end": 5.62
+    },
+    {
+      "word": "the",
+      "start": 5.62,
+      "end": 5.78
+    },
+    {
+      "word": "cavernous",
+      "start": 5.78,
+      "end": 6.3
+    },
+    {
+      "word": "eyes",
+      "start": 6.3,
+      "end": 6.6
+    },
+    {
+      "word": "in",
+      "start": 6.6,
+      "end": 6.78
+    },
+    {
+      "word": "the",
+      "start": 6.78,
+      "end": 6.9
+    },
+    {
+      "word": "face,",
+      "start": 6.9,
+      "end": 7.12
+    },
+    {
+      "word": "turned",
+      "start": 7.36,
+      "end": 7.54
+    },
+    {
+      "word": "slowly",
+      "start": 7.54,
+      "end": 8.08
+    },
+    {
+      "word": "towards",
+      "start": 8.08,
+      "end": 8.5
+    },
+    {
+      "word": "him",
+      "start": 8.5,
+      "end": 8.72
+    },
+    {
+      "word": "with",
+      "start": 8.72,
+      "end": 9.2
+    },
+    {
+      "word": "a",
+      "start": 9.2,
+      "end": 9.32
+    },
+    {
+      "word": "blind",
+      "start": 9.32,
+      "end": 9.66
+    },
+    {
+      "word": "stare,",
+      "start": 9.66,
+      "end": 10.12
+    },
+    {
+      "word": "as",
+      "start": 10.6,
+      "end": 10.72
+    },
+    {
+      "word": "he've",
+      "start": 10.72,
+      "end": 10.86
+    },
+    {
+      "word": "guided",
+      "start": 10.86,
+      "end": 11.0
+    },
+    {
+      "word": "only",
+      "start": 11.0,
+      "end": 11.38
+    },
+    {
+      "word": "by",
+      "start": 11.38,
+      "end": 11.62
+    },
+    {
+      "word": "the",
+      "start": 11.62,
+      "end": 11.78
+    },
+    {
+      "word": "sound.",
+      "start": 11.78,
+      "end": 12.12
+    }
+  ],
+  "duration": 12.12
+}

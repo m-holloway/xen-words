@@ -1,0 +1,53 @@
+{
+  "audio_file": "sample_0036.flac",
+  "wav_file": "sample_0036.wav",
+  "transcript": "He could hardly realize how it'd all come about.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.4
+    },
+    {
+      "word": "could",
+      "start": 0.4,
+      "end": 0.54
+    },
+    {
+      "word": "hardly",
+      "start": 0.54,
+      "end": 0.78
+    },
+    {
+      "word": "realize",
+      "start": 0.78,
+      "end": 1.16
+    },
+    {
+      "word": "how",
+      "start": 1.16,
+      "end": 1.44
+    },
+    {
+      "word": "it'd",
+      "start": 1.44,
+      "end": 1.68
+    },
+    {
+      "word": "all",
+      "start": 1.68,
+      "end": 1.82
+    },
+    {
+      "word": "come",
+      "start": 1.82,
+      "end": 2.02
+    },
+    {
+      "word": "about.",
+      "start": 2.02,
+      "end": 2.32
+    }
+  ],
+  "duration": 2.32
+}

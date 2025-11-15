@@ -1,0 +1,78 @@
+{
+  "audio_file": "sample_0018.flac",
+  "wav_file": "sample_0018.wav",
+  "transcript": "Hurst would walk to the floor, mentally arranging the chief points of his situation.",
+  "word_timings": [
+    {
+      "word": "Hurst",
+      "start": 0.0,
+      "end": 0.78
+    },
+    {
+      "word": "would",
+      "start": 0.78,
+      "end": 0.9
+    },
+    {
+      "word": "walk",
+      "start": 0.9,
+      "end": 1.14
+    },
+    {
+      "word": "to",
+      "start": 1.14,
+      "end": 1.32
+    },
+    {
+      "word": "the",
+      "start": 1.32,
+      "end": 1.38
+    },
+    {
+      "word": "floor,",
+      "start": 1.38,
+      "end": 1.6
+    },
+    {
+      "word": "mentally",
+      "start": 1.8,
+      "end": 2.08
+    },
+    {
+      "word": "arranging",
+      "start": 2.08,
+      "end": 2.66
+    },
+    {
+      "word": "the",
+      "start": 2.66,
+      "end": 2.9
+    },
+    {
+      "word": "chief",
+      "start": 2.9,
+      "end": 3.1
+    },
+    {
+      "word": "points",
+      "start": 3.1,
+      "end": 3.38
+    },
+    {
+      "word": "of",
+      "start": 3.38,
+      "end": 3.6
+    },
+    {
+      "word": "his",
+      "start": 3.6,
+      "end": 3.68
+    },
+    {
+      "word": "situation.",
+      "start": 3.68,
+      "end": 4.24
+    }
+  ],
+  "duration": 4.24
+}

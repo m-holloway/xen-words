@@ -1,0 +1,123 @@
+{
+  "audio_file": "sample_0210.flac",
+  "wav_file": "sample_0210.wav",
+  "transcript": "They have known me much longer, but never honor me with any familiarity, though hardly a day passes without my bringing them food.",
+  "word_timings": [
+    {
+      "word": "They",
+      "start": 0.0,
+      "end": 0.54
+    },
+    {
+      "word": "have",
+      "start": 0.54,
+      "end": 0.68
+    },
+    {
+      "word": "known",
+      "start": 0.68,
+      "end": 0.86
+    },
+    {
+      "word": "me",
+      "start": 0.86,
+      "end": 1.08
+    },
+    {
+      "word": "much",
+      "start": 1.08,
+      "end": 1.32
+    },
+    {
+      "word": "longer,",
+      "start": 1.32,
+      "end": 1.7
+    },
+    {
+      "word": "but",
+      "start": 2.16,
+      "end": 2.22
+    },
+    {
+      "word": "never",
+      "start": 2.22,
+      "end": 2.5
+    },
+    {
+      "word": "honor",
+      "start": 2.5,
+      "end": 2.78
+    },
+    {
+      "word": "me",
+      "start": 2.78,
+      "end": 2.98
+    },
+    {
+      "word": "with",
+      "start": 2.98,
+      "end": 3.16
+    },
+    {
+      "word": "any",
+      "start": 3.16,
+      "end": 3.32
+    },
+    {
+      "word": "familiarity,",
+      "start": 3.32,
+      "end": 3.98
+    },
+    {
+      "word": "though",
+      "start": 4.66,
+      "end": 4.86
+    },
+    {
+      "word": "hardly",
+      "start": 4.86,
+      "end": 5.2
+    },
+    {
+      "word": "a",
+      "start": 5.2,
+      "end": 5.32
+    },
+    {
+      "word": "day",
+      "start": 5.32,
+      "end": 5.44
+    },
+    {
+      "word": "passes",
+      "start": 5.44,
+      "end": 5.84
+    },
+    {
+      "word": "without",
+      "start": 5.84,
+      "end": 6.52
+    },
+    {
+      "word": "my",
+      "start": 6.52,
+      "end": 6.74
+    },
+    {
+      "word": "bringing",
+      "start": 6.74,
+      "end": 7.02
+    },
+    {
+      "word": "them",
+      "start": 7.02,
+      "end": 7.22
+    },
+    {
+      "word": "food.",
+      "start": 7.22,
+      "end": 7.5
+    }
+  ],
+  "duration": 7.5
+}

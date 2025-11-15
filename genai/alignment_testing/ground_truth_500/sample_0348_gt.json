@@ -1,0 +1,93 @@
+{
+  "audio_file": "sample_0348.flac",
+  "wav_file": "sample_0348.wav",
+  "transcript": "The Americans in their intercourse with strangers appear impatient with the smallest center, an insatiable of praise.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.56
+    },
+    {
+      "word": "Americans",
+      "start": 0.56,
+      "end": 0.94
+    },
+    {
+      "word": "in",
+      "start": 0.94,
+      "end": 1.16
+    },
+    {
+      "word": "their",
+      "start": 1.16,
+      "end": 1.28
+    },
+    {
+      "word": "intercourse",
+      "start": 1.28,
+      "end": 1.7
+    },
+    {
+      "word": "with",
+      "start": 1.7,
+      "end": 1.92
+    },
+    {
+      "word": "strangers",
+      "start": 1.92,
+      "end": 2.4
+    },
+    {
+      "word": "appear",
+      "start": 2.4,
+      "end": 3.06
+    },
+    {
+      "word": "impatient",
+      "start": 3.06,
+      "end": 3.6
+    },
+    {
+      "word": "with",
+      "start": 3.6,
+      "end": 3.8
+    },
+    {
+      "word": "the",
+      "start": 3.8,
+      "end": 3.88
+    },
+    {
+      "word": "smallest",
+      "start": 3.88,
+      "end": 4.26
+    },
+    {
+      "word": "center,",
+      "start": 4.26,
+      "end": 4.7
+    },
+    {
+      "word": "an",
+      "start": 5.06,
+      "end": 5.14
+    },
+    {
+      "word": "insatiable",
+      "start": 5.14,
+      "end": 5.84
+    },
+    {
+      "word": "of",
+      "start": 5.84,
+      "end": 6.06
+    },
+    {
+      "word": "praise.",
+      "start": 6.06,
+      "end": 6.3
+    }
+  ],
+  "duration": 6.3
+}

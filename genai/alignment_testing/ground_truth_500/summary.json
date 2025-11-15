@@ -1,0 +1,2509 @@
+{
+  "model": "base",
+  "total_files": 500,
+  "successful": 500,
+  "total_words": 9546,
+  "total_duration": 2889.48,
+  "files": [
+    {
+      "audio": "sample_0000.flac",
+      "words": 15,
+      "duration": 4.42
+    },
+    {
+      "audio": "sample_0001.flac",
+      "words": 15,
+      "duration": 5.02
+    },
+    {
+      "audio": "sample_0002.flac",
+      "words": 7,
+      "duration": 2.32
+    },
+    {
+      "audio": "sample_0003.flac",
+      "words": 15,
+      "duration": 4.38
+    },
+    {
+      "audio": "sample_0004.flac",
+      "words": 15,
+      "duration": 4.06
+    },
+    {
+      "audio": "sample_0005.flac",
+      "words": 9,
+      "duration": 3.52
+    },
+    {
+      "audio": "sample_0006.flac",
+      "words": 10,
+      "duration": 2.94
+    },
+    {
+      "audio": "sample_0007.flac",
+      "words": 13,
+      "duration": 3.26
+    },
+    {
+      "audio": "sample_0008.flac",
+      "words": 10,
+      "duration": 2.04
+    },
+    {
+      "audio": "sample_0009.flac",
+      "words": 12,
+      "duration": 3.28
+    },
+    {
+      "audio": "sample_0010.flac",
+      "words": 22,
+      "duration": 4.98
+    },
+    {
+      "audio": "sample_0011.flac",
+      "words": 26,
+      "duration": 6.0
+    },
+    {
+      "audio": "sample_0012.flac",
+      "words": 14,
+      "duration": 4.06
+    },
+    {
+      "audio": "sample_0013.flac",
+      "words": 20,
+      "duration": 5.52
+    },
+    {
+      "audio": "sample_0014.flac",
+      "words": 7,
+      "duration": 2.46
+    },
+    {
+      "audio": "sample_0015.flac",
+      "words": 7,
+      "duration": 1.7
+    },
+    {
+      "audio": "sample_0016.flac",
+      "words": 18,
+      "duration": 4.76
+    },
+    {
+      "audio": "sample_0017.flac",
+      "words": 12,
+      "duration": 3.14
+    },
+    {
+      "audio": "sample_0018.flac",
+      "words": 14,
+      "duration": 4.24
+    },
+    {
+      "audio": "sample_0019.flac",
+      "words": 23,
+      "duration": 5.36
+    },
+    {
+      "audio": "sample_0020.flac",
+      "words": 20,
+      "duration": 4.28
+    },
+    {
+      "audio": "sample_0021.flac",
+      "words": 11,
+      "duration": 2.5
+    },
+    {
+      "audio": "sample_0022.flac",
+      "words": 15,
+      "duration": 3.46
+    },
+    {
+      "audio": "sample_0023.flac",
+      "words": 23,
+      "duration": 5.98
+    },
+    {
+      "audio": "sample_0024.flac",
+      "words": 19,
+      "duration": 4.94
+    },
+    {
+      "audio": "sample_0025.flac",
+      "words": 26,
+      "duration": 6.58
+    },
+    {
+      "audio": "sample_0026.flac",
+      "words": 13,
+      "duration": 3.1
+    },
+    {
+      "audio": "sample_0027.flac",
+      "words": 26,
+      "duration": 6.42
+    },
+    {
+      "audio": "sample_0028.flac",
+      "words": 36,
+      "duration": 10.36
+    },
+    {
+      "audio": "sample_0029.flac",
+      "words": 8,
+      "duration": 2.36
+    },
+    {
+      "audio": "sample_0030.flac",
+      "words": 14,
+      "duration": 3.76
+    },
+    {
+      "audio": "sample_0031.flac",
+      "words": 7,
+      "duration": 3.0
+    },
+    {
+      "audio": "sample_0032.flac",
+      "words": 13,
+      "duration": 3.14
+    },
+    {
+      "audio": "sample_0033.flac",
+      "words": 8,
+      "duration": 2.0
+    },
+    {
+      "audio": "sample_0034.flac",
+      "words": 17,
+      "duration": 4.88
+    },
+    {
+      "audio": "sample_0035.flac",
+      "words": 13,
+      "duration": 4.18
+    },
+    {
+      "audio": "sample_0036.flac",
+      "words": 9,
+      "duration": 2.32
+    },
+    {
+      "audio": "sample_0037.flac",
+      "words": 11,
+      "duration": 3.98
+    },
+    {
+      "audio": "sample_0038.flac",
+      "words": 23,
+      "duration": 6.78
+    },
+    {
+      "audio": "sample_0039.flac",
+      "words": 36,
+      "duration": 10.9
+    },
+    {
+      "audio": "sample_0040.flac",
+      "words": 17,
+      "duration": 3.92
+    },
+    {
+      "audio": "sample_0041.flac",
+      "words": 35,
+      "duration": 11.92
+    },
+    {
+      "audio": "sample_0042.flac",
+      "words": 16,
+      "duration": 3.88
+    },
+    {
+      "audio": "sample_0043.flac",
+      "words": 24,
+      "duration": 6.32
+    },
+    {
+      "audio": "sample_0044.flac",
+      "words": 15,
+      "duration": 3.34
+    },
+    {
+      "audio": "sample_0045.flac",
+      "words": 12,
+      "duration": 2.5
+    },
+    {
+      "audio": "sample_0046.flac",
+      "words": 23,
+      "duration": 7.24
+    },
+    {
+      "audio": "sample_0047.flac",
+      "words": 18,
+      "duration": 4.46
+    },
+    {
+      "audio": "sample_0048.flac",
+      "words": 16,
+      "duration": 3.96
+    },
+    {
+      "audio": "sample_0049.flac",
+      "words": 22,
+      "duration": 5.3
+    },
+    {
+      "audio": "sample_0050.flac",
+      "words": 25,
+      "duration": 6.3
+    },
+    {
+      "audio": "sample_0051.flac",
+      "words": 25,
+      "duration": 5.88
+    },
+    {
+      "audio": "sample_0052.flac",
+      "words": 12,
+      "duration": 3.0
+    },
+    {
+      "audio": "sample_0053.flac",
+      "words": 32,
+      "duration": 7.18
+    },
+    {
+      "audio": "sample_0054.flac",
+      "words": 10,
+      "duration": 4.4
+    },
+    {
+      "audio": "sample_0055.flac",
+      "words": 11,
+      "duration": 2.72
+    },
+    {
+      "audio": "sample_0056.flac",
+      "words": 10,
+      "duration": 2.02
+    },
+    {
+      "audio": "sample_0057.flac",
+      "words": 11,
+      "duration": 3.42
+    },
+    {
+      "audio": "sample_0058.flac",
+      "words": 16,
+      "duration": 3.38
+    },
+    {
+      "audio": "sample_0059.flac",
+      "words": 19,
+      "duration": 4.16
+    },
+    {
+      "audio": "sample_0060.flac",
+      "words": 34,
+      "duration": 8.24
+    },
+    {
+      "audio": "sample_0061.flac",
+      "words": 27,
+      "duration": 6.12
+    },
+    {
+      "audio": "sample_0062.flac",
+      "words": 12,
+      "duration": 2.88
+    },
+    {
+      "audio": "sample_0063.flac",
+      "words": 10,
+      "duration": 2.66
+    },
+    {
+      "audio": "sample_0064.flac",
+      "words": 31,
+      "duration": 9.72
+    },
+    {
+      "audio": "sample_0065.flac",
+      "words": 5,
+      "duration": 3.2
+    },
+    {
+      "audio": "sample_0066.flac",
+      "words": 5,
+      "duration": 2.3
+    },
+    {
+      "audio": "sample_0067.flac",
+      "words": 11,
+      "duration": 2.78
+    },
+    {
+      "audio": "sample_0068.flac",
+      "words": 16,
+      "duration": 4.06
+    },
+    {
+      "audio": "sample_0069.flac",
+      "words": 11,
+      "duration": 2.8
+    },
+    {
+      "audio": "sample_0070.flac",
+      "words": 13,
+      "duration": 4.12
+    },
+    {
+      "audio": "sample_0071.flac",
+      "words": 14,
+      "duration": 4.54
+    },
+    {
+      "audio": "sample_0072.flac",
+      "words": 10,
+      "duration": 2.4
+    },
+    {
+      "audio": "sample_0073.flac",
+      "words": 51,
+      "duration": 14.88
+    },
+    {
+      "audio": "sample_0074.flac",
+      "words": 17,
+      "duration": 4.78
+    },
+    {
+      "audio": "sample_0075.flac",
+      "words": 8,
+      "duration": 2.58
+    },
+    {
+      "audio": "sample_0076.flac",
+      "words": 15,
+      "duration": 4.52
+    },
+    {
+      "audio": "sample_0077.flac",
+      "words": 8,
+      "duration": 1.96
+    },
+    {
+      "audio": "sample_0078.flac",
+      "words": 16,
+      "duration": 4.48
+    },
+    {
+      "audio": "sample_0079.flac",
+      "words": 16,
+      "duration": 5.42
+    },
+    {
+      "audio": "sample_0080.flac",
+      "words": 25,
+      "duration": 7.32
+    },
+    {
+      "audio": "sample_0081.flac",
+      "words": 15,
+      "duration": 3.86
+    },
+    {
+      "audio": "sample_0082.flac",
+      "words": 10,
+      "duration": 2.6
+    },
+    {
+      "audio": "sample_0083.flac",
+      "words": 13,
+      "duration": 2.76
+    },
+    {
+      "audio": "sample_0084.flac",
+      "words": 10,
+      "duration": 2.68
+    },
+    {
+      "audio": "sample_0085.flac",
+      "words": 9,
+      "duration": 3.06
+    },
+    {
+      "audio": "sample_0086.flac",
+      "words": 21,
+      "duration": 7.88
+    },
+    {
+      "audio": "sample_0087.flac",
+      "words": 15,
+      "duration": 4.5
+    },
+    {
+      "audio": "sample_0088.flac",
+      "words": 26,
+      "duration": 6.88
+    },
+    {
+      "audio": "sample_0089.flac",
+      "words": 27,
+      "duration": 6.44
+    },
+    {
+      "audio": "sample_0090.flac",
+      "words": 33,
+      "duration": 8.14
+    },
+    {
+      "audio": "sample_0091.flac",
+      "words": 16,
+      "duration": 4.64
+    },
+    {
+      "audio": "sample_0092.flac",
+      "words": 18,
+      "duration": 6.64
+    },
+    {
+      "audio": "sample_0093.flac",
+      "words": 16,
+      "duration": 4.94
+    },
+    {
+      "audio": "sample_0094.flac",
+      "words": 6,
+      "duration": 2.62
+    },
+    {
+      "audio": "sample_0095.flac",
+      "words": 8,
+      "duration": 2.14
+    },
+    {
+      "audio": "sample_0096.flac",
+      "words": 18,
+      "duration": 5.62
+    },
+    {
+      "audio": "sample_0097.flac",
+      "words": 15,
+      "duration": 3.9
+    },
+    {
+      "audio": "sample_0098.flac",
+      "words": 12,
+      "duration": 3.82
+    },
+    {
+      "audio": "sample_0099.flac",
+      "words": 33,
+      "duration": 8.34
+    },
+    {
+      "audio": "sample_0100.flac",
+      "words": 31,
+      "duration": 8.76
+    },
+    {
+      "audio": "sample_0101.flac",
+      "words": 20,
+      "duration": 5.92
+    },
+    {
+      "audio": "sample_0102.flac",
+      "words": 10,
+      "duration": 3.28
+    },
+    {
+      "audio": "sample_0103.flac",
+      "words": 5,
+      "duration": 1.28
+    },
+    {
+      "audio": "sample_0104.flac",
+      "words": 16,
+      "duration": 4.34
+    },
+    {
+      "audio": "sample_0105.flac",
+      "words": 18,
+      "duration": 5.12
+    },
+    {
+      "audio": "sample_0106.flac",
+      "words": 27,
+      "duration": 8.16
+    },
+    {
+      "audio": "sample_0107.flac",
+      "words": 10,
+      "duration": 2.8
+    },
+    {
+      "audio": "sample_0108.flac",
+      "words": 12,
+      "duration": 4.0
+    },
+    {
+      "audio": "sample_0109.flac",
+      "words": 13,
+      "duration": 3.48
+    },
+    {
+      "audio": "sample_0110.flac",
+      "words": 7,
+      "duration": 2.88
+    },
+    {
+      "audio": "sample_0111.flac",
+      "words": 11,
+      "duration": 3.66
+    },
+    {
+      "audio": "sample_0112.flac",
+      "words": 17,
+      "duration": 5.8
+    },
+    {
+      "audio": "sample_0113.flac",
+      "words": 19,
+      "duration": 6.68
+    },
+    {
+      "audio": "sample_0114.flac",
+      "words": 72,
+      "duration": 23.34
+    },
+    {
+      "audio": "sample_0115.flac",
+      "words": 16,
+      "duration": 6.94
+    },
+    {
+      "audio": "sample_0116.flac",
+      "words": 23,
+      "duration": 8.68
+    },
+    {
+      "audio": "sample_0117.flac",
+      "words": 63,
+      "duration": 19.78
+    },
+    {
+      "audio": "sample_0118.flac",
+      "words": 13,
+      "duration": 5.88
+    },
+    {
+      "audio": "sample_0119.flac",
+      "words": 29,
+      "duration": 9.5
+    },
+    {
+      "audio": "sample_0120.flac",
+      "words": 25,
+      "duration": 7.88
+    },
+    {
+      "audio": "sample_0121.flac",
+      "words": 18,
+      "duration": 5.94
+    },
+    {
+      "audio": "sample_0122.flac",
+      "words": 18,
+      "duration": 7.08
+    },
+    {
+      "audio": "sample_0123.flac",
+      "words": 20,
+      "duration": 7.04
+    },
+    {
+      "audio": "sample_0124.flac",
+      "words": 26,
+      "duration": 9.64
+    },
+    {
+      "audio": "sample_0125.flac",
+      "words": 20,
+      "duration": 6.92
+    },
+    {
+      "audio": "sample_0126.flac",
+      "words": 18,
+      "duration": 6.68
+    },
+    {
+      "audio": "sample_0127.flac",
+      "words": 44,
+      "duration": 17.3
+    },
+    {
+      "audio": "sample_0128.flac",
+      "words": 17,
+      "duration": 5.44
+    },
+    {
+      "audio": "sample_0129.flac",
+      "words": 37,
+      "duration": 12.36
+    },
+    {
+      "audio": "sample_0130.flac",
+      "words": 39,
+      "duration": 15.92
+    },
+    {
+      "audio": "sample_0131.flac",
+      "words": 5,
+      "duration": 1.8
+    },
+    {
+      "audio": "sample_0132.flac",
+      "words": 38,
+      "duration": 13.02
+    },
+    {
+      "audio": "sample_0133.flac",
+      "words": 10,
+      "duration": 2.78
+    },
+    {
+      "audio": "sample_0134.flac",
+      "words": 7,
+      "duration": 2.44
+    },
+    {
+      "audio": "sample_0135.flac",
+      "words": 12,
+      "duration": 3.22
+    },
+    {
+      "audio": "sample_0136.flac",
+      "words": 18,
+      "duration": 4.64
+    },
+    {
+      "audio": "sample_0137.flac",
+      "words": 10,
+      "duration": 2.54
+    },
+    {
+      "audio": "sample_0138.flac",
+      "words": 13,
+      "duration": 5.0
+    },
+    {
+      "audio": "sample_0139.flac",
+      "words": 10,
+      "duration": 2.48
+    },
+    {
+      "audio": "sample_0140.flac",
+      "words": 9,
+      "duration": 2.4
+    },
+    {
+      "audio": "sample_0141.flac",
+      "words": 15,
+      "duration": 4.18
+    },
+    {
+      "audio": "sample_0142.flac",
+      "words": 25,
+      "duration": 8.72
+    },
+    {
+      "audio": "sample_0143.flac",
+      "words": 13,
+      "duration": 4.46
+    },
+    {
+      "audio": "sample_0144.flac",
+      "words": 12,
+      "duration": 2.38
+    },
+    {
+      "audio": "sample_0145.flac",
+      "words": 7,
+      "duration": 2.48
+    },
+    {
+      "audio": "sample_0146.flac",
+      "words": 14,
+      "duration": 3.58
+    },
+    {
+      "audio": "sample_0147.flac",
+      "words": 8,
+      "duration": 2.78
+    },
+    {
+      "audio": "sample_0148.flac",
+      "words": 8,
+      "duration": 3.3
+    },
+    {
+      "audio": "sample_0149.flac",
+      "words": 3,
+      "duration": 2.22
+    },
+    {
+      "audio": "sample_0150.flac",
+      "words": 7,
+      "duration": 2.72
+    },
+    {
+      "audio": "sample_0151.flac",
+      "words": 19,
+      "duration": 4.98
+    },
+    {
+      "audio": "sample_0152.flac",
+      "words": 15,
+      "duration": 3.92
+    },
+    {
+      "audio": "sample_0153.flac",
+      "words": 46,
+      "duration": 14.42
+    },
+    {
+      "audio": "sample_0154.flac",
+      "words": 7,
+      "duration": 2.02
+    },
+    {
+      "audio": "sample_0155.flac",
+      "words": 12,
+      "duration": 3.3
+    },
+    {
+      "audio": "sample_0156.flac",
+      "words": 9,
+      "duration": 4.88
+    },
+    {
+      "audio": "sample_0157.flac",
+      "words": 18,
+      "duration": 5.26
+    },
+    {
+      "audio": "sample_0158.flac",
+      "words": 32,
+      "duration": 10.42
+    },
+    {
+      "audio": "sample_0159.flac",
+      "words": 13,
+      "duration": 3.34
+    },
+    {
+      "audio": "sample_0160.flac",
+      "words": 11,
+      "duration": 4.16
+    },
+    {
+      "audio": "sample_0161.flac",
+      "words": 26,
+      "duration": 5.46
+    },
+    {
+      "audio": "sample_0162.flac",
+      "words": 7,
+      "duration": 1.56
+    },
+    {
+      "audio": "sample_0163.flac",
+      "words": 8,
+      "duration": 2.52
+    },
+    {
+      "audio": "sample_0164.flac",
+      "words": 15,
+      "duration": 4.26
+    },
+    {
+      "audio": "sample_0165.flac",
+      "words": 15,
+      "duration": 3.34
+    },
+    {
+      "audio": "sample_0166.flac",
+      "words": 12,
+      "duration": 3.92
+    },
+    {
+      "audio": "sample_0167.flac",
+      "words": 25,
+      "duration": 6.36
+    },
+    {
+      "audio": "sample_0168.flac",
+      "words": 12,
+      "duration": 3.2
+    },
+    {
+      "audio": "sample_0169.flac",
+      "words": 14,
+      "duration": 4.24
+    },
+    {
+      "audio": "sample_0170.flac",
+      "words": 15,
+      "duration": 3.9
+    },
+    {
+      "audio": "sample_0171.flac",
+      "words": 3,
+      "duration": 1.86
+    },
+    {
+      "audio": "sample_0172.flac",
+      "words": 19,
+      "duration": 6.28
+    },
+    {
+      "audio": "sample_0173.flac",
+      "words": 46,
+      "duration": 14.58
+    },
+    {
+      "audio": "sample_0174.flac",
+      "words": 30,
+      "duration": 9.28
+    },
+    {
+      "audio": "sample_0175.flac",
+      "words": 51,
+      "duration": 16.14
+    },
+    {
+      "audio": "sample_0176.flac",
+      "words": 25,
+      "duration": 8.46
+    },
+    {
+      "audio": "sample_0177.flac",
+      "words": 23,
+      "duration": 6.74
+    },
+    {
+      "audio": "sample_0178.flac",
+      "words": 55,
+      "duration": 16.92
+    },
+    {
+      "audio": "sample_0179.flac",
+      "words": 12,
+      "duration": 3.16
+    },
+    {
+      "audio": "sample_0180.flac",
+      "words": 13,
+      "duration": 4.66
+    },
+    {
+      "audio": "sample_0181.flac",
+      "words": 49,
+      "duration": 14.5
+    },
+    {
+      "audio": "sample_0182.flac",
+      "words": 9,
+      "duration": 2.4
+    },
+    {
+      "audio": "sample_0183.flac",
+      "words": 33,
+      "duration": 9.8
+    },
+    {
+      "audio": "sample_0184.flac",
+      "words": 16,
+      "duration": 6.04
+    },
+    {
+      "audio": "sample_0185.flac",
+      "words": 26,
+      "duration": 7.46
+    },
+    {
+      "audio": "sample_0186.flac",
+      "words": 65,
+      "duration": 22.0
+    },
+    {
+      "audio": "sample_0187.flac",
+      "words": 42,
+      "duration": 12.58
+    },
+    {
+      "audio": "sample_0188.flac",
+      "words": 11,
+      "duration": 3.78
+    },
+    {
+      "audio": "sample_0189.flac",
+      "words": 44,
+      "duration": 15.38
+    },
+    {
+      "audio": "sample_0190.flac",
+      "words": 34,
+      "duration": 11.4
+    },
+    {
+      "audio": "sample_0191.flac",
+      "words": 24,
+      "duration": 8.24
+    },
+    {
+      "audio": "sample_0192.flac",
+      "words": 53,
+      "duration": 18.84
+    },
+    {
+      "audio": "sample_0193.flac",
+      "words": 30,
+      "duration": 10.66
+    },
+    {
+      "audio": "sample_0194.flac",
+      "words": 31,
+      "duration": 8.74
+    },
+    {
+      "audio": "sample_0195.flac",
+      "words": 12,
+      "duration": 2.42
+    },
+    {
+      "audio": "sample_0196.flac",
+      "words": 10,
+      "duration": 3.56
+    },
+    {
+      "audio": "sample_0197.flac",
+      "words": 18,
+      "duration": 4.16
+    },
+    {
+      "audio": "sample_0198.flac",
+      "words": 10,
+      "duration": 3.4
+    },
+    {
+      "audio": "sample_0199.flac",
+      "words": 33,
+      "duration": 8.84
+    },
+    {
+      "audio": "sample_0200.flac",
+      "words": 11,
+      "duration": 3.26
+    },
+    {
+      "audio": "sample_0201.flac",
+      "words": 22,
+      "duration": 6.9
+    },
+    {
+      "audio": "sample_0202.flac",
+      "words": 10,
+      "duration": 2.4
+    },
+    {
+      "audio": "sample_0203.flac",
+      "words": 30,
+      "duration": 9.9
+    },
+    {
+      "audio": "sample_0204.flac",
+      "words": 13,
+      "duration": 3.24
+    },
+    {
+      "audio": "sample_0205.flac",
+      "words": 53,
+      "duration": 19.0
+    },
+    {
+      "audio": "sample_0206.flac",
+      "words": 41,
+      "duration": 13.42
+    },
+    {
+      "audio": "sample_0207.flac",
+      "words": 45,
+      "duration": 14.22
+    },
+    {
+      "audio": "sample_0208.flac",
+      "words": 36,
+      "duration": 11.0
+    },
+    {
+      "audio": "sample_0209.flac",
+      "words": 25,
+      "duration": 8.4
+    },
+    {
+      "audio": "sample_0210.flac",
+      "words": 23,
+      "duration": 7.5
+    },
+    {
+      "audio": "sample_0211.flac",
+      "words": 12,
+      "duration": 2.88
+    },
+    {
+      "audio": "sample_0212.flac",
+      "words": 20,
+      "duration": 6.2
+    },
+    {
+      "audio": "sample_0213.flac",
+      "words": 25,
+      "duration": 6.92
+    },
+    {
+      "audio": "sample_0214.flac",
+      "words": 18,
+      "duration": 4.82
+    },
+    {
+      "audio": "sample_0215.flac",
+      "words": 11,
+      "duration": 2.92
+    },
+    {
+      "audio": "sample_0216.flac",
+      "words": 27,
+      "duration": 9.94
+    },
+    {
+      "audio": "sample_0217.flac",
+      "words": 19,
+      "duration": 8.02
+    },
+    {
+      "audio": "sample_0218.flac",
+      "words": 12,
+      "duration": 4.2
+    },
+    {
+      "audio": "sample_0219.flac",
+      "words": 20,
+      "duration": 5.88
+    },
+    {
+      "audio": "sample_0220.flac",
+      "words": 24,
+      "duration": 8.4
+    },
+    {
+      "audio": "sample_0221.flac",
+      "words": 20,
+      "duration": 6.76
+    },
+    {
+      "audio": "sample_0222.flac",
+      "words": 7,
+      "duration": 2.22
+    },
+    {
+      "audio": "sample_0223.flac",
+      "words": 6,
+      "duration": 2.02
+    },
+    {
+      "audio": "sample_0224.flac",
+      "words": 22,
+      "duration": 5.2
+    },
+    {
+      "audio": "sample_0225.flac",
+      "words": 11,
+      "duration": 4.16
+    },
+    {
+      "audio": "sample_0226.flac",
+      "words": 32,
+      "duration": 9.74
+    },
+    {
+      "audio": "sample_0227.flac",
+      "words": 9,
+      "duration": 2.08
+    },
+    {
+      "audio": "sample_0228.flac",
+      "words": 10,
+      "duration": 4.42
+    },
+    {
+      "audio": "sample_0229.flac",
+      "words": 18,
+      "duration": 4.86
+    },
+    {
+      "audio": "sample_0230.flac",
+      "words": 12,
+      "duration": 3.9
+    },
+    {
+      "audio": "sample_0231.flac",
+      "words": 10,
+      "duration": 2.98
+    },
+    {
+      "audio": "sample_0232.flac",
+      "words": 18,
+      "duration": 4.7
+    },
+    {
+      "audio": "sample_0233.flac",
+      "words": 8,
+      "duration": 2.32
+    },
+    {
+      "audio": "sample_0234.flac",
+      "words": 10,
+      "duration": 2.96
+    },
+    {
+      "audio": "sample_0235.flac",
+      "words": 9,
+      "duration": 2.42
+    },
+    {
+      "audio": "sample_0236.flac",
+      "words": 7,
+      "duration": 1.94
+    },
+    {
+      "audio": "sample_0237.flac",
+      "words": 8,
+      "duration": 1.96
+    },
+    {
+      "audio": "sample_0238.flac",
+      "words": 27,
+      "duration": 7.5
+    },
+    {
+      "audio": "sample_0239.flac",
+      "words": 23,
+      "duration": 6.72
+    },
+    {
+      "audio": "sample_0240.flac",
+      "words": 13,
+      "duration": 4.58
+    },
+    {
+      "audio": "sample_0241.flac",
+      "words": 31,
+      "duration": 10.06
+    },
+    {
+      "audio": "sample_0242.flac",
+      "words": 19,
+      "duration": 5.9
+    },
+    {
+      "audio": "sample_0243.flac",
+      "words": 10,
+      "duration": 2.6
+    },
+    {
+      "audio": "sample_0244.flac",
+      "words": 16,
+      "duration": 4.64
+    },
+    {
+      "audio": "sample_0245.flac",
+      "words": 26,
+      "duration": 7.82
+    },
+    {
+      "audio": "sample_0246.flac",
+      "words": 18,
+      "duration": 6.12
+    },
+    {
+      "audio": "sample_0247.flac",
+      "words": 14,
+      "duration": 4.08
+    },
+    {
+      "audio": "sample_0248.flac",
+      "words": 18,
+      "duration": 4.88
+    },
+    {
+      "audio": "sample_0249.flac",
+      "words": 13,
+      "duration": 3.5
+    },
+    {
+      "audio": "sample_0250.flac",
+      "words": 26,
+      "duration": 7.42
+    },
+    {
+      "audio": "sample_0251.flac",
+      "words": 25,
+      "duration": 8.62
+    },
+    {
+      "audio": "sample_0252.flac",
+      "words": 10,
+      "duration": 3.12
+    },
+    {
+      "audio": "sample_0253.flac",
+      "words": 6,
+      "duration": 1.54
+    },
+    {
+      "audio": "sample_0254.flac",
+      "words": 6,
+      "duration": 1.62
+    },
+    {
+      "audio": "sample_0255.flac",
+      "words": 22,
+      "duration": 6.62
+    },
+    {
+      "audio": "sample_0256.flac",
+      "words": 15,
+      "duration": 4.66
+    },
+    {
+      "audio": "sample_0257.flac",
+      "words": 5,
+      "duration": 2.84
+    },
+    {
+      "audio": "sample_0258.flac",
+      "words": 12,
+      "duration": 4.46
+    },
+    {
+      "audio": "sample_0259.flac",
+      "words": 28,
+      "duration": 9.44
+    },
+    {
+      "audio": "sample_0260.flac",
+      "words": 18,
+      "duration": 5.54
+    },
+    {
+      "audio": "sample_0261.flac",
+      "words": 18,
+      "duration": 5.96
+    },
+    {
+      "audio": "sample_0262.flac",
+      "words": 11,
+      "duration": 4.0
+    },
+    {
+      "audio": "sample_0263.flac",
+      "words": 29,
+      "duration": 8.52
+    },
+    {
+      "audio": "sample_0264.flac",
+      "words": 27,
+      "duration": 8.62
+    },
+    {
+      "audio": "sample_0265.flac",
+      "words": 7,
+      "duration": 2.9
+    },
+    {
+      "audio": "sample_0266.flac",
+      "words": 15,
+      "duration": 3.36
+    },
+    {
+      "audio": "sample_0267.flac",
+      "words": 23,
+      "duration": 8.6
+    },
+    {
+      "audio": "sample_0268.flac",
+      "words": 31,
+      "duration": 9.56
+    },
+    {
+      "audio": "sample_0269.flac",
+      "words": 13,
+      "duration": 4.64
+    },
+    {
+      "audio": "sample_0270.flac",
+      "words": 14,
+      "duration": 4.38
+    },
+    {
+      "audio": "sample_0271.flac",
+      "words": 17,
+      "duration": 5.18
+    },
+    {
+      "audio": "sample_0272.flac",
+      "words": 18,
+      "duration": 5.96
+    },
+    {
+      "audio": "sample_0273.flac",
+      "words": 12,
+      "duration": 4.06
+    },
+    {
+      "audio": "sample_0274.flac",
+      "words": 11,
+      "duration": 3.42
+    },
+    {
+      "audio": "sample_0275.flac",
+      "words": 34,
+      "duration": 11.16
+    },
+    {
+      "audio": "sample_0276.flac",
+      "words": 7,
+      "duration": 2.18
+    },
+    {
+      "audio": "sample_0277.flac",
+      "words": 12,
+      "duration": 3.7
+    },
+    {
+      "audio": "sample_0278.flac",
+      "words": 16,
+      "duration": 6.04
+    },
+    {
+      "audio": "sample_0279.flac",
+      "words": 16,
+      "duration": 5.52
+    },
+    {
+      "audio": "sample_0280.flac",
+      "words": 18,
+      "duration": 6.0
+    },
+    {
+      "audio": "sample_0281.flac",
+      "words": 17,
+      "duration": 6.66
+    },
+    {
+      "audio": "sample_0282.flac",
+      "words": 12,
+      "duration": 3.98
+    },
+    {
+      "audio": "sample_0283.flac",
+      "words": 23,
+      "duration": 6.06
+    },
+    {
+      "audio": "sample_0284.flac",
+      "words": 20,
+      "duration": 6.18
+    },
+    {
+      "audio": "sample_0285.flac",
+      "words": 29,
+      "duration": 8.02
+    },
+    {
+      "audio": "sample_0286.flac",
+      "words": 55,
+      "duration": 15.68
+    },
+    {
+      "audio": "sample_0287.flac",
+      "words": 11,
+      "duration": 2.28
+    },
+    {
+      "audio": "sample_0288.flac",
+      "words": 49,
+      "duration": 14.86
+    },
+    {
+      "audio": "sample_0289.flac",
+      "words": 21,
+      "duration": 6.6
+    },
+    {
+      "audio": "sample_0290.flac",
+      "words": 19,
+      "duration": 5.8
+    },
+    {
+      "audio": "sample_0291.flac",
+      "words": 31,
+      "duration": 10.36
+    },
+    {
+      "audio": "sample_0292.flac",
+      "words": 27,
+      "duration": 7.94
+    },
+    {
+      "audio": "sample_0293.flac",
+      "words": 16,
+      "duration": 4.54
+    },
+    {
+      "audio": "sample_0294.flac",
+      "words": 7,
+      "duration": 1.92
+    },
+    {
+      "audio": "sample_0295.flac",
+      "words": 26,
+      "duration": 7.26
+    },
+    {
+      "audio": "sample_0296.flac",
+      "words": 29,
+      "duration": 7.96
+    },
+    {
+      "audio": "sample_0297.flac",
+      "words": 31,
+      "duration": 8.62
+    },
+    {
+      "audio": "sample_0298.flac",
+      "words": 24,
+      "duration": 6.8
+    },
+    {
+      "audio": "sample_0299.flac",
+      "words": 23,
+      "duration": 7.18
+    },
+    {
+      "audio": "sample_0300.flac",
+      "words": 18,
+      "duration": 5.42
+    },
+    {
+      "audio": "sample_0301.flac",
+      "words": 46,
+      "duration": 12.74
+    },
+    {
+      "audio": "sample_0302.flac",
+      "words": 16,
+      "duration": 3.84
+    },
+    {
+      "audio": "sample_0303.flac",
+      "words": 8,
+      "duration": 2.8
+    },
+    {
+      "audio": "sample_0304.flac",
+      "words": 23,
+      "duration": 7.28
+    },
+    {
+      "audio": "sample_0305.flac",
+      "words": 11,
+      "duration": 2.92
+    },
+    {
+      "audio": "sample_0306.flac",
+      "words": 10,
+      "duration": 3.16
+    },
+    {
+      "audio": "sample_0307.flac",
+      "words": 10,
+      "duration": 2.64
+    },
+    {
+      "audio": "sample_0308.flac",
+      "words": 16,
+      "duration": 5.16
+    },
+    {
+      "audio": "sample_0309.flac",
+      "words": 12,
+      "duration": 3.62
+    },
+    {
+      "audio": "sample_0310.flac",
+      "words": 6,
+      "duration": 1.92
+    },
+    {
+      "audio": "sample_0311.flac",
+      "words": 22,
+      "duration": 8.36
+    },
+    {
+      "audio": "sample_0312.flac",
+      "words": 11,
+      "duration": 3.54
+    },
+    {
+      "audio": "sample_0313.flac",
+      "words": 14,
+      "duration": 4.4
+    },
+    {
+      "audio": "sample_0314.flac",
+      "words": 9,
+      "duration": 2.54
+    },
+    {
+      "audio": "sample_0315.flac",
+      "words": 35,
+      "duration": 13.6
+    },
+    {
+      "audio": "sample_0316.flac",
+      "words": 13,
+      "duration": 2.78
+    },
+    {
+      "audio": "sample_0317.flac",
+      "words": 6,
+      "duration": 3.1
+    },
+    {
+      "audio": "sample_0318.flac",
+      "words": 5,
+      "duration": 1.68
+    },
+    {
+      "audio": "sample_0319.flac",
+      "words": 22,
+      "duration": 6.24
+    },
+    {
+      "audio": "sample_0320.flac",
+      "words": 16,
+      "duration": 4.86
+    },
+    {
+      "audio": "sample_0321.flac",
+      "words": 12,
+      "duration": 4.0
+    },
+    {
+      "audio": "sample_0322.flac",
+      "words": 13,
+      "duration": 4.46
+    },
+    {
+      "audio": "sample_0323.flac",
+      "words": 39,
+      "duration": 14.06
+    },
+    {
+      "audio": "sample_0324.flac",
+      "words": 15,
+      "duration": 4.06
+    },
+    {
+      "audio": "sample_0325.flac",
+      "words": 26,
+      "duration": 6.4
+    },
+    {
+      "audio": "sample_0326.flac",
+      "words": 18,
+      "duration": 5.22
+    },
+    {
+      "audio": "sample_0327.flac",
+      "words": 17,
+      "duration": 6.92
+    },
+    {
+      "audio": "sample_0328.flac",
+      "words": 14,
+      "duration": 4.26
+    },
+    {
+      "audio": "sample_0329.flac",
+      "words": 20,
+      "duration": 5.66
+    },
+    {
+      "audio": "sample_0330.flac",
+      "words": 37,
+      "duration": 14.24
+    },
+    {
+      "audio": "sample_0331.flac",
+      "words": 23,
+      "duration": 5.66
+    },
+    {
+      "audio": "sample_0332.flac",
+      "words": 5,
+      "duration": 2.0
+    },
+    {
+      "audio": "sample_0333.flac",
+      "words": 26,
+      "duration": 7.08
+    },
+    {
+      "audio": "sample_0334.flac",
+      "words": 17,
+      "duration": 4.74
+    },
+    {
+      "audio": "sample_0335.flac",
+      "words": 14,
+      "duration": 4.86
+    },
+    {
+      "audio": "sample_0336.flac",
+      "words": 12,
+      "duration": 4.0
+    },
+    {
+      "audio": "sample_0337.flac",
+      "words": 27,
+      "duration": 6.88
+    },
+    {
+      "audio": "sample_0338.flac",
+      "words": 44,
+      "duration": 13.12
+    },
+    {
+      "audio": "sample_0339.flac",
+      "words": 19,
+      "duration": 6.72
+    },
+    {
+      "audio": "sample_0340.flac",
+      "words": 63,
+      "duration": 22.28
+    },
+    {
+      "audio": "sample_0341.flac",
+      "words": 53,
+      "duration": 15.88
+    },
+    {
+      "audio": "sample_0342.flac",
+      "words": 24,
+      "duration": 8.12
+    },
+    {
+      "audio": "sample_0343.flac",
+      "words": 51,
+      "duration": 16.2
+    },
+    {
+      "audio": "sample_0344.flac",
+      "words": 36,
+      "duration": 9.92
+    },
+    {
+      "audio": "sample_0345.flac",
+      "words": 45,
+      "duration": 16.84
+    },
+    {
+      "audio": "sample_0346.flac",
+      "words": 41,
+      "duration": 10.52
+    },
+    {
+      "audio": "sample_0347.flac",
+      "words": 38,
+      "duration": 13.04
+    },
+    {
+      "audio": "sample_0348.flac",
+      "words": 17,
+      "duration": 6.3
+    },
+    {
+      "audio": "sample_0349.flac",
+      "words": 25,
+      "duration": 9.08
+    },
+    {
+      "audio": "sample_0350.flac",
+      "words": 30,
+      "duration": 9.98
+    },
+    {
+      "audio": "sample_0351.flac",
+      "words": 20,
+      "duration": 6.16
+    },
+    {
+      "audio": "sample_0352.flac",
+      "words": 23,
+      "duration": 9.32
+    },
+    {
+      "audio": "sample_0353.flac",
+      "words": 17,
+      "duration": 3.94
+    },
+    {
+      "audio": "sample_0354.flac",
+      "words": 15,
+      "duration": 3.16
+    },
+    {
+      "audio": "sample_0355.flac",
+      "words": 4,
+      "duration": 2.7
+    },
+    {
+      "audio": "sample_0356.flac",
+      "words": 10,
+      "duration": 2.42
+    },
+    {
+      "audio": "sample_0357.flac",
+      "words": 13,
+      "duration": 4.08
+    },
+    {
+      "audio": "sample_0358.flac",
+      "words": 7,
+      "duration": 1.96
+    },
+    {
+      "audio": "sample_0359.flac",
+      "words": 14,
+      "duration": 4.86
+    },
+    {
+      "audio": "sample_0360.flac",
+      "words": 9,
+      "duration": 1.88
+    },
+    {
+      "audio": "sample_0361.flac",
+      "words": 27,
+      "duration": 7.26
+    },
+    {
+      "audio": "sample_0362.flac",
+      "words": 21,
+      "duration": 4.96
+    },
+    {
+      "audio": "sample_0363.flac",
+      "words": 7,
+      "duration": 2.14
+    },
+    {
+      "audio": "sample_0364.flac",
+      "words": 25,
+      "duration": 6.08
+    },
+    {
+      "audio": "sample_0365.flac",
+      "words": 16,
+      "duration": 6.36
+    },
+    {
+      "audio": "sample_0366.flac",
+      "words": 15,
+      "duration": 3.62
+    },
+    {
+      "audio": "sample_0367.flac",
+      "words": 19,
+      "duration": 4.52
+    },
+    {
+      "audio": "sample_0368.flac",
+      "words": 10,
+      "duration": 2.48
+    },
+    {
+      "audio": "sample_0369.flac",
+      "words": 8,
+      "duration": 2.18
+    },
+    {
+      "audio": "sample_0370.flac",
+      "words": 7,
+      "duration": 1.92
+    },
+    {
+      "audio": "sample_0371.flac",
+      "words": 11,
+      "duration": 3.88
+    },
+    {
+      "audio": "sample_0372.flac",
+      "words": 9,
+      "duration": 2.96
+    },
+    {
+      "audio": "sample_0373.flac",
+      "words": 20,
+      "duration": 4.96
+    },
+    {
+      "audio": "sample_0374.flac",
+      "words": 7,
+      "duration": 2.5
+    },
+    {
+      "audio": "sample_0375.flac",
+      "words": 24,
+      "duration": 5.2
+    },
+    {
+      "audio": "sample_0376.flac",
+      "words": 23,
+      "duration": 5.56
+    },
+    {
+      "audio": "sample_0377.flac",
+      "words": 11,
+      "duration": 2.32
+    },
+    {
+      "audio": "sample_0378.flac",
+      "words": 23,
+      "duration": 5.46
+    },
+    {
+      "audio": "sample_0379.flac",
+      "words": 4,
+      "duration": 1.4
+    },
+    {
+      "audio": "sample_0380.flac",
+      "words": 11,
+      "duration": 3.02
+    },
+    {
+      "audio": "sample_0381.flac",
+      "words": 12,
+      "duration": 4.42
+    },
+    {
+      "audio": "sample_0382.flac",
+      "words": 24,
+      "duration": 6.86
+    },
+    {
+      "audio": "sample_0383.flac",
+      "words": 6,
+      "duration": 2.32
+    },
+    {
+      "audio": "sample_0384.flac",
+      "words": 36,
+      "duration": 10.44
+    },
+    {
+      "audio": "sample_0385.flac",
+      "words": 15,
+      "duration": 4.02
+    },
+    {
+      "audio": "sample_0386.flac",
+      "words": 30,
+      "duration": 8.9
+    },
+    {
+      "audio": "sample_0387.flac",
+      "words": 12,
+      "duration": 3.08
+    },
+    {
+      "audio": "sample_0388.flac",
+      "words": 38,
+      "duration": 9.54
+    },
+    {
+      "audio": "sample_0389.flac",
+      "words": 11,
+      "duration": 3.1
+    },
+    {
+      "audio": "sample_0390.flac",
+      "words": 16,
+      "duration": 3.7
+    },
+    {
+      "audio": "sample_0391.flac",
+      "words": 10,
+      "duration": 2.64
+    },
+    {
+      "audio": "sample_0392.flac",
+      "words": 4,
+      "duration": 1.66
+    },
+    {
+      "audio": "sample_0393.flac",
+      "words": 28,
+      "duration": 8.62
+    },
+    {
+      "audio": "sample_0394.flac",
+      "words": 18,
+      "duration": 4.64
+    },
+    {
+      "audio": "sample_0395.flac",
+      "words": 15,
+      "duration": 4.36
+    },
+    {
+      "audio": "sample_0396.flac",
+      "words": 25,
+      "duration": 7.46
+    },
+    {
+      "audio": "sample_0397.flac",
+      "words": 2,
+      "duration": 1.26
+    },
+    {
+      "audio": "sample_0398.flac",
+      "words": 17,
+      "duration": 4.52
+    },
+    {
+      "audio": "sample_0399.flac",
+      "words": 17,
+      "duration": 4.86
+    },
+    {
+      "audio": "sample_0400.flac",
+      "words": 22,
+      "duration": 5.84
+    },
+    {
+      "audio": "sample_0401.flac",
+      "words": 16,
+      "duration": 5.08
+    },
+    {
+      "audio": "sample_0402.flac",
+      "words": 11,
+      "duration": 2.46
+    },
+    {
+      "audio": "sample_0403.flac",
+      "words": 23,
+      "duration": 8.8
+    },
+    {
+      "audio": "sample_0404.flac",
+      "words": 11,
+      "duration": 4.04
+    },
+    {
+      "audio": "sample_0405.flac",
+      "words": 13,
+      "duration": 3.26
+    },
+    {
+      "audio": "sample_0406.flac",
+      "words": 40,
+      "duration": 10.42
+    },
+    {
+      "audio": "sample_0407.flac",
+      "words": 8,
+      "duration": 2.18
+    },
+    {
+      "audio": "sample_0408.flac",
+      "words": 35,
+      "duration": 12.12
+    },
+    {
+      "audio": "sample_0409.flac",
+      "words": 35,
+      "duration": 8.9
+    },
+    {
+      "audio": "sample_0410.flac",
+      "words": 27,
+      "duration": 6.88
+    },
+    {
+      "audio": "sample_0411.flac",
+      "words": 14,
+      "duration": 4.9
+    },
+    {
+      "audio": "sample_0412.flac",
+      "words": 4,
+      "duration": 2.1
+    },
+    {
+      "audio": "sample_0413.flac",
+      "words": 18,
+      "duration": 4.72
+    },
+    {
+      "audio": "sample_0414.flac",
+      "words": 20,
+      "duration": 6.4
+    },
+    {
+      "audio": "sample_0415.flac",
+      "words": 36,
+      "duration": 10.58
+    },
+    {
+      "audio": "sample_0416.flac",
+      "words": 5,
+      "duration": 1.7
+    },
+    {
+      "audio": "sample_0417.flac",
+      "words": 16,
+      "duration": 4.74
+    },
+    {
+      "audio": "sample_0418.flac",
+      "words": 7,
+      "duration": 2.0
+    },
+    {
+      "audio": "sample_0419.flac",
+      "words": 23,
+      "duration": 5.58
+    },
+    {
+      "audio": "sample_0420.flac",
+      "words": 28,
+      "duration": 9.02
+    },
+    {
+      "audio": "sample_0421.flac",
+      "words": 6,
+      "duration": 3.22
+    },
+    {
+      "audio": "sample_0422.flac",
+      "words": 32,
+      "duration": 11.7
+    },
+    {
+      "audio": "sample_0423.flac",
+      "words": 16,
+      "duration": 4.0
+    },
+    {
+      "audio": "sample_0424.flac",
+      "words": 26,
+      "duration": 11.44
+    },
+    {
+      "audio": "sample_0425.flac",
+      "words": 28,
+      "duration": 7.34
+    },
+    {
+      "audio": "sample_0426.flac",
+      "words": 5,
+      "duration": 1.5
+    },
+    {
+      "audio": "sample_0427.flac",
+      "words": 8,
+      "duration": 3.06
+    },
+    {
+      "audio": "sample_0428.flac",
+      "words": 9,
+      "duration": 2.5
+    },
+    {
+      "audio": "sample_0429.flac",
+      "words": 10,
+      "duration": 2.66
+    },
+    {
+      "audio": "sample_0430.flac",
+      "words": 18,
+      "duration": 4.5
+    },
+    {
+      "audio": "sample_0431.flac",
+      "words": 57,
+      "duration": 17.62
+    },
+    {
+      "audio": "sample_0432.flac",
+      "words": 6,
+      "duration": 2.02
+    },
+    {
+      "audio": "sample_0433.flac",
+      "words": 8,
+      "duration": 1.92
+    },
+    {
+      "audio": "sample_0434.flac",
+      "words": 22,
+      "duration": 5.14
+    },
+    {
+      "audio": "sample_0435.flac",
+      "words": 39,
+      "duration": 12.12
+    },
+    {
+      "audio": "sample_0436.flac",
+      "words": 21,
+      "duration": 6.14
+    },
+    {
+      "audio": "sample_0437.flac",
+      "words": 18,
+      "duration": 5.56
+    },
+    {
+      "audio": "sample_0438.flac",
+      "words": 14,
+      "duration": 3.94
+    },
+    {
+      "audio": "sample_0439.flac",
+      "words": 12,
+      "duration": 3.06
+    },
+    {
+      "audio": "sample_0440.flac",
+      "words": 32,
+      "duration": 9.46
+    },
+    {
+      "audio": "sample_0441.flac",
+      "words": 5,
+      "duration": 2.3
+    },
+    {
+      "audio": "sample_0442.flac",
+      "words": 40,
+      "duration": 14.78
+    },
+    {
+      "audio": "sample_0443.flac",
+      "words": 24,
+      "duration": 5.4
+    },
+    {
+      "audio": "sample_0444.flac",
+      "words": 25,
+      "duration": 4.62
+    },
+    {
+      "audio": "sample_0445.flac",
+      "words": 11,
+      "duration": 3.46
+    },
+    {
+      "audio": "sample_0446.flac",
+      "words": 38,
+      "duration": 11.06
+    },
+    {
+      "audio": "sample_0447.flac",
+      "words": 12,
+      "duration": 3.48
+    },
+    {
+      "audio": "sample_0448.flac",
+      "words": 14,
+      "duration": 5.22
+    },
+    {
+      "audio": "sample_0449.flac",
+      "words": 10,
+      "duration": 2.04
+    },
+    {
+      "audio": "sample_0450.flac",
+      "words": 11,
+      "duration": 4.38
+    },
+    {
+      "audio": "sample_0451.flac",
+      "words": 14,
+      "duration": 3.8
+    },
+    {
+      "audio": "sample_0452.flac",
+      "words": 42,
+      "duration": 12.98
+    },
+    {
+      "audio": "sample_0453.flac",
+      "words": 6,
+      "duration": 2.1
+    },
+    {
+      "audio": "sample_0454.flac",
+      "words": 8,
+      "duration": 2.02
+    },
+    {
+      "audio": "sample_0455.flac",
+      "words": 16,
+      "duration": 3.9
+    },
+    {
+      "audio": "sample_0456.flac",
+      "words": 11,
+      "duration": 3.4
+    },
+    {
+      "audio": "sample_0457.flac",
+      "words": 16,
+      "duration": 4.0
+    },
+    {
+      "audio": "sample_0458.flac",
+      "words": 6,
+      "duration": 1.5
+    },
+    {
+      "audio": "sample_0459.flac",
+      "words": 15,
+      "duration": 3.54
+    },
+    {
+      "audio": "sample_0460.flac",
+      "words": 20,
+      "duration": 6.98
+    },
+    {
+      "audio": "sample_0461.flac",
+      "words": 8,
+      "duration": 2.54
+    },
+    {
+      "audio": "sample_0462.flac",
+      "words": 9,
+      "duration": 2.14
+    },
+    {
+      "audio": "sample_0463.flac",
+      "words": 11,
+      "duration": 3.36
+    },
+    {
+      "audio": "sample_0464.flac",
+      "words": 17,
+      "duration": 4.38
+    },
+    {
+      "audio": "sample_0465.flac",
+      "words": 8,
+      "duration": 2.22
+    },
+    {
+      "audio": "sample_0466.flac",
+      "words": 20,
+      "duration": 6.76
+    },
+    {
+      "audio": "sample_0467.flac",
+      "words": 13,
+      "duration": 3.86
+    },
+    {
+      "audio": "sample_0468.flac",
+      "words": 6,
+      "duration": 2.34
+    },
+    {
+      "audio": "sample_0469.flac",
+      "words": 49,
+      "duration": 13.2
+    },
+    {
+      "audio": "sample_0470.flac",
+      "words": 5,
+      "duration": 1.34
+    },
+    {
+      "audio": "sample_0471.flac",
+      "words": 13,
+      "duration": 2.66
+    },
+    {
+      "audio": "sample_0472.flac",
+      "words": 3,
+      "duration": 1.76
+    },
+    {
+      "audio": "sample_0473.flac",
+      "words": 57,
+      "duration": 13.66
+    },
+    {
+      "audio": "sample_0474.flac",
+      "words": 48,
+      "duration": 15.4
+    },
+    {
+      "audio": "sample_0475.flac",
+      "words": 9,
+      "duration": 1.96
+    },
+    {
+      "audio": "sample_0476.flac",
+      "words": 5,
+      "duration": 2.48
+    },
+    {
+      "audio": "sample_0477.flac",
+      "words": 22,
+      "duration": 6.84
+    },
+    {
+      "audio": "sample_0478.flac",
+      "words": 18,
+      "duration": 6.22
+    },
+    {
+      "audio": "sample_0479.flac",
+      "words": 28,
+      "duration": 8.0
+    },
+    {
+      "audio": "sample_0480.flac",
+      "words": 33,
+      "duration": 8.92
+    },
+    {
+      "audio": "sample_0481.flac",
+      "words": 25,
+      "duration": 5.58
+    },
+    {
+      "audio": "sample_0482.flac",
+      "words": 20,
+      "duration": 4.46
+    },
+    {
+      "audio": "sample_0483.flac",
+      "words": 4,
+      "duration": 1.7
+    },
+    {
+      "audio": "sample_0484.flac",
+      "words": 13,
+      "duration": 3.72
+    },
+    {
+      "audio": "sample_0485.flac",
+      "words": 14,
+      "duration": 4.86
+    },
+    {
+      "audio": "sample_0486.flac",
+      "words": 12,
+      "duration": 4.2
+    },
+    {
+      "audio": "sample_0487.flac",
+      "words": 21,
+      "duration": 6.6
+    },
+    {
+      "audio": "sample_0488.flac",
+      "words": 8,
+      "duration": 3.14
+    },
+    {
+      "audio": "sample_0489.flac",
+      "words": 36,
+      "duration": 9.76
+    },
+    {
+      "audio": "sample_0490.flac",
+      "words": 6,
+      "duration": 2.3
+    },
+    {
+      "audio": "sample_0491.flac",
+      "words": 27,
+      "duration": 6.96
+    },
+    {
+      "audio": "sample_0492.flac",
+      "words": 24,
+      "duration": 8.68
+    },
+    {
+      "audio": "sample_0493.flac",
+      "words": 22,
+      "duration": 8.16
+    },
+    {
+      "audio": "sample_0494.flac",
+      "words": 24,
+      "duration": 8.38
+    },
+    {
+      "audio": "sample_0495.flac",
+      "words": 23,
+      "duration": 8.3
+    },
+    {
+      "audio": "sample_0496.flac",
+      "words": 22,
+      "duration": 7.68
+    },
+    {
+      "audio": "sample_0497.flac",
+      "words": 26,
+      "duration": 7.16
+    },
+    {
+      "audio": "sample_0498.flac",
+      "words": 26,
+      "duration": 7.72
+    },
+    {
+      "audio": "sample_0499.flac",
+      "words": 25,
+      "duration": 8.68
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "audio_file": "sample_0451.flac",
+  "wav_file": "sample_0451.wav",
+  "transcript": "His own skin had sizzled under the red hot brand team, I would softly.",
+  "word_timings": [
+    {
+      "word": "His",
+      "start": 0.0,
+      "end": 0.44
+    },
+    {
+      "word": "own",
+      "start": 0.44,
+      "end": 0.62
+    },
+    {
+      "word": "skin",
+      "start": 0.62,
+      "end": 0.94
+    },
+    {
+      "word": "had",
+      "start": 0.94,
+      "end": 1.14
+    },
+    {
+      "word": "sizzled",
+      "start": 1.14,
+      "end": 1.7
+    },
+    {
+      "word": "under",
+      "start": 1.7,
+      "end": 2.1
+    },
+    {
+      "word": "the",
+      "start": 2.1,
+      "end": 2.24
+    },
+    {
+      "word": "red",
+      "start": 2.24,
+      "end": 2.38
+    },
+    {
+      "word": "hot",
+      "start": 2.38,
+      "end": 2.64
+    },
+    {
+      "word": "brand",
+      "start": 2.64,
+      "end": 2.86
+    },
+    {
+      "word": "team,",
+      "start": 2.86,
+      "end": 3.24
+    },
+    {
+      "word": "I",
+      "start": 3.26,
+      "end": 3.32
+    },
+    {
+      "word": "would",
+      "start": 3.32,
+      "end": 3.4
+    },
+    {
+      "word": "softly.",
+      "start": 3.4,
+      "end": 3.8
+    }
+  ],
+  "duration": 3.8
+}

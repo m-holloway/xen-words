@@ -1,0 +1,98 @@
+{
+  "audio_file": "sample_0260.flac",
+  "wav_file": "sample_0260.wav",
+  "transcript": "Not by the clav'a nor the alma saw such fighting. It was the duel to the death.",
+  "word_timings": [
+    {
+      "word": "Not",
+      "start": 0.0,
+      "end": 0.64
+    },
+    {
+      "word": "by",
+      "start": 0.64,
+      "end": 0.82
+    },
+    {
+      "word": "the",
+      "start": 0.82,
+      "end": 0.96
+    },
+    {
+      "word": "clav",
+      "start": 0.96,
+      "end": 1.3
+    },
+    {
+      "word": "'a",
+      "start": 1.3,
+      "end": 1.46
+    },
+    {
+      "word": "nor",
+      "start": 1.46,
+      "end": 1.74
+    },
+    {
+      "word": "the",
+      "start": 1.74,
+      "end": 1.94
+    },
+    {
+      "word": "alma",
+      "start": 1.94,
+      "end": 2.32
+    },
+    {
+      "word": "saw",
+      "start": 2.32,
+      "end": 2.84
+    },
+    {
+      "word": "such",
+      "start": 2.84,
+      "end": 3.18
+    },
+    {
+      "word": "fighting.",
+      "start": 3.18,
+      "end": 3.52
+    },
+    {
+      "word": "It",
+      "start": 4.24,
+      "end": 4.38
+    },
+    {
+      "word": "was",
+      "start": 4.38,
+      "end": 4.52
+    },
+    {
+      "word": "the",
+      "start": 4.52,
+      "end": 4.66
+    },
+    {
+      "word": "duel",
+      "start": 4.66,
+      "end": 4.94
+    },
+    {
+      "word": "to",
+      "start": 4.94,
+      "end": 5.14
+    },
+    {
+      "word": "the",
+      "start": 5.14,
+      "end": 5.26
+    },
+    {
+      "word": "death.",
+      "start": 5.26,
+      "end": 5.54
+    }
+  ],
+  "duration": 5.54
+}

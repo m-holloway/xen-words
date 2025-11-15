@@ -1,0 +1,273 @@
+{
+  "audio_file": "sample_0341.flac",
+  "wav_file": "sample_0341.wav",
+  "transcript": "I do not believe in such republics anymore than in that of Plato. Or if the things we read off really happened, I do not hesitate to affirm that these supposed democracies were composed of very different elements from ours, and that they had nothing in common with the letter except their name.",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.5
+    },
+    {
+      "word": "do",
+      "start": 0.5,
+      "end": 0.62
+    },
+    {
+      "word": "not",
+      "start": 0.62,
+      "end": 0.68
+    },
+    {
+      "word": "believe",
+      "start": 0.68,
+      "end": 0.98
+    },
+    {
+      "word": "in",
+      "start": 0.98,
+      "end": 1.16
+    },
+    {
+      "word": "such",
+      "start": 1.16,
+      "end": 1.36
+    },
+    {
+      "word": "republics",
+      "start": 1.36,
+      "end": 1.96
+    },
+    {
+      "word": "anymore",
+      "start": 1.96,
+      "end": 2.38
+    },
+    {
+      "word": "than",
+      "start": 2.38,
+      "end": 2.6
+    },
+    {
+      "word": "in",
+      "start": 2.6,
+      "end": 2.72
+    },
+    {
+      "word": "that",
+      "start": 2.72,
+      "end": 2.88
+    },
+    {
+      "word": "of",
+      "start": 2.88,
+      "end": 3.06
+    },
+    {
+      "word": "Plato.",
+      "start": 3.06,
+      "end": 3.4
+    },
+    {
+      "word": "Or",
+      "start": 4.0,
+      "end": 4.3
+    },
+    {
+      "word": "if",
+      "start": 4.3,
+      "end": 4.74
+    },
+    {
+      "word": "the",
+      "start": 4.74,
+      "end": 4.84
+    },
+    {
+      "word": "things",
+      "start": 4.84,
+      "end": 5.02
+    },
+    {
+      "word": "we",
+      "start": 5.02,
+      "end": 5.26
+    },
+    {
+      "word": "read",
+      "start": 5.26,
+      "end": 5.52
+    },
+    {
+      "word": "off",
+      "start": 5.52,
+      "end": 5.78
+    },
+    {
+      "word": "really",
+      "start": 5.78,
+      "end": 6.1
+    },
+    {
+      "word": "happened,",
+      "start": 6.1,
+      "end": 6.52
+    },
+    {
+      "word": "I",
+      "start": 6.92,
+      "end": 6.98
+    },
+    {
+      "word": "do",
+      "start": 6.98,
+      "end": 7.12
+    },
+    {
+      "word": "not",
+      "start": 7.12,
+      "end": 7.24
+    },
+    {
+      "word": "hesitate",
+      "start": 7.24,
+      "end": 7.62
+    },
+    {
+      "word": "to",
+      "start": 7.62,
+      "end": 7.96
+    },
+    {
+      "word": "affirm",
+      "start": 7.96,
+      "end": 8.28
+    },
+    {
+      "word": "that",
+      "start": 8.28,
+      "end": 8.7
+    },
+    {
+      "word": "these",
+      "start": 8.7,
+      "end": 8.94
+    },
+    {
+      "word": "supposed",
+      "start": 8.94,
+      "end": 9.42
+    },
+    {
+      "word": "democracies",
+      "start": 9.42,
+      "end": 10.06
+    },
+    {
+      "word": "were",
+      "start": 10.06,
+      "end": 10.44
+    },
+    {
+      "word": "composed",
+      "start": 10.44,
+      "end": 10.76
+    },
+    {
+      "word": "of",
+      "start": 10.76,
+      "end": 10.98
+    },
+    {
+      "word": "very",
+      "start": 10.98,
+      "end": 11.34
+    },
+    {
+      "word": "different",
+      "start": 11.34,
+      "end": 11.7
+    },
+    {
+      "word": "elements",
+      "start": 11.7,
+      "end": 11.98
+    },
+    {
+      "word": "from",
+      "start": 11.98,
+      "end": 12.38
+    },
+    {
+      "word": "ours,",
+      "start": 12.38,
+      "end": 12.68
+    },
+    {
+      "word": "and",
+      "start": 13.2,
+      "end": 13.4
+    },
+    {
+      "word": "that",
+      "start": 13.4,
+      "end": 13.5
+    },
+    {
+      "word": "they",
+      "start": 13.5,
+      "end": 13.66
+    },
+    {
+      "word": "had",
+      "start": 13.66,
+      "end": 13.76
+    },
+    {
+      "word": "nothing",
+      "start": 13.76,
+      "end": 14.06
+    },
+    {
+      "word": "in",
+      "start": 14.06,
+      "end": 14.2
+    },
+    {
+      "word": "common",
+      "start": 14.2,
+      "end": 14.48
+    },
+    {
+      "word": "with",
+      "start": 14.48,
+      "end": 14.7
+    },
+    {
+      "word": "the",
+      "start": 14.7,
+      "end": 14.86
+    },
+    {
+      "word": "letter",
+      "start": 14.86,
+      "end": 15.08
+    },
+    {
+      "word": "except",
+      "start": 15.08,
+      "end": 15.42
+    },
+    {
+      "word": "their",
+      "start": 15.42,
+      "end": 15.64
+    },
+    {
+      "word": "name.",
+      "start": 15.64,
+      "end": 15.88
+    }
+  ],
+  "duration": 15.88
+}

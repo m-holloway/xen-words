@@ -1,0 +1,48 @@
+{
+  "audio_file": "sample_0454.flac",
+  "wav_file": "sample_0454.wav",
+  "transcript": "He gets a red face pouring over them.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.36
+    },
+    {
+      "word": "gets",
+      "start": 0.36,
+      "end": 0.52
+    },
+    {
+      "word": "a",
+      "start": 0.52,
+      "end": 0.66
+    },
+    {
+      "word": "red",
+      "start": 0.66,
+      "end": 0.82
+    },
+    {
+      "word": "face",
+      "start": 0.82,
+      "end": 1.12
+    },
+    {
+      "word": "pouring",
+      "start": 1.12,
+      "end": 1.46
+    },
+    {
+      "word": "over",
+      "start": 1.46,
+      "end": 1.8
+    },
+    {
+      "word": "them.",
+      "start": 1.8,
+      "end": 2.02
+    }
+  ],
+  "duration": 2.02
+}

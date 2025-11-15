@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0037.flac",
+  "wav_file": "sample_0037.wav",
+  "transcript": "He traveled over many little details and talked profanctorally to everybody.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.38
+    },
+    {
+      "word": "traveled",
+      "start": 0.38,
+      "end": 0.64
+    },
+    {
+      "word": "over",
+      "start": 0.64,
+      "end": 0.94
+    },
+    {
+      "word": "many",
+      "start": 0.94,
+      "end": 1.22
+    },
+    {
+      "word": "little",
+      "start": 1.22,
+      "end": 1.46
+    },
+    {
+      "word": "details",
+      "start": 1.46,
+      "end": 1.94
+    },
+    {
+      "word": "and",
+      "start": 1.94,
+      "end": 2.36
+    },
+    {
+      "word": "talked",
+      "start": 2.36,
+      "end": 2.56
+    },
+    {
+      "word": "profanctorally",
+      "start": 2.56,
+      "end": 3.32
+    },
+    {
+      "word": "to",
+      "start": 3.32,
+      "end": 3.48
+    },
+    {
+      "word": "everybody.",
+      "start": 3.48,
+      "end": 3.98
+    }
+  ],
+  "duration": 3.98
+}

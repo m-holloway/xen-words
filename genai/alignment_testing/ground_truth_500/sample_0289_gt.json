@@ -1,0 +1,113 @@
+{
+  "audio_file": "sample_0289.flac",
+  "wav_file": "sample_0289.wav",
+  "transcript": "Oh, you simpleton said she. Then we must all for die of hunger. You had better plan the coffins for us.",
+  "word_timings": [
+    {
+      "word": "Oh,",
+      "start": 0.0,
+      "end": 0.52
+    },
+    {
+      "word": "you",
+      "start": 0.62,
+      "end": 0.68
+    },
+    {
+      "word": "simpleton",
+      "start": 0.68,
+      "end": 1.28
+    },
+    {
+      "word": "said",
+      "start": 1.28,
+      "end": 1.6
+    },
+    {
+      "word": "she.",
+      "start": 1.6,
+      "end": 1.86
+    },
+    {
+      "word": "Then",
+      "start": 2.52,
+      "end": 2.74
+    },
+    {
+      "word": "we",
+      "start": 2.74,
+      "end": 2.88
+    },
+    {
+      "word": "must",
+      "start": 2.88,
+      "end": 3.06
+    },
+    {
+      "word": "all",
+      "start": 3.06,
+      "end": 3.34
+    },
+    {
+      "word": "for",
+      "start": 3.34,
+      "end": 3.58
+    },
+    {
+      "word": "die",
+      "start": 3.58,
+      "end": 3.8
+    },
+    {
+      "word": "of",
+      "start": 3.8,
+      "end": 4.04
+    },
+    {
+      "word": "hunger.",
+      "start": 4.04,
+      "end": 4.34
+    },
+    {
+      "word": "You",
+      "start": 4.92,
+      "end": 5.02
+    },
+    {
+      "word": "had",
+      "start": 5.02,
+      "end": 5.14
+    },
+    {
+      "word": "better",
+      "start": 5.14,
+      "end": 5.36
+    },
+    {
+      "word": "plan",
+      "start": 5.36,
+      "end": 5.62
+    },
+    {
+      "word": "the",
+      "start": 5.62,
+      "end": 5.78
+    },
+    {
+      "word": "coffins",
+      "start": 5.78,
+      "end": 6.18
+    },
+    {
+      "word": "for",
+      "start": 6.18,
+      "end": 6.36
+    },
+    {
+      "word": "us.",
+      "start": 6.36,
+      "end": 6.6
+    }
+  ],
+  "duration": 6.6
+}

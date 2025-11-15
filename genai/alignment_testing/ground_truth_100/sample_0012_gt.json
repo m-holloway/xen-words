@@ -1,0 +1,78 @@
+{
+  "audio_file": "sample_0012.flac",
+  "wav_file": "sample_0012.wav",
+  "transcript": "He grew restless as he remininated and then decided that perhaps it was nothing.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.42
+    },
+    {
+      "word": "grew",
+      "start": 0.42,
+      "end": 0.58
+    },
+    {
+      "word": "restless",
+      "start": 0.58,
+      "end": 0.92
+    },
+    {
+      "word": "as",
+      "start": 0.92,
+      "end": 1.24
+    },
+    {
+      "word": "he",
+      "start": 1.24,
+      "end": 1.38
+    },
+    {
+      "word": "remininated",
+      "start": 1.38,
+      "end": 1.96
+    },
+    {
+      "word": "and",
+      "start": 1.96,
+      "end": 2.24
+    },
+    {
+      "word": "then",
+      "start": 2.24,
+      "end": 2.4
+    },
+    {
+      "word": "decided",
+      "start": 2.4,
+      "end": 2.74
+    },
+    {
+      "word": "that",
+      "start": 2.74,
+      "end": 2.98
+    },
+    {
+      "word": "perhaps",
+      "start": 2.98,
+      "end": 3.28
+    },
+    {
+      "word": "it",
+      "start": 3.28,
+      "end": 3.58
+    },
+    {
+      "word": "was",
+      "start": 3.58,
+      "end": 3.7
+    },
+    {
+      "word": "nothing.",
+      "start": 3.7,
+      "end": 4.06
+    }
+  ],
+  "duration": 4.06
+}

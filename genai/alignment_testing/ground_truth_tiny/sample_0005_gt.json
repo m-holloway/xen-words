@@ -1,0 +1,53 @@
+{
+  "audio_file": "sample_0005.flac",
+  "wav_file": "sample_0005.wav",
+  "transcript": "He rang again this time harder. Still no answer.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.46
+    },
+    {
+      "word": "rang",
+      "start": 0.46,
+      "end": 0.62
+    },
+    {
+      "word": "again",
+      "start": 0.62,
+      "end": 0.96
+    },
+    {
+      "word": "this",
+      "start": 0.96,
+      "end": 1.4
+    },
+    {
+      "word": "time",
+      "start": 1.4,
+      "end": 1.56
+    },
+    {
+      "word": "harder.",
+      "start": 1.56,
+      "end": 1.94
+    },
+    {
+      "word": "Still",
+      "start": 2.42,
+      "end": 2.88
+    },
+    {
+      "word": "no",
+      "start": 2.88,
+      "end": 3.1
+    },
+    {
+      "word": "answer.",
+      "start": 3.1,
+      "end": 3.52
+    }
+  ],
+  "duration": 3.52
+}

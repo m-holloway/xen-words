@@ -1,0 +1,33 @@
+{
+  "audio_file": "sample_0318.flac",
+  "wav_file": "sample_0318.wav",
+  "transcript": "Ambrose, you make good farmer.",
+  "word_timings": [
+    {
+      "word": "Ambrose,",
+      "start": 0.0,
+      "end": 0.72
+    },
+    {
+      "word": "you",
+      "start": 0.9,
+      "end": 1.08
+    },
+    {
+      "word": "make",
+      "start": 1.08,
+      "end": 1.2
+    },
+    {
+      "word": "good",
+      "start": 1.2,
+      "end": 1.38
+    },
+    {
+      "word": "farmer.",
+      "start": 1.38,
+      "end": 1.68
+    }
+  ],
+  "duration": 1.68
+}

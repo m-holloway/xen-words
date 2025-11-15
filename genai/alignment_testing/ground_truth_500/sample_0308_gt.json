@@ -1,0 +1,88 @@
+{
+  "audio_file": "sample_0308.flac",
+  "wav_file": "sample_0308.wav",
+  "transcript": "My grandmother always spoke in a very loud tone to foreigners as if they were deaf.",
+  "word_timings": [
+    {
+      "word": "My",
+      "start": 0.0,
+      "end": 0.68
+    },
+    {
+      "word": "grandmother",
+      "start": 0.68,
+      "end": 1.06
+    },
+    {
+      "word": "always",
+      "start": 1.06,
+      "end": 1.56
+    },
+    {
+      "word": "spoke",
+      "start": 1.56,
+      "end": 1.88
+    },
+    {
+      "word": "in",
+      "start": 1.88,
+      "end": 2.16
+    },
+    {
+      "word": "a",
+      "start": 2.16,
+      "end": 2.24
+    },
+    {
+      "word": "very",
+      "start": 2.24,
+      "end": 2.48
+    },
+    {
+      "word": "loud",
+      "start": 2.48,
+      "end": 2.78
+    },
+    {
+      "word": "tone",
+      "start": 2.78,
+      "end": 3.14
+    },
+    {
+      "word": "to",
+      "start": 3.14,
+      "end": 3.3
+    },
+    {
+      "word": "foreigners",
+      "start": 3.3,
+      "end": 3.68
+    },
+    {
+      "word": "as",
+      "start": 3.68,
+      "end": 4.52
+    },
+    {
+      "word": "if",
+      "start": 4.52,
+      "end": 4.7
+    },
+    {
+      "word": "they",
+      "start": 4.7,
+      "end": 4.82
+    },
+    {
+      "word": "were",
+      "start": 4.82,
+      "end": 4.92
+    },
+    {
+      "word": "deaf.",
+      "start": 4.92,
+      "end": 5.16
+    }
+  ],
+  "duration": 5.16
+}

@@ -1,0 +1,33 @@
+{
+  "audio_file": "sample_0131.flac",
+  "wav_file": "sample_0131.wav",
+  "transcript": "Mr. Shamarita went with him.",
+  "word_timings": [
+    {
+      "word": "Mr.",
+      "start": 0.0,
+      "end": 0.64
+    },
+    {
+      "word": "Shamarita",
+      "start": 0.76,
+      "end": 1.12
+    },
+    {
+      "word": "went",
+      "start": 1.12,
+      "end": 1.3
+    },
+    {
+      "word": "with",
+      "start": 1.3,
+      "end": 1.54
+    },
+    {
+      "word": "him.",
+      "start": 1.54,
+      "end": 1.8
+    }
+  ],
+  "duration": 1.8
+}

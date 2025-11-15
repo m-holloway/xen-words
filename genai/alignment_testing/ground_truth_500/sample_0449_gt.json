@@ -1,0 +1,58 @@
+{
+  "audio_file": "sample_0449.flac",
+  "wav_file": "sample_0449.wav",
+  "transcript": "I wouldn't give a half penny for the whole lot.",
+  "word_timings": [
+    {
+      "word": "I",
+      "start": 0.0,
+      "end": 0.44
+    },
+    {
+      "word": "wouldn't",
+      "start": 0.44,
+      "end": 0.64
+    },
+    {
+      "word": "give",
+      "start": 0.64,
+      "end": 0.74
+    },
+    {
+      "word": "a",
+      "start": 0.74,
+      "end": 0.88
+    },
+    {
+      "word": "half",
+      "start": 0.88,
+      "end": 1.08
+    },
+    {
+      "word": "penny",
+      "start": 1.08,
+      "end": 1.32
+    },
+    {
+      "word": "for",
+      "start": 1.32,
+      "end": 1.48
+    },
+    {
+      "word": "the",
+      "start": 1.48,
+      "end": 1.6
+    },
+    {
+      "word": "whole",
+      "start": 1.6,
+      "end": 1.8
+    },
+    {
+      "word": "lot.",
+      "start": 1.8,
+      "end": 2.04
+    }
+  ],
+  "duration": 2.04
+}

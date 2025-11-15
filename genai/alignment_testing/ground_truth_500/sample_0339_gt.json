@@ -1,0 +1,103 @@
+{
+  "audio_file": "sample_0339.flac",
+  "wav_file": "sample_0339.wav",
+  "transcript": "Chapter 16. Why the national vanity of the Americans is more restless and captures than that of the English?",
+  "word_timings": [
+    {
+      "word": "Chapter",
+      "start": 0.0,
+      "end": 0.74
+    },
+    {
+      "word": "16.",
+      "start": 0.74,
+      "end": 1.26
+    },
+    {
+      "word": "Why",
+      "start": 1.88,
+      "end": 2.26
+    },
+    {
+      "word": "the",
+      "start": 2.26,
+      "end": 2.42
+    },
+    {
+      "word": "national",
+      "start": 2.42,
+      "end": 2.76
+    },
+    {
+      "word": "vanity",
+      "start": 2.76,
+      "end": 3.18
+    },
+    {
+      "word": "of",
+      "start": 3.18,
+      "end": 3.36
+    },
+    {
+      "word": "the",
+      "start": 3.36,
+      "end": 3.48
+    },
+    {
+      "word": "Americans",
+      "start": 3.48,
+      "end": 3.86
+    },
+    {
+      "word": "is",
+      "start": 3.86,
+      "end": 4.18
+    },
+    {
+      "word": "more",
+      "start": 4.18,
+      "end": 4.46
+    },
+    {
+      "word": "restless",
+      "start": 4.46,
+      "end": 4.9
+    },
+    {
+      "word": "and",
+      "start": 4.9,
+      "end": 5.18
+    },
+    {
+      "word": "captures",
+      "start": 5.18,
+      "end": 5.54
+    },
+    {
+      "word": "than",
+      "start": 5.54,
+      "end": 6.1
+    },
+    {
+      "word": "that",
+      "start": 6.1,
+      "end": 6.22
+    },
+    {
+      "word": "of",
+      "start": 6.22,
+      "end": 6.34
+    },
+    {
+      "word": "the",
+      "start": 6.34,
+      "end": 6.44
+    },
+    {
+      "word": "English?",
+      "start": 6.44,
+      "end": 6.72
+    }
+  ],
+  "duration": 6.72
+}

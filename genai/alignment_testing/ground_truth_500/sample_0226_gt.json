@@ -1,0 +1,168 @@
+{
+  "audio_file": "sample_0226.flac",
+  "wav_file": "sample_0226.wav",
+  "transcript": "This was a fountain set round with the rim of old mossy stones and paved in its bed with what appeared to be a sort of mosaic work of various colored pebbles.",
+  "word_timings": [
+    {
+      "word": "This",
+      "start": 0.0,
+      "end": 0.68
+    },
+    {
+      "word": "was",
+      "start": 0.68,
+      "end": 0.88
+    },
+    {
+      "word": "a",
+      "start": 0.88,
+      "end": 1.04
+    },
+    {
+      "word": "fountain",
+      "start": 1.04,
+      "end": 1.36
+    },
+    {
+      "word": "set",
+      "start": 1.36,
+      "end": 1.94
+    },
+    {
+      "word": "round",
+      "start": 1.94,
+      "end": 2.24
+    },
+    {
+      "word": "with",
+      "start": 2.24,
+      "end": 2.46
+    },
+    {
+      "word": "the",
+      "start": 2.46,
+      "end": 2.58
+    },
+    {
+      "word": "rim",
+      "start": 2.58,
+      "end": 2.72
+    },
+    {
+      "word": "of",
+      "start": 2.72,
+      "end": 2.9
+    },
+    {
+      "word": "old",
+      "start": 2.9,
+      "end": 3.1
+    },
+    {
+      "word": "mossy",
+      "start": 3.1,
+      "end": 3.48
+    },
+    {
+      "word": "stones",
+      "start": 3.48,
+      "end": 3.84
+    },
+    {
+      "word": "and",
+      "start": 3.84,
+      "end": 4.5
+    },
+    {
+      "word": "paved",
+      "start": 4.5,
+      "end": 4.78
+    },
+    {
+      "word": "in",
+      "start": 4.78,
+      "end": 5.14
+    },
+    {
+      "word": "its",
+      "start": 5.14,
+      "end": 5.32
+    },
+    {
+      "word": "bed",
+      "start": 5.32,
+      "end": 5.58
+    },
+    {
+      "word": "with",
+      "start": 5.58,
+      "end": 6.22
+    },
+    {
+      "word": "what",
+      "start": 6.22,
+      "end": 6.36
+    },
+    {
+      "word": "appeared",
+      "start": 6.36,
+      "end": 6.62
+    },
+    {
+      "word": "to",
+      "start": 6.62,
+      "end": 6.78
+    },
+    {
+      "word": "be",
+      "start": 6.78,
+      "end": 6.88
+    },
+    {
+      "word": "a",
+      "start": 6.88,
+      "end": 6.98
+    },
+    {
+      "word": "sort",
+      "start": 6.98,
+      "end": 7.14
+    },
+    {
+      "word": "of",
+      "start": 7.14,
+      "end": 7.3
+    },
+    {
+      "word": "mosaic",
+      "start": 7.3,
+      "end": 7.62
+    },
+    {
+      "word": "work",
+      "start": 7.62,
+      "end": 8.12
+    },
+    {
+      "word": "of",
+      "start": 8.12,
+      "end": 8.68
+    },
+    {
+      "word": "various",
+      "start": 8.68,
+      "end": 8.94
+    },
+    {
+      "word": "colored",
+      "start": 8.94,
+      "end": 9.36
+    },
+    {
+      "word": "pebbles.",
+      "start": 9.36,
+      "end": 9.74
+    }
+  ],
+  "duration": 9.74
+}

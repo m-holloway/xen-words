@@ -1,0 +1,88 @@
+{
+  "audio_file": "sample_0390.flac",
+  "wav_file": "sample_0390.wav",
+  "transcript": "He looks dubiously at his brother-in-law, but he did not ask him for information.",
+  "word_timings": [
+    {
+      "word": "He",
+      "start": 0.0,
+      "end": 0.38
+    },
+    {
+      "word": "looks",
+      "start": 0.38,
+      "end": 0.52
+    },
+    {
+      "word": "dubiously",
+      "start": 0.52,
+      "end": 1.04
+    },
+    {
+      "word": "at",
+      "start": 1.04,
+      "end": 1.26
+    },
+    {
+      "word": "his",
+      "start": 1.26,
+      "end": 1.4
+    },
+    {
+      "word": "brother",
+      "start": 1.4,
+      "end": 1.6
+    },
+    {
+      "word": "-in",
+      "start": 1.6,
+      "end": 1.76
+    },
+    {
+      "word": "-law,",
+      "start": 1.76,
+      "end": 1.94
+    },
+    {
+      "word": "but",
+      "start": 2.24,
+      "end": 2.34
+    },
+    {
+      "word": "he",
+      "start": 2.34,
+      "end": 2.42
+    },
+    {
+      "word": "did",
+      "start": 2.42,
+      "end": 2.54
+    },
+    {
+      "word": "not",
+      "start": 2.54,
+      "end": 2.66
+    },
+    {
+      "word": "ask",
+      "start": 2.66,
+      "end": 2.96
+    },
+    {
+      "word": "him",
+      "start": 2.96,
+      "end": 3.1
+    },
+    {
+      "word": "for",
+      "start": 3.1,
+      "end": 3.22
+    },
+    {
+      "word": "information.",
+      "start": 3.22,
+      "end": 3.7
+    }
+  ],
+  "duration": 3.7
+}

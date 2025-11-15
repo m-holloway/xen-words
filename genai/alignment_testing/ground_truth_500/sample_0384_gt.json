@@ -1,0 +1,188 @@
+{
+  "audio_file": "sample_0384.flac",
+  "wav_file": "sample_0384.wav",
+  "transcript": "Her bare feet, as if poked through the bottom of an unadorned, sleeved, calical sack, button tightly at neck and wrists, felt over the rug for the slippers while she looked upward into her husband's face.",
+  "word_timings": [
+    {
+      "word": "Her",
+      "start": 0.0,
+      "end": 0.42
+    },
+    {
+      "word": "bare",
+      "start": 0.42,
+      "end": 0.58
+    },
+    {
+      "word": "feet,",
+      "start": 0.58,
+      "end": 0.96
+    },
+    {
+      "word": "as",
+      "start": 1.36,
+      "end": 1.5
+    },
+    {
+      "word": "if",
+      "start": 1.5,
+      "end": 1.62
+    },
+    {
+      "word": "poked",
+      "start": 1.62,
+      "end": 1.94
+    },
+    {
+      "word": "through",
+      "start": 1.94,
+      "end": 2.12
+    },
+    {
+      "word": "the",
+      "start": 2.12,
+      "end": 2.22
+    },
+    {
+      "word": "bottom",
+      "start": 2.22,
+      "end": 2.44
+    },
+    {
+      "word": "of",
+      "start": 2.44,
+      "end": 2.66
+    },
+    {
+      "word": "an",
+      "start": 2.66,
+      "end": 2.82
+    },
+    {
+      "word": "unadorned,",
+      "start": 2.82,
+      "end": 3.5
+    },
+    {
+      "word": "sleeved,",
+      "start": 3.5,
+      "end": 3.76
+    },
+    {
+      "word": "calical",
+      "start": 3.76,
+      "end": 4.24
+    },
+    {
+      "word": "sack,",
+      "start": 4.24,
+      "end": 4.6
+    },
+    {
+      "word": "button",
+      "start": 5.04,
+      "end": 5.28
+    },
+    {
+      "word": "tightly",
+      "start": 5.28,
+      "end": 5.6
+    },
+    {
+      "word": "at",
+      "start": 5.6,
+      "end": 5.84
+    },
+    {
+      "word": "neck",
+      "start": 5.84,
+      "end": 6.02
+    },
+    {
+      "word": "and",
+      "start": 6.02,
+      "end": 6.16
+    },
+    {
+      "word": "wrists,",
+      "start": 6.16,
+      "end": 6.42
+    },
+    {
+      "word": "felt",
+      "start": 7.02,
+      "end": 7.12
+    },
+    {
+      "word": "over",
+      "start": 7.12,
+      "end": 7.42
+    },
+    {
+      "word": "the",
+      "start": 7.42,
+      "end": 7.56
+    },
+    {
+      "word": "rug",
+      "start": 7.56,
+      "end": 7.7
+    },
+    {
+      "word": "for",
+      "start": 7.7,
+      "end": 7.94
+    },
+    {
+      "word": "the",
+      "start": 7.94,
+      "end": 8.08
+    },
+    {
+      "word": "slippers",
+      "start": 8.08,
+      "end": 8.34
+    },
+    {
+      "word": "while",
+      "start": 8.34,
+      "end": 8.62
+    },
+    {
+      "word": "she",
+      "start": 8.62,
+      "end": 8.82
+    },
+    {
+      "word": "looked",
+      "start": 8.82,
+      "end": 8.96
+    },
+    {
+      "word": "upward",
+      "start": 8.96,
+      "end": 9.38
+    },
+    {
+      "word": "into",
+      "start": 9.38,
+      "end": 9.64
+    },
+    {
+      "word": "her",
+      "start": 9.64,
+      "end": 9.78
+    },
+    {
+      "word": "husband's",
+      "start": 9.78,
+      "end": 10.22
+    },
+    {
+      "word": "face.",
+      "start": 10.22,
+      "end": 10.44
+    }
+  ],
+  "duration": 10.44
+}

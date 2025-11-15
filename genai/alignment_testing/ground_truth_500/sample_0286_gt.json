@@ -1,0 +1,283 @@
+{
+  "audio_file": "sample_0286.flac",
+  "wav_file": "sample_0286.wav",
+  "transcript": "The old woman behaved very kindly to them, but in reality she was a bigot old witch who waylaid children and built the breadhouse in order to entice them in. But as soon as they were in her power, she killed them, cooked them and ate them, and made a great festival of the day.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.64
+    },
+    {
+      "word": "old",
+      "start": 0.64,
+      "end": 0.86
+    },
+    {
+      "word": "woman",
+      "start": 0.86,
+      "end": 1.12
+    },
+    {
+      "word": "behaved",
+      "start": 1.12,
+      "end": 1.46
+    },
+    {
+      "word": "very",
+      "start": 1.46,
+      "end": 1.82
+    },
+    {
+      "word": "kindly",
+      "start": 1.82,
+      "end": 2.18
+    },
+    {
+      "word": "to",
+      "start": 2.18,
+      "end": 2.48
+    },
+    {
+      "word": "them,",
+      "start": 2.48,
+      "end": 2.66
+    },
+    {
+      "word": "but",
+      "start": 3.06,
+      "end": 3.22
+    },
+    {
+      "word": "in",
+      "start": 3.22,
+      "end": 3.34
+    },
+    {
+      "word": "reality",
+      "start": 3.34,
+      "end": 3.76
+    },
+    {
+      "word": "she",
+      "start": 3.76,
+      "end": 4.06
+    },
+    {
+      "word": "was",
+      "start": 4.06,
+      "end": 4.2
+    },
+    {
+      "word": "a",
+      "start": 4.2,
+      "end": 4.3
+    },
+    {
+      "word": "bigot",
+      "start": 4.3,
+      "end": 4.66
+    },
+    {
+      "word": "old",
+      "start": 4.66,
+      "end": 4.82
+    },
+    {
+      "word": "witch",
+      "start": 4.82,
+      "end": 5.18
+    },
+    {
+      "word": "who",
+      "start": 5.18,
+      "end": 5.5
+    },
+    {
+      "word": "waylaid",
+      "start": 5.5,
+      "end": 5.96
+    },
+    {
+      "word": "children",
+      "start": 5.96,
+      "end": 6.32
+    },
+    {
+      "word": "and",
+      "start": 6.32,
+      "end": 6.74
+    },
+    {
+      "word": "built",
+      "start": 6.74,
+      "end": 6.9
+    },
+    {
+      "word": "the",
+      "start": 6.9,
+      "end": 7.08
+    },
+    {
+      "word": "breadhouse",
+      "start": 7.08,
+      "end": 7.54
+    },
+    {
+      "word": "in",
+      "start": 7.54,
+      "end": 7.84
+    },
+    {
+      "word": "order",
+      "start": 7.84,
+      "end": 8.08
+    },
+    {
+      "word": "to",
+      "start": 8.08,
+      "end": 8.32
+    },
+    {
+      "word": "entice",
+      "start": 8.32,
+      "end": 8.7
+    },
+    {
+      "word": "them",
+      "start": 8.7,
+      "end": 8.92
+    },
+    {
+      "word": "in.",
+      "start": 8.92,
+      "end": 9.08
+    },
+    {
+      "word": "But",
+      "start": 9.82,
+      "end": 10.02
+    },
+    {
+      "word": "as",
+      "start": 10.02,
+      "end": 10.14
+    },
+    {
+      "word": "soon",
+      "start": 10.14,
+      "end": 10.38
+    },
+    {
+      "word": "as",
+      "start": 10.38,
+      "end": 10.54
+    },
+    {
+      "word": "they",
+      "start": 10.54,
+      "end": 10.66
+    },
+    {
+      "word": "were",
+      "start": 10.66,
+      "end": 10.8
+    },
+    {
+      "word": "in",
+      "start": 10.8,
+      "end": 10.9
+    },
+    {
+      "word": "her",
+      "start": 10.9,
+      "end": 11.04
+    },
+    {
+      "word": "power,",
+      "start": 11.04,
+      "end": 11.36
+    },
+    {
+      "word": "she",
+      "start": 11.76,
+      "end": 11.86
+    },
+    {
+      "word": "killed",
+      "start": 11.86,
+      "end": 12.3
+    },
+    {
+      "word": "them,",
+      "start": 12.3,
+      "end": 12.56
+    },
+    {
+      "word": "cooked",
+      "start": 12.86,
+      "end": 13.02
+    },
+    {
+      "word": "them",
+      "start": 13.02,
+      "end": 13.22
+    },
+    {
+      "word": "and",
+      "start": 13.22,
+      "end": 13.34
+    },
+    {
+      "word": "ate",
+      "start": 13.34,
+      "end": 13.48
+    },
+    {
+      "word": "them,",
+      "start": 13.48,
+      "end": 13.82
+    },
+    {
+      "word": "and",
+      "start": 14.22,
+      "end": 14.28
+    },
+    {
+      "word": "made",
+      "start": 14.28,
+      "end": 14.42
+    },
+    {
+      "word": "a",
+      "start": 14.42,
+      "end": 14.54
+    },
+    {
+      "word": "great",
+      "start": 14.54,
+      "end": 14.72
+    },
+    {
+      "word": "festival",
+      "start": 14.72,
+      "end": 15.22
+    },
+    {
+      "word": "of",
+      "start": 15.22,
+      "end": 15.4
+    },
+    {
+      "word": "the",
+      "start": 15.4,
+      "end": 15.48
+    },
+    {
+      "word": "day.",
+      "start": 15.48,
+      "end": 15.68
+    }
+  ],
+  "duration": 15.68
+}

@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0188.flac",
+  "wav_file": "sample_0188.wav",
+  "transcript": "So we will be fellow laborers, somewhat on the community system.",
+  "word_timings": [
+    {
+      "word": "So",
+      "start": 0.0,
+      "end": 0.7
+    },
+    {
+      "word": "we",
+      "start": 0.7,
+      "end": 0.84
+    },
+    {
+      "word": "will",
+      "start": 0.84,
+      "end": 0.94
+    },
+    {
+      "word": "be",
+      "start": 0.94,
+      "end": 1.06
+    },
+    {
+      "word": "fellow",
+      "start": 1.06,
+      "end": 1.34
+    },
+    {
+      "word": "laborers,",
+      "start": 1.34,
+      "end": 1.98
+    },
+    {
+      "word": "somewhat",
+      "start": 2.3,
+      "end": 2.68
+    },
+    {
+      "word": "on",
+      "start": 2.68,
+      "end": 2.9
+    },
+    {
+      "word": "the",
+      "start": 2.9,
+      "end": 2.98
+    },
+    {
+      "word": "community",
+      "start": 2.98,
+      "end": 3.34
+    },
+    {
+      "word": "system.",
+      "start": 3.34,
+      "end": 3.78
+    }
+  ],
+  "duration": 3.78
+}

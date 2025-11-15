@@ -1,0 +1,173 @@
+{
+  "audio_file": "sample_0183.flac",
+  "wav_file": "sample_0183.wav",
+  "transcript": "While we give it credit only for depicting the mirrorist's surface, it actually brings out the secret character with the truth that no painter would ever venture upon. Even could he detect it?",
+  "word_timings": [
+    {
+      "word": "While",
+      "start": 0.0,
+      "end": 0.54
+    },
+    {
+      "word": "we",
+      "start": 0.54,
+      "end": 0.66
+    },
+    {
+      "word": "give",
+      "start": 0.66,
+      "end": 0.84
+    },
+    {
+      "word": "it",
+      "start": 0.84,
+      "end": 1.0
+    },
+    {
+      "word": "credit",
+      "start": 1.0,
+      "end": 1.2
+    },
+    {
+      "word": "only",
+      "start": 1.2,
+      "end": 1.58
+    },
+    {
+      "word": "for",
+      "start": 1.58,
+      "end": 1.78
+    },
+    {
+      "word": "depicting",
+      "start": 1.78,
+      "end": 2.24
+    },
+    {
+      "word": "the",
+      "start": 2.24,
+      "end": 2.42
+    },
+    {
+      "word": "mirrorist's",
+      "start": 2.42,
+      "end": 2.92
+    },
+    {
+      "word": "surface,",
+      "start": 2.92,
+      "end": 3.2
+    },
+    {
+      "word": "it",
+      "start": 3.7,
+      "end": 3.88
+    },
+    {
+      "word": "actually",
+      "start": 3.88,
+      "end": 4.24
+    },
+    {
+      "word": "brings",
+      "start": 4.24,
+      "end": 4.46
+    },
+    {
+      "word": "out",
+      "start": 4.46,
+      "end": 4.66
+    },
+    {
+      "word": "the",
+      "start": 4.66,
+      "end": 4.8
+    },
+    {
+      "word": "secret",
+      "start": 4.8,
+      "end": 5.08
+    },
+    {
+      "word": "character",
+      "start": 5.08,
+      "end": 5.58
+    },
+    {
+      "word": "with",
+      "start": 5.58,
+      "end": 5.86
+    },
+    {
+      "word": "the",
+      "start": 5.86,
+      "end": 5.96
+    },
+    {
+      "word": "truth",
+      "start": 5.96,
+      "end": 6.24
+    },
+    {
+      "word": "that",
+      "start": 6.24,
+      "end": 6.58
+    },
+    {
+      "word": "no",
+      "start": 6.58,
+      "end": 6.76
+    },
+    {
+      "word": "painter",
+      "start": 6.76,
+      "end": 7.12
+    },
+    {
+      "word": "would",
+      "start": 7.12,
+      "end": 7.32
+    },
+    {
+      "word": "ever",
+      "start": 7.32,
+      "end": 7.5
+    },
+    {
+      "word": "venture",
+      "start": 7.5,
+      "end": 7.8
+    },
+    {
+      "word": "upon.",
+      "start": 7.8,
+      "end": 8.12
+    },
+    {
+      "word": "Even",
+      "start": 8.6,
+      "end": 8.88
+    },
+    {
+      "word": "could",
+      "start": 8.88,
+      "end": 9.08
+    },
+    {
+      "word": "he",
+      "start": 9.08,
+      "end": 9.2
+    },
+    {
+      "word": "detect",
+      "start": 9.2,
+      "end": 9.54
+    },
+    {
+      "word": "it?",
+      "start": 9.54,
+      "end": 9.8
+    }
+  ],
+  "duration": 9.8
+}

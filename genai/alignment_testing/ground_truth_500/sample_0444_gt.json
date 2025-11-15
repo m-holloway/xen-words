@@ -1,0 +1,133 @@
+{
+  "audio_file": "sample_0444.flac",
+  "wav_file": "sample_0444.wav",
+  "transcript": "If I had known they were coming tonight, I would have seen to it that he went to bed at the same time I did.",
+  "word_timings": [
+    {
+      "word": "If",
+      "start": 0.0,
+      "end": 0.4
+    },
+    {
+      "word": "I",
+      "start": 0.4,
+      "end": 0.5
+    },
+    {
+      "word": "had",
+      "start": 0.5,
+      "end": 0.6
+    },
+    {
+      "word": "known",
+      "start": 0.6,
+      "end": 0.78
+    },
+    {
+      "word": "they",
+      "start": 0.78,
+      "end": 1.0
+    },
+    {
+      "word": "were",
+      "start": 1.0,
+      "end": 1.1
+    },
+    {
+      "word": "coming",
+      "start": 1.1,
+      "end": 1.34
+    },
+    {
+      "word": "tonight,",
+      "start": 1.34,
+      "end": 1.66
+    },
+    {
+      "word": "I",
+      "start": 1.82,
+      "end": 1.88
+    },
+    {
+      "word": "would",
+      "start": 1.88,
+      "end": 1.98
+    },
+    {
+      "word": "have",
+      "start": 1.98,
+      "end": 2.1
+    },
+    {
+      "word": "seen",
+      "start": 2.1,
+      "end": 2.32
+    },
+    {
+      "word": "to",
+      "start": 2.32,
+      "end": 2.54
+    },
+    {
+      "word": "it",
+      "start": 2.54,
+      "end": 2.68
+    },
+    {
+      "word": "that",
+      "start": 2.68,
+      "end": 3.0
+    },
+    {
+      "word": "he",
+      "start": 3.0,
+      "end": 3.14
+    },
+    {
+      "word": "went",
+      "start": 3.14,
+      "end": 3.28
+    },
+    {
+      "word": "to",
+      "start": 3.28,
+      "end": 3.46
+    },
+    {
+      "word": "bed",
+      "start": 3.46,
+      "end": 3.6
+    },
+    {
+      "word": "at",
+      "start": 3.6,
+      "end": 3.72
+    },
+    {
+      "word": "the",
+      "start": 3.72,
+      "end": 3.8
+    },
+    {
+      "word": "same",
+      "start": 3.8,
+      "end": 4.02
+    },
+    {
+      "word": "time",
+      "start": 4.02,
+      "end": 4.22
+    },
+    {
+      "word": "I",
+      "start": 4.22,
+      "end": 4.44
+    },
+    {
+      "word": "did.",
+      "start": 4.44,
+      "end": 4.62
+    }
+  ],
+  "duration": 4.62
+}

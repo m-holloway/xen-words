@@ -1,0 +1,48 @@
+{
+  "audio_file": "sample_0407.flac",
+  "wav_file": "sample_0407.wav",
+  "transcript": "You can't stand the notion of any cruelty.",
+  "word_timings": [
+    {
+      "word": "You",
+      "start": 0.0,
+      "end": 0.4
+    },
+    {
+      "word": "can't",
+      "start": 0.4,
+      "end": 0.66
+    },
+    {
+      "word": "stand",
+      "start": 0.66,
+      "end": 0.88
+    },
+    {
+      "word": "the",
+      "start": 0.88,
+      "end": 1.04
+    },
+    {
+      "word": "notion",
+      "start": 1.04,
+      "end": 1.36
+    },
+    {
+      "word": "of",
+      "start": 1.36,
+      "end": 1.6
+    },
+    {
+      "word": "any",
+      "start": 1.6,
+      "end": 1.74
+    },
+    {
+      "word": "cruelty.",
+      "start": 1.74,
+      "end": 2.18
+    }
+  ],
+  "duration": 2.18
+}

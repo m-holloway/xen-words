@@ -1,0 +1,63 @@
+{
+  "audio_file": "sample_0055.flac",
+  "wav_file": "sample_0055.wav",
+  "transcript": "It was the worst Sunday he had spent in his life.",
+  "word_timings": [
+    {
+      "word": "It",
+      "start": 0.0,
+      "end": 0.32
+    },
+    {
+      "word": "was",
+      "start": 0.32,
+      "end": 0.44
+    },
+    {
+      "word": "the",
+      "start": 0.44,
+      "end": 0.62
+    },
+    {
+      "word": "worst",
+      "start": 0.62,
+      "end": 0.86
+    },
+    {
+      "word": "Sunday",
+      "start": 0.86,
+      "end": 1.32
+    },
+    {
+      "word": "he",
+      "start": 1.32,
+      "end": 1.58
+    },
+    {
+      "word": "had",
+      "start": 1.58,
+      "end": 1.74
+    },
+    {
+      "word": "spent",
+      "start": 1.74,
+      "end": 1.96
+    },
+    {
+      "word": "in",
+      "start": 1.96,
+      "end": 2.18
+    },
+    {
+      "word": "his",
+      "start": 2.18,
+      "end": 2.36
+    },
+    {
+      "word": "life.",
+      "start": 2.36,
+      "end": 2.72
+    }
+  ],
+  "duration": 2.72
+}

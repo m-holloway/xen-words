@@ -1,0 +1,113 @@
+{
+  "audio_file": "sample_0086.flac",
+  "wav_file": "sample_0086.wav",
+  "transcript": "Narrow boardwalks extended out passing here a house and their a store at far intervals, eventually ending on the open prairie.",
+  "word_timings": [
+    {
+      "word": "Narrow",
+      "start": 0.0,
+      "end": 0.74
+    },
+    {
+      "word": "boardwalks",
+      "start": 0.74,
+      "end": 1.44
+    },
+    {
+      "word": "extended",
+      "start": 1.44,
+      "end": 1.76
+    },
+    {
+      "word": "out",
+      "start": 1.76,
+      "end": 2.1
+    },
+    {
+      "word": "passing",
+      "start": 2.1,
+      "end": 2.54
+    },
+    {
+      "word": "here",
+      "start": 2.54,
+      "end": 2.84
+    },
+    {
+      "word": "a",
+      "start": 2.84,
+      "end": 3.0
+    },
+    {
+      "word": "house",
+      "start": 3.0,
+      "end": 3.4
+    },
+    {
+      "word": "and",
+      "start": 3.4,
+      "end": 3.66
+    },
+    {
+      "word": "their",
+      "start": 3.66,
+      "end": 3.84
+    },
+    {
+      "word": "a",
+      "start": 3.84,
+      "end": 3.98
+    },
+    {
+      "word": "store",
+      "start": 3.98,
+      "end": 4.24
+    },
+    {
+      "word": "at",
+      "start": 4.24,
+      "end": 4.8
+    },
+    {
+      "word": "far",
+      "start": 4.8,
+      "end": 5.08
+    },
+    {
+      "word": "intervals,",
+      "start": 5.08,
+      "end": 5.58
+    },
+    {
+      "word": "eventually",
+      "start": 5.88,
+      "end": 6.32
+    },
+    {
+      "word": "ending",
+      "start": 6.32,
+      "end": 6.72
+    },
+    {
+      "word": "on",
+      "start": 6.72,
+      "end": 7.02
+    },
+    {
+      "word": "the",
+      "start": 7.02,
+      "end": 7.14
+    },
+    {
+      "word": "open",
+      "start": 7.14,
+      "end": 7.36
+    },
+    {
+      "word": "prairie.",
+      "start": 7.36,
+      "end": 7.88
+    }
+  ],
+  "duration": 7.88
+}

@@ -1,0 +1,68 @@
+{
+  "audio_file": "sample_0309.flac",
+  "wav_file": "sample_0309.wav",
+  "transcript": "Antonia pointed up to the sky and questioned me with her glance.",
+  "word_timings": [
+    {
+      "word": "Antonia",
+      "start": 0.0,
+      "end": 0.98
+    },
+    {
+      "word": "pointed",
+      "start": 0.98,
+      "end": 1.26
+    },
+    {
+      "word": "up",
+      "start": 1.26,
+      "end": 1.5
+    },
+    {
+      "word": "to",
+      "start": 1.5,
+      "end": 1.68
+    },
+    {
+      "word": "the",
+      "start": 1.68,
+      "end": 1.8
+    },
+    {
+      "word": "sky",
+      "start": 1.8,
+      "end": 2.1
+    },
+    {
+      "word": "and",
+      "start": 2.1,
+      "end": 2.5
+    },
+    {
+      "word": "questioned",
+      "start": 2.5,
+      "end": 2.86
+    },
+    {
+      "word": "me",
+      "start": 2.86,
+      "end": 3.1
+    },
+    {
+      "word": "with",
+      "start": 3.1,
+      "end": 3.26
+    },
+    {
+      "word": "her",
+      "start": 3.26,
+      "end": 3.36
+    },
+    {
+      "word": "glance.",
+      "start": 3.36,
+      "end": 3.62
+    }
+  ],
+  "duration": 3.62
+}

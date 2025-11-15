@@ -1,0 +1,88 @@
+{
+  "audio_file": "sample_0104.flac",
+  "wav_file": "sample_0104.wav",
+  "transcript": "A snake of his size and fighting trim would be more than a boy could handle.",
+  "word_timings": [
+    {
+      "word": "A",
+      "start": 0.0,
+      "end": 0.62
+    },
+    {
+      "word": "snake",
+      "start": 0.62,
+      "end": 0.8
+    },
+    {
+      "word": "of",
+      "start": 0.8,
+      "end": 0.96
+    },
+    {
+      "word": "his",
+      "start": 0.96,
+      "end": 1.1
+    },
+    {
+      "word": "size",
+      "start": 1.1,
+      "end": 1.44
+    },
+    {
+      "word": "and",
+      "start": 1.44,
+      "end": 1.7
+    },
+    {
+      "word": "fighting",
+      "start": 1.7,
+      "end": 2.02
+    },
+    {
+      "word": "trim",
+      "start": 2.02,
+      "end": 2.36
+    },
+    {
+      "word": "would",
+      "start": 2.36,
+      "end": 2.74
+    },
+    {
+      "word": "be",
+      "start": 2.74,
+      "end": 2.88
+    },
+    {
+      "word": "more",
+      "start": 2.88,
+      "end": 3.06
+    },
+    {
+      "word": "than",
+      "start": 3.06,
+      "end": 3.26
+    },
+    {
+      "word": "a",
+      "start": 3.26,
+      "end": 3.44
+    },
+    {
+      "word": "boy",
+      "start": 3.44,
+      "end": 3.76
+    },
+    {
+      "word": "could",
+      "start": 3.76,
+      "end": 4.0
+    },
+    {
+      "word": "handle.",
+      "start": 4.0,
+      "end": 4.34
+    }
+  ],
+  "duration": 4.34
+}

@@ -1,0 +1,233 @@
+{
+  "audio_file": "sample_0207.flac",
+  "wav_file": "sample_0207.wav",
+  "transcript": "She was indistinctly aware, however, that the gaunt figure of the old gentlewoman was sitting in one of the straight-back chairs, a little withdrawn from the window, the faint gleam of which showed the blanched paleness of her cheek, turned sideways towards the corner.",
+  "word_timings": [
+    {
+      "word": "She",
+      "start": 0.0,
+      "end": 0.52
+    },
+    {
+      "word": "was",
+      "start": 0.52,
+      "end": 0.66
+    },
+    {
+      "word": "indistinctly",
+      "start": 0.66,
+      "end": 1.38
+    },
+    {
+      "word": "aware,",
+      "start": 1.38,
+      "end": 1.62
+    },
+    {
+      "word": "however,",
+      "start": 1.82,
+      "end": 2.06
+    },
+    {
+      "word": "that",
+      "start": 2.5,
+      "end": 2.66
+    },
+    {
+      "word": "the",
+      "start": 2.66,
+      "end": 2.8
+    },
+    {
+      "word": "gaunt",
+      "start": 2.8,
+      "end": 3.08
+    },
+    {
+      "word": "figure",
+      "start": 3.08,
+      "end": 3.38
+    },
+    {
+      "word": "of",
+      "start": 3.38,
+      "end": 3.62
+    },
+    {
+      "word": "the",
+      "start": 3.62,
+      "end": 3.72
+    },
+    {
+      "word": "old",
+      "start": 3.72,
+      "end": 3.88
+    },
+    {
+      "word": "gentlewoman",
+      "start": 3.88,
+      "end": 4.5
+    },
+    {
+      "word": "was",
+      "start": 4.5,
+      "end": 4.98
+    },
+    {
+      "word": "sitting",
+      "start": 4.98,
+      "end": 5.26
+    },
+    {
+      "word": "in",
+      "start": 5.26,
+      "end": 5.42
+    },
+    {
+      "word": "one",
+      "start": 5.42,
+      "end": 5.6
+    },
+    {
+      "word": "of",
+      "start": 5.6,
+      "end": 5.68
+    },
+    {
+      "word": "the",
+      "start": 5.68,
+      "end": 5.78
+    },
+    {
+      "word": "straight",
+      "start": 5.78,
+      "end": 5.98
+    },
+    {
+      "word": "-back",
+      "start": 5.98,
+      "end": 6.22
+    },
+    {
+      "word": "chairs,",
+      "start": 6.22,
+      "end": 6.68
+    },
+    {
+      "word": "a",
+      "start": 7.26,
+      "end": 7.38
+    },
+    {
+      "word": "little",
+      "start": 7.38,
+      "end": 7.56
+    },
+    {
+      "word": "withdrawn",
+      "start": 7.56,
+      "end": 7.9
+    },
+    {
+      "word": "from",
+      "start": 7.9,
+      "end": 8.16
+    },
+    {
+      "word": "the",
+      "start": 8.16,
+      "end": 8.28
+    },
+    {
+      "word": "window,",
+      "start": 8.28,
+      "end": 8.62
+    },
+    {
+      "word": "the",
+      "start": 9.2,
+      "end": 9.38
+    },
+    {
+      "word": "faint",
+      "start": 9.38,
+      "end": 9.64
+    },
+    {
+      "word": "gleam",
+      "start": 9.64,
+      "end": 10.02
+    },
+    {
+      "word": "of",
+      "start": 10.02,
+      "end": 10.12
+    },
+    {
+      "word": "which",
+      "start": 10.12,
+      "end": 10.3
+    },
+    {
+      "word": "showed",
+      "start": 10.3,
+      "end": 10.56
+    },
+    {
+      "word": "the",
+      "start": 10.56,
+      "end": 10.74
+    },
+    {
+      "word": "blanched",
+      "start": 10.74,
+      "end": 11.18
+    },
+    {
+      "word": "paleness",
+      "start": 11.18,
+      "end": 11.54
+    },
+    {
+      "word": "of",
+      "start": 11.54,
+      "end": 11.72
+    },
+    {
+      "word": "her",
+      "start": 11.72,
+      "end": 11.84
+    },
+    {
+      "word": "cheek,",
+      "start": 11.84,
+      "end": 12.12
+    },
+    {
+      "word": "turned",
+      "start": 12.7,
+      "end": 12.88
+    },
+    {
+      "word": "sideways",
+      "start": 12.88,
+      "end": 13.38
+    },
+    {
+      "word": "towards",
+      "start": 13.38,
+      "end": 13.7
+    },
+    {
+      "word": "the",
+      "start": 13.7,
+      "end": 13.9
+    },
+    {
+      "word": "corner.",
+      "start": 13.9,
+      "end": 14.22
+    }
+  ],
+  "duration": 14.22
+}

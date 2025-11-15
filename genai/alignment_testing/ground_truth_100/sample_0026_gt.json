@@ -1,0 +1,73 @@
+{
+  "audio_file": "sample_0026.flac",
+  "wav_file": "sample_0026.wav",
+  "transcript": "but he compromised by telling the boy that there would be no reply.",
+  "word_timings": [
+    {
+      "word": "but",
+      "start": 0.0,
+      "end": 0.42
+    },
+    {
+      "word": "he",
+      "start": 0.42,
+      "end": 0.54
+    },
+    {
+      "word": "compromised",
+      "start": 0.54,
+      "end": 0.98
+    },
+    {
+      "word": "by",
+      "start": 0.98,
+      "end": 1.28
+    },
+    {
+      "word": "telling",
+      "start": 1.28,
+      "end": 1.54
+    },
+    {
+      "word": "the",
+      "start": 1.54,
+      "end": 1.74
+    },
+    {
+      "word": "boy",
+      "start": 1.74,
+      "end": 1.92
+    },
+    {
+      "word": "that",
+      "start": 1.92,
+      "end": 2.1
+    },
+    {
+      "word": "there",
+      "start": 2.1,
+      "end": 2.28
+    },
+    {
+      "word": "would",
+      "start": 2.28,
+      "end": 2.38
+    },
+    {
+      "word": "be",
+      "start": 2.38,
+      "end": 2.52
+    },
+    {
+      "word": "no",
+      "start": 2.52,
+      "end": 2.72
+    },
+    {
+      "word": "reply.",
+      "start": 2.72,
+      "end": 3.1
+    }
+  ],
+  "duration": 3.1
+}

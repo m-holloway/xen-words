@@ -1,0 +1,43 @@
+{
+  "audio_file": "sample_0150.flac",
+  "wav_file": "sample_0150.wav",
+  "transcript": "The shrieks that followed meant everybody sober.",
+  "word_timings": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.58
+    },
+    {
+      "word": "shrieks",
+      "start": 0.58,
+      "end": 1.02
+    },
+    {
+      "word": "that",
+      "start": 1.02,
+      "end": 1.26
+    },
+    {
+      "word": "followed",
+      "start": 1.26,
+      "end": 1.6
+    },
+    {
+      "word": "meant",
+      "start": 1.6,
+      "end": 1.78
+    },
+    {
+      "word": "everybody",
+      "start": 1.78,
+      "end": 2.24
+    },
+    {
+      "word": "sober.",
+      "start": 2.24,
+      "end": 2.72
+    }
+  ],
+  "duration": 2.72
+}
