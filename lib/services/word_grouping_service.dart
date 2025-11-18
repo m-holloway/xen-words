@@ -53,11 +53,24 @@ class WordGroupingService {
         currentCharCount,
         displayWords: displayWords,
       );
+      final bool overflowBreak = shouldBreak &&
+          _isOverflow(currentGroup.length, currentCharCount);
       
       if (shouldBreak) {
-        groups.add(List.from(currentGroup));
-        currentGroup.clear();
-        currentCharCount = 0;
+        if (overflowBreak && currentGroup.length > 1) {
+          final overflowWord = currentGroup.removeLast();
+          currentCharCount -= _wordLength(words, overflowWord, displayWords);
+          if (currentGroup.length >= 1 && currentCharCount > 0) {
+            currentCharCount -= 1; // remove trailing space
+          }
+          groups.add(List.from(currentGroup));
+          currentGroup = [overflowWord];
+          currentCharCount = _wordLength(words, overflowWord, displayWords);
+        } else {
+          groups.add(List.from(currentGroup));
+          currentGroup.clear();
+          currentCharCount = 0;
+        }
       }
     }
     
@@ -130,6 +143,22 @@ class WordGroupingService {
     if (rawWord.contains('\n')) return true;
     
     return false;
+  }
+
+  static bool _isOverflow(int groupSize, int charCount) {
+    return groupSize >= _minWordsPerLine && charCount > _maxCharactersPerLine;
+  }
+
+  static int _wordLength(
+    List<String> words,
+    int index,
+    List<String>? displayWords,
+  ) {
+    if (index < 0 || index >= words.length) return 0;
+    final displayWord = displayWords != null && displayWords.length > index
+        ? displayWords[index]
+        : words[index];
+    return displayWord.replaceAll(RegExp(r'\s+'), '').length;
   }
   
   /// Check if word ends with any of the given punctuation marks

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/story_models.dart';
@@ -63,6 +64,9 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   bool _wordLinesReady = false;
   String _listeningStatusLabel = 'Initializing speech recognition...';
   int _scrollAnchorWordIndex = -1;
+  Timer? _finalWordCompletionTimer;
+  static const Duration _finalWordCompletionDelay = Duration(milliseconds: 1000);
+  bool _finalWordCompletionPending = false;
   
   @override
   void initState() {
@@ -127,6 +131,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   void dispose() {
     _fadeController.dispose();
     _stopListening();
+    _finalWordCompletionTimer?.cancel();
     super.dispose();
   }
   
@@ -190,7 +195,9 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       _wordLinesReady = false;
       _listeningStatusLabel = 'Preparing listener...';
       _finalWordConfirmed = false;
+      _finalWordCompletionPending = false;
     });
+    _finalWordCompletionTimer?.cancel();
     
     _lastWordTime = DateTime.now();
     final totalWords = _narrationWords.length;
@@ -266,22 +273,25 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     
     final int totalWords = _narrationWords.length;
     final int maxIndex = totalWords - 1;
-    final int clampedIndex;
+    final bool trackerReportedEnd = totalWords > 0 && wordIndex >= totalWords;
+    int clampedIndex;
     if (totalWords <= 0) {
       clampedIndex = 0;
     } else {
-      clampedIndex = wordIndex.clamp(0, maxIndex).toInt();
+      final int desiredIndex = trackerReportedEnd ? totalWords : wordIndex;
+      clampedIndex = desiredIndex.clamp(0, totalWords).toInt();
     }
     final now = DateTime.now();
     final bool progressed = clampedIndex != _lastTrackedWord;
     final bool anchorSource = _isAnchorSource(source);
     bool finalWordConfirmed = _finalWordConfirmed;
+    bool shouldScheduleFinalCompletion = false;
 
-    final bool trackerReportedEnd = totalWords > 0 && wordIndex >= totalWords;
-
-    if (!finalWordConfirmed && anchorSource && trackerReportedEnd) {
-      finalWordConfirmed = true;
-      AppLogger.speech.d('✅ Final word confirmed via Sherpa anchor');
+    if (anchorSource && trackerReportedEnd) {
+      if (!_finalWordConfirmed && !_finalWordCompletionPending) {
+        shouldScheduleFinalCompletion = true;
+        AppLogger.speech.d('✅ Final word confirmed via Sherpa anchor (delayed completion)');
+      }
     }
     
     double updatedWpm = _estimatedWPM;
@@ -333,15 +343,22 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
         _scrollAnchorWordIndex = clampedIndex;
       }
     });
+
+    if (shouldScheduleFinalCompletion) {
+      _scheduleFinalWordCompletion();
+    }
     
     _lastWordTime = updatedLastWordTime;
     
+    final int safeDisplayIndex = totalWords > 0
+        ? clampedIndex.clamp(0, maxIndex >= 0 ? maxIndex : 0)
+        : 0;
     AppLogger.speech.v(
-      '🎯 V13 update [$source] → word ${clampedIndex + 1}/${_narrationWords.length} '
+      '🎯 V13 update [$source] → word ${safeDisplayIndex + 1}/${_narrationWords.length} '
       '(conf ${(confidence * 100).toStringAsFixed(0)}%)',
     );
     
-    if (progressed && beat.targetWords.isNotEmpty) {
+    if (progressed && beat.targetWords.isNotEmpty && clampedIndex < _narrationWords.length) {
       _checkForValidatedTargetWords(beat, [_narrationWords[clampedIndex]]);
     }
   }
@@ -1006,82 +1023,76 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       );
     }
     
-    return Container(
-      padding: const EdgeInsets.all(24),
-      decoration: BoxDecoration(
-        color: Colors.blue.shade50,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.blue.shade300, width: 3),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade100,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: const Icon(Icons.person, color: Colors.blue, size: 28),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.blue.shade100,
+                borderRadius: BorderRadius.circular(10),
               ),
-              const SizedBox(width: 14),
-              Text(
-                '📖 Parent reads (word ${_currentWordIndex + 1}/${_narrationWords.length}):',
-                style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.blue, fontSize: 16),
-              ),
-            ],
-          ),
-          const SizedBox(height: 20),
-          // Full width for word boxes
-          _buildHighlightedText(beat.text, beat.targetWords),
-          const SizedBox(height: 24),
-          // Show progress of validated words
-          if (beat.targetWords.isNotEmpty)
-            Center(
-              child: Wrap(
-                spacing: 12,
-                runSpacing: 12,
-                alignment: WrapAlignment.center,
-                children: beat.targetWords.map((word) {
-                  final isValidated = _validatedWords[word] ?? false;
-                  
-                  return Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    decoration: BoxDecoration(
-                      color: isValidated ? Colors.green.shade100 : Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(
-                        color: isValidated ? Colors.green : Colors.grey,
-                        width: 3,
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          isValidated ? Icons.check_circle : Icons.circle_outlined,
-                          color: isValidated ? Colors.green : Colors.grey,
-                          size: 20,
-                        ),
-                        const SizedBox(width: 6),
-                        Text(
-                          word.toUpperCase(),
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: isValidated ? Colors.green.shade900 : Colors.black87,
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                }).toList(),
+              child: const Icon(Icons.person, color: Colors.blue, size: 26),
+            ),
+            const SizedBox(width: 12),
+            Text(
+              'Parent reads · word ${_currentWordIndex + 1}/${_narrationWords.length}',
+              style: const TextStyle(
+                fontWeight: FontWeight.w600,
+                color: Colors.blueGrey,
+                fontSize: 15,
               ),
             ),
-        ],
-      ),
+          ],
+        ),
+        const SizedBox(height: 16),
+        _buildHighlightedText(beat.text, beat.targetWords),
+        const SizedBox(height: 18),
+        if (beat.targetWords.isNotEmpty)
+          Center(
+            child: Wrap(
+              spacing: 12,
+              runSpacing: 12,
+              alignment: WrapAlignment.center,
+              children: beat.targetWords.map((word) {
+                final isValidated = _validatedWords[word] ?? false;
+                
+                return Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: isValidated ? Colors.green.shade100 : Colors.grey.shade100,
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                      color: isValidated ? Colors.green : Colors.grey.shade300,
+                      width: 2,
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        isValidated ? Icons.check_circle : Icons.circle_outlined,
+                        color: isValidated ? Colors.green : Colors.grey,
+                        size: 18,
+                      ),
+                      const SizedBox(width: 6),
+                      Text(
+                        word.toUpperCase(),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          color: isValidated ? Colors.green.shade900 : Colors.black87,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+      ],
     );
   }
   
@@ -1153,6 +1164,21 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       return _currentWordIndex;
     }
     return maxVisible;
+  }
+
+  void _scheduleFinalWordCompletion() {
+    _finalWordCompletionTimer?.cancel();
+    _finalWordCompletionPending = true;
+    _finalWordCompletionTimer = Timer(_finalWordCompletionDelay, () {
+      if (!mounted) {
+        _finalWordCompletionPending = false;
+        return;
+      }
+      setState(() {
+        _finalWordConfirmed = true;
+        _finalWordCompletionPending = false;
+      });
+    });
   }
   Widget _buildNarrationPrepCard() {
     return Container(

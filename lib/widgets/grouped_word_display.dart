@@ -31,11 +31,22 @@ class GroupedWordDisplay extends StatefulWidget {
 }
 
 class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
-  static const double _lineHeight = 130.0;
-  static const EdgeInsets _listPadding = EdgeInsets.symmetric(vertical: 16, horizontal: 12);
+  static const double _lineHeight = 100.0;
+  static const EdgeInsets _listPadding = EdgeInsets.symmetric(vertical: 12, horizontal: 8);
+  static const Color _unreadBg = Color(0xFFF6F7FB);
+  static const Color _unreadBorder = Color(0xFFE3E6EF);
+  static final Color _unreadText = Colors.black.withOpacity(0.65);
+  static const Color _activeBg = Color(0xFF5245FF);
+  static const Color _activeBorder = Color(0xFF4134D8);
+  static const Color _activeGlow = Color(0x334134D8);
+  static const Color _readText = Color(0xFF475467);
+  static const Duration _lingerDuration = Duration(milliseconds: 1000);
   final ScrollController _scrollController = ScrollController();
   int _lastScrollTarget = -1;
   Timer? _scrollDebounce;
+  int? _previousActiveWordIndex;
+  DateTime? _previousActiveTimestamp;
+  Timer? _lingerTimer;
   
   @override
   void initState() {
@@ -48,6 +59,20 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.currentWordIndex != widget.currentWordIndex ||
         oldWidget.scrollWordIndex != widget.scrollWordIndex) {
+      if (oldWidget.currentWordIndex != widget.currentWordIndex &&
+          oldWidget.currentWordIndex >= 0) {
+        _previousActiveWordIndex = oldWidget.currentWordIndex;
+        _previousActiveTimestamp = DateTime.now();
+        _lingerTimer?.cancel();
+        _lingerTimer = Timer(_lingerDuration, () {
+          if (mounted) {
+            setState(() {
+              _previousActiveWordIndex = null;
+              _previousActiveTimestamp = null;
+            });
+          }
+        });
+      }
       _scheduleScroll();
     }
   }
@@ -96,6 +121,7 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
   void dispose() {
     _scrollController.dispose();
     _scrollDebounce?.cancel();
+    _lingerTimer?.cancel();
     super.dispose();
   }
   
@@ -159,38 +185,30 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
     final wordIndices = widget.wordGroups[lineIndex];
     
     final completed = lineIndex < currentLineIndex;
-    final bgColor = isCurrent
-        ? Colors.blue.shade50
-        : completed
-            ? Colors.green.shade50
-            : Colors.white;
-    final borderColor = isCurrent
-        ? Colors.blue.shade300
-        : completed
-            ? Colors.green.shade200
-            : Colors.grey.shade200;
+    final colorPalette = _RailColors.forState(
+      isCurrent: isCurrent,
+      completed: completed,
+    );
     
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: isCurrent ? 4 : 8, vertical: 4),
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 250),
+        duration: const Duration(milliseconds: 700),
         curve: Curves.easeInOut,
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: BoxDecoration(
-          color: bgColor,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: borderColor, width: isCurrent ? 2 : 1),
-          boxShadow: isCurrent
-              ? [
-                  BoxShadow(
-                    color: Colors.blue.shade200.withOpacity(0.3),
-                    offset: const Offset(0, 6),
-                    blurRadius: 14,
-                  ),
-                ]
-              : null,
+          color: colorPalette.background,
+          borderRadius: BorderRadius.circular(18),
+          border: colorPalette.border,
+          boxShadow: colorPalette.shadow,
         ),
-        child: Center(child: _buildLineWords(wordIndices)),
+        child: SizedBox(
+          height: 68,
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: _buildLineWords(wordIndices),
+          ),
+        ),
       ),
     );
   }
@@ -200,17 +218,23 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
       return const SizedBox.shrink();
     }
     
-    return LayoutBuilder(
-      builder: (context, _) {
-        return Wrap(
-          alignment: WrapAlignment.center,
-          spacing: 8,
-          runSpacing: 6,
-          children: [
-            for (final wordIdx in wordIndices) _buildWordChip(wordIdx),
-          ],
-        );
-      },
+    final chips = <Widget>[];
+    for (final wordIdx in wordIndices) {
+      chips.add(Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 4),
+        child: _buildWordChip(wordIdx),
+      ));
+    }
+
+    return ClipRect(
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        physics: const BouncingScrollPhysics(),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: chips,
+        ),
+      ),
     );
   }
 
@@ -219,42 +243,115 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
       return const SizedBox.shrink();
     }
     
-    final distance = (wordIndex - widget.currentWordIndex).abs();
     final bool isActiveWord = !widget.readingComplete && wordIndex == widget.currentWordIndex;
-    final bool isRead = wordIndex < widget.currentWordIndex ||
-        (widget.readingComplete && wordIndex <= widget.currentWordIndex);
-    
-    Color textColor = Colors.grey.shade700;
+    final bool isRead = widget.readingComplete
+        ? wordIndex <= widget.currentWordIndex
+        : wordIndex < widget.currentWordIndex;
+    final bool isLingerWord = !isActiveWord &&
+        _previousActiveWordIndex == wordIndex &&
+        _previousActiveTimestamp != null &&
+        DateTime.now().difference(_previousActiveTimestamp!) < _lingerDuration;
+
+    Color textColor = _unreadText;
     Color bgColor = Colors.transparent;
+    Border? border;
+    List<BoxShadow>? shadows;
     FontWeight weight = FontWeight.w600;
-    
-    if (isActiveWord) {
-      textColor = Colors.orange.shade900;
-      bgColor = Colors.orange.shade100;
-      weight = FontWeight.w700;
-    } else if (!widget.readingComplete && distance == 1) {
-      textColor = isRead ? Colors.orange.shade700 : Colors.blue.shade700;
-      bgColor = (isRead ? Colors.orange : Colors.blue).shade50;
-    } else if (!widget.readingComplete && distance == 2) {
-      textColor = isRead ? Colors.orange.shade500 : Colors.blue.shade500;
+    double activeFadeProgress = 0.0;
+    bool hasActiveFadeProgress = false;
+
+    if (isActiveWord || isLingerWord) {
+      final double rawProgress = isLingerWord
+          ? DateTime.now().difference(_previousActiveTimestamp!).inMilliseconds /
+              _lingerDuration.inMilliseconds
+          : 0.0;
+      final double clamped = rawProgress.clamp(0.0, 1.0);
+      activeFadeProgress = clamped;
+      hasActiveFadeProgress = true;
+
+      const double stageBreak = 0.85; // first phase: vibrant to outlined
+      final double stageOneProgress = (clamped / stageBreak).clamp(0.0, 1.0);
+      final double stageTwoProgress = clamped <= stageBreak
+          ? 0.0
+          : ((clamped - stageBreak) / (1 - stageBreak)).clamp(0.0, 1.0);
+
+      // Stage 1: white text on solid indigo → indigo text on white background with blue border.
+      final Color stageOneText = Color.lerp(Colors.white, Colors.white, stageOneProgress * 0.9)!;
+      final Color stageOneBg = Color.lerp(_activeBg, _activeBg.withOpacity(0.7), stageOneProgress)!;
+      final Color stageOneBorder = Color.lerp(_activeBorder, _activeBorder.withOpacity(0.9), stageOneProgress)!;
+      // Stage 2: indigo text on white → final read styling.
+      textColor = Color.lerp(stageOneText, _readText, stageTwoProgress * 0.9)!;
+      bgColor = Color.lerp(stageOneBg, Colors.white, stageTwoProgress * 0.9)!;
+      border = Border.all(
+        color: Color.lerp(stageOneBorder, Colors.white, stageTwoProgress)!,
+        width: 2.0,
+      );
+      weight = FontWeight.w800;
+      shadows = [
+        BoxShadow(
+          color: Color.lerp(_activeGlow, Colors.transparent, stageTwoProgress * 0.8)!,
+          blurRadius: 18 - (8 * stageTwoProgress),
+          offset: Offset(0, 8 - (4 * stageTwoProgress)),
+        ),
+      ];
     } else if (isRead) {
-      textColor = Colors.green.shade700;
-      bgColor = Colors.green.shade50;
+      textColor = _readText;
+      bgColor = Colors.transparent;
+    } else {
+      bgColor = _unreadBg;
+      border = Border.all(color: _unreadBorder, width: 1.6);
     }
-    
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+
+    double scale = 1.0;
+    if (isActiveWord) {
+      scale = 1.08;
+    } else if (isLingerWord && hasActiveFadeProgress) {
+      scale = 1.02 + (0.04 * (1.0 - activeFadeProgress));
+    }
+
+    final Duration scaleDuration = Duration(
+      milliseconds: isLingerWord ? 450 : (isActiveWord ? 240 : 180),
+    );
+
+    return AnimatedScale(
+      scale: scale,
+      duration: scaleDuration,
+      curve: isLingerWord ? Curves.easeOutBack : Curves.easeOutBack,
+      child: AnimatedContainer(
+      duration: const Duration(milliseconds: 350),
+      curve: Curves.easeInOut,
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       decoration: BoxDecoration(
         color: bgColor,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(14),
+        border: border,
+        boxShadow: shadows,
       ),
-      child: Text(
-        widget.displayWords[wordIndex],
-        style: TextStyle(
-          fontSize: 22,
-          fontWeight: weight,
-          color: textColor,
-          letterSpacing: 0.4,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              widget.displayWords[wordIndex],
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: weight,
+                color: textColor,
+                letterSpacing: 0.4,
+              ),
+            ),
+            if (isActiveWord)
+              Padding(
+                padding: const EdgeInsets.only(top: 6),
+                child: Container(
+                  width: 28,
+                  height: 5,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(999),
+                  ),
+                ),
+              ),
+          ],
         ),
       ),
     );
@@ -267,6 +364,49 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
       }
     }
     return math.max(0, widget.wordGroups.length - 1);
+  }
+}
+
+class _RailColors {
+  final Color background;
+  final Border? border;
+  final List<BoxShadow>? shadow;
+
+  const _RailColors({
+    required this.background,
+    this.border,
+    this.shadow,
+  });
+
+  static _RailColors forState({
+    required bool isCurrent,
+    required bool completed,
+  }) {
+    if (isCurrent) {
+      return _RailColors(
+        background: Colors.white,
+        border: Border.all(color: const Color(0xFFDAD1FF), width: 2),
+        shadow: const [
+          BoxShadow(
+            color: Color(0x145245FF),
+            blurRadius: 24,
+            offset: Offset(0, 12),
+          ),
+        ],
+      );
+    }
+
+    if (completed) {
+      return _RailColors(
+        background: Colors.transparent,
+        border: Border.all(color: Colors.greenAccent.shade100.withOpacity(0.2)),
+      );
+    }
+
+    return _RailColors(
+      background: Colors.transparent,
+      border: Border.all(color: Colors.grey.shade200.withOpacity(0.5)),
+    );
   }
 }
 
