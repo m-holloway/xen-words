@@ -324,20 +324,20 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
       milliseconds: isLingerWord ? 450 : (isActiveWord ? 240 : 180),
     );
 
-    return AnimatedScale(
+    Widget chip = AnimatedScale(
       scale: scale,
       duration: scaleDuration,
       curve: isLingerWord ? Curves.easeOutBack : Curves.easeOutBack,
       child: AnimatedContainer(
-      duration: const Duration(milliseconds: 350),
-      curve: Curves.easeInOut,
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-      decoration: BoxDecoration(
-        color: bgColor,
-        borderRadius: BorderRadius.circular(14),
-        border: border,
-        boxShadow: shadows,
-      ),
+        duration: const Duration(milliseconds: 350),
+        curve: Curves.easeInOut,
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+        decoration: BoxDecoration(
+          color: bgColor,
+          borderRadius: BorderRadius.circular(14),
+          border: border,
+          boxShadow: shadows,
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -366,6 +366,16 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
         ),
       ),
     );
+    
+    if (widget.onWordTap != null) {
+      chip = GestureDetector(
+        behavior: HitTestBehavior.translucent,
+        onTap: () => widget.onWordTap?.call(wordIndex),
+        child: chip,
+      );
+    }
+    
+    return chip;
   }
   
   int _findLineForWord(int wordIndex) {
