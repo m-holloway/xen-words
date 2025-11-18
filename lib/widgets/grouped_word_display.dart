@@ -47,6 +47,7 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
   int? _previousActiveWordIndex;
   DateTime? _previousActiveTimestamp;
   Timer? _lingerTimer;
+  Future<void>? _scrollAnimation;
   
   @override
   void initState() {
@@ -107,12 +108,22 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
         .clamp(position.minScrollExtent, position.maxScrollExtent);
     
     if (shouldAnimate) {
-      _scrollController.animateTo(
+      final animation = _scrollController.animateTo(
         targetOffset,
         duration: widget.scrollDuration,
         curve: Curves.easeInOutCubic,
       );
+      _scrollAnimation = animation;
+      animation.whenComplete(() {
+        if (_scrollAnimation == animation) {
+          _scrollAnimation = null;
+        }
+      });
     } else {
+      if (_scrollAnimation != null) {
+        // Let the in-flight animation finish to avoid jumpy transitions.
+        return;
+      }
       _scrollController.jumpTo(targetOffset);
     }
   }
