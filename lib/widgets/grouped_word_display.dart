@@ -10,7 +10,6 @@ class GroupedWordDisplay extends StatefulWidget {
   final int currentWordIndex;
   final double smoothProgress; // 0.0 to 1.0 within current line
   final Function(int)? onWordTap;
-  final bool showProgressBar;
   final bool readingComplete;
   final int? scrollWordIndex;
   final Duration scrollDuration;
@@ -22,7 +21,6 @@ class GroupedWordDisplay extends StatefulWidget {
     required this.currentWordIndex,
     this.smoothProgress = 0.0,
     this.onWordTap,
-    this.showProgressBar = true,
     this.readingComplete = false,
     this.scrollWordIndex,
     this.scrollDuration = const Duration(milliseconds: 1000),
@@ -159,7 +157,6 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
     }
     
     final wordIndices = widget.wordGroups[lineIndex];
-    final lineWords = wordIndices.map((i) => widget.displayWords[i]).toList();
     
     final completed = lineIndex < currentLineIndex;
     final bgColor = isCurrent
@@ -193,18 +190,7 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
                 ]
               : null,
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Center(child: _buildLineWords(wordIndices)),
-            ),
-            if (isCurrent && widget.showProgressBar) ...[
-              const SizedBox(height: 10),
-              _buildProgressBar(progress, lineWords.length),
-            ],
-          ],
-        ),
+        child: Center(child: _buildLineWords(wordIndices)),
       ),
     );
   }
@@ -271,71 +257,6 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
           letterSpacing: 0.4,
         ),
       ),
-    );
-  }
-  
-  Widget _buildProgressBar(double progress, int wordCount) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Progress bar
-            Stack(
-              children: [
-                // Background
-                Container(
-                  height: 8,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                ),
-                // Progress
-                FractionallySizedBox(
-                  widthFactor: progress.clamp(0.0, 1.0),
-                  child: Container(
-                    height: 8,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Colors.blue.shade400, Colors.blue.shade600],
-                      ),
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                  ),
-                ),
-                // Arrow indicator
-                Positioned(
-                  left: math.max(0, progress.clamp(0.0, 1.0) * constraints.maxWidth - 8),
-                  top: -4,
-                  child: Icon(
-                    Icons.arrow_drop_down,
-                    color: Colors.blue.shade700,
-                    size: 16,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 4),
-            // Word count markers
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: List.generate(wordCount, (i) {
-                final wordProgress = (i + 0.5) / wordCount;
-                final isActive = progress >= wordProgress - 0.1 && progress <= wordProgress + 0.1;
-                return Container(
-                  width: 6,
-                  height: 6,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: isActive ? Colors.blue.shade700 : Colors.grey.shade300,
-                  ),
-                );
-              }),
-            ),
-          ],
-        );
-      },
     );
   }
   

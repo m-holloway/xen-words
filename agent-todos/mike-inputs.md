@@ -2,11 +2,14 @@ This document contains todo items for agents.  If you ware working on a task and
 
 # Todo
 - I think perhaps get rid of the blue progress bar on each word box in reading mode (i.e story time/lab).  They don't seem to add value and they are a bit distracting.
-- I think that the color scheme in reading/story mode for word color is a bit confusing.  It appears that recently read words are colored orange??  I think we should consider what colors/adornments would best convey an as-yet-unread word, the 'active' (should read next) word, and words that have been read. I think we could re-think the visual design to make it a lot more intuitive (both the word colors and perhaps the box color/borders).  Now that our system tracks the active word quite well, perhaps we don't need to colorize +/-n words around it as a kind of fuzzy spotlight.  Also consider if/how we might utlize borders around the active word?
 - There are times when there is a prompt (child's turn) during story time, where we're asking the child to say a word, BUT the voice recognition doesn't seem to work and CONTINUE button is greyed out (for instance when we ask Adalyn to say the word "GO" in the default story time passage).  I may need to capture a trace unless the bug is apparent from code inspection.  I've noticed other times where it seems like the challenge is for the child to say a word, but the box is actually empty, so they don't know what they should say (I've noticed this in the story lab custom stories).  Hopefully there is resuable/common code that is used for both of those modes.  If not it should be, instead of copy/paste.  Should check that too.
 
 # Completed
 When an item above is completed/addressed fully (confirmed by the user), move it here, add the date/time, a summary of the original item and solution, and the original text from above.
+
+- **2025-11-18 — Removed narration line progress bar**  
+  Summary: Eliminated the blue horizontal progress bar beneath each word group to reduce clutter and reclaim vertical space in story reading mode.  
+  Original: “I think perhaps get rid of the blue progress bar on each word box in reading mode (i.e story time/lab).  They don't seem to add value and they are a bit distracting.”
 
 - **2025-11-18 — Narration completion waits for final word**  
   Summary: Story reader was flagging “Reading complete!” when the highlight reached the last token, even if the user hadn’t spoken it yet. We now keep `_finalWordConfirmed` false until Sherpa reports an anchor beyond the final script word, so the completion card and Continue button appear only after the last word is actually spoken.  

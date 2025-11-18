@@ -1111,7 +1111,6 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       currentWordIndex: _currentWordIndex,
       smoothProgress: lineProgress,
       onWordTap: (index) => _jumpToWord(index),
-      showProgressBar: !isComplete,
       readingComplete: isComplete,
       scrollWordIndex: _getScrollWordIndex(),
     );
