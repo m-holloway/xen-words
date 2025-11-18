@@ -1,0 +1,178 @@
+import 'dart:convert';
+
+import '../utils/reading_level_helper.dart';
+import 'story_models.dart';
+
+enum StoryReadingMode { parent, child }
+
+extension StoryReadingModeX on StoryReadingMode {
+  String get label => this == StoryReadingMode.parent ? 'Parent Mode' : 'Child Mode';
+}
+
+/// Form inputs for the Story Lab feature.
+class StoryGenerationRequest {
+  final int readingLevel;
+  final ReadingBand readingBand;
+  final int durationMinutes;
+  final String parentPrompt;
+  final String childContext;
+  final String? storyConcept;
+  final String? childName;
+  final String model;
+  final DateTime requestedAt;
+  final bool includeChildName;
+
+  StoryGenerationRequest({
+    required this.readingLevel,
+    required this.readingBand,
+    required this.durationMinutes,
+    required this.parentPrompt,
+    required this.childContext,
+    this.storyConcept,
+    this.childName,
+    this.model = StoryGenerationDefaults.defaultModelId,
+    this.includeChildName = false,
+    DateTime? requestedAt,
+  }) : requestedAt = requestedAt ?? DateTime.now();
+
+  Map<String, dynamic> toMap() {
+    return {
+      'reading_level': readingLevel,
+      'reading_band': readingBand.toJson(),
+      'duration_minutes': durationMinutes,
+      'parent_prompt': parentPrompt,
+      'child_context': childContext,
+      'story_concept': storyConcept,
+      'child_name': childName,
+      'model': model,
+      'requested_at': requestedAt.toIso8601String(),
+      'include_child_name': includeChildName,
+    };
+  }
+
+  String toPrettyJson() => const JsonEncoder.withIndent('  ').convert(toMap());
+
+  StoryGenerationRequest copyWith({
+    int? readingLevel,
+    int? durationMinutes,
+    String? parentPrompt,
+    String? childContext,
+    ReadingBand? readingBand,
+    String? storyConcept,
+    String? childName,
+    String? model,
+    DateTime? requestedAt,
+    bool? includeChildName,
+  }) {
+    return StoryGenerationRequest(
+      readingLevel: readingLevel ?? this.readingLevel,
+      readingBand: readingBand ?? this.readingBand,
+      durationMinutes: durationMinutes ?? this.durationMinutes,
+      parentPrompt: parentPrompt ?? this.parentPrompt,
+      childContext: childContext ?? this.childContext,
+      storyConcept: storyConcept ?? this.storyConcept,
+      childName: childName ?? this.childName,
+      model: model ?? this.model,
+      includeChildName: includeChildName ?? this.includeChildName,
+      requestedAt: requestedAt ?? this.requestedAt,
+    );
+  }
+}
+
+/// Persisted story metadata + chapter payload.
+class GeneratedStoryRecord {
+  final String id;
+  final StoryChapter chapter;
+  final String summary;
+  final int readingLevel;
+  final int durationMinutes;
+  final List<String> focusWords;
+  final double familiarWordRatio;
+  final int familiarWordCount;
+  final int totalWordCount;
+  final String parentPrompt;
+  final String childContext;
+  final String? storyConcept;
+  final String model;
+  final DateTime createdAt;
+  final bool includeChildName;
+  final Map<String, dynamic>? requestInputs;
+
+  GeneratedStoryRecord({
+    required this.id,
+    required this.chapter,
+    required this.summary,
+    required this.readingLevel,
+    required this.durationMinutes,
+    required this.focusWords,
+    required this.familiarWordRatio,
+    required this.familiarWordCount,
+    required this.totalWordCount,
+    required this.parentPrompt,
+    required this.childContext,
+    required this.storyConcept,
+    required this.model,
+    required this.createdAt,
+    this.includeChildName = false,
+    this.requestInputs,
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'chapter': chapter.toJson(),
+      'summary': summary,
+      'reading_level': readingLevel,
+      'duration_minutes': durationMinutes,
+      'focus_words': focusWords,
+      'familiar_word_ratio': familiarWordRatio,
+      'familiar_word_count': familiarWordCount,
+      'total_word_count': totalWordCount,
+      'parent_prompt': parentPrompt,
+      'child_context': childContext,
+      'story_concept': storyConcept,
+      'model': model,
+      'created_at': createdAt.toIso8601String(),
+      'include_child_name': includeChildName,
+      'request_inputs': requestInputs,
+    };
+  }
+
+  factory GeneratedStoryRecord.fromJson(Map<String, dynamic> json) {
+    return GeneratedStoryRecord(
+      id: json['id'] as String,
+      chapter: StoryChapter.fromJson(json['chapter'] as Map<String, dynamic>),
+      summary: json['summary'] as String? ?? '',
+      readingLevel: json['reading_level'] as int? ?? StoryGenerationDefaults.defaultReadingLevel,
+      durationMinutes: json['duration_minutes'] as int? ?? StoryGenerationDefaults.defaultMinutes,
+      focusWords: (json['focus_words'] as List<dynamic>? ?? [])
+          .map((e) => e.toString())
+          .toList(),
+      familiarWordRatio: (json['familiar_word_ratio'] as num?)?.toDouble() ?? 0,
+      familiarWordCount: json['familiar_word_count'] as int? ?? 0,
+      totalWordCount: json['total_word_count'] as int? ?? 0,
+      parentPrompt: json['parent_prompt'] as String? ?? '',
+      childContext: json['child_context'] as String? ?? '',
+      storyConcept: json['story_concept'] as String?,
+      model: json['model'] as String? ?? StoryGenerationDefaults.defaultModelId,
+      createdAt: DateTime.parse(json['created_at'] as String),
+      includeChildName: json['include_child_name'] as bool? ?? false,
+      requestInputs: json['request_inputs'] is Map
+          ? Map<String, dynamic>.from(json['request_inputs'] as Map)
+          : null,
+    );
+  }
+}
+
+class StoryGenerationDefaults {
+  static const String primaryModelId = 'google/gemini-2.5-flash';
+  static const String fallbackModelId = 'qwen/qwen-2.5-72b-instruct';
+  static const String defaultModelId = primaryModelId;
+  static const int minMinutes = 5;
+  static const int maxMinutes = 20;
+  static const int defaultMinutes = 8;
+  static const int minReadingLevel = 1;
+  static const int maxReadingLevel = 5;
+  static const int defaultReadingLevel = 2;
+}
+

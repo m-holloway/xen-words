@@ -46,6 +46,7 @@ A Flutter-based educational app for helping children learn sight words through s
 - 📝 See `LOGGING.md` for logging guidelines
 - 📝 See `docs/RESPONSIVE_LAYOUT_GUIDE.md` for legacy layout guidelines
 - 📝 See `docs/SKYBOX_SETUP.md` for rendering details
+- 📝 [Voice Recognition Emulation (Python)](docs/README.md#voice-recognition-emulation-python)
 
 ## Project Structure
 

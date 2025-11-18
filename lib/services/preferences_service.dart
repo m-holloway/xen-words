@@ -15,6 +15,9 @@ class PreferencesService {
   static const String _keyRugFontFamily = 'rug_font_family';
   static const String _keyLearningProgress = 'learning_progress';
   static const String _keyOnboardingComplete = 'onboarding_complete';
+  static const String _keyStoryPersonalization = 'story_personalization_notes';
+  static const String _keyStoryUseChildName = 'story_use_child_name';
+  static const String _keyStoryGeneratorDraft = 'story_generator_draft_v1';
 
   /// Load settings from preferences
   Future<AppSettings> loadSettings() async {
@@ -145,6 +148,50 @@ class PreferencesService {
     final prefs = await SharedPreferences.getInstance();
     await prefs.clear();
     AppLogger.storage.i('All app data cleared');
+  }
+
+  Future<String> getStoryPersonalizationNotes() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(_keyStoryPersonalization) ?? '';
+  }
+
+  Future<void> setStoryPersonalizationNotes(String value) async {
+    final prefs = await SharedPreferences.getInstance();
+    if (value.isEmpty) {
+      await prefs.remove(_keyStoryPersonalization);
+    } else {
+      await prefs.setString(_keyStoryPersonalization, value);
+    }
+  }
+
+  Future<bool> getStoryUseChildName() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool(_keyStoryUseChildName) ?? false;
+  }
+
+  Future<void> setStoryUseChildName(bool useChildName) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_keyStoryUseChildName, useChildName);
+  }
+
+  Future<Map<String, dynamic>?> loadStoryGeneratorDraft() async {
+    final prefs = await SharedPreferences.getInstance();
+    final raw = prefs.getString(_keyStoryGeneratorDraft);
+    if (raw == null || raw.isEmpty) {
+      return null;
+    }
+    try {
+      final decoded = jsonDecode(raw) as Map<String, dynamic>;
+      return decoded;
+    } catch (e) {
+      AppLogger.storage.e('Failed to decode story generator draft', error: e);
+      return null;
+    }
+  }
+
+  Future<void> saveStoryGeneratorDraft(Map<String, dynamic> draft) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_keyStoryGeneratorDraft, jsonEncode(draft));
   }
 }
 

@@ -9,6 +9,7 @@ Two-phase flow:
 
 from __future__ import annotations
 
+import os
 import re
 import sys
 from collections import deque
@@ -48,6 +49,7 @@ class V13SherpaAnchoredVAD:
 
     def __init__(self, word_timings: List[dict], script_text: str, debug: bool = True):
         self.debug = debug
+        self.require_final_confirmation = os.environ.get('V13_REQUIRE_FINAL_WORD', '1') != '0'
         self.word_timings = list(word_timings or [])
         self.script_text = script_text or ""
 
@@ -166,8 +168,19 @@ class V13SherpaAnchoredVAD:
             has_confirmed = self.last_confirmed_word_idx >= 0
             max_allowed = (self.total_words if not has_confirmed
                            else min(self.total_words, self.last_confirmed_word_idx + self.max_lookahead_words))
+            at_final_word = (
+                self.require_final_confirmation
+                and self.total_words > 0
+                and self.current_word_idx >= self.total_words - 1
+                and self.last_confirmed_word_idx < self.total_words - 1
+            )
 
-            if has_confirmed and self.current_word_idx >= max_allowed:
+            if at_final_word:
+                source = 'hold'
+                confidence = 0.65
+                if self.debug:
+                    print("  🛑 V13 waiting for Sherpa confirmation on final word")
+            elif has_confirmed and self.current_word_idx >= max_allowed:
                 source = 'hold'
                 confidence = 0.7
                 if self.debug:

@@ -47,3 +47,8 @@ app.*.map.json
 # Blender backup files
 *.blend1
 *.blend2
+
+# Local secrets overrides
+lib/secrets/openrouter_secret.dart
+genai/.venv_alignment/
+test_audio/clean_recording_trimmed.wav

@@ -39,11 +39,11 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   bool _narrationTrackingActive = false;
   double _currentTrackingConfidence = 0.0;
   String _currentTrackingSource = 'init';
-  DateTime? _lastWordUpdateTime;
   int _lastTrackedWord = -1;
   int _v13VadPredictions = 0;
   int _v13Anchors = 0;
   int _v13Corrections = 0;
+  bool _finalWordConfirmed = false;
   
   // Legacy voice recognition state (for STT anchoring + child turns)
   bool _isListening = false;
@@ -133,15 +133,20 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   void _checkAndStartListening() {
     final currentBeat = widget.story.beats[_currentBeatIndex];
     
-    AppLogger.speech.d('📖 Beat ${_currentBeatIndex + 1}: Type=${currentBeat.type}, Text="${currentBeat.text.substring(0, 30)}..."');
+    final previewText = currentBeat.text;
+    final snippet = previewText.length > 30 ? '${previewText.substring(0, 30)}…' : previewText;
+    AppLogger.speech.d('📖 Beat ${_currentBeatIndex + 1}: Type=${currentBeat.type}, Text="$snippet"');
     
-    // Auto-start for child turn beats
-    if (currentBeat.type == BeatType.childTurn && currentBeat.targetWords.isNotEmpty) {
-      AppLogger.speech.d('👦 Child turn detected, listening for: ${currentBeat.targetWords.first}');
+    final hasTargetWords = currentBeat.targetWords.isNotEmpty;
+
+    final isChildPracticeBeat = currentBeat.type == BeatType.childTurn ||
+        currentBeat.type == BeatType.coachIntervention ||
+        currentBeat.type == BeatType.celebration;
+
+    if (hasTargetWords && isChildPracticeBeat) {
+      AppLogger.speech.d('🎯 Beat requires spoken word, listening for: ${currentBeat.targetWords.first}');
       _startListeningForWord(currentBeat.targetWords.first);
-    }
-    // Auto-start for narration beats - track parent's reading
-    else if (currentBeat.type == BeatType.narration) {
+    } else if (currentBeat.type == BeatType.narration) {
       AppLogger.speech.d('📚 Narration beat detected, starting tracking');
       _startNarrationTracking(currentBeat);
     } else {
@@ -175,7 +180,6 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       _currentTargetWord = 'tracking';
       _currentTrackingConfidence = 0.0;
       _currentTrackingSource = 'init';
-      _lastWordUpdateTime = null;
       _lastTrackedWord = -1;
       _v13VadPredictions = 0;
       _v13Anchors = 0;
@@ -185,9 +189,16 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       _scrollAnchorWordIndex = -1;
       _wordLinesReady = false;
       _listeningStatusLabel = 'Preparing listener...';
+      _finalWordConfirmed = false;
     });
     
     _lastWordTime = DateTime.now();
+    final totalWords = _narrationWords.length;
+    final tailStart = totalWords > 12 ? totalWords - 12 : 0;
+    final tailWords = _narrationWords.sublist(tailStart);
+    AppLogger.speech.d(
+      '📝 Narration script (${_narrationWords.length} words). Tail: ${tailWords.join(' ')}',
+    );
     
     if (_narrationWords.isEmpty) {
       AppLogger.speech.w('Narration beat contains no readable words');
@@ -253,10 +264,25 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       return;
     }
     
-    final int maxIndex = _narrationWords.length - 1;
-    final int clampedIndex = wordIndex.clamp(0, maxIndex).toInt();
+    final int totalWords = _narrationWords.length;
+    final int maxIndex = totalWords - 1;
+    final int clampedIndex;
+    if (totalWords <= 0) {
+      clampedIndex = 0;
+    } else {
+      clampedIndex = wordIndex.clamp(0, maxIndex).toInt();
+    }
     final now = DateTime.now();
     final bool progressed = clampedIndex != _lastTrackedWord;
+    final bool anchorSource = _isAnchorSource(source);
+    bool finalWordConfirmed = _finalWordConfirmed;
+
+    final bool trackerReportedEnd = totalWords > 0 && wordIndex >= totalWords;
+
+    if (!finalWordConfirmed && anchorSource && trackerReportedEnd) {
+      finalWordConfirmed = true;
+      AppLogger.speech.d('✅ Final word confirmed via Sherpa anchor');
+    }
     
     double updatedWpm = _estimatedWPM;
     DateTime updatedLastWordTime = _lastWordTime;
@@ -272,7 +298,6 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     int vadPredictions = _v13VadPredictions;
     int anchors = _v13Anchors;
     int corrections = _v13Corrections;
-    bool anchorSource = _isAnchorSource(source);
     
     switch (source) {
       case 'vad':
@@ -297,13 +322,13 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       _currentWordIndex = clampedIndex;
       _currentTrackingConfidence = confidence;
       _currentTrackingSource = source;
-      _lastWordUpdateTime = now;
       _lastTrackedWord = clampedIndex;
       _v13VadPredictions = vadPredictions;
       _v13Anchors = anchors;
       _v13Corrections = corrections;
       _estimatedWPM = updatedWpm;
       _currentTargetWord = 'tracking';
+      _finalWordConfirmed = finalWordConfirmed;
       if (anchorSource) {
         _scrollAnchorWordIndex = clampedIndex;
       }
@@ -643,6 +668,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       setState(() {
         _currentBeatIndex++;
         _validatedWords.clear(); // Reset for new beat
+        _finalWordConfirmed = false;
       });
       _fadeController.forward();
       
@@ -1070,7 +1096,8 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     }
     
     // Check if we're at the end
-    final isComplete = _currentWordIndex >= _narrationWords.length - 1;
+    final lastWordIndex = _narrationWords.isEmpty ? 0 : _narrationWords.length - 1;
+    final isComplete = _finalWordConfirmed && _currentWordIndex >= lastWordIndex;
     
     // Calculate discrete progress for current line (no time-based smoothing)
     final currentLine = WordGroupingService.getLineForWord(_wordGroups, _currentWordIndex);
@@ -1537,23 +1564,23 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   }
   
   Widget _buildContinueButton(StoryBeat beat, bool isLastBeat) {
-    // Check if all target words are validated
-    final allValidated = beat.targetWords.isEmpty ||
-        beat.targetWords.every((w) => _validatedWords[w] ?? false);
-    
-    // Always show continue button - parent controls the flow
-    // Show different style if words aren't validated yet
+    final requiresValidation = beat.targetWords.isNotEmpty;
+    final validatedCount = beat.targetWords.where((w) => _validatedWords[w] ?? false).length;
+    final allValidated = !requiresValidation || validatedCount == beat.targetWords.length;
+
     return ElevatedButton(
-      onPressed: _nextBeat,
+      onPressed: allValidated ? _nextBeat : null,
       style: ElevatedButton.styleFrom(
-        backgroundColor: isLastBeat 
-            ? Colors.green 
-            : (allValidated ? Colors.deepPurple : Colors.grey),
+        backgroundColor: isLastBeat
+            ? Colors.green
+            : (allValidated ? Colors.deepPurple : Colors.grey.shade500),
         foregroundColor: Colors.white,
         padding: const EdgeInsets.symmetric(vertical: 16),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
+        disabledBackgroundColor: Colors.grey.shade400,
+        disabledForegroundColor: Colors.white,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -1562,11 +1589,11 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
             isLastBeat ? 'Finish Story 🎉' : 'Continue →',
             style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
-          if (!allValidated && beat.targetWords.isNotEmpty)
+          if (!allValidated && requiresValidation)
             Padding(
-              padding: const EdgeInsets.only(top: 4),
+              padding: const EdgeInsets.only(top: 6),
               child: Text(
-                '(${beat.targetWords.where((w) => !(_validatedWords[w] ?? false)).length} word${beat.targetWords.where((w) => !(_validatedWords[w] ?? false)).length > 1 ? 's' : ''} remaining)',
+                'Say the highlighted word (${validatedCount}/${beat.targetWords.length})',
                 style: const TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
               ),
             ),

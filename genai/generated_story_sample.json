@@ -1,10 +1,10 @@
 {
   "id": "story_1",
-  "title": "Adalyn and the Sparkling Path",
+  "title": "Adalyn and the Sparkly Path",
   "beats": [
     {
       "type": "narration",
-      "text": "You are Adalyn, and today you see a glowing trail outside your window\u2014shimmering like stardust! Her heart jumps with excitement. What could it lead to?",
+      "text": "One sunny morning, Adalyn, you found a glowing map in your backyard. Can you see the sparkly path leading into the woods? It\u2019s time to go\u2014her adventure begins now!",
       "speaker": "parent",
       "target_words": [
         "you",
@@ -22,11 +22,11 @@
       "target_words": [
         "you"
       ],
-      "coach_phrase": "That\u2019s you\u2014awesome!"
+      "coach_phrase": "Yes! You\u2019re doing great!"
     },
     {
       "type": "narration",
-      "text": "She puts on her rainbow boots, ready to go on an adventure. The sparkles wiggle like they\u2019re waving at her, saying, 'Come on, you can do it!'",
+      "text": "The map showed a rainbow bridge and a talking frog who knew what to do. Her heart beat fast\u2014was she ready to go? The wind whispered, 'You can do it!'",
       "speaker": "parent",
       "target_words": [],
       "coach_phrase": null
@@ -38,80 +38,84 @@
       "target_words": [
         "her"
       ],
-      "coach_phrase": "Yes! That's her\u2014the brave explorer!"
-    },
-    {
-      "type": "narration",
-      "text": "The path splits! One side hums like a happy bee, the other whispers like the wind. What should she do? She stops and wonders.",
-      "speaker": "parent",
-      "target_words": [
-        "what"
-      ],
-      "coach_phrase": null
-    },
-    {
-      "type": "celebration",
-      "text": "Yay! You said 'go' when you were ready\u2014just like Adalyn is ready to go on this big adventure!",
-      "speaker": "parent",
-      "target_words": [
-        "go"
-      ],
-      "coach_phrase": null
+      "coach_phrase": "That\u2019s right\u2014her, like Adalyn!"
     },
     {
       "type": "child_turn",
-      "text": "Now Adalyn, say the word 'go'\u2014let\u2019s pick a path!",
-      "speaker": "coach",
-      "target_words": [
-        "go"
-      ],
-      "coach_phrase": "You\u2019ve got the power to go!"
-    },
-    {
-      "type": "narration",
-      "text": "She chooses the humming path. It\u2019s bumpy and twisty, and she trips once\u2014but she gets back up. What matters is she keeps trying.",
-      "speaker": "parent",
-      "target_words": [],
-      "coach_phrase": null
-    },
-    {
-      "type": "child_turn",
-      "text": "Can you say the word 'what'?",
+      "text": "Now say 'what'\u2014what do you think she should do?",
       "speaker": "coach",
       "target_words": [
         "what"
       ],
-      "coach_phrase": "Wondering is how we learn!"
+      "coach_phrase": "Wonderful! You\u2019re full of ideas!"
     },
     {
       "type": "narration",
-      "text": "A tiny fox with silver paws appears. 'You\u2019re stuck?' he asks. 'I know what helps\u2014teamwork!' Her eyes light up. What a kind friend!",
+      "text": "The path split in two\u2014one went over the rainbow, the other under the root tunnel. What should she do? Her toes wiggled with excitement.",
       "speaker": "parent",
       "target_words": [
-        "you",
         "what",
         "her"
       ],
       "coach_phrase": null
     },
     {
-      "type": "coaching",
-      "text": "This word is a little tricky\u2014'see.' Watch my lips: S-EE. Can you say 'see'?",
+      "type": "child_turn",
+      "text": "Say the word 'go'\u2014can you help her decide to go?",
+      "speaker": "coach",
+      "target_words": [
+        "go"
+      ],
+      "coach_phrase": "Go, Adalyn, go!"
+    },
+    {
+      "type": "narration",
+      "text": "She tried the rainbow, but it slipped! Then she tried the roots, crawling through with a brave little hum. What a brave try! Her knees were dusty, but she didn\u2019t quit.",
+      "speaker": "parent",
+      "target_words": [
+        "what",
+        "her",
+        "go"
+      ],
+      "coach_phrase": null
+    },
+    {
+      "type": "child_turn",
+      "text": "Say 'what' again\u2014what should she try next?",
+      "speaker": "coach",
+      "target_words": [
+        "what"
+      ],
+      "coach_phrase": "You're thinking so hard\u2014awesome!"
+    },
+    {
+      "type": "narration",
+      "text": "She saw a tiny key beneath a toadstool. Her fingers shook as she picked it up. What could it open? She wasn\u2019t sure, but she kept going.",
+      "speaker": "parent",
+      "target_words": [
+        "her",
+        "what"
+      ],
+      "coach_phrase": null
+    },
+    {
+      "type": "child_turn",
+      "text": "Now say 'see'\u2014can you see the treasure box ahead?",
       "speaker": "coach",
       "target_words": [
         "see"
       ],
-      "coach_phrase": "You\u2019re doing so well\u2014try it again!"
+      "coach_phrase": "You\u2019ve got sharp eyes!"
     },
     {
       "type": "celebration",
-      "text": "You did it! You said 'see,' 'go,' and 'her'\u2014just in time! Together, Adalyn and the fox see the treasure: a garden glowing with laughter flowers! You all go home heroes!",
+      "text": "You did it, Adalyn! You helped her go, you said the words, and you can see the glittering treasure! You, her, go, see, what\u2014every word led the way!",
       "speaker": "parent",
       "target_words": [
         "you",
-        "see",
-        "go",
         "her",
+        "go",
+        "see",
         "what"
       ],
       "coach_phrase": null
@@ -125,12 +129,12 @@
       "choices": [
         {
           "id": "choice_1a",
-          "preview_text": "Follow the humming path",
+          "preview_text": "Cross the wobbly rainbow bridge",
           "choice_text": "Choose this path"
         },
         {
           "id": "choice_1b",
-          "preview_text": "Try the whispering wind trail",
+          "preview_text": "Crawl through the curly root tunnel",
           "choice_text": "Choose that path"
         }
       ]
@@ -138,17 +142,17 @@
     {
       "id": "choice_2",
       "beat_index": 9,
-      "prompt_text": "How should Adalyn cross the wobbly log?",
+      "prompt_text": "What should she try with the key?",
       "choices": [
         {
           "id": "choice_2a",
-          "preview_text": "Hop slowly with the fox",
-          "choice_text": "Choose this way"
+          "preview_text": "Unlock the sparkly box under the tree",
+          "choice_text": "Choose this path"
         },
         {
           "id": "choice_2b",
-          "preview_text": "Sing a brave song and tiptoe across",
-          "choice_text": "Pick this way"
+          "preview_text": "Give the key to the singing snail for help",
+          "choice_text": "Choose that path"
         }
       ]
     }
