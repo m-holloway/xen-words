@@ -59,10 +59,14 @@ abstract class ISpeechRecognizer {
   Future<bool> startNarrationTracking({
     required String scriptText,
     required Function(int wordIndex, double confidence, String source) onWordUpdate,
+    int initialWordIndex = 0,
   });
   
   /// Stop narration tracking
   Future<void> stopNarrationTracking();
+  
+  /// Manually align narration tracking to the specified word index.
+  Future<void> seekNarrationToWord(int wordIndex);
   
   /// Dispose and clean up resources
   void dispose();

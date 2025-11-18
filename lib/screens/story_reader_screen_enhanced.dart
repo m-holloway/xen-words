@@ -67,6 +67,8 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   Timer? _finalWordCompletionTimer;
   static const Duration _finalWordCompletionDelay = Duration(milliseconds: 1000);
   bool _finalWordCompletionPending = false;
+  bool _manualSeekInFlight = false;
+  int? _pendingManualSeekIndex;
   
   @override
   void initState() {
@@ -1228,10 +1230,126 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   }
   
   void _jumpToWord(int wordIndex) {
-    AppLogger.speech.d('🔄 Jumping to word $wordIndex');
+    if (_narrationWords.isEmpty) {
+      return;
+    }
+    
+    final int maxIndex = _narrationWords.length - 1;
+    final int targetIndex = wordIndex.clamp(0, maxIndex).toInt();
+    
+    AppLogger.speech.d('🔄 Jumping to word $targetIndex (tap override)');
+    _finalWordCompletionTimer?.cancel();
+    
     setState(() {
-      _currentWordIndex = wordIndex;
+      _currentWordIndex = targetIndex;
+      _scrollAnchorWordIndex = targetIndex;
+      _finalWordConfirmed = false;
+      _finalWordCompletionPending = false;
+      _currentTrackingSource = 'manual_tap';
+      _currentTrackingConfidence = 1.0;
+      _lastTrackedWord = targetIndex;
     });
+
+    _enqueueManualNarrationSeek(targetIndex);
+  }
+
+  void _enqueueManualNarrationSeek(int targetIndex) {
+    _pendingManualSeekIndex = targetIndex;
+    if (_manualSeekInFlight) {
+      return;
+    }
+    _manualSeekInFlight = true;
+    Future.microtask(_processManualNarrationSeekQueue);
+  }
+
+  Future<void> _processManualNarrationSeekQueue() async {
+    while (_pendingManualSeekIndex != null) {
+      final target = _pendingManualSeekIndex!;
+      _pendingManualSeekIndex = null;
+      await _restartNarrationTrackingAt(target);
+    }
+    _manualSeekInFlight = false;
+  }
+
+  Future<void> _restartNarrationTrackingAt(int targetIndex) async {
+    if (!_narrationTrackingActive) {
+      AppLogger.speech.w('Manual seek requested but narration tracking inactive');
+      return;
+    }
+    if (_narrationWords.isEmpty) {
+      AppLogger.speech.w('Manual seek requested without narration words');
+      return;
+    }
+    final scriptText = _narrationWords.join(' ').trim();
+    if (scriptText.isEmpty) {
+      AppLogger.speech.w('Manual seek aborted due to empty script text');
+      return;
+    }
+
+    final beatIndex = _currentBeatIndex;
+    final StoryBeat beat = widget.story.beats[beatIndex];
+    final controller = context.read<GameController>();
+
+    setState(() {
+      _listeningStatusLabel = 'Rewinding narration…';
+    });
+
+    try {
+      await controller.speechRecognizer.stopNarrationTracking();
+    } catch (e, stackTrace) {
+      AppLogger.speech.e(
+        'Failed to stop narration tracking before rewind: $e',
+        error: e,
+        stackTrace: stackTrace,
+      );
+    }
+
+    if (!mounted || beatIndex != _currentBeatIndex) {
+      return;
+    }
+
+    setState(() {
+      _narrationTrackingActive = false;
+    });
+
+    try {
+      final started = await controller.speechRecognizer.startNarrationTracking(
+        scriptText: scriptText,
+        onWordUpdate: (index, confidence, source) {
+          _handleNarrationWordUpdate(beat, index, confidence, source);
+        },
+        initialWordIndex: targetIndex,
+      );
+
+      if (!mounted || beatIndex != _currentBeatIndex) {
+        return;
+      }
+
+      setState(() {
+        _narrationTrackingActive = started;
+        _wordLinesReady = started && _wordGroups.isNotEmpty;
+        _listeningStatusLabel = started
+            ? 'Listening – resume when ready'
+            : 'Listener unavailable';
+        if (started) {
+          _currentWordIndex = targetIndex;
+          _lastTrackedWord = targetIndex;
+          _scrollAnchorWordIndex = targetIndex;
+        }
+      });
+    } catch (e, stackTrace) {
+      AppLogger.speech.e(
+        'Failed to restart narration tracking after rewind: $e',
+        error: e,
+        stackTrace: stackTrace,
+      );
+      if (mounted) {
+        setState(() {
+          _listeningStatusLabel = 'Listener unavailable';
+          _narrationTrackingActive = false;
+        });
+      }
+    }
   }
   
   Widget _buildEnhancedChildTurnBubble(StoryBeat beat) {

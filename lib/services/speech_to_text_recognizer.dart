@@ -231,6 +231,7 @@ class SpeechToTextRecognizer implements ISpeechRecognizer {
   Future<bool> startNarrationTracking({
     required String scriptText,
     required Function(int wordIndex, double confidence, String source) onWordUpdate,
+    int initialWordIndex = 0,
   }) async {
     // Not implemented for speech_to_text provider
     // Only available for Sherpa-ONNX
@@ -240,6 +241,11 @@ class SpeechToTextRecognizer implements ISpeechRecognizer {
   @override
   Future<void> stopNarrationTracking() async {
     // Not implemented for speech_to_text provider
+  }
+  
+  @override
+  Future<void> seekNarrationToWord(int wordIndex) async {
+    throw UnsupportedError('Narration tracking only available with Sherpa-ONNX recognizer');
   }
   
   void dispose() {

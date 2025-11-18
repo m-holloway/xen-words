@@ -1110,6 +1110,7 @@ class SherpaRecognizer implements ISpeechRecognizer {
   Future<bool> startNarrationTracking({
     required String scriptText,
     required Function(int wordIndex, double confidence, String source) onWordUpdate,
+    int initialWordIndex = 0,
   }) async {
     if (_recognizer == null) {
       AppLogger.speech.e('Recognizer not initialized');
@@ -1129,7 +1130,10 @@ class SherpaRecognizer implements ISpeechRecognizer {
         .where((w) => w.isNotEmpty)
         .map((w) => w.trim())
         .toList();
-    _wordTracker = WordOnsetTracker(scriptWords);
+    _wordTracker = WordOnsetTracker(
+      scriptWords,
+      initialWordIndex: initialWordIndex,
+    );
     _onWordUpdate = onWordUpdate;
     _isNarrationMode = true;
     _narrationStartTime = DateTime.now();
@@ -1293,6 +1297,27 @@ class SherpaRecognizer implements ISpeechRecognizer {
     _narrationStartTime = null;
     
     AppLogger.speech.i('Narration tracking stopped');
+  }
+  
+  @override
+  Future<void> seekNarrationToWord(int wordIndex) async {
+    if (!_isNarrationMode || _wordTracker == null) {
+      AppLogger.speech.w('seekNarrationToWord called while narration inactive');
+      return;
+    }
+    
+    final int clamped = wordIndex.clamp(0, _wordTracker!.scriptLength).toInt();
+    AppLogger.speech.i('🔁 Narration seek → word $clamped/${_wordTracker!.scriptLength}');
+    
+    _wordTracker!.jumpToWord(clamped);
+    
+    if (_recognizer != null) {
+      _stream = _recognizer!.createStream();
+    }
+    
+    if (_onWordUpdate != null) {
+      _onWordUpdate!(clamped, 0.98, 'manual_seek');
+    }
   }
   
   /// Get narration tracker statistics (if active)

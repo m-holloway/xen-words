@@ -2,7 +2,6 @@ This document contains todo items for agents.  If you ware working on a task and
 
 # Todo
 - There are times when there is a prompt (child's turn) during story time, where we're asking the child to say a word, BUT the voice recognition doesn't seem to work and CONTINUE button is greyed out (for instance when we ask Adalyn to say the word "GO" in the default story time passage).  I may need to capture a trace unless the bug is apparent from code inspection.  I've noticed other times where it seems like the challenge is for the child to say a word, but the box is actually empty, so they don't know what they should say (I've noticed this in the story lab custom stories).  Hopefully there is resuable/common code that is used for both of those modes.  If not it should be, instead of copy/paste.  Should check that too.
-- We need to add a feature to the story time/reader view.  When the user 'taps' a word, we should make that the active/next word (white on blue), and set the app/recognizer state accordingly.  This allows the parent or child to rewind/redo easily/naturally if the system gets a head or they just want to re-read something, etc.
 # Completed
 When an item above is completed/addressed fully (confirmed by the user), move it here, add the date/time, a summary of the original item and solution, and the original text from above.
 
@@ -21,3 +20,7 @@ When an item above is completed/addressed fully (confirmed by the user), move it
 - **2025-11-18 — Smooth narration auto-scroll**  
   Summary: Added scroll animation tracking in `GroupedWordDisplay` so in-flight auto-scroll animations finish even if the next word is recognized mid-scroll, eliminating the abrupt “jump” into the next word group.  
   Original: “The automatic scrolling during reading is generally gentle and smooth (which is natural and easy to follow).  However, there seem to be times where it 'jumps' to the next word box without smoothly animating the scroll.  This is not ideal.  As best as I can tell, this occurs when we read the first word of the next box during the time in which the scroll should be smoothly animating.  In that case, it seems to just "JUMP" into position, which is jarring.  We should NOT do this, but rather have a consistent behavior when scrolling -- that is, do the smooth scrolling animation even if the user reads the first word of the next box”
+
+- **2025-11-18 — Tap-to-rewind narration**  
+  Summary: Tapping any word in the narration rail now rewinds the entire V13 tracking pipeline: we immediately move the highlight to the tapped word, queue a safe stop/start of Sherpa narration tracking with that word as the new anchor, and clamp the scroll + lingering timers so the UI and speech recognizer stay in sync.  
+  Original: “We need to add a feature to the story time/reader view.  When the user 'taps' a word, we should make that the active/next word (white on blue), and set the app/recognizer state accordingly.  This allows the parent or child to rewind/redo easily/naturally if the system gets a head or they just want to re-read something, etc.”

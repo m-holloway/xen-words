@@ -52,11 +52,15 @@ class WordOnsetTracker {
   int _lastSherpaWordCount = 0;
   
   /// Create tracker with script words
-  WordOnsetTracker(List<String> scriptWords) {
+  WordOnsetTracker(
+    List<String> scriptWords, {
+    int initialWordIndex = 0,
+  }) {
     _scriptWords = List.from(scriptWords);
+    _applyManualPosition(initialWordIndex);
     
     AppLogger.speech.i(
-      'V13 WordOnsetTracker initialized: ${_scriptWords.length} words'
+      'V13 WordOnsetTracker initialized: ${_scriptWords.length} words · start=$initialWordIndex'
     );
   }
   
@@ -322,6 +326,27 @@ class WordOnsetTracker {
     
     AppLogger.speech.i('V13 WordOnsetTracker reset');
   }
+
+  void _applyManualPosition(int requestedIndex) {
+    final int clamped = requestedIndex < 0
+        ? 0
+        : (requestedIndex > _scriptWords.length ? _scriptWords.length : requestedIndex);
+    _currentWordIndex = clamped;
+    _lastConfirmedWordIndex = clamped - 1;
+    _isAnchored = clamped > 0;
+    _wordsPredictedSinceAnchor = 0;
+    _energyHistory.clear();
+    _isSpeech = false;
+    _lastSilenceTime = 0.0;
+    _lastOnsetAudioTime = 0.0;
+    _lastSherpaText = '';
+    _lastSherpaWordCount = 0;
+  }
+  
+  /// Jump immediately to the requested word index.
+  void jumpToWord(int index) {
+    _applyManualPosition(index);
+  }
   
   /// Get current word (safe accessor)
   String get currentWord => _currentWordIndex < _scriptWords.length
@@ -330,6 +355,8 @@ class WordOnsetTracker {
   
   /// Get script words
   List<String> get scriptWords => _scriptWords;
+  
+  int get scriptLength => _scriptWords.length;
   
   /// Get current word index
   int get currentWordIndex => _currentWordIndex;
