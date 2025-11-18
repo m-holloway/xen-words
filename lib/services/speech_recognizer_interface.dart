@@ -53,6 +53,17 @@ abstract class ISpeechRecognizer {
   /// Request microphone permissions
   Future<bool> requestPermission();
   
+  /// Start narration tracking (V7 word onset detection)
+  /// [scriptText] - Full narration text to track
+  /// [onWordUpdate] - Callback with (wordIndex, confidence, source)
+  Future<bool> startNarrationTracking({
+    required String scriptText,
+    required Function(int wordIndex, double confidence, String source) onWordUpdate,
+  });
+  
+  /// Stop narration tracking
+  Future<void> stopNarrationTracking();
+  
   /// Dispose and clean up resources
   void dispose();
 }

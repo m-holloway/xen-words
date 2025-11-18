@@ -9,6 +9,7 @@ import 'package:sherpa_onnx/sherpa_onnx.dart' as sherpa;
 import 'speech_recognizer_interface.dart';
 import '../utils/app_logger.dart';
 import 'sight_word_homophones.dart';
+import 'word_onset_tracker.dart';
 
 /// Speech recognition implementation using Sherpa-ONNX with vocabulary restriction
 /// Works on both iOS and Android with real-time streaming ASR
@@ -40,6 +41,12 @@ class SherpaRecognizer implements ISpeechRecognizer {
   // Sequence number to track which word we're expecting results for
   // This prevents old results from being processed after a new word is displayed
   int _expectedWordSequence = 0;
+  
+  // Narration tracking (V13 Sherpa-anchored VAD)
+  WordOnsetTracker? _wordTracker;
+  bool _isNarrationMode = false;
+  Function(int wordIndex, double confidence, String source)? _onWordUpdate;
+  DateTime? _narrationStartTime;
   
   // Sight words vocabulary for filtering
   // NOTE: We are NOT restricting at the model level - Sherpa-ONNX uses a general English model
@@ -1086,10 +1093,215 @@ class SherpaRecognizer implements ISpeechRecognizer {
   
   /// Get the last RMS value for UI feedback
   double get lastRecognizedRms => _lastRms;
+  
+  // =================================================================
+  // NARRATION TRACKING (V13 Sherpa-Anchored VAD)
+  // =================================================================
+  
+  /// Start narration tracking for story reading
+  /// 
+  /// This uses the V13 Sherpa-anchored VAD tracker validated in Python.
+  /// Sherpa anchors the absolute position while VAD provides low-latency
+  /// predictions between anchors for a smooth UX.
+  /// 
+  /// [scriptText]: Full narration text to track
+  /// [onWordUpdate]: Callback with (wordIndex, confidence, source)
+  ///   - source: 'vad_onset' (fast), 'sherpa', or 'sherpa_correction'
+  Future<bool> startNarrationTracking({
+    required String scriptText,
+    required Function(int wordIndex, double confidence, String source) onWordUpdate,
+  }) async {
+    if (_recognizer == null) {
+      AppLogger.speech.e('Recognizer not initialized');
+      return false;
+    }
+    
+    // Ensure not already listening
+    if (_isListening || _isNarrationMode) {
+      AppLogger.speech.w('Already listening, stopping first...');
+      await stopNarrationTracking();
+      await Future.delayed(const Duration(milliseconds: 200));
+    }
+    
+    // Create word tracker (V13 expects List<String> of words)
+    final scriptWords = scriptText
+        .split(RegExp(r'\s+'))
+        .where((w) => w.isNotEmpty)
+        .map((w) => w.trim())
+        .toList();
+    _wordTracker = WordOnsetTracker(scriptWords);
+    _onWordUpdate = onWordUpdate;
+    _isNarrationMode = true;
+    _narrationStartTime = DateTime.now();
+    
+    // Create new stream
+    if (_stream != null) {
+      _stream = null;
+    }
+    _stream = _recognizer!.createStream();
+    
+    AppLogger.speech.i('┌─────────────────────────────────────────────');
+    AppLogger.speech.i('│ Starting Narration Tracking (V13)');
+    AppLogger.speech.i('├─────────────────────────────────────────────');
+    AppLogger.speech.i('│ Words: ${scriptText.split(RegExp(r'\s+')).length}');
+    AppLogger.speech.i('│ Strategy: Sherpa anchors + VAD predictions');
+    AppLogger.speech.i('└─────────────────────────────────────────────');
+    
+    // Start audio recording
+    try {
+      _shouldKeepListening = true;
+      _isListening = true;
+      
+      const config = RecordConfig(
+        encoder: AudioEncoder.pcm16bits,
+        sampleRate: 16000,
+        numChannels: 1,
+        autoGain: true,
+        echoCancel: true,
+        noiseSuppress: true,
+      );
+      
+      final stream = await _recorder.startStream(config);
+      
+      _audioSubscription = stream.listen(
+        _processNarrationAudio,
+        onError: (error) {
+          AppLogger.speech.e('⚠️ Audio stream error: $error', error: error);
+        },
+        onDone: () {
+          AppLogger.speech.d('Audio stream done');
+        },
+      );
+      
+      // Start result checking timer
+      _resultCheckTimer = Timer.periodic(
+        const Duration(milliseconds: 100),
+        (_) => _checkNarrationResults(),
+      );
+      
+      AppLogger.speech.success('✅ Narration tracking started!');
+      return true;
+    } catch (e) {
+      AppLogger.speech.e('Failed to start narration tracking: $e', error: e);
+      _isNarrationMode = false;
+      _wordTracker = null;
+      return false;
+    }
+  }
+  
+  /// Process audio for narration tracking (V7 aggressive onset)
+  void _processNarrationAudio(Uint8List audioData) {
+    if (_stream == null || _recognizer == null || !_shouldKeepListening || !_isNarrationMode) {
+      return;
+    }
+    
+    if (_wordTracker == null) {
+      AppLogger.speech.w('Word tracker not initialized!');
+      return;
+    }
+    
+    try {
+      // Convert to Float32
+      final samples = _convertPcm16ToFloat32(audioData);
+      
+      // Feed audio to Sherpa first so new data is available for decoding
+      _stream!.acceptWaveform(
+        samples: samples,
+        sampleRate: 16000,
+      );
+      
+      // Decode any ready frames
+      while (_recognizer!.isReady(_stream!)) {
+        _recognizer!.decode(_stream!);
+      }
+      
+      // Calculate audio time
+      final audioTime = _narrationStartTime != null
+          ? DateTime.now().difference(_narrationStartTime!).inMilliseconds / 1000.0
+          : 0.0;
+      
+      final sherpaResult = _recognizer!.getResult(_stream!);
+      final sherpaText = sherpaResult.text;
+      
+      // Update word tracker with latest Sherpa hypothesis
+      final (wordIndex, confidence, source) = _wordTracker!.update(
+        samples,
+        audioTime,
+        sherpaText,
+      );
+      
+      _onWordUpdate?.call(wordIndex, confidence, source);
+    } catch (e) {
+      AppLogger.speech.e('Error processing narration audio: $e', error: e);
+    }
+  }
+  
+  /// Check for Sherpa results during narration
+  void _checkNarrationResults() {
+    if (_stream == null || _recognizer == null || !_isNarrationMode) {
+      return;
+    }
+    
+    try {
+      // Decode any pending audio
+      while (_recognizer!.isReady(_stream!)) {
+        _recognizer!.decode(_stream!);
+      }
+      
+      // Get result (this is already handled in _processNarrationAudio)
+      // This timer is just to ensure we decode regularly
+    } catch (e) {
+      AppLogger.speech.e('Error checking narration results: $e', error: e);
+    }
+  }
+  
+  /// Stop narration tracking
+  Future<void> stopNarrationTracking() async {
+    if (!_isNarrationMode) {
+      return;
+    }
+    
+    AppLogger.speech.i('Stopping narration tracking...');
+    
+    _isNarrationMode = false;
+    _shouldKeepListening = false;
+    _isListening = false;
+    
+    // Cancel timer
+    _resultCheckTimer?.cancel();
+    _resultCheckTimer = null;
+    
+    // Stop audio
+    await _audioSubscription?.cancel();
+    _audioSubscription = null;
+    
+    try {
+      if (await _recorder.isRecording()) {
+        await _recorder.stop();
+      }
+    } catch (e) {
+      AppLogger.speech.w('Error stopping recorder: $e', error: e);
+    }
+    
+    // Log statistics
+    _wordTracker?.logStatistics();
+    
+    // Clear state
+    _stream = null;
+    _wordTracker = null;
+    _onWordUpdate = null;
+    _narrationStartTime = null;
+    
+    AppLogger.speech.i('Narration tracking stopped');
+  }
+  
+  /// Get narration tracker statistics (if active)
+  Map<String, dynamic>? get narrationStatistics => _wordTracker?.statistics;
 
   @override
   void dispose() {
     stopListening();
+    stopNarrationTracking();
     _stream = null;
     _recognizer = null;
     _isInitialized = false;

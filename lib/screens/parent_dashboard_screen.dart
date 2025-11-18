@@ -10,6 +10,7 @@ import '../widgets/progress_timeline_widget.dart';
 import '../widgets/action_words_widget.dart';
 import '../widgets/word_detail_dialog.dart';
 import 'story_reader_screen_enhanced.dart';
+import 'story_generator_screen.dart';
 
 /// Parent dashboard showing child's learning progress
 /// Protected by parental gate in game_screen.dart
@@ -175,6 +176,11 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
           
           const SizedBox(height: 20),
           
+          // Story Lab entry point
+          _buildStoryGeneratorCard(context),
+          
+          const SizedBox(height: 20),
+          
           // 3. TIMELINE - Visual progress over time
           ProgressTimelineWidget(
             progress: progress,
@@ -198,6 +204,105 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
           // 5. DATA MANAGEMENT - Settings at bottom
           _buildDataManagementSection(context),
         ],
+      ),
+    );
+  }
+
+  Widget _buildStoryGeneratorCard(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Colors.orange.shade400,
+            Colors.deepOrange.shade600,
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.deepOrange.withOpacity(0.25),
+            blurRadius: 12,
+            offset: const Offset(0, 8),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(20),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(20),
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => const StoryGeneratorScreen(),
+              ),
+            );
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(14),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.25),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: const Icon(
+                        Icons.psychology_alt,
+                        size: 36,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const SizedBox(width: 18),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Story Lab (Beta)',
+                            style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+                          Text(
+                            'Generate custom bedtime stories using your prompts plus child preferences.',
+                            style: TextStyle(
+                              color: Colors.white.withOpacity(0.9),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Icon(
+                      Icons.arrow_forward_ios,
+                      color: Colors.white,
+                      size: 22,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: const [
+                    _StoryLabTag('Reading level targeting'),
+                    _StoryLabTag('Parent + child prompts'),
+                    _StoryLabTag('Save + reread stories'),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -907,6 +1012,32 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
             child: const Text('Delete All'),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _StoryLabTag extends StatelessWidget {
+  final String label;
+
+  const _StoryLabTag(this.label);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.18),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Colors.white24),
+      ),
+      child: Text(
+        label,
+        style: const TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.w600,
+          fontSize: 12,
+        ),
       ),
     );
   }

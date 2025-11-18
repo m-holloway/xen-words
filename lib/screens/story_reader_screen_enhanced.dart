@@ -1,4 +1,3 @@
-import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/story_models.dart';
@@ -6,8 +5,9 @@ import '../models/coaching_session.dart';
 import '../models/word_list.dart';
 import '../controllers/game_controller.dart';
 import '../services/speech_recognizer_interface.dart';
-import '../services/voice_alignment_tracker.dart';
+import '../services/word_grouping_service.dart';
 import '../widgets/fireworks_overlay.dart';
+import '../widgets/grouped_word_display.dart';
 import '../utils/app_logger.dart';
 
 /// Enhanced story reader with voice recognition and word highlighting
@@ -35,17 +35,15 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   late Animation<double> _fadeAnimation;
   final FireworksController _fireworksController = FireworksController();
   
-  // HYBRID ALIGNMENT: VAD (fast estimate) + STT (anchoring/validation)
-  final VoiceAlignmentTracker _alignmentTracker = VoiceAlignmentTracker();
-  bool _isTracking = false;
-  double _currentEnergy = 0.0;
-  
-  // Dual position tracking
-  int _vadEstimatedPosition = 0;  // VAD's real-time estimate (may drift)
-  // ignore: unused_field
-  int _lastConfirmedPosition = 0; // STT-confirmed position (for logging)
-  Set<int> _confirmedWordIndices = {}; // Words confirmed by STT (for UI checkmarks)
-  bool _vadAnchored = false;  // Has STT confirmed reading started?
+  // V13 tracking state (Sherpa-anchored VAD)
+  bool _narrationTrackingActive = false;
+  double _currentTrackingConfidence = 0.0;
+  String _currentTrackingSource = 'init';
+  DateTime? _lastWordUpdateTime;
+  int _lastTrackedWord = -1;
+  int _v13VadPredictions = 0;
+  int _v13Anchors = 0;
+  int _v13Corrections = 0;
   
   // Legacy voice recognition state (for STT anchoring + child turns)
   bool _isListening = false;
@@ -54,8 +52,17 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   Map<String, bool> _validatedWords = {}; // word -> validated
   
   // Word tracking for parent narration
-  List<String> _narrationWords = [];  // All words in current narration
+  List<String> _narrationWords = [];  // Clean words for tracking
+  List<String> _narrationDisplayWords = []; // Original words with punctuation for UI
   int _currentWordIndex = 0;  // Current display position (blend of VAD + STT)
+  
+  // Word grouping for smooth display
+  List<List<int>> _wordGroups = [];
+  DateTime _lastWordTime = DateTime.now();
+  double _estimatedWPM = 120.0;  // Default reading rate (words per minute)
+  bool _wordLinesReady = false;
+  String _listeningStatusLabel = 'Initializing speech recognition...';
+  int _scrollAnchorWordIndex = -1;
   
   @override
   void initState() {
@@ -93,6 +100,10 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   Future<void> _initializeAndStartListening() async {
     // Initialize speech recognizer first
     final controller = context.read<GameController>();
+    setState(() {
+      _listeningStatusLabel = 'Initializing speech recognizer...';
+      _wordLinesReady = false;
+    });
     
     AppLogger.speech.d('Initializing speech recognizer for story...');
     final initialized = await controller.initializeSpeechRecognizer();
@@ -100,6 +111,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     if (initialized) {
       setState(() {
         _recognizerInitialized = true;
+        _listeningStatusLabel = 'Preparing story view...';
       });
       AppLogger.speech.success('Speech recognizer initialized successfully');
       
@@ -115,7 +127,6 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   void dispose() {
     _fadeController.dispose();
     _stopListening();
-    _alignmentTracker.dispose();
     super.dispose();
   }
   
@@ -139,272 +150,249 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   }
   
   void _startNarrationTracking(StoryBeat beat) async {
-    // Parse all words from narration text
-    _narrationWords = _parseNarrationWords(beat.text);
-    _currentWordIndex = 0;
-    _vadEstimatedPosition = 0;
-    _lastConfirmedPosition = 0;
-    _confirmedWordIndices.clear();
-    _vadAnchored = false;  // Wait for STT to confirm reading started
-    
-    AppLogger.speech.d('📖 Parsed ${_narrationWords.length} words from narration');
-    AppLogger.speech.d('📖 First 5 words: ${_narrationWords.take(5).join(", ")}');
-    AppLogger.speech.i('🔒 VAD waiting for STT anchor before displaying position...');
-    
-    // PHASE 1: Initialize VAD tracker for real-time estimation
-    _alignmentTracker.initialize(
-      words: _narrationWords,
-      onWordAdvance: (wordIndex) {
-        if (mounted) {
-          // Always store VAD estimate
-          _vadEstimatedPosition = wordIndex;
-          
-          // Only update display if we've been anchored by STT
-          if (_vadAnchored) {
-            setState(() {
-              _currentWordIndex = wordIndex;
-            });
-            AppLogger.speech.v('⚡ VAD estimate: word ${wordIndex + 1}/${_narrationWords.length}');
-          } else {
-            AppLogger.speech.v('⚡ VAD counting (not anchored yet): ${wordIndex + 1}/${_narrationWords.length}');
-          }
-        }
-      },
-      onEnergyUpdate: (energy) {
-        if (mounted) {
-          setState(() {
-            _currentEnergy = energy;
-          });
-        }
-      },
-    );
-    
-    // Force UI update to show initial state
-    setState(() {
-      // Trigger rebuild with narration words loaded
-    });
-    
-    // Start VAD tracking (Phase 1: fast estimate)
-    AppLogger.speech.i('⚡ PHASE 1: Starting VAD real-time estimation...');
-    final vadStarted = await _alignmentTracker.startTracking();
-    
-    if (vadStarted) {
-      setState(() {
-        _isTracking = true;
-      });
-      AppLogger.speech.success('✅ VAD real-time tracking active!');
-    } else {
-      AppLogger.speech.e('❌ Failed to start VAD tracking');
-      return;
-    }
-    
-    // PHASE 2: Start STT for anchoring/validation (runs in parallel)
-    AppLogger.speech.i('⚓ PHASE 2: Starting STT anchoring...');
-    _startSttAnchoring(beat);
-  }
-  
-  List<String> _parseNarrationWords(String text) {
-    // Remove punctuation and split into words
-    final cleaned = text.toLowerCase()
-        .replaceAll(RegExp(r'[^\w\s]'), ' ')
-        .trim();
-    return cleaned.split(RegExp(r'\s+'))
-        .where((w) => w.isNotEmpty)
-        .toList();
-  }
-  
-  void _startSttAnchoring(StoryBeat beat) async {
     if (!_recognizerInitialized) {
-      AppLogger.speech.w('STT not initialized, skipping anchoring');
+      AppLogger.speech.w('Speech recognizer not initialized; cannot start narration tracking');
       return;
     }
     
     final controller = context.read<GameController>();
     
+    if (_narrationTrackingActive) {
+      await controller.speechRecognizer.stopNarrationTracking();
+    }
+    
+    final parsedWords = _parseNarrationText(beat.text);
+    final groupedWords = WordGroupingService.groupWords(
+      parsedWords.cleanWords,
+      displayWords: parsedWords.displayWords,
+    );
+    
+    setState(() {
+      _narrationWords = parsedWords.cleanWords;
+      _narrationDisplayWords = parsedWords.displayWords;
+      _wordGroups = groupedWords;
+      _currentWordIndex = 0;
+      _currentTargetWord = 'tracking';
+      _currentTrackingConfidence = 0.0;
+      _currentTrackingSource = 'init';
+      _lastWordUpdateTime = null;
+      _lastTrackedWord = -1;
+      _v13VadPredictions = 0;
+      _v13Anchors = 0;
+      _v13Corrections = 0;
+      _estimatedWPM = 120.0;
+      _narrationTrackingActive = false;
+      _scrollAnchorWordIndex = -1;
+      _wordLinesReady = false;
+      _listeningStatusLabel = 'Preparing listener...';
+    });
+    
+    _lastWordTime = DateTime.now();
+    
+    if (_narrationWords.isEmpty) {
+      AppLogger.speech.w('Narration beat contains no readable words');
+      if (mounted) {
+        setState(() {
+          _currentTargetWord = null;
+        });
+      }
+      return;
+    }
+    
+    AppLogger.speech.i('🎧 Starting V13 tracking for ${_narrationWords.length} words');
+    
+    final scriptForTracker = _narrationWords.join(' ');
+    
     try {
-      // Start listening with partial results for anchoring
-      await controller.speechRecognizer.startListening(
-        onResult: (result) => _handleSttAnchor(result, beat),
-        onPartial: (partial) => _handleSttAnchorPartial(partial.partial, beat),
-        onError: (error) {
-          AppLogger.speech.w('STT anchoring error (non-critical): $error');
+      final started = await controller.speechRecognizer.startNarrationTracking(
+        scriptText: scriptForTracker,
+        onWordUpdate: (index, confidence, source) {
+          _handleNarrationWordUpdate(beat, index, confidence, source);
         },
-        expectedWord: null,  // Open listening
       );
       
-      setState(() {
-        _isListening = true;
-      });
-      
-      AppLogger.speech.i('⚓ STT anchoring active (validates VAD estimates)');
-    } catch (e) {
-      AppLogger.speech.w('Could not start STT anchoring: $e');
-      // Not critical - VAD will continue working
-    }
-  }
-  
-  void _handleSttAnchorPartial(String partialText, StoryBeat beat) {
-    if (partialText.isEmpty || _narrationWords.isEmpty) return;
-    
-    final spokenWords = partialText.toLowerCase()
-        .replaceAll(RegExp(r'[^\w\s]'), ' ')
-        .split(RegExp(r'\s+'))
-        .where((w) => w.isNotEmpty)
-        .toList();
-    
-    if (spokenWords.isEmpty) return;
-    
-    // Try to find anchor points in the text
-    _findAndApplyAnchors(spokenWords, beat);
-  }
-  
-  void _handleSttAnchor(SpeechRecognitionResult result, StoryBeat beat) {
-    if (result.text.isEmpty) return;
-    
-    final spokenWords = result.text.toLowerCase()
-        .replaceAll(RegExp(r'[^\w\s]'), ' ')
-        .split(RegExp(r'\s+'))
-        .where((w) => w.isNotEmpty)
-        .toList();
-    
-    AppLogger.speech.d('⚓ STT heard: ${spokenWords.join(" ")}');
-    
-    // Apply anchors from final result
-    _findAndApplyAnchors(spokenWords, beat);
-  }
-  
-  void _findAndApplyAnchors(List<String> spokenWords, StoryBeat beat) {
-    // Find where these words appear in the narration
-    // FLEXIBLE MATCHING: Wide window, allow gaps, phonetic matching
-    
-    // If not anchored yet: search ONLY beginning (parent must start at beginning!)
-    // If anchored: search around VAD estimate (may have drifted)
-    final searchStart = _vadAnchored ? math.max(0, _vadEstimatedPosition - 10) : 0;
-    final searchEnd = _vadAnchored 
-        ? math.min(_narrationWords.length, _vadEstimatedPosition + 15)
-        : math.min(_narrationWords.length, 5);  // First 5 words ONLY for initial anchor
-    
-    AppLogger.speech.d('🔍 Searching for: ${spokenWords.join(", ")}');
-    AppLogger.speech.d('   In range: [$searchStart, $searchEnd) of ${_narrationWords.length} words');
-    AppLogger.speech.d('   Anchored: $_vadAnchored');
-    
-    // Find best match allowing gaps
-    int bestMatchStart = -1;
-    int bestMatchLength = 0;
-    double bestMatchScore = 0.0;
-    
-    for (int i = searchStart; i < searchEnd; i++) {
-      // Try to match spoken words starting at position i
-      // Allow skips/gaps in the sequence
-      int matchLength = 0;
-      double matchScore = 0.0;
-      int narratonPos = i;
-      
-      for (int j = 0; j < spokenWords.length && narratonPos < _narrationWords.length; j++) {
-        bool foundMatch = false;
-        
-        // Look ahead up to 3 words to find this spoken word
-        for (int lookahead = 0; lookahead < 3 && (narratonPos + lookahead) < _narrationWords.length; lookahead++) {
-          final matchQuality = _getMatchQuality(spokenWords[j], _narrationWords[narratonPos + lookahead]);
-          
-          AppLogger.speech.v('      Testing "${spokenWords[j]}" vs "${_narrationWords[narratonPos + lookahead]}" = ${matchQuality.toStringAsFixed(2)}');
-          
-          if (matchQuality > 0.5) {  // At least 50% match
-            matchLength++;
-            matchScore += matchQuality;
-            narratonPos += lookahead + 1;
-            foundMatch = true;
-            
-            AppLogger.speech.d('   ✓ "${spokenWords[j]}" → "${_narrationWords[narratonPos - 1]}" (quality: ${matchQuality.toStringAsFixed(2)})');
-            break;
-          }
-        }
-        
-        if (!foundMatch) {
-          // Skip this spoken word (might be noise)
-          narratonPos++;
-        }
-      }
-      
-      if (matchLength > bestMatchLength || 
-          (matchLength == bestMatchLength && matchScore > bestMatchScore)) {
-        bestMatchLength = matchLength;
-        bestMatchStart = i;
-        bestMatchScore = matchScore;
-      }
-    }
-    
-    // Apply anchor if we found a good match
-    // For INITIAL anchor: accept 1+ words (just need to confirm start)
-    // For SUBSEQUENT anchors: require 2+ words (more confidence for drift correction)
-    final minMatchLength = _vadAnchored ? 2 : 1;
-    
-    if (bestMatchLength >= minMatchLength && bestMatchStart >= 0) {
-      final newConfirmedPosition = bestMatchStart + bestMatchLength - 1;
-      
-      // Prevent duplicate anchors - must be forward progress
-      if (_vadAnchored && newConfirmedPosition <= _lastConfirmedPosition) {
-        AppLogger.speech.v('⏭️  Skipping duplicate anchor at position $bestMatchStart (already confirmed up to $_lastConfirmedPosition)');
+      if (!mounted) {
         return;
       }
       
-      AppLogger.speech.i('⚓ ANCHOR: Found ${bestMatchLength} words at position $bestMatchStart');
-      AppLogger.speech.i('   Words: ${_narrationWords.sublist(bestMatchStart, bestMatchStart + bestMatchLength).join(" ")}');
-      AppLogger.speech.i('   Match score: ${bestMatchScore.toStringAsFixed(2)}');
-      
-      // Mark these words as confirmed
-      for (int i = 0; i < bestMatchLength; i++) {
-        _confirmedWordIndices.add(bestMatchStart + i);
-      }
-      
-      // FIRST ANCHOR: Confirms reading has started!
-      if (!_vadAnchored) {
-        AppLogger.speech.success('🔓 INITIAL ANCHOR CONFIRMED! Reading started at word ${bestMatchStart + 1}');
-        AppLogger.speech.i('   "${_narrationWords[bestMatchStart]}" recognized - enabling VAD tracking!');
-        
-        _vadAnchored = true;
-        _vadEstimatedPosition = newConfirmedPosition;
-        _lastConfirmedPosition = newConfirmedPosition;
-        
+      if (started) {
         setState(() {
-          _currentWordIndex = newConfirmedPosition;
+          _narrationTrackingActive = true;
+          _wordLinesReady = true;
+          _listeningStatusLabel = 'Listening – start reading when ready';
         });
-        
-        // Check for target words
-        _checkForValidatedTargetWords(beat, spokenWords);
-        return;
-      }
-      
-      // SUBSEQUENT ANCHORS: Drift correction
-      // If VAD has drifted significantly, adjust it
-      if ((_vadEstimatedPosition - newConfirmedPosition).abs() > 3) {
-        AppLogger.speech.w('⚠️ VAD drift detected! VAD=$_vadEstimatedPosition, STT=$newConfirmedPosition');
-        AppLogger.speech.i('🔄 Correcting VAD position to match STT anchor');
-        
-        // Don't jump backwards unless very far off
-        if (newConfirmedPosition > _vadEstimatedPosition || 
-            (_vadEstimatedPosition - newConfirmedPosition) > 5) {
-          _vadEstimatedPosition = newConfirmedPosition;
-          _lastConfirmedPosition = newConfirmedPosition;
-          
-          setState(() {
-            _currentWordIndex = newConfirmedPosition;
-          });
-        }
+        AppLogger.speech.success('✅ V13 narration tracking active');
       } else {
-        // Small drift - just note the confirmed position
-        _lastConfirmedPosition = newConfirmedPosition;
-        
         setState(() {
-          // Trigger UI update to show confirmed words
+          _currentTargetWord = null;
+          _wordLinesReady = false;
+          _listeningStatusLabel = 'Unable to start listener';
+        });
+        AppLogger.speech.e('❌ Failed to start V13 narration tracking');
+      }
+    } catch (e, stackTrace) {
+      AppLogger.speech.e('Failed to start narration tracking: $e', error: e, stackTrace: stackTrace);
+      if (mounted) {
+        setState(() {
+          _currentTargetWord = null;
+          _narrationTrackingActive = false;
+          _wordLinesReady = false;
+          _listeningStatusLabel = 'Listener unavailable';
         });
       }
-      
-      // Check for target words
-      _checkForValidatedTargetWords(beat, spokenWords);
     }
   }
   
+  void _handleNarrationWordUpdate(
+    StoryBeat beat,
+    int wordIndex,
+    double confidence,
+    String source,
+  ) {
+    if (!mounted || _narrationWords.isEmpty) {
+      return;
+    }
+    
+    final int maxIndex = _narrationWords.length - 1;
+    final int clampedIndex = wordIndex.clamp(0, maxIndex).toInt();
+    final now = DateTime.now();
+    final bool progressed = clampedIndex != _lastTrackedWord;
+    
+    double updatedWpm = _estimatedWPM;
+    DateTime updatedLastWordTime = _lastWordTime;
+    
+    if (progressed) {
+      final seconds = now.difference(_lastWordTime).inMilliseconds / 1000.0;
+      if (seconds > 0.12 && seconds < 3.0) {
+        updatedWpm = 60.0 / seconds;
+      }
+      updatedLastWordTime = now;
+    }
+    
+    int vadPredictions = _v13VadPredictions;
+    int anchors = _v13Anchors;
+    int corrections = _v13Corrections;
+    bool anchorSource = _isAnchorSource(source);
+    
+    switch (source) {
+      case 'vad':
+        vadPredictions++;
+        break;
+      case 'sherpa_anchor':
+      case 'sherpa_catchup':
+        anchors++;
+        break;
+      case 'sherpa_correction':
+        corrections++;
+        break;
+      default:
+        break;
+    }
+    
+    if (!mounted) {
+      return;
+    }
+    
+    setState(() {
+      _currentWordIndex = clampedIndex;
+      _currentTrackingConfidence = confidence;
+      _currentTrackingSource = source;
+      _lastWordUpdateTime = now;
+      _lastTrackedWord = clampedIndex;
+      _v13VadPredictions = vadPredictions;
+      _v13Anchors = anchors;
+      _v13Corrections = corrections;
+      _estimatedWPM = updatedWpm;
+      _currentTargetWord = 'tracking';
+      if (anchorSource) {
+        _scrollAnchorWordIndex = clampedIndex;
+      }
+    });
+    
+    _lastWordTime = updatedLastWordTime;
+    
+    AppLogger.speech.v(
+      '🎯 V13 update [$source] → word ${clampedIndex + 1}/${_narrationWords.length} '
+      '(conf ${(confidence * 100).toStringAsFixed(0)}%)',
+    );
+    
+    if (progressed && beat.targetWords.isNotEmpty) {
+      _checkForValidatedTargetWords(beat, [_narrationWords[clampedIndex]]);
+    }
+  }
+  
+  String _buildMicStatusText() {
+    if (_narrationTrackingActive) {
+      final total = _narrationWords.length;
+      final int safeIndex = total > 0
+          ? ((_wordIndexSafe(_currentWordIndex, total)) + 1)
+          : 0;
+      final confidence = (_currentTrackingConfidence.clamp(0.0, 1.0) * 100).toStringAsFixed(0);
+      final sourceLabel = _describeTrackingSource(_currentTrackingSource);
+      final stats = '⚡$_v13VadPredictions | ⚓$_v13Anchors | 🔧$_v13Corrections';
+      return 'V13 $safeIndex/${total == 0 ? "?" : total.toString()} · $sourceLabel · $confidence% · $stats';
+    }
+    
+    if (_currentTargetWord != null) {
+      return 'Listening for "${_currentTargetWord!}"...';
+    }
+    
+    if (!_recognizerInitialized) {
+      return 'Initializing microphone...';
+    }
+    
+    return 'Ready';
+  }
+  
+  int _wordIndexSafe(int index, int total) {
+    if (total <= 0) return 0;
+    if (index < 0) return 0;
+    if (index >= total) return total - 1;
+    return index;
+  }
+  
+  String _describeTrackingSource(String source) {
+    switch (source) {
+      case 'vad':
+        return '⚡ VAD';
+      case 'sherpa_anchor':
+        return '⚓ Anchor';
+      case 'sherpa_catchup':
+        return '⚓ Catch-up';
+      case 'sherpa_correction':
+        return '🔧 Correction';
+      case 'hold':
+        return '…';
+      default:
+        return '…';
+    }
+  }
+  
+  _ParsedNarrationText _parseNarrationText(String text) {
+    final normalized = text.replaceAll(RegExp(r'[-–—]+'), ' ');
+    final rawTokens = normalized.split(RegExp(r'\s+')).where((w) => w.isNotEmpty).toList();
+    
+    final cleanWords = <String>[];
+    final displayWords = <String>[];
+    
+    for (final token in rawTokens) {
+      final cleanToken = token
+          .toLowerCase()
+          .replaceAll(RegExp(r'[^\w]'), '');
+      
+      if (cleanToken.isEmpty) {
+        continue;
+      }
+      
+      cleanWords.add(cleanToken);
+      displayWords.add(token);
+    }
+    
+    return _ParsedNarrationText(
+      cleanWords: cleanWords,
+      displayWords: displayWords,
+    );
+  }
   bool _wordsMatch(String spoken, String expected) {
     // Simple matching for anchoring
     if (spoken == expected) return true;
@@ -422,316 +410,9 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     return false;
   }
   
-  /// Count syllables in a word (simple vowel cluster counting)
-  int _countSyllables(String word) {
-    if (word.isEmpty) return 0;
-    
-    final cleaned = word.toLowerCase().replaceAll(RegExp(r'[^a-z]'), '');
-    if (cleaned.isEmpty) return 0;
-    
-    // Count vowel groups (consecutive vowels = 1 syllable)
-    int syllables = 0;
-    bool inVowelGroup = false;
-    
-    for (int i = 0; i < cleaned.length; i++) {
-      final isVowel = 'aeiouy'.contains(cleaned[i]);
-      
-      if (isVowel && !inVowelGroup) {
-        syllables++;
-        inVowelGroup = true;
-      } else if (!isVowel) {
-        inVowelGroup = false;
-      }
-    }
-    
-    // Handle silent 'e' at end
-    if (syllables > 1 && cleaned.endsWith('e') && cleaned.length > 2) {
-      final beforeE = cleaned[cleaned.length - 2];
-      if (!'aeiouy'.contains(beforeE)) {
-        syllables--;
-      }
-    }
-    
-    // Every word has at least 1 syllable
-    return math.max(1, syllables);
-  }
-  
-  /// Get match quality between spoken and expected word (0.0 to 1.0)
-  /// Uses text similarity + syllable count + phonetic rules
-  double _getMatchQuality(String spoken, String expected) {
-    spoken = spoken.toLowerCase();
-    expected = expected.toLowerCase();
-    
-    // Perfect match
-    if (spoken == expected) return 1.0;
-    
-    double score = 0.0;
-    
-    // Prefix/suffix matching (partial credit)
-    if (spoken.startsWith(expected) || expected.startsWith(spoken)) {
-      final overlapLength = math.min(spoken.length, expected.length);
-      score = math.max(score, overlapLength / math.max(spoken.length, expected.length) * 0.8);
-    }
-    
-    // Syllable count matching (CRITICAL for phonetic similarity!)
-    final spokenSyllables = _countSyllables(spoken);
-    final expectedSyllables = _countSyllables(expected);
-    
-    if (spokenSyllables == expectedSyllables) {
-      // Same syllable count = strong signal!
-      score = math.max(score, 0.7);
-      
-      AppLogger.speech.v('   📊 Syllable match: "$spoken" ($spokenSyllables) ≈ "$expected" ($expectedSyllables) → +0.7');
-    } else {
-      // Syllable mismatch = penalty
-      final syllableDiff = (spokenSyllables - expectedSyllables).abs();
-      final syllablePenalty = syllableDiff / math.max(spokenSyllables, expectedSyllables);
-      score = math.max(0.0, score - syllablePenalty * 0.3);
-      
-      AppLogger.speech.v('   📊 Syllable mismatch: "$spoken" ($spokenSyllables) ≠ "$expected" ($expectedSyllables) → -${(syllablePenalty * 0.3).toStringAsFixed(2)}');
-    }
-    
-    // First letter matching (common in STT errors)
-    if (spoken.isNotEmpty && expected.isNotEmpty && spoken[0] == expected[0]) {
-      score += 0.2;
-    }
-    
-    // Homophone check (from WordList)
-    if (WordList.phraseContainsWord(spoken, expected)) {
-      score = math.max(score, 0.9);
-    }
-    
-    // Length similarity
-    final lengthDiff = (spoken.length - expected.length).abs();
-    if (lengthDiff <= 2) {
-      score += 0.1;
-    }
-    
-    return math.min(1.0, score);
-  }
-  
   // DEPRECATED: Old STT-only methods (replaced by hybrid VAD+STT)
   // ignore: unused_element
-  void _startListeningForNarration() async {
-    if (!_recognizerInitialized) {
-      return;
-    }
-    
-    setState(() {
-      _isListening = true;
-      _currentTargetWord = 'tracking';  // Indicate we're in tracking mode
-    });
-    
-    AppLogger.speech.d('📖 Continuous tracking: ${_narrationWords.length} words total');
-    
-    final controller = context.read<GameController>();
-    
-    try {
-      await controller.speechRecognizer.startListening(
-        onResult: (result) => _handleNarrationResult(result),
-        onPartial: (partial) {
-          // CRITICAL: Use partial results for real-time tracking!
-          _handleNarrationPartial(partial.partial);
-        },
-        onError: (error) {
-          AppLogger.speech.e('Narration recognition error: $error');
-        },
-        expectedWord: null,  // No specific word expected - open listening
-      );
-      AppLogger.speech.success('📖 Real-time tracking ACTIVE');
-    } catch (e) {
-      AppLogger.speech.e('Failed to start narration tracking', error: e);
-    }
-  }
   
-  void _handleNarrationPartial(String partialText) {
-    if (!_isListening || partialText.isEmpty) {
-      return;
-    }
-    
-    final spokenWords = partialText.toLowerCase()
-        .replaceAll(RegExp(r'[^\w\s]'), ' ')
-        .split(RegExp(r'\s+'))
-        .where((w) => w.isNotEmpty)
-        .toList();
-    
-    if (spokenWords.isEmpty) return;
-    
-    AppLogger.speech.v('📖 Partial: ${spokenWords.join(" ")}');
-    
-    // Try to find where parent is in the text based on partial results
-    // Look for the BEST match in upcoming text
-    final newPosition = _findBestPositionFromPartial(spokenWords);
-    
-    if (newPosition != null && newPosition > _currentWordIndex) {
-      setState(() {
-        _currentWordIndex = newPosition;
-      });
-      
-      AppLogger.speech.v('📖 → Position ${_currentWordIndex + 1}/${_narrationWords.length}');
-      
-      // Check for target words in the partial
-      final currentBeat = widget.story.beats[_currentBeatIndex];
-      _checkForValidatedTargetWords(currentBeat, spokenWords);
-    }
-  }
-  
-  void _handleNarrationResult(SpeechRecognitionResult result) {
-    if (!_isListening || result.text.isEmpty) {
-      return;
-    }
-    
-    final spokenWords = result.text.toLowerCase()
-        .replaceAll(RegExp(r'[^\w\s]'), ' ')
-        .split(RegExp(r'\s+'))
-        .where((w) => w.isNotEmpty)
-        .toList();
-    
-    AppLogger.speech.v('📖 Heard: ${spokenWords.join(" ")} (at position $_currentWordIndex/${_narrationWords.length})');
-    
-    // Try to match spoken words to upcoming narration words
-    final matchedIndex = _findBestMatchInSequence(spokenWords);
-    
-    if (matchedIndex != null && matchedIndex > _currentWordIndex) {
-      // Advance to the matched word
-      setState(() {
-        _currentWordIndex = matchedIndex;
-      });
-      
-      AppLogger.speech.d('📖 Advanced to word ${_currentWordIndex + 1}/${_narrationWords.length}: "${_narrationWords[_currentWordIndex]}"');
-      
-      // Check if we've validated any target words
-      final currentBeat = widget.story.beats[_currentBeatIndex];
-      _checkForValidatedTargetWords(currentBeat, spokenWords);
-    }
-  }
-  
-  int? _findBestPositionFromPartial(List<String> spokenWords) {
-    // HYBRID CONFIDENCE MATCHING:
-    // - High confidence (exact match) → 1 word OK
-    // - Medium confidence (fuzzy) → 2+ words required
-    // - Small lookahead window to prevent jumping
-    
-    if (spokenWords.isEmpty) return null;
-    
-    // STRICT CONSTRAINT: Only look ahead 3-5 words
-    // This prevents matching random words from background conversation
-    final lookAhead = 5;
-    final startIndex = _currentWordIndex;
-    final endIndex = (startIndex + lookAhead).clamp(0, _narrationWords.length);
-    
-    AppLogger.speech.v('🔍 Analyzing: "${spokenWords.join(" ")}" (${spokenWords.length} words)');
-    AppLogger.speech.v('🔍 Looking in window: $_currentWordIndex → $endIndex');
-    
-    int? bestPosition;
-    int bestScore = 0;
-    int bestConsecutiveMatches = 0;
-    bool bestHasHighConfidence = false;
-    
-    // Try each position in the small lookahead window
-    for (int i = startIndex; i < endIndex; i++) {
-      int score = 0;
-      int longestStreak = 0;
-      int currentStreak = 0;
-      bool hasHighConfidenceMatch = false;
-      
-      // Try to match sequences starting at position i
-      final maxCheck = math.min(spokenWords.length, _narrationWords.length - i);
-      
-      for (int j = 0; j < maxCheck; j++) {
-        final spokenWord = spokenWords[j];
-        final narrationWord = _narrationWords[i + j];
-        
-        if (_wordsMatch(spokenWord, narrationWord)) {
-          // Match found!
-          currentStreak++;
-          longestStreak = math.max(longestStreak, currentStreak);
-          
-          // Check confidence level
-          final isHighConfidence = _isHighConfidenceMatch(spokenWord, narrationWord);
-          if (isHighConfidence) {
-            hasHighConfidenceMatch = true;
-            // High confidence match gets bonus
-            score += currentStreak * 4;  // 4, 8, 12, 16...
-          } else {
-            // Regular match
-            score += currentStreak * 3;  // 3, 6, 9, 12...
-          }
-        } else {
-          // Break in sequence - reset streak but allow ONE skip
-          if (currentStreak > 0 && j < maxCheck - 1) {
-            // Allow one word skip, but penalize
-            score -= 2;
-          }
-          currentStreak = 0;
-        }
-      }
-      
-      AppLogger.speech.v('   Pos $i: score=$score, consecutive=$longestStreak, highConf=$hasHighConfidenceMatch');
-      
-      // Update best if this is better
-      if (longestStreak >= 1) {  // At least 1 match required
-        if (score > bestScore || 
-            (score == bestScore && longestStreak > bestConsecutiveMatches)) {
-          bestScore = score;
-          bestPosition = i;
-          bestConsecutiveMatches = longestStreak;
-          bestHasHighConfidence = hasHighConfidenceMatch;
-        }
-      }
-    }
-    
-    // HYBRID CONFIDENCE THRESHOLD:
-    // High confidence: 1 word OK if score >= 4 (exact match)
-    // Medium confidence: 2+ words required with score >= 6
-    bool shouldAdvance = false;
-    
-    if (bestHasHighConfidence && bestConsecutiveMatches >= 1 && bestScore >= 4) {
-      // Single high-confidence word can advance (e.g., "YOU" → "you")
-      shouldAdvance = true;
-      AppLogger.speech.i('✅ ADVANCE (HIGH CONF): pos=$bestPosition, score=$bestScore, consecutive=$bestConsecutiveMatches');
-    } else if (bestConsecutiveMatches >= 2 && bestScore >= 6) {
-      // Multiple words with moderate confidence
-      shouldAdvance = true;
-      AppLogger.speech.i('✅ ADVANCE (MULTI WORD): pos=$bestPosition, score=$bestScore, consecutive=$bestConsecutiveMatches');
-    } else {
-      AppLogger.speech.v('⏸️ HOLD: score=$bestScore, consecutive=$bestConsecutiveMatches, highConf=$bestHasHighConfidence');
-    }
-    
-    return shouldAdvance ? bestPosition : null;
-  }
-  
-  int? _findBestMatchInSequence(List<String> spokenWords) {
-    // Fallback method for final results (less aggressive than partial)
-    return _findBestPositionFromPartial(spokenWords);
-  }
-  
-  // DEPRECATED: Duplicate _wordsMatch (see line 339 for active version)
-  // ignore: unused_element
-  bool _wordsMatchOld(String spoken, String expected) {
-    // Simple matching - exact or very close
-    if (spoken == expected) return true;
-    
-    // Handle common variations (plurals, tense)
-    if (spoken.startsWith(expected) || expected.startsWith(spoken)) {
-      return true;
-    }
-    
-    // Homophone check (from WordList if available)
-    if (WordList.phraseContainsWord(spoken, expected)) {
-      return true;
-    }
-    
-    return false;
-  }
-  
-  /// Check if match is high confidence (exact match, not homonym/fuzzy)
-  bool _isHighConfidenceMatch(String spoken, String expected) {
-    // Only exact matches or very close prefix matches are high confidence
-    return spoken == expected || 
-           (spoken.length >= 3 && expected.startsWith(spoken)) ||
-           (expected.length >= 3 && spoken.startsWith(expected));
-  }
   
   void _checkForValidatedTargetWords(StoryBeat beat, List<String> spokenWords) {
     // Check if any target words were spoken
@@ -834,24 +515,27 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   }
   
   void _stopListening() async {
-    // Stop alignment tracking
-    if (_isTracking) {
-      await _alignmentTracker.stopTracking();
-      setState(() {
-        _isTracking = false;
-      });
-      AppLogger.speech.d('Stopped alignment tracking');
+    final controller = context.read<GameController>();
+    
+    if (_narrationTrackingActive) {
+      await controller.speechRecognizer.stopNarrationTracking();
+      if (mounted) {
+        setState(() {
+          _narrationTrackingActive = false;
+          _currentTargetWord = null;
+        });
+      }
+      AppLogger.speech.d('Stopped V13 narration tracking');
     }
     
-    // Stop legacy STT listening (for child turns)
     if (_isListening) {
-      final controller = context.read<GameController>();
       await controller.speechRecognizer.stopListening();
-      
-      setState(() {
-        _isListening = false;
-        _currentTargetWord = null;
-      });
+      if (mounted) {
+        setState(() {
+          _isListening = false;
+          _currentTargetWord = null;
+        });
+      }
       AppLogger.speech.d('Stopped STT listening');
     }
   }
@@ -1069,6 +753,8 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     final choicePoint = widget.story.choicePoints
         .where((cp) => cp.beatIndex == _currentBeatIndex)
         .firstOrNull;
+    final micStatusText = _buildMicStatusText();
+    final bool isTrackingMode = _narrationTrackingActive && _currentTargetWord == 'tracking';
     
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
@@ -1179,19 +865,13 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
                       children: [
                         const Icon(Icons.mic, color: Colors.white, size: 20),
                         const SizedBox(width: 8),
-                        Flexible(
+                        Expanded(
                           child: Text(
-                            _isTracking
-                                ? _vadAnchored
-                                    ? '⚡ VAD: ${_vadEstimatedPosition + 1}/${_narrationWords.length} | ⚓ STT: ${_confirmedWordIndices.length} confirmed ${_currentEnergy > 0.01 ? "🔊" : ""}'
-                                    : '🔒 Waiting for first word... ${_currentEnergy > 0.01 ? "🔊" : "🎤"}'
-                                : _currentTargetWord != null
-                                    ? 'Listening for "$_currentTargetWord"...'
-                                    : 'Ready',
+                            micStatusText,
                             style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 13),
                             textAlign: TextAlign.center,
                             maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                            overflow: TextOverflow.fade,
                           ),
                         ),
                       ],
@@ -1204,8 +884,8 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
-                        _currentTargetWord == 'tracking'
-                            ? '📚 Reading along with you!'
+                        isTrackingMode
+                            ? '📚 Reading along with you (V13)'
                             : '👂 Speak the word now!',
                         style: const TextStyle(
                           color: Colors.white,
@@ -1289,9 +969,15 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   
   Widget _buildEnhancedNarrationBubble(StoryBeat beat) {
     // If narration words not yet parsed, parse them now
-    if (_narrationWords.isEmpty) {
+    if (_narrationWords.isEmpty || _narrationDisplayWords.isEmpty) {
       AppLogger.speech.w('⚠️ Narration words not yet parsed, parsing now');
-      _narrationWords = _parseNarrationWords(beat.text);
+      final parsed = _parseNarrationText(beat.text);
+      _narrationWords = parsed.cleanWords;
+      _narrationDisplayWords = parsed.displayWords;
+      _wordGroups = WordGroupingService.groupWords(
+        parsed.cleanWords,
+        displayWords: parsed.displayWords,
+      );
     }
     
     return Container(
@@ -1374,233 +1060,118 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   }
   
   Widget _buildHighlightedText(String text, List<String> targetWords) {
-    // Simple word-by-word highlighting with VAD alignment
-    // Show ALL words, highlight current position
+    // NEW: Use grouped word display with smooth progress
     
-    AppLogger.speech.v('🎨 Building highlighted text: ${_narrationWords.length} words, current=$_currentWordIndex');
+    AppLogger.speech.v('🎨 Building grouped text: ${_narrationWords.length} words, ${_wordGroups.length} lines, current=$_currentWordIndex');
     
-    // Parse into clean words
-    final segments = text.split(RegExp(r'\s+'));
-    
-    final words = <Widget>[];
+    // Fallback if groups not initialized
+    if (_narrationWords.isEmpty || _wordGroups.isEmpty) {
+      return Text(text, style: const TextStyle(fontSize: 20));
+    }
     
     // Check if we're at the end
-    final isComplete = _currentWordIndex >= segments.length - 1;
+    final isComplete = _currentWordIndex >= _narrationWords.length - 1;
     
-    if (isComplete) {
-      // Show completion message
-      return Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: Colors.green.shade100,
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: Colors.green.shade600, width: 3),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+    // Calculate discrete progress for current line (no time-based smoothing)
+    final currentLine = WordGroupingService.getLineForWord(_wordGroups, _currentWordIndex);
+    final lineProgress = currentLine >= 0 && currentLine < _wordGroups.length
+        ? WordGroupingService.getLineProgress(_wordGroups[currentLine], _currentWordIndex)
+        : 0.0;
+    
+    final groupedWords = GroupedWordDisplay(
+      displayWords: _narrationDisplayWords,
+      wordGroups: _wordGroups,
+      currentWordIndex: _currentWordIndex,
+      smoothProgress: lineProgress,
+      onWordTap: (index) => _jumpToWord(index),
+      showProgressBar: !isComplete,
+      readingComplete: isComplete,
+      scrollWordIndex: _getScrollWordIndex(),
+    );
+    
+    final Widget readyContent = KeyedSubtree(
+      key: const ValueKey('narration-words'),
+      child: isComplete
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Icon(Icons.check_circle, color: Colors.green.shade700, size: 32),
-                const SizedBox(width: 12),
-                Text(
-                  'Reading complete! ✨',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.green.shade900,
-                  ),
-                ),
+                groupedWords,
+                const SizedBox(height: 24),
+                _buildCompletionCard(),
               ],
-            ),
-          ),
-          const SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: _nextBeat,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.green.shade600,
-              foregroundColor: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-            ),
-            child: const Text(
-              'Continue →',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
+            )
+          : groupedWords,
+    );
+    
+    final Widget loadingContent = _buildNarrationPrepCard();
+    final bool showWordLines = _wordLinesReady && _wordGroups.isNotEmpty;
+    
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 300),
+      child: showWordLines ? readyContent : loadingContent,
+    );
+  }
+  
+  bool _isAnchorSource(String source) {
+    return source == 'sherpa_anchor' ||
+        source == 'sherpa_catchup' ||
+        source == 'sherpa_correction';
+  }
+  
+  int _getScrollWordIndex() {
+    if (_scrollAnchorWordIndex < 0) {
+      return _currentWordIndex;
+    }
+    final int maxVisible = (_scrollAnchorWordIndex + 1).clamp(0, _narrationWords.length - 1);
+    if (_currentWordIndex <= maxVisible) {
+      return _currentWordIndex;
+    }
+    return maxVisible;
+  }
+  Widget _buildNarrationPrepCard() {
+    return Container(
+      key: const ValueKey('narration-prep'),
+      width: double.infinity,
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: Colors.deepPurple.shade100, width: 2),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.deepPurple.shade100.withOpacity(0.4),
+            blurRadius: 18,
+            offset: const Offset(0, 10),
           ),
         ],
-      );
-    }
-    
-    int wordIndex = 0;
-    
-    for (final segment in segments) {
-      if (segment.trim().isEmpty) continue;
-      
-      // Remove trailing punctuation for matching
-      final cleanWord = segment.toLowerCase().replaceAll(RegExp(r'[^\w]'), '');
-      final isTargetWord = targetWords.any((t) => t.toLowerCase() == cleanWord);
-      
-      final isCurrent = wordIndex == _currentWordIndex;
-      final isRead = wordIndex < _currentWordIndex;
-      final isConfirmed = _confirmedWordIndices.contains(wordIndex);
-      
-      Widget wordWidget;
-      
-      if (isTargetWord) {
-        // Target words - special amber/green boxes
-        final isValidated = _validatedWords[cleanWord] ?? false;
-        wordWidget = GestureDetector(
-          onTap: () => _jumpToWord(wordIndex),
-          child: Container(
-            margin: const EdgeInsets.all(4),
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            decoration: BoxDecoration(
-              color: isValidated ? Colors.green.shade100 : Colors.amber.shade100,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(
-                color: isValidated ? Colors.green.shade600 : Colors.amber.shade600,
-                width: 3,
-              ),
-            ),
-            child: Text(
-              segment,
-              style: TextStyle(
-                fontSize: 26,
-                fontWeight: FontWeight.bold,
-                color: isValidated ? Colors.green.shade900 : Colors.orange.shade900,
-              ),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const SizedBox(height: 8),
+          const CircularProgressIndicator(
+            strokeWidth: 3,
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.deepPurple),
+          ),
+          const SizedBox(height: 20),
+          Text(
+            _listeningStatusLabel,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              color: Colors.deepPurple,
             ),
           ),
-        );
-      } else if (isCurrent) {
-        // CURRENT WORD - Different styling for VAD estimate vs STT-confirmed
-        if (isConfirmed) {
-          // STT-CONFIRMED: Solid blue with checkmark
-          wordWidget = GestureDetector(
-            onTap: () => _jumpToWord(wordIndex),
-            child: Container(
-              margin: const EdgeInsets.all(3),
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-              decoration: BoxDecoration(
-                color: Colors.blue.shade700,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: Colors.blue.shade900,
-                  width: 3,
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.blue.shade300,
-                    blurRadius: 8,
-                    spreadRadius: 1,
-                  ),
-                ],
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Icon(Icons.check_circle, color: Colors.white, size: 16),
-                  const SizedBox(width: 4),
-                  Text(
-                    segment,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      letterSpacing: 0.5,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
-        } else {
-          // VAD ESTIMATE: Lighter blue, tentative (no checkmark yet)
-          wordWidget = GestureDetector(
-            onTap: () => _jumpToWord(wordIndex),
-            child: Container(
-              margin: const EdgeInsets.all(3),
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-              decoration: BoxDecoration(
-                color: Colors.blue.shade300,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: Colors.blue.shade400,
-                  width: 2,
-                ),
-              ),
-              child: Text(
-                segment,
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue.shade900,
-                  letterSpacing: 0.5,
-                ),
-              ),
-            ),
-          );
-        }
-      } else if (isRead) {
-        // Read - with checkmark (smaller, subtle)
-        wordWidget = GestureDetector(
-          onTap: () => _jumpToWord(wordIndex),
-          child: Container(
-            margin: const EdgeInsets.all(2),
-            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-            decoration: BoxDecoration(
-              color: Colors.grey.shade50,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(Icons.check, color: Colors.green.shade400, size: 12),
-                const SizedBox(width: 3),
-                Text(
-                  segment,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.normal,
-                    color: Colors.grey.shade600,
-                  ),
-                ),
-              ],
-            ),
+          const SizedBox(height: 8),
+          const Text(
+            'We’ll show the words as soon as the microphone is ready.',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.black54),
           ),
-        );
-      } else {
-        // Unread - dimmed
-        wordWidget = GestureDetector(
-          onTap: () => _jumpToWord(wordIndex),
-          child: Container(
-            margin: const EdgeInsets.all(2),
-            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-            child: Text(
-              segment,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.normal,
-                color: Colors.grey.shade400,
-              ),
-            ),
-          ),
-        );
-      }
-      
-      words.add(wordWidget);
-      wordIndex++;
-    }
-    
-    return Wrap(
-      alignment: WrapAlignment.center,
-      crossAxisAlignment: WrapCrossAlignment.center,
-      spacing: 6,
-      runSpacing: 10,
-      children: words,
+          const SizedBox(height: 8),
+        ],
+      ),
     );
   }
   
@@ -1708,6 +1279,67 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
               ),
             ),
           ],
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCompletionCard() {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 350),
+      curve: Curves.easeInOut,
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.green.shade100,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: Colors.green.shade600, width: 3),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.green.shade200.withOpacity(0.6),
+            blurRadius: 16,
+            offset: const Offset(0, 8),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.check_circle, color: Colors.green.shade700, size: 32),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(
+                  'Reading complete! ✨',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.green.shade900,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: _nextBeat,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green.shade600,
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              child: const Text(
+                'Continue →',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -1943,4 +1575,16 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     );
   }
 }
+
+class _ParsedNarrationText {
+  final List<String> cleanWords;
+  final List<String> displayWords;
+
+  const _ParsedNarrationText({
+    required this.cleanWords,
+    required this.displayWords,
+  });
+}
+
+
 
