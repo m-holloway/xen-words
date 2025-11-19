@@ -9,6 +9,7 @@ import '../services/speech_recognizer_interface.dart';
 import '../services/word_grouping_service.dart';
 import '../widgets/fireworks_overlay.dart';
 import '../widgets/grouped_word_display.dart';
+import '../widgets/plush_microphone_meter.dart';
 import '../utils/app_logger.dart';
 
 /// Enhanced story reader with voice recognition and word highlighting
@@ -35,11 +36,11 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   late AnimationController _fadeController;
   late Animation<double> _fadeAnimation;
   final FireworksController _fireworksController = FireworksController();
+  final ScrollController _contentScrollController = ScrollController();
   
   // V13 tracking state (Sherpa-anchored VAD)
   bool _narrationTrackingActive = false;
   double _currentTrackingConfidence = 0.0;
-  String _currentTrackingSource = 'init';
   int _lastTrackedWord = -1;
   int _v13VadPredictions = 0;
   int _v13Anchors = 0;
@@ -48,6 +49,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   
   // Legacy voice recognition state (for STT anchoring + child turns)
   bool _isListening = false;
+  bool _isUserMuted = false;
   bool _recognizerInitialized = false;
   String? _currentTargetWord;
   Map<String, bool> _validatedWords = {}; // word -> validated
@@ -67,6 +69,9 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   Timer? _finalWordCompletionTimer;
   static const Duration _finalWordCompletionDelay = Duration(milliseconds: 1000);
   bool _finalWordCompletionPending = false;
+  bool _listeningForContinue = false;
+  static const String _continueCommandPhrase = 'continue';
+  bool _suppressNextLinger = false;
   bool _manualSeekInFlight = false;
   int? _pendingManualSeekIndex;
   
@@ -134,6 +139,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     _fadeController.dispose();
     _stopListening();
     _finalWordCompletionTimer?.cancel();
+    _contentScrollController.dispose();
     super.dispose();
   }
   
@@ -186,7 +192,6 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       _currentWordIndex = 0;
       _currentTargetWord = 'tracking';
       _currentTrackingConfidence = 0.0;
-      _currentTrackingSource = 'init';
       _lastTrackedWord = -1;
       _v13VadPredictions = 0;
       _v13Anchors = 0;
@@ -220,6 +225,16 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     }
     
     AppLogger.speech.i('🎧 Starting V13 tracking for ${_narrationWords.length} words');
+    
+    if (_isUserMuted) {
+      setState(() {
+        _narrationTrackingActive = true;
+        _wordLinesReady = true;
+        _listeningStatusLabel = 'Microphone muted';
+      });
+      AppLogger.speech.i('ℹ️ Microphone muted - tracking UI active but hardware disabled');
+      return;
+    }
     
     final scriptForTracker = _narrationWords.join(' ');
     
@@ -333,7 +348,6 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     setState(() {
       _currentWordIndex = clampedIndex;
       _currentTrackingConfidence = confidence;
-      _currentTrackingSource = source;
       _lastTrackedWord = clampedIndex;
       _v13VadPredictions = vadPredictions;
       _v13Anchors = anchors;
@@ -365,53 +379,176 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     }
   }
   
-  String _buildMicStatusText() {
+  void _toggleMute() async {
+    setState(() {
+      _isUserMuted = !_isUserMuted;
+    });
+    
+    final controller = context.read<GameController>();
+    
+    if (_isUserMuted) {
+      // Stop hardware but keep UI intent flags active
     if (_narrationTrackingActive) {
-      final total = _narrationWords.length;
-      final int safeIndex = total > 0
-          ? ((_wordIndexSafe(_currentWordIndex, total)) + 1)
-          : 0;
-      final confidence = (_currentTrackingConfidence.clamp(0.0, 1.0) * 100).toStringAsFixed(0);
-      final sourceLabel = _describeTrackingSource(_currentTrackingSource);
-      final stats = '⚡$_v13VadPredictions | ⚓$_v13Anchors | 🔧$_v13Corrections';
-      return 'V13 $safeIndex/${total == 0 ? "?" : total.toString()} · $sourceLabel · $confidence% · $stats';
-    }
-    
-    if (_currentTargetWord != null) {
-      return 'Listening for "${_currentTargetWord!}"...';
-    }
-    
-    if (!_recognizerInitialized) {
-      return 'Initializing microphone...';
-    }
-    
-    return 'Ready';
-  }
-  
-  int _wordIndexSafe(int index, int total) {
-    if (total <= 0) return 0;
-    if (index < 0) return 0;
-    if (index >= total) return total - 1;
-    return index;
-  }
-  
-  String _describeTrackingSource(String source) {
-    switch (source) {
-      case 'vad':
-        return '⚡ VAD';
-      case 'sherpa_anchor':
-        return '⚓ Anchor';
-      case 'sherpa_catchup':
-        return '⚓ Catch-up';
-      case 'sherpa_correction':
-        return '🔧 Correction';
-      case 'hold':
-        return '…';
-      default:
-        return '…';
+        await controller.speechRecognizer.stopNarrationTracking();
+        setState(() => _listeningStatusLabel = 'Microphone muted');
+      } else if (_isListening) { 
+        await controller.speechRecognizer.stopListening();
+      }
+      AppLogger.speech.i('🔇 Microphone muted by user');
+    } else {
+      // Resume hardware based on current intent
+      AppLogger.speech.i('🔊 Microphone unmuted by user - resuming...');
+      _resumeListening();
     }
   }
+
+  Future<void> _resumeListening() async {
+    final controller = context.read<GameController>();
+    
+    if (_narrationTrackingActive && _narrationWords.isNotEmpty) {
+      // Resume narration tracking
+      final scriptForTracker = _narrationWords.join(' ');
+      final beat = widget.story.beats[_currentBeatIndex];
+      
+      try {
+        final started = await controller.speechRecognizer.startNarrationTracking(
+          scriptText: scriptForTracker,
+          onWordUpdate: (index, confidence, source) {
+            _handleNarrationWordUpdate(beat, index, confidence, source);
+          },
+          initialWordIndex: _currentWordIndex
+        );
+        
+        if (started && mounted) {
+          setState(() => _listeningStatusLabel = 'Listening – resume reading');
+        }
+      } catch (e) {
+        AppLogger.speech.e('Failed to resume narration tracking', error: e);
+      }
+    } else if (_isListening && _currentTargetWord != null && _currentTargetWord != 'tracking') {
+       // Resume single word listening
+       try {
+         await controller.speechRecognizer.startListening(
+          onResult: (result) => _handleSpeechResult(result, _currentTargetWord!),
+          onPartial: (partial) {
+            AppLogger.speech.v('Partial: ${partial.partial}');
+          },
+          onError: (error) {
+            AppLogger.speech.e('Recognition error: $error');
+          },
+          expectedWord: _currentTargetWord!,
+        );
+       } catch (e) {
+         AppLogger.speech.e('Failed to resume listening', error: e);
+       }
+    } else if (_finalWordConfirmed && !_currentBeatHasChoicePoint) {
+      await _listenForContinueCommandIfReady();
+    }
+  }
+
+  bool get _shouldShowMicPanel => _isUserMuted || _isListening || _narrationTrackingActive;
+
+  bool get _isMeterActive => !_isUserMuted && (_isListening || _narrationTrackingActive);
   
+  Widget _buildListeningPanelContent(bool isTrackingMode) {
+    final energyStream = context.read<GameController>().speechRecognizer.energyStream;
+    final showManualOverrides = !_isUserMuted && _currentTargetWord != null && _currentTargetWord != 'tracking';
+    final confidence = _currentTrackingConfidence.clamp(0.0, 1.0);
+    
+    final List<Color> buttonGradient;
+    if (_isUserMuted) {
+      buttonGradient = [Colors.grey.shade800, Colors.black54];
+    } else if (isTrackingMode) {
+      buttonGradient = [
+        Color.lerp(Colors.green.shade400, Colors.greenAccent, confidence) ?? Colors.greenAccent,
+        Color.lerp(Colors.green.shade900, Colors.teal.shade800, confidence) ?? Colors.teal.shade800,
+      ];
+    } else {
+      buttonGradient = [Colors.teal.shade200, Colors.teal.shade700];
+    }
+    
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            GestureDetector(
+              onTap: _toggleMute,
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 250),
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(60),
+                  gradient: LinearGradient(
+                    colors: buttonGradient,
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.35),
+                      blurRadius: 12,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                ),
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    PlushMicrophoneMeter(
+                      energyStream: energyStream,
+                      isListening: _isMeterActive,
+                      isMuted: _isUserMuted,
+                      onMuteChanged: (_) => _toggleMute(),
+                      size: 80,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+        if (showManualOverrides) ...[
+          const SizedBox(width: 18),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              IconButton.filled(
+                visualDensity: VisualDensity.compact,
+                style: IconButton.styleFrom(
+                  backgroundColor: Colors.white.withOpacity(0.18),
+                  foregroundColor: Colors.white,
+                ),
+                onPressed: () {
+                  if (_currentTargetWord != null && _currentTargetWord != 'tracking') {
+                    _onWordRecognized(_currentTargetWord!, correct: true);
+                  }
+                },
+                icon: const Icon(Icons.check_rounded, size: 18),
+              ),
+              const SizedBox(height: 6),
+              IconButton.filled(
+                visualDensity: VisualDensity.compact,
+                style: IconButton.styleFrom(
+                  backgroundColor: Colors.white.withOpacity(0.12),
+                  foregroundColor: Colors.white,
+                ),
+                onPressed: () {
+                  if (_currentTargetWord != null && _currentTargetWord != 'tracking') {
+                    _onWordRecognized(_currentTargetWord!, correct: false, heard: 'manual skip');
+                  }
+                },
+                icon: const Icon(Icons.skip_next_rounded, size: 18),
+              ),
+            ],
+          ),
+        ],
+      ],
+    );
+  }
   _ParsedNarrationText _parseNarrationText(String text) {
     final normalized = text.replaceAll(RegExp(r'[-–—]+'), ' ');
     final rawTokens = normalized.split(RegExp(r'\s+')).where((w) => w.isNotEmpty).toList();
@@ -493,6 +630,11 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     });
     
     AppLogger.speech.emoji('🎤', 'Starting to listen for: $word');
+    
+    if (_isUserMuted) {
+       AppLogger.speech.i('ℹ️ Microphone muted - listening UI active but hardware disabled');
+       return;
+    }
     
     // Integrate actual Sherpa recognition
     final controller = context.read<GameController>();
@@ -578,6 +720,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
         setState(() {
           _isListening = false;
           _currentTargetWord = null;
+          _listeningForContinue = false;
         });
       }
       AppLogger.speech.d('Stopped STT listening');
@@ -681,7 +824,8 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     );
   }
   
-  void _nextBeat() {
+  Future<void> _nextBeat() async {
+    await _cancelContinueCommandListening();
     if (_currentBeatIndex < widget.story.beats.length - 1) {
       _fadeController.reset();
       setState(() {
@@ -798,7 +942,6 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     final choicePoint = widget.story.choicePoints
         .where((cp) => cp.beatIndex == _currentBeatIndex)
         .firstOrNull;
-    final micStatusText = _buildMicStatusText();
     final bool isTrackingMode = _narrationTrackingActive && _currentTargetWord == 'tracking';
     
     return Scaffold(
@@ -858,6 +1001,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
                   child: FadeTransition(
                     opacity: _fadeAnimation,
                     child: SingleChildScrollView(
+                      controller: _contentScrollController,
                       padding: const EdgeInsets.all(20),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -866,12 +1010,17 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
                           const SizedBox(height: 24),
                           if (choicePoint != null)
                             _buildChoiceWidget(choicePoint),
-                          if (choicePoint == null)
-                            _buildContinueButton(currentBeat, isLastBeat),
                         ],
                       ),
                     ),
                   ),
+                ),
+            
+            _buildBottomControls(
+              currentBeat,
+              isLastBeat,
+              choicePoint != null,
+              isTrackingMode,
                 ),
               ],
             ),
@@ -879,112 +1028,6 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
           
           // Fireworks overlay
           FireworksOverlay(controller: _fireworksController),
-          
-          // Listening indicator with manual test buttons
-          if (_isListening)
-            Positioned(
-              bottom: 20,
-              left: 16,
-              right: 16,
-              child: Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: _currentTargetWord == 'tracking' 
-                      ? Colors.blue.withOpacity(0.95)
-                      : Colors.deepPurple.withOpacity(0.95),
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(
-                      color: (_currentTargetWord == 'tracking' ? Colors.blue : Colors.deepPurple)
-                          .withOpacity(0.3),
-                      blurRadius: 12,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(Icons.mic, color: Colors.white, size: 20),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: Text(
-                            micStatusText,
-                            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 13),
-                            textAlign: TextAlign.center,
-                            maxLines: 1,
-                            overflow: TextOverflow.fade,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Text(
-                        isTrackingMode
-                            ? '📚 Reading along with you (V13)'
-                            : '👂 Speak the word now!',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                    if (_currentTargetWord != 'tracking') ...[
-                      const SizedBox(height: 12),
-                      const Text(
-                        'Manual override (if needed):',
-                        style: TextStyle(color: Colors.white70, fontSize: 11),
-                      ),
-                      const SizedBox(height: 6),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          TextButton.icon(
-                            onPressed: () {
-                              if (_currentTargetWord != null && _currentTargetWord != 'tracking') {
-                                _onWordRecognized(_currentTargetWord!, correct: true);
-                              }
-                            },
-                            icon: const Icon(Icons.check_circle, size: 16),
-                            label: const Text('Mark Correct'),
-                            style: TextButton.styleFrom(
-                              backgroundColor: Colors.green.withOpacity(0.2),
-                              foregroundColor: Colors.white,
-                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          TextButton.icon(
-                            onPressed: () {
-                              if (_currentTargetWord != null && _currentTargetWord != 'tracking') {
-                                _onWordRecognized(_currentTargetWord!, correct: false, heard: 'manual skip');
-                              }
-                            },
-                            icon: const Icon(Icons.skip_next, size: 16),
-                            label: const Text('Skip'),
-                            style: TextButton.styleFrom(
-                              backgroundColor: Colors.orange.withOpacity(0.2),
-                              foregroundColor: Colors.white,
-                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ],
-                ),
-              ),
-            ),
         ],
       ),
     );
@@ -1010,6 +1053,64 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       default:
         return _buildStandardNarrationBubble(beat);
     }
+  }
+
+  Widget _buildBottomControls(
+    StoryBeat beat,
+    bool isLastBeat,
+    bool hasChoicePoint,
+    bool isTrackingMode,
+  ) {
+    final showMic = _shouldShowMicPanel;
+    final showContinue = !hasChoicePoint;
+    if (!showMic && !showContinue) {
+      return const SizedBox(height: 8);
+    }
+    
+    final continueButton = showContinue ? _buildContinueButton(beat, isLastBeat) : null;
+    
+    return SafeArea(
+      top: false,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 12, 16, 20),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            if (showMic)
+              Align(
+                alignment: Alignment.center,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.black.withOpacity(0.24),
+                    borderRadius: BorderRadius.circular(56),
+                    border: Border.all(
+                      color: Colors.white.withOpacity(0.08),
+                      width: 1,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.25),
+                        blurRadius: 16,
+                        offset: const Offset(0, 8),
+                      ),
+                    ],
+                  ),
+                  child: _buildListeningPanelContent(isTrackingMode),
+                ),
+              ),
+            if (showMic && continueButton != null)
+              const SizedBox(height: 18),
+            if (continueButton != null)
+              SizedBox(
+                width: double.infinity,
+                child: continueButton,
+              ),
+          ],
+        ),
+      ),
+    );
   }
   
   Widget _buildEnhancedNarrationBubble(StoryBeat beat) {
@@ -1126,6 +1227,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       onWordTap: (index) => _jumpToWord(index),
       readingComplete: isComplete,
       scrollWordIndex: _getScrollWordIndex(),
+      suppressNextLinger: _suppressNextLinger,
     );
     
     final Widget readyContent = KeyedSubtree(
@@ -1168,10 +1270,144 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     return maxVisible;
   }
 
+  bool get _currentBeatHasChoicePoint {
+    return widget.story.choicePoints.any((cp) => cp.beatIndex == _currentBeatIndex);
+  }
+
+  Future<void> _listenForContinueCommandIfReady() async {
+    if (!mounted) return;
+    if (!_finalWordConfirmed) return;
+    if (_currentBeatHasChoicePoint) return;
+    if (_isUserMuted) return;
+    if (_listeningForContinue) return;
+    if (!_recognizerInitialized) return;
+
+    final controller = context.read<GameController>();
+
+    if (_narrationTrackingActive) {
+      try {
+        await controller.speechRecognizer.stopNarrationTracking();
+      } catch (e, stackTrace) {
+        AppLogger.speech.e(
+          'Failed to stop narration tracking before continue listener: $e',
+          error: e,
+          stackTrace: stackTrace,
+        );
+      }
+      if (!mounted) return;
+      setState(() {
+        _narrationTrackingActive = false;
+      });
+    }
+
+    if (!mounted) return;
+    setState(() {
+      _isListening = true;
+      _listeningForContinue = true;
+      _currentTargetWord = null;
+      _listeningStatusLabel = 'Say "continue" to keep going';
+    });
+
+    try {
+      await controller.speechRecognizer.startListening(
+        expectedWord: _continueCommandPhrase,
+        onResult: _handleContinueCommandResult,
+        onError: (error) {
+          AppLogger.speech.e('Continue command listener error: $error');
+          _cancelContinueCommandListening(retry: true);
+        },
+      );
+      AppLogger.speech.i('🎧 Listening for "continue"...');
+    } catch (e, stackTrace) {
+      AppLogger.speech.e(
+        'Failed to start continue command listener: $e',
+        error: e,
+        stackTrace: stackTrace,
+      );
+      if (mounted) {
+        setState(() {
+          _isListening = false;
+          _listeningForContinue = false;
+        });
+      }
+    }
+  }
+
+  Future<void> _handleContinueCommandResult(SpeechRecognitionResult result) async {
+    if (!_listeningForContinue) {
+      AppLogger.speech.v('Continue result received while idle');
+      return;
+    }
+    final heard = _resultContainsKeyword(result, _continueCommandPhrase);
+    if (heard) {
+      AppLogger.speech.success('✅ Heard "continue" command');
+      await _cancelContinueCommandListening();
+      await _nextBeat();
+    } else {
+      AppLogger.speech.v('Continue command not detected: "${result.text}"');
+    }
+  }
+
+  bool _resultContainsKeyword(SpeechRecognitionResult result, String keyword) {
+    if (keyword.isEmpty) return false;
+    final target = keyword.toLowerCase();
+    bool _phraseMatches(String phrase) {
+      if (phrase.isEmpty) return false;
+      return WordList.phraseContainsWord(phrase.toLowerCase(), target);
+    }
+
+    if (_phraseMatches(result.text)) {
+      return true;
+    }
+    for (final alt in result.alternatives) {
+      if (_phraseMatches(alt.text)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  Future<void> _cancelContinueCommandListening({bool retry = false}) async {
+    if (!_listeningForContinue) {
+      return;
+    }
+    if (!mounted) {
+      _listeningForContinue = false;
+      return;
+    }
+    final controller = context.read<GameController>();
+    try {
+      await controller.speechRecognizer.stopListening();
+    } catch (e, stackTrace) {
+      AppLogger.speech.e(
+        'Failed to stop continue command listener: $e',
+        error: e,
+        stackTrace: stackTrace,
+      );
+    }
+
+    if (!mounted) {
+      _listeningForContinue = false;
+      return;
+    }
+
+    setState(() {
+      _isListening = false;
+      _listeningForContinue = false;
+    });
+
+    if (retry && mounted && _finalWordConfirmed && !_currentBeatHasChoicePoint) {
+      Future.delayed(const Duration(milliseconds: 600), () {
+        if (!mounted) return;
+        _listenForContinueCommandIfReady();
+      });
+    }
+  }
+
   void _scheduleFinalWordCompletion() {
     _finalWordCompletionTimer?.cancel();
     _finalWordCompletionPending = true;
-    _finalWordCompletionTimer = Timer(_finalWordCompletionDelay, () {
+    _finalWordCompletionTimer = Timer(_finalWordCompletionDelay, () async {
       if (!mounted) {
         _finalWordCompletionPending = false;
         return;
@@ -1180,6 +1416,23 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
         _finalWordConfirmed = true;
         _finalWordCompletionPending = false;
       });
+      _scrollCompletionIntoView();
+      await _listenForContinueCommandIfReady();
+    });
+  }
+
+  void _scrollCompletionIntoView() {
+    if (!mounted) return;
+    if (!_contentScrollController.hasClients) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      if (!_contentScrollController.hasClients) return;
+      final position = _contentScrollController.position;
+      _contentScrollController.animateTo(
+        position.maxScrollExtent,
+        duration: const Duration(milliseconds: 700),
+        curve: Curves.easeOutCubic,
+      );
     });
   }
   Widget _buildNarrationPrepCard() {
@@ -1229,10 +1482,11 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     );
   }
   
-  void _jumpToWord(int wordIndex) {
+  Future<void> _jumpToWord(int wordIndex) async {
     if (_narrationWords.isEmpty) {
       return;
     }
+    await _cancelContinueCommandListening();
     
     final int maxIndex = _narrationWords.length - 1;
     final int targetIndex = wordIndex.clamp(0, maxIndex).toInt();
@@ -1245,12 +1499,24 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       _scrollAnchorWordIndex = targetIndex;
       _finalWordConfirmed = false;
       _finalWordCompletionPending = false;
-      _currentTrackingSource = 'manual_tap';
       _currentTrackingConfidence = 1.0;
       _lastTrackedWord = targetIndex;
+      _suppressNextLinger = true;
     });
 
     _enqueueManualNarrationSeek(targetIndex);
+    _scheduleLingerReset();
+  }
+
+  void _scheduleLingerReset() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      if (_suppressNextLinger) {
+        setState(() {
+          _suppressNextLinger = false;
+        });
+      }
+    });
   }
 
   void _enqueueManualNarrationSeek(int targetIndex) {
@@ -1272,10 +1538,6 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   }
 
   Future<void> _restartNarrationTrackingAt(int targetIndex) async {
-    if (!_narrationTrackingActive) {
-      AppLogger.speech.w('Manual seek requested but narration tracking inactive');
-      return;
-    }
     if (_narrationWords.isEmpty) {
       AppLogger.speech.w('Manual seek requested without narration words');
       return;
@@ -1294,14 +1556,16 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       _listeningStatusLabel = 'Rewinding narration…';
     });
 
-    try {
-      await controller.speechRecognizer.stopNarrationTracking();
-    } catch (e, stackTrace) {
-      AppLogger.speech.e(
-        'Failed to stop narration tracking before rewind: $e',
-        error: e,
-        stackTrace: stackTrace,
-      );
+    if (_narrationTrackingActive) {
+      try {
+        await controller.speechRecognizer.stopNarrationTracking();
+      } catch (e, stackTrace) {
+        AppLogger.speech.e(
+          'Failed to stop narration tracking before rewind: $e',
+          error: e,
+          stackTrace: stackTrace,
+        );
+      }
     }
 
     if (!mounted || beatIndex != _currentBeatIndex) {
@@ -1335,6 +1599,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
           _currentWordIndex = targetIndex;
           _lastTrackedWord = targetIndex;
           _scrollAnchorWordIndex = targetIndex;
+          _currentTargetWord = 'tracking';
         }
       });
     } catch (e, stackTrace) {
@@ -1495,7 +1760,9 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: _nextBeat,
+              onPressed: () {
+                _nextBeat();
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green.shade600,
                 foregroundColor: Colors.white,
@@ -1712,7 +1979,11 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     final allValidated = !requiresValidation || validatedCount == beat.targetWords.length;
 
     return ElevatedButton(
-      onPressed: allValidated ? _nextBeat : null,
+      onPressed: allValidated
+          ? () {
+              _nextBeat();
+            }
+          : null,
       style: ElevatedButton.styleFrom(
         backgroundColor: isLastBeat
             ? Colors.green
@@ -1744,6 +2015,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       ),
     );
   }
+
 }
 
 class _ParsedNarrationText {
@@ -1755,6 +2027,3 @@ class _ParsedNarrationText {
     required this.displayWords,
   });
 }
-
-
-

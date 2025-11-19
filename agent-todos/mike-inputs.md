@@ -2,6 +2,9 @@ This document contains todo items for agents.  If you ware working on a task and
 
 # Todo
 - There are times when there is a prompt (child's turn) during story time, where we're asking the child to say a word, BUT the voice recognition doesn't seem to work and CONTINUE button is greyed out (for instance when we ask Adalyn to say the word "GO" in the default story time passage).  I may need to capture a trace unless the bug is apparent from code inspection.  I've noticed other times where it seems like the challenge is for the child to say a word, but the box is actually empty, so they don't know what they should say (I've noticed this in the story lab custom stories).  Hopefully there is resuable/common code that is used for both of those modes.  If not it should be, instead of copy/paste.  Should check that too.
+- Open question -- are those intervening kid challenges in the reading/story mode useful?  I think they may be with some effort to make them a bit more friendly.  Sometimes the formatting is off - IF it's expecting/listening for a specific word or phrase via TTS, it should always format that consistently in a big box (it does this most of the time but not always).
+- I think perhaps when going to story lab, the story list (database) should be the default starting give, with an easy action to create a new story from that screen.  Need to give that interface a once over because it's pretty busy (might be OK, just need to go through it)
+
 # Completed
 When an item above is completed/addressed fully (confirmed by the user), move it here, add the date/time, a summary of the original item and solution, and the original text from above.
 

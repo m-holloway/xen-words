@@ -64,6 +64,9 @@ abstract class ISpeechRecognizer {
   
   /// Stop narration tracking
   Future<void> stopNarrationTracking();
+
+  /// Stream of audio energy levels (0.0 to 1.0) for visual feedback
+  Stream<double> get energyStream;
   
   /// Manually align narration tracking to the specified word index.
   Future<void> seekNarrationToWord(int wordIndex);

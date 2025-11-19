@@ -48,6 +48,11 @@ class SherpaRecognizer implements ISpeechRecognizer {
   Function(int wordIndex, double confidence, String source)? _onWordUpdate;
   DateTime? _narrationStartTime;
   
+  final _energyController = StreamController<double>.broadcast();
+
+  @override
+  Stream<double> get energyStream => _energyController.stream;
+
   // Sight words vocabulary for filtering
   // NOTE: We are NOT restricting at the model level - Sherpa-ONNX uses a general English model
   // and returns any word it recognizes. We filter results post-recognition.
@@ -458,6 +463,7 @@ class SherpaRecognizer implements ISpeechRecognizer {
       
       // Calculate RMS for visual feedback
       _lastRms = _calculateRms(samples);
+      _energyController.add(_lastRms);
       
       // Accept waveform into the stream
       _stream!.acceptWaveform(
@@ -1208,6 +1214,10 @@ class SherpaRecognizer implements ISpeechRecognizer {
       // Convert to Float32
       final samples = _convertPcm16ToFloat32(audioData);
       
+      // Calculate RMS for visual feedback
+      _lastRms = _calculateRms(samples);
+      _energyController.add(_lastRms);
+      
       // Feed audio to Sherpa first so new data is available for decoding
       _stream!.acceptWaveform(
         samples: samples,
@@ -1331,5 +1341,6 @@ class SherpaRecognizer implements ISpeechRecognizer {
     _recognizer = null;
     _isInitialized = false;
     _recorder.dispose();
+    _energyController.close();
   }
 }

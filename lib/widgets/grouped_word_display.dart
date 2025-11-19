@@ -12,6 +12,7 @@ class GroupedWordDisplay extends StatefulWidget {
   final Function(int)? onWordTap;
   final bool readingComplete;
   final int? scrollWordIndex;
+  final bool suppressNextLinger;
   final Duration scrollDuration;
   
   const GroupedWordDisplay({
@@ -23,6 +24,7 @@ class GroupedWordDisplay extends StatefulWidget {
     this.onWordTap,
     this.readingComplete = false,
     this.scrollWordIndex,
+    this.suppressNextLinger = false,
     this.scrollDuration = const Duration(milliseconds: 1000),
   }) : super(key: key);
   
@@ -59,8 +61,13 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
   void didUpdateWidget(GroupedWordDisplay oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.currentWordIndex != widget.currentWordIndex ||
-        oldWidget.scrollWordIndex != widget.scrollWordIndex) {
-      if (oldWidget.currentWordIndex != widget.currentWordIndex &&
+        oldWidget.scrollWordIndex != widget.scrollWordIndex ||
+        oldWidget.suppressNextLinger != widget.suppressNextLinger) {
+      if (widget.suppressNextLinger) {
+        _previousActiveWordIndex = null;
+        _previousActiveTimestamp = null;
+        _lingerTimer?.cancel();
+      } else if (oldWidget.currentWordIndex != widget.currentWordIndex &&
           oldWidget.currentWordIndex >= 0) {
         _previousActiveWordIndex = oldWidget.currentWordIndex;
         _previousActiveTimestamp = DateTime.now();
@@ -73,6 +80,11 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
             });
           }
         });
+      }
+      if (oldWidget.currentWordIndex != widget.currentWordIndex &&
+          oldWidget.currentWordIndex >= 0 &&
+          widget.suppressNextLinger) {
+        // already handled
       }
       _scheduleScroll();
     }
