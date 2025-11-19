@@ -15,6 +15,8 @@ class GroupedWordDisplay extends StatefulWidget {
   final bool suppressNextLinger;
   final bool shouldAutoExpand;
   final Duration scrollDuration;
+  final bool showCompletionCard;
+  final Widget? completionCard;
   
   const GroupedWordDisplay({
     Key? key,
@@ -27,6 +29,8 @@ class GroupedWordDisplay extends StatefulWidget {
     this.scrollWordIndex,
     this.suppressNextLinger = false,
     this.shouldAutoExpand = false,
+    this.showCompletionCard = false,
+    this.completionCard,
     this.scrollDuration = const Duration(milliseconds: 1000),
   }) : super(key: key);
   
@@ -187,6 +191,19 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
       listContent = SizedBox(height: heightConstraint, child: listContent);
     }
     
+    if (widget.shouldAutoExpand) {
+      debugPrint('📏 GroupedWordDisplay: Auto-expanding with completion=${widget.showCompletionCard}');
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          listContent,
+          if (widget.showCompletionCard && widget.completionCard != null) ...[
+            const SizedBox(height: 24),
+            widget.completionCard!,
+          ],
+        ],
+      );
+    }
     return AnimatedSize(
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,

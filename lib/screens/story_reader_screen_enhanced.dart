@@ -324,6 +324,8 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       if (!_finalWordConfirmed && !_finalWordCompletionPending) {
         shouldScheduleFinalCompletion = true;
         AppLogger.speech.d('✅ Final word confirmed via Sherpa anchor (delayed completion)');
+      } else {
+        AppLogger.speech.v('⏭️ Skipping final completion schedule: confirmed=$_finalWordConfirmed, pending=$_finalWordCompletionPending');
       }
     }
     
@@ -1250,21 +1252,11 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       scrollWordIndex: _getScrollWordIndex(),
       suppressNextLinger: _suppressNextLinger,
       shouldAutoExpand: isComplete,
+      showCompletionCard: isComplete,
+      completionCard: isComplete ? _buildCompletionCard() : null,
     );
     
-    final Widget readyContent = KeyedSubtree(
-      key: const ValueKey('narration-words'),
-      child: isComplete
-          ? Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                groupedWords,
-                const SizedBox(height: 24),
-                _buildCompletionCard(),
-              ],
-            )
-          : groupedWords,
-    );
+    final Widget readyContent = groupedWords;
     
     final Widget loadingContent = _buildNarrationPrepCard();
     final bool showWordLines = _wordLinesReady && _wordGroups.isNotEmpty;
@@ -1448,36 +1440,30 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   }
 
   void _scheduleFinalWordCompletion() {
+    AppLogger.speech.i('📅 Scheduling final word completion in ${_finalWordCompletionDelay.inMilliseconds}ms');
     _finalWordCompletionTimer?.cancel();
     _finalWordCompletionPending = true;
     _finalWordCompletionTimer = Timer(_finalWordCompletionDelay, () async {
       if (!mounted) {
+        AppLogger.speech.w('⚠️ Final completion timer fired but widget not mounted');
         _finalWordCompletionPending = false;
         return;
       }
+      AppLogger.speech.success('🎉 Final word completion timer fired - showing completion card');
       setState(() {
         _finalWordConfirmed = true;
         _finalWordCompletionPending = false;
       });
-      _scrollCompletionIntoView();
+      // No longer calling _scrollCompletionIntoView() here - the GroupedWordDisplay
+      // with shouldAutoExpand: true handles expanding to show the completion card
+      // Scrolling the outer controller causes layout conflicts and bouncing
       await _listenForContinueCommandIfReady();
     });
   }
 
-  void _scrollCompletionIntoView() {
-    if (!mounted) return;
-    if (!_contentScrollController.hasClients) return;
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted) return;
-      if (!_contentScrollController.hasClients) return;
-      final position = _contentScrollController.position;
-      _contentScrollController.animateTo(
-        position.maxScrollExtent,
-        duration: const Duration(milliseconds: 700),
-        curve: Curves.easeOutCubic,
-      );
-    });
-  }
+  // Removed _scrollCompletionIntoView() - no longer needed since GroupedWordDisplay
+  // with shouldAutoExpand: true automatically expands to show the completion card
+  // without needing to animate the outer scroll controller
   Widget _buildNarrationPrepCard() {
     return Container(
       key: const ValueKey('narration-prep'),
