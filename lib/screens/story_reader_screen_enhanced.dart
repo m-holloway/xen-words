@@ -31,6 +31,8 @@ class StoryReaderScreenEnhanced extends StatefulWidget {
 
 class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     with SingleTickerProviderStateMixin {
+  static const bool _enableChildPracticeBeats = false;
+  static const bool _enableCelebrationBeats = false;
   int _currentBeatIndex = 0;
   late CoachingSession _session;
   late AnimationController _fadeController;
@@ -86,6 +88,8 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       storyChapterId: widget.story.id,
       startTime: DateTime.now(),
     );
+    _currentBeatIndex = _findNextEnabledBeatIndex(_currentBeatIndex);
+    final bool hasEnabledBeat = _currentBeatIndex < widget.story.beats.length;
     
     // Setup fade animation
     _fadeController = AnimationController(
@@ -102,7 +106,12 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     
     // Initialize speech recognizer and start listening
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _initializeAndStartListening();
+      if (!mounted) return;
+      if (!hasEnabledBeat) {
+        _completeStory();
+      } else {
+        _initializeAndStartListening();
+      }
     });
     
     AppLogger.system.d('Enhanced story reader opened: ${widget.story.title}');
@@ -144,6 +153,11 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   }
   
   void _checkAndStartListening() {
+    if (_currentBeatIndex >= widget.story.beats.length) {
+      AppLogger.speech.w('No enabled beats remaining; completing story');
+      _completeStory();
+      return;
+    }
     final currentBeat = widget.story.beats[_currentBeatIndex];
     
     final previewText = currentBeat.text;
@@ -826,20 +840,24 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   
   Future<void> _nextBeat() async {
     await _cancelContinueCommandListening();
-    if (_currentBeatIndex < widget.story.beats.length - 1) {
-      _fadeController.reset();
-      setState(() {
-        _currentBeatIndex++;
-        _validatedWords.clear(); // Reset for new beat
-        _finalWordConfirmed = false;
-      });
-      _fadeController.forward();
-      
-      // Check if new beat needs voice recognition
-      _checkAndStartListening();
-    } else {
+    final nextIndex = _findNextEnabledBeatIndex(_currentBeatIndex + 1);
+    if (nextIndex >= widget.story.beats.length) {
       _completeStory();
+      return;
     }
+    
+    _fadeController.reset();
+    setState(() {
+      _currentBeatIndex = nextIndex;
+      _validatedWords.clear();
+      _finalWordConfirmed = false;
+      _finalWordCompletionPending = false;
+      _scrollAnchorWordIndex = -1;
+    });
+    _fadeController.forward();
+    
+    // Check if new beat needs voice recognition
+    _checkAndStartListening();
   }
   
   void _completeStory() {
@@ -1268,6 +1286,27 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       return _currentWordIndex;
     }
     return maxVisible;
+  }
+  
+  bool _isBeatEnabled(StoryBeat beat) {
+    if (!_enableChildPracticeBeats &&
+        (beat.type == BeatType.childTurn || beat.type == BeatType.coachIntervention)) {
+      return false;
+    }
+    if (!_enableCelebrationBeats && beat.type == BeatType.celebration) {
+      return false;
+    }
+    return true;
+  }
+  
+  int _findNextEnabledBeatIndex(int startIndex) {
+    final beats = widget.story.beats;
+    for (int i = startIndex; i < beats.length; i++) {
+      if (_isBeatEnabled(beats[i])) {
+        return i;
+      }
+    }
+    return beats.length;
   }
 
   bool get _currentBeatHasChoicePoint {

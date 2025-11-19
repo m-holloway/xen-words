@@ -289,13 +289,14 @@ class _MeterPainter extends CustomPainter {
       highlightPaint,
     );
 
+    final IconData iconData = isMuted ? Icons.mic_off_rounded : Icons.mic_rounded;
     final iconPainter = TextPainter(
       text: TextSpan(
-        text: String.fromCharCode(Icons.mic_rounded.codePoint),
+        text: String.fromCharCode(iconData.codePoint),
         style: TextStyle(
           fontSize: radius * 1.1,
-          fontFamily: Icons.mic_rounded.fontFamily,
-          package: Icons.mic_rounded.fontPackage,
+          fontFamily: iconData.fontFamily,
+          package: iconData.fontPackage,
           color: isMuted
               ? Colors.white.withOpacity(0.25)
               : Colors.white.withOpacity(0.95),
