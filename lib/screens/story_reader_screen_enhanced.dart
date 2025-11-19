@@ -1484,8 +1484,6 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
         final maxExtent = position.maxScrollExtent;
         final currentPos = position.pixels;
         
-        AppLogger.speech.d('📜 Scrolling to completion: current=${currentPos.toStringAsFixed(1)}, max=${maxExtent.toStringAsFixed(1)}');
-        
         // Single smooth scroll to bottom - only if needed
         if (maxExtent > 0 && maxExtent > currentPos + 10) {
           _contentScrollController.animateTo(
@@ -1493,8 +1491,6 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
             duration: const Duration(milliseconds: 400),
             curve: Curves.easeOutCubic,
           );
-        } else {
-          AppLogger.speech.d('📜 Already at bottom, no scroll needed');
         }
       });
     });

@@ -111,7 +111,6 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
   void _scrollToCurrentLine({bool animated = true}) {
     if (!mounted || widget.wordGroups.isEmpty) return;
     if (widget.shouldAutoExpand) {
-      debugPrint('📏 _scrollToCurrentLine: Skipping scroll - shouldAutoExpand=true');
       return;
     }
     if (!_scrollController.hasClients || !_scrollController.position.hasPixels) return;
@@ -128,8 +127,6 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
     final double lineExtent = _lineHeight;
     final double targetOffset = (_listPadding.top + targetLine * lineExtent)
         .clamp(position.minScrollExtent, position.maxScrollExtent);
-    
-    debugPrint('📏 _scrollToCurrentLine: currentPos=${position.pixels.toStringAsFixed(1)}, targetOffset=${targetOffset.toStringAsFixed(1)}, animated=$shouldAnimate');
     
     if (shouldAnimate) {
       final animation = _scrollController.animateTo(
@@ -198,7 +195,6 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
     }
     
     if (widget.shouldAutoExpand) {
-      debugPrint('📏 GroupedWordDisplay: Auto-expanding with completion=${widget.showCompletionCard}');
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
