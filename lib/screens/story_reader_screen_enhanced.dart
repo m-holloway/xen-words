@@ -1248,6 +1248,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
         : 0.0;
     
     final groupedWords = GroupedWordDisplay(
+      key: ValueKey('narration-words-${_currentBeatIndex}'), // Stable key to prevent remounting
       displayWords: _narrationDisplayWords,
       wordGroups: _wordGroups,
       currentWordIndex: _currentWordIndex,
@@ -1453,20 +1454,77 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
         return;
       }
       AppLogger.speech.success('🎉 Final word completion timer fired - showing completion card');
+      
+      // Preserve current scroll position before layout change
+      double? preservedScrollPosition;
+      if (_contentScrollController.hasClients) {
+        preservedScrollPosition = _contentScrollController.position.pixels;
+        AppLogger.speech.d('📜 Preserving scroll position: ${preservedScrollPosition.toStringAsFixed(1)}');
+      }
+      
       setState(() {
         _finalWordConfirmed = true;
         _finalWordCompletionPending = false;
       });
-      // No longer calling _scrollCompletionIntoView() here - the GroupedWordDisplay
-      // with shouldAutoExpand: true handles expanding to show the completion card
-      // Scrolling the outer controller causes layout conflicts and bouncing
+      
+      // Immediately restore scroll position if it was reset, then scroll to bottom
+      if (preservedScrollPosition != null && _contentScrollController.hasClients) {
+        final scrollPos = preservedScrollPosition; // Capture for closure
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (!mounted) return;
+          if (!_contentScrollController.hasClients) return;
+          final currentPos = _contentScrollController.position.pixels;
+          if (currentPos < scrollPos - 100) {
+            AppLogger.speech.w('📜 Scroll reset detected! Restoring to ${scrollPos.toStringAsFixed(1)}');
+            _contentScrollController.jumpTo(scrollPos);
+          }
+        });
+      }
+      
+      // Scroll to bottom AFTER layout settles to show completion card
+      _scrollCompletionIntoView();
       await _listenForContinueCommandIfReady();
     });
   }
 
-  // Removed _scrollCompletionIntoView() - no longer needed since GroupedWordDisplay
-  // with shouldAutoExpand: true automatically expands to show the completion card
-  // without needing to animate the outer scroll controller
+  void _scrollCompletionIntoView() {
+    if (!mounted) return;
+    
+    // Wait for layout to settle after GroupedWordDisplay expansion
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      if (!_contentScrollController.hasClients) return;
+      
+      // Wait for next frame to ensure expansion is complete
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted) return;
+        if (!_contentScrollController.hasClients) return;
+        
+        // Small delay to ensure layout is stable
+        Future.delayed(const Duration(milliseconds: 150), () {
+          if (!mounted) return;
+          if (!_contentScrollController.hasClients) return;
+          
+          final position = _contentScrollController.position;
+          final maxExtent = position.maxScrollExtent;
+          final currentPos = position.pixels;
+          
+          AppLogger.speech.d('📜 Scrolling to completion: current=${currentPos.toStringAsFixed(1)}, max=${maxExtent.toStringAsFixed(1)}');
+          
+          // Always scroll to bottom to ensure completion card is visible
+          if (maxExtent > 0 && maxExtent > currentPos + 10) {
+            _contentScrollController.animateTo(
+              maxExtent,
+              duration: const Duration(milliseconds: 600),
+              curve: Curves.easeOutCubic,
+            );
+          } else {
+            AppLogger.speech.d('📜 Already at bottom or no scroll needed');
+          }
+        });
+      });
+    });
+  }
   Widget _buildNarrationPrepCard() {
     return Container(
       key: const ValueKey('narration-prep'),
