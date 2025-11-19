@@ -320,13 +320,18 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     bool finalWordConfirmed = _finalWordConfirmed;
     bool shouldScheduleFinalCompletion = false;
 
-    if (anchorSource && trackerReportedEnd) {
-      if (!_finalWordConfirmed && !_finalWordCompletionPending) {
-        shouldScheduleFinalCompletion = true;
-        AppLogger.speech.d('✅ Final word confirmed via Sherpa anchor (delayed completion)');
-      } else {
-        AppLogger.speech.v('⏭️ Skipping final completion schedule: confirmed=$_finalWordConfirmed, pending=$_finalWordCompletionPending');
-      }
+    // Check if we should trigger completion
+    // Primary: Sherpa anchor confirms final word
+    // Fallback: VAD predicts final word and we're at/past the end
+    final bool sherpaConfirmedEnd = anchorSource && trackerReportedEnd;
+    final bool vadPredictedEnd = source == 'vad' && clampedIndex >= totalWords - 1;
+    
+    if ((sherpaConfirmedEnd || vadPredictedEnd) && !_finalWordConfirmed && !_finalWordCompletionPending) {
+      shouldScheduleFinalCompletion = true;
+      final confirmSource = sherpaConfirmedEnd ? 'Sherpa anchor' : 'VAD prediction';
+      AppLogger.speech.d('✅ Final word confirmed via $confirmSource (delayed completion)');
+    } else if ((sherpaConfirmedEnd || vadPredictedEnd) && (_finalWordConfirmed || _finalWordCompletionPending)) {
+      AppLogger.speech.v('⏭️ Skipping final completion schedule: confirmed=$_finalWordConfirmed, pending=$_finalWordCompletionPending');
     }
     
     double updatedWpm = _estimatedWPM;
