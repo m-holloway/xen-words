@@ -33,6 +33,8 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     with SingleTickerProviderStateMixin {
   static const bool _enableChildPracticeBeats = false;
   static const bool _enableCelebrationBeats = false;
+  static const bool _enableTargetWordCelebrations = false;
+  static const bool _showTargetWordCallouts = false;
   int _currentBeatIndex = 0;
   late CoachingSession _session;
   late AnimationController _fadeController;
@@ -110,7 +112,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       if (!hasEnabledBeat) {
         _completeStory();
       } else {
-        _initializeAndStartListening();
+      _initializeAndStartListening();
       }
     });
     
@@ -388,8 +390,8 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       '(conf ${(confidence * 100).toStringAsFixed(0)}%)',
     );
     
-    if (progressed && beat.targetWords.isNotEmpty && clampedIndex < _narrationWords.length) {
-      _checkForValidatedTargetWords(beat, [_narrationWords[clampedIndex]]);
+    if (_enableTargetWordCelebrations && progressed && beat.targetWords.isNotEmpty && clampedIndex > 0) {
+      _checkForValidatedTargetWords(beat, [_narrationWords[clampedIndex - 1]]);
     }
   }
   
@@ -846,18 +848,18 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       return;
     }
     
-    _fadeController.reset();
-    setState(() {
+      _fadeController.reset();
+      setState(() {
       _currentBeatIndex = nextIndex;
       _validatedWords.clear();
-      _finalWordConfirmed = false;
+        _finalWordConfirmed = false;
       _finalWordCompletionPending = false;
       _scrollAnchorWordIndex = -1;
-    });
-    _fadeController.forward();
-    
-    // Check if new beat needs voice recognition
-    _checkAndStartListening();
+      });
+      _fadeController.forward();
+      
+      // Check if new beat needs voice recognition
+      _checkAndStartListening();
   }
   
   void _completeStory() {
@@ -1026,7 +1028,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
                         children: [
                           _buildBeatWidget(currentBeat),
                           const SizedBox(height: 24),
-                          if (choicePoint != null)
+                          if (choicePoint != null && _finalWordConfirmed)
                             _buildChoiceWidget(choicePoint),
                         ],
                       ),
@@ -1080,7 +1082,8 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     bool isTrackingMode,
   ) {
     final showMic = _shouldShowMicPanel;
-    final showContinue = !hasChoicePoint;
+    // For choice points, we want to hide the continue button when the choice widget appears
+    final showContinue = !hasChoicePoint || !_finalWordConfirmed;
     if (!showMic && !showContinue) {
       return const SizedBox(height: 8);
     }
@@ -1171,7 +1174,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
         const SizedBox(height: 16),
         _buildHighlightedText(beat.text, beat.targetWords),
         const SizedBox(height: 18),
-        if (beat.targetWords.isNotEmpty)
+        if (_showTargetWordCallouts && beat.targetWords.isNotEmpty)
           Center(
             child: Wrap(
               spacing: 12,
@@ -1246,6 +1249,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       readingComplete: isComplete,
       scrollWordIndex: _getScrollWordIndex(),
       suppressNextLinger: _suppressNextLinger,
+      shouldAutoExpand: isComplete,
     );
     
     final Widget readyContent = KeyedSubtree(
@@ -1596,14 +1600,14 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     });
 
     if (_narrationTrackingActive) {
-      try {
-        await controller.speechRecognizer.stopNarrationTracking();
-      } catch (e, stackTrace) {
-        AppLogger.speech.e(
-          'Failed to stop narration tracking before rewind: $e',
-          error: e,
-          stackTrace: stackTrace,
-        );
+    try {
+      await controller.speechRecognizer.stopNarrationTracking();
+    } catch (e, stackTrace) {
+      AppLogger.speech.e(
+        'Failed to stop narration tracking before rewind: $e',
+        error: e,
+        stackTrace: stackTrace,
+      );
       }
     }
 
@@ -2013,8 +2017,10 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   }
   
   Widget _buildContinueButton(StoryBeat beat, bool isLastBeat) {
-    final requiresValidation = beat.targetWords.isNotEmpty;
-    final validatedCount = beat.targetWords.where((w) => _validatedWords[w] ?? false).length;
+    final requiresValidation = _enableTargetWordCelebrations && beat.targetWords.isNotEmpty;
+    final validatedCount = requiresValidation
+        ? beat.targetWords.where((w) => _validatedWords[w] ?? false).length
+        : 0;
     final allValidated = !requiresValidation || validatedCount == beat.targetWords.length;
 
     return ElevatedButton(

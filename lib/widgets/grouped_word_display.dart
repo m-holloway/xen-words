@@ -13,6 +13,7 @@ class GroupedWordDisplay extends StatefulWidget {
   final bool readingComplete;
   final int? scrollWordIndex;
   final bool suppressNextLinger;
+  final bool shouldAutoExpand;
   final Duration scrollDuration;
   
   const GroupedWordDisplay({
@@ -25,6 +26,7 @@ class GroupedWordDisplay extends StatefulWidget {
     this.readingComplete = false,
     this.scrollWordIndex,
     this.suppressNextLinger = false,
+    this.shouldAutoExpand = false,
     this.scrollDuration = const Duration(milliseconds: 1000),
   }) : super(key: key);
   
@@ -103,7 +105,7 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
   }
   
   void _scrollToCurrentLine({bool animated = true}) {
-    if (!mounted || widget.wordGroups.isEmpty) return;
+    if (!mounted || widget.wordGroups.isEmpty || widget.shouldAutoExpand) return;
     if (!_scrollController.hasClients || !_scrollController.position.hasPixels) return;
     
     final targetWord = widget.scrollWordIndex ?? widget.currentWordIndex;
@@ -151,37 +153,44 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
   @override
   Widget build(BuildContext context) {
     final currentLineIndex = _findLineForWord(widget.currentWordIndex);
-    final viewportHeight = _estimateViewportHeight();
+    
+    final double? heightConstraint = widget.shouldAutoExpand ? null : _estimateViewportHeight();
+    
+    Widget listContent = ScrollConfiguration(
+      behavior: const _NoGlowScrollBehavior(),
+      child: ListView.builder(
+        controller: _scrollController,
+        physics: widget.shouldAutoExpand 
+            ? const NeverScrollableScrollPhysics() 
+            : const BouncingScrollPhysics(),
+        shrinkWrap: widget.shouldAutoExpand,
+        padding: _listPadding,
+        itemExtent: _lineHeight,
+        itemCount: widget.wordGroups.length,
+        itemBuilder: (context, lineIdx) {
+          final isCurrent = lineIdx == currentLineIndex;
+          final progress = isCurrent
+              ? widget.smoothProgress
+              : (lineIdx < currentLineIndex ? 1.0 : 0.0);
+          
+          return _buildLine(
+            lineIdx,
+            currentLineIndex: currentLineIndex,
+            isCurrent: isCurrent,
+            progress: progress,
+          );
+        },
+      ),
+    );
+
+    if (heightConstraint != null) {
+      listContent = SizedBox(height: heightConstraint, child: listContent);
+    }
     
     return AnimatedSize(
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
-      child: SizedBox(
-        height: viewportHeight,
-        child: ScrollConfiguration(
-          behavior: const _NoGlowScrollBehavior(),
-          child: ListView.builder(
-            controller: _scrollController,
-            physics: const BouncingScrollPhysics(),
-            padding: _listPadding,
-            itemExtent: _lineHeight,
-            itemCount: widget.wordGroups.length,
-            itemBuilder: (context, lineIdx) {
-              final isCurrent = lineIdx == currentLineIndex;
-              final progress = isCurrent
-                  ? widget.smoothProgress
-                  : (lineIdx < currentLineIndex ? 1.0 : 0.0);
-              
-              return _buildLine(
-                lineIdx,
-                currentLineIndex: currentLineIndex,
-                isCurrent: isCurrent,
-                progress: progress,
-              );
-            },
-          ),
-        ),
-      ),
+      child: listContent,
     );
   }
   
