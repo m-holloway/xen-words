@@ -1329,14 +1329,12 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
           stackTrace: stackTrace,
         );
       }
-      if (!mounted) return;
-      setState(() {
-        _narrationTrackingActive = false;
-      });
     }
 
     if (!mounted) return;
+    // Consolidate both state updates into a single setState to avoid double rebuild
     setState(() {
+      _narrationTrackingActive = false;
       _isListening = true;
       _listeningForContinue = true;
       _currentTargetWord = null;
