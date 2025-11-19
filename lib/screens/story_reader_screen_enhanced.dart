@@ -1455,33 +1455,13 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       }
       AppLogger.speech.success('🎉 Final word completion timer fired - showing completion card');
       
-      // Preserve current scroll position before layout change
-      double? preservedScrollPosition;
-      if (_contentScrollController.hasClients) {
-        preservedScrollPosition = _contentScrollController.position.pixels;
-        AppLogger.speech.d('📜 Preserving scroll position: ${preservedScrollPosition.toStringAsFixed(1)}');
-      }
-      
       setState(() {
         _finalWordConfirmed = true;
         _finalWordCompletionPending = false;
       });
       
-      // Immediately restore scroll position if it was reset, then scroll to bottom
-      if (preservedScrollPosition != null && _contentScrollController.hasClients) {
-        final scrollPos = preservedScrollPosition; // Capture for closure
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          if (!mounted) return;
-          if (!_contentScrollController.hasClients) return;
-          final currentPos = _contentScrollController.position.pixels;
-          if (currentPos < scrollPos - 100) {
-            AppLogger.speech.w('📜 Scroll reset detected! Restoring to ${scrollPos.toStringAsFixed(1)}');
-            _contentScrollController.jumpTo(scrollPos);
-          }
-        });
-      }
-      
       // Scroll to bottom AFTER layout settles to show completion card
+      // Single smooth scroll operation - no intermediate jumps/restores
       _scrollCompletionIntoView();
       await _listenForContinueCommandIfReady();
     });
@@ -1490,38 +1470,32 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   void _scrollCompletionIntoView() {
     if (!mounted) return;
     
-    // Wait for layout to settle after GroupedWordDisplay expansion
+    // Wait for layout to fully settle after GroupedWordDisplay expansion
+    // Single delayed scroll to avoid competing scroll operations
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      if (!_contentScrollController.hasClients) return;
       
-      // Wait for next frame to ensure expansion is complete
-      WidgetsBinding.instance.addPostFrameCallback((_) {
+      // Wait for expansion to complete - single delay to ensure layout is stable
+      Future.delayed(const Duration(milliseconds: 500), () {
         if (!mounted) return;
         if (!_contentScrollController.hasClients) return;
         
-        // Small delay to ensure layout is stable
-        Future.delayed(const Duration(milliseconds: 150), () {
-          if (!mounted) return;
-          if (!_contentScrollController.hasClients) return;
-          
-          final position = _contentScrollController.position;
-          final maxExtent = position.maxScrollExtent;
-          final currentPos = position.pixels;
-          
-          AppLogger.speech.d('📜 Scrolling to completion: current=${currentPos.toStringAsFixed(1)}, max=${maxExtent.toStringAsFixed(1)}');
-          
-          // Always scroll to bottom to ensure completion card is visible
-          if (maxExtent > 0 && maxExtent > currentPos + 10) {
-            _contentScrollController.animateTo(
-              maxExtent,
-              duration: const Duration(milliseconds: 600),
-              curve: Curves.easeOutCubic,
-            );
-          } else {
-            AppLogger.speech.d('📜 Already at bottom or no scroll needed');
-          }
-        });
+        final position = _contentScrollController.position;
+        final maxExtent = position.maxScrollExtent;
+        final currentPos = position.pixels;
+        
+        AppLogger.speech.d('📜 Scrolling to completion: current=${currentPos.toStringAsFixed(1)}, max=${maxExtent.toStringAsFixed(1)}');
+        
+        // Single smooth scroll to bottom - only if needed
+        if (maxExtent > 0 && maxExtent > currentPos + 10) {
+          _contentScrollController.animateTo(
+            maxExtent,
+            duration: const Duration(milliseconds: 400),
+            curve: Curves.easeOutCubic,
+          );
+        } else {
+          AppLogger.speech.d('📜 Already at bottom, no scroll needed');
+        }
       });
     });
   }
