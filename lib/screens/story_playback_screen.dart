@@ -37,6 +37,7 @@ class _StoryPlaybackScreenState extends State<StoryPlaybackScreen> {
                     story: story.chapter,
                     profileId: 'generated',
                     childName: story.chapter.metadata?['child_name'] ?? story.storyConcept ?? 'Reader',
+                    generatedStory: story,
                   ),
                 ),
               );

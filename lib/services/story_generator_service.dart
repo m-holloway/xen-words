@@ -32,6 +32,44 @@ class StoryGeneratorService {
 
   Future<void> deleteStory(String storyId) => _storage.deleteStory(storyId);
 
+  Future<GeneratedStoryRecord?> recordStoryOpened(String storyId) async {
+    return _storage.updateStory(
+      storyId,
+      (current) {
+        final now = DateTime.now();
+        final updatedMoments = List<DateTime>.from(current.readMoments)..add(now);
+        if (updatedMoments.length > 30) {
+          updatedMoments.removeRange(0, updatedMoments.length - 30);
+        }
+        return current.copyWith(
+          readCount: current.readCount + 1,
+          lastReadAt: now,
+          readMoments: updatedMoments,
+        );
+      },
+    );
+  }
+
+  Future<GeneratedStoryRecord?> toggleFavorite(String storyId, {bool? value}) async {
+    return _storage.updateStory(
+      storyId,
+      (current) {
+        final desired = value ?? !current.isFavorite;
+        return current.copyWith(isFavorite: desired);
+      },
+    );
+  }
+
+  Future<GeneratedStoryRecord?> setChildRating(String storyId, int? rating) async {
+    return _storage.updateStory(
+      storyId,
+      (current) => current.copyWith(
+        childRating: rating,
+        isFavorite: rating != null && rating >= 4,
+      ),
+    );
+  }
+
   GeneratedStoryRecord _recordFromPayload(
     Map<String, dynamic> payload,
     StoryGenerationRequest request,
@@ -86,6 +124,10 @@ class StoryGeneratorService {
       includeChildName: request.includeChildName,
       createdAt: DateTime.now(),
       requestInputs: request.toMap(),
+      isFavorite: false,
+      readCount: 0,
+      lastReadAt: null,
+      childRating: null,
     );
   }
 

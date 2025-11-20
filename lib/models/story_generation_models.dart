@@ -97,6 +97,11 @@ class GeneratedStoryRecord {
   final DateTime createdAt;
   final bool includeChildName;
   final Map<String, dynamic>? requestInputs;
+  final bool isFavorite;
+  final int readCount;
+  final DateTime? lastReadAt;
+  final int? childRating;
+  final List<DateTime> readMoments;
 
   GeneratedStoryRecord({
     required this.id,
@@ -115,7 +120,12 @@ class GeneratedStoryRecord {
     required this.createdAt,
     this.includeChildName = false,
     this.requestInputs,
-  });
+    this.isFavorite = false,
+    this.readCount = 0,
+    this.lastReadAt,
+    this.childRating,
+    List<DateTime>? readMoments,
+  }) : readMoments = readMoments ?? const [];
 
   Map<String, dynamic> toJson() {
     return {
@@ -135,6 +145,11 @@ class GeneratedStoryRecord {
       'created_at': createdAt.toIso8601String(),
       'include_child_name': includeChildName,
       'request_inputs': requestInputs,
+      'is_favorite': isFavorite,
+      'read_count': readCount,
+      'last_read_at': lastReadAt?.toIso8601String(),
+      'child_rating': childRating,
+      'read_moments': readMoments.map((d) => d.toIso8601String()).toList(),
     };
   }
 
@@ -160,6 +175,63 @@ class GeneratedStoryRecord {
       requestInputs: json['request_inputs'] is Map
           ? Map<String, dynamic>.from(json['request_inputs'] as Map)
           : null,
+      isFavorite: json['is_favorite'] as bool? ?? false,
+      readCount: json['read_count'] as int? ?? 0,
+      lastReadAt: json['last_read_at'] != null
+          ? DateTime.tryParse(json['last_read_at'] as String)
+          : null,
+      childRating: json['child_rating'] as int?,
+      readMoments: (json['read_moments'] as List<dynamic>? ?? [])
+          .map((value) => DateTime.tryParse(value as String))
+          .whereType<DateTime>()
+          .toList(),
+    );
+  }
+
+  GeneratedStoryRecord copyWith({
+    StoryChapter? chapter,
+    String? summary,
+    int? readingLevel,
+    int? durationMinutes,
+    List<String>? focusWords,
+    double? familiarWordRatio,
+    int? familiarWordCount,
+    int? totalWordCount,
+    String? parentPrompt,
+    String? childContext,
+    String? storyConcept,
+    String? model,
+    DateTime? createdAt,
+    bool? includeChildName,
+    Map<String, dynamic>? requestInputs,
+    bool? isFavorite,
+    int? readCount,
+    DateTime? lastReadAt,
+    int? childRating,
+    List<DateTime>? readMoments,
+  }) {
+    return GeneratedStoryRecord(
+      id: id,
+      chapter: chapter ?? this.chapter,
+      summary: summary ?? this.summary,
+      readingLevel: readingLevel ?? this.readingLevel,
+      durationMinutes: durationMinutes ?? this.durationMinutes,
+      focusWords: focusWords ?? this.focusWords,
+      familiarWordRatio: familiarWordRatio ?? this.familiarWordRatio,
+      familiarWordCount: familiarWordCount ?? this.familiarWordCount,
+      totalWordCount: totalWordCount ?? this.totalWordCount,
+      parentPrompt: parentPrompt ?? this.parentPrompt,
+      childContext: childContext ?? this.childContext,
+      storyConcept: storyConcept ?? this.storyConcept,
+      model: model ?? this.model,
+      createdAt: createdAt ?? this.createdAt,
+      includeChildName: includeChildName ?? this.includeChildName,
+      requestInputs: requestInputs ?? this.requestInputs,
+      isFavorite: isFavorite ?? this.isFavorite,
+      readCount: readCount ?? this.readCount,
+      lastReadAt: lastReadAt ?? this.lastReadAt,
+      childRating: childRating ?? this.childRating,
+      readMoments: readMoments ?? this.readMoments,
     );
   }
 }

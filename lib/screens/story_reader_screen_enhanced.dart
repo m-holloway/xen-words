@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/story_models.dart';
+import '../models/story_generation_models.dart';
+import '../services/story_generator_service.dart';
 import '../models/coaching_session.dart';
 import '../models/word_list.dart';
 import '../controllers/game_controller.dart';
@@ -10,6 +12,7 @@ import '../services/word_grouping_service.dart';
 import '../widgets/fireworks_overlay.dart';
 import '../widgets/grouped_word_display.dart';
 import '../widgets/plush_microphone_meter.dart';
+import '../widgets/star_rating.dart';
 import '../utils/app_logger.dart';
 
 /// Enhanced story reader with voice recognition and word highlighting
@@ -17,12 +20,14 @@ class StoryReaderScreenEnhanced extends StatefulWidget {
   final StoryChapter story;
   final String profileId;
   final String childName;
+  final GeneratedStoryRecord? generatedStory;
 
   const StoryReaderScreenEnhanced({
     Key? key,
     required this.story,
     required this.profileId,
     required this.childName,
+    this.generatedStory,
   }) : super(key: key);
 
   @override
@@ -41,6 +46,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   late Animation<double> _fadeAnimation;
   final FireworksController _fireworksController = FireworksController();
   final ScrollController _contentScrollController = ScrollController();
+  final StoryGeneratorService _storyGeneratorService = StoryGeneratorService();
   
   // V13 tracking state (Sherpa-anchored VAD)
   bool _narrationTrackingActive = false;
@@ -881,49 +887,74 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        title: const Row(
-          children: [
-            Icon(Icons.celebration, color: Colors.amber, size: 32),
-            SizedBox(width: 12),
-            Text('Story Complete!'),
-          ],
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              '🎉 Great job, ${widget.childName}!',
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
+      builder: (context) {
+        int selectedRating = widget.generatedStory?.childRating ?? 0;
+        return StatefulBuilder(
+          builder: (context, setStateDialog) => AlertDialog(
+            title: const Row(
+              children: [
+                Icon(Icons.celebration, color: Colors.amber, size: 32),
+                SizedBox(width: 12),
+                Text('Story Complete!'),
+              ],
             ),
-            const SizedBox(height: 16),
-            Text(
-              'You practiced ${_session.wordAttempts.length} words together!',
-              textAlign: TextAlign.center,
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  '🎉 Great job, ${widget.childName}!',
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  'You practiced ${_session.wordAttempts.length} words together!',
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Story time: ${completedSession.duration.inMinutes} minutes',
+                  style: TextStyle(color: Colors.grey.shade600),
+                ),
+                if (widget.generatedStory != null) ...[
+                  const SizedBox(height: 16),
+                  Text(
+                    'How did you like it?',
+                    style: Theme.of(context).textTheme.titleSmall,
+                  ),
+                  const SizedBox(height: 12),
+                  StarRating(
+                    rating: selectedRating ?? 0,
+                    size: 32,
+                    allowClear: true,
+                    onRatingChanged: (value) async {
+                      setStateDialog(() => selectedRating = value);
+                      await _storyGeneratorService.setChildRating(
+                        widget.generatedStory!.id,
+                        value == 0 ? null : value,
+                      );
+                    },
+                  ),
+                ],
+              ],
             ),
-            const SizedBox(height: 8),
-            Text(
-              'Story time: ${completedSession.duration.inMinutes} minutes',
-              style: TextStyle(color: Colors.grey.shade600),
-            ),
-          ],
-        ),
-        actions: [
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop(); // Close dialog
-              Navigator.of(context).pop(); // Return to dashboard
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.deepPurple,
-              foregroundColor: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-            ),
-            child: const Text('Back to Dashboard'),
+            actions: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop(); // Close dialog
+                  Navigator.of(context).pop(); // Return to dashboard
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.deepPurple,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                ),
+                child: const Text('Back to Dashboard'),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
   

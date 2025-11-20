@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import '../models/learning_progress.dart';
 import '../models/child_profile.dart';
+import '../models/story_generation_models.dart';
 import '../models/story_models.dart';
 import '../services/preferences_service.dart';
 import '../services/profile_service.dart';
+import '../services/story_generator_service.dart';
 import '../utils/app_logger.dart';
 import '../widgets/simple_progress_hero.dart';
 import '../widgets/progress_timeline_widget.dart';
@@ -11,6 +13,7 @@ import '../widgets/action_words_widget.dart';
 import '../widgets/word_detail_dialog.dart';
 import 'story_reader_screen_enhanced.dart';
 import 'story_generator_screen.dart';
+import 'story_playback_screen.dart';
 
 /// Parent dashboard showing child's learning progress
 /// Protected by parental gate in game_screen.dart
@@ -26,6 +29,9 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
   ChildProfile? _activeProfile;
   bool _isGuest = false;
   bool _isLoading = true;
+  final StoryGeneratorService _storyService = StoryGeneratorService();
+  GeneratedStoryRecord? _latestStory;
+  int _storyLabCount = 0;
   
   @override
   void initState() {
@@ -37,58 +43,87 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
     setState(() => _isLoading = true);
     try {
       final profileService = ProfileService();
-      final isGuest = await profileService.isGuestMode();
-      
-      if (isGuest) {
-        // Guest mode - show default/empty progress
         final now = DateTime.now();
-        setState(() {
-          _isGuest = true;
-          _activeProfile = null;
-          _progress = LearningProgress(
+      final isGuestMode = await profileService.isGuestMode();
+
+      ChildProfile? profile;
+      LearningProgress progress;
+      bool guestFlag = isGuestMode;
+
+      if (isGuestMode) {
+        progress = LearningProgress(
             firstSessionDate: now,
             lastSessionDate: now,
           );
-          _isLoading = false;
-        });
       } else {
-        // Load active profile
         final activeProfileId = await profileService.getActiveProfileId();
-        ChildProfile? profile;
-        LearningProgress? progress;
-        
         if (activeProfileId != null) {
           final profiles = await profileService.loadProfiles();
           profile = profiles.where((p) => p.id == activeProfileId).firstOrNull;
-          
-          // Load profile-specific progress
           if (profile != null) {
-            progress = await profileService.loadProgressForProfile(profile.id);
+            final loadedProgress = await profileService.loadProgressForProfile(profile.id);
+            progress = loadedProgress ??
+                LearningProgress(
+                  firstSessionDate: now,
+                  lastSessionDate: now,
+                );
+          } else {
+            progress = LearningProgress(
+              firstSessionDate: now,
+              lastSessionDate: now,
+            );
           }
-        }
-        
-        final now = DateTime.now();
-        setState(() {
-          _activeProfile = profile;
-          _isGuest = false;
-          _progress = progress ?? LearningProgress(
+        } else {
+          progress = LearningProgress(
             firstSessionDate: now,
             lastSessionDate: now,
           );
-          _isLoading = false;
-        });
+        }
+        guestFlag = false;
       }
+
+      await _refreshStoryLabPeek();
+
+      if (!mounted) return;
+        setState(() {
+          _activeProfile = profile;
+        _isGuest = guestFlag;
+        _progress = progress;
+      });
     } catch (e) {
       AppLogger.storage.e('Error loading progress', error: e);
       final now = DateTime.now();
+      if (mounted) {
       setState(() {
         _progress = LearningProgress(
           firstSessionDate: now,
           lastSessionDate: now,
         );
-        _isLoading = false;
-      });
+        });
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
     }
+  }
+
+  Future<void> _refreshStoryLabPeek() async {
+    try {
+      final stories = await _storyService.loadStories();
+      if (!mounted) return;
+      setState(() {
+        _latestStory = stories.isNotEmpty ? stories.first : null;
+        _storyLabCount = stories.length;
+      });
+    } catch (e) {
+      AppLogger.storage.e('Error loading Story Lab data', error: e);
+    }
+  }
+
+  int _readsLast30Days(GeneratedStoryRecord story) {
+    final cutoff = DateTime.now().subtract(const Duration(days: 30));
+    return story.readMoments.where((moment) => moment.isAfter(cutoff)).length;
   }
 
   @override
@@ -158,57 +193,73 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
   Widget _buildDashboard(BuildContext context, LearningProgress progress) {
     final childName = _activeProfile?.name ?? 'Your child';
     
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final useSplitPanels = constraints.maxWidth >= 900;
+        final splitWidth = useSplitPanels ? (constraints.maxWidth - 16) / 2 : constraints.maxWidth;
+    
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // 1. HERO - The big story at a glance
           SimpleProgressHero(
             progress: progress,
             childName: childName,
           ),
           
-          const SizedBox(height: 20),
-          
-          // 2. PRIMARY ACTION - Start Story Time
-          _buildStoryTimeButton(context, progress, childName),
-          
-          const SizedBox(height: 20),
-          
-          // Story Lab entry point
-          _buildStoryGeneratorCard(context),
-          
-          const SizedBox(height: 20),
-          
-          // 3. TIMELINE - Visual progress over time
-          ProgressTimelineWidget(
-            progress: progress,
-          ),
-          
-          const SizedBox(height: 20),
-          
-          // 3. ACTION ITEMS - What to do next
-          ActionWordsWidget(
-            progress: progress,
-            onWordTap: (word) => _showWordDetail(context, word, progress),
-          ),
-          
-          const SizedBox(height: 20),
-          
-          // 4. DETAILS ON DEMAND - View all words (collapsed by default)
-          _buildViewAllWordsButton(context, progress),
-          
-          const SizedBox(height: 20),
-          
-          // 5. DATA MANAGEMENT - Settings at bottom
+              const SizedBox(height: 16),
+              
+              Wrap(
+                spacing: 16,
+                runSpacing: 16,
+                children: [
+                  SizedBox(
+                    width: splitWidth,
+                    child: _buildStoryTimeCard(context, progress, childName),
+                  ),
+                  SizedBox(
+                    width: splitWidth,
+                    child: _buildStoryLabCard(context, childName),
+                  ),
+                ],
+              ),
+              
+              if (_latestStory != null) ...[
+                const SizedBox(height: 24),
+                _buildStoryLabPeekCard(context, _latestStory!),
+              ],
+              
+              const SizedBox(height: 24),
+              
+              _buildInsightsSection(context, progress),
+              
+              const SizedBox(height: 24),
+              
           _buildDataManagementSection(context),
         ],
       ),
+        );
+      },
     );
   }
 
-  Widget _buildStoryGeneratorCard(BuildContext context) {
+  Future<void> _openStoryLab(BuildContext context, {StoryLabView view = StoryLabView.library}) async {
+    await Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => StoryGeneratorScreen(initialView: view),
+      ),
+    );
+    await _refreshStoryLabPeek();
+  }
+
+  Widget _buildStoryLabCard(BuildContext context, String childName) {
+    final hasStories = _storyLabCount > 0;
+    final latestTitle = _latestStory?.chapter.title;
+    final libraryLabel = hasStories
+        ? '$_storyLabCount saved ${_storyLabCount == 1 ? "story" : "stories"}'
+        : 'Library ready for your first tale';
+    
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -233,13 +284,7 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
         borderRadius: BorderRadius.circular(20),
         child: InkWell(
           borderRadius: BorderRadius.circular(20),
-          onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => const StoryGeneratorScreen(),
-              ),
-            );
-          },
+          onTap: () => _openStoryLab(context),
           child: Padding(
             padding: const EdgeInsets.all(24.0),
             child: Column(
@@ -250,7 +295,7 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
                     Container(
                       padding: const EdgeInsets.all(14),
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.25),
+                        color: Colors.white.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: const Icon(
@@ -265,16 +310,16 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            'Story Lab (Beta)',
+                            'Story Lab',
                             style: TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.w700,
                               color: Colors.white,
                             ),
                           ),
-                          const SizedBox(height: 6),
+                          const SizedBox(height: 4),
                           Text(
-                            'Generate custom bedtime stories using your prompts plus child preferences.',
+                            libraryLabel,
                             style: TextStyle(
                               color: Colors.white.withOpacity(0.9),
                             ),
@@ -289,14 +334,62 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
                     ),
                   ],
                 ),
+                const SizedBox(height: 12),
+                Text(
+                  hasStories
+                      ? 'Custom stories tuned for $childName and ready to reread tonight.'
+                      : 'Craft bedtime adventures from your prompts in under a minute.',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.95),
+                    height: 1.3,
+                  ),
+                ),
+                if (latestTitle != null) ...[
+                  const SizedBox(height: 8),
+                  Text(
+                    'Latest: $latestTitle',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
                 const SizedBox(height: 16),
                 Wrap(
                   spacing: 8,
                   runSpacing: 8,
                   children: const [
-                    _StoryLabTag('Reading level targeting'),
+                    _StoryLabTag('Reading-level aware'),
                     _StoryLabTag('Parent + child prompts'),
-                    _StoryLabTag('Save + reread stories'),
+                    _StoryLabTag('Saved for rereads'),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  children: [
+                    Expanded(
+                      child: FilledButton(
+                        style: FilledButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.deepOrange.shade700,
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                        ),
+                        onPressed: () => _openStoryLab(context),
+                        child: const Text('Open library'),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          side: BorderSide(color: Colors.white.withOpacity(0.6)),
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                        ),
+                        onPressed: () => _openStoryLab(context, view: StoryLabView.generator),
+                        child: const Text('New story'),
+                      ),
+                    ),
                   ],
                 ),
               ],
@@ -307,7 +400,180 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
     );
   }
   
-  Widget _buildStoryTimeButton(BuildContext context, LearningProgress progress, String childName) {
+  Widget _buildStoryLabPeekCard(BuildContext context, GeneratedStoryRecord story) {
+    final familiarPercent = (story.familiarWordRatio * 100).toStringAsFixed(0);
+    final readsMonth = _readsLast30Days(story);
+    final rating = story.childRating ?? 0;
+
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      child: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                const Icon(Icons.menu_book_outlined, color: Colors.deepPurple),
+                const SizedBox(width: 8),
+                Text(
+                  'Latest from Story Lab',
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: Colors.deepPurple,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+                const Spacer(),
+                if (_storyLabCount > 1)
+                  Chip(
+                    label: Text('$_storyLabCount stories'),
+                    avatar: const Icon(Icons.collections_bookmark, size: 16),
+                  ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            Text(
+              story.chapter.title,
+              style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              story.summary,
+              style: TextStyle(color: Colors.grey.shade700, height: 1.3),
+              maxLines: 4,
+              overflow: TextOverflow.ellipsis,
+            ),
+            const SizedBox(height: 12),
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: [
+                Chip(
+                  avatar: const Icon(Icons.schedule, size: 16),
+                  label: Text('${story.durationMinutes} min read'),
+                ),
+                Chip(
+                  avatar: const Icon(Icons.school, size: 16),
+                  label: Text('Level ${story.readingLevel}'),
+                ),
+                Chip(
+                  avatar: const Icon(Icons.percent, size: 16),
+                  label: Text('$familiarPercent% familiar words'),
+                ),
+                if (readsMonth > 0)
+                  Chip(
+                    avatar: const Icon(Icons.history, size: 16),
+                    label: Text('${readsMonth}× this month'),
+                  ),
+              ],
+            ),
+            if (rating > 0) ...[
+              const SizedBox(height: 12),
+              Row(
+                children: List.generate(
+                  3,
+                  (index) => Icon(
+                    index < rating ? Icons.star : Icons.star_border,
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                ),
+              ),
+            ],
+            if (story.focusWords.isNotEmpty) ...[
+              const SizedBox(height: 16),
+              Text(
+                'Tonight’s focus words',
+                style: Theme.of(context).textTheme.titleSmall,
+              ),
+              const SizedBox(height: 8),
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: story.focusWords.take(6).map((word) {
+                  return Chip(
+                    label: Text(word),
+                    backgroundColor: Colors.deepPurple.shade50,
+                  );
+                }).toList(),
+              ),
+            ],
+            const SizedBox(height: 20),
+            Wrap(
+              spacing: 12,
+              runSpacing: 12,
+              children: [
+                FilledButton.icon(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => StoryPlaybackScreen(story: story),
+                      ),
+                    );
+                  },
+                  icon: const Icon(Icons.play_arrow),
+                  label: const Text('Read this story'),
+                ),
+                OutlinedButton.icon(
+                  onPressed: () => _openStoryLab(context),
+                  icon: const Icon(Icons.menu_book),
+                  label: const Text('Open Story Lab'),
+                ),
+                TextButton.icon(
+                  onPressed: () => _openStoryLab(context, view: StoryLabView.generator),
+                  icon: const Icon(Icons.auto_fix_high),
+                  label: const Text('Create new'),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInsightsSection(BuildContext context, LearningProgress progress) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      child: ExpansionTile(
+        initiallyExpanded: true,
+        tilePadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+        title: const Text(
+          'Insights & next steps',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        subtitle: const Text('Timeline, focus words, and the full word list'),
+        children: [
+          SizedBox(
+            width: double.infinity,
+            child: ProgressTimelineWidget(
+              progress: progress,
+            ),
+          ),
+          const SizedBox(height: 16),
+          const Divider(),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12.0),
+              child: Text(
+                'Focus words',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+            ),
+          ),
+          ActionWordsWidget(
+            progress: progress,
+            onWordTap: (word) => _showWordDetail(context, word, progress),
+          ),
+          const SizedBox(height: 16),
+          _buildViewAllWordsButton(context, progress),
+        ],
+      ),
+    );
+  }
+  
+  Widget _buildStoryTimeCard(BuildContext context, LearningProgress progress, String childName) {
     // Calculate milestone progress
     // For now, unlock story every 5 words mastered
     final wordsMastered = progress.wordProgress.values.where((w) => w.isMastered).length;

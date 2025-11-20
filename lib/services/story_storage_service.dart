@@ -73,6 +73,28 @@ class StoryStorageService {
     }
   }
 
+  Future<GeneratedStoryRecord?> updateStory(
+    String storyId,
+    GeneratedStoryRecord Function(GeneratedStoryRecord current) updater,
+  ) async {
+    try {
+      final file = await _ensureFile();
+      final stories = await loadStories();
+      final index = stories.indexWhere((s) => s.id == storyId);
+      if (index == -1) {
+        return null;
+      }
+      final updated = updater(stories[index]);
+      stories[index] = updated;
+      final jsonList = stories.map((s) => s.toJson()).toList();
+      await file.writeAsString(jsonEncode(jsonList));
+      return updated;
+    } catch (e) {
+      AppLogger.storage.e('Failed to update story $storyId', error: e);
+      rethrow;
+    }
+  }
+
   Future<GeneratedStoryRecord?> getStoryById(String storyId) async {
     final stories = await loadStories();
     return stories.where((s) => s.id == storyId).firstOrNull;
