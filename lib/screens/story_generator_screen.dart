@@ -21,6 +21,7 @@ enum StoryLabView {
 enum StoryLibraryFilter {
   all,
   favorites,
+  mostRead,
   recent,
 }
 
@@ -123,6 +124,16 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
     switch (_libraryFilter) {
       case StoryLibraryFilter.favorites:
         return List<GeneratedStoryRecord>.from(_topFavoriteStories);
+      case StoryLibraryFilter.mostRead:
+        final sorted = List<GeneratedStoryRecord>.from(_savedStories)
+          ..sort((a, b) {
+            final countCompare = b.readCount.compareTo(a.readCount);
+            if (countCompare != 0) return countCompare;
+            final lastA = a.lastReadAt ?? a.createdAt;
+            final lastB = b.lastReadAt ?? b.createdAt;
+            return lastB.compareTo(lastA);
+          });
+        return sorted;
       case StoryLibraryFilter.recent:
         final recents = List<GeneratedStoryRecord>.from(_savedStories);
         recents.sort((a, b) {
@@ -139,6 +150,31 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
   int _readsLast30Days(GeneratedStoryRecord story) {
     final cutoff = DateTime.now().subtract(const Duration(days: 30));
     return story.readMoments.where((date) => date.isAfter(cutoff)).length;
+  }
+
+  String _lastReadLabel(BuildContext context, GeneratedStoryRecord story) {
+    final localizations = MaterialLocalizations.of(context);
+    final last = story.lastReadAt;
+    if (last == null) {
+      return 'Not read yet';
+    }
+    final now = DateTime.now();
+    if (now.year == last.year && now.month == last.month && now.day == last.day) {
+      return 'Last read today';
+    }
+    final difference = now.difference(last);
+    final days = difference.inDays;
+    if (days == 1) {
+      return 'Last read yesterday';
+    }
+    if (days < 7) {
+      return 'Last read ${days}d ago';
+    }
+    if (days < 30) {
+      final weeks = (days / 7).floor();
+      return weeks == 1 ? 'Last read 1w ago' : 'Last read ${weeks}w ago';
+    }
+    return 'Last read ${localizations.formatShortDate(last)}';
   }
 
   Future<void> _loadInitialState() async {
@@ -323,7 +359,8 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
               ),
             );
           },
-        onRate: (value) => _handleInlineRating(story, value),
+          onRate: (value) => _handleInlineRating(story, value),
+          lastReadLabel: _lastReadLabel(context, story),
           deleteStory: () async {
             await _deleteStory(story);
           },
@@ -991,12 +1028,17 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
     final totalMinutes = _savedStories.fold<int>(0, (sum, story) => sum + story.durationMinutes);
     final filteredStories = _filteredStories;
     
-    // Create "Featured" list: Newest + Top Picks
-    // Use a Set to avoid duplicates if the newest is also a top pick
-    final featuredSet = <GeneratedStoryRecord>{};
-    if (_savedStories.isNotEmpty) featuredSet.add(_savedStories.first);
-    featuredSet.addAll(_topPicks());
-    final featuredStories = featuredSet.toList();
+    // Create "Featured" list: Newest + Top Picks (deduplicated, ordered)
+    final featuredStories = <GeneratedStoryRecord>[];
+    if (_savedStories.isNotEmpty) {
+      featuredStories.add(_savedStories.first);
+    }
+    for (final pick in _topPicks()) {
+      final exists = featuredStories.any((story) => story.id == pick.id);
+      if (!exists) {
+        featuredStories.add(pick);
+      }
+    }
 
     return ListView(
       padding: const EdgeInsets.only(bottom: 120),
@@ -1060,6 +1102,7 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
                   child: _FeaturedStoryCard(
                     story: featuredStories[index],
                     isNewest: index == 0 && _savedStories.first.id == featuredStories[index].id,
+                    lastReadLabel: _lastReadLabel(context, featuredStories[index]),
                     onTap: () => _openStoryDetails(featuredStories[index]),
                     onRead: () => _handleReadStory(featuredStories[index]),
                   ),
@@ -1169,7 +1212,8 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
           onReuse: () => _reuseStoryInputs(story),
           onDelete: () => _deleteStory(story),
           onPreview: () => _openStoryDetails(story),
-        onRate: (value) => _handleInlineRating(story, value),
+          onRate: (value) => _handleInlineRating(story, value),
+          lastReadLabel: _lastReadLabel(context, story),
         ),
     );
   }
@@ -1198,8 +1242,10 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
         return 'All';
       case StoryLibraryFilter.favorites:
         return 'Favorites';
+      case StoryLibraryFilter.mostRead:
+        return 'Most read';
       case StoryLibraryFilter.recent:
-        return 'Recent';
+        return 'Recently read';
     }
   }
 
@@ -1209,12 +1255,14 @@ class _FeaturedStoryCard extends StatelessWidget {
   const _FeaturedStoryCard({
     required this.story,
     required this.isNewest,
+    required this.lastReadLabel,
     required this.onTap,
     required this.onRead,
   });
 
   final GeneratedStoryRecord story;
   final bool isNewest;
+  final String lastReadLabel;
   final VoidCallback onTap;
   final VoidCallback onRead;
 
@@ -1347,6 +1395,19 @@ class _FeaturedStoryCard extends StatelessWidget {
                   height: 1.4,
                 ),
               ),
+              const SizedBox(height: 8),
+              Row(
+                children: [
+                  Icon(Icons.schedule, size: 16, color: onGradient.withOpacity(0.9)),
+                  const SizedBox(width: 6),
+                  Text(
+                    lastReadLabel,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: onGradient.withOpacity(0.9),
+                    ),
+                  ),
+                ],
+              ),
               const SizedBox(height: 16),
               
               // Stats Chips
@@ -1432,6 +1493,7 @@ class _StoryListTile extends StatelessWidget {
     required this.onDelete,
     required this.onPreview,
     required this.onRate,
+    required this.lastReadLabel,
   });
 
   final GeneratedStoryRecord story;
@@ -1440,6 +1502,7 @@ class _StoryListTile extends StatelessWidget {
   final VoidCallback onDelete;
   final VoidCallback onPreview;
   final ValueChanged<int> onRate;
+  final String lastReadLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -1472,6 +1535,19 @@ class _StoryListTile extends StatelessWidget {
                 _tonalMetricChip(context, Icons.schedule, '${story.durationMinutes} min'),
                 _tonalMetricChip(context, Icons.school, 'Level ${story.readingLevel}'),
                 _tonalMetricChip(context, Icons.history, _readsThisMonthText(story)),
+              ],
+            ),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Icon(Icons.timelapse, size: 14, color: theme.colorScheme.onSurfaceVariant),
+                const SizedBox(width: 6),
+                Text(
+                  lastReadLabel,
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: theme.colorScheme.onSurfaceVariant,
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 12),
@@ -1615,6 +1691,7 @@ class _StoryDetailScreen extends StatefulWidget {
     required this.deleteStory,
     required this.onViewSummary,
     required this.onRate,
+    required this.lastReadLabel,
   });
 
   final GeneratedStoryRecord story;
@@ -1623,6 +1700,7 @@ class _StoryDetailScreen extends StatefulWidget {
   final Future<void> Function() deleteStory;
   final VoidCallback onViewSummary;
   final ValueChanged<int> onRate;
+  final String lastReadLabel;
 
   @override
   State<_StoryDetailScreen> createState() => _StoryDetailScreenState();
@@ -1713,9 +1791,9 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
-                                ),
-                              ],
-                            ),
+            ),
+          ],
+        ),
                           ),
                           const SizedBox(height: 12),
                           Hero(
@@ -1758,6 +1836,19 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                         Icons.history,
                         readsMonth.toString(),
                         'Reads (30d)',
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      Icon(Icons.timelapse, size: 16, color: theme.colorScheme.onSurfaceVariant),
+                      const SizedBox(width: 8),
+                      Text(
+                        widget.lastReadLabel,
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: theme.colorScheme.onSurfaceVariant,
+                        ),
                       ),
                     ],
                   ),
