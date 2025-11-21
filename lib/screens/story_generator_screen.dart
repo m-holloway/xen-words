@@ -4,6 +4,7 @@ import 'dart:math' as math;
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../models/child_profile.dart';
@@ -2299,6 +2300,34 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
     );
   }
 
+  Future<void> _openStoryEditor() async {
+    if (_story.isBuiltIn) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Built-in stories cannot be edited.')),
+      );
+      return;
+    }
+
+    final updated = await Navigator.of(context).push<GeneratedStoryRecord>(
+      MaterialPageRoute(
+        fullscreenDialog: true,
+        builder: (_) => _StoryEditorScreen(
+          story: _story,
+          storyService: widget.storyService,
+          coverService: widget.coverService,
+        ),
+      ),
+    );
+
+    if (updated != null && mounted) {
+      setState(() {
+        _story = updated;
+        _currentRating = updated.childRating ?? _currentRating;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -2681,6 +2710,11 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                                   icon: const Icon(Icons.delete_outline),
                                   label: const Text('Remove cover'),
                                 ),
+                              FilledButton.tonalIcon(
+                                onPressed: _openStoryEditor,
+                                icon: const Icon(Icons.edit_note_outlined),
+                                label: const Text('Edit story text'),
+                              ),
                             ],
                           ),
                         if (isBuiltIn)
@@ -2832,5 +2866,480 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
         _currentRating = updated.childRating ?? _currentRating;
       });
     }
+  }
+}
+
+class _StoryEditorScreen extends StatefulWidget {
+  const _StoryEditorScreen({
+    required this.story,
+    required this.storyService,
+    required this.coverService,
+  });
+
+  final GeneratedStoryRecord story;
+  final StoryGeneratorService storyService;
+  final StoryCoverService coverService;
+
+  @override
+  State<_StoryEditorScreen> createState() => _StoryEditorScreenState();
+}
+
+class _StoryEditorScreenState extends State<_StoryEditorScreen> {
+  late GeneratedStoryRecord _story;
+  late final TextEditingController _textController;
+  bool _isDirty = false;
+  bool _isSavingText = false;
+  bool _isUpdatingCover = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _story = widget.story;
+    _textController = TextEditingController(
+      text: _rawStoryTextFrom(widget.story),
+    )..addListener(_onTextChanged);
+  }
+
+  @override
+  void dispose() {
+    _textController.removeListener(_onTextChanged);
+    _textController.dispose();
+    super.dispose();
+  }
+
+  Future<bool> _handleWillPop() async {
+    Navigator.of(context).pop(_story);
+    return false;
+  }
+
+  void _onTextChanged() {
+    final canonical = _rawStoryTextFrom(_story);
+    final current = _textController.text.trimRight();
+    final dirty = current != canonical;
+    if (dirty == _isDirty) return;
+    setState(() {
+      _isDirty = dirty;
+    });
+  }
+
+  String _rawStoryTextFrom(GeneratedStoryRecord story) {
+    final buffer = StringBuffer();
+    for (final beat in story.chapter.beats) {
+      final text = beat.text.trimRight();
+      if (text.isEmpty) continue;
+      if (buffer.isNotEmpty) {
+        buffer.writeln();
+      }
+      buffer.writeln(text);
+      buffer.writeln();
+    }
+    return buffer.toString().trimRight();
+  }
+
+  void _resetDraft() {
+    final sourceText = _rawStoryTextFrom(_story);
+    _textController.value = TextEditingValue(
+      text: sourceText,
+      selection: TextSelection.collapsed(offset: sourceText.length),
+    );
+    if (_isDirty) {
+      setState(() => _isDirty = false);
+    }
+  }
+
+  Future<void> _saveStoryText() async {
+    if (_isSavingText) return;
+    final trimmed = _textController.text.trim();
+    if (trimmed.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Story text cannot be empty.')),
+      );
+      return;
+    }
+    setState(() {
+      _isSavingText = true;
+    });
+    try {
+      final updated = await widget.storyService.updateStoryText(
+        _story.id,
+        trimmed,
+      );
+      if (updated != null && mounted) {
+        setState(() {
+          _story = updated;
+          _isDirty = false;
+        });
+        final refreshed = _rawStoryTextFrom(updated);
+        _textController.value = TextEditingValue(
+          text: refreshed,
+          selection: TextSelection.collapsed(offset: refreshed.length),
+        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text('Story text saved.')));
+      }
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Unable to save story text: $e')));
+    } finally {
+      if (!mounted) return;
+      setState(() => _isSavingText = false);
+    }
+  }
+
+  Future<void> _changeCover() async {
+    if (_isUpdatingCover) return;
+    setState(() => _isUpdatingCover = true);
+    try {
+      final coverPath = await widget.coverService.pickAndStoreCover(
+        context: context,
+        storyId: _story.id,
+        existingCoverPath: _story.coverImagePath,
+      );
+      if (coverPath == null) return;
+      final updated = await widget.storyService.updateStoryCover(
+        _story.id,
+        coverPath,
+      );
+      if (updated != null && mounted) {
+        setState(() => _story = updated);
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text('Cover updated.')));
+      }
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Unable to update cover: $e')));
+    } finally {
+      if (!mounted) return;
+      setState(() => _isUpdatingCover = false);
+    }
+  }
+
+  Future<void> _removeCover() async {
+    if (_story.coverImagePath == null || _isUpdatingCover) return;
+    setState(() => _isUpdatingCover = true);
+    try {
+      await widget.coverService.deleteCover(_story.coverImagePath);
+      final updated = await widget.storyService.updateStoryCover(
+        _story.id,
+        null,
+      );
+      if (updated != null && mounted) {
+        setState(() => _story = updated);
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text('Cover removed.')));
+      }
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Unable to remove cover: $e')));
+    } finally {
+      if (!mounted) return;
+      setState(() => _isUpdatingCover = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final canSave = _isDirty && !_isSavingText;
+    return WillPopScope(
+      onWillPop: _handleWillPop,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Edit story'),
+          leading: IconButton(
+            icon: const Icon(Icons.close),
+            onPressed: () => Navigator.of(context).pop(_story),
+          ),
+          actions: [
+            TextButton.icon(
+              onPressed: canSave ? _saveStoryText : null,
+              icon: _isSavingText
+                  ? const SizedBox(
+                      width: 16,
+                      height: 16,
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    )
+                  : const Icon(Icons.save_outlined),
+              label: const Text('Save'),
+            ),
+          ],
+        ),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _EditorSectionHeader(
+                  icon: Icons.menu_book_outlined,
+                  title: 'Cover & presentation',
+                  subtitle: 'Refresh the artwork to match your custom story.',
+                ),
+                const SizedBox(height: 12),
+                _buildCoverCard(theme),
+                const SizedBox(height: 32),
+                _EditorSectionHeader(
+                  icon: Icons.edit_note_outlined,
+                  title: 'Story text',
+                  subtitle:
+                      'Rewrite lines, fix typos, or personalize the tale.',
+                ),
+                const SizedBox(height: 12),
+                _buildTextCard(theme),
+                const SizedBox(height: 80),
+              ],
+            ),
+          ),
+        ),
+        bottomNavigationBar: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
+            child: FilledButton.icon(
+              onPressed: canSave ? _saveStoryText : null,
+              icon: const Icon(Icons.check_circle_outline),
+              label: Text(canSave ? 'Save story text' : 'All changes saved'),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCoverCard(ThemeData theme) {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(
+          color: theme.colorScheme.outlineVariant.withOpacity(0.6),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 18,
+            offset: const Offset(0, 12),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Hero(
+                tag: 'story_cover_${_story.id}',
+                child: _BookCoverPreview(
+                  imagePath: _story.coverImagePath,
+                  width: 140,
+                  borderRadius: 28,
+                  showShadow: true,
+                ),
+              ),
+              const SizedBox(width: 20),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _story.chapter.title,
+                      style: theme.textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      _story.coverImagePath == null
+                          ? 'Add a portrait image to dress up this story on the shelf.'
+                          : 'Swap the artwork anytime for a fresh look.',
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: theme.colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    Wrap(
+                      spacing: 12,
+                      runSpacing: 8,
+                      children: [
+                        FilledButton.icon(
+                          onPressed: _isUpdatingCover ? null : _changeCover,
+                          icon: _isUpdatingCover
+                              ? const SizedBox(
+                                  width: 16,
+                                  height: 16,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                  ),
+                                )
+                              : const Icon(Icons.photo_library_outlined),
+                          label: Text(
+                            _story.coverImagePath == null
+                                ? 'Add cover art'
+                                : 'Change cover art',
+                          ),
+                        ),
+                        if (_story.coverImagePath != null)
+                          OutlinedButton.icon(
+                            onPressed: _isUpdatingCover ? null : _removeCover,
+                            icon: const Icon(Icons.delete_outline),
+                            label: const Text('Remove'),
+                          ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTextCard(ThemeData theme) {
+    final helperColor = theme.colorScheme.primary.withOpacity(0.15);
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(
+          color: theme.colorScheme.outlineVariant.withOpacity(0.6),
+        ),
+        color: theme.colorScheme.surface,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            decoration: BoxDecoration(
+              color: helperColor,
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Row(
+              children: [
+                const Icon(Icons.edit, size: 18),
+                const SizedBox(width: 8),
+                Text(
+                  'Tap below to edit the narration',
+                  style: theme.textTheme.labelLarge,
+                ),
+                const Spacer(),
+                AnimatedOpacity(
+                  opacity: _isDirty ? 1 : 0,
+                  duration: const Duration(milliseconds: 200),
+                  child: Chip(
+                    label: const Text('Unsaved changes'),
+                    backgroundColor: theme.colorScheme.errorContainer
+                        .withOpacity(0.4),
+                    labelStyle: theme.textTheme.labelSmall?.copyWith(
+                      color: theme.colorScheme.error,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 16),
+          TextField(
+            controller: _textController,
+            minLines: 16,
+            maxLines: null,
+            keyboardType: TextInputType.multiline,
+            style: theme.textTheme.bodyLarge?.copyWith(height: 1.5),
+            decoration: InputDecoration(
+              labelText: 'Story text',
+              alignLabelWithHint: true,
+              prefixIcon: const Icon(Icons.notes),
+              hintText: 'Rewrite or personalize the story...',
+              filled: true,
+              fillColor: theme.colorScheme.surfaceVariant.withOpacity(0.4),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(18),
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+          Wrap(
+            spacing: 12,
+            runSpacing: 8,
+            children: [
+              FilledButton.icon(
+                onPressed: _isDirty && !_isSavingText ? _saveStoryText : null,
+                icon: const Icon(Icons.save_outlined),
+                label: const Text('Save now'),
+              ),
+              OutlinedButton.icon(
+                onPressed: _isDirty && !_isSavingText ? _resetDraft : null,
+                icon: const Icon(Icons.refresh),
+                label: const Text('Reset to saved'),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _EditorSectionHeader extends StatelessWidget {
+  const _EditorSectionHeader({
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+  });
+
+  final IconData icon;
+  final String title;
+  final String subtitle;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: theme.colorScheme.primary.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(14),
+          ),
+          child: Icon(icon, color: theme.colorScheme.primary),
+        ),
+        const SizedBox(width: 16),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                subtitle,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.onSurfaceVariant,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }
