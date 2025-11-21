@@ -3,11 +3,14 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
+import 'package:share_plus/share_plus.dart';
+
 import '../models/child_profile.dart';
 import '../models/story_generation_models.dart';
-import '../services/story_generator_service.dart';
+import '../models/story_models.dart';
 import '../services/preferences_service.dart';
 import '../services/profile_service.dart';
+import '../services/story_generator_service.dart';
 import '../utils/reading_level_helper.dart';
 import '../widgets/star_rating.dart';
 import 'story_playback_screen.dart';
@@ -102,7 +105,11 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
   }
 
   List<GeneratedStoryRecord> get _favoriteStories =>
-      _savedStories.where((story) => (story.childRating ?? 0) >= 3).toList();
+      _savedStories.where((story) => !story.isBuiltIn && (story.childRating ?? 0) >= 3).toList();
+
+  int get _personalStoryCount => _savedStories.where((story) => !story.isBuiltIn).length;
+
+  int get _builtInStoryCount => _savedStories.where((story) => story.isBuiltIn).length;
 
   List<GeneratedStoryRecord> get _topFavoriteStories {
     final favs = _favoriteStories;
@@ -255,7 +262,7 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
 
   List<GeneratedStoryRecord> _topPicks() {
     final picks = _savedStories
-        .where((story) => story.readCount > 0 || story.isFavorite)
+        .where((story) => !story.isBuiltIn && (story.readCount > 0 || story.isFavorite))
         .toList()
       ..sort((a, b) {
         final scoreA = (a.isFavorite ? 2 : 0) + a.readCount;
@@ -271,6 +278,12 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
   }
 
   Future<void> _deleteStory(GeneratedStoryRecord story) async {
+    if (story.isBuiltIn) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Built-in stories cannot be removed.')),
+      );
+      return;
+    }
     final confirm = await showDialog<bool>(
       context: context,
       builder: (_) => AlertDialog(
@@ -295,26 +308,35 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
   }
 
   Future<void> _handleReadStory(GeneratedStoryRecord story) async {
-    final updated = await _storyService.recordStoryOpened(story.id) ?? story;
-    final metadataName = (updated.chapter.metadata?['child_name'] as String?)?.trim();
+    final GeneratedStoryRecord handleStory;
+    if (story.isBuiltIn) {
+      handleStory = story;
+    } else {
+      final updated = await _storyService.recordStoryOpened(story.id);
+      handleStory = updated ?? story;
+    }
+    final metadataName = (handleStory.chapter.metadata?['child_name'] as String?)?.trim();
     final resolvedChildName =
         metadataName != null && metadataName.isNotEmpty ? metadataName : (_profileChildName ?? 'Reader');
     if (!mounted) return;
     await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (_) => StoryReaderScreenEnhanced(
-          story: updated.chapter,
+          story: handleStory.chapter,
           profileId: _activeProfileIdOrDefault(),
           childName: resolvedChildName,
-          generatedStory: updated,
+          generatedStory: handleStory,
         ),
       ),
     );
+    if (story.isBuiltIn) {
+      return;
+    }
     await _loadStories();
     if (!mounted) return;
     final refreshed = _savedStories.firstWhere(
-      (s) => s.id == updated.id,
-      orElse: () => updated,
+      (s) => s.id == handleStory.id,
+      orElse: () => handleStory,
     );
     if ((refreshed.childRating ?? 0) == 0) {
       await _promptChildRating(refreshed);
@@ -326,6 +348,12 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
   }
 
   Future<void> _updateStoryRating(GeneratedStoryRecord story, int rating) async {
+    if (story.isBuiltIn) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Built-in stories can\'t be rated.')),
+      );
+      return;
+    }
     final next = rating.clamp(0, 5);
     await _storyService.setChildRating(story.id, next == 0 ? null : next);
     await _loadStories();
@@ -481,6 +509,12 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
   }
 
   void _reuseStoryInputs(GeneratedStoryRecord story) {
+    if (story.isBuiltIn) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Built-in stories are read only.')),
+      );
+      return;
+    }
     final requestInputs = story.requestInputs;
     final readingLevel = _coerceInt(requestInputs?['reading_level'], story.readingLevel);
     final duration = _coerceInt(requestInputs?['duration_minutes'], story.durationMinutes);
@@ -537,7 +571,7 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Story Lab'),
+        title: const Text('Story Time'),
         actions: [
           if (!isLibraryView)
             Padding(
@@ -1025,8 +1059,13 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
     }
 
     final totalStories = _savedStories.length;
-    final totalMinutes = _savedStories.fold<int>(0, (sum, story) => sum + story.durationMinutes);
+    final personalMinutes = _savedStories
+        .where((story) => !story.isBuiltIn)
+        .fold<int>(0, (sum, story) => sum + story.durationMinutes);
     final filteredStories = _filteredStories;
+    final libraryStats = _personalStoryCount > 0
+        ? '${_personalStoryCount} personal • $_builtInStoryCount built-in • $personalMinutes personal mins'
+        : '$_builtInStoryCount built-in stories ready to read';
     
     // Create "Featured" list: Newest + Top Picks (deduplicated, ordered)
     final featuredStories = <GeneratedStoryRecord>[];
@@ -1061,13 +1100,13 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Your Library',
+                    'Your Library ($totalStories)',
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
-                    '$totalStories stories • $totalMinutes mins saved',
+                    libraryStats,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ],
@@ -1148,7 +1187,7 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
               Icon(Icons.menu_book, size: 72, color: Colors.grey.shade400),
               const SizedBox(height: 16),
             Text(
-              'Start your Story Lab library',
+              'Start your Story Time library',
               style: Theme.of(context).textTheme.titleLarge,
               textAlign: TextAlign.center,
               ),
@@ -1507,6 +1546,7 @@ class _StoryListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isBuiltIn = story.isBuiltIn;
 
     return InkWell(
       borderRadius: BorderRadius.circular(18),
@@ -1527,6 +1567,15 @@ class _StoryListTile extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: theme.textTheme.bodyMedium,
             ),
+            if (isBuiltIn) ...[
+              const SizedBox(height: 6),
+              Chip(
+                label: const Text('Built-in'),
+                avatar: const Icon(Icons.lock, size: 16),
+                side: BorderSide(color: theme.colorScheme.primary.withOpacity(0.4)),
+                backgroundColor: theme.colorScheme.primary.withOpacity(0.1),
+              ),
+            ],
             const SizedBox(height: 10),
             Wrap(
               spacing: 8,
@@ -1551,7 +1600,7 @@ class _StoryListTile extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 12),
-            _buildRatingRow(context),
+            _buildRatingRow(context, isBuiltIn),
             const SizedBox(height: 12),
             Row(
               children: [
@@ -1566,12 +1615,13 @@ class _StoryListTile extends StatelessWidget {
                   onPressed: onPreview,
                   child: const Text('Details'),
                 ),
-                IconButton(
-                  icon: const Icon(Icons.delete_outline),
-                  color: theme.colorScheme.error.withOpacity(0.9),
-                  tooltip: 'Delete story',
-                  onPressed: onDelete,
-                ),
+                if (!isBuiltIn)
+                  IconButton(
+                    icon: const Icon(Icons.delete_outline),
+                    color: theme.colorScheme.error.withOpacity(0.9),
+                    tooltip: 'Delete story',
+                    onPressed: onDelete,
+                  ),
               ],
             ),
           ],
@@ -1607,7 +1657,16 @@ class _StoryListTile extends StatelessWidget {
     );
   }
 
-  Widget _buildRatingRow(BuildContext context) {
+  Widget _buildRatingRow(BuildContext context, bool isBuiltIn) {
+    if (isBuiltIn) {
+      return Row(
+        children: [
+          Icon(Icons.info_outline, size: 18, color: Theme.of(context).colorScheme.primary),
+          const SizedBox(width: 6),
+          const Text('Built-in story (read only)'),
+        ],
+      );
+    }
     return StarRating(
       rating: story.childRating ?? 0,
       size: 24,
@@ -1726,6 +1785,7 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
+    final isBuiltIn = widget.story.isBuiltIn;
     final gradientColors = isDark
         ? [const Color(0xFF1E1B4B), const Color(0xFF4C1D95)]
         : [const Color(0xFF3730A3), const Color(0xFF7C3AED)];
@@ -1748,13 +1808,19 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
             ),
             actions: [
               IconButton(
-                icon: const Icon(Icons.delete_outline, color: Colors.white),
-                tooltip: 'Delete Story',
-                onPressed: () async {
-                  await widget.deleteStory();
-                  if (context.mounted) Navigator.of(context).pop();
-                },
+                icon: const Icon(Icons.ios_share, color: Colors.white),
+                tooltip: 'Share story',
+                onPressed: _shareStory,
               ),
+              if (!isBuiltIn)
+                IconButton(
+                  icon: const Icon(Icons.delete_outline, color: Colors.white),
+                  tooltip: 'Delete Story',
+                  onPressed: () async {
+                    await widget.deleteStory();
+                    if (context.mounted) Navigator.of(context).pop();
+                  },
+                ),
             ],
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
@@ -1795,6 +1861,23 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
           ],
         ),
                           ),
+                          if (isBuiltIn) ...[
+                            const SizedBox(height: 8),
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.2),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: const Text(
+                                'Built-in story',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
                           const SizedBox(height: 12),
                           Hero(
                             tag: 'story_title_${widget.story.id}',
@@ -1868,23 +1951,25 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                       color: theme.colorScheme.onSurfaceVariant,
                     ),
                   ),
-                  const SizedBox(height: 32),
-                  Text(
-                    'Your Rating',
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: theme.colorScheme.primary,
+                  if (!isBuiltIn) ...[
+                    const SizedBox(height: 32),
+                    Text(
+                      'Your Rating',
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: theme.colorScheme.primary,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 16),
-                  Center(
-                    child: StarRating(
-                      rating: _currentRating,
-                      size: 38,
-                      allowClear: true,
-                      onRatingChanged: _handleRatingTap,
+                    const SizedBox(height: 16),
+                    Center(
+                      child: StarRating(
+                        rating: _currentRating,
+                        size: 38,
+                        allowClear: true,
+                        onRatingChanged: _handleRatingTap,
+                      ),
                     ),
-                  ),
+                  ],
                   const SizedBox(height: 32),
                   SizedBox(
                     width: double.infinity,
@@ -1899,19 +1984,21 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                       label: const Text('Read Now'),
                     ),
                   ),
-                  const SizedBox(height: 12),
-                  SizedBox(
-                    width: double.infinity,
-                    child: OutlinedButton.icon(
-                      onPressed: widget.onCopyInputs,
-                      style: OutlinedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                  if (!isBuiltIn) ...[
+                    const SizedBox(height: 12),
+                    SizedBox(
+                      width: double.infinity,
+                      child: OutlinedButton.icon(
+                        onPressed: widget.onCopyInputs,
+                        style: OutlinedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                        ),
+                        icon: const Icon(Icons.auto_fix_high),
+                        label: const Text('Create Similar Story'),
                       ),
-                      icon: const Icon(Icons.auto_fix_high),
-                      label: const Text('Create Similar Story'),
                     ),
-                  ),
+                  ],
                   const SizedBox(height: 40),
                 ],
               ),
@@ -1947,4 +2034,41 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
     );
   }
 
+  Future<void> _shareStory() async {
+    final shareText = _buildShareableStoryText(widget.story);
+    if (shareText.isEmpty) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Story text is unavailable to share right now.')),
+      );
+      return;
+    }
+    await Share.share(
+      shareText,
+      subject: widget.story.chapter.title,
+    );
+  }
+
+  String _buildShareableStoryText(GeneratedStoryRecord story) {
+    final buffer = StringBuffer();
+    final title = story.chapter.title.trim();
+    if (title.isNotEmpty) {
+      buffer.writeln(title);
+      buffer.writeln();
+    }
+
+    final readingBeats = story.chapter.beats.where(_isReadingBeat);
+    for (final beat in readingBeats) {
+      final line = beat.text.trim();
+      if (line.isEmpty) continue;
+      buffer.writeln(line);
+      buffer.writeln();
+    }
+
+    return buffer.toString().trim();
+  }
+
+  bool _isReadingBeat(StoryBeat beat) {
+    return beat.type == BeatType.narration;
+  }
 }
