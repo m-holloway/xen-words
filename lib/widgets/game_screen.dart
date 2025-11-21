@@ -3,7 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 import '../controllers/game_controller.dart';
+import '../models/child_profile.dart';
 import '../services/director_tuner.dart';
+import '../services/profile_service.dart';
 import '../utils/app_logger.dart';
 import 'word_display.dart';
 import 'week_selector.dart';
@@ -32,6 +34,11 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
   bool _isStartingGame = false; // Track if game is starting to prevent multiple clicks
   AppLifecycleState? _previousLifecycleState; // Track previous state to avoid pausing on initial launch
   bool _gameHasStarted = false; // Track if game has actually started (prevents lifecycle interference during startup)
+  final ProfileService _profileService = ProfileService();
+  List<ChildProfile> _profiles = [];
+  bool _profilesLoading = true;
+  String? _activeProfileId;
+  bool _isSwitchingProfile = false;
   
   // Director overlay state
   void _onDirectorValueChanged() {
@@ -49,7 +56,18 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
     // Listen to app lifecycle changes to pause/resume microphone
     WidgetsBinding.instance.addObserver(this);
     _previousLifecycleState = WidgetsBinding.instance.lifecycleState;
+    _loadProfiles();
   }
+  ChildProfile get _currentProfile {
+    if (_activeProfileId == null || _activeProfileId == 'guest') {
+      return ChildProfile.guest();
+    }
+    return _profiles.firstWhere(
+      (profile) => profile.id == _activeProfileId,
+      orElse: () => ChildProfile.guest(),
+    );
+  }
+
 
   @override
   void dispose() {
@@ -138,7 +156,68 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
     }
   }
 
-  void _openSettings(BuildContext context, GameController controller) async {
+  Future<void> _loadProfiles() async {
+    setState(() {
+      _profilesLoading = true;
+    });
+    try {
+      final profiles = await _profileService.loadProfiles();
+      final activeId = await _profileService.getActiveProfileId();
+      final isGuest = await _profileService.isGuestMode();
+      if (!mounted) return;
+      setState(() {
+        _profiles = profiles;
+        _activeProfileId = isGuest
+            ? 'guest'
+            : activeId ??
+                (profiles.isNotEmpty ? profiles.first.id : 'guest');
+        _profilesLoading = false;
+      });
+    } catch (e) {
+      AppLogger.ui.e('Failed to load profiles', error: e);
+      if (!mounted) return;
+      setState(() {
+        _profiles = [];
+        _profilesLoading = false;
+        _activeProfileId = 'guest';
+      });
+    }
+  }
+
+  Future<void> _handleProfileTap(
+    ChildProfile profile,
+    GameController controller,
+  ) async {
+    if (_isSwitchingProfile || _activeProfileId == profile.id) return;
+    setState(() => _isSwitchingProfile = true);
+    try {
+      if (profile.isGuest) {
+        await _profileService.setGuestMode();
+      } else {
+        await _profileService.setActiveProfile(profile.id);
+      }
+      await controller.refreshSettings();
+      if (mounted) {
+        await _loadProfiles();
+      }
+    } catch (e) {
+      AppLogger.ui.e('Failed to switch profile', error: e);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Couldn\'t switch profiles. Try again.'),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isSwitchingProfile = false);
+      }
+    }
+  }
+
+  void _openParentDashboard(BuildContext context, GameController controller) async {
     if (controller.settings == null) return;
     
     await Navigator.push(
@@ -157,6 +236,7 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
     // Refresh settings after returning from settings page
     if (mounted) {
       await controller.refreshSettings();
+      await _loadProfiles();
     }
   }
 
@@ -222,17 +302,17 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                     child: _buildMainContent(controller),
                   ),
                   
-                  // Settings button (only shown in initial state, protected by parental gate)
+                  // Parent dashboard button (protected by parental gate)
                   if (controller.state == GameState.initial)
                     Positioned(
                       top: 20,
                       right: 20,
                       child: ParentalGatedIconButton(
-                        icon: Icons.settings,
-                        tooltip: 'Settings (Adult Only)',
-                        gateTitle: 'Settings - Adult Verification',
-                        gateMessage: 'This prevents children from changing settings. Please solve:',
-                        onPassed: () => _openSettings(context, controller),
+                        icon: Icons.family_restroom,
+                        tooltip: 'Parent Dashboard (Adult Only)',
+                        gateTitle: 'Parent Dashboard - Adult Verification',
+                        gateMessage: 'This prevents children from opening the parent dashboard. Please solve:',
+                        onPassed: () => _openParentDashboard(context, controller),
                       ),
                     ),
                   
@@ -277,70 +357,27 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
   Widget _buildMainContent(GameController controller) {
     switch (controller.state) {
       case GameState.initial:
-        return Center(
-          child: _isInitializing
-              ? const Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CircularProgressIndicator(color: Colors.white),
-                    SizedBox(height: 20),
-                    Text(
-                      'Initializing speech recognition...',
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    ),
-                  ],
-                )
-              : controller.settings != null
-                  ? WeekSelector(
-                      currentWeek: controller.currentWeek,
-                      settings: controller.settings!,
-                      isStarting: _isStartingGame,
-                      onWeekChanged: (week) async {
-                        await controller.setCurrentWeek(week);
-                      },
-                      onStartGame: () async {
-                        // Prevent multiple clicks
-                        if (_isStartingGame) return;
-                        
-                        setState(() {
-                          _isStartingGame = true;
-                        });
-                        
-                        try {
-                          // Initialize speech recognition when user starts game
-                          final initialized = await _initializeSpeech();
-                          if (mounted && initialized) {
-                            // Mark that game has started BEFORE beginning round
-                            // This prevents lifecycle observer from interfering during startup
-                            setState(() {
-                              _gameHasStarted = true;
-                            });
-                            
-                            // Only start game if initialization succeeded
-                            // Don't show week selector again - go straight to game
-                            await WakelockPlus.enable();
-                            await controller.beginRound();
-                          } else if (mounted) {
-                            // Reset if initialization failed
-                            setState(() {
-                              _isStartingGame = false;
-                            });
-                          }
-                        } catch (e) {
-                          // Reset on error
-                          if (mounted) {
-                            setState(() {
-                              _isStartingGame = false;
-                              _gameHasStarted = false;
-                            });
-                          }
-                        }
-                      },
-                    )
-                  : const Center(
-                      child: CircularProgressIndicator(color: Colors.white),
-                    ),
-        );
+        if (_isInitializing) {
+          return const Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircularProgressIndicator(color: Colors.white),
+                SizedBox(height: 20),
+                Text(
+                  'Initializing speech recognition...',
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                ),
+              ],
+            ),
+          );
+        }
+        if (controller.settings == null) {
+          return const Center(
+            child: CircularProgressIndicator(color: Colors.white),
+          );
+        }
+        return _buildInitialMenu(controller);
 
       case GameState.playing:
       case GameState.celebrating:
@@ -487,6 +524,227 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
           },
         );
     }
+  }
+
+  Widget _buildInitialMenu(GameController controller) {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.fromLTRB(24, 96, 24, 16),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _buildProfileSwitcher(controller),
+          const SizedBox(height: 24),
+          WeekSelector(
+            currentWeek: controller.currentWeek,
+            settings: controller.settings!,
+            isStarting: _isStartingGame,
+            onWeekChanged: (week) async {
+              await controller.setCurrentWeek(week);
+            },
+            onStartGame: () async {
+              if (_isStartingGame) return;
+              setState(() {
+                _isStartingGame = true;
+              });
+              try {
+                final initialized = await _initializeSpeech();
+                if (mounted && initialized) {
+                  setState(() {
+                    _gameHasStarted = true;
+                  });
+                  await WakelockPlus.enable();
+                  await controller.beginRound();
+                } else if (mounted) {
+                  setState(() {
+                    _isStartingGame = false;
+                  });
+                }
+              } catch (e) {
+                if (mounted) {
+                  setState(() {
+                    _isStartingGame = false;
+                    _gameHasStarted = false;
+                  });
+                }
+              }
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildProfileSwitcher(GameController controller) {
+    if (_profilesLoading) {
+      return const SizedBox(
+        height: 110,
+        child: Center(
+          child: CircularProgressIndicator(color: Colors.white),
+        ),
+      );
+    }
+
+    final current = _currentProfile;
+    final isGuest = current.isGuest;
+    final Color baseColor = isGuest ? Colors.grey.shade600 : current.color;
+
+    return GestureDetector(
+      onTap: _isSwitchingProfile
+          ? null
+          : () => _showProfilePicker(controller, highlightGuest: isGuest),
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          gradient: LinearGradient(
+            colors: [
+              baseColor.withOpacity(0.9),
+              baseColor.withOpacity(0.5),
+            ],
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: baseColor.withOpacity(0.35),
+              blurRadius: 12,
+              offset: const Offset(0, 6),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 70,
+              height: 70,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: Text(
+                  current.emoji,
+                  style: const TextStyle(fontSize: 36),
+                ),
+              ),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    isGuest ? 'Guest mode' : 'Learning as ${current.name}',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    _profiles.isEmpty
+                        ? 'Add more profiles in the Parent Dashboard'
+                        : 'Tap to switch profile',
+                    style: const TextStyle(color: Colors.white70),
+                  ),
+                ],
+              ),
+            ),
+            if (_isSwitchingProfile)
+              const SizedBox(
+                width: 20,
+                height: 20,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                  color: Colors.white,
+                ),
+              )
+            else
+              const Icon(Icons.expand_more, color: Colors.white),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _showProfilePicker(
+    GameController controller, {
+    required bool highlightGuest,
+  }) {
+    showDialog<void>(
+      context: context,
+      builder: (context) => Dialog(
+        insetPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxHeight: 500),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(24, 24, 24, 12),
+                child: Text(
+                  'Choose who\'s learning',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+              ),
+              Expanded(
+                child: ListView(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  children: [
+                    _buildProfilePickerTile(
+                      profile: ChildProfile.guest(),
+                      controller: controller,
+                      isActive:
+                          _activeProfileId == 'guest' || _activeProfileId == null,
+                    ),
+                    for (final profile in _profiles)
+                      _buildProfilePickerTile(
+                        profile: profile,
+                        controller: controller,
+                        isActive: _activeProfileId == profile.id,
+                      ),
+                  ],
+                ),
+              ),
+              const Divider(height: 1),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text('Cancel'),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildProfilePickerTile({
+    required ChildProfile profile,
+    required GameController controller,
+    required bool isActive,
+  }) {
+    return ListTile(
+      leading: CircleAvatar(
+        backgroundColor:
+            profile.isGuest ? Colors.grey.shade400 : profile.color,
+        child: Text(profile.emoji, style: const TextStyle(fontSize: 24)),
+      ),
+      title: Text(profile.isGuest ? 'Guest' : profile.name),
+      subtitle: Text(profile.isGuest ? 'Quick play' : 'Tap to switch'),
+      trailing: isActive
+          ? const Icon(Icons.check_circle, color: Colors.green)
+          : null,
+      onTap: () {
+        Navigator.pop(context);
+        _handleProfileTap(profile, controller);
+      },
+    );
   }
 }
 
