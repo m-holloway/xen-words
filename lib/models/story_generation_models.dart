@@ -102,6 +102,7 @@ class GeneratedStoryRecord {
   final DateTime? lastReadAt;
   final int? childRating;
   final List<DateTime> readMoments;
+  final bool isBuiltIn;
 
   GeneratedStoryRecord({
     required this.id,
@@ -125,6 +126,7 @@ class GeneratedStoryRecord {
     this.lastReadAt,
     this.childRating,
     List<DateTime>? readMoments,
+    this.isBuiltIn = false,
   }) : readMoments = readMoments ?? const [];
 
   Map<String, dynamic> toJson() {
@@ -150,6 +152,7 @@ class GeneratedStoryRecord {
       'last_read_at': lastReadAt?.toIso8601String(),
       'child_rating': childRating,
       'read_moments': readMoments.map((d) => d.toIso8601String()).toList(),
+      'is_built_in': isBuiltIn,
     };
   }
 
@@ -185,6 +188,7 @@ class GeneratedStoryRecord {
           .map((value) => DateTime.tryParse(value as String))
           .whereType<DateTime>()
           .toList(),
+      isBuiltIn: json['is_built_in'] as bool? ?? false,
     );
   }
 
@@ -209,6 +213,7 @@ class GeneratedStoryRecord {
     DateTime? lastReadAt,
     int? childRating,
     List<DateTime>? readMoments,
+    bool? isBuiltIn,
   }) {
     return GeneratedStoryRecord(
       id: id,
@@ -232,6 +237,7 @@ class GeneratedStoryRecord {
       lastReadAt: lastReadAt ?? this.lastReadAt,
       childRating: childRating ?? this.childRating,
       readMoments: readMoments ?? this.readMoments,
+      isBuiltIn: isBuiltIn ?? this.isBuiltIn,
     );
   }
 }
