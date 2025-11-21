@@ -272,6 +272,19 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
         return;
       }
       
+      if (_isUserMuted) {
+        AppLogger.speech.i('🔇 Narration tracking start aborted - user muted during startup');
+        if (started) {
+          await controller.speechRecognizer.stopNarrationTracking();
+        }
+        setState(() {
+          _narrationTrackingActive = true;
+          _wordLinesReady = true;
+          _listeningStatusLabel = 'Microphone muted';
+        });
+        return;
+      }
+      
       if (started) {
         setState(() {
           _narrationTrackingActive = true;
@@ -448,7 +461,20 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
           initialWordIndex: _currentWordIndex
         );
         
-        if (started && mounted) {
+        if (!mounted) {
+          return;
+        }
+        
+        if (_isUserMuted) {
+          AppLogger.speech.i('🔇 Narration resume aborted - user muted during startup');
+          if (started) {
+            await controller.speechRecognizer.stopNarrationTracking();
+          }
+          setState(() => _listeningStatusLabel = 'Microphone muted');
+          return;
+        }
+        
+        if (started) {
           setState(() => _listeningStatusLabel = 'Listening – resume reading');
         }
       } catch (e) {
@@ -924,7 +950,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
                   ),
                   const SizedBox(height: 12),
                   StarRating(
-                    rating: selectedRating ?? 0,
+                    rating: selectedRating,
                     size: 32,
                     allowClear: true,
                     onRatingChanged: (value) async {
@@ -1677,6 +1703,19 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       );
 
       if (!mounted || beatIndex != _currentBeatIndex) {
+        return;
+      }
+      
+      if (_isUserMuted) {
+        AppLogger.speech.i('🔇 Narration rewind aborted - user muted during startup');
+        if (started) {
+          await controller.speechRecognizer.stopNarrationTracking();
+        }
+        setState(() {
+          _narrationTrackingActive = true;
+          _wordLinesReady = true;
+          _listeningStatusLabel = 'Microphone muted';
+        });
         return;
       }
 
