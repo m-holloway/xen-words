@@ -1,14 +1,16 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:math' as math;
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
-
 import 'package:share_plus/share_plus.dart';
 
 import '../models/child_profile.dart';
 import '../models/story_generation_models.dart';
 import '../services/preferences_service.dart';
 import '../services/profile_service.dart';
+import '../services/story_cover_service.dart';
 import '../services/story_generator_service.dart';
 import '../utils/reading_level_helper.dart';
 import '../utils/story_text_utils.dart';
@@ -17,17 +19,9 @@ import 'story_playback_screen.dart';
 import 'story_reader_screen_enhanced.dart';
 import 'story_revision_screen.dart';
 
-enum StoryLabView {
-  library,
-  generator,
-}
+enum StoryLabView { library, generator }
 
-enum StoryLibraryFilter {
-  all,
-  favorites,
-  mostRead,
-  recent,
-}
+enum StoryLibraryFilter { all, favorites, mostRead, recent }
 
 class StoryGeneratorScreen extends StatefulWidget {
   const StoryGeneratorScreen({
@@ -41,7 +35,8 @@ class StoryGeneratorScreen extends StatefulWidget {
   State<StoryGeneratorScreen> createState() => _StoryGeneratorScreenState();
 }
 
-class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with TickerProviderStateMixin {
+class _StoryGeneratorScreenState extends State<StoryGeneratorScreen>
+    with TickerProviderStateMixin {
   final _formKey = GlobalKey<FormState>();
   final _parentPromptController = TextEditingController();
   final _childContextController = TextEditingController();
@@ -50,13 +45,16 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
   final StoryGeneratorService _storyService = StoryGeneratorService();
   final PreferencesService _preferencesService = PreferencesService();
   final ProfileService _profileService = ProfileService();
+  final StoryCoverService _coverService = StoryCoverService();
   late final AnimationController _loadingController;
   late StoryLabView _activeView;
 
   bool _isGenerating = false;
   int _durationMinutes = StoryGenerationDefaults.defaultMinutes;
   double _readingLevel = StoryGenerationDefaults.defaultReadingLevel.toDouble();
-  ReadingBand _currentBand = ReadingLevelHelper.bandForLevel(StoryGenerationDefaults.defaultReadingLevel);
+  ReadingBand _currentBand = ReadingLevelHelper.bandForLevel(
+    StoryGenerationDefaults.defaultReadingLevel,
+  );
   List<GeneratedStoryRecord> _savedStories = [];
   GeneratedStoryRecord? _latestStory;
   bool _useChildName = false;
@@ -105,12 +103,15 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
     });
   }
 
-  List<GeneratedStoryRecord> get _favoriteStories =>
-      _savedStories.where((story) => !story.isBuiltIn && (story.childRating ?? 0) >= 3).toList();
+  List<GeneratedStoryRecord> get _favoriteStories => _savedStories
+      .where((story) => !story.isBuiltIn && (story.childRating ?? 0) >= 3)
+      .toList();
 
-  int get _personalStoryCount => _savedStories.where((story) => !story.isBuiltIn).length;
+  int get _personalStoryCount =>
+      _savedStories.where((story) => !story.isBuiltIn).length;
 
-  int get _builtInStoryCount => _savedStories.where((story) => story.isBuiltIn).length;
+  int get _builtInStoryCount =>
+      _savedStories.where((story) => story.isBuiltIn).length;
 
   List<GeneratedStoryRecord> get _topFavoriteStories {
     final favs = _favoriteStories;
@@ -167,7 +168,9 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
       return 'Not read yet';
     }
     final now = DateTime.now();
-    if (now.year == last.year && now.month == last.month && now.day == last.day) {
+    if (now.year == last.year &&
+        now.month == last.month &&
+        now.day == last.day) {
       return 'Last read today';
     }
     final difference = now.difference(last);
@@ -187,8 +190,12 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
 
   Future<void> _loadInitialState() async {
     final draft = await _preferencesService.loadStoryGeneratorDraft();
-    final fallbackUseChildName = await _preferencesService.getStoryUseChildName();
-    final useChildNamePref = _coerceBool(draft?['include_child_name'], fallbackUseChildName);
+    final fallbackUseChildName = await _preferencesService
+        .getStoryUseChildName();
+    final useChildNamePref = _coerceBool(
+      draft?['include_child_name'],
+      fallbackUseChildName,
+    );
     final profileName = await _loadActiveProfileName();
     final parentPrompt = draft?['parent_prompt']?.toString() ?? '';
     var childContext = draft?['child_context']?.toString() ?? '';
@@ -200,10 +207,14 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
     _childContextController.text = childContext;
     _storyConceptController.text = storyConcept;
 
-    final readingLevel =
-        _coerceInt(draft?['reading_level'], StoryGenerationDefaults.defaultReadingLevel);
-    final duration =
-        _coerceInt(draft?['duration_minutes'], StoryGenerationDefaults.defaultMinutes);
+    final readingLevel = _coerceInt(
+      draft?['reading_level'],
+      StoryGenerationDefaults.defaultReadingLevel,
+    );
+    final duration = _coerceInt(
+      draft?['duration_minutes'],
+      StoryGenerationDefaults.defaultMinutes,
+    );
 
     if (!mounted) return;
     setState(() {
@@ -262,19 +273,23 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
   }
 
   List<GeneratedStoryRecord> _topPicks() {
-    final picks = _savedStories
-        .where((story) => !story.isBuiltIn && (story.readCount > 0 || story.isFavorite))
-        .toList()
-      ..sort((a, b) {
-        final scoreA = (a.isFavorite ? 2 : 0) + a.readCount;
-        final scoreB = (b.isFavorite ? 2 : 0) + b.readCount;
-        if (scoreA == scoreB) {
-          final aDate = a.lastReadAt ?? a.createdAt;
-          final bDate = b.lastReadAt ?? b.createdAt;
-          return bDate.compareTo(aDate);
-        }
-        return scoreB.compareTo(scoreA);
-      });
+    final picks =
+        _savedStories
+            .where(
+              (story) =>
+                  !story.isBuiltIn && (story.readCount > 0 || story.isFavorite),
+            )
+            .toList()
+          ..sort((a, b) {
+            final scoreA = (a.isFavorite ? 2 : 0) + a.readCount;
+            final scoreB = (b.isFavorite ? 2 : 0) + b.readCount;
+            if (scoreA == scoreB) {
+              final aDate = a.lastReadAt ?? a.createdAt;
+              final bDate = b.lastReadAt ?? b.createdAt;
+              return bDate.compareTo(aDate);
+            }
+            return scoreB.compareTo(scoreA);
+          });
     return picks.take(5).toList();
   }
 
@@ -316,9 +331,11 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
       final updated = await _storyService.recordStoryOpened(story.id);
       handleStory = updated ?? story;
     }
-    final metadataName = (handleStory.chapter.metadata?['child_name'] as String?)?.trim();
-    final resolvedChildName =
-        metadataName != null && metadataName.isNotEmpty ? metadataName : (_profileChildName ?? 'Reader');
+    final metadataName =
+        (handleStory.chapter.metadata?['child_name'] as String?)?.trim();
+    final resolvedChildName = metadataName != null && metadataName.isNotEmpty
+        ? metadataName
+        : (_profileChildName ?? 'Reader');
     if (!mounted) return;
     await Navigator.of(context).push(
       MaterialPageRoute(
@@ -348,7 +365,10 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
     _updateStoryRating(story, rating);
   }
 
-  Future<void> _updateStoryRating(GeneratedStoryRecord story, int rating) async {
+  Future<void> _updateStoryRating(
+    GeneratedStoryRecord story,
+    int rating,
+  ) async {
     if (story.isBuiltIn) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Built-in stories can\'t be rated.')),
@@ -362,9 +382,9 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
     final message = next == 0
         ? 'Rating cleared'
         : 'Saved ${next.toString()}-star rating';
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(message)),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
   }
 
   Future<void> _openStoryDetails(GeneratedStoryRecord story) async {
@@ -373,6 +393,7 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
         builder: (_) => _StoryDetailScreen(
           story: story,
           storyService: _storyService,
+          coverService: _coverService,
           onRead: () {
             Navigator.of(context).pop();
             _handleReadStory(story);
@@ -403,7 +424,6 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
 
   String _activeProfileIdOrDefault() => 'generated_profile';
 
-
   void _onDraftFieldChanged() {
     _scheduleDraftSave();
   }
@@ -426,7 +446,9 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
     };
     try {
       await _preferencesService.saveStoryGeneratorDraft(draft);
-      await _preferencesService.setStoryPersonalizationNotes(_childContextController.text.trim());
+      await _preferencesService.setStoryPersonalizationNotes(
+        _childContextController.text.trim(),
+      );
       await _preferencesService.setStoryUseChildName(_useChildName);
     } catch (error) {
       debugPrint('Failed to persist Story Lab draft: $error');
@@ -477,7 +499,9 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
         durationMinutes: _durationMinutes,
         parentPrompt: _parentPromptController.text.trim(),
         childContext: _childContextController.text.trim(),
-        storyConcept: _storyConceptController.text.trim().isEmpty ? null : _storyConceptController.text.trim(),
+        storyConcept: _storyConceptController.text.trim().isEmpty
+            ? null
+            : _storyConceptController.text.trim(),
         childName: childName,
         includeChildName: childName != null,
       );
@@ -490,13 +514,15 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
       if (mounted) {
         _showLibrary();
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Story generated and saved to your library!')),
+          const SnackBar(
+            content: Text('Story generated and saved to your library!'),
+          ),
         );
       }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Story generation failed: $e')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Story generation failed: $e')));
     } finally {
       _generationTicker?.cancel();
       _generationTicker = null;
@@ -518,13 +544,25 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
       return;
     }
     final requestInputs = story.requestInputs;
-    final readingLevel = _coerceInt(requestInputs?['reading_level'], story.readingLevel);
-    final duration = _coerceInt(requestInputs?['duration_minutes'], story.durationMinutes);
-    final parentPrompt = requestInputs?['parent_prompt']?.toString() ?? story.parentPrompt;
-    final childContext = requestInputs?['child_context']?.toString() ?? story.childContext;
-    final storyConcept = requestInputs?['story_concept']?.toString() ?? (story.storyConcept ?? '');
-    final includeChildRequest =
-        _coerceBool(requestInputs?['include_child_name'], story.includeChildName);
+    final readingLevel = _coerceInt(
+      requestInputs?['reading_level'],
+      story.readingLevel,
+    );
+    final duration = _coerceInt(
+      requestInputs?['duration_minutes'],
+      story.durationMinutes,
+    );
+    final parentPrompt =
+        requestInputs?['parent_prompt']?.toString() ?? story.parentPrompt;
+    final childContext =
+        requestInputs?['child_context']?.toString() ?? story.childContext;
+    final storyConcept =
+        requestInputs?['story_concept']?.toString() ??
+        (story.storyConcept ?? '');
+    final includeChildRequest = _coerceBool(
+      requestInputs?['include_child_name'],
+      story.includeChildName,
+    );
     final hasProfileName = _profileChildName?.isNotEmpty ?? false;
     final allowChildName = includeChildRequest && hasProfileName;
 
@@ -547,7 +585,9 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
         : '';
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Story inputs copied from "${story.chapter.title}".$childNameNotice'),
+        content: Text(
+          'Story inputs copied from "${story.chapter.title}".$childNameNotice',
+        ),
       ),
     );
   }
@@ -592,7 +632,9 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
                 borderRadius: BorderRadius.circular(28),
                 boxShadow: [
                   BoxShadow(
-                    color: Theme.of(context).colorScheme.primary.withOpacity(0.35),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.primary.withOpacity(0.35),
                     blurRadius: 16,
                     offset: const Offset(0, 8),
                   ),
@@ -619,7 +661,10 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
                     icon: const Icon(Icons.auto_fix_high, size: 26),
                     label: const Text(
                       'Create Adventure',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -629,14 +674,23 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 200),
         child: isLibraryView
-            ? KeyedSubtree(key: const ValueKey('story_lab_library'), child: _buildLibraryPane())
-            : KeyedSubtree(key: const ValueKey('story_lab_generator'), child: _buildGeneratorPane()),
+            ? KeyedSubtree(
+                key: const ValueKey('story_lab_library'),
+                child: _buildLibraryPane(),
+              )
+            : KeyedSubtree(
+                key: const ValueKey('story_lab_generator'),
+                child: _buildGeneratorPane(),
+              ),
       ),
     );
   }
 
   Widget _buildGeneratorPane() {
-    final vocabPreview = ReadingLevelHelper.vocabularyForBand(_currentBand, wordsPerBand: 12);
+    final vocabPreview = ReadingLevelHelper.vocabularyForBand(
+      _currentBand,
+      wordsPerBand: 12,
+    );
     return Stack(
       children: [
         SingleChildScrollView(
@@ -649,7 +703,8 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
                 _buildStepHeader(
                   step: 1,
                   title: 'Set the difficulty',
-                  subtitle: 'Adjust reading level and pacing for tonight’s session.',
+                  subtitle:
+                      'Adjust reading level and pacing for tonight’s session.',
                 ),
                 Card(
                   child: Padding(
@@ -659,7 +714,10 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
                       children: [
                         Text(
                           _currentBand.label,
-                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
                         ),
                         const SizedBox(height: 4),
                         Text(
@@ -677,9 +735,12 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
                             Expanded(
                               child: Slider(
                                 value: _readingLevel,
-                                min: StoryGenerationDefaults.minReadingLevel.toDouble(),
-                                max: StoryGenerationDefaults.maxReadingLevel.toDouble(),
-                                divisions: StoryGenerationDefaults.maxReadingLevel -
+                                min: StoryGenerationDefaults.minReadingLevel
+                                    .toDouble(),
+                                max: StoryGenerationDefaults.maxReadingLevel
+                                    .toDouble(),
+                                divisions:
+                                    StoryGenerationDefaults.maxReadingLevel -
                                     StoryGenerationDefaults.minReadingLevel,
                                 label: 'Level ${_readingLevel.round()}',
                                 onChanged: _updateReadingLevel,
@@ -693,28 +754,23 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
                           spacing: 6,
                           runSpacing: 6,
                           children: _currentBand.hallmarks
-                              .map(
-                                (note) => Chip(
-                                  label: Text(note),
-                                ),
-                              )
+                              .map((note) => Chip(label: Text(note)))
                               .toList(),
                         ),
                         const SizedBox(height: 6),
                         Text(
                           'Library reference: ${_currentBand.libraryReference}',
-                          style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey.shade600,
+                          ),
                         ),
                         const SizedBox(height: 12),
                         Wrap(
                           spacing: 8,
                           runSpacing: 8,
                           children: vocabPreview
-                              .map(
-                                (word) => Chip(
-                                  label: Text(word),
-                                ),
-                              )
+                              .map((word) => Chip(label: Text(word)))
                               .toList(),
                         ),
                       ],
@@ -738,15 +794,20 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
                             Expanded(
                               child: Slider(
                                 value: _durationMinutes.toDouble(),
-                                min: StoryGenerationDefaults.minMinutes.toDouble(),
-                                max: StoryGenerationDefaults.maxMinutes.toDouble(),
+                                min: StoryGenerationDefaults.minMinutes
+                                    .toDouble(),
+                                max: StoryGenerationDefaults.maxMinutes
+                                    .toDouble(),
                                 divisions:
-                                    StoryGenerationDefaults.maxMinutes - StoryGenerationDefaults.minMinutes,
+                                    StoryGenerationDefaults.maxMinutes -
+                                    StoryGenerationDefaults.minMinutes,
                                 label: '$_durationMinutes min',
-                            onChanged: (value) {
-                              setState(() => _durationMinutes = value.round());
-                              _scheduleDraftSave();
-                            },
+                                onChanged: (value) {
+                                  setState(
+                                    () => _durationMinutes = value.round(),
+                                  );
+                                  _scheduleDraftSave();
+                                },
                               ),
                             ),
                             SizedBox(
@@ -754,7 +815,9 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
                               child: Text(
                                 '$_durationMinutes min',
                                 textAlign: TextAlign.end,
-                                style: const TextStyle(fontWeight: FontWeight.bold),
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ],
@@ -771,23 +834,28 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
                 _buildStepHeader(
                   step: 2,
                   title: 'Story ingredients',
-                  subtitle: 'Capture parent notes and child context (auto-saved).',
+                  subtitle:
+                      'Capture parent notes and child context (auto-saved).',
                 ),
                 _buildTextFieldCard(
                   label: 'Parent Notes / Prompt',
                   controller: _parentPromptController,
                   hint: 'What adventure do you want to tell tonight?',
                   minLines: 3,
-                  validator: (value) =>
-                      value == null || value.trim().isEmpty ? 'Please describe your story idea' : null,
+                  validator: (value) => value == null || value.trim().isEmpty
+                      ? 'Please describe your story idea'
+                      : null,
                 ),
                 const SizedBox(height: 12),
                 _buildTextFieldCard(
                   label: 'Child Personalization',
                   controller: _childContextController,
-                  hint: 'Interests, colors, animals, routines, calming phrases… (auto-saved)',
+                  hint:
+                      'Interests, colors, animals, routines, calming phrases… (auto-saved)',
                   minLines: 3,
-                  validator: (value) => value == null || value.trim().isEmpty ? 'Please add child context' : null,
+                  validator: (value) => value == null || value.trim().isEmpty
+                      ? 'Please add child context'
+                      : null,
                 ),
                 const SizedBox(height: 12),
                 _buildStepHeader(
@@ -815,7 +883,10 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
                   label: Text(_isGenerating ? 'Generating…' : 'Generate Story'),
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 16),
-                    textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    textStyle: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 if (_latestStory != null) ...[
@@ -845,10 +916,7 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              label,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
+            Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
             TextFormField(
               controller: controller,
@@ -891,10 +959,7 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 4),
-          Text(
-            subtitle,
-            style: TextStyle(color: Colors.grey.shade600),
-          ),
+          Text(subtitle, style: TextStyle(color: Colors.grey.shade600)),
         ],
       ),
     );
@@ -954,9 +1019,7 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
                 const SizedBox(height: 8),
                 Text(
                   'Elapsed: ${_generationElapsed.inSeconds}s',
-                  style: const TextStyle(
-                    color: Colors.white70,
-                  ),
+                  style: const TextStyle(color: Colors.white70),
                 ),
               ],
             ),
@@ -994,7 +1057,9 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
                   child: Icon(
                     Icons.star,
                     size: 18 + index * 3,
-                    color: Colors.amber.shade400.withOpacity(0.9 - (index * 0.2)),
+                    color: Colors.amber.shade400.withOpacity(
+                      0.9 - (index * 0.2),
+                    ),
                   ),
                 );
               }),
@@ -1034,7 +1099,9 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
                 const SizedBox(width: 8),
                 Chip(
                   avatar: const Icon(Icons.percent, size: 16),
-                  label: Text('${(story.familiarWordRatio * 100).toStringAsFixed(0)}% familiar'),
+                  label: Text(
+                    '${(story.familiarWordRatio * 100).toStringAsFixed(0)}% familiar',
+                  ),
                 ),
               ],
             ),
@@ -1068,7 +1135,7 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
     final libraryStats = _personalStoryCount > 0
         ? '${_personalStoryCount} personal • $_builtInStoryCount built-in • $personalMinutes personal mins'
         : '$_builtInStoryCount built-in stories ready to read';
-    
+
     // Create "Featured" list: Newest + Top Picks (deduplicated, ordered)
     final featuredStories = <GeneratedStoryRecord>[];
     if (_savedStories.isNotEmpty) {
@@ -1095,7 +1162,10 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
                   color: Theme.of(context).colorScheme.primaryContainer,
                   borderRadius: BorderRadius.circular(14),
                 ),
-                child: Icon(Icons.auto_stories, color: Theme.of(context).colorScheme.primary),
+                child: Icon(
+                  Icons.auto_stories,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
               ),
               const SizedBox(width: 16),
               Column(
@@ -1123,7 +1193,9 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
             child: Text(
               'Highlights',
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
             ),
           ),
           const SizedBox(height: 8),
@@ -1131,19 +1203,25 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
             height: 340, // Tall enough for the hero card content
             child: PageView.builder(
               controller: PageController(viewportFraction: 0.88),
-              padEnds: false, // Start aligned to left (with padding handled by builder)
+              padEnds:
+                  false, // Start aligned to left (with padding handled by builder)
               itemCount: featuredStories.length,
               itemBuilder: (context, index) {
                 // Add padding to separate cards
                 return Padding(
                   padding: EdgeInsets.only(
-                    left: index == 0 ? 16 : 8, 
-                    right: index == featuredStories.length - 1 ? 16 : 8
+                    left: index == 0 ? 16 : 8,
+                    right: index == featuredStories.length - 1 ? 16 : 8,
                   ),
                   child: _FeaturedStoryCard(
                     story: featuredStories[index],
-                    isNewest: index == 0 && _savedStories.first.id == featuredStories[index].id,
-                    lastReadLabel: _lastReadLabel(context, featuredStories[index]),
+                    isNewest:
+                        index == 0 &&
+                        _savedStories.first.id == featuredStories[index].id,
+                    lastReadLabel: _lastReadLabel(
+                      context,
+                      featuredStories[index],
+                    ),
                     onTap: () => _openStoryDetails(featuredStories[index]),
                     onRead: () => _handleReadStory(featuredStories[index]),
                   ),
@@ -1166,13 +1244,15 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: filteredStories.isEmpty
-              ? [_buildEmptyFilterState()]
-              : filteredStories.map(
-                  (story) => Padding(
-                    padding: const EdgeInsets.only(bottom: 12),
-                    child: _buildLibraryItem(story),
-                  ),
-                ).toList(),
+                ? [_buildEmptyFilterState()]
+                : filteredStories
+                      .map(
+                        (story) => Padding(
+                          padding: const EdgeInsets.only(bottom: 12),
+                          child: _buildLibraryItem(story),
+                        ),
+                      )
+                      .toList(),
           ),
         ),
       ],
@@ -1180,36 +1260,35 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
   }
 
   Widget _buildEmptyLibraryState() {
-      return Center(
-        child: Padding(
-          padding: const EdgeInsets.all(32),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.menu_book, size: 72, color: Colors.grey.shade400),
-              const SizedBox(height: 16),
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(32),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.menu_book, size: 72, color: Colors.grey.shade400),
+            const SizedBox(height: 16),
             Text(
               'Start your Story Time library',
               style: Theme.of(context).textTheme.titleLarge,
               textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 8),
-              const Text(
+            ),
+            const SizedBox(height: 8),
+            const Text(
               'Capture your child’s interests, then let Story Lab craft bedtime-ready adventures.',
-                textAlign: TextAlign.center,
-              ),
+              textAlign: TextAlign.center,
+            ),
             const SizedBox(height: 16),
             FilledButton.icon(
               onPressed: _showGenerator,
               icon: const Icon(Icons.auto_fix_high),
               label: const Text('Create your first story'),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
-      );
-    }
-
+      ),
+    );
+  }
 
   Widget _buildLibraryFilterControls() {
     return Column(
@@ -1217,7 +1296,9 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
       children: [
         Text(
           'Browse',
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+          style: Theme.of(
+            context,
+          ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 8),
         Wrap(
@@ -1237,25 +1318,60 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
     );
   }
 
-
   Widget _buildLibraryItem(GeneratedStoryRecord story) {
     final theme = Theme.of(context);
-    return Card(
-      elevation: 0,
-      color: theme.colorScheme.surfaceContainerLow, // Flatter, modern background
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-        side: BorderSide(color: theme.colorScheme.outlineVariant.withOpacity(0.4)),
+    final radius = BorderRadius.circular(14);
+    final outline = theme.colorScheme.outlineVariant.withOpacity(0.45);
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: radius,
+        border: Border.all(color: outline, width: 1.2),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 18,
+            offset: const Offset(0, 10),
+          ),
+        ],
       ),
-        child: _StoryListTile(
-          story: story,
-          onOpen: () => _handleReadStory(story),
-          onReuse: () => _reuseStoryInputs(story),
-          onDelete: () => _deleteStory(story),
-          onPreview: () => _openStoryDetails(story),
-          onRate: (value) => _handleInlineRating(story, value),
-          lastReadLabel: _lastReadLabel(context, story),
+      child: ClipRRect(
+        borderRadius: radius,
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      theme.colorScheme.surfaceVariant.withOpacity(0.4),
+                      theme.colorScheme.surface,
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
+              ),
+            ),
+            Positioned.fill(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  borderRadius: radius,
+                  border: Border.all(color: Colors.white.withOpacity(0.06)),
+                ),
+              ),
+            ),
+            _StoryListTile(
+              story: story,
+              onOpen: () => _handleReadStory(story),
+              onReuse: () => _reuseStoryInputs(story),
+              onDelete: () => _deleteStory(story),
+              onPreview: () => _openStoryDetails(story),
+              onRate: (value) => _handleInlineRating(story, value),
+              lastReadLabel: _lastReadLabel(context, story),
+            ),
+          ],
         ),
+      ),
     );
   }
 
@@ -1272,9 +1388,9 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
           ),
           const SizedBox(height: 4),
           const Text('Try another filter or create a new story.'),
-                ],
-              ),
-            );
+        ],
+      ),
+    );
   }
 
   String _labelForFilter(StoryLibraryFilter filter) {
@@ -1289,7 +1405,6 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
         return 'Recently read';
     }
   }
-
 }
 
 class _FeaturedStoryCard extends StatelessWidget {
@@ -1313,177 +1428,233 @@ class _FeaturedStoryCard extends StatelessWidget {
     final isDark = theme.brightness == Brightness.dark;
     final familiarPercent = (story.familiarWordRatio * 100).toStringAsFixed(0);
     final readsMonth = story.readMoments
-        .where((date) => date.isAfter(DateTime.now().subtract(const Duration(days: 30))))
+        .where(
+          (date) =>
+              date.isAfter(DateTime.now().subtract(const Duration(days: 30))),
+        )
         .length;
-
-    // Gradient Logic: Newest gets the signature Indigo; others get a slightly varied hue
-    // or we keep them consistent for a clean look. Let's keep consistent for now.
     final gradientColors = isDark
         ? [const Color(0xFF1E1B4B), const Color(0xFF4C1D95)]
         : [const Color(0xFF3730A3), const Color(0xFF7C3AED)];
-    
     final onGradient = Colors.white;
+    final radius = BorderRadius.circular(28);
+
+    final coverDecoration = BoxDecoration(
+      gradient: story.coverImagePath == null
+          ? LinearGradient(
+              colors: gradientColors,
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            )
+          : null,
+      image: story.coverImagePath != null
+          ? DecorationImage(
+              image: FileImage(File(story.coverImagePath!)),
+              fit: BoxFit.cover,
+            )
+          : null,
+    );
 
     return GestureDetector(
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: gradientColors,
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: radius,
           boxShadow: [
             BoxShadow(
-              color: gradientColors.first.withOpacity(0.3),
-              blurRadius: 16,
-              offset: const Offset(0, 8),
+              color: Colors.black.withOpacity(0.18),
+              blurRadius: 22,
+              offset: const Offset(0, 16),
             ),
           ],
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+        child: ClipRRect(
+          borderRadius: radius,
+          child: Stack(
             children: [
-              // Top Row: Badge + Rating
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  if (isNewest)
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: Colors.white.withOpacity(0.3)),
-                      ),
-                      child: const Text(
-                        'Newest',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 0.5,
+              Positioned.fill(child: DecoratedBox(decoration: coverDecoration)),
+              Positioned.fill(
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.black.withOpacity(0.55),
+                        Colors.black.withOpacity(0.18),
+                      ],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned.fill(
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    borderRadius: radius,
+                    border: Border.all(
+                      color: Colors.white.withOpacity(0.08),
+                      width: 1.1,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(22),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 5,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.2),
+                            borderRadius: BorderRadius.circular(18),
+                            border: Border.all(
+                              color: Colors.white.withOpacity(0.25),
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                isNewest
+                                    ? Icons.auto_awesome
+                                    : Icons.local_fire_department,
+                                size: 14,
+                                color: Colors.white,
+                              ),
+                              const SizedBox(width: 6),
+                              Text(
+                                isNewest
+                                    ? 'Newest'
+                                    : readsMonth > 0
+                                    ? 'Trending'
+                                    : 'Featured',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 0.4,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    )
-                  else if (readsMonth > 0)
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
+                        StarRating(
+                          rating: story.childRating ?? 0,
+                          size: 18,
+                          activeColor: Colors.amber,
+                          inactiveColor: Colors.white.withOpacity(0.3),
+                          allowClear: false,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Icon(Icons.local_fire_department, color: Colors.white, size: 12),
-                          const SizedBox(width: 4),
+                          Hero(
+                            tag: 'story_title_${story.id}',
+                            child: Material(
+                              color: Colors.transparent,
+                              child: Text(
+                                story.chapter.title,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: theme.textTheme.headlineSmall?.copyWith(
+                                  color: onGradient,
+                                  fontWeight: FontWeight.w800,
+                                  height: 1.1,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 8),
                           Text(
-                            'Trending',
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
+                            story.summary,
+                            maxLines: 3,
+                            overflow: TextOverflow.ellipsis,
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: onGradient.withOpacity(0.82),
+                              height: 1.45,
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.schedule,
+                                size: 16,
+                                color: onGradient.withOpacity(0.9),
+                              ),
+                              const SizedBox(width: 6),
+                              Text(
+                                lastReadLabel,
+                                style: theme.textTheme.bodySmall?.copyWith(
+                                  color: onGradient.withOpacity(0.85),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 12),
+                          Wrap(
+                            spacing: 8,
+                            runSpacing: 8,
+                            children: [
+                              _HeroChip(
+                                icon: Icons.schedule,
+                                label: '${story.durationMinutes}m',
+                              ),
+                              _HeroChip(
+                                icon: Icons.school,
+                                label: 'Lvl ${story.readingLevel}',
+                              ),
+                              _HeroChip(
+                                icon: Icons.percent,
+                                label: '$familiarPercent%',
+                              ),
+                            ],
+                          ),
+                          const Spacer(),
+                          SizedBox(
+                            width: double.infinity,
+                            child: FilledButton(
+                              style: FilledButton.styleFrom(
+                                backgroundColor: onGradient,
+                                foregroundColor: gradientColors.first,
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 14,
+                                ),
+                                elevation: 0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                                textStyle: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                              ),
+                              onPressed: onRead,
+                              child: const Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.play_arrow_rounded),
+                                  SizedBox(width: 8),
+                                  Text('Read Now'),
+                                ],
+                              ),
                             ),
                           ),
                         ],
                       ),
-                    )
-                  else
-                    const Spacer(), // Keeps rating aligned right if no badge
-                  
-                  // Star Rating (Always Visible on Hero Cards)
-                  StarRating(
-                    rating: story.childRating ?? 0,
-                    size: 18,
-                    activeColor: Colors.amber,
-                    inactiveColor: Colors.white.withOpacity(0.3),
-                    allowClear: false,
-                  ),
-                ],
-              ),
-              const Spacer(),
-              
-              // Title
-              Hero(
-                tag: 'story_title_${story.id}',
-                child: Material(
-                  color: Colors.transparent,
-                  child: Text(
-                    story.chapter.title,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: theme.textTheme.headlineSmall?.copyWith(
-                      color: onGradient,
-                      fontWeight: FontWeight.w800,
-                      height: 1.1,
                     ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 8),
-              
-              // Summary
-              Text(
-                story.summary,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: theme.textTheme.bodyMedium?.copyWith(
-                  color: onGradient.withOpacity(0.85),
-                  height: 1.4,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Row(
-                children: [
-                  Icon(Icons.schedule, size: 16, color: onGradient.withOpacity(0.9)),
-                  const SizedBox(width: 6),
-                  Text(
-                    lastReadLabel,
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: onGradient.withOpacity(0.9),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 16),
-              
-              // Stats Chips
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: [
-                  _HeroChip(icon: Icons.schedule, label: '${story.durationMinutes}m'),
-                  _HeroChip(icon: Icons.school, label: 'Lvl ${story.readingLevel}'),
-                  _HeroChip(icon: Icons.percent, label: '$familiarPercent%'),
-                ],
-              ),
-              const SizedBox(height: 20),
-              
-              // Action Button
-              SizedBox(
-                width: double.infinity,
-                child: FilledButton(
-                  style: FilledButton.styleFrom(
-                    backgroundColor: onGradient,
-                    foregroundColor: gradientColors.first,
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                    textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                  ),
-                  onPressed: onRead,
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.play_arrow_rounded),
-                      SizedBox(width: 8),
-                      Text('Read Now'),
-                    ],
-                  ),
+                  ],
                 ),
               ),
             ],
@@ -1526,6 +1697,160 @@ class _HeroChip extends StatelessWidget {
     );
   }
 }
+
+class _BookCoverPreview extends StatelessWidget {
+  const _BookCoverPreview({
+    required this.imagePath,
+    this.width = 82,
+    this.borderRadius = 16,
+    this.showShadow = false,
+  });
+
+  final String? imagePath;
+  final double width;
+  final double borderRadius;
+  final bool showShadow;
+
+  @override
+  Widget build(BuildContext context) {
+    final height = width / 3 * 4;
+    final scheme = Theme.of(context).colorScheme;
+    final hasImage = imagePath != null && imagePath!.isNotEmpty;
+    final borderColor = scheme.outlineVariant.withOpacity(0.45);
+    final borderRadiusValue = BorderRadius.circular(borderRadius);
+    final pageEdgeWidth = width * 0.12;
+
+    final placeholder = Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            scheme.primary.withOpacity(0.25),
+            scheme.secondary.withOpacity(0.3),
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: borderRadiusValue,
+      ),
+      child: Icon(
+        Icons.menu_book_outlined,
+        size: width * 0.4,
+        color: scheme.onSurfaceVariant.withOpacity(0.75),
+      ),
+    );
+
+    Widget imageLayer;
+    if (hasImage) {
+      imageLayer = Image.file(
+        File(imagePath!),
+        fit: BoxFit.cover,
+        errorBuilder: (_, __, ___) => placeholder,
+      );
+    } else {
+      imageLayer = placeholder;
+    }
+
+    final cover = DecoratedBox(
+      decoration: BoxDecoration(
+        borderRadius: borderRadiusValue,
+        border: Border.all(color: borderColor, width: 1.2),
+        boxShadow: showShadow
+            ? [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.18),
+                  blurRadius: 20,
+                  offset: const Offset(0, 14),
+                ),
+              ]
+            : null,
+      ),
+      child: ClipRRect(
+        borderRadius: borderRadiusValue,
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            imageLayer,
+            Container(
+              decoration: BoxDecoration(
+                gradient: hasImage
+                    ? LinearGradient(
+                        colors: [
+                          Colors.black.withOpacity(0.08),
+                          Colors.transparent,
+                        ],
+                        begin: Alignment.bottomCenter,
+                        end: Alignment.topCenter,
+                      )
+                    : null,
+              ),
+            ),
+            Positioned(
+              left: 0,
+              top: 0,
+              bottom: 0,
+              width: 26,
+              child: IgnorePointer(
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.white.withOpacity(0.08),
+                        Colors.transparent,
+                      ],
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+
+    return SizedBox(
+      width: width + pageEdgeWidth,
+      height: height,
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Positioned(
+            right: 0,
+            top: 6,
+            bottom: 6,
+            width: pageEdgeWidth,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(borderRadius * 0.8),
+                  bottomRight: Radius.circular(borderRadius * 0.8),
+                ),
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.white.withOpacity(0.9),
+                    Colors.grey.shade200,
+                    Colors.white.withOpacity(0.75),
+                  ],
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            left: 0,
+            right: pageEdgeWidth - 4,
+            top: 0,
+            bottom: 0,
+            child: cover,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class _StoryListTile extends StatelessWidget {
   const _StoryListTile({
     required this.story,
@@ -1555,76 +1880,107 @@ class _StoryListTile extends StatelessWidget {
       onTap: onPreview,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-        child: Column(
+        child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              story.chapter.title,
-              style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              story.summary,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: theme.textTheme.bodyMedium,
-            ),
-            if (isBuiltIn) ...[
-              const SizedBox(height: 6),
-              Chip(
-                label: const Text('Built-in'),
-                avatar: const Icon(Icons.lock, size: 16),
-                side: BorderSide(color: theme.colorScheme.primary.withOpacity(0.4)),
-                backgroundColor: theme.colorScheme.primary.withOpacity(0.1),
+            _BookCoverPreview(imagePath: story.coverImagePath),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    story.chapter.title,
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    story.summary,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.bodyMedium,
+                  ),
+                  if (isBuiltIn) ...[
+                    const SizedBox(height: 6),
+                    Chip(
+                      label: const Text('Built-in'),
+                      avatar: const Icon(Icons.lock, size: 16),
+                      side: BorderSide(
+                        color: theme.colorScheme.primary.withOpacity(0.4),
+                      ),
+                      backgroundColor: theme.colorScheme.primary.withOpacity(
+                        0.1,
+                      ),
+                    ),
+                  ],
+                  const SizedBox(height: 10),
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 6,
+                    children: [
+                      _tonalMetricChip(
+                        context,
+                        Icons.schedule,
+                        '${story.durationMinutes} min',
+                      ),
+                      _tonalMetricChip(
+                        context,
+                        Icons.school,
+                        'Level ${story.readingLevel}',
+                      ),
+                      _tonalMetricChip(
+                        context,
+                        Icons.history,
+                        _readsThisMonthText(story),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.timelapse,
+                        size: 14,
+                        color: theme.colorScheme.onSurfaceVariant,
+                      ),
+                      const SizedBox(width: 6),
+                      Text(
+                        lastReadLabel,
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: theme.colorScheme.onSurfaceVariant,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  _buildRatingRow(context, isBuiltIn),
+                  const SizedBox(height: 12),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: FilledButton(
+                          onPressed: onOpen,
+                          child: const Text('Read now'),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      OutlinedButton(
+                        onPressed: onPreview,
+                        child: const Text('Details'),
+                      ),
+                      if (!isBuiltIn)
+                        IconButton(
+                          icon: const Icon(Icons.delete_outline),
+                          color: theme.colorScheme.error.withOpacity(0.9),
+                          tooltip: 'Delete story',
+                          onPressed: onDelete,
+                        ),
+                    ],
+                  ),
+                ],
               ),
-            ],
-            const SizedBox(height: 10),
-            Wrap(
-              spacing: 8,
-              runSpacing: 6,
-              children: [
-                _tonalMetricChip(context, Icons.schedule, '${story.durationMinutes} min'),
-                _tonalMetricChip(context, Icons.school, 'Level ${story.readingLevel}'),
-                _tonalMetricChip(context, Icons.history, _readsThisMonthText(story)),
-              ],
-            ),
-            const SizedBox(height: 12),
-            Row(
-              children: [
-                Icon(Icons.timelapse, size: 14, color: theme.colorScheme.onSurfaceVariant),
-                const SizedBox(width: 6),
-                Text(
-                  lastReadLabel,
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    color: theme.colorScheme.onSurfaceVariant,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 12),
-            _buildRatingRow(context, isBuiltIn),
-            const SizedBox(height: 12),
-            Row(
-              children: [
-                Expanded(
-                  child: FilledButton(
-                    onPressed: onOpen,
-                    child: const Text('Read now'),
-                  ),
-                ),
-                const SizedBox(width: 8),
-                OutlinedButton(
-                  onPressed: onPreview,
-                  child: const Text('Details'),
-                ),
-                if (!isBuiltIn)
-                  IconButton(
-                    icon: const Icon(Icons.delete_outline),
-                    color: theme.colorScheme.error.withOpacity(0.9),
-                    tooltip: 'Delete story',
-                    onPressed: onDelete,
-                  ),
-              ],
             ),
           ],
         ),
@@ -1663,7 +2019,11 @@ class _StoryListTile extends StatelessWidget {
     if (isBuiltIn) {
       return Row(
         children: [
-          Icon(Icons.info_outline, size: 18, color: Theme.of(context).colorScheme.primary),
+          Icon(
+            Icons.info_outline,
+            size: 18,
+            color: Theme.of(context).colorScheme.primary,
+          ),
           const SizedBox(width: 6),
           const Text('Built-in story (read only)'),
         ],
@@ -1679,7 +2039,9 @@ class _StoryListTile extends StatelessWidget {
 
   String _readsThisMonthText(GeneratedStoryRecord story) {
     final cutoff = DateTime.now().subtract(const Duration(days: 30));
-    final count = story.readMoments.where((moment) => moment.isAfter(cutoff)).length;
+    final count = story.readMoments
+        .where((moment) => moment.isAfter(cutoff))
+        .length;
     return count == 0 ? 'New' : '${count}× this month';
   }
 }
@@ -1744,10 +2106,59 @@ class _StoryRatingSheet extends StatelessWidget {
   }
 }
 
+class _EditStoryTitleDialog extends StatefulWidget {
+  const _EditStoryTitleDialog({required this.initialTitle});
+
+  final String initialTitle;
+
+  @override
+  State<_EditStoryTitleDialog> createState() => _EditStoryTitleDialogState();
+}
+
+class _EditStoryTitleDialogState extends State<_EditStoryTitleDialog> {
+  late final TextEditingController _controller = TextEditingController(
+    text: widget.initialTitle,
+  );
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Edit story title'),
+      content: TextField(
+        controller: _controller,
+        autofocus: true,
+        textCapitalization: TextCapitalization.sentences,
+        decoration: const InputDecoration(
+          labelText: 'Title',
+          hintText: 'Enter a new title',
+        ),
+        onSubmitted: (value) => Navigator.of(context).pop(value.trim()),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: const Text('Cancel'),
+        ),
+        FilledButton(
+          onPressed: () => Navigator.of(context).pop(_controller.text.trim()),
+          child: const Text('Save'),
+        ),
+      ],
+    );
+  }
+}
+
 class _StoryDetailScreen extends StatefulWidget {
   const _StoryDetailScreen({
     required this.story,
     required this.storyService,
+    required this.coverService,
     required this.onRead,
     required this.onCopyInputs,
     required this.deleteStory,
@@ -1758,6 +2169,7 @@ class _StoryDetailScreen extends StatefulWidget {
 
   final GeneratedStoryRecord story;
   final StoryGeneratorService storyService;
+  final StoryCoverService coverService;
   final VoidCallback onRead;
   final VoidCallback onCopyInputs;
   final Future<void> Function() deleteStory;
@@ -1772,6 +2184,7 @@ class _StoryDetailScreen extends StatefulWidget {
 class _StoryDetailScreenState extends State<_StoryDetailScreen> {
   late GeneratedStoryRecord _story;
   late int _currentRating;
+  bool _isUpdatingCover = false;
 
   @override
   void initState() {
@@ -1787,6 +2200,105 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
     widget.onRate(value);
   }
 
+  Future<void> _changeCover() async {
+    if (_story.isBuiltIn || _isUpdatingCover) return;
+    setState(() {
+      _isUpdatingCover = true;
+    });
+    try {
+      final coverPath = await widget.coverService.pickAndStoreCover(
+        context: context,
+        storyId: _story.id,
+        existingCoverPath: _story.coverImagePath,
+      );
+      if (coverPath == null) {
+        return;
+      }
+      final updated = await widget.storyService.updateStoryCover(
+        _story.id,
+        coverPath,
+      );
+      if (updated != null && mounted) {
+        setState(() {
+          _story = updated;
+        });
+      }
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Unable to update cover: $e')));
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isUpdatingCover = false;
+        });
+      } else {
+        _isUpdatingCover = false;
+      }
+    }
+  }
+
+  Future<void> _removeCover() async {
+    if (_story.coverImagePath == null || _isUpdatingCover) return;
+    setState(() {
+      _isUpdatingCover = true;
+    });
+    try {
+      await widget.coverService.deleteCover(_story.coverImagePath);
+      final updated = await widget.storyService.updateStoryCover(
+        _story.id,
+        null,
+      );
+      if (updated != null && mounted) {
+        setState(() {
+          _story = updated;
+        });
+      }
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Unable to remove cover: $e')));
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isUpdatingCover = false;
+        });
+      } else {
+        _isUpdatingCover = false;
+      }
+    }
+  }
+
+  Future<void> _openCoverLightbox() async {
+    final path = _story.coverImagePath;
+    if (path == null) return;
+    await showDialog<void>(
+      context: context,
+      builder: (context) {
+        return GestureDetector(
+          onTap: () => Navigator.of(context).pop(),
+          child: Container(
+            color: Colors.black.withOpacity(0.9),
+            child: Center(
+              child: Hero(
+                tag: 'story_cover_${_story.id}',
+                child: InteractiveViewer(
+                  maxScale: 4,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(24),
+                    child: Image.file(File(path), fit: BoxFit.contain),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -1798,8 +2310,15 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
         : [const Color(0xFF3730A3), const Color(0xFF7C3AED)];
     final familiarPercent = (story.familiarWordRatio * 100).toStringAsFixed(0);
     final readsMonth = story.readMoments
-        .where((moment) => moment.isAfter(DateTime.now().subtract(const Duration(days: 30))))
+        .where(
+          (moment) =>
+              moment.isAfter(DateTime.now().subtract(const Duration(days: 30))),
+        )
         .length;
+
+    final coverShowcaseWidth = (MediaQuery.of(context).size.width * 0.55)
+        .clamp(160.0, 280.0)
+        .toDouble();
 
     return Scaffold(
       body: CustomScrollView(
@@ -1837,15 +2356,33 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
             ],
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: gradientColors,
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                ),
                 child: Stack(
+                  fit: StackFit.expand,
                   children: [
+                    if (story.coverImagePath != null)
+                      Image.file(
+                        File(story.coverImagePath!),
+                        fit: BoxFit.cover,
+                        errorBuilder: (_, __, ___) =>
+                            Container(color: gradientColors.first),
+                      ),
+                    if (story.coverImagePath != null)
+                      BackdropFilter(
+                        filter: ui.ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                        child: Container(color: Colors.black.withOpacity(0)),
+                      ),
+                    Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            gradientColors.first.withOpacity(0.7),
+                            gradientColors.last.withOpacity(0.4),
+                          ],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                      ),
+                    ),
                     Positioned(
                       bottom: 60,
                       left: 20,
@@ -1854,7 +2391,10 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 6,
+                            ),
                             decoration: BoxDecoration(
                               color: Colors.white.withOpacity(0.2),
                               borderRadius: BorderRadius.circular(20),
@@ -1862,7 +2402,11 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                const Icon(Icons.school, color: Colors.white, size: 14),
+                                const Icon(
+                                  Icons.school,
+                                  color: Colors.white,
+                                  size: 14,
+                                ),
                                 const SizedBox(width: 6),
                                 Text(
                                   'Level ${story.readingLevel}',
@@ -1870,14 +2414,58 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
-            ),
-          ],
-        ),
+                                ),
+                              ],
+                            ),
                           ),
+                          if (!isBuiltIn) ...[
+                            const SizedBox(height: 8),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 6,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.black.withOpacity(0.35),
+                                borderRadius: BorderRadius.circular(18),
+                                border: Border.all(
+                                  color: Colors.white.withOpacity(0.2),
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  StarRating(
+                                    rating: _currentRating,
+                                    size: 18,
+                                    allowClear: true,
+                                    activeColor: Colors.amberAccent,
+                                    inactiveColor: Colors.white.withOpacity(
+                                      0.35,
+                                    ),
+                                    onRatingChanged: _handleRatingTap,
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Text(
+                                    _currentRating > 0
+                                        ? '${_currentRating}/5'
+                                        : 'Tap to rate',
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                           if (isBuiltIn) ...[
                             const SizedBox(height: 8),
                             Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 4,
+                              ),
                               decoration: BoxDecoration(
                                 color: Colors.white.withOpacity(0.2),
                                 borderRadius: BorderRadius.circular(20),
@@ -1910,7 +2498,10 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                           ),
                           const SizedBox(height: 8),
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 4,
+                            ),
                             decoration: BoxDecoration(
                               color: Colors.white.withOpacity(0.18),
                               borderRadius: BorderRadius.circular(20),
@@ -1941,8 +2532,18 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      _buildDetailStat(context, Icons.schedule, '${story.durationMinutes}m', 'Duration'),
-                      _buildDetailStat(context, Icons.percent, '$familiarPercent%', 'Familiar'),
+                      _buildDetailStat(
+                        context,
+                        Icons.schedule,
+                        '${story.durationMinutes}m',
+                        'Duration',
+                      ),
+                      _buildDetailStat(
+                        context,
+                        Icons.percent,
+                        '$familiarPercent%',
+                        'Familiar',
+                      ),
                       _buildDetailStat(
                         context,
                         Icons.history,
@@ -1952,9 +2553,30 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                     ],
                   ),
                   const SizedBox(height: 16),
+                  if (!isBuiltIn) ...[
+                    Text(
+                      'Your rating',
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: theme.colorScheme.primary,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    StarRating(
+                      rating: _currentRating,
+                      size: 42,
+                      allowClear: true,
+                      onRatingChanged: _handleRatingTap,
+                    ),
+                    const SizedBox(height: 16),
+                  ],
                   Row(
                     children: [
-                      Icon(Icons.timelapse, size: 16, color: theme.colorScheme.onSurfaceVariant),
+                      Icon(
+                        Icons.timelapse,
+                        size: 16,
+                        color: theme.colorScheme.onSurfaceVariant,
+                      ),
                       const SizedBox(width: 8),
                       Text(
                         widget.lastReadLabel,
@@ -1964,7 +2586,26 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 32),
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    width: double.infinity,
+                    child: FilledButton.icon(
+                      onPressed: widget.onRead,
+                      style: FilledButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 18),
+                        textStyle: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ),
+                      icon: const Icon(Icons.play_arrow_rounded),
+                      label: const Text('Read Now'),
+                    ),
+                  ),
+                  const SizedBox(height: 24),
                   Text(
                     'Story Summary',
                     style: theme.textTheme.titleMedium?.copyWith(
@@ -1980,39 +2621,83 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                       color: theme.colorScheme.onSurfaceVariant,
                     ),
                   ),
-                  if (!isBuiltIn) ...[
-                    const SizedBox(height: 32),
-                    Text(
-                      'Your Rating',
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: theme.colorScheme.primary,
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    Center(
-                      child: StarRating(
-                        rating: _currentRating,
-                        size: 38,
-                        allowClear: true,
-                        onRatingChanged: _handleRatingTap,
-                      ),
-                    ),
-                  ],
-                  const SizedBox(height: 32),
-                  SizedBox(
-                    width: double.infinity,
-                    child: FilledButton.icon(
-                      onPressed: widget.onRead,
-                      style: FilledButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 18),
-                        textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                      ),
-                      icon: const Icon(Icons.play_arrow_rounded),
-                      label: const Text('Read Now'),
+                  const SizedBox(height: 24),
+                  Text(
+                    'Book cover',
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: theme.colorScheme.primary,
                     ),
                   ),
+                  const SizedBox(height: 12),
+                  Center(
+                    child: Column(
+                      children: [
+                        GestureDetector(
+                          onTap: story.coverImagePath != null
+                              ? _openCoverLightbox
+                              : null,
+                          child: Hero(
+                            tag: 'story_cover_${story.id}',
+                            child: _BookCoverPreview(
+                              imagePath: story.coverImagePath,
+                              width: coverShowcaseWidth,
+                              borderRadius: 28,
+                              showShadow: true,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        if (!isBuiltIn)
+                          Wrap(
+                            spacing: 12,
+                            runSpacing: 12,
+                            alignment: WrapAlignment.center,
+                            children: [
+                              FilledButton.icon(
+                                onPressed: _isUpdatingCover
+                                    ? null
+                                    : _changeCover,
+                                icon: _isUpdatingCover
+                                    ? const SizedBox(
+                                        width: 16,
+                                        height: 16,
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 2,
+                                        ),
+                                      )
+                                    : const Icon(Icons.brush_outlined),
+                                label: Text(
+                                  story.coverImagePath == null
+                                      ? 'Add cover art'
+                                      : 'Update cover art',
+                                ),
+                              ),
+                              if (story.coverImagePath != null)
+                                TextButton.icon(
+                                  onPressed: _isUpdatingCover
+                                      ? null
+                                      : _removeCover,
+                                  icon: const Icon(Icons.delete_outline),
+                                  label: const Text('Remove cover'),
+                                ),
+                            ],
+                          ),
+                        if (isBuiltIn)
+                          Padding(
+                            padding: const EdgeInsets.only(top: 12),
+                            child: Text(
+                              'Built-in stories use default artwork.',
+                              textAlign: TextAlign.center,
+                              style: theme.textTheme.bodySmall?.copyWith(
+                                color: theme.colorScheme.onSurfaceVariant,
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 24),
                   if (!isBuiltIn) ...[
                     const SizedBox(height: 12),
                     SizedBox(
@@ -2021,7 +2706,9 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                         onPressed: widget.onCopyInputs,
                         style: OutlinedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(vertical: 16),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
                         ),
                         icon: const Icon(Icons.auto_fix_high),
                         label: const Text('Create Similar Story'),
@@ -2034,7 +2721,9 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                         onPressed: _openRevisionFlow,
                         style: OutlinedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(vertical: 16),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
                         ),
                         icon: const Icon(Icons.edit_note),
                         label: const Text('Revise Story'),
@@ -2051,7 +2740,12 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
     );
   }
 
-  Widget _buildDetailStat(BuildContext context, IconData icon, String value, String label) {
+  Widget _buildDetailStat(
+    BuildContext context,
+    IconData icon,
+    String value,
+    String label,
+  ) {
     final theme = Theme.of(context);
     return Column(
       children: [
@@ -2066,11 +2760,15 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
         const SizedBox(height: 8),
         Text(
           value,
-          style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+          style: theme.textTheme.titleMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
         ),
         Text(
           label,
-          style: theme.textTheme.labelSmall?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+          style: theme.textTheme.labelSmall?.copyWith(
+            color: theme.colorScheme.onSurfaceVariant,
+          ),
         ),
       ],
     );
@@ -2081,51 +2779,31 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
     if (shareText.isEmpty) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Story text is unavailable to share right now.')),
+        const SnackBar(
+          content: Text('Story text is unavailable to share right now.'),
+        ),
       );
       return;
     }
-    await Share.share(
-      shareText,
-      subject: _story.chapter.title,
-    );
+    await Share.share(shareText, subject: _story.chapter.title);
   }
 
   Future<void> _promptEditTitle() async {
-    final controller = TextEditingController(text: _story.chapter.title);
     final newTitle = await showDialog<String>(
       context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text('Edit story title'),
-          content: TextField(
-            controller: controller,
-            autofocus: true,
-            textCapitalization: TextCapitalization.sentences,
-            decoration: const InputDecoration(
-              labelText: 'Title',
-              hintText: 'Enter a new title',
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Cancel'),
-            ),
-            FilledButton(
-              onPressed: () => Navigator.of(context).pop(controller.text.trim()),
-              child: const Text('Save'),
-            ),
-          ],
-        );
-      },
+      builder: (context) =>
+          _EditStoryTitleDialog(initialTitle: _story.chapter.title),
     );
-    controller.dispose();
-    if (newTitle == null || newTitle.isEmpty || newTitle == _story.chapter.title) {
+    if (newTitle == null ||
+        newTitle.isEmpty ||
+        newTitle == _story.chapter.title) {
       return;
     }
     try {
-      final updated = await widget.storyService.updateStoryTitle(_story.id, newTitle);
+      final updated = await widget.storyService.updateStoryTitle(
+        _story.id,
+        newTitle,
+      );
       if (updated != null && mounted) {
         setState(() {
           _story = updated;
@@ -2133,9 +2811,9 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
       }
     } catch (e) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Unable to update title: $e')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Unable to update title: $e')));
     }
   }
 

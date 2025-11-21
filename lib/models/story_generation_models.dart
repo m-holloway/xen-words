@@ -3,10 +3,13 @@ import 'dart:convert';
 import '../utils/reading_level_helper.dart';
 import 'story_models.dart';
 
+const _generatedStoryRecordUndefined = Object();
+
 enum StoryReadingMode { parent, child }
 
 extension StoryReadingModeX on StoryReadingMode {
-  String get label => this == StoryReadingMode.parent ? 'Parent Mode' : 'Child Mode';
+  String get label =>
+      this == StoryReadingMode.parent ? 'Parent Mode' : 'Child Mode';
 }
 
 /// Form inputs for the Story Lab feature.
@@ -105,6 +108,7 @@ class GeneratedStoryRecord {
   final bool isBuiltIn;
   final int version;
   final List<StoryRevision> revisions;
+  final String? coverImagePath;
 
   GeneratedStoryRecord({
     required this.id,
@@ -131,8 +135,9 @@ class GeneratedStoryRecord {
     this.isBuiltIn = false,
     this.version = 1,
     List<StoryRevision>? revisions,
-  })  : readMoments = readMoments ?? const [],
-        revisions = revisions ?? const [];
+    this.coverImagePath,
+  }) : readMoments = readMoments ?? const [],
+       revisions = revisions ?? const [];
 
   Map<String, dynamic> toJson() {
     return {
@@ -160,6 +165,7 @@ class GeneratedStoryRecord {
       'is_built_in': isBuiltIn,
       'version': version,
       'revisions': revisions.map((r) => r.toJson()).toList(),
+      'cover_image_path': coverImagePath,
     };
   }
 
@@ -168,8 +174,12 @@ class GeneratedStoryRecord {
       id: json['id'] as String,
       chapter: StoryChapter.fromJson(json['chapter'] as Map<String, dynamic>),
       summary: json['summary'] as String? ?? '',
-      readingLevel: json['reading_level'] as int? ?? StoryGenerationDefaults.defaultReadingLevel,
-      durationMinutes: json['duration_minutes'] as int? ?? StoryGenerationDefaults.defaultMinutes,
+      readingLevel:
+          json['reading_level'] as int? ??
+          StoryGenerationDefaults.defaultReadingLevel,
+      durationMinutes:
+          json['duration_minutes'] as int? ??
+          StoryGenerationDefaults.defaultMinutes,
       focusWords: (json['focus_words'] as List<dynamic>? ?? [])
           .map((e) => e.toString())
           .toList(),
@@ -200,6 +210,7 @@ class GeneratedStoryRecord {
       revisions: (json['revisions'] as List<dynamic>? ?? [])
           .map((value) => StoryRevision.fromJson(value as Map<String, dynamic>))
           .toList(),
+      coverImagePath: json['cover_image_path'] as String?,
     );
   }
 
@@ -227,7 +238,12 @@ class GeneratedStoryRecord {
     bool? isBuiltIn,
     int? version,
     List<StoryRevision>? revisions,
+    Object? coverImagePath = _generatedStoryRecordUndefined,
   }) {
+    final coverImageValue =
+        identical(coverImagePath, _generatedStoryRecordUndefined)
+        ? this.coverImagePath
+        : coverImagePath as String?;
     return GeneratedStoryRecord(
       id: id,
       chapter: chapter ?? this.chapter,
@@ -253,6 +269,7 @@ class GeneratedStoryRecord {
       isBuiltIn: isBuiltIn ?? this.isBuiltIn,
       version: version ?? this.version,
       revisions: revisions ?? this.revisions,
+      coverImagePath: coverImageValue,
     );
   }
 }
@@ -287,8 +304,11 @@ class StoryRevision {
       version: json['version'] as int? ?? 1,
       instructions: json['instructions'] as String? ?? '',
       storyText: json['story_text'] as String? ?? '',
-      createdAt: DateTime.tryParse(json['created_at'] as String? ?? '') ?? DateTime.now(),
-      modelId: json['model_id'] as String? ?? StoryGenerationDefaults.defaultModelId,
+      createdAt:
+          DateTime.tryParse(json['created_at'] as String? ?? '') ??
+          DateTime.now(),
+      modelId:
+          json['model_id'] as String? ?? StoryGenerationDefaults.defaultModelId,
     );
   }
 }
@@ -304,4 +324,3 @@ class StoryGenerationDefaults {
   static const int maxReadingLevel = 5;
   static const int defaultReadingLevel = 2;
 }
-

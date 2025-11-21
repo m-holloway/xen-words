@@ -49,5 +49,9 @@
 	<string>This app needs access to the microphone to recognize spoken words.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>This app needs access to speech recognition to help children learn sight words.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need access to your photo library to let you choose a cover image for your stories.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We need access to your camera to let you take a photo for your story cover.</string>
 </dict>
 </plist>

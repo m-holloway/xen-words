@@ -96,6 +96,15 @@ class StoryGeneratorService {
     );
   }
 
+  Future<GeneratedStoryRecord?> updateStoryCover(String storyId, String? coverPath) {
+    return _storage.updateStory(
+      storyId,
+      (current) {
+        return current.copyWith(coverImagePath: coverPath);
+      },
+    );
+  }
+
   Future<StoryRevisionDraft> draftRevision(
     GeneratedStoryRecord story,
     String instructions,
