@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import '../data/built_in_stories.dart';
 import '../models/story_generation_models.dart';
 import '../models/story_models.dart';
 import '../utils/app_logger.dart';
@@ -28,7 +29,11 @@ class StoryGeneratorService {
     return record;
   }
 
-  Future<List<GeneratedStoryRecord>> loadStories() => _storage.loadStories();
+  Future<List<GeneratedStoryRecord>> loadStories() async {
+    final stored = await _storage.loadStories();
+    final builtIns = BuiltInStoryLibrary.loadStories();
+    return [...stored, ...builtIns];
+  }
 
   Future<void> deleteStory(String storyId) => _storage.deleteStory(storyId);
 
@@ -128,6 +133,7 @@ class StoryGeneratorService {
       readCount: 0,
       lastReadAt: null,
       childRating: null,
+      isBuiltIn: false,
     );
   }
 
