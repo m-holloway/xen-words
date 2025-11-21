@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+
 import '../models/child_profile.dart';
+import '../screens/personalization_screen.dart';
+import '../services/preferences_service.dart';
 import '../services/profile_service.dart';
 
 /// Dialog for creating or editing a child profile
@@ -36,6 +39,7 @@ class _ProfileEditorDialogState extends State<ProfileEditorDialog> {
     Colors.teal.shade300,
     Colors.amber.shade300,
   ];
+  bool _isOpeningPersonalization = false;
   
   @override
   void initState() {
@@ -108,6 +112,20 @@ class _ProfileEditorDialogState extends State<ProfileEditorDialog> {
               textCapitalization: TextCapitalization.words,
               autofocus: !isEditing,
               onChanged: (_) => setState(() {}),
+            ),
+            const SizedBox(height: 16),
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.brush),
+                title: const Text('Learning Space Personalization'),
+                subtitle: Text(
+                  _isOpeningPersonalization
+                      ? 'Opening personalization…'
+                      : 'Update rug name and font style',
+                ),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: _isOpeningPersonalization ? null : _openPersonalization,
+              ),
             ),
             
             const SizedBox(height: 20),
@@ -238,6 +256,45 @@ class _ProfileEditorDialogState extends State<ProfileEditorDialog> {
     );
   }
   
+  Future<void> _openPersonalization() async {
+    setState(() => _isOpeningPersonalization = true);
+    try {
+      final prefs = PreferencesService();
+      final settings = await prefs.loadSettings();
+      if (!mounted) return;
+      await Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) => PersonalizationScreen(
+            initialSettings: settings,
+            onSettingsChanged: (updated) {
+              prefs.saveSettings(updated);
+            },
+          ),
+        ),
+      );
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Personalization updated'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    } catch (_) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text('Could not open personalization. Please try again.'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isOpeningPersonalization = false);
+      }
+    }
+  }
+
   Widget _buildPreviewCard() {
     final name = _nameController.text.trim();
     
