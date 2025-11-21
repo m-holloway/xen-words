@@ -7,14 +7,15 @@ import 'package:share_plus/share_plus.dart';
 
 import '../models/child_profile.dart';
 import '../models/story_generation_models.dart';
-import '../models/story_models.dart';
 import '../services/preferences_service.dart';
 import '../services/profile_service.dart';
 import '../services/story_generator_service.dart';
 import '../utils/reading_level_helper.dart';
+import '../utils/story_text_utils.dart';
 import '../widgets/star_rating.dart';
 import 'story_playback_screen.dart';
 import 'story_reader_screen_enhanced.dart';
+import 'story_revision_screen.dart';
 
 enum StoryLabView {
   library,
@@ -371,6 +372,7 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen> with Ticker
       MaterialPageRoute(
         builder: (_) => _StoryDetailScreen(
           story: story,
+          storyService: _storyService,
           onRead: () {
             Navigator.of(context).pop();
             _handleReadStory(story);
@@ -1745,6 +1747,7 @@ class _StoryRatingSheet extends StatelessWidget {
 class _StoryDetailScreen extends StatefulWidget {
   const _StoryDetailScreen({
     required this.story,
+    required this.storyService,
     required this.onRead,
     required this.onCopyInputs,
     required this.deleteStory,
@@ -1754,6 +1757,7 @@ class _StoryDetailScreen extends StatefulWidget {
   });
 
   final GeneratedStoryRecord story;
+  final StoryGeneratorService storyService;
   final VoidCallback onRead;
   final VoidCallback onCopyInputs;
   final Future<void> Function() deleteStory;
@@ -1766,12 +1770,14 @@ class _StoryDetailScreen extends StatefulWidget {
 }
 
 class _StoryDetailScreenState extends State<_StoryDetailScreen> {
+  late GeneratedStoryRecord _story;
   late int _currentRating;
 
   @override
   void initState() {
     super.initState();
-    _currentRating = widget.story.childRating ?? 0;
+    _story = widget.story;
+    _currentRating = _story.childRating ?? 0;
   }
 
   Future<void> _handleRatingTap(int value) async {
@@ -1784,13 +1790,14 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final story = _story;
     final isDark = theme.brightness == Brightness.dark;
-    final isBuiltIn = widget.story.isBuiltIn;
+    final isBuiltIn = story.isBuiltIn;
     final gradientColors = isDark
         ? [const Color(0xFF1E1B4B), const Color(0xFF4C1D95)]
         : [const Color(0xFF3730A3), const Color(0xFF7C3AED)];
-    final familiarPercent = (widget.story.familiarWordRatio * 100).toStringAsFixed(0);
-    final readsMonth = widget.story.readMoments
+    final familiarPercent = (story.familiarWordRatio * 100).toStringAsFixed(0);
+    final readsMonth = story.readMoments
         .where((moment) => moment.isAfter(DateTime.now().subtract(const Duration(days: 30))))
         .length;
 
@@ -1812,6 +1819,12 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                 tooltip: 'Share story',
                 onPressed: _shareStory,
               ),
+              if (!isBuiltIn)
+                IconButton(
+                  icon: const Icon(Icons.edit, color: Colors.white),
+                  tooltip: 'Rename story',
+                  onPressed: _promptEditTitle,
+                ),
               if (!isBuiltIn)
                 IconButton(
                   icon: const Icon(Icons.delete_outline, color: Colors.white),
@@ -1852,7 +1865,7 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                                 const Icon(Icons.school, color: Colors.white, size: 14),
                                 const SizedBox(width: 6),
                                 Text(
-                                  'Level ${widget.story.readingLevel}',
+                                  'Level ${story.readingLevel}',
                                   style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -1880,11 +1893,11 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                           ],
                           const SizedBox(height: 12),
                           Hero(
-                            tag: 'story_title_${widget.story.id}',
+                            tag: 'story_title_${story.id}',
                             child: Material(
                               color: Colors.transparent,
                               child: Text(
-                                widget.story.chapter.title,
+                                story.chapter.title,
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style: theme.textTheme.headlineMedium?.copyWith(
@@ -1892,6 +1905,22 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                                   fontWeight: FontWeight.w800,
                                   height: 1.1,
                                 ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.18),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Text(
+                              'Version v${story.version}',
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 0.3,
                               ),
                             ),
                           ),
@@ -1912,7 +1941,7 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      _buildDetailStat(context, Icons.schedule, '${widget.story.durationMinutes}m', 'Duration'),
+                      _buildDetailStat(context, Icons.schedule, '${story.durationMinutes}m', 'Duration'),
                       _buildDetailStat(context, Icons.percent, '$familiarPercent%', 'Familiar'),
                       _buildDetailStat(
                         context,
@@ -1945,7 +1974,7 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    widget.story.summary,
+                    story.summary,
                     style: theme.textTheme.bodyLarge?.copyWith(
                       height: 1.6,
                       color: theme.colorScheme.onSurfaceVariant,
@@ -1998,6 +2027,19 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                         label: const Text('Create Similar Story'),
                       ),
                     ),
+                    const SizedBox(height: 12),
+                    SizedBox(
+                      width: double.infinity,
+                      child: OutlinedButton.icon(
+                        onPressed: _openRevisionFlow,
+                        style: OutlinedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                        ),
+                        icon: const Icon(Icons.edit_note),
+                        label: const Text('Revise Story'),
+                      ),
+                    ),
                   ],
                   const SizedBox(height: 40),
                 ],
@@ -2035,7 +2077,7 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
   }
 
   Future<void> _shareStory() async {
-    final shareText = _buildShareableStoryText(widget.story);
+    final shareText = StoryTextUtils.shareableStoryText(_story);
     if (shareText.isEmpty) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
@@ -2045,30 +2087,72 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
     }
     await Share.share(
       shareText,
-      subject: widget.story.chapter.title,
+      subject: _story.chapter.title,
     );
   }
 
-  String _buildShareableStoryText(GeneratedStoryRecord story) {
-    final buffer = StringBuffer();
-    final title = story.chapter.title.trim();
-    if (title.isNotEmpty) {
-      buffer.writeln(title);
-      buffer.writeln();
+  Future<void> _promptEditTitle() async {
+    final controller = TextEditingController(text: _story.chapter.title);
+    final newTitle = await showDialog<String>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Edit story title'),
+          content: TextField(
+            controller: controller,
+            autofocus: true,
+            textCapitalization: TextCapitalization.sentences,
+            decoration: const InputDecoration(
+              labelText: 'Title',
+              hintText: 'Enter a new title',
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('Cancel'),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.of(context).pop(controller.text.trim()),
+              child: const Text('Save'),
+            ),
+          ],
+        );
+      },
+    );
+    controller.dispose();
+    if (newTitle == null || newTitle.isEmpty || newTitle == _story.chapter.title) {
+      return;
     }
-
-    final readingBeats = story.chapter.beats.where(_isReadingBeat);
-    for (final beat in readingBeats) {
-      final line = beat.text.trim();
-      if (line.isEmpty) continue;
-      buffer.writeln(line);
-      buffer.writeln();
+    try {
+      final updated = await widget.storyService.updateStoryTitle(_story.id, newTitle);
+      if (updated != null && mounted) {
+        setState(() {
+          _story = updated;
+        });
+      }
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Unable to update title: $e')),
+      );
     }
-
-    return buffer.toString().trim();
   }
 
-  bool _isReadingBeat(StoryBeat beat) {
-    return beat.type == BeatType.narration;
+  Future<void> _openRevisionFlow() async {
+    final updated = await Navigator.of(context).push<GeneratedStoryRecord>(
+      MaterialPageRoute(
+        builder: (_) => StoryRevisionScreen(
+          story: _story,
+          storyService: widget.storyService,
+        ),
+      ),
+    );
+    if (updated != null && mounted) {
+      setState(() {
+        _story = updated;
+        _currentRating = updated.childRating ?? _currentRating;
+      });
+    }
   }
 }

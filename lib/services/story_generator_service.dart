@@ -5,6 +5,7 @@ import '../models/story_generation_models.dart';
 import '../models/story_models.dart';
 import '../utils/app_logger.dart';
 import '../utils/reading_level_helper.dart';
+import '../utils/story_text_utils.dart';
 import 'openrouter_story_client.dart';
 import 'story_storage_service.dart';
 
@@ -75,6 +76,86 @@ class StoryGeneratorService {
     );
   }
 
+  Future<GeneratedStoryRecord?> updateStoryTitle(String storyId, String newTitle) {
+    final trimmed = newTitle.trim();
+    if (trimmed.isEmpty) {
+      throw ArgumentError('Title cannot be empty.');
+    }
+    return _storage.updateStory(
+      storyId,
+      (current) {
+        final updatedChapter = StoryChapter(
+          id: current.chapter.id,
+          title: trimmed,
+          beats: current.chapter.beats,
+          choicePoints: current.chapter.choicePoints,
+          metadata: current.chapter.metadata,
+        );
+        return current.copyWith(chapter: updatedChapter);
+      },
+    );
+  }
+
+  Future<StoryRevisionDraft> draftRevision(
+    GeneratedStoryRecord story,
+    String instructions,
+  ) async {
+    final trimmed = instructions.trim();
+    if (trimmed.isEmpty) {
+      throw ArgumentError('Please describe what you want to revise.');
+    }
+    final result = await _client.reviseStoryPayload(
+      story: story,
+      instructions: trimmed,
+    );
+    final draft = _recordFromRevisionPayload(
+      base: story,
+      payload: result.payload,
+      modelUsed: result.modelId,
+    );
+    return StoryRevisionDraft(record: draft, modelId: result.modelId, instructions: trimmed);
+  }
+
+  Future<GeneratedStoryRecord?> applyRevision({
+    required String storyId,
+    required StoryRevisionDraft draft,
+  }) {
+    return _storage.updateStory(
+      storyId,
+      (current) {
+        final nextVersion = current.version + 1;
+        final revisionEntry = StoryRevision(
+          version: nextVersion,
+          instructions: draft.instructions,
+          storyText: StoryTextUtils.narrationOnly(draft.record.chapter),
+          createdAt: DateTime.now(),
+          modelId: draft.modelId,
+        );
+        final history = List<StoryRevision>.from(current.revisions)..add(revisionEntry);
+        final updatedChapter = StoryChapter(
+          id: current.chapter.id,
+          title: draft.record.chapter.title,
+          beats: draft.record.chapter.beats,
+          choicePoints: draft.record.chapter.choicePoints,
+          metadata: draft.record.chapter.metadata,
+        );
+        return current.copyWith(
+          chapter: updatedChapter,
+          summary: draft.record.summary,
+          readingLevel: draft.record.readingLevel,
+          durationMinutes: draft.record.durationMinutes,
+          focusWords: draft.record.focusWords,
+          familiarWordRatio: draft.record.familiarWordRatio,
+          familiarWordCount: draft.record.familiarWordCount,
+          totalWordCount: draft.record.totalWordCount,
+          model: draft.modelId,
+          version: nextVersion,
+          revisions: history,
+        );
+      },
+    );
+  }
+
   GeneratedStoryRecord _recordFromPayload(
     Map<String, dynamic> payload,
     StoryGenerationRequest request,
@@ -134,6 +215,49 @@ class StoryGeneratorService {
       lastReadAt: null,
       childRating: null,
       isBuiltIn: false,
+    );
+  }
+
+  GeneratedStoryRecord _recordFromRevisionPayload({
+    required GeneratedStoryRecord base,
+    required Map<String, dynamic> payload,
+    required String modelUsed,
+  }) {
+    final beats = _parseBeats(payload['beats']);
+    final choicePoints = _parseChoicePoints(payload['choice_points']);
+    final title = payload['title'] as String? ?? base.chapter.title;
+    final summary = payload['summary'] as String? ?? base.summary;
+    final focusWords = (payload['focus_words'] as List<dynamic>? ?? base.focusWords)
+        .map((e) => e.toString())
+        .toList();
+    final estimatedMinutes = (payload['estimated_minutes'] as num?)?.toInt() ?? base.durationMinutes;
+    final readingLevel = payload['reading_level'] as int? ?? base.readingLevel;
+
+    final metadata = Map<String, dynamic>.from(base.chapter.metadata ?? {});
+    metadata['last_revision_model'] = modelUsed;
+    metadata['last_revision_at'] = DateTime.now().toIso8601String();
+
+    final chapter = StoryChapter(
+      id: base.chapter.id,
+      title: title,
+      beats: beats,
+      choicePoints: choicePoints,
+      metadata: metadata,
+    );
+
+    final band = ReadingLevelHelper.bandForLevel(readingLevel);
+    final familiarityStats = _computeFamiliarity(chapter, band);
+
+    return base.copyWith(
+      chapter: chapter,
+      summary: summary,
+      readingLevel: readingLevel,
+      durationMinutes: estimatedMinutes,
+      focusWords: focusWords,
+      familiarWordRatio: familiarityStats.ratio,
+      familiarWordCount: familiarityStats.familiarCount,
+      totalWordCount: familiarityStats.totalWords,
+      model: modelUsed,
     );
   }
 
@@ -245,5 +369,17 @@ class _FamiliarityStats {
         totalWords: 0,
         ratio: 0,
       );
+}
+
+class StoryRevisionDraft {
+  final GeneratedStoryRecord record;
+  final String modelId;
+  final String instructions;
+
+  StoryRevisionDraft({
+    required this.record,
+    required this.modelId,
+    required this.instructions,
+  });
 }
 

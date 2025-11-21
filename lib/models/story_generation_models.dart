@@ -103,6 +103,8 @@ class GeneratedStoryRecord {
   final int? childRating;
   final List<DateTime> readMoments;
   final bool isBuiltIn;
+  final int version;
+  final List<StoryRevision> revisions;
 
   GeneratedStoryRecord({
     required this.id,
@@ -127,7 +129,10 @@ class GeneratedStoryRecord {
     this.childRating,
     List<DateTime>? readMoments,
     this.isBuiltIn = false,
-  }) : readMoments = readMoments ?? const [];
+    this.version = 1,
+    List<StoryRevision>? revisions,
+  })  : readMoments = readMoments ?? const [],
+        revisions = revisions ?? const [];
 
   Map<String, dynamic> toJson() {
     return {
@@ -153,6 +158,8 @@ class GeneratedStoryRecord {
       'child_rating': childRating,
       'read_moments': readMoments.map((d) => d.toIso8601String()).toList(),
       'is_built_in': isBuiltIn,
+      'version': version,
+      'revisions': revisions.map((r) => r.toJson()).toList(),
     };
   }
 
@@ -189,6 +196,10 @@ class GeneratedStoryRecord {
           .whereType<DateTime>()
           .toList(),
       isBuiltIn: json['is_built_in'] as bool? ?? false,
+      version: json['version'] as int? ?? 1,
+      revisions: (json['revisions'] as List<dynamic>? ?? [])
+          .map((value) => StoryRevision.fromJson(value as Map<String, dynamic>))
+          .toList(),
     );
   }
 
@@ -214,6 +225,8 @@ class GeneratedStoryRecord {
     int? childRating,
     List<DateTime>? readMoments,
     bool? isBuiltIn,
+    int? version,
+    List<StoryRevision>? revisions,
   }) {
     return GeneratedStoryRecord(
       id: id,
@@ -238,6 +251,44 @@ class GeneratedStoryRecord {
       childRating: childRating ?? this.childRating,
       readMoments: readMoments ?? this.readMoments,
       isBuiltIn: isBuiltIn ?? this.isBuiltIn,
+      version: version ?? this.version,
+      revisions: revisions ?? this.revisions,
+    );
+  }
+}
+
+class StoryRevision {
+  final int version;
+  final String instructions;
+  final String storyText;
+  final DateTime createdAt;
+  final String modelId;
+
+  StoryRevision({
+    required this.version,
+    required this.instructions,
+    required this.storyText,
+    required this.createdAt,
+    required this.modelId,
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'version': version,
+      'instructions': instructions,
+      'story_text': storyText,
+      'created_at': createdAt.toIso8601String(),
+      'model_id': modelId,
+    };
+  }
+
+  factory StoryRevision.fromJson(Map<String, dynamic> json) {
+    return StoryRevision(
+      version: json['version'] as int? ?? 1,
+      instructions: json['instructions'] as String? ?? '',
+      storyText: json['story_text'] as String? ?? '',
+      createdAt: DateTime.tryParse(json['created_at'] as String? ?? '') ?? DateTime.now(),
+      modelId: json['model_id'] as String? ?? StoryGenerationDefaults.defaultModelId,
     );
   }
 }
