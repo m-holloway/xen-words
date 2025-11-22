@@ -109,6 +109,7 @@ class GeneratedStoryRecord {
   final int version;
   final List<StoryRevision> revisions;
   final String? coverImagePath;
+  final StoryPanelArtMetadata? panelArt;
 
   GeneratedStoryRecord({
     required this.id,
@@ -136,6 +137,7 @@ class GeneratedStoryRecord {
     this.version = 1,
     List<StoryRevision>? revisions,
     this.coverImagePath,
+    this.panelArt,
   }) : readMoments = readMoments ?? const [],
        revisions = revisions ?? const [];
 
@@ -166,6 +168,7 @@ class GeneratedStoryRecord {
       'version': version,
       'revisions': revisions.map((r) => r.toJson()).toList(),
       'cover_image_path': coverImagePath,
+      'panel_art': panelArt?.toJson(),
     };
   }
 
@@ -211,6 +214,11 @@ class GeneratedStoryRecord {
           .map((value) => StoryRevision.fromJson(value as Map<String, dynamic>))
           .toList(),
       coverImagePath: json['cover_image_path'] as String?,
+      panelArt: json['panel_art'] is Map<String, dynamic>
+          ? StoryPanelArtMetadata.fromJson(
+              json['panel_art'] as Map<String, dynamic>,
+            )
+          : null,
     );
   }
 
@@ -239,11 +247,16 @@ class GeneratedStoryRecord {
     int? version,
     List<StoryRevision>? revisions,
     Object? coverImagePath = _generatedStoryRecordUndefined,
+    Object? panelArt = _generatedStoryRecordUndefined,
   }) {
     final coverImageValue =
         identical(coverImagePath, _generatedStoryRecordUndefined)
         ? this.coverImagePath
         : coverImagePath as String?;
+    final panelArtValue =
+        identical(panelArt, _generatedStoryRecordUndefined)
+            ? this.panelArt
+            : panelArt as StoryPanelArtMetadata?;
     return GeneratedStoryRecord(
       id: id,
       chapter: chapter ?? this.chapter,
@@ -270,6 +283,63 @@ class GeneratedStoryRecord {
       version: version ?? this.version,
       revisions: revisions ?? this.revisions,
       coverImagePath: coverImageValue,
+      panelArt: panelArtValue,
+    );
+  }
+}
+
+class StoryPanelArtMetadata {
+  final int columns;
+  final int rows;
+  final List<String> panelImagePaths;
+  final String sheetImagePath;
+  final DateTime importedAt;
+
+  const StoryPanelArtMetadata({
+    required this.columns,
+    required this.rows,
+    required this.panelImagePaths,
+    required this.sheetImagePath,
+    required this.importedAt,
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'columns': columns,
+      'rows': rows,
+      'panel_image_paths': panelImagePaths,
+      'sheet_image_path': sheetImagePath,
+      'imported_at': importedAt.toIso8601String(),
+    };
+  }
+
+  factory StoryPanelArtMetadata.fromJson(Map<String, dynamic> json) {
+    return StoryPanelArtMetadata(
+      columns: json['columns'] as int? ?? 1,
+      rows: json['rows'] as int? ?? 1,
+      panelImagePaths: (json['panel_image_paths'] as List<dynamic>? ?? [])
+          .map((value) => value.toString())
+          .toList(),
+      sheetImagePath: json['sheet_image_path'] as String? ?? '',
+      importedAt:
+          DateTime.tryParse(json['imported_at'] as String? ?? '') ??
+          DateTime.now(),
+    );
+  }
+
+  StoryPanelArtMetadata copyWith({
+    int? columns,
+    int? rows,
+    List<String>? panelImagePaths,
+    String? sheetImagePath,
+    DateTime? importedAt,
+  }) {
+    return StoryPanelArtMetadata(
+      columns: columns ?? this.columns,
+      rows: rows ?? this.rows,
+      panelImagePaths: panelImagePaths ?? this.panelImagePaths,
+      sheetImagePath: sheetImagePath ?? this.sheetImagePath,
+      importedAt: importedAt ?? this.importedAt,
     );
   }
 }

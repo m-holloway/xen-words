@@ -9,10 +9,12 @@ import 'package:share_plus/share_plus.dart';
 
 import '../models/child_profile.dart';
 import '../models/story_generation_models.dart';
+import '../models/story_models.dart';
 import '../services/preferences_service.dart';
 import '../services/profile_service.dart';
 import '../services/story_cover_service.dart';
 import '../services/story_generator_service.dart';
+import '../services/story_panel_art_service.dart';
 import '../utils/reading_level_helper.dart';
 import '../utils/story_text_utils.dart';
 import '../widgets/star_rating.dart';
@@ -47,6 +49,7 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen>
   final PreferencesService _preferencesService = PreferencesService();
   final ProfileService _profileService = ProfileService();
   final StoryCoverService _coverService = StoryCoverService();
+  final StoryPanelArtService _panelArtService = StoryPanelArtService();
   late final AnimationController _loadingController;
   late StoryLabView _activeView;
 
@@ -395,6 +398,7 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen>
           story: story,
           storyService: _storyService,
           coverService: _coverService,
+          panelArtService: _panelArtService,
           onRead: () {
             Navigator.of(context).pop();
             _handleReadStory(story);
@@ -2160,6 +2164,7 @@ class _StoryDetailScreen extends StatefulWidget {
     required this.story,
     required this.storyService,
     required this.coverService,
+    required this.panelArtService,
     required this.onRead,
     required this.onCopyInputs,
     required this.deleteStory,
@@ -2171,6 +2176,7 @@ class _StoryDetailScreen extends StatefulWidget {
   final GeneratedStoryRecord story;
   final StoryGeneratorService storyService;
   final StoryCoverService coverService;
+  final StoryPanelArtService panelArtService;
   final VoidCallback onRead;
   final VoidCallback onCopyInputs;
   final Future<void> Function() deleteStory;
@@ -2186,6 +2192,7 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
   late GeneratedStoryRecord _story;
   late int _currentRating;
   bool _isUpdatingCover = false;
+  bool _isUpdatingPanelArt = false;
 
   @override
   void initState() {
@@ -2193,6 +2200,9 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
     _story = widget.story;
     _currentRating = _story.childRating ?? 0;
   }
+
+  int get _expectedPanelCount =>
+      _countNarrationParagraphs(_story.chapter);
 
   Future<void> _handleRatingTap(int value) async {
     setState(() {
@@ -2272,6 +2282,93 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
     }
   }
 
+  Future<void> _importPanelArt() async {
+    if (_story.isBuiltIn || _isUpdatingPanelArt) return;
+    if (_expectedPanelCount == 0) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Update the story text first so we know how many passages need art.',
+          ),
+        ),
+      );
+      return;
+    }
+    setState(() => _isUpdatingPanelArt = true);
+    try {
+      final art = await widget.panelArtService.pickAndStorePanelArt(
+        context: context,
+        storyId: _story.id,
+        panelCount: _expectedPanelCount,
+        existingArt: _story.panelArt,
+      );
+      if (art == null) {
+        return;
+      }
+      final updated = await widget.storyService.updateStoryPanelArt(
+        _story.id,
+        art,
+      );
+      if (updated != null && mounted) {
+        setState(() {
+          _story = updated;
+        });
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Scene artwork imported!')),
+        );
+      }
+    } on StoryPanelArtException catch (error) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(error.message)),
+      );
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Unable to import panels: $e')),
+      );
+    } finally {
+      if (!mounted) {
+        _isUpdatingPanelArt = false;
+        return;
+      }
+      setState(() => _isUpdatingPanelArt = false);
+    }
+  }
+
+  Future<void> _removePanelArt() async {
+    if (_story.panelArt == null || _isUpdatingPanelArt) return;
+    setState(() => _isUpdatingPanelArt = true);
+    final existing = _story.panelArt;
+    try {
+      await widget.panelArtService.deletePanelArt(existing);
+      final updated = await widget.storyService.updateStoryPanelArt(
+        _story.id,
+        null,
+      );
+      if (updated != null && mounted) {
+        setState(() {
+          _story = updated;
+        });
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Scene artwork removed.')),
+        );
+      }
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Unable to remove artwork: $e')),
+      );
+    } finally {
+      if (!mounted) {
+        _isUpdatingPanelArt = false;
+        return;
+      }
+      setState(() => _isUpdatingPanelArt = false);
+    }
+  }
+
   Future<void> _openCoverLightbox() async {
     final path = _story.coverImagePath;
     if (path == null) return;
@@ -2316,6 +2413,7 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
           story: _story,
           storyService: widget.storyService,
           coverService: widget.coverService,
+          panelArtService: widget.panelArtService,
         ),
       ),
     );
@@ -2732,6 +2830,16 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                     ),
                   ),
                   const SizedBox(height: 24),
+                  Text(
+                    'Scene artwork',
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: theme.colorScheme.primary,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  _buildPanelArtSection(context, theme, isBuiltIn),
+                  const SizedBox(height: 24),
                   if (!isBuiltIn) ...[
                     const SizedBox(height: 12),
                     SizedBox(
@@ -2808,6 +2916,165 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
     );
   }
 
+  Widget _buildPanelArtSection(
+    BuildContext context,
+    ThemeData theme,
+    bool isBuiltIn,
+  ) {
+    final art = _story.panelArt;
+    final panelPaths = art?.panelImagePaths ?? const <String>[];
+    final hasArt = panelPaths.isNotEmpty;
+    final expected = _expectedPanelCount;
+    final readyCount = hasArt ? panelPaths.length : 0;
+    final targetCount = expected == 0 ? readyCount : expected;
+    final statusText = hasArt
+        ? 'Ready for $readyCount${targetCount > 0 ? '/$targetCount' : ''} passages.'
+        : expected == 0
+            ? 'Add story paragraphs so we know how many panels to expect.'
+            : 'Expecting $expected square panels. Import your AI collage to unlock reveals.';
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(
+          color: theme.colorScheme.outlineVariant.withOpacity(0.6),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 18,
+            offset: const Offset(0, 12),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.secondaryContainer.withOpacity(0.4),
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: Icon(
+                  Icons.grid_view_rounded,
+                  color: theme.colorScheme.secondary,
+                ),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      statusText,
+                      style: theme.textTheme.bodyLarge?.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    if (hasArt && art != null)
+                      Text(
+                        'Imported ${panelPaths.length} panels on '
+                        '${MaterialLocalizations.of(context).formatShortDate(art.importedAt)}.',
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: theme.colorScheme.onSurfaceVariant,
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          hasArt
+              ? _buildPanelArtPreviewGrid(panelPaths)
+              : Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: theme.colorScheme.outline.withOpacity(0.3),
+                    ),
+                    color: theme.colorScheme.surfaceVariant.withOpacity(0.3),
+                  ),
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.photo_size_select_large_outlined,
+                        size: 38,
+                        color: theme.colorScheme.primary,
+                      ),
+                      const SizedBox(height: 12),
+                      Text(
+                        'Import a perfectly square grid (left-to-right, top-to-bottom) to match each paragraph.',
+                        textAlign: TextAlign.center,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: theme.colorScheme.onSurfaceVariant,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+          const SizedBox(height: 12),
+          Text(
+            expected == 0
+                ? 'Paragraph count unavailable—edit the story text to unlock scene art.'
+                : 'Paragraphs in this story: $expected',
+            style: theme.textTheme.bodySmall?.copyWith(
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
+          ),
+          const SizedBox(height: 16),
+          if (!isBuiltIn)
+            Wrap(
+              spacing: 12,
+              runSpacing: 12,
+              children: [
+                FilledButton.icon(
+                  onPressed: _isUpdatingPanelArt ? null : _importPanelArt,
+                  icon: _isUpdatingPanelArt
+                      ? const SizedBox(
+                          width: 16,
+                          height: 16,
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        )
+                      : const Icon(Icons.grid_on),
+                  label: Text(hasArt ? 'Update scene art' : 'Import scene art'),
+                ),
+                if (hasArt)
+                  OutlinedButton.icon(
+                    onPressed: _isUpdatingPanelArt ? null : _removePanelArt,
+                    icon: const Icon(Icons.delete_outline),
+                    label: const Text('Remove art'),
+                  ),
+              ],
+            )
+          else
+            Text(
+              'Scene artwork can be customized on your own generated stories.',
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPanelArtPreviewGrid(List<String> paths) {
+    if (paths.isEmpty) {
+      return const SizedBox.shrink();
+    }
+    return _PanelThumbnailGrid(paths: paths);
+  }
+
   Future<void> _shareStory() async {
     final shareText = StoryTextUtils.shareableStoryText(_story);
     if (shareText.isEmpty) {
@@ -2874,11 +3141,13 @@ class _StoryEditorScreen extends StatefulWidget {
     required this.story,
     required this.storyService,
     required this.coverService,
+    required this.panelArtService,
   });
 
   final GeneratedStoryRecord story;
   final StoryGeneratorService storyService;
   final StoryCoverService coverService;
+  final StoryPanelArtService panelArtService;
 
   @override
   State<_StoryEditorScreen> createState() => _StoryEditorScreenState();
@@ -2890,6 +3159,7 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
   bool _isDirty = false;
   bool _isSavingText = false;
   bool _isUpdatingCover = false;
+  bool _isUpdatingPanelArt = false;
 
   @override
   void initState() {
@@ -2906,6 +3176,9 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
     _textController.dispose();
     super.dispose();
   }
+
+  int get _expectedPanelCount =>
+      _countNarrationParagraphs(_story.chapter);
 
   Future<bool> _handleWillPop() async {
     Navigator.of(context).pop(_story);
@@ -3046,6 +3319,81 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
     }
   }
 
+  Future<void> _importPanelArt() async {
+    if (_isUpdatingPanelArt) return;
+    if (_expectedPanelCount == 0) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Add or edit the story text so we can count the passages before importing art.',
+          ),
+        ),
+      );
+      return;
+    }
+    setState(() => _isUpdatingPanelArt = true);
+    try {
+      final art = await widget.panelArtService.pickAndStorePanelArt(
+        context: context,
+        storyId: _story.id,
+        panelCount: _expectedPanelCount,
+        existingArt: _story.panelArt,
+      );
+      if (art == null) {
+        return;
+      }
+      final updated = await widget.storyService.updateStoryPanelArt(
+        _story.id,
+        art,
+      );
+      if (updated != null && mounted) {
+        setState(() => _story = updated);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Scene artwork imported.')),
+        );
+      }
+    } on StoryPanelArtException catch (error) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(error.message)),
+      );
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Unable to import panels: $e')),
+      );
+    } finally {
+      if (!mounted) return;
+      setState(() => _isUpdatingPanelArt = false);
+    }
+  }
+
+  Future<void> _removePanelArt() async {
+    if (_story.panelArt == null || _isUpdatingPanelArt) return;
+    final existing = _story.panelArt;
+    setState(() => _isUpdatingPanelArt = true);
+    try {
+      await widget.panelArtService.deletePanelArt(existing);
+      final updated = await widget.storyService.updateStoryPanelArt(
+        _story.id,
+        null,
+      );
+      if (updated != null && mounted) {
+        setState(() => _story = updated);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Scene artwork removed.')),
+        );
+      }
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Unable to remove artwork: $e')),
+      );
+    } finally {
+      if (!mounted) return;
+      setState(() => _isUpdatingPanelArt = false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -3086,6 +3434,15 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
                 ),
                 const SizedBox(height: 12),
                 _buildCoverCard(theme),
+                const SizedBox(height: 32),
+                _EditorSectionHeader(
+                  icon: Icons.auto_awesome_motion,
+                  title: 'Scene-by-scene art',
+                  subtitle:
+                      'Import the comic grid so each passage reveals its own panel.',
+                ),
+                const SizedBox(height: 12),
+                _buildPanelArtCard(theme),
                 const SizedBox(height: 32),
                 _EditorSectionHeader(
                   icon: Icons.edit_note_outlined,
@@ -3206,6 +3563,144 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
     );
   }
 
+  Widget _buildPanelArtCard(ThemeData theme) {
+    final art = _story.panelArt;
+    final panelPaths = art?.panelImagePaths ?? const <String>[];
+    final hasArt = panelPaths.isNotEmpty;
+    final expected = _expectedPanelCount;
+    final readyCount = hasArt ? panelPaths.length : 0;
+    final targetCount = expected == 0 ? readyCount : expected;
+    final statusText = hasArt
+        ? 'Panels ready for $readyCount${targetCount > 0 ? '/$targetCount' : ''} passages.'
+        : expected == 0
+            ? 'Add paragraphs above so we can count how many panels you need.'
+            : 'Expecting $expected square panels. Arrange them left-to-right, top-to-bottom.';
+
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(
+          color: theme.colorScheme.outlineVariant.withOpacity(0.6),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 18,
+            offset: const Offset(0, 12),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.secondaryContainer.withOpacity(0.4),
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: Icon(
+                  Icons.grid_view_rounded,
+                  color: theme.colorScheme.secondary,
+                ),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      statusText,
+                      style: theme.textTheme.bodyLarge?.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Text(
+                      'Tip: export a single square collage at the exact order of your paragraphs.',
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: theme.colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          if (hasArt)
+            _PanelThumbnailGrid(paths: panelPaths)
+          else
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                  color: theme.colorScheme.outline.withOpacity(0.3),
+                ),
+                color: theme.colorScheme.surfaceVariant.withOpacity(0.3),
+              ),
+              child: Column(
+                children: [
+                  Icon(
+                    Icons.photo_size_select_large_outlined,
+                    size: 38,
+                    color: theme.colorScheme.primary,
+                  ),
+                  const SizedBox(height: 12),
+                  Text(
+                    'We’ll slice the collage into perfectly square panels and align them to each narration paragraph.',
+                    textAlign: TextAlign.center,
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: theme.colorScheme.onSurfaceVariant,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          const SizedBox(height: 12),
+          Text(
+            expected == 0
+                ? 'Paragraph count unavailable. Save your story text to generate beats.'
+                : 'Paragraphs detected: $expected',
+            style: theme.textTheme.bodySmall?.copyWith(
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
+          ),
+          const SizedBox(height: 16),
+          Wrap(
+            spacing: 12,
+            runSpacing: 12,
+            children: [
+              FilledButton.icon(
+                onPressed: _isUpdatingPanelArt ? null : _importPanelArt,
+                icon: _isUpdatingPanelArt
+                    ? const SizedBox(
+                        width: 16,
+                        height: 16,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
+                    : const Icon(Icons.grid_on),
+                label: Text(hasArt ? 'Update scene art' : 'Import scene art'),
+              ),
+              if (hasArt)
+                OutlinedButton.icon(
+                  onPressed: _isUpdatingPanelArt ? null : _removePanelArt,
+                  icon: const Icon(Icons.delete_outline),
+                  label: const Text('Remove'),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _buildTextCard(ThemeData theme) {
     final helperColor = theme.colorScheme.primary.withOpacity(0.15);
     return Container(
@@ -3293,6 +3788,61 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
   }
 }
 
+class _PanelThumbnailGrid extends StatelessWidget {
+  const _PanelThumbnailGrid({
+    required this.paths,
+  });
+
+  final List<String> paths;
+
+  @override
+  Widget build(BuildContext context) {
+    if (paths.isEmpty) {
+      return const SizedBox.shrink();
+    }
+    final previewPaths = paths.take(4).toList();
+    final theme = Theme.of(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Wrap(
+          spacing: 12,
+          runSpacing: 12,
+          children: previewPaths
+              .map(
+                (path) => ClipRRect(
+                  borderRadius: BorderRadius.circular(18),
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: Image.file(
+                      File(path),
+                      fit: BoxFit.cover,
+                      errorBuilder: (_, __, ___) => Container(
+                        color: theme.colorScheme.surfaceVariant,
+                        alignment: Alignment.center,
+                        child: const Icon(Icons.broken_image_outlined),
+                      ),
+                    ),
+                  ),
+                ),
+              )
+              .toList(),
+        ),
+        if (paths.length > previewPaths.length)
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Text(
+              '+${paths.length - previewPaths.length} more panels ready',
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+}
+
 class _EditorSectionHeader extends StatelessWidget {
   const _EditorSectionHeader({
     required this.icon,
@@ -3342,4 +3892,10 @@ class _EditorSectionHeader extends StatelessWidget {
       ],
     );
   }
+}
+
+int _countNarrationParagraphs(StoryChapter chapter) {
+  return chapter.beats
+      .where((beat) => beat.type == BeatType.narration)
+      .length;
 }

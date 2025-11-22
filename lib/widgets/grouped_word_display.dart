@@ -17,6 +17,7 @@ class GroupedWordDisplay extends StatefulWidget {
   final Duration scrollDuration;
   final bool showCompletionCard;
   final Widget? completionCard;
+  final double focusLineIndex;
   
   const GroupedWordDisplay({
     Key? key,
@@ -32,6 +33,7 @@ class GroupedWordDisplay extends StatefulWidget {
     this.showCompletionCard = false,
     this.completionCard,
     this.scrollDuration = const Duration(milliseconds: 1000),
+    this.focusLineIndex = -1.0,
   }) : super(key: key);
   
   @override
@@ -39,7 +41,7 @@ class GroupedWordDisplay extends StatefulWidget {
 }
 
 class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
-  static const double _lineHeight = 100.0;
+  static const double _lineHeight = 100.0; // Revert to original spacing
   static const EdgeInsets _listPadding = EdgeInsets.symmetric(vertical: 12, horizontal: 8);
   static const Color _unreadBg = Color(0xFFF6F7FB);
   static const Color _unreadBorder = Color(0xFFE3E6EF);
@@ -229,21 +231,48 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
     required bool isCurrent,
     required double progress,
   }) {
-    if (lineIndex < 0 || lineIndex >= widget.wordGroups.length) {
-      return const SizedBox.shrink();
-    }
-    
     final wordIndices = widget.wordGroups[lineIndex];
     
     final completed = lineIndex < currentLineIndex;
+    final isNext = lineIndex == currentLineIndex + 1;
+    final isPrevious = lineIndex == currentLineIndex - 1;
     final colorPalette = _RailColors.forState(
       isCurrent: isCurrent,
+      isNext: isNext,
+      isPrevious: isPrevious,
       completed: completed,
     );
     
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: isCurrent ? 4 : 8, vertical: 4),
-      child: AnimatedContainer(
+    // Fading logic based on focusLineIndex
+    // If focusLineIndex is valid (>= 0), we fade out lines far from it.
+    // User request: fade out historical rows before active-1.
+    // We interpret this as: keep visible range around [focus - 1.5, focus + 2.5].
+    // If user scrolls up, focusLineIndex decreases, so older lines fall into visible range.
+    
+    double opacity = 1.0;
+    if (!widget.readingComplete && widget.focusLineIndex >= 0) {
+       // Standard reading range
+       // Keep 2 lines of history (active-2, active-1), active, and 2 lines of future (active+1, active+2)
+       // If we scroll up, we shift this window back.
+       
+       // Lower bound: fade out if lineIndex < focus - 2.5
+       // Upper bound: fade out if lineIndex > focus + 2.5
+       
+       if (lineIndex < widget.focusLineIndex - 2.5 || lineIndex > widget.focusLineIndex + 2.5) {
+         opacity = 0.0;
+       }
+    } else if (!widget.readingComplete) {
+       // Fallback if focus not tracked (shouldn't happen with new logic)
+       if (lineIndex > currentLineIndex + 2) opacity = 0.0;
+    }
+
+    return AnimatedOpacity(
+      opacity: opacity,
+      duration: const Duration(milliseconds: 1500),
+      curve: Curves.easeOut,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: isCurrent ? 4 : 8, vertical: 4),
+        child: AnimatedContainer(
         duration: const Duration(milliseconds: 700),
         curve: Curves.easeInOut,
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -253,11 +282,12 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
           border: colorPalette.border,
           boxShadow: colorPalette.shadow,
         ),
-        child: SizedBox(
-          height: 68,
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: _buildLineWords(wordIndices),
+          child: SizedBox(
+            height: 68, // Revert to original height
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: _buildLineWords(wordIndices),
+            ),
           ),
         ),
       ),
@@ -346,11 +376,12 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
         ),
       ];
     } else if (isRead) {
-      textColor = _readText;
+      textColor = _readText.withOpacity(0.85);
       bgColor = Colors.transparent;
     } else {
-      bgColor = _unreadBg;
-      border = Border.all(color: _unreadBorder, width: 1.6);
+      bgColor = _unreadBg.withOpacity(0.5);
+      border = Border.all(color: _unreadBorder.withOpacity(0.4), width: 1.6);
+      textColor = _unreadText.withOpacity(0.5);
     }
 
     double scale = 1.0;
@@ -371,7 +402,7 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 350),
         curve: Curves.easeInOut,
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10), // Revert to original padding
         decoration: BoxDecoration(
           color: bgColor,
           borderRadius: BorderRadius.circular(14),
@@ -441,6 +472,8 @@ class _RailColors {
 
   static _RailColors forState({
     required bool isCurrent,
+    required bool isNext,
+    required bool isPrevious,
     required bool completed,
   }) {
     if (isCurrent) {
@@ -456,17 +489,24 @@ class _RailColors {
         ],
       );
     }
+    
+    if (isNext || isPrevious) {
+      return _RailColors(
+        background: Colors.white.withOpacity(0.45),
+        border: Border.all(color: Colors.grey.shade300.withOpacity(0.7)),
+      );
+    }
 
     if (completed) {
       return _RailColors(
-        background: Colors.transparent,
-        border: Border.all(color: Colors.greenAccent.shade100.withOpacity(0.2)),
+        background: Colors.white.withOpacity(0.3),
+        border: Border.all(color: Colors.grey.shade400.withOpacity(0.35)),
       );
     }
 
     return _RailColors(
-      background: Colors.transparent,
-      border: Border.all(color: Colors.grey.shade200.withOpacity(0.5)),
+      background: Colors.white.withOpacity(0.25),
+      border: Border.all(color: Colors.grey.shade300.withOpacity(0.3)),
     );
   }
 }

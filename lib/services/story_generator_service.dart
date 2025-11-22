@@ -110,6 +110,15 @@ class StoryGeneratorService {
     });
   }
 
+  Future<GeneratedStoryRecord?> updateStoryPanelArt(
+    String storyId,
+    StoryPanelArtMetadata? art,
+  ) {
+    return _storage.updateStory(storyId, (current) {
+      return current.copyWith(panelArt: art);
+    });
+  }
+
   Future<GeneratedStoryRecord?> updateStoryText(
     String storyId,
     String rawText,

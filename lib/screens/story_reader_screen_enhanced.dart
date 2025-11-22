@@ -1,4 +1,7 @@
 import 'dart:async';
+import 'dart:io';
+import 'dart:math' as math;
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/story_models.dart';
@@ -84,6 +87,10 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   bool _suppressNextLinger = false;
   bool _manualSeekInFlight = false;
   int? _pendingManualSeekIndex;
+  List<String?> _panelAssignments = [];
+  int _lastAutoScrollLine = -1;
+  double _idealScrollOffset = 0.0;
+  double _currentScrollOffset = 0.0;
   
   @override
   void initState() {
@@ -98,6 +105,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     );
     _currentBeatIndex = _findNextEnabledBeatIndex(_currentBeatIndex);
     final bool hasEnabledBeat = _currentBeatIndex < widget.story.beats.length;
+    _preparePanelAssignments();
     
     // Setup fade animation
     _fadeController = AnimationController(
@@ -504,6 +512,8 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   bool get _shouldShowMicPanel => _isUserMuted || _isListening || _narrationTrackingActive;
 
   bool get _isMeterActive => !_isUserMuted && (_isListening || _narrationTrackingActive);
+  bool get _shouldRevealCurrentPanel =>
+      _finalWordConfirmed && _panelPathForBeat(_currentBeatIndex) != null;
   
   Widget _buildListeningPanelContent(bool isTrackingMode) {
     final energyStream = context.read<GameController>().speechRecognizer.energyStream;
@@ -604,6 +614,60 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       ],
     );
   }
+
+  void _preparePanelAssignments() {
+    final beats = widget.story.beats;
+    final artPaths = widget.generatedStory?.panelArt?.panelImagePaths ?? [];
+    if (beats.isEmpty) {
+      _panelAssignments = const [];
+      return;
+    }
+
+    final assignments = List<String?>.filled(beats.length, null);
+    if (artPaths.isEmpty) {
+      _panelAssignments = assignments;
+      return;
+    }
+
+    final narrationIndices = <int>[];
+    for (var i = 0; i < beats.length; i++) {
+      if (beats[i].type == BeatType.narration) {
+        narrationIndices.add(i);
+      }
+    }
+    final targetIndices = narrationIndices.isNotEmpty
+        ? narrationIndices
+        : List.generate(beats.length, (index) => index);
+    for (var i = 0; i < targetIndices.length && i < artPaths.length; i++) {
+      assignments[targetIndices[i]] = artPaths[i];
+    }
+    _panelAssignments = assignments;
+  }
+
+  String? _panelPathForBeat(int index) {
+    if (_panelAssignments.isEmpty ||
+        index < 0 ||
+        index >= _panelAssignments.length) {
+      return null;
+    }
+    return _panelAssignments[index];
+  }
+
+  double _panelScrollProgress() {
+    if (widget.story.beats.isEmpty) {
+      return 0.0;
+    }
+    final beat = widget.story.beats[_currentBeatIndex];
+    if (beat.type == BeatType.narration && _narrationWords.isNotEmpty) {
+      final maxIndex = _narrationWords.length - 1;
+      if (maxIndex <= 0) {
+        return _finalWordConfirmed ? 1.0 : 0.0;
+      }
+      final ratio = _currentWordIndex / maxIndex;
+      return ratio.clamp(0.0, 1.0).toDouble();
+    }
+    return _finalWordConfirmed ? 1.0 : 0.0;
+  }
   _ParsedNarrationText _parseNarrationText(String text) {
     final normalized = text.replaceAll(RegExp(r'[-–—]+'), ' ');
     final rawTokens = normalized.split(RegExp(r'\s+')).where((w) => w.isNotEmpty).toList();
@@ -644,6 +708,26 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     }
     
     return false;
+  }
+
+  Widget _buildPanelBackdrop() {
+    final panelPath = _panelPathForBeat(_currentBeatIndex);
+    if (panelPath == null) {
+      return Positioned.fill(
+        child: Container(color: Colors.grey.shade100),
+      );
+    }
+    final progress = _panelScrollProgress();
+    return Positioned.fill(
+      child: _PanelBackdropImage(
+        key: ValueKey(
+          'panel-backdrop-$panelPath-$_currentBeatIndex-$_finalWordConfirmed',
+        ),
+        imagePath: panelPath,
+        reveal: _shouldRevealCurrentPanel,
+        progress: progress,
+      ),
+    );
   }
   
   // DEPRECATED: Old STT-only methods (replaced by hybrid VAD+STT)
@@ -1021,12 +1105,20 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   Widget build(BuildContext context) {
     final currentBeat = widget.story.beats[_currentBeatIndex];
     final isLastBeat = _currentBeatIndex == widget.story.beats.length - 1;
+    final bool showPanelShowcase = _shouldRevealCurrentPanel;
+    final String? currentPanelPath =
+        showPanelShowcase ? _panelPathForBeat(_currentBeatIndex) : null;
     
     // Check if there's a choice point at this beat
     final choicePoint = widget.story.choicePoints
         .where((cp) => cp.beatIndex == _currentBeatIndex)
         .firstOrNull;
-    final bool isTrackingMode = _narrationTrackingActive && _currentTargetWord == 'tracking';
+    final bool isTrackingMode =
+        _narrationTrackingActive && _currentTargetWord == 'tracking';
+    final bool showMicPanel = _shouldShowMicPanel;
+    final bool showContinueButton =
+        choicePoint == null || !_finalWordConfirmed;
+    final bool showBottomControls = showMicPanel || showContinueButton;
     
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
@@ -1068,25 +1160,44 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       ),
       body: Stack(
         children: [
-          // Story content
+          _buildPanelBackdrop(),
           SafeArea(
+            top: true,
+            bottom: false,
             child: Column(
               children: [
-                // Progress bar
                 LinearProgressIndicator(
                   value: (_currentBeatIndex + 1) / widget.story.beats.length,
                   backgroundColor: Colors.grey.shade200,
-                  valueColor: const AlwaysStoppedAnimation<Color>(Colors.deepPurple),
+                  valueColor:
+                      const AlwaysStoppedAnimation<Color>(Colors.deepPurple),
                   minHeight: 4,
                 ),
-                
-                // Story content
+                if (currentPanelPath != null)
+                  _buildPanelShowcase(context, currentPanelPath),
                 Expanded(
                   child: FadeTransition(
                     opacity: _fadeAnimation,
-                    child: SingleChildScrollView(
-                      controller: _contentScrollController,
-                      padding: const EdgeInsets.all(20),
+                    child: NotificationListener<ScrollNotification>(
+                      onNotification: (notification) {
+                        if (notification is ScrollUpdateNotification) {
+                          // Track manual scrolling to adjust focus
+                          if (mounted && notification.metrics.axis == Axis.vertical) {
+                            setState(() {
+                              _currentScrollOffset = notification.metrics.pixels;
+                            });
+                          }
+                        }
+                        return false;
+                      },
+                      child: SingleChildScrollView(
+                        controller: _contentScrollController,
+                        padding: EdgeInsets.fromLTRB(
+                        20,
+                        20,
+                        20,
+                        showBottomControls ? 260 : 40,
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
@@ -1099,18 +1210,20 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
                     ),
                   ),
                 ),
-            
-            _buildBottomControls(
-              currentBeat,
-              isLastBeat,
-              choicePoint != null,
-              isTrackingMode,
-                ),
+              ),
               ],
             ),
           ),
-          
-          // Fireworks overlay
+          if (showBottomControls)
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: _buildBottomControls(
+                currentBeat,
+                isLastBeat,
+                choicePoint != null,
+                isTrackingMode,
+              ),
+            ),
           FireworksOverlay(controller: _fireworksController),
         ],
       ),
@@ -1146,6 +1259,18 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     bool isTrackingMode,
   ) {
     final showMic = _shouldShowMicPanel;
+    final instructionStyle = Theme.of(context).textTheme.bodySmall?.copyWith(
+          color: Colors.white,
+          fontWeight: FontWeight.w600,
+          letterSpacing: 0.6,
+          shadows: const [
+            Shadow(
+              color: Colors.black45,
+              blurRadius: 6,
+              offset: Offset(0, 2),
+            ),
+          ],
+        );
     // For choice points, we want to hide the continue button when the choice widget appears
     final showContinue = !hasChoicePoint || !_finalWordConfirmed;
     if (!showMic && !showContinue) {
@@ -1187,6 +1312,14 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
               ),
             if (showMic && continueButton != null)
               const SizedBox(height: 18),
+            if (continueButton != null) ...[
+              Text(
+                'Press or say "Continue"',
+                textAlign: TextAlign.center,
+                style: instructionStyle,
+              ),
+              const SizedBox(height: 6),
+            ],
             if (continueButton != null)
               SizedBox(
                 width: double.infinity,
@@ -1199,6 +1332,10 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   }
   
   Widget _buildEnhancedNarrationBubble(StoryBeat beat) {
+    if (_shouldRevealCurrentPanel &&
+        _panelPathForBeat(_currentBeatIndex) != null) {
+      return const SizedBox(height: 16);
+    }
     // If narration words not yet parsed, parse them now
     if (_narrationWords.isEmpty || _narrationDisplayWords.isEmpty) {
       AppLogger.speech.w('⚠️ Narration words not yet parsed, parsing now');
@@ -1214,28 +1351,6 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: Colors.blue.shade100,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: const Icon(Icons.person, color: Colors.blue, size: 26),
-            ),
-            const SizedBox(width: 12),
-            Text(
-              'Parent reads · word ${_currentWordIndex + 1}/${_narrationWords.length}',
-              style: const TextStyle(
-                fontWeight: FontWeight.w600,
-                color: Colors.blueGrey,
-                fontSize: 15,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 16),
         _buildHighlightedText(beat.text, beat.targetWords),
         const SizedBox(height: 18),
         if (_showTargetWordCallouts && beat.targetWords.isNotEmpty)
@@ -1283,7 +1398,106 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       ],
     );
   }
-  
+
+  Widget _buildPanelShowcase(BuildContext context, String panelPath) {
+    final media = MediaQuery.of(context);
+    final double panelHeight = math.max(
+      220.0,
+      math.min(360.0, media.size.height * 0.35),
+    );
+    final double squareSize = math.max(
+      160.0,
+      math.min(panelHeight - 48, media.size.width - 80),
+    );
+
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+      child: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 400),
+        child: Container(
+          key: ValueKey('panel-showcase-$panelPath'),
+          height: panelHeight,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(36),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.18),
+                blurRadius: 30,
+                offset: const Offset(0, 18),
+              ),
+            ],
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(36),
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                Positioned.fill(
+                  child: ImageFiltered(
+                    imageFilter: ui.ImageFilter.blur(sigmaX: 12, sigmaY: 12),
+                    child: _MirroredPanelFill(path: panelPath),
+                  ),
+                ),
+                Positioned.fill(
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                          Colors.white.withOpacity(0.85),
+                          Colors.transparent,
+                          Colors.white.withOpacity(0.85),
+                        ],
+                        stops: const [0.0, 0.5, 1.0],
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned.fill(
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Colors.white.withOpacity(0.45),
+                          Colors.transparent,
+                          Colors.white.withOpacity(0.15),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Center(
+                  child: Container(
+                    width: squareSize,
+                    height: squareSize,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      border: Border.all(color: Colors.white, width: 8),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.25),
+                          blurRadius: 28,
+                          offset: const Offset(0, 18),
+                        ),
+                      ],
+                      image: DecorationImage(
+                        image: FileImage(File(panelPath)),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _buildHighlightedText(String text, List<String> targetWords) {
     // NEW: Use grouped word display with smooth progress
     
@@ -1304,6 +1518,24 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
         ? WordGroupingService.getLineProgress(_wordGroups[currentLine], _currentWordIndex)
         : 0.0;
     
+    // Calculate effective focus line based on scroll position
+    // If user scrolls up, effective focus moves to earlier lines
+    double effectiveFocusLine = -1.0;
+    if (currentLine >= 0) {
+      // Default to current active line
+      effectiveFocusLine = currentLine.toDouble();
+      
+      // Adjust based on scroll deviation from ideal
+      // If we haven't established an ideal yet, assume current is ideal
+      if (_idealScrollOffset > 0) {
+        final deviation = _idealScrollOffset - _currentScrollOffset;
+        // If deviation is positive (scrolled UP), we look back
+        // 100.0 is approx line height
+        final linesShift = deviation / 100.0;
+        effectiveFocusLine = currentLine - linesShift;
+      }
+    }
+
     final groupedWords = GroupedWordDisplay(
       key: ValueKey('narration-words-${_currentBeatIndex}'), // Stable key to prevent remounting
       displayWords: _narrationDisplayWords,
@@ -1314,11 +1546,22 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       readingComplete: isComplete,
       scrollWordIndex: _getScrollWordIndex(),
       suppressNextLinger: _suppressNextLinger,
-      shouldAutoExpand: isComplete,
+      shouldAutoExpand: true,
       showCompletionCard: isComplete,
       completionCard: isComplete ? _buildCompletionCard() : null,
+      focusLineIndex: effectiveFocusLine, // Pass the scroll-adjusted focus
     );
     
+    // Trigger auto-scroll when word index changes
+    if (_wordGroups.isNotEmpty) {
+      final currentLine = WordGroupingService.getLineForWord(_wordGroups, _currentWordIndex);
+      if (currentLine >= 0) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted) _scrollToNarrationLine(currentLine);
+        });
+      }
+    }
+
     final Widget readyContent = groupedWords;
     
     final Widget loadingContent = _buildNarrationPrepCard();
@@ -1599,6 +1842,41 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     );
   }
   
+  void _scrollToNarrationLine(int lineIndex) {
+    if (lineIndex == _lastAutoScrollLine) return;
+    _lastAutoScrollLine = lineIndex;
+
+    if (!_contentScrollController.hasClients) return;
+
+    // GroupedWordDisplay constants
+    const double lineHeight = 100.0;
+    const double headerPadding = 20.0;
+
+    final viewportHeight = _contentScrollController.position.viewportDimension;
+    final lineTop = headerPadding + (lineIndex * lineHeight);
+
+    // Position line at 35% of viewport height (higher up than center)
+    double targetOffset = lineTop - (viewportHeight * 0.35) + (lineHeight / 2);
+
+    final maxScroll = _contentScrollController.position.maxScrollExtent;
+    final minScroll = _contentScrollController.position.minScrollExtent;
+
+    targetOffset = targetOffset.clamp(minScroll, maxScroll);
+
+    // Update ideal offset for focus calculations
+    if (_idealScrollOffset != targetOffset) {
+      _idealScrollOffset = targetOffset;
+      // We don't setState here to avoid infinite loops during build/layout
+      // The next frame or scroll event will pick it up
+    }
+
+    _contentScrollController.animateTo(
+      targetOffset,
+      duration: const Duration(milliseconds: 800),
+      curve: Curves.easeInOutCubic,
+    );
+  }
+
   Future<void> _jumpToWord(int wordIndex) async {
     if (_narrationWords.isEmpty) {
       return;
@@ -2158,4 +2436,139 @@ class _ParsedNarrationText {
     required this.cleanWords,
     required this.displayWords,
   });
+}
+
+class _MirroredPanelFill extends StatelessWidget {
+  const _MirroredPanelFill({required this.path});
+
+  final String path;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Transform(
+            alignment: Alignment.center,
+            transform: Matrix4.identity()..scale(-1.0, 1.0),
+            child: Image.file(
+              File(path),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        Expanded(
+          child: Image.file(
+            File(path),
+            fit: BoxFit.cover,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _PanelBackdropImage extends StatefulWidget {
+  const _PanelBackdropImage({
+    super.key,
+    required this.imagePath,
+    required this.reveal,
+    required this.progress,
+  });
+
+  final String imagePath;
+  final bool reveal;
+  final double progress;
+
+  @override
+  State<_PanelBackdropImage> createState() => _PanelBackdropImageState();
+}
+
+class _PanelBackdropImageState extends State<_PanelBackdropImage>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _panController;
+
+  @override
+  void initState() {
+    super.initState();
+    _panController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 60),
+    )..addListener(() {
+        if (mounted) {
+          setState(() {});
+        }
+      });
+    _panController.repeat(reverse: true);
+  }
+
+  @override
+  void didUpdateWidget(covariant _PanelBackdropImage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.reveal != widget.reveal) {
+      if (mounted) {
+        setState(() {});
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    _panController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final double horizontalAlignment = widget.reveal
+        ? ui.lerpDouble(-0.85, 0.85, _panController.value) ?? 0.0
+        : 0.0;
+    final double verticalAlignment =
+        ui.lerpDouble(-0.3, 0.3, widget.progress) ?? 0.0;
+    final double topOverlay =
+        ui.lerpDouble(0.5, 0.15, widget.progress) ?? 0.3;
+    final double bottomOverlay =
+        ui.lerpDouble(0.35, 0.05, widget.progress) ?? 0.15;
+    final double targetSigma = widget.reveal ? 2.0 : 8.0;
+
+    return TweenAnimationBuilder<double>(
+      key: ValueKey(widget.reveal),
+      tween: Tween<double>(
+        begin: widget.reveal ? 8.0 : 0.0,
+        end: targetSigma,
+      ),
+      duration: const Duration(milliseconds: 600),
+      curve: Curves.easeInOut,
+      builder: (context, sigma, _) {
+        return Stack(
+          fit: StackFit.expand,
+          children: [
+            ImageFiltered(
+              imageFilter: ui.ImageFilter.blur(sigmaX: sigma, sigmaY: sigma),
+              child: Image.file(
+                File(widget.imagePath),
+                fit: BoxFit.cover,
+                alignment: Alignment(horizontalAlignment, verticalAlignment),
+                errorBuilder: (_, __, ___) => Container(
+                  color: Colors.grey.shade200,
+                ),
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.black.withOpacity(topOverlay),
+                    Colors.black.withOpacity(bottomOverlay),
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
