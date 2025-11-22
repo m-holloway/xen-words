@@ -27,12 +27,19 @@ class PanelArtWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Standard panel art styling
+    // We use padding+color for the frame instead of border to ensure correct child sizing/clipping
+    // and avoid background bleeding.
+    final double borderRadius = 30.0;
+    final double borderWidth = 8.0;
+    final double innerRadius = borderRadius - borderWidth; // 22.0
+
     Widget content = Container(
       width: width,
       height: height,
+      padding: showFrame ? EdgeInsets.all(borderWidth) : EdgeInsets.zero,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
-        border: showFrame ? Border.all(color: Colors.white, width: 8) : null,
+        color: showFrame ? Colors.white : Colors.transparent, // The frame color
+        borderRadius: BorderRadius.circular(borderRadius),
         boxShadow: showShadow
             ? [
                 BoxShadow(
@@ -44,7 +51,7 @@ class PanelArtWidget extends StatelessWidget {
             : null,
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(22), // Inner radius = outer - border
+        borderRadius: BorderRadius.circular(showFrame ? innerRadius : borderRadius),
         child: Image.file(
           File(imagePath),
           fit: BoxFit.cover,
