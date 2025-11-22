@@ -3800,45 +3800,47 @@ class _PanelThumbnailGrid extends StatelessWidget {
     if (paths.isEmpty) {
       return const SizedBox.shrink();
     }
-    final previewPaths = paths.take(4).toList();
+    
     final theme = Theme.of(context);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Wrap(
-          spacing: 12,
-          runSpacing: 12,
-          children: previewPaths
+    // Calculate responsive item width
+    // We want roughly 3-4 items per row depending on screen width
+    // Assuming standard padding of ~32-48px total
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final width = constraints.maxWidth;
+        // Target ~100px but fill available space
+        final crossAxisCount = (width / 100).floor().clamp(3, 6);
+        final spacing = 12.0;
+        final totalSpacing = spacing * (crossAxisCount - 1);
+        final itemWidth = (width - totalSpacing) / crossAxisCount;
+
+        return Wrap(
+          spacing: spacing,
+          runSpacing: spacing,
+          children: paths
               .map(
-                (path) => ClipRRect(
-                  borderRadius: BorderRadius.circular(18),
-                  child: AspectRatio(
-                    aspectRatio: 1,
-                    child: Image.file(
-                      File(path),
-                      fit: BoxFit.cover,
-                      errorBuilder: (_, __, ___) => Container(
-                        color: theme.colorScheme.surfaceVariant,
-                        alignment: Alignment.center,
-                        child: const Icon(Icons.broken_image_outlined),
+                (path) => SizedBox(
+                  width: itemWidth,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(18),
+                    child: AspectRatio(
+                      aspectRatio: 1,
+                      child: Image.file(
+                        File(path),
+                        fit: BoxFit.cover,
+                        errorBuilder: (_, __, ___) => Container(
+                          color: theme.colorScheme.surfaceContainerHighest,
+                          alignment: Alignment.center,
+                          child: const Icon(Icons.broken_image_outlined),
+                        ),
                       ),
                     ),
                   ),
                 ),
               )
               .toList(),
-        ),
-        if (paths.length > previewPaths.length)
-          Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: Text(
-              '+${paths.length - previewPaths.length} more panels ready',
-              style: theme.textTheme.bodySmall?.copyWith(
-                color: theme.colorScheme.onSurfaceVariant,
-              ),
-            ),
-          ),
-      ],
+        );
+      },
     );
   }
 }
