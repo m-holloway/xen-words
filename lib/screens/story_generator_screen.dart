@@ -17,6 +17,7 @@ import '../services/story_generator_service.dart';
 import '../services/story_panel_art_service.dart';
 import '../utils/reading_level_helper.dart';
 import '../utils/story_text_utils.dart';
+import '../widgets/panel_art_widget.dart';
 import '../widgets/star_rating.dart';
 import 'story_playback_screen.dart';
 import 'story_reader_screen_enhanced.dart';
@@ -3760,11 +3761,14 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
               children: [
                 const Icon(Icons.visibility_outlined, size: 18),
                 const SizedBox(width: 8),
-                Text(
-                  'Tap a paragraph to edit text or artwork',
-                  style: theme.textTheme.labelLarge,
+                Expanded( // Added Expanded to prevent overflow
+                  child: Text(
+                    'Tap a paragraph to edit text or artwork',
+                    style: theme.textTheme.labelLarge,
+                    overflow: TextOverflow.ellipsis, // Ensure text doesn't spill out
+                  ),
                 ),
-                const Spacer(),
+                const SizedBox(width: 8),
                 AnimatedOpacity(
                   opacity: _isDirty ? 1 : 0,
                   duration: const Duration(milliseconds: 200),
@@ -3849,15 +3853,12 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
                       if (isNarration && currentPanelPath != null)
                         Padding(
                           padding: const EdgeInsets.only(bottom: 12),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: AspectRatio(
-                              aspectRatio: 1, // Changed from 16/9 to 1 for square display
-                              child: Image.file(
-                                File(currentPanelPath),
-                                fit: BoxFit.cover,
-                                alignment: Alignment.topCenter,
-                              ),
+                          child: AspectRatio(
+                            aspectRatio: 1,
+                            child: PanelArtWidget(
+                              imagePath: currentPanelPath,
+                              showFrame: true,
+                              showShadow: false,
                             ),
                           ),
                         ),
@@ -4112,37 +4113,36 @@ class _BeatDetailScreenState extends State<_BeatDetailScreen> {
                 if (isNarration) ...[
                   AspectRatio(
                     aspectRatio: 1,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade200,
-                        borderRadius: BorderRadius.circular(24),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
-                            blurRadius: 20,
-                            offset: const Offset(0, 10),
-                          ),
-                        ],
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(24),
-                        child: currentPanelPath != null
-                            ? Image.file(
-                                File(currentPanelPath),
-                                fit: BoxFit.cover,
-                              )
-                            : const Center(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Icon(Icons.image_not_supported_outlined, size: 48, color: Colors.grey),
-                                    SizedBox(height: 8),
-                                    Text('No artwork assigned'),
-                                  ],
+                    child: currentPanelPath != null
+                        ? PanelArtWidget(
+                            imagePath: currentPanelPath,
+                            showFrame: true,
+                            showShadow: true,
+                          )
+                        : Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade200,
+                              borderRadius: BorderRadius.circular(30),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.1),
+                                  blurRadius: 20,
+                                  offset: const Offset(0, 10),
                                 ),
+                              ],
+                            ),
+                            child: const Center(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(Icons.image_not_supported_outlined,
+                                      size: 48, color: Colors.grey),
+                                  SizedBox(height: 8),
+                                  Text('No artwork assigned'),
+                                ],
                               ),
-                      ),
-                    ),
+                            ),
+                          ),
                   ),
                   const SizedBox(height: 16),
                   Center(
@@ -4281,14 +4281,6 @@ class _PanelThumbnailGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (paths.isEmpty) {
-      return const SizedBox.shrink();
-    }
-    
-    final theme = Theme.of(context);
-    // Calculate responsive item width
-    // We want roughly 3-4 items per row depending on screen width
-    // Assuming standard padding of ~32-48px total
     return LayoutBuilder(
       builder: (context, constraints) {
         final width = constraints.maxWidth;
@@ -4335,19 +4327,12 @@ class _PanelThumbnailGrid extends StatelessWidget {
                   },
                   child: SizedBox(
                     width: itemWidth,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(18),
-                      child: AspectRatio(
-                        aspectRatio: 1,
-                        child: Image.file(
-                          File(path),
-                          fit: BoxFit.cover,
-                          errorBuilder: (_, __, ___) => Container(
-                            color: theme.colorScheme.surfaceContainerHighest,
-                            alignment: Alignment.center,
-                            child: const Icon(Icons.broken_image_outlined),
-                          ),
-                        ),
+                    child: AspectRatio(
+                      aspectRatio: 1,
+                      child: PanelArtWidget(
+                        imagePath: path,
+                        showFrame: true,
+                        showShadow: false,
                       ),
                     ),
                   ),
@@ -4391,18 +4376,19 @@ class _PanelPickerDialog extends StatelessWidget {
               child: Stack(
                 fit: StackFit.expand,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.file(
-                      File(path),
-                      fit: BoxFit.cover,
+                  AspectRatio(
+                    aspectRatio: 1,
+                    child: PanelArtWidget(
+                      imagePath: path,
+                      showFrame: true,
+                      showShadow: false,
                     ),
                   ),
                   if (isSelected)
                     Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: Colors.green, width: 4),
+                        borderRadius: BorderRadius.circular(30), // Match widget radius
+                        border: Border.all(color: Colors.green, width: 6),
                       ),
                     ),
                 ],

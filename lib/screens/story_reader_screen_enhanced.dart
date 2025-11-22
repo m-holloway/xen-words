@@ -18,6 +18,7 @@ import '../widgets/grouped_word_display.dart';
 import '../widgets/plush_microphone_meter.dart';
 import '../widgets/star_rating.dart';
 import '../utils/app_logger.dart';
+import '../widgets/panel_art_widget.dart';
 
 /// Enhanced story reader with voice recognition and word highlighting
 class StoryReaderScreenEnhanced extends StatefulWidget {
@@ -1507,24 +1508,12 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
                 ),
               ),
               Center(
-                child: Container(
+                child: PanelArtWidget(
+                  imagePath: panelPath,
                   width: squareSize,
                   height: squareSize,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    border: Border.all(color: Colors.white, width: 8),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.25),
-                        blurRadius: 28,
-                        offset: const Offset(0, 18),
-                      ),
-                    ],
-                    image: DecorationImage(
-                      image: FileImage(File(panelPath)),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                  showFrame: true,
+                  showShadow: true,
                 ),
               ),
             ],
