@@ -1178,8 +1178,8 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
                   minHeight: 4,
                 ),
                 AnimatedSize(
-                  duration: const Duration(milliseconds: 1200),
-                  curve: Curves.easeOutQuart,
+                  duration: const Duration(milliseconds: 800),
+                  curve: Curves.easeOutBack,
                   child: currentPanelPath != null
                       ? _buildPanelShowcase(context, currentPanelPath)
                       : const SizedBox(width: double.infinity),
@@ -1519,17 +1519,26 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
         ),
       )
       .animate()
-      .fade(duration: 800.ms, curve: Curves.easeOut)
-      .scale(
-        begin: const Offset(0.9, 0.9),
-        end: const Offset(1.0, 1.0),
+      .fadeIn(duration: 600.ms)
+      .blurXY(
+        begin: 12,
+        end: 0,
         duration: 800.ms,
-        curve: Curves.easeOutBack,
+        curve: Curves.easeOut,
+      )
+      .scale(
+        begin: const Offset(0.8, 0.8),
+        end: const Offset(1.0, 1.0),
+        duration: 1000.ms,
+        curve: Curves.elasticOut,
       )
       .shimmer(
-        duration: 1200.ms,
-        color: Colors.white.withOpacity(0.3),
+        delay: 600.ms,
+        duration: 1800.ms,
+        color: Colors.white.withOpacity(0.4),
         angle: -0.5,
+        size: 1.5,
+        curve: Curves.easeInOut,
       ),
     );
   }
