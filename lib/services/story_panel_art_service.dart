@@ -46,7 +46,10 @@ class StoryPanelArtService {
       throw StoryPanelArtException('We could not read that image file.');
     }
 
-    final grid = _resolveGrid(composite.width, composite.height, panelCount);
+    // Trim solid black borders before processing
+    final trimmed = _trimBlackBorders(composite);
+
+    final grid = _resolveGrid(trimmed.width, trimmed.height, panelCount);
     if (grid == null) {
       throw StoryPanelArtException(
         'Unable to detect a clean square grid. Make sure the collage uses equally sized panels without cropping.',
@@ -61,9 +64,9 @@ class StoryPanelArtService {
     final batchDir = await _createBatchDirectory(storyId);
     final sheetPath = await _persistSheetFile(File(capture.path), batchDir);
     final rawPanelPaths = await _splitAndSavePanels(
-      composite,
+      trimmed, // Use trimmed image
       batchDir,
-      grid.totalPanels, // Split ALL panels found in the grid
+      grid.totalPanels,
       grid,
     );
 
@@ -276,6 +279,51 @@ class StoryPanelArtService {
     }
     final list = divisors.toList()..sort();
     return list;
+  }
+
+  img.Image _trimBlackBorders(img.Image image) {
+    // Determine bounding box of non-black content
+    int minX = image.width;
+    int maxX = 0;
+    int minY = image.height;
+    int maxY = 0;
+
+    bool foundContent = false;
+
+    // Simple threshold for "black" - sum of RGB channels < 15 (allows for slight compression noise)
+    const threshold = 15;
+
+    for (int y = 0; y < image.height; y++) {
+      for (int x = 0; x < image.width; x++) {
+        final pixel = image.getPixel(x, y);
+        if (pixel.r + pixel.g + pixel.b > threshold) {
+          if (x < minX) minX = x;
+          if (x > maxX) maxX = x;
+          if (y < minY) minY = y;
+          if (y > maxY) maxY = y;
+          foundContent = true;
+        }
+      }
+    }
+
+    if (!foundContent) {
+      return image; // Return original if fully black or empty
+    }
+
+    // If bounds cover the whole image, no trimming needed
+    if (minX == 0 && minY == 0 && maxX == image.width - 1 && maxY == image.height - 1) {
+      return image;
+    }
+
+    // Crop to the bounding box
+    // Width/Height is exclusive max - min + 1
+    return img.copyCrop(
+      image,
+      x: minX,
+      y: minY,
+      width: maxX - minX + 1,
+      height: maxY - minY + 1,
+    );
   }
 }
 
