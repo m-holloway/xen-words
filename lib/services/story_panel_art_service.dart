@@ -60,23 +60,57 @@ class StoryPanelArtService {
 
     final batchDir = await _createBatchDirectory(storyId);
     final sheetPath = await _persistSheetFile(File(capture.path), batchDir);
-    final panelPaths = await _splitAndSavePanels(
+    final rawPanelPaths = await _splitAndSavePanels(
       composite,
       batchDir,
-      panelCount,
+      grid.totalPanels, // Split ALL panels found in the grid
       grid,
     );
+
+    // Allow user to select/confirm panels
+    final selectedPaths = await _promptSelection(context, rawPanelPaths);
+    if (selectedPaths == null || selectedPaths.isEmpty) {
+      // User cancelled or selected nothing
+      // Cleanup batch dir since we are aborting
+      try {
+        await batchDir.delete(recursive: true);
+      } catch (_) {}
+      return null;
+    }
 
     if (existingArt != null) {
       await deletePanelArt(existingArt);
     }
 
+    // Default assignments: Map 1:1 to first N panels
+    // We store ALL selected panels in panelImagePaths (the pool)
+    // And create initial assignments for available slots
+    final Map<int, String> initialAssignments = {};
+    for (int i = 0; i < panelCount && i < selectedPaths.length; i++) {
+      initialAssignments[i] = selectedPaths[i];
+    }
+
     return StoryPanelArtMetadata(
       columns: grid.columns,
       rows: grid.rows,
-      panelImagePaths: panelPaths,
+      panelImagePaths: selectedPaths,
       sheetImagePath: sheetPath,
       importedAt: DateTime.now(),
+      assignments: initialAssignments,
+    );
+  }
+
+  Future<List<String>?> _promptSelection(
+    BuildContext context,
+    List<String> allPaths,
+  ) {
+    // If only 1 panel or very few, maybe skip?
+    // User request: "select which panels will be imported (defaulted to all)"
+    // We show a dialog grid.
+    return showDialog<List<String>>(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => _PanelSelectionDialog(allPaths: allPaths),
     );
   }
 
@@ -266,5 +300,107 @@ class _PanelGrid {
   final int rows;
   final int panelSize;
   final int totalPanels;
+}
+
+class _PanelSelectionDialog extends StatefulWidget {
+  const _PanelSelectionDialog({required this.allPaths});
+
+  final List<String> allPaths;
+
+  @override
+  State<_PanelSelectionDialog> createState() => _PanelSelectionDialogState();
+}
+
+class _PanelSelectionDialogState extends State<_PanelSelectionDialog> {
+  late final Set<String> _selectedPaths;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedPaths = widget.allPaths.toSet();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Select panels to import'),
+      content: SizedBox(
+        width: double.maxFinite,
+        child: GridView.builder(
+          shrinkWrap: true,
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 100,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
+          ),
+          itemCount: widget.allPaths.length,
+          itemBuilder: (context, index) {
+            final path = widget.allPaths[index];
+            final isSelected = _selectedPaths.contains(path);
+            return GestureDetector(
+              onTap: () {
+                setState(() {
+                  if (isSelected) {
+                    _selectedPaths.remove(path);
+                  } else {
+                    _selectedPaths.add(path);
+                  }
+                });
+              },
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Opacity(
+                      opacity: isSelected ? 1.0 : 0.4,
+                      child: Image.file(
+                        File(path),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  if (isSelected)
+                    Positioned(
+                      right: 4,
+                      bottom: 4,
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(
+                          Icons.check_circle,
+                          color: Colors.green,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+            );
+          },
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(null),
+          child: const Text('Cancel'),
+        ),
+        TextButton(
+          onPressed: _selectedPaths.isEmpty
+              ? null
+              : () {
+                  // Return sorted by original index to preserve order
+                  final result = widget.allPaths
+                      .where((p) => _selectedPaths.contains(p))
+                      .toList();
+                  Navigator.of(context).pop(result);
+                },
+          child: Text('Import (${_selectedPaths.length})'),
+        ),
+      ],
+    );
+  }
 }
 

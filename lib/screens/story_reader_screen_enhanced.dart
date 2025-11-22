@@ -621,7 +621,8 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
 
   void _preparePanelAssignments() {
     final beats = widget.story.beats;
-    final artPaths = widget.generatedStory?.panelArt?.panelImagePaths ?? [];
+    final art = widget.generatedStory?.panelArt;
+    final artPaths = art?.panelImagePaths ?? [];
     if (beats.isEmpty) {
       _panelAssignments = const [];
       return;
@@ -633,17 +634,29 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       return;
     }
 
+    // Identify narration indices
     final narrationIndices = <int>[];
     for (var i = 0; i < beats.length; i++) {
       if (beats[i].type == BeatType.narration) {
         narrationIndices.add(i);
       }
     }
-    final targetIndices = narrationIndices.isNotEmpty
-        ? narrationIndices
-        : List.generate(beats.length, (index) => index);
-    for (var i = 0; i < targetIndices.length && i < artPaths.length; i++) {
-      assignments[targetIndices[i]] = artPaths[i];
+
+    // Map artwork
+    // Priority:
+    // 1. Explicit assignment in metadata
+    // 2. Default 1:1 mapping if pool has enough images
+    for (var i = 0; i < narrationIndices.length; i++) {
+      final beatIndex = narrationIndices[i];
+      
+      // Check explicit assignment (assignments key is 0-based narration index)
+      final assignedPath = art?.assignments[i];
+      if (assignedPath != null) {
+        assignments[beatIndex] = assignedPath;
+      } else if (i < artPaths.length) {
+        // Fallback to pool order
+        assignments[beatIndex] = artPaths[i];
+      }
     }
     _panelAssignments = assignments;
   }

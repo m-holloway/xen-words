@@ -294,6 +294,7 @@ class StoryPanelArtMetadata {
   final List<String> panelImagePaths;
   final String sheetImagePath;
   final DateTime importedAt;
+  final Map<int, String> assignments; // narrationBeatIndex -> panelPath
 
   const StoryPanelArtMetadata({
     required this.columns,
@@ -301,6 +302,7 @@ class StoryPanelArtMetadata {
     required this.panelImagePaths,
     required this.sheetImagePath,
     required this.importedAt,
+    this.assignments = const {},
   });
 
   Map<String, dynamic> toJson() {
@@ -310,10 +312,12 @@ class StoryPanelArtMetadata {
       'panel_image_paths': panelImagePaths,
       'sheet_image_path': sheetImagePath,
       'imported_at': importedAt.toIso8601String(),
+      'assignments': assignments.map((key, value) => MapEntry(key.toString(), value)),
     };
   }
 
   factory StoryPanelArtMetadata.fromJson(Map<String, dynamic> json) {
+    final rawAssignments = json['assignments'] as Map<String, dynamic>? ?? {};
     return StoryPanelArtMetadata(
       columns: json['columns'] as int? ?? 1,
       rows: json['rows'] as int? ?? 1,
@@ -324,6 +328,9 @@ class StoryPanelArtMetadata {
       importedAt:
           DateTime.tryParse(json['imported_at'] as String? ?? '') ??
           DateTime.now(),
+      assignments: rawAssignments.map(
+        (key, value) => MapEntry(int.tryParse(key) ?? -1, value.toString()),
+      )..removeWhere((key, value) => key == -1),
     );
   }
 
@@ -333,6 +340,7 @@ class StoryPanelArtMetadata {
     List<String>? panelImagePaths,
     String? sheetImagePath,
     DateTime? importedAt,
+    Map<int, String>? assignments,
   }) {
     return StoryPanelArtMetadata(
       columns: columns ?? this.columns,
@@ -340,6 +348,7 @@ class StoryPanelArtMetadata {
       panelImagePaths: panelImagePaths ?? this.panelImagePaths,
       sheetImagePath: sheetImagePath ?? this.sheetImagePath,
       importedAt: importedAt ?? this.importedAt,
+      assignments: assignments ?? this.assignments,
     );
   }
 }

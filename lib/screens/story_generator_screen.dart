@@ -3153,27 +3153,43 @@ class _StoryEditorScreen extends StatefulWidget {
   State<_StoryEditorScreen> createState() => _StoryEditorScreenState();
 }
 
+class _BeatEditorState {
+  final StoryBeat beat;
+  final TextEditingController controller;
+  _BeatEditorState({required this.beat, required this.controller});
+}
+
 class _StoryEditorScreenState extends State<_StoryEditorScreen> {
   late GeneratedStoryRecord _story;
-  late final TextEditingController _textController;
+  late List<_BeatEditorState> _beatEditors;
   bool _isDirty = false;
   bool _isSavingText = false;
   bool _isUpdatingCover = false;
   bool _isUpdatingPanelArt = false;
-
+  
   @override
   void initState() {
     super.initState();
     _story = widget.story;
-    _textController = TextEditingController(
-      text: _rawStoryTextFrom(widget.story),
-    )..addListener(_onTextChanged);
+    _initBeatEditors();
+  }
+
+  void _initBeatEditors() {
+    _beatEditors = _story.chapter.beats.map((beat) {
+      return _BeatEditorState(
+        beat: beat,
+        controller: TextEditingController(text: beat.text)
+          ..addListener(_onTextChanged),
+      );
+    }).toList();
   }
 
   @override
   void dispose() {
-    _textController.removeListener(_onTextChanged);
-    _textController.dispose();
+    for (final editor in _beatEditors) {
+      editor.controller.removeListener(_onTextChanged);
+      editor.controller.dispose();
+    }
     super.dispose();
   }
 
@@ -3186,19 +3202,34 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
   }
 
   void _onTextChanged() {
-    final canonical = _rawStoryTextFrom(_story);
-    final current = _textController.text.trimRight();
-    final dirty = current != canonical;
-    if (dirty == _isDirty) return;
+    // Check if any controller is dirty compared to its beat
+    bool anyDirty = false;
+    for (final editor in _beatEditors) {
+      if (editor.controller.text.trimRight() != editor.beat.text.trimRight()) {
+        anyDirty = true;
+        break;
+      }
+    }
+    // Also check assignments? Assignments are saved immediately via updateStoryPanelArt
+    // So _isDirty tracks text changes primarily.
+    
+    if (anyDirty == _isDirty) return;
     setState(() {
-      _isDirty = dirty;
+      _isDirty = anyDirty;
     });
   }
 
-  String _rawStoryTextFrom(GeneratedStoryRecord story) {
+  // Reconstruct the full story text from the individual editors
+  // This is used if we were saving as a raw string, but we are moving to structured updates.
+  // However, existing service expects `updateStoryText` which takes a full string.
+  // We might need to update the service or reconstruct the string carefully.
+  // The `StoryGeneratorService.updateStoryText` parses the string back into beats.
+  // If we want to preserve structure exactly, we should ideally have `updateStoryBeats`.
+  // For now, we'll reconstruct the string.
+  String _reconstructFullStoryText() {
     final buffer = StringBuffer();
-    for (final beat in story.chapter.beats) {
-      final text = beat.text.trimRight();
+    for (final editor in _beatEditors) {
+      final text = editor.controller.text.trimRight();
       if (text.isEmpty) continue;
       if (buffer.isNotEmpty) {
         buffer.writeln();
@@ -3210,43 +3241,47 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
   }
 
   void _resetDraft() {
-    final sourceText = _rawStoryTextFrom(_story);
-    _textController.value = TextEditingValue(
-      text: sourceText,
-      selection: TextSelection.collapsed(offset: sourceText.length),
-    );
-    if (_isDirty) {
-      setState(() => _isDirty = false);
-    }
+    setState(() {
+      _initBeatEditors(); // Re-init from _story
+      _isDirty = false;
+    });
   }
 
   Future<void> _saveStoryText() async {
     if (_isSavingText) return;
-    final trimmed = _textController.text.trim();
-    if (trimmed.isEmpty) {
+    
+    // Validate
+    bool hasContent = false;
+    for (final editor in _beatEditors) {
+      if (editor.controller.text.trim().isNotEmpty) {
+        hasContent = true;
+        break;
+      }
+    }
+    
+    if (!hasContent) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Story text cannot be empty.')),
       );
       return;
     }
+
     setState(() {
       _isSavingText = true;
     });
+    
     try {
+      final fullText = _reconstructFullStoryText();
       final updated = await widget.storyService.updateStoryText(
         _story.id,
-        trimmed,
+        fullText,
       );
       if (updated != null && mounted) {
         setState(() {
           _story = updated;
           _isDirty = false;
+          _initBeatEditors(); // Re-sync editors with new parsed structure
         });
-        final refreshed = _rawStoryTextFrom(updated);
-        _textController.value = TextEditingValue(
-          text: refreshed,
-          selection: TextSelection.collapsed(offset: refreshed.length),
-        );
         ScaffoldMessenger.of(
           context,
         ).showSnackBar(const SnackBar(content: Text('Story text saved.')));
@@ -3726,7 +3761,7 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
                 const Icon(Icons.edit, size: 18),
                 const SizedBox(width: 8),
                 Text(
-                  'Tap below to edit the narration',
+                  'Edit paragraphs and artwork',
                   style: theme.textTheme.labelLarge,
                 ),
                 const Spacer(),
@@ -3747,23 +3782,116 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
             ),
           ),
           const SizedBox(height: 16),
-          TextField(
-            controller: _textController,
-            minLines: 16,
-            maxLines: null,
-            keyboardType: TextInputType.multiline,
-            style: theme.textTheme.bodyLarge?.copyWith(height: 1.5),
-            decoration: InputDecoration(
-              labelText: 'Story text',
-              alignLabelWithHint: true,
-              prefixIcon: const Icon(Icons.notes),
-              hintText: 'Rewrite or personalize the story...',
-              filled: true,
-              fillColor: theme.colorScheme.surfaceVariant.withOpacity(0.4),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(18),
-              ),
-            ),
+          // Render editor list
+          ListView.separated(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: _beatEditors.length,
+            separatorBuilder: (context, index) => const SizedBox(height: 24),
+            itemBuilder: (context, index) {
+              final editor = _beatEditors[index];
+              final isNarration = editor.beat.type == BeatType.narration;
+              
+              // Determine current panel for this beat (if narration)
+              String? currentPanelPath;
+              if (isNarration) {
+                // Calculate narration index (0-based among narration beats only)
+                int narrationIndex = 0;
+                for (int i = 0; i < index; i++) {
+                  if (_beatEditors[i].beat.type == BeatType.narration) {
+                    narrationIndex++;
+                  }
+                }
+                
+                // Look up assignment or default
+                final manualAssignment = _story.panelArt?.assignments[narrationIndex];
+                if (manualAssignment != null) {
+                  currentPanelPath = manualAssignment;
+                } else {
+                  // Default: use Nth panel from pool if available
+                  final pool = _story.panelArt?.panelImagePaths ?? [];
+                  if (narrationIndex < pool.length) {
+                    currentPanelPath = pool[narrationIndex];
+                  }
+                }
+              }
+
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (isNarration) ...[
+                    Row(
+                      children: [
+                        // Panel Preview / Selector
+                        GestureDetector(
+                          onTap: () => _selectPanelForBeat(index),
+                          child: Container(
+                            width: 80,
+                            height: 80,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: theme.colorScheme.surfaceVariant,
+                              border: Border.all(
+                                color: theme.colorScheme.outline.withOpacity(0.2),
+                              ),
+                              image: currentPanelPath != null
+                                  ? DecorationImage(
+                                      image: FileImage(File(currentPanelPath)),
+                                      fit: BoxFit.cover,
+                                    )
+                                  : null,
+                            ),
+                            child: currentPanelPath == null
+                                ? Icon(
+                                    Icons.add_photo_alternate_outlined,
+                                    color: theme.colorScheme.onSurfaceVariant,
+                                  )
+                                : null,
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: TextField(
+                            controller: editor.controller,
+                            minLines: 3,
+                            maxLines: null,
+                            style: theme.textTheme.bodyLarge?.copyWith(height: 1.5),
+                            decoration: InputDecoration(
+                              labelText: 'Paragraph ${index + 1}',
+                              alignLabelWithHint: true,
+                              filled: true,
+                              fillColor: theme.colorScheme.surfaceVariant.withOpacity(0.4),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ] else ...[
+                    // Non-narration beats (just text)
+                    TextField(
+                      controller: editor.controller,
+                      minLines: 2,
+                      maxLines: null,
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        fontStyle: FontStyle.italic,
+                        color: theme.colorScheme.onSurfaceVariant,
+                      ),
+                      decoration: InputDecoration(
+                        labelText: 'Beat ${index + 1} (${editor.beat.type.toString().split('.').last})',
+                        filled: true,
+                        fillColor: theme.colorScheme.surfaceVariant.withOpacity(0.2),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                    ),
+                  ],
+                ],
+              );
+            },
           ),
           const SizedBox(height: 16),
           Wrap(
@@ -3773,18 +3901,72 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
               FilledButton.icon(
                 onPressed: _isDirty && !_isSavingText ? _saveStoryText : null,
                 icon: const Icon(Icons.save_outlined),
-                label: const Text('Save now'),
+                label: const Text('Save text changes'),
               ),
               OutlinedButton.icon(
                 onPressed: _isDirty && !_isSavingText ? _resetDraft : null,
                 icon: const Icon(Icons.refresh),
-                label: const Text('Reset to saved'),
+                label: const Text('Reset'),
               ),
             ],
           ),
         ],
       ),
     );
+  }
+
+  Future<void> _selectPanelForBeat(int beatIndex) async {
+    final pool = _story.panelArt?.panelImagePaths;
+    if (pool == null || pool.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('No panel artwork available. Import some first!')),
+      );
+      return;
+    }
+
+    // Calculate narration index
+    int narrationIndex = 0;
+    for (int i = 0; i < beatIndex; i++) {
+      if (_beatEditors[i].beat.type == BeatType.narration) {
+        narrationIndex++;
+      }
+    }
+
+    final selectedPath = await showDialog<String>(
+      context: context,
+      builder: (context) => _PanelPickerDialog(
+        pool: pool,
+        currentPath: _story.panelArt?.assignments[narrationIndex],
+      ),
+    );
+
+    if (selectedPath != null) {
+      // Update assignment in metadata
+      final currentMetadata = _story.panelArt!;
+      final newAssignments = Map<int, String>.from(currentMetadata.assignments);
+      newAssignments[narrationIndex] = selectedPath;
+      
+      final updatedMetadata = currentMetadata.copyWith(assignments: newAssignments);
+      
+      // Persist immediately
+      try {
+        final updatedStory = await widget.storyService.updateStoryPanelArt(
+          _story.id,
+          updatedMetadata,
+        );
+        if (updatedStory != null && mounted) {
+          setState(() {
+            _story = updatedStory;
+          });
+        }
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Failed to update assignment: $e')),
+          );
+        }
+      }
+    }
   }
 }
 
@@ -3841,6 +4023,67 @@ class _PanelThumbnailGrid extends StatelessWidget {
               .toList(),
         );
       },
+    );
+  }
+}
+
+class _PanelPickerDialog extends StatelessWidget {
+  const _PanelPickerDialog({
+    required this.pool,
+    this.currentPath,
+  });
+
+  final List<String> pool;
+  final String? currentPath;
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Choose artwork'),
+      content: SizedBox(
+        width: double.maxFinite,
+        child: GridView.builder(
+          shrinkWrap: true,
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 100,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
+          ),
+          itemCount: pool.length,
+          itemBuilder: (context, index) {
+            final path = pool[index];
+            final isSelected = path == currentPath;
+            return GestureDetector(
+              onTap: () => Navigator.of(context).pop(path),
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.file(
+                      File(path),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  if (isSelected)
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: Colors.green, width: 4),
+                      ),
+                    ),
+                ],
+              ),
+            );
+          },
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: const Text('Cancel'),
+        ),
+      ],
     );
   }
 }
