@@ -271,8 +271,8 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
       duration: const Duration(milliseconds: 1500),
       curve: Curves.easeOut,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: isCurrent ? 4 : 8, vertical: 4),
-        child: AnimatedContainer(
+      padding: EdgeInsets.symmetric(horizontal: isCurrent ? 4 : 8, vertical: 4),
+      child: AnimatedContainer(
         duration: const Duration(milliseconds: 700),
         curve: Curves.easeInOut,
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -282,11 +282,11 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
           border: colorPalette.border,
           boxShadow: colorPalette.shadow,
         ),
-          child: SizedBox(
+        child: SizedBox(
             height: 68, // Revert to original height
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: _buildLineWords(wordIndices),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: _buildLineWords(wordIndices),
             ),
           ),
         ),

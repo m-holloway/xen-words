@@ -1190,8 +1190,8 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
                         }
                         return false;
                       },
-                      child: SingleChildScrollView(
-                        controller: _contentScrollController,
+                    child: SingleChildScrollView(
+                      controller: _contentScrollController,
                         padding: EdgeInsets.fromLTRB(
                         20,
                         20,
@@ -1218,11 +1218,11 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
             Align(
               alignment: Alignment.bottomCenter,
               child: _buildBottomControls(
-                currentBeat,
-                isLastBeat,
-                choicePoint != null,
-                isTrackingMode,
-              ),
+              currentBeat,
+              isLastBeat,
+              choicePoint != null,
+              isTrackingMode,
+                ),
             ),
           FireworksOverlay(controller: _fireworksController),
         ],
@@ -1497,7 +1497,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       ),
     );
   }
-
+  
   Widget _buildHighlightedText(String text, List<String> targetWords) {
     // NEW: Use grouped word display with smooth progress
     
@@ -1535,7 +1535,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
         effectiveFocusLine = currentLine - linesShift;
       }
     }
-
+    
     final groupedWords = GroupedWordDisplay(
       key: ValueKey('narration-words-${_currentBeatIndex}'), // Stable key to prevent remounting
       displayWords: _narrationDisplayWords,
@@ -1561,7 +1561,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
         });
       }
     }
-
+    
     final Widget readyContent = groupedWords;
     
     final Widget loadingContent = _buildNarrationPrepCard();
@@ -1876,7 +1876,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       curve: Curves.easeInOutCubic,
     );
   }
-
+  
   Future<void> _jumpToWord(int wordIndex) async {
     if (_narrationWords.isEmpty) {
       return;
