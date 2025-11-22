@@ -18,6 +18,7 @@ class GroupedWordDisplay extends StatefulWidget {
   final bool showCompletionCard;
   final Widget? completionCard;
   final double focusLineIndex;
+  final bool showAllLines; // New parameter
   
   const GroupedWordDisplay({
     Key? key,
@@ -34,6 +35,7 @@ class GroupedWordDisplay extends StatefulWidget {
     this.completionCard,
     this.scrollDuration = const Duration(milliseconds: 1000),
     this.focusLineIndex = -1.0,
+    this.showAllLines = false, // Default to false
   }) : super(key: key);
   
   @override
@@ -249,26 +251,79 @@ class _GroupedWordDisplayState extends State<GroupedWordDisplay> {
     // We interpret this as: keep visible range around [focus - 1.5, focus + 2.5].
     // If user scrolls up, focusLineIndex decreases, so older lines fall into visible range.
     
+    // Only apply fading if we are NOT scrolling fast or if we are close to the target
+    // Actually, the issue is that focusLineIndex updates slowly or based on scroll notifications.
+    // If user scrolls fast, focusLineIndex might lag or be calculated based on scroll position.
+    
     double opacity = 1.0;
-    if (!widget.readingComplete && widget.focusLineIndex >= 0) {
-       // Standard reading range
-       // Keep 2 lines of history (active-2, active-1), active, and 2 lines of future (active+1, active+2)
-       // If we scroll up, we shift this window back.
+    
+    // Manual Override: If user is scrolling manually, show EVERYTHING.
+    // This matches "temporarily we should just show everything" request.
+    if (widget.showAllLines) {
+       opacity = 1.0;
+    } else if (!widget.readingComplete && widget.focusLineIndex > -5.0) {
+       // ... existing reading mode visibility logic ...
+       // ROBUST VISIBILITY LOGIC:
+       // 1. Always show the ACTIVE reading area (currentLineIndex +/- 2) to prevent losing place.
+       // 2. Also show the FOCUS area (focusLineIndex +/- 6) to allow manual exploration.
+       // 3. Fade out everything else.
        
-       // Lower bound: fade out if lineIndex < focus - 2.5
-       // Upper bound: fade out if lineIndex > focus + 2.5
+       bool isInReadingWindow = lineIndex >= currentLineIndex - 2 && lineIndex <= currentLineIndex + 2;
+       // Widened focus window to ensure full screen coverage
+       // bool isInFocusWindow = lineIndex >= widget.focusLineIndex - 6.0 && lineIndex <= widget.focusLineIndex + 6.0;
        
-       if (lineIndex < widget.focusLineIndex - 2.5 || lineIndex > widget.focusLineIndex + 2.5) {
-         opacity = 0.0;
+       // Check if we are "synced" (reading line is roughly same as focus line)
+       // RELAXED SYNC LOGIC to prevent flashing during auto-scroll lag.
+       // diff = focus - current.
+       // Negative diff means focus is "behind" current (e.g. during auto-scroll lag).
+       // Positive diff means focus is "ahead" of current (user scrolling down).
+       
+       double diff = widget.focusLineIndex - currentLineIndex;
+       bool isSynced;
+       
+       if (diff > 0.1) {
+          // User scrolling AHEAD: Switch to manual mode immediately to show future.
+          isSynced = false;
+       } else if (diff < -2.0) {
+          // User scrolling FAR BACK: Switch to manual mode to see history.
+          // (We allow up to -2.0 lag for auto-scroll catchup without breaking sync)
+          isSynced = false;
+       } else {
+          // Within standard reading/lag window: Stay synced.
+          isSynced = true;
+       }
+       
+       if (isSynced) {
+         // Tighter bounds when auto-reading (strictly +/- 2.5)
+         if (!isInReadingWindow) {
+           opacity = 0.0;
+         }
+       } else {
+         // Manual scroll mode (internal detection fallback): SHOW EVERYTHING
+         opacity = 1.0;
        }
     } else if (!widget.readingComplete) {
        // Fallback if focus not tracked (shouldn't happen with new logic)
        if (lineIndex > currentLineIndex + 2) opacity = 0.0;
     }
 
+    // Prevent flickering or permanent invisibility during fast scrolls by ensuring
+    // that if a line is currently visible in viewport, it gets a chance to appear.
+    // But we don't have viewport info here easily without LayoutBuilder.
+    // Instead, we rely on parent passing correct focusLineIndex.
+    
+    // FIX: The AnimatedOpacity has a long duration (1500ms). If we scroll fast,
+    // the lines might be set to opacity 1.0 but take 1.5s to actually appear.
+    // If the user scrolls past them in < 1.5s, they might never see them fully.
+    // We should shorten the duration if the opacity is INCREASING (appearing).
+    
+    final Duration fadeDuration = opacity > 0.01 
+        ? const Duration(milliseconds: 1000) // Slow, buttery appearance (was 250)
+        : const Duration(milliseconds: 1500); // Slow disappearance
+
     return AnimatedOpacity(
       opacity: opacity,
-      duration: const Duration(milliseconds: 1500),
+      duration: fadeDuration,
       curve: Curves.easeOut,
       child: Padding(
       padding: EdgeInsets.symmetric(horizontal: isCurrent ? 4 : 8, vertical: 4),

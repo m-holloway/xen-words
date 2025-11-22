@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:math' as math;
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import '../models/story_models.dart';
 import '../models/story_generation_models.dart';
@@ -91,6 +92,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
   int _lastAutoScrollLine = -1;
   double _idealScrollOffset = 0.0;
   double _currentScrollOffset = 0.0;
+  bool _manualScrollActive = false; // Track manual scroll state
   
   @override
   void initState() {
@@ -233,6 +235,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       _listeningStatusLabel = 'Preparing listener...';
       _finalWordConfirmed = false;
       _finalWordCompletionPending = false;
+      _manualScrollActive = false; // Reset manual scroll on new beat
     });
     _finalWordCompletionTimer?.cancel();
     
@@ -405,6 +408,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       _estimatedWPM = updatedWpm;
       _currentTargetWord = 'tracking';
       _finalWordConfirmed = finalWordConfirmed;
+      _manualScrollActive = false; // Reset manual scroll on progress
       if (anchorSource) {
         _scrollAnchorWordIndex = clampedIndex;
       }
@@ -509,7 +513,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
     }
   }
 
-  bool get _shouldShowMicPanel => _isUserMuted || _isListening || _narrationTrackingActive;
+  bool get _shouldShowMicPanel => _isUserMuted || _isListening || _narrationTrackingActive || _manualScrollActive;
 
   bool get _isMeterActive => !_isUserMuted && (_isListening || _narrationTrackingActive);
   bool get _shouldRevealCurrentPanel =>
@@ -1173,13 +1177,35 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
                       const AlwaysStoppedAnimation<Color>(Colors.deepPurple),
                   minHeight: 4,
                 ),
-                if (currentPanelPath != null)
-                  _buildPanelShowcase(context, currentPanelPath),
+                AnimatedSize(
+                  duration: const Duration(milliseconds: 1200),
+                  curve: Curves.easeOutQuart,
+                  child: currentPanelPath != null
+                      ? _buildPanelShowcase(context, currentPanelPath)
+                      : const SizedBox(width: double.infinity),
+                ),
                 Expanded(
                   child: FadeTransition(
                     opacity: _fadeAnimation,
                     child: NotificationListener<ScrollNotification>(
                       onNotification: (notification) {
+                        // Track manual scrolling
+                        if (notification is UserScrollNotification) {
+                          if (!_manualScrollActive) {
+                            setState(() {
+                              _manualScrollActive = true;
+                              
+                              // Stop tracking immediately on manual interaction
+                              if (_narrationTrackingActive) {
+                                _narrationTrackingActive = false;
+                                _listeningStatusLabel = 'Paused - tap a word to resume';
+                                // Stop actual recognizer to prevent fighting with scroll
+                                context.read<GameController>().speechRecognizer.stopNarrationTracking();
+                              }
+                            });
+                          }
+                        }
+                        
                         if (notification is ScrollUpdateNotification) {
                           // Track manual scrolling to adjust focus
                           if (mounted && notification.metrics.axis == Axis.vertical) {
@@ -1412,88 +1438,98 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
-      child: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 400),
-        child: Container(
-          key: ValueKey('panel-showcase-$panelPath'),
-          height: panelHeight,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(36),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.18),
-                blurRadius: 30,
-                offset: const Offset(0, 18),
+      child: Container(
+        key: ValueKey('panel-showcase-$panelPath'),
+        height: panelHeight,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(36),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.18),
+              blurRadius: 30,
+              offset: const Offset(0, 18),
+            ),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(36),
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              Positioned.fill(
+                child: ImageFiltered(
+                  imageFilter: ui.ImageFilter.blur(sigmaX: 12, sigmaY: 12),
+                  child: _MirroredPanelFill(path: panelPath),
+                ),
+              ),
+              Positioned.fill(
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: [
+                        Colors.white.withOpacity(0.85),
+                        Colors.transparent,
+                        Colors.white.withOpacity(0.85),
+                      ],
+                      stops: const [0.0, 0.5, 1.0],
+                    ),
+                  ),
+                ),
+              ),
+              Positioned.fill(
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Colors.white.withOpacity(0.45),
+                        Colors.transparent,
+                        Colors.white.withOpacity(0.15),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Center(
+                child: Container(
+                  width: squareSize,
+                  height: squareSize,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    border: Border.all(color: Colors.white, width: 8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.25),
+                        blurRadius: 28,
+                        offset: const Offset(0, 18),
+                      ),
+                    ],
+                    image: DecorationImage(
+                      image: FileImage(File(panelPath)),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(36),
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                Positioned.fill(
-                  child: ImageFiltered(
-                    imageFilter: ui.ImageFilter.blur(sigmaX: 12, sigmaY: 12),
-                    child: _MirroredPanelFill(path: panelPath),
-                  ),
-                ),
-                Positioned.fill(
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [
-                          Colors.white.withOpacity(0.85),
-                          Colors.transparent,
-                          Colors.white.withOpacity(0.85),
-                        ],
-                        stops: const [0.0, 0.5, 1.0],
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned.fill(
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Colors.white.withOpacity(0.45),
-                          Colors.transparent,
-                          Colors.white.withOpacity(0.15),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    width: squareSize,
-                    height: squareSize,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      border: Border.all(color: Colors.white, width: 8),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.25),
-                          blurRadius: 28,
-                          offset: const Offset(0, 18),
-                        ),
-                      ],
-                      image: DecorationImage(
-                        image: FileImage(File(panelPath)),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
         ),
+      )
+      .animate()
+      .fade(duration: 800.ms, curve: Curves.easeOut)
+      .scale(
+        begin: const Offset(0.9, 0.9),
+        end: const Offset(1.0, 1.0),
+        duration: 800.ms,
+        curve: Curves.easeOutBack,
+      )
+      .shimmer(
+        duration: 1200.ms,
+        color: Colors.white.withOpacity(0.3),
+        angle: -0.5,
       ),
     );
   }
@@ -1550,6 +1586,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       showCompletionCard: isComplete,
       completionCard: isComplete ? _buildCompletionCard() : null,
       focusLineIndex: effectiveFocusLine, // Pass the scroll-adjusted focus
+      showAllLines: _manualScrollActive, // NEW: Pass manual scroll state
     );
     
     // Trigger auto-scroll when word index changes
@@ -1760,6 +1797,11 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
         _finalWordCompletionPending = false;
       });
       
+      // Launch fireworks finale!
+      if (mounted) {
+        _fireworksController.launchMultiple(MediaQuery.of(context).size, count: 5);
+      }
+      
       // Scroll to bottom AFTER layout settles to show completion card
       // Single smooth scroll operation - no intermediate jumps/restores
       _scrollCompletionIntoView();
@@ -1897,6 +1939,7 @@ class _StoryReaderScreenEnhancedState extends State<StoryReaderScreenEnhanced>
       _currentTrackingConfidence = 1.0;
       _lastTrackedWord = targetIndex;
       _suppressNextLinger = true;
+      _manualScrollActive = false; // Reset manual scroll on tap
     });
 
     _enqueueManualNarrationSeek(targetIndex);
@@ -2493,7 +2536,7 @@ class _PanelBackdropImageState extends State<_PanelBackdropImage>
     super.initState();
     _panController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 60),
+      duration: const Duration(seconds: 90),
     )..addListener(() {
         if (mounted) {
           setState(() {});
@@ -2520,16 +2563,17 @@ class _PanelBackdropImageState extends State<_PanelBackdropImage>
 
   @override
   Widget build(BuildContext context) {
-    final double horizontalAlignment = widget.reveal
-        ? ui.lerpDouble(-0.85, 0.85, _panController.value) ?? 0.0
-        : 0.0;
+    // Always pan slowly to create visual interest, even when blurred
+    final double horizontalAlignment = 
+        ui.lerpDouble(-0.85, 0.85, _panController.value) ?? 0.0;
+        
     final double verticalAlignment =
         ui.lerpDouble(-0.3, 0.3, widget.progress) ?? 0.0;
     final double topOverlay =
         ui.lerpDouble(0.5, 0.15, widget.progress) ?? 0.3;
     final double bottomOverlay =
         ui.lerpDouble(0.35, 0.05, widget.progress) ?? 0.15;
-    final double targetSigma = widget.reveal ? 2.0 : 8.0;
+    final double targetSigma = widget.reveal ? 4.0 : 6.0;
 
     return TweenAnimationBuilder<double>(
       key: ValueKey(widget.reveal),
