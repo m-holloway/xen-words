@@ -3852,7 +3852,7 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(12),
                             child: AspectRatio(
-                              aspectRatio: 16 / 9,
+                              aspectRatio: 1, // Changed from 16/9 to 1 for square display
                               child: Image.file(
                                 File(currentPanelPath),
                                 fit: BoxFit.cover,
@@ -3938,13 +3938,13 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
     );
   }
 
-  Future<void> _selectPanelForBeat(int beatIndex) async {
+  Future<String?> _selectPanelForBeat(int beatIndex) async {
     final pool = _story.panelArt?.panelImagePaths;
     if (pool == null || pool.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('No panel artwork available. Import some first!')),
       );
-      return;
+      return null;
     }
 
     // Calculate narration index
@@ -3982,6 +3982,7 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
             _story = updatedStory;
           });
         }
+        return selectedPath;
       } catch (e) {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -3990,6 +3991,7 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
         }
       }
     }
+    return null;
   }
 }
 
@@ -4006,7 +4008,7 @@ class _BeatDetailScreen extends StatefulWidget {
   final int initialIndex;
   final List<_BeatEditorState> beatEditors;
   final GeneratedStoryRecord story;
-  final Future<void> Function(int) onPanelSelected;
+  final Future<String?> Function(int) onPanelSelected;
   final VoidCallback onTextUpdated;
 
   @override
@@ -4017,6 +4019,8 @@ class _BeatDetailScreenState extends State<_BeatDetailScreen> {
   late final PageController _pageController;
   late int _currentIndex;
   bool _isEditingText = false;
+  // Local cache of assignments to show immediate updates before parent rebuild
+  final Map<int, String> _localAssignments = {};
 
   @override
   void initState() {
@@ -4038,7 +4042,7 @@ class _BeatDetailScreenState extends State<_BeatDetailScreen> {
       appBar: AppBar(
         title: Text('Edit Beat ${_currentIndex + 1}'),
         leading: IconButton(
-          icon: const Icon(Icons.close),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.of(context).pop(),
         ),
         actions: [
@@ -4076,20 +4080,26 @@ class _BeatDetailScreenState extends State<_BeatDetailScreen> {
           final isNarration = editor.beat.type == BeatType.narration;
           
           String? currentPanelPath;
+          int narrationIndex = 0;
           if (isNarration) {
-            int narrationIndex = 0;
             for (int i = 0; i < index; i++) {
               if (widget.beatEditors[i].beat.type == BeatType.narration) {
                 narrationIndex++;
               }
             }
-            final manualAssignment = widget.story.panelArt?.assignments[narrationIndex];
-            if (manualAssignment != null) {
-              currentPanelPath = manualAssignment;
+            
+            // Check local override first, then story assignment, then default pool
+            if (_localAssignments.containsKey(narrationIndex)) {
+              currentPanelPath = _localAssignments[narrationIndex];
             } else {
-              final pool = widget.story.panelArt?.panelImagePaths ?? [];
-              if (narrationIndex < pool.length) {
-                currentPanelPath = pool[narrationIndex];
+              final manualAssignment = widget.story.panelArt?.assignments[narrationIndex];
+              if (manualAssignment != null) {
+                currentPanelPath = manualAssignment;
+              } else {
+                final pool = widget.story.panelArt?.panelImagePaths ?? [];
+                if (narrationIndex < pool.length) {
+                  currentPanelPath = pool[narrationIndex];
+                }
               }
             }
           }
@@ -4138,9 +4148,12 @@ class _BeatDetailScreenState extends State<_BeatDetailScreen> {
                   Center(
                     child: FilledButton.icon(
                       onPressed: () async {
-                        await widget.onPanelSelected(index);
-                        // Force rebuild to show new assignment
-                        if (mounted) setState(() {});
+                        final newPath = await widget.onPanelSelected(index);
+                        if (newPath != null && mounted) {
+                          setState(() {
+                            _localAssignments[narrationIndex] = newPath;
+                          });
+                        }
                       },
                       icon: const Icon(Icons.edit),
                       label: const Text('Change Artwork'),
@@ -4213,20 +4226,41 @@ class _BeatDetailScreenState extends State<_BeatDetailScreen> {
                     onChanged: (_) => widget.onTextUpdated(),
                   )
                 else
-                  Container(
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: theme.colorScheme.surface,
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(
-                        color: theme.colorScheme.outline.withOpacity(0.2),
+                  GestureDetector(
+                    onHorizontalDragEnd: (details) {
+                      // Add swipe hints visual if dragged
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.surface,
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(
+                          color: theme.colorScheme.outline.withOpacity(0.2),
+                        ),
                       ),
-                    ),
-                    child: Text(
-                      editor.controller.text.isEmpty 
-                          ? '(No text)' 
-                          : editor.controller.text,
-                      style: theme.textTheme.bodyLarge?.copyWith(height: 1.6),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            editor.controller.text.isEmpty 
+                                ? '(No text)' 
+                                : editor.controller.text,
+                            style: theme.textTheme.bodyLarge?.copyWith(height: 1.6),
+                          ),
+                          const SizedBox(height: 8),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              'Swipe left/right to navigate',
+                              style: theme.textTheme.labelSmall?.copyWith(
+                                color: theme.colorScheme.onSurfaceVariant.withOpacity(0.5),
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
               ],
