@@ -3758,10 +3758,10 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
             ),
             child: Row(
               children: [
-                const Icon(Icons.edit, size: 18),
+                const Icon(Icons.visibility_outlined, size: 18),
                 const SizedBox(width: 8),
                 Text(
-                  'Edit paragraphs and artwork',
+                  'Tap a paragraph to edit text or artwork',
                   style: theme.textTheme.labelLarge,
                 ),
                 const Spacer(),
@@ -3816,80 +3816,103 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
                 }
               }
 
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (isNarration) ...[
-                    Row(
-                      children: [
-                        // Panel Preview / Selector
-                        GestureDetector(
-                          onTap: () => _selectPanelForBeat(index),
+              return GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => _BeatDetailScreen(
+                        initialIndex: index,
+                        beatEditors: _beatEditors,
+                        story: _story,
+                        onPanelSelected: _selectPanelForBeat,
+                        onTextUpdated: () {
+                          // Trigger rebuild to show updated text
+                          _onTextChanged();
+                          setState(() {});
+                        },
+                      ),
+                    ),
+                  );
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.surfaceVariant.withOpacity(0.3),
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                      color: theme.colorScheme.outline.withOpacity(0.1),
+                    ),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (isNarration && currentPanelPath != null)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 12),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: AspectRatio(
+                              aspectRatio: 16 / 9,
+                              child: Image.file(
+                                File(currentPanelPath),
+                                fit: BoxFit.cover,
+                                alignment: Alignment.topCenter,
+                              ),
+                            ),
+                          ),
+                        ),
+                      if (isNarration && currentPanelPath == null)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 12),
                           child: Container(
-                            width: 80,
                             height: 80,
+                            width: double.infinity,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12),
-                              color: theme.colorScheme.surfaceVariant,
-                              border: Border.all(
-                                color: theme.colorScheme.outline.withOpacity(0.2),
-                              ),
-                              image: currentPanelPath != null
-                                  ? DecorationImage(
-                                      image: FileImage(File(currentPanelPath)),
-                                      fit: BoxFit.cover,
-                                    )
-                                  : null,
+                              color: theme.colorScheme.surfaceContainerHighest,
                             ),
-                            child: currentPanelPath == null
-                                ? Icon(
-                                    Icons.add_photo_alternate_outlined,
-                                    color: theme.colorScheme.onSurfaceVariant,
-                                  )
-                                : null,
+                            alignment: Alignment.center,
+                            child: const Icon(Icons.image_not_supported_outlined),
                           ),
                         ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          child: TextField(
-                            controller: editor.controller,
-                            minLines: 3,
-                            maxLines: null,
-                            style: theme.textTheme.bodyLarge?.copyWith(height: 1.5),
-                            decoration: InputDecoration(
-                              labelText: 'Paragraph ${index + 1}',
-                              alignLabelWithHint: true,
-                              filled: true,
-                              fillColor: theme.colorScheme.surfaceVariant.withOpacity(0.4),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
+                      Text(
+                        editor.controller.text.trim().isEmpty 
+                            ? '(Empty paragraph)' 
+                            : editor.controller.text.trim(),
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          height: 1.5,
+                          color: theme.colorScheme.onSurface,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Row(
+                        children: [
+                          Icon(
+                            isNarration ? Icons.article_outlined : Icons.bolt,
+                            size: 14,
+                            color: theme.colorScheme.primary,
+                          ),
+                          const SizedBox(width: 6),
+                          Text(
+                            isNarration ? 'Paragraph ${index + 1}' : 'Beat ${index + 1}',
+                            style: theme.textTheme.labelSmall?.copyWith(
+                              color: theme.colorScheme.primary,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ] else ...[
-                    // Non-narration beats (just text)
-                    TextField(
-                      controller: editor.controller,
-                      minLines: 2,
-                      maxLines: null,
-                      style: theme.textTheme.bodyMedium?.copyWith(
-                        fontStyle: FontStyle.italic,
-                        color: theme.colorScheme.onSurfaceVariant,
+                          const Spacer(),
+                          Icon(
+                            Icons.chevron_right,
+                            size: 16,
+                            color: theme.colorScheme.onSurfaceVariant,
+                          ),
+                        ],
                       ),
-                      decoration: InputDecoration(
-                        labelText: 'Beat ${index + 1} (${editor.beat.type.toString().split('.').last})',
-                        filled: true,
-                        fillColor: theme.colorScheme.surfaceVariant.withOpacity(0.2),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                    ),
-                  ],
-                ],
+                    ],
+                  ),
+                ),
               );
             },
           ),
@@ -3970,6 +3993,251 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
   }
 }
 
+// _BeatDetailScreen class definition
+class _BeatDetailScreen extends StatefulWidget {
+  const _BeatDetailScreen({
+    required this.initialIndex,
+    required this.beatEditors,
+    required this.story,
+    required this.onPanelSelected,
+    required this.onTextUpdated,
+  });
+
+  final int initialIndex;
+  final List<_BeatEditorState> beatEditors;
+  final GeneratedStoryRecord story;
+  final Future<void> Function(int) onPanelSelected;
+  final VoidCallback onTextUpdated;
+
+  @override
+  State<_BeatDetailScreen> createState() => _BeatDetailScreenState();
+}
+
+class _BeatDetailScreenState extends State<_BeatDetailScreen> {
+  late final PageController _pageController;
+  late int _currentIndex;
+  bool _isEditingText = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentIndex = widget.initialIndex;
+    _pageController = PageController(initialPage: widget.initialIndex);
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Edit Beat ${_currentIndex + 1}'),
+        leading: IconButton(
+          icon: const Icon(Icons.close),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        actions: [
+          IconButton(
+            onPressed: _currentIndex > 0
+                ? () => _pageController.previousPage(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                    )
+                : null,
+            icon: const Icon(Icons.chevron_left),
+          ),
+          IconButton(
+            onPressed: _currentIndex < widget.beatEditors.length - 1
+                ? () => _pageController.nextPage(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                    )
+                : null,
+            icon: const Icon(Icons.chevron_right),
+          ),
+        ],
+      ),
+      body: PageView.builder(
+        controller: _pageController,
+        itemCount: widget.beatEditors.length,
+        onPageChanged: (index) {
+          setState(() {
+            _currentIndex = index;
+            _isEditingText = false; // Reset edit mode on swipe
+          });
+        },
+        itemBuilder: (context, index) {
+          final editor = widget.beatEditors[index];
+          final isNarration = editor.beat.type == BeatType.narration;
+          
+          String? currentPanelPath;
+          if (isNarration) {
+            int narrationIndex = 0;
+            for (int i = 0; i < index; i++) {
+              if (widget.beatEditors[i].beat.type == BeatType.narration) {
+                narrationIndex++;
+              }
+            }
+            final manualAssignment = widget.story.panelArt?.assignments[narrationIndex];
+            if (manualAssignment != null) {
+              currentPanelPath = manualAssignment;
+            } else {
+              final pool = widget.story.panelArt?.panelImagePaths ?? [];
+              if (narrationIndex < pool.length) {
+                currentPanelPath = pool[narrationIndex];
+              }
+            }
+          }
+
+          return SingleChildScrollView(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                if (isNarration) ...[
+                  AspectRatio(
+                    aspectRatio: 1,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade200,
+                        borderRadius: BorderRadius.circular(24),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 20,
+                            offset: const Offset(0, 10),
+                          ),
+                        ],
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(24),
+                        child: currentPanelPath != null
+                            ? Image.file(
+                                File(currentPanelPath),
+                                fit: BoxFit.cover,
+                              )
+                            : const Center(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Icon(Icons.image_not_supported_outlined, size: 48, color: Colors.grey),
+                                    SizedBox(height: 8),
+                                    Text('No artwork assigned'),
+                                  ],
+                                ),
+                              ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Center(
+                    child: FilledButton.icon(
+                      onPressed: () async {
+                        await widget.onPanelSelected(index);
+                        // Force rebuild to show new assignment
+                        if (mounted) setState(() {});
+                      },
+                      icon: const Icon(Icons.edit),
+                      label: const Text('Change Artwork'),
+                    ),
+                  ),
+                ] else ...[
+                  Container(
+                    height: 200,
+                    decoration: BoxDecoration(
+                      color: Colors.orange.shade50,
+                      borderRadius: BorderRadius.circular(24),
+                      border: Border.all(color: Colors.orange.shade200),
+                    ),
+                    alignment: Alignment.center,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.bolt, size: 48, color: Colors.orange.shade400),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Beat Type: ${editor.beat.type.toString().split('.').last}',
+                          style: TextStyle(
+                            color: Colors.orange.shade800,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+                const SizedBox(height: 32),
+                Row(
+                  children: [
+                    Text(
+                      'Narration Text',
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Spacer(),
+                    IconButton(
+                      onPressed: () {
+                        setState(() {
+                          _isEditingText = !_isEditingText;
+                        });
+                      },
+                      icon: Icon(_isEditingText ? Icons.check : Icons.edit),
+                      style: IconButton.styleFrom(
+                        backgroundColor: _isEditingText 
+                            ? theme.colorScheme.primaryContainer 
+                            : theme.colorScheme.surfaceVariant,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                if (_isEditingText)
+                  TextField(
+                    controller: editor.controller,
+                    maxLines: null,
+                    autofocus: true,
+                    style: theme.textTheme.bodyLarge?.copyWith(height: 1.6),
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: theme.colorScheme.surface,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                    ),
+                    onChanged: (_) => widget.onTextUpdated(),
+                  )
+                else
+                  Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.surface,
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
+                        color: theme.colorScheme.outline.withOpacity(0.2),
+                      ),
+                    ),
+                    child: Text(
+                      editor.controller.text.isEmpty 
+                          ? '(No text)' 
+                          : editor.controller.text,
+                      style: theme.textTheme.bodyLarge?.copyWith(height: 1.6),
+                    ),
+                  ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
 class _PanelThumbnailGrid extends StatelessWidget {
   const _PanelThumbnailGrid({
     required this.paths,
@@ -3990,8 +4258,8 @@ class _PanelThumbnailGrid extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final width = constraints.maxWidth;
-        // Target ~100px but fill available space
-        final crossAxisCount = (width / 100).floor().clamp(3, 6);
+        // Target ~150px instead of 100px, max 2 columns if screen allows
+        final crossAxisCount = (width / 150).floor().clamp(2, 4);
         final spacing = 12.0;
         final totalSpacing = spacing * (crossAxisCount - 1);
         final itemWidth = (width - totalSpacing) / crossAxisCount;
@@ -4001,19 +4269,50 @@ class _PanelThumbnailGrid extends StatelessWidget {
           runSpacing: spacing,
           children: paths
               .map(
-                (path) => SizedBox(
-                  width: itemWidth,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(18),
-                    child: AspectRatio(
-                      aspectRatio: 1,
-                      child: Image.file(
-                        File(path),
-                        fit: BoxFit.cover,
-                        errorBuilder: (_, __, ___) => Container(
-                          color: theme.colorScheme.surfaceContainerHighest,
-                          alignment: Alignment.center,
-                          child: const Icon(Icons.broken_image_outlined),
+                (path) => GestureDetector(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (_) => Dialog(
+                        backgroundColor: Colors.transparent,
+                        insetPadding: EdgeInsets.zero,
+                        child: Stack(
+                          fit: StackFit.expand,
+                          children: [
+                            InteractiveViewer(
+                              child: Image.file(File(path), fit: BoxFit.contain),
+                            ),
+                            Positioned(
+                              top: 40,
+                              right: 20,
+                              child: IconButton.filled(
+                                onPressed: () => Navigator.of(context).pop(),
+                                icon: const Icon(Icons.close),
+                                style: IconButton.styleFrom(
+                                  backgroundColor: Colors.black54,
+                                  foregroundColor: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                  child: SizedBox(
+                    width: itemWidth,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(18),
+                      child: AspectRatio(
+                        aspectRatio: 1,
+                        child: Image.file(
+                          File(path),
+                          fit: BoxFit.cover,
+                          errorBuilder: (_, __, ___) => Container(
+                            color: theme.colorScheme.surfaceContainerHighest,
+                            alignment: Alignment.center,
+                            child: const Icon(Icons.broken_image_outlined),
+                          ),
                         ),
                       ),
                     ),
