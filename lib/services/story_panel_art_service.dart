@@ -1,12 +1,162 @@
 import 'dart:io';
 import 'dart:math';
 
+import 'package:flutter/foundation.dart'; // for compute
 import 'package:flutter/material.dart';
 import 'package:image/image.dart' as img;
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../models/story_generation_models.dart';
+
+class _PanelProcessingConfig {
+  final String imagePath;
+  final String outputDirPath;
+  final int panelCount;
+
+  _PanelProcessingConfig({
+    required this.imagePath,
+    required this.outputDirPath,
+    required this.panelCount,
+  });
+}
+
+Future<List<String>> _processPanelArt(_PanelProcessingConfig config) async {
+  final file = File(config.imagePath);
+  final bytes = await file.readAsBytes();
+  final composite = img.decodeImage(bytes);
+  if (composite == null) {
+    throw StoryPanelArtException('We could not read that image file.');
+  }
+
+  // Trim solid black borders (Optimized)
+  // final trimmed = _trimBlackBorders(composite); // Removed aggressive global trim
+
+  // Use robust grid detection based on panel count and image aspect ratio
+  final idealCols = sqrt(config.panelCount * composite.width / composite.height);
+  final cols = max(1, idealCols.round());
+  final rows = (config.panelCount / cols).ceil();
+  
+  final cellW = composite.width ~/ cols;
+  final cellH = composite.height ~/ rows;
+
+  // Split and save
+  final panelPaths = <String>[];
+  for (int r = 0; r < rows; r++) {
+    for (int c = 0; c < cols; c++) {
+      if (panelPaths.length >= config.panelCount) {
+        return panelPaths;
+      }
+      
+      // Calculate rough center of the cell
+      final cx = (c + 0.5) * cellW;
+      final cy = (r + 0.5) * cellH;
+      
+      // Scan from center out to find content bounds
+      final bounds = _scanContentBounds(composite, cx.toInt(), cy.toInt(), cellW, cellH);
+      
+      final cropW = bounds.width;
+      final cropH = bounds.height;
+      
+      // Enforce square crop? User said "Square panels".
+      // If detection is noisy, it might not be square.
+      // Let's take the MIN dimension to ensure we don't include borders if it's rectangular?
+      // Or MAX dimension if we want to include everything?
+      // Usually grids are square. Let's take the detected bounds and if it's close to square, force square.
+      // Actually, just crop the detected content.
+      
+      final cropped = img.copyCrop(
+        composite,
+        x: bounds.left,
+        y: bounds.top,
+        width: cropW,
+        height: cropH,
+      );
+      
+      final outFile = File(
+        '${config.outputDirPath}/panel_${panelPaths.length + 1}.jpg',
+      );
+      await outFile.writeAsBytes(img.encodeJpg(cropped, quality: 95));
+      panelPaths.add(outFile.path);
+    }
+  }
+  return panelPaths;
+}
+
+// Helper struct
+class _Rect {
+  final int left, top, width, height;
+  _Rect(this.left, this.top, this.width, this.height);
+}
+
+// Ray scan logic
+_Rect _scanContentBounds(img.Image image, int cx, int cy, int cellW, int cellH) {
+  const threshold = 60; // Black threshold
+  const minRunLength = 5; // Ignore small noise
+  
+  bool isBlack(int x, int y) {
+    if (x < 0 || x >= image.width || y < 0 || y >= image.height) return true;
+    final p = image.getPixel(x, y);
+    return (p.r + p.g + p.b) <= threshold; // Low brightness = black
+  }
+
+  // Helper: Scan in direction (dx, dy) until hit black run
+  int scan(int startX, int startY, int dx, int dy, int maxDist) {
+    int run = 0;
+    for (int i = 0; i < maxDist; i++) {
+      int x = startX + i * dx;
+      int y = startY + i * dy;
+      
+      if (isBlack(x, y)) {
+        run++;
+        if (run >= minRunLength) {
+          // Found edge at i - run
+          return i - run; 
+        }
+      } else {
+        run = 0; // Reset run if we see content
+      }
+    }
+    return maxDist; // Hit cell boundary
+  }
+
+  // Scan limits (don't go beyond cell)
+  final maxLeft = min(cx, cellW ~/ 2);
+  final maxRight = min(image.width - cx, cellW ~/ 2);
+  final maxUp = min(cy, cellH ~/ 2);
+  final maxDown = min(image.height - cy, cellH ~/ 2);
+
+  final dLeft = scan(cx, cy, -1, 0, maxLeft);
+  final dRight = scan(cx, cy, 1, 0, maxRight);
+  final dUp = scan(cx, cy, 0, -1, maxUp);
+  final dDown = scan(cx, cy, 0, 1, maxDown);
+
+  // Shave borders (2px safe)
+  final shave = 2;
+  final left = cx - dLeft + shave;
+  final top = cy - dUp + shave;
+  final right = cx + dRight - shave;
+  final bottom = cy + dDown - shave;
+  
+  final width = max(1, right - left);
+  final height = max(1, bottom - top);
+  
+  // Sanity check: If detected content is unreasonably small (e.g. < 5% of cell),
+  // assume detection failed (e.g. dark image content) and fallback to full cell.
+  // This prevents returning tiny/empty crops for dark panels.
+  if (width < cellW * 0.05 || height < cellH * 0.05) {
+     return _Rect(
+       cx - cellW ~/ 2 + shave, 
+       cy - cellH ~/ 2 + shave, 
+       cellW - 2 * shave, 
+       cellH - 2 * shave
+     );
+  }
+
+  return _Rect(left, top, width, height);
+}
+
+/* REMOVED: _trimBlackBorders, _resolveGrid, _divisors */
 
 class StoryPanelArtService {
   StoryPanelArtService({ImagePicker? picker}) : _picker = picker ?? ImagePicker();
@@ -40,41 +190,21 @@ class StoryPanelArtService {
       return null;
     }
 
-    final bytes = await capture.readAsBytes();
-    final composite = img.decodeImage(bytes);
-    if (composite == null) {
-      throw StoryPanelArtException('We could not read that image file.');
-    }
-
-    // Trim solid black borders before processing
-    final trimmed = _trimBlackBorders(composite);
-
-    final grid = _resolveGrid(trimmed.width, trimmed.height, panelCount);
-    if (grid == null) {
-      throw StoryPanelArtException(
-        'Unable to detect a clean square grid. Make sure the collage uses equally sized panels without cropping.',
-      );
-    }
-    if (grid.totalPanels < panelCount) {
-      throw StoryPanelArtException(
-        'The collage only contains ${grid.totalPanels} panels but this story needs $panelCount.',
-      );
-    }
-
     final batchDir = await _createBatchDirectory(storyId);
+    
+    // Run processing in a background isolate to prevent UI jank
+    final rawPanelPaths = await compute(_processPanelArt, _PanelProcessingConfig(
+      imagePath: capture.path,
+      outputDirPath: batchDir.path,
+      panelCount: panelCount,
+    ));
+
     final sheetPath = await _persistSheetFile(File(capture.path), batchDir);
-    final rawPanelPaths = await _splitAndSavePanels(
-      trimmed, // Use trimmed image
-      batchDir,
-      grid.totalPanels,
-      grid,
-    );
 
     // Allow user to select/confirm panels
     final selectedPaths = await _promptSelection(context, rawPanelPaths);
     if (selectedPaths == null || selectedPaths.isEmpty) {
       // User cancelled or selected nothing
-      // Cleanup batch dir since we are aborting
       try {
         await batchDir.delete(recursive: true);
       } catch (_) {}
@@ -86,16 +216,17 @@ class StoryPanelArtService {
     }
 
     // Default assignments: Map 1:1 to first N panels
-    // We store ALL selected panels in panelImagePaths (the pool)
-    // And create initial assignments for available slots
     final Map<int, String> initialAssignments = {};
     for (int i = 0; i < panelCount && i < selectedPaths.length; i++) {
       initialAssignments[i] = selectedPaths[i];
     }
 
+    int estimatedCols = sqrt(panelCount).ceil();
+    int estimatedRows = (panelCount / estimatedCols).ceil();
+
     return StoryPanelArtMetadata(
-      columns: grid.columns,
-      rows: grid.rows,
+      columns: estimatedCols,
+      rows: estimatedRows,
       panelImagePaths: selectedPaths,
       sheetImagePath: sheetPath,
       importedAt: DateTime.now(),
@@ -107,9 +238,6 @@ class StoryPanelArtService {
     BuildContext context,
     List<String> allPaths,
   ) {
-    // If only 1 panel or very few, maybe skip?
-    // User request: "select which panels will be imported (defaulted to all)"
-    // We show a dialog grid.
     return showDialog<List<String>>(
       context: context,
       barrierDismissible: false,
@@ -206,125 +334,6 @@ class StoryPanelArtService {
     await source.copy(destination.path);
     return destination.path;
   }
-
-  Future<List<String>> _splitAndSavePanels(
-    img.Image composite,
-    Directory batchDir,
-    int panelCount,
-    _PanelGrid grid,
-  ) async {
-    final panelPaths = <String>[];
-    for (int row = 0; row < grid.rows; row++) {
-      for (int col = 0; col < grid.columns; col++) {
-        if (panelPaths.length >= panelCount) {
-          return panelPaths;
-        }
-        final offsetX = col * grid.panelSize;
-        final offsetY = row * grid.panelSize;
-        final cropped = img.copyCrop(
-          composite,
-          x: offsetX,
-          y: offsetY,
-          width: grid.panelSize,
-          height: grid.panelSize,
-        );
-        final file = File(
-          '${batchDir.path}/panel_${panelPaths.length + 1}.jpg',
-        );
-        await file.writeAsBytes(img.encodeJpg(cropped, quality: 95));
-        panelPaths.add(file.path);
-      }
-    }
-    return panelPaths;
-  }
-
-  _PanelGrid? _resolveGrid(int width, int height, int panelCount) {
-    final candidates = <_PanelGrid>[];
-    for (final columns in _divisors(width)) {
-      final panelSize = width ~/ columns;
-      if (panelSize == 0) continue;
-      if (height % panelSize != 0) continue;
-      final rows = height ~/ panelSize;
-      if (rows <= 0) continue;
-      final total = rows * columns;
-      if (total <= 0) continue;
-      candidates.add(
-        _PanelGrid(
-          columns: columns,
-          rows: rows,
-          panelSize: panelSize,
-          totalPanels: total,
-        ),
-      );
-    }
-    if (candidates.isEmpty) {
-      return null;
-    }
-    candidates.sort((a, b) => a.totalPanels.compareTo(b.totalPanels));
-    for (final grid in candidates) {
-      if (grid.totalPanels >= panelCount) {
-        return grid;
-      }
-    }
-    return candidates.last;
-  }
-
-  List<int> _divisors(int value) {
-    final divisors = <int>{};
-    final limit = sqrt(value).floor();
-    for (int i = 1; i <= limit; i++) {
-      if (value % i != 0) continue;
-      divisors.add(i);
-      divisors.add(value ~/ i);
-    }
-    final list = divisors.toList()..sort();
-    return list;
-  }
-
-  img.Image _trimBlackBorders(img.Image image) {
-    // Determine bounding box of non-black content
-    int minX = image.width;
-    int maxX = 0;
-    int minY = image.height;
-    int maxY = 0;
-
-    bool foundContent = false;
-
-    // Simple threshold for "black" - sum of RGB channels < 15 (allows for slight compression noise)
-    const threshold = 15;
-
-    for (int y = 0; y < image.height; y++) {
-      for (int x = 0; x < image.width; x++) {
-        final pixel = image.getPixel(x, y);
-        if (pixel.r + pixel.g + pixel.b > threshold) {
-          if (x < minX) minX = x;
-          if (x > maxX) maxX = x;
-          if (y < minY) minY = y;
-          if (y > maxY) maxY = y;
-          foundContent = true;
-        }
-      }
-    }
-
-    if (!foundContent) {
-      return image; // Return original if fully black or empty
-    }
-
-    // If bounds cover the whole image, no trimming needed
-    if (minX == 0 && minY == 0 && maxX == image.width - 1 && maxY == image.height - 1) {
-      return image;
-    }
-
-    // Crop to the bounding box
-    // Width/Height is exclusive max - min + 1
-    return img.copyCrop(
-      image,
-      x: minX,
-      y: minY,
-      width: maxX - minX + 1,
-      height: maxY - minY + 1,
-    );
-  }
 }
 
 class StoryPanelArtException implements Exception {
@@ -336,19 +345,7 @@ class StoryPanelArtException implements Exception {
   String toString() => message;
 }
 
-class _PanelGrid {
-  const _PanelGrid({
-    required this.columns,
-    required this.rows,
-    required this.panelSize,
-    required this.totalPanels,
-  });
-
-  final int columns;
-  final int rows;
-  final int panelSize;
-  final int totalPanels;
-}
+/* REMOVED: _PanelGrid */
 
 class _PanelSelectionDialog extends StatefulWidget {
   const _PanelSelectionDialog({required this.allPaths});
@@ -451,4 +448,3 @@ class _PanelSelectionDialogState extends State<_PanelSelectionDialog> {
     );
   }
 }
-

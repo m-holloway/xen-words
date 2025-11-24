@@ -130,3 +130,4 @@ To further enhance story quality, consider:
 
 No code changes were required beyond the prompt itself—the existing parsing logic handles the simplified beat structure perfectly. The JSON schema is backward compatible with existing stored stories.
 
+

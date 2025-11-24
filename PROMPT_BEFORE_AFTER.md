@@ -205,3 +205,4 @@ The difference: **personality, sensory detail, emotional stakes, pacing, voice.*
 
 The ONLY change is the quality of story content within the beats.
 
+

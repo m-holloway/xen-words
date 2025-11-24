@@ -52,3 +52,14 @@ app.*.map.json
 lib/secrets/openrouter_secret.dart
 genai/.venv_alignment/
 test_audio/clean_recording_trimmed.wav
+
+# Large Model Files (Downloaded via script)
+assets/sherpa-onnx-models/**/*.onnx
+assets/sherpa-onnx-models/**/*.model
+assets/sherpa-onnx-models/**/tokens.txt
+
+# Large Development Assets (Not for repo)
+genai/alignment_testing/**/*.onnx
+genai/alignment_testing/**/*.tar.gz
+genai/alignment_testing/**/*.tar.bz2
+external-assets/*.exr

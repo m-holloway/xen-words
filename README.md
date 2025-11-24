@@ -135,12 +135,18 @@ assets/
 
 ### Setup
 
-1. **Install dependencies:**
+1. **Download Required Models:**
+   The app requires large speech recognition models that are not included in the repository. Run the following script to download them:
+   ```bash
+   ./scripts/download_models.sh
+   ```
+
+2. **Install dependencies:**
    ```bash
    flutter pub get
    ```
 
-2. **Run the app:**
+3. **Run the app:**
    ```bash
    flutter run
    ```
