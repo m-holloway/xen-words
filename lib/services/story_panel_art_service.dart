@@ -164,6 +164,31 @@ class StoryPanelArtService {
 
   final ImagePicker _picker;
 
+  /// Process a panel art grid image and split it into individual panels.
+  /// 
+  /// This uses the same intelligent grid detection logic as the manual import flow.
+  /// [gridImagePath] - Path to the grid image file
+  /// [outputDir] - Directory where panel images should be saved
+  /// [panelCount] - Expected number of panels in the grid
+  /// 
+  /// Returns a list of file paths for the extracted panel images.
+  Future<List<String>> processPanelGrid({
+    required String gridImagePath,
+    required String outputDir,
+    required int panelCount,
+  }) async {
+    // Use the same processing logic as manual import
+    final rawPanelPaths = await compute(
+      _processPanelArt,
+      _PanelProcessingConfig(
+        imagePath: gridImagePath,
+        outputDirPath: outputDir,
+        panelCount: panelCount,
+      ),
+    );
+    return rawPanelPaths;
+  }
+
   Future<StoryPanelArtMetadata?> pickAndStorePanelArt({
     required BuildContext context,
     required String storyId,

@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../models/child_profile.dart';
+import '../utils/app_logger.dart';
 import '../models/story_generation_models.dart';
 import '../models/story_models.dart';
 import '../services/preferences_service.dart';
@@ -2194,6 +2195,8 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
   late int _currentRating;
   bool _isUpdatingCover = false;
   bool _isUpdatingPanelArt = false;
+  bool _isGeneratingPanelArt = false;
+  bool _isGeneratingCoverArt = false;
 
   @override
   void initState() {
@@ -2424,6 +2427,106 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
         _story = updated;
         _currentRating = updated.childRating ?? _currentRating;
       });
+    }
+  }
+
+  Future<void> _generatePanelArt() async {
+    if (_story.isBuiltIn || _isGeneratingPanelArt) return;
+    
+    final expectedCount = _expectedPanelCount;
+    if (expectedCount == 0) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Update the story text first so we know how many passages need art.',
+          ),
+        ),
+      );
+      return;
+    }
+
+    setState(() {
+      _isGeneratingPanelArt = true;
+    });
+
+    try {
+      // Get child age from profile if available
+      // For now, we'll use a default age
+      final childAge = 6; // TODO: Get from active profile
+
+      final metadata = await widget.storyService.generatePanelArt(
+        _story,
+        childAge: childAge,
+        onProgress: (step) {
+          // Progress updates can be shown via snackbar or dialog if needed
+          AppLogger.system.d('Panel art generation: $step');
+        },
+      );
+
+      if (!mounted) return;
+      
+      setState(() {
+        _story = _story.copyWith(panelArt: metadata);
+        _isGeneratingPanelArt = false;
+      });
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Panel art generated successfully!')),
+      );
+    } catch (e) {
+      if (!mounted) return;
+      setState(() {
+        _isGeneratingPanelArt = false;
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to generate panel art: $e')),
+      );
+    }
+  }
+
+  Future<void> _generateCoverArt() async {
+    if (_story.isBuiltIn || _isGeneratingCoverArt) return;
+
+    setState(() {
+      _isGeneratingCoverArt = true;
+    });
+
+    try {
+      // Get child age from profile if available
+      final childAge = 6; // TODO: Get from active profile
+      
+      // Use panel art as reference if available
+      final panelArtPath = _story.panelArt?.sheetImagePath;
+
+      final coverPath = await widget.storyService.generateCoverArt(
+        _story,
+        panelArtImagePath: panelArtPath,
+        childAge: childAge,
+        onProgress: (step) {
+          // Progress updates can be shown via snackbar or dialog if needed
+          AppLogger.system.d('Cover art generation: $step');
+        },
+      );
+
+      if (!mounted) return;
+      
+      setState(() {
+        _story = _story.copyWith(coverImagePath: coverPath);
+        _isGeneratingCoverArt = false;
+      });
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Cover art generated successfully!')),
+      );
+    } catch (e) {
+      if (!mounted) return;
+      setState(() {
+        _isGeneratingCoverArt = false;
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to generate cover art: $e')),
+      );
     }
   }
 
@@ -2783,6 +2886,21 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
                             alignment: WrapAlignment.center,
                             children: [
                               FilledButton.icon(
+                                onPressed: _isUpdatingCover || _isGeneratingCoverArt
+                                    ? null
+                                    : _generateCoverArt,
+                                icon: _isGeneratingCoverArt
+                                    ? const SizedBox(
+                                        width: 16,
+                                        height: 16,
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 2,
+                                        ),
+                                      )
+                                    : const Icon(Icons.auto_awesome),
+                                label: const Text('Generate Cover'),
+                              ),
+                              FilledButton.icon(
                                 onPressed: _isUpdatingCover
                                     ? null
                                     : _changeCover,
@@ -3038,6 +3156,19 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
               spacing: 12,
               runSpacing: 12,
               children: [
+                FilledButton.icon(
+                  onPressed: _isUpdatingPanelArt || _isGeneratingPanelArt
+                      ? null
+                      : _generatePanelArt,
+                  icon: _isGeneratingPanelArt
+                      ? const SizedBox(
+                          width: 16,
+                          height: 16,
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        )
+                      : const Icon(Icons.auto_awesome),
+                  label: const Text('Generate Panel Art'),
+                ),
                 FilledButton.icon(
                   onPressed: _isUpdatingPanelArt ? null : _importPanelArt,
                   icon: _isUpdatingPanelArt

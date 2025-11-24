@@ -1,23 +1,38 @@
+import 'dart:convert';
+import 'dart:io';
 import 'dart:math';
+
+import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
 
 import '../data/built_in_stories.dart';
 import '../models/story_generation_models.dart';
 import '../models/story_models.dart';
+import '../prompts/character_extraction_prompt.dart';
+import '../prompts/cover_art_prompt.dart';
+import '../prompts/panel_art_prompt.dart';
+import '../prompts/panel_description_prompt.dart';
+import '../secrets/openrouter_secret.dart' as local_secret;
 import '../utils/app_logger.dart';
 import '../utils/reading_level_helper.dart';
 import '../utils/story_text_utils.dart';
+import 'openrouter_image_client.dart';
 import 'openrouter_story_client.dart';
+import 'story_panel_art_service.dart';
 import 'story_storage_service.dart';
 
 class StoryGeneratorService {
   StoryGeneratorService({
     OpenRouterStoryClient? client,
     StoryStorageService? storage,
+    OpenRouterImageClient? imageClient,
   }) : _client = client ?? OpenRouterStoryClient(),
-       _storage = storage ?? StoryStorageService.instance;
+       _storage = storage ?? StoryStorageService.instance,
+       _imageClient = imageClient ?? OpenRouterImageClient();
 
   final OpenRouterStoryClient _client;
   final StoryStorageService _storage;
+  final OpenRouterImageClient _imageClient;
 
   Future<GeneratedStoryRecord> generateStory(
     StoryGenerationRequest request,
@@ -448,6 +463,374 @@ class StoryGeneratorService {
       default:
         return null;
     }
+  }
+
+  /// Generate panel art for a story.
+  /// 
+  /// This method performs the full panel art generation flow:
+  /// 1. Extract character descriptions
+  /// 2. Generate panel descriptions
+  /// 3. Generate panel art grid
+  /// 4. Slice and save panels
+  /// 
+  /// [story] - The story record to generate art for
+  /// [childAge] - Optional child age for style description
+  /// [onProgress] - Optional callback for progress updates
+  Future<StoryPanelArtMetadata> generatePanelArt(
+    GeneratedStoryRecord story, {
+    int? childAge,
+    void Function(String step)? onProgress,
+  }) async {
+    onProgress?.call('Extracting characters...');
+    
+    // Step 1: Extract character descriptions
+    final storyText = StoryTextUtils.narrationOnly(story.chapter);
+    final characterDescriptions = await _extractCharacters(storyText);
+    
+    onProgress?.call('Writing panel descriptions...');
+    
+    // Step 2: Generate panel descriptions
+    final panelDescriptions = await _generatePanelDescriptions(
+      storyText,
+      characterDescriptions,
+    );
+    
+    onProgress?.call('Painting panels...');
+    
+    // Step 3: Generate panel art grid
+    final panelCount = panelDescriptions.length;
+    final styleDescription = _buildStyleDescription(childAge);
+    final panelArtPrompt = _buildPanelArtPrompt(
+      panelCount: panelCount,
+      panelDescriptions: panelDescriptions,
+      styleDescription: styleDescription,
+    );
+    
+    final imageResult = await _imageClient.generateImage(
+      prompt: panelArtPrompt,
+      modelId: OpenRouterImageClient.panelModel,
+      aspectRatio: '1:1',
+      systemPrompt: panelArtPrompt,
+    );
+    
+    onProgress?.call('Slicing artwork...');
+    
+    // Step 4: Save and slice the grid
+    final tempDir = await _getTempDirectory();
+    final gridPath = await _imageClient.saveImageFromDataUrl(
+      dataUrl: imageResult.imageDataUrl,
+      fileName: 'panel_grid_${story.id}_${DateTime.now().millisecondsSinceEpoch}.png',
+      directory: tempDir.path,
+    );
+    
+    // Slice the grid into individual panels using existing processing logic
+    final batchDir = await _createBatchDirectory(story.id);
+    final panelArtService = StoryPanelArtService();
+    
+    final panelPaths = await panelArtService.processPanelGrid(
+      gridImagePath: gridPath,
+      outputDir: batchDir.path,
+      panelCount: panelCount,
+    );
+    
+    // Create metadata
+    final estimatedCols = sqrt(panelCount).ceil();
+    final estimatedRows = (panelCount / estimatedCols).ceil();
+    
+    final metadata = StoryPanelArtMetadata(
+      columns: estimatedCols,
+      rows: estimatedRows,
+      panelImagePaths: panelPaths,
+      sheetImagePath: gridPath,
+      importedAt: DateTime.now(),
+      assignments: _createDefaultAssignments(panelCount, panelPaths),
+    );
+    
+    // Save to story
+    await updateStoryPanelArt(story.id, metadata);
+    
+    onProgress?.call('Done!');
+    
+    return metadata;
+  }
+
+  /// Generate cover art for a story.
+  /// 
+  /// [story] - The story record to generate cover for
+  /// [panelArtImagePath] - Optional path to panel art grid (for visual reference)
+  /// [childAge] - Optional child age for style description
+  /// [onProgress] - Optional callback for progress updates
+  Future<String> generateCoverArt(
+    GeneratedStoryRecord story, {
+    String? panelArtImagePath,
+    int? childAge,
+    void Function(String step)? onProgress,
+  }) async {
+    onProgress?.call('Creating cover art...');
+    
+    final storyText = StoryTextUtils.narrationOnly(story.chapter);
+    final coverPrompt = _buildCoverArtPrompt(
+      story: story,
+      storyText: storyText,
+      childAge: childAge,
+      hasPanelArt: panelArtImagePath != null,
+    );
+    
+    final String coverPath;
+    
+    if (panelArtImagePath != null) {
+      // Generate with panel art as reference
+      final imageResult = await _imageClient.generateImageWithInput(
+        prompt: coverPrompt,
+        imagePath: panelArtImagePath,
+        modelId: OpenRouterImageClient.coverModel,
+        aspectRatio: '3:4',
+        systemPrompt: coverArtPromptWithPanelArt,
+      );
+      
+      final coversDir = await _getCoversDirectory();
+      coverPath = await _imageClient.saveImageFromDataUrl(
+        dataUrl: imageResult.imageDataUrl,
+        fileName: 'cover_${story.id}_${DateTime.now().millisecondsSinceEpoch}.jpg',
+        directory: coversDir.path,
+      );
+    } else {
+      // Generate without panel art
+      final imageResult = await _imageClient.generateImage(
+        prompt: coverPrompt,
+        modelId: OpenRouterImageClient.coverModel,
+        aspectRatio: '3:4',
+        systemPrompt: coverArtPromptWithoutPanelArt,
+      );
+      
+      final coversDir = await _getCoversDirectory();
+      coverPath = await _imageClient.saveImageFromDataUrl(
+        dataUrl: imageResult.imageDataUrl,
+        fileName: 'cover_${story.id}_${DateTime.now().millisecondsSinceEpoch}.jpg',
+        directory: coversDir.path,
+      );
+    }
+    
+    // Save to story
+    await updateStoryCover(story.id, coverPath);
+    
+    onProgress?.call('Done!');
+    
+    return coverPath;
+  }
+
+  Future<String> _extractCharacters(String storyText) async {
+    final result = await _callTextModel(
+      systemPrompt: characterExtractionPrompt,
+      userPrompt: storyText,
+      temperature: 0.3,
+      maxOutputTokens: 1024,
+    );
+    
+    return result;
+  }
+
+  Future<List<String>> _generatePanelDescriptions(
+    String storyText,
+    String characterDescriptions,
+  ) async {
+    final userPrompt = 'CHARACTER DESCRIPTIONS:\n$characterDescriptions\n\nSTORY TEXT:\n$storyText';
+    
+    final result = await _callTextModel(
+      systemPrompt: panelDescriptionPrompt,
+      userPrompt: userPrompt,
+      temperature: 0.7,
+      maxOutputTokens: 4096,
+    );
+    
+    // Parse panel descriptions (assume they're numbered: Panel 1, Panel 2, etc.)
+    final panels = <String>[];
+    final lines = result.split('\n');
+    String? currentPanel;
+    
+    for (final line in lines) {
+      if (line.trim().toLowerCase().startsWith(RegExp(r'panel \d+'))) {
+        if (currentPanel != null && currentPanel.trim().isNotEmpty) {
+          panels.add(currentPanel.trim());
+        }
+        currentPanel = line.trim();
+      } else if (currentPanel != null) {
+        currentPanel += '\n$line';
+      }
+    }
+    
+    if (currentPanel != null && currentPanel.trim().isNotEmpty) {
+      panels.add(currentPanel.trim());
+    }
+    
+    // Fallback: if no panels found, split by double newlines
+    if (panels.isEmpty) {
+      final paragraphs = result.split(RegExp(r'\n{2,}'));
+      panels.addAll(paragraphs.where((p) => p.trim().isNotEmpty));
+    }
+    
+    // Ensure we have at least one panel
+    if (panels.isEmpty) {
+      panels.add(result.trim());
+    }
+    
+    return panels;
+  }
+
+  /// Call OpenRouter for text generation (not JSON).
+  Future<String> _callTextModel({
+    required String systemPrompt,
+    required String userPrompt,
+    double temperature = 0.7,
+    int maxOutputTokens = 2048,
+  }) async {
+    final apiKey = _getApiKey();
+    if (apiKey.isEmpty) {
+      throw StateError('OPENROUTER_API_KEY missing');
+    }
+
+    final body = {
+      'model': StoryGenerationDefaults.primaryModelId,
+      'temperature': temperature,
+      'top_p': 0.9,
+      'max_output_tokens': maxOutputTokens,
+      'messages': [
+        {'role': 'system', 'content': systemPrompt},
+        {'role': 'user', 'content': userPrompt},
+      ],
+    };
+
+    AppLogger.system.d('Calling OpenRouter for text generation');
+
+    final httpClient = http.Client();
+    final response = await httpClient.post(
+      Uri.parse('https://openrouter.ai/api/v1/chat/completions'),
+      headers: {
+        'Authorization': 'Bearer $apiKey',
+        'Content-Type': 'application/json',
+        'HTTP-Referer': 'https://xen.words.app/dev',
+        'X-Title': 'Xen Words',
+      },
+      body: jsonEncode(body),
+    );
+
+    if (response.statusCode >= 400) {
+      AppLogger.system.e('OpenRouter error: ${response.statusCode} ${response.body}');
+      throw Exception('OpenRouter API error ${response.statusCode}: ${response.body}');
+    }
+
+    final decoded = jsonDecode(response.body) as Map<String, dynamic>;
+    final choices = decoded['choices'] as List<dynamic>? ?? [];
+    if (choices.isEmpty) {
+      throw StateError('OpenRouter returned no choices');
+    }
+
+    final content = choices.first['message']['content'];
+    final contentString = content is List
+        ? content.map((e) => e['text'] ?? '').join('\n')
+        : content?.toString() ?? '';
+
+    httpClient.close();
+    return contentString;
+  }
+
+  String _getApiKey() {
+    final localKey = local_secret.openRouterApiKey.trim();
+    if (localKey.isNotEmpty) {
+      return localKey;
+    }
+    return const String.fromEnvironment('OPENROUTER_API_KEY');
+  }
+
+  String _buildStyleDescription(int? childAge) {
+    final ageText = childAge != null ? 'age-appropriate for $childAge years old' : 'age-appropriate';
+    return 'Whimsical children\'s book illustration style, vibrant colors, soft lighting, $ageText, warm and engaging';
+  }
+
+  String _buildPanelArtPrompt({
+    required int panelCount,
+    required List<String> panelDescriptions,
+    required String styleDescription,
+  }) {
+    final panelList = panelDescriptions
+        .asMap()
+        .entries
+        .map((e) => 'Panel ${e.key + 1}:\n${e.value}')
+        .join('\n\n');
+    
+    return panelArtPrompt
+        .replaceAll('[N]', panelCount.toString())
+        .replaceAll('[ART_STYLE_DESCRIPTION]', styleDescription)
+        .replaceAll('[PANEL_LIST]', panelList);
+  }
+
+  String _buildCoverArtPrompt({
+    required GeneratedStoryRecord story,
+    required String storyText,
+    int? childAge,
+    required bool hasPanelArt,
+  }) {
+    final ageText = childAge != null ? childAge.toString() : '5-8';
+    
+    if (hasPanelArt) {
+      return coverArtPromptWithPanelArt
+          .replaceAll('[STORY_TITLE]', story.chapter.title)
+          .replaceAll('[STORY_SUMMARY]', story.summary)
+          .replaceAll('[CHILD_AGE]', ageText);
+    } else {
+      return coverArtPromptWithoutPanelArt
+          .replaceAll('[STORY_TITLE]', story.chapter.title)
+          .replaceAll('[STORY_SUMMARY]', story.summary)
+          .replaceAll('[FULL_STORY_TEXT]', storyText)
+          .replaceAll('[CHILD_AGE]', ageText)
+          .replaceAll('[CHARACTER_DESCRIPTIONS]', '');
+    }
+  }
+
+
+  Map<int, String> _createDefaultAssignments(int panelCount, List<String> panelPaths) {
+    final assignments = <int, String>{};
+    for (int i = 0; i < panelCount && i < panelPaths.length; i++) {
+      assignments[i] = panelPaths[i];
+    }
+    return assignments;
+  }
+
+  Future<Directory> _getTempDirectory() async {
+    final dir = Directory.systemTemp;
+    final tempDir = Directory('${dir.path}/xen_words_art');
+    if (!await tempDir.exists()) {
+      await tempDir.create(recursive: true);
+    }
+    return tempDir;
+  }
+
+  Future<Directory> _getCoversDirectory() async {
+    final docs = await _getApplicationDocumentsDirectory();
+    final coversDir = Directory('${docs.path}/story_covers');
+    if (!await coversDir.exists()) {
+      await coversDir.create(recursive: true);
+    }
+    return coversDir;
+  }
+
+  Future<Directory> _createBatchDirectory(String storyId) async {
+    final docs = await _getApplicationDocumentsDirectory();
+    final base = Directory('${docs.path}/story_panels/$storyId');
+    if (!await base.exists()) {
+      await base.create(recursive: true);
+    }
+    final batchDir = Directory(
+      '${base.path}/${DateTime.now().millisecondsSinceEpoch}',
+    );
+    if (!await batchDir.exists()) {
+      await batchDir.create(recursive: true);
+    }
+    return batchDir;
+  }
+
+  Future<Directory> _getApplicationDocumentsDirectory() async {
+    return await getApplicationDocumentsDirectory();
   }
 }
 

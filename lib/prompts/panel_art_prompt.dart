@@ -1,0 +1,126 @@
+/// System prompt for generating panel art grid from panel descriptions.
+/// 
+/// This prompt instructs the image generation model to create a 1024x1024
+/// grid of story panels arranged in a 4-column layout.
+const String panelArtPrompt = '''
+You are generating a single high-resolution comic page image.  
+Follow ALL instructions below EXACTLY and WITHOUT EXCEPTION.
+
+====================================================================
+GOAL
+Create a 1024×1024 px comic page containing EXACTLY [N] illustrated 
+story panels, arranged inside a strict 4-column grid.  
+Any unused cells in the final row MUST be filled with blank white squares.
+====================================================================
+
+====================================================================
+GRID LAYOUT (STRICT, MATHEMATICAL, NON-NEGOTIABLE)
+You MUST place each illustrated panel k (starting at 1) using this formula:
+
+    row_index r = floor((k - 1) / 4)
+    column_index c = (k - 1) mod 4
+
+This creates a 4-column layout:
+Panel 1  → row 0, col 0  
+Panel 2  → row 0, col 1  
+Panel 3  → row 0, col 2  
+Panel 4  → row 0, col 3  
+Panel 5  → row 1, col 0  
+Panel 6  → row 1, col 1  
+…continue sequentially through Panel [N].
+
+- NO reordering.  
+- NO centering.  
+- NO shifting for aesthetic reasons.  
+- NO creative reinterpretation of panel positions.  
+This layout is mechanical and MUST be followed precisely.
+
+Number of rows:  
+Let R = ceil([N] / 4).  
+You MUST generate exactly R rows and exactly 4 columns per row.
+====================================================================
+
+====================================================================
+INCOMPLETE FINAL ROW RULE (CRITICAL)
+If the final row contains fewer than 4 illustrated panels:
+
+1. The illustrated panels MUST occupy the LEFTMOST columns:
+   - Column 0 = first illustrated panel in that row  
+   - Column 1 = second illustrated panel (if it exists)  
+   - Column 2 = third illustrated panel (if it exists)  
+   - Column 3 = fourth illustrated panel (rare; only if N mod 4 = 0)  
+
+2. ALL remaining cells in the final row MUST be filled with **blank white squares**, 
+which MUST occupy ONLY the RIGHTMOST columns.
+
+Blank white squares are defined as:
+- pure white (#FFFFFF)
+- no shading, texture, gradients, symbols, or decoration
+- identical in size to the illustrated panels
+
+Under NO circumstances may the model:
+- center the last row's illustrated panels  
+- shift illustrated panels into the middle  
+- add art to blank squares  
+- modify the grid structure  
+====================================================================
+
+====================================================================
+GRID & GUTTER REQUIREMENTS
+1. All cells (illustrated panels + blank squares) MUST be perfect squares.
+2. Every square MUST be identical in size.
+3. The complete grid MUST fill the entire 1024×1024 px canvas.
+4. Gutters MUST be:
+   - thin
+   - clean
+   - solid black (#000000)
+   - uniform width between all cells
+
+Absolutely NO artwork may spill across gutters.
+====================================================================
+
+====================================================================
+RENDERING ORDER (MANDATORY)
+You MUST perform the following steps IN ORDER:
+
+1. Construct the entire empty grid of R rows × 4 columns.
+2. Fill the illustrated panels IN NUMERICAL ORDER:
+   Panel 1 → Panel 2 → Panel 3 → … → Panel [N].
+3. After all illustrated panels are filled,  
+   insert blank white squares into any remaining rightmost cells.
+4. Do NOT fill illustrated panels out of order.
+5. Do NOT add imagery to blank squares.
+====================================================================
+
+====================================================================
+ART STYLE
+[ART_STYLE_DESCRIPTION]
+
+Apply this style consistently to EVERY illustrated panel.
+====================================================================
+
+====================================================================
+CONTENT RENDERING (STRICT)
+- Render ONLY what is described in each panel's brief.  
+- DO NOT add text of any kind (no speech bubbles, labels, or captions).  
+- DO NOT display panel numbers.  
+- DO NOT introduce new elements not present in the panel descriptions.  
+- DO NOT reinterpret or embellish beyond what the panel description specifies.  
+====================================================================
+
+====================================================================
+PANEL CONTENT (RENDER LITERALLY)
+Paste the list of panel descriptions here:
+
+[PANEL_LIST]
+====================================================================
+
+OUTPUT
+Produce a single 1024×1024 px image containing:
+- R × 4 square grid cells  
+- Illustrated panels placed based on the mathematical formula  
+- Blank white squares in unused rightmost cells of the final row  
+- Perfectly aligned grid with clean black gutters  
+- A layout that can be programmatically sliced with simple pixel math
+''';
+
