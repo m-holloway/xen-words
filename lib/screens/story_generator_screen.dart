@@ -10,12 +10,14 @@ import 'package:share_plus/share_plus.dart';
 import '../models/child_profile.dart';
 import '../utils/app_logger.dart';
 import '../models/story_generation_models.dart';
+import '../models/story_world_models.dart';
 import '../models/story_models.dart';
 import '../services/preferences_service.dart';
 import '../services/profile_service.dart';
 import '../services/story_cover_service.dart';
 import '../services/story_generator_service.dart';
 import '../services/story_panel_art_service.dart';
+import '../services/story_world_service.dart';
 import '../utils/reading_level_helper.dart';
 import '../utils/story_text_utils.dart';
 import '../widgets/panel_art_widget.dart';
@@ -23,6 +25,7 @@ import '../widgets/star_rating.dart';
 import 'story_playback_screen.dart';
 import 'story_reader_screen_enhanced.dart';
 import 'story_revision_screen.dart';
+import 'story_world_screen.dart';
 
 enum StoryLabView { library, generator }
 
@@ -52,6 +55,7 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen>
   final ProfileService _profileService = ProfileService();
   final StoryCoverService _coverService = StoryCoverService();
   final StoryPanelArtService _panelArtService = StoryPanelArtService();
+  final StoryWorldService _storyWorldService = StoryWorldService.instance;
   late final AnimationController _loadingController;
   late StoryLabView _activeView;
 
@@ -70,6 +74,9 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen>
   DateTime? _generationStartTime;
   Duration _generationElapsed = Duration.zero;
   StoryLibraryFilter _libraryFilter = StoryLibraryFilter.all;
+  String? _activeProfileId;
+  List<StoryCharacterEntity> _availableCharacters = [];
+  final Set<String> _selectedCharacterIds = <String>{};
 
   @override
   void initState() {
@@ -203,6 +210,18 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen>
       fallbackUseChildName,
     );
     final profileName = await _loadActiveProfileName();
+    String? activeProfileId;
+    List<StoryCharacterEntity> availableCharacters = [];
+    try {
+      activeProfileId = await _profileService.getActiveProfileId();
+      if (activeProfileId != null) {
+        final world = await _storyWorldService.loadWorld(activeProfileId);
+        availableCharacters = world.characters.values.toList()
+          ..sort((a, b) => a.createdAt.compareTo(b.createdAt));
+      }
+    } catch (e) {
+      AppLogger.system.e('Failed to load Story World cast for generator', error: e);
+    }
     final parentPrompt = draft?['parent_prompt']?.toString() ?? '';
     var childContext = draft?['child_context']?.toString() ?? '';
     if (childContext.isEmpty) {
@@ -229,6 +248,8 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen>
       _durationMinutes = duration;
       _profileChildName = profileName;
       _useChildName = useChildNamePref && (profileName?.isNotEmpty ?? false);
+      _activeProfileId = activeProfileId;
+      _availableCharacters = availableCharacters;
     });
   }
 
@@ -500,6 +521,28 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen>
       });
       final band = ReadingLevelHelper.bandForLevel(_readingLevel.round());
       final childName = _useChildName ? _profileChildName : null;
+      String? castContext;
+      List<String> castIds = [];
+      if (_selectedCharacterIds.isNotEmpty) {
+        final selected = _availableCharacters
+            .where((c) => _selectedCharacterIds.contains(c.id))
+            .toList();
+        if (selected.isNotEmpty) {
+          final buffer = StringBuffer();
+          buffer.writeln(
+            'The story should include these Story Friends from the child\'s Story World:',
+          );
+          for (final c in selected) {
+            buffer.write('- ${c.displayName ?? 'Unnamed friend'}');
+            if (c.summary != null && c.summary!.isNotEmpty) {
+              buffer.write(': ${c.summary}');
+            }
+            buffer.writeln();
+          }
+          castContext = buffer.toString().trim();
+          castIds = selected.map((c) => c.id).toList();
+        }
+      }
       final request = StoryGenerationRequest(
         readingLevel: band.level,
         readingBand: band,
@@ -510,6 +553,9 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen>
             ? null
             : _storyConceptController.text.trim(),
         childName: childName,
+        profileId: _activeProfileId,
+        castContext: castContext,
+        castCharacterIds: castIds,
         includeChildName: childName != null,
       );
 
@@ -877,6 +923,8 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen>
                 ),
                 const SizedBox(height: 12),
                 _buildChildNameToggle(),
+                const SizedBox(height: 12),
+                _buildCastSelectionCard(),
                 const SizedBox(height: 24),
                 ElevatedButton.icon(
                   onPressed: _isGenerating ? null : _generateStory,
@@ -935,6 +983,78 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen>
                 border: const OutlineInputBorder(),
               ),
               validator: validator,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCastSelectionCard() {
+    if (_availableCharacters.isEmpty) {
+      return Card(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Story Friends (optional)',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 8),
+              const Text(
+                'Once you create Story Friends in My Story World, you can '
+                'invite them into new stories from here.',
+              ),
+              const SizedBox(height: 8),
+              TextButton.icon(
+                onPressed: _openStoryWorld,
+                icon: const Icon(Icons.auto_awesome),
+                label: const Text('Open My Story World'),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Story Friends (optional)',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            const Text(
+              'Pick any Story Friends you want this adventure to include. '
+              'You can still mention others in your prompt.',
+            ),
+            const SizedBox(height: 8),
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: _availableCharacters.map((character) {
+                final id = character.id;
+                final selected = _selectedCharacterIds.contains(id);
+                return FilterChip(
+                  label: Text(character.displayName ?? 'Story Friend'),
+                  selected: selected,
+                  onSelected: (value) {
+                    setState(() {
+                      if (value) {
+                        _selectedCharacterIds.add(id);
+                      } else {
+                        _selectedCharacterIds.remove(id);
+                      }
+                    });
+                  },
+                );
+              }).toList(),
             ),
           ],
         ),
@@ -1194,6 +1314,13 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen>
           ),
         ),
 
+        // Story World entry
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: _buildStoryWorldEntryCard(),
+        ),
+        const SizedBox(height: 16),
+
         // Unified Featured Carousel
         if (featuredStories.isNotEmpty) ...[
           Padding(
@@ -1322,6 +1449,75 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen>
           }).toList(),
         ),
       ],
+    );
+  }
+
+  void _openStoryWorld() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => const StoryWorldScreen(),
+      ),
+    );
+  }
+
+  Widget _buildStoryWorldEntryCard() {
+    final theme = Theme.of(context);
+    return InkWell(
+      borderRadius: BorderRadius.circular(18),
+      onTap: _openStoryWorld,
+      child: Ink(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(18),
+          gradient: LinearGradient(
+            colors: [
+              theme.colorScheme.primaryContainer.withOpacity(0.7),
+              theme.colorScheme.surface,
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Row(
+            children: [
+              Container(
+                width: 48,
+                height: 48,
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.primary.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Icon(
+                  Icons.auto_awesome,
+                  color: theme.colorScheme.primary,
+                ),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text(
+                      'My Story World',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      'Create Story Friends, special things, and drawings that '
+                      'can reappear across adventures.',
+                    ),
+                  ],
+                ),
+              ),
+              const Icon(Icons.chevron_right),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
@@ -3291,6 +3487,12 @@ class _BeatEditorState {
   _BeatEditorState({required this.beat, required this.controller});
 }
 
+class _CharacterSuggestion {
+  final String name;
+  final String description;
+  _CharacterSuggestion({required this.name, required this.description});
+}
+
 class _StoryEditorScreenState extends State<_StoryEditorScreen> {
   late GeneratedStoryRecord _story;
   late List<_BeatEditorState> _beatEditors;
@@ -3298,12 +3500,18 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
   bool _isSavingText = false;
   bool _isUpdatingCover = false;
   bool _isUpdatingPanelArt = false;
+  final StoryWorldService _storyWorldService = StoryWorldService.instance;
+  final ProfileService _profileService = ProfileService();
+  bool _loadingSuggestions = false;
+  List<_CharacterSuggestion> _characterSuggestions = const [];
+  String? _profileIdForStory;
   
   @override
   void initState() {
     super.initState();
     _story = widget.story;
     _initBeatEditors();
+    _loadCharacterSuggestions();
   }
 
   void _initBeatEditors() {
@@ -3370,6 +3578,123 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
       buffer.writeln();
     }
     return buffer.toString().trimRight();
+  }
+
+  Future<void> _loadCharacterSuggestions() async {
+    setState(() {
+      _loadingSuggestions = true;
+    });
+    try {
+      final inputs = _story.requestInputs ?? const <String, dynamic>{};
+      String? profileId = inputs['profile_id']?.toString();
+
+      // Backwards compatibility: older stories may not have a profile_id.
+      // In that case, fall back to the current active profile so that
+      // new Story Friends are created in the visible Story World.
+      if (profileId == null || profileId.isEmpty || profileId == 'guest') {
+        try {
+          final activeId = await _profileService.getActiveProfileId();
+          if (activeId != null && activeId.isNotEmpty) {
+            profileId = activeId;
+          }
+        } catch (_) {
+          // If anything goes wrong, we'll still fall back to 'guest' below.
+        }
+      }
+
+      profileId ??= 'guest';
+      _profileIdForStory = profileId;
+
+      final world = await _storyWorldService.loadWorld(profileId);
+      final existingNames = world.characters.values
+          .map((c) => c.displayName?.toLowerCase().trim())
+          .whereType<String>()
+          .toSet();
+
+      final raw =
+          await widget.storyService.extractCharacterDescriptionsForStory(_story);
+      final parsed = _parseCharacterSuggestions(raw);
+      final filtered = parsed
+          .where(
+            (s) => !existingNames.contains(s.name.toLowerCase().trim()),
+          )
+          .toList();
+      if (!mounted) return;
+      setState(() {
+        _characterSuggestions = filtered;
+      });
+    } catch (e) {
+      AppLogger.system.e(
+        'Failed to extract Story World character suggestions for story ${_story.id}',
+        error: e,
+      );
+    } finally {
+      if (mounted) {
+        setState(() {
+          _loadingSuggestions = false;
+        });
+      }
+    }
+  }
+
+  List<_CharacterSuggestion> _parseCharacterSuggestions(String raw) {
+    final lower = raw.toLowerCase();
+    if (lower.contains('no clearly identifiable recurring characters')) {
+      return const [];
+    }
+    final lines = raw.split('\n');
+    final suggestions = <_CharacterSuggestion>[];
+    final pattern = RegExp(r'^\s*\d+\.\s*\*\*(.+?)\*\*:(.+)$');
+    for (final line in lines) {
+      final match = pattern.firstMatch(line.trim());
+      if (match != null) {
+        final name = match.group(1)?.trim() ?? '';
+        final desc = match.group(2)?.trim() ?? '';
+        if (name.isNotEmpty && desc.isNotEmpty) {
+          suggestions.add(
+            _CharacterSuggestion(name: name, description: desc),
+          );
+        }
+      }
+    }
+    return suggestions;
+  }
+
+  Future<void> _acceptSuggestion(_CharacterSuggestion suggestion) async {
+    final profileId = _profileIdForStory ?? 'guest';
+    try {
+      final character = await _storyWorldService.createCharacter(
+        profileId: profileId,
+        displayName: suggestion.name,
+        summary: suggestion.description,
+      );
+      await _storyWorldService.link(
+        profileId: profileId,
+        type: StoryWorldEdgeType.appearsIn,
+        fromId: character.id,
+        toId: _story.id,
+      );
+      if (!mounted) return;
+      setState(() {
+        _characterSuggestions = _characterSuggestions
+            .where((s) => s.name != suggestion.name)
+            .toList();
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Added ${suggestion.name} to Story World.',
+          ),
+        ),
+      );
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Unable to add Story Friend: $e'),
+        ),
+      );
+    }
   }
 
   void _resetDraft() {
@@ -3610,6 +3935,15 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
                 ),
                 const SizedBox(height: 12),
                 _buildPanelArtCard(theme),
+                const SizedBox(height: 32),
+                _EditorSectionHeader(
+                  icon: Icons.auto_awesome,
+                  title: 'Story World connections',
+                  subtitle:
+                      'Promote memorable characters into Story Friends for reuse.',
+                ),
+                const SizedBox(height: 12),
+                _buildStoryWorldSuggestionsCard(theme),
                 const SizedBox(height: 32),
                 _EditorSectionHeader(
                   icon: Icons.edit_note_outlined,
@@ -3863,6 +4197,123 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
               ),
             ],
           ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildStoryWorldSuggestionsCard(ThemeData theme) {
+    if (_loadingSuggestions) {
+      return Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: theme.colorScheme.surface,
+          borderRadius: BorderRadius.circular(24),
+          border: Border.all(
+            color: theme.colorScheme.outlineVariant.withOpacity(0.6),
+          ),
+        ),
+        child: Row(
+          children: const [
+            SizedBox(
+              width: 20,
+              height: 20,
+              child: CircularProgressIndicator(strokeWidth: 2),
+            ),
+            SizedBox(width: 12),
+            Expanded(
+              child: Text(
+                'Scanning this story for recurring characters…',
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    if (_characterSuggestions.isEmpty) {
+      return Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: theme.colorScheme.surface,
+          borderRadius: BorderRadius.circular(24),
+          border: Border.all(
+            color: theme.colorScheme.outlineVariant.withOpacity(0.6),
+          ),
+        ),
+        child: const Text(
+          'No new characters to suggest right now. Characters you\'ve '
+          'already saved live in My Story World.',
+        ),
+      );
+    }
+
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(
+          color: theme.colorScheme.outlineVariant.withOpacity(0.6),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'New Story Friend suggestions',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+          ),
+          const SizedBox(height: 8),
+          ..._characterSuggestions.map((s) {
+            return Card(
+              margin: const EdgeInsets.only(bottom: 8),
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      s.name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      s.description,
+                      style: theme.textTheme.bodySmall,
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        FilledButton.icon(
+                          onPressed: () => _acceptSuggestion(s),
+                          icon: const Icon(Icons.person_add),
+                          label: const Text('Add as Story Friend'),
+                        ),
+                        const SizedBox(width: 8),
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                              _characterSuggestions = _characterSuggestions
+                                  .where((c) => c.name != s.name)
+                                  .toList();
+                            });
+                          },
+                          child: const Text('Dismiss'),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }),
         ],
       ),
     );

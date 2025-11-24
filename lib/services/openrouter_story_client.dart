@@ -97,6 +97,9 @@ Your mission: Transform their simple prompt into a story that makes bedtime magi
       'parent_prompt': request.parentPrompt,
       'child_context': request.childContext,
       'story_concept': request.storyConcept,
+      'profile_id': request.profileId,
+      'cast_context': request.castContext,
+      'cast_character_ids': request.castCharacterIds,
       'familiar_words': vocabulary,
       'instructions': 'Return JSON with title, summary, focus_words, beats, and optional choice_points.',
     });
@@ -227,6 +230,7 @@ Parent's idea: "${request.parentPrompt}"
 ${request.storyConcept != null ? 'Story scenario: "${request.storyConcept}"\n' : ''}
 Child personalization notes: "${request.childContext}"
 ${request.includeChildName && request.childName != null ? 'Child\'s name: ${request.childName} (weave naturally into the story)\n' : ''}
+${request.castContext != null && request.castContext!.trim().isNotEmpty ? 'Story Friends to include (from the child\'s Story World):\n${request.castContext!.trim()}\n\n' : ''}
 
 VOCABULARY PALETTE:
 Familiar words for this level: ${vocabulary.take(40).join(', ')}

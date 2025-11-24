@@ -16,10 +16,12 @@ import '../secrets/openrouter_secret.dart' as local_secret;
 import '../utils/app_logger.dart';
 import '../utils/reading_level_helper.dart';
 import '../utils/story_text_utils.dart';
+import '../models/story_world_models.dart';
 import 'openrouter_image_client.dart';
 import 'openrouter_story_client.dart';
 import 'story_panel_art_service.dart';
 import 'story_storage_service.dart';
+import 'story_world_service.dart';
 
 class StoryGeneratorService {
   StoryGeneratorService({
@@ -33,6 +35,7 @@ class StoryGeneratorService {
   final OpenRouterStoryClient _client;
   final StoryStorageService _storage;
   final OpenRouterImageClient _imageClient;
+  final StoryWorldService _storyWorldService = StoryWorldService.instance;
 
   Future<GeneratedStoryRecord> generateStory(
     StoryGenerationRequest request,
@@ -222,6 +225,16 @@ class StoryGeneratorService {
         revisions: history,
       );
     });
+  }
+
+  /// Extract character descriptions for a given story, suitable for
+  /// Story World suggestions or downstream art prompts.
+  Future<String> extractCharacterDescriptionsForStory(
+    GeneratedStoryRecord story,
+  ) async {
+    final storyText = StoryTextUtils.narrationOnly(story.chapter);
+    final context = await _buildPersistentCharacterContext(story);
+    return _extractCharacters(storyText, extraContext: context);
   }
 
   GeneratedStoryRecord _recordFromPayload(
@@ -482,10 +495,14 @@ class StoryGeneratorService {
     void Function(String step)? onProgress,
   }) async {
     onProgress?.call('Extracting characters...');
-    
-    // Step 1: Extract character descriptions
+
+    // Step 1: Extract character descriptions, seeding with Story World context if available.
     final storyText = StoryTextUtils.narrationOnly(story.chapter);
-    final characterDescriptions = await _extractCharacters(storyText);
+    final persistentContext = await _buildPersistentCharacterContext(story);
+    final characterDescriptions = await _extractCharacters(
+      storyText,
+      extraContext: persistentContext,
+    );
     
     onProgress?.call('Writing panel descriptions...');
     
@@ -569,11 +586,14 @@ class StoryGeneratorService {
     onProgress?.call('Creating cover art...');
     
     final storyText = StoryTextUtils.narrationOnly(story.chapter);
+    final characterContext =
+        (await _buildPersistentCharacterContext(story)) ?? '';
     final coverPrompt = _buildCoverArtPrompt(
       story: story,
       storyText: storyText,
       childAge: childAge,
       hasPanelArt: panelArtImagePath != null,
+      characterContext: characterContext,
     );
     
     final String coverPath;
@@ -619,14 +639,26 @@ class StoryGeneratorService {
     return coverPath;
   }
 
-  Future<String> _extractCharacters(String storyText) async {
+  Future<String> _extractCharacters(
+    String storyText, {
+    String? extraContext,
+  }) async {
+    final buffer = StringBuffer();
+    if (extraContext != null && extraContext.trim().isNotEmpty) {
+      buffer.writeln('ADDITIONAL CHARACTER CONTEXT FROM STORY WORLD:');
+      buffer.writeln(extraContext.trim());
+      buffer.writeln();
+      buffer.writeln('STORY TEXT:');
+    }
+    buffer.writeln(storyText);
+
     final result = await _callTextModel(
       systemPrompt: characterExtractionPrompt,
-      userPrompt: storyText,
+      userPrompt: buffer.toString(),
       temperature: 0.3,
       maxOutputTokens: 1024,
     );
-    
+
     return result;
   }
 
@@ -769,6 +801,7 @@ class StoryGeneratorService {
     required String storyText,
     int? childAge,
     required bool hasPanelArt,
+    required String characterContext,
   }) {
     final ageText = childAge != null ? childAge.toString() : '5-8';
     
@@ -783,7 +816,7 @@ class StoryGeneratorService {
           .replaceAll('[STORY_SUMMARY]', story.summary)
           .replaceAll('[FULL_STORY_TEXT]', storyText)
           .replaceAll('[CHILD_AGE]', ageText)
-          .replaceAll('[CHARACTER_DESCRIPTIONS]', '');
+          .replaceAll('[CHARACTER_DESCRIPTIONS]', characterContext);
     }
   }
 
@@ -831,6 +864,60 @@ class StoryGeneratorService {
 
   Future<Directory> _getApplicationDocumentsDirectory() async {
     return await getApplicationDocumentsDirectory();
+  }
+
+  /// Build a human-readable description of Story World characters selected
+  /// for this story, based on the original generation request inputs and
+  /// the current Story World state.
+  Future<String?> _buildPersistentCharacterContext(
+    GeneratedStoryRecord story,
+  ) async {
+    final inputs = story.requestInputs ?? const <String, dynamic>{};
+    final explicit = inputs['cast_context']?.toString();
+    if (explicit != null && explicit.trim().isNotEmpty) {
+      return explicit.trim();
+    }
+
+    final profileId = inputs['profile_id']?.toString();
+    final rawIds = inputs['cast_character_ids'];
+    if (profileId == null || rawIds is! List) {
+      return null;
+    }
+
+    final ids = rawIds.map((e) => e.toString()).toList();
+    if (ids.isEmpty) return null;
+
+    try {
+      final world = await _storyWorldService.loadWorld(profileId);
+      final selected = ids
+          .map((id) => world.characters[id])
+          .whereType<StoryCharacterEntity>()
+          .toList();
+      if (selected.isEmpty) return null;
+
+      final buffer = StringBuffer();
+      buffer.writeln('Story Friends from the child\'s Story World:');
+      for (final c in selected) {
+        buffer.write('- ${c.displayName ?? 'Unnamed friend'}');
+        if (c.summary != null && c.summary!.isNotEmpty) {
+          buffer.write(': ${c.summary}');
+        }
+        if (c.traits.isNotEmpty) {
+          buffer.write(' Traits: ${c.traits.join(', ')}.');
+        }
+        if (c.powers.isNotEmpty) {
+          buffer.write(' Powers: ${c.powers.join(', ')}.');
+        }
+        buffer.writeln();
+      }
+      return buffer.toString().trim();
+    } catch (e) {
+      AppLogger.system.e(
+        'Failed to build Story World character context for story ${story.id}',
+        error: e,
+      );
+      return null;
+    }
   }
 }
 

@@ -21,6 +21,12 @@ class StoryGenerationRequest {
   final String childContext;
   final String? storyConcept;
   final String? childName;
+  final String? profileId;
+  /// Optional natural language description of Story World characters
+  /// (the \"cast\") that should appear in this story.
+  final String? castContext;
+  /// IDs of Story World character entities selected for this story.
+  final List<String> castCharacterIds;
   final String model;
   final DateTime requestedAt;
   final bool includeChildName;
@@ -33,6 +39,9 @@ class StoryGenerationRequest {
     required this.childContext,
     this.storyConcept,
     this.childName,
+    this.profileId,
+    this.castContext,
+    this.castCharacterIds = const [],
     this.model = StoryGenerationDefaults.defaultModelId,
     this.includeChildName = false,
     DateTime? requestedAt,
@@ -47,6 +56,9 @@ class StoryGenerationRequest {
       'child_context': childContext,
       'story_concept': storyConcept,
       'child_name': childName,
+      'profile_id': profileId,
+      'cast_context': castContext,
+      'cast_character_ids': castCharacterIds,
       'model': model,
       'requested_at': requestedAt.toIso8601String(),
       'include_child_name': includeChildName,
@@ -63,6 +75,9 @@ class StoryGenerationRequest {
     ReadingBand? readingBand,
     String? storyConcept,
     String? childName,
+    String? profileId,
+    String? castContext,
+    List<String>? castCharacterIds,
     String? model,
     DateTime? requestedAt,
     bool? includeChildName,
@@ -75,6 +90,9 @@ class StoryGenerationRequest {
       childContext: childContext ?? this.childContext,
       storyConcept: storyConcept ?? this.storyConcept,
       childName: childName ?? this.childName,
+      profileId: profileId ?? this.profileId,
+      castContext: castContext ?? this.castContext,
+      castCharacterIds: castCharacterIds ?? this.castCharacterIds,
       model: model ?? this.model,
       includeChildName: includeChildName ?? this.includeChildName,
       requestedAt: requestedAt ?? this.requestedAt,
@@ -394,7 +412,7 @@ class StoryRevision {
 
 class StoryGenerationDefaults {
   static const String primaryModelId = 'google/gemini-2.5-flash';
-  static const String fallbackModelId = 'qwen/qwen-2.5-72b-instruct';
+  static const String fallbackModelId = 'moonshotai/kimi-k2-thinking'; //'openai/gpt-5.1'; //'qwen/qwen-2.5-72b-instruct';
   static const String defaultModelId = primaryModelId;
   static const int minMinutes = 5;
   static const int maxMinutes = 20;
