@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:math';
+import 'dart:ui' as ui;
 
 import 'package:flutter/foundation.dart'; // for compute
 import 'package:flutter/material.dart';
@@ -192,14 +193,32 @@ class StoryPanelArtService {
 
     final batchDir = await _createBatchDirectory(storyId);
     
+    // Check for upscale
+    String processPath = capture.path;
+    final upscaledPath = await _upscaleImageIfSmall(capture.path);
+    if (upscaledPath != null) {
+      processPath = upscaledPath;
+      debugPrint('Upscaled panel art to $processPath');
+    }
+
     // Run processing in a background isolate to prevent UI jank
     final rawPanelPaths = await compute(_processPanelArt, _PanelProcessingConfig(
-      imagePath: capture.path,
+      imagePath: processPath,
       outputDirPath: batchDir.path,
       panelCount: panelCount,
     ));
 
-    final sheetPath = await _persistSheetFile(File(capture.path), batchDir);
+    File sourceFile = File(capture.path);
+    if (upscaledPath != null) {
+      sourceFile = File(upscaledPath);
+    }
+
+    final sheetPath = await _persistSheetFile(sourceFile, batchDir);
+    
+    // Clean up temp upscale file if it exists
+    if (upscaledPath != null) {
+       try { await File(upscaledPath).delete(); } catch (_) {}
+    }
 
     // Allow user to select/confirm panels
     final selectedPaths = await _promptSelection(context, rawPanelPaths);
@@ -232,6 +251,62 @@ class StoryPanelArtService {
       importedAt: DateTime.now(),
       assignments: initialAssignments,
     );
+  }
+  
+  Future<String?> _upscaleImageIfSmall(String path) async {
+    try {
+      final file = File(path);
+      final bytes = await file.readAsBytes();
+      
+      // Decode image to get dimensions and frame
+      final codec = await ui.instantiateImageCodec(bytes);
+      final frame = await codec.getNextFrame();
+      final originalImage = frame.image;
+
+      // Check if upscale is needed (if max dimension is < 2048)
+      if (max(originalImage.width, originalImage.height) >= 2048) {
+        originalImage.dispose();
+        return null;
+      }
+      
+      // Calculate scale to make the largest dimension 2048
+      final double scale = 2048.0 / max(originalImage.width, originalImage.height);
+      final int targetW = (originalImage.width * scale).round();
+      final int targetH = (originalImage.height * scale).round();
+      
+      // Create recorder and canvas
+      final recorder = ui.PictureRecorder();
+      final canvas = Canvas(recorder, Rect.fromLTWH(0, 0, targetW.toDouble(), targetH.toDouble()));
+      
+      // High quality scaling
+      final paint = Paint()..filterQuality = FilterQuality.high;
+      
+      canvas.drawImageRect(
+        originalImage,
+        Rect.fromLTWH(0, 0, originalImage.width.toDouble(), originalImage.height.toDouble()),
+        Rect.fromLTWH(0, 0, targetW.toDouble(), targetH.toDouble()),
+        paint,
+      );
+      
+      final picture = recorder.endRecording();
+      final img = await picture.toImage(targetW, targetH);
+      final pngBytes = await img.toByteData(format: ui.ImageByteFormat.png);
+      
+      // Cleanup
+      originalImage.dispose();
+      img.dispose();
+      
+      if (pngBytes == null) return null;
+      
+      final tempDir = await getTemporaryDirectory();
+      final dest = File('${tempDir.path}/upscaled_${DateTime.now().millisecondsSinceEpoch}.png');
+      await dest.writeAsBytes(pngBytes.buffer.asUint8List());
+      
+      return dest.path;
+    } catch (e) {
+      debugPrint('Error upscaling image: $e');
+      return null; // Fallback to original
+    }
   }
 
   Future<List<String>?> _promptSelection(
@@ -288,7 +363,7 @@ class StoryPanelArtService {
                 Text(
                   'Import scene-by-scene art',
                   style: theme.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.bold,
                   ),
                 ),
                 const SizedBox(height: 8),
