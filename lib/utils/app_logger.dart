@@ -43,6 +43,13 @@ class AppLogger {
   /// Enable/disable layout debugging (frame-by-frame layout measurements)
   static bool enableLayoutDebug = false;
 
+  /// Enable/disable detailed GenAI logging (LLM/image calls, timings, sizes).
+  /// This should remain false in production builds.
+  static bool enableGenAiLogging = true;
+  /// When true, log FULL prompts and outputs for GenAI calls.
+  /// Extremely verbose; for local debugging only.
+  static bool enableGenAiVerbose = true;
+
   // Domain-specific loggers
   static final Logger game = _createLogger('GAME');
   static final Logger speech = _createLogger('SPEECH');
@@ -57,6 +64,7 @@ class AppLogger {
   static final Logger storage = _createLogger('STORAGE');
   static final Logger performance = _createLogger('PERF');
   static final Logger system = _createLogger('SYSTEM');
+  static final Logger genai = _createLogger('GENAI');
 
   /// Create a custom logger for specific use cases
   static Logger custom(String name) => _createLogger(name);
@@ -102,6 +110,16 @@ class AppLogger {
   /// Toggle performance logging (frame updates, etc.)
   static void setPerformanceLogging(bool value) {
     enablePerformanceLogging = value;
+  }
+
+  /// Toggle detailed GenAI logging.
+  static void setGenAiLogging(bool value) {
+    enableGenAiLogging = value;
+  }
+
+  /// Toggle ultra-verbose GenAI logging (full prompts and outputs).
+  static void setGenAiVerbose(bool value) {
+    enableGenAiVerbose = value;
   }
 }
 

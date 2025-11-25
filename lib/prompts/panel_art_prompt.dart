@@ -10,7 +10,15 @@ Follow ALL instructions below EXACTLY and WITHOUT EXCEPTION.
 GOAL
 Create a 1024×1024 px comic page containing EXACTLY [N] illustrated 
 story panels, arranged inside a strict 4-column grid.  
-Any unused cells in the final row MUST be filled with blank white squares.
+The grid is ALWAYS 4 rows by 4 columns (16 total square cells).  
+Any cells not used for illustrated panels MUST be filled with blank
+white squares.
+
+THIS IS A **WORDLESS ILLUSTRATION** PAGE:
+- Absolutely NO written text anywhere in the image.
+- NO speech bubbles, chat balloons, or thought bubbles.
+- NO sound effects (\"BANG\", \"WHOOSH\", \"POW\", etc.).
+- NO labels, captions, UI elements, logos, or typography of any kind.
 ====================================================================
 
 ====================================================================
@@ -36,22 +44,27 @@ Panel 6  → row 1, col 1
 This layout is mechanical and MUST be followed precisely.
 
 Number of rows:  
-Let R = ceil([N] / 4).  
-You MUST generate exactly R rows and exactly 4 columns per row.
+Let R = 4.  
+You MUST generate exactly 4 rows and exactly 4 columns per row  
+for a total of 16 square cells, regardless of [N].  
+Never change the number of rows or columns based on [N].
 ====================================================================
 
 ====================================================================
-INCOMPLETE FINAL ROW RULE (CRITICAL)
-If the final row contains fewer than 4 illustrated panels:
+UNUSED CELLS RULE (CRITICAL)
+There are ALWAYS 16 cells in the grid (4 rows × 4 columns).  
+You will receive [N] panel descriptions. Let K = min([N], 16).
 
-1. The illustrated panels MUST occupy the LEFTMOST columns:
-   - Column 0 = first illustrated panel in that row  
-   - Column 1 = second illustrated panel (if it exists)  
-   - Column 2 = third illustrated panel (if it exists)  
-   - Column 3 = fourth illustrated panel (rare; only if N mod 4 = 0)  
+1. You MUST create illustrated panels for **exactly K** panels:
+   - Use Panel 1 for cell (row 0, col 0)
+   - Panel 2 for (row 0, col 1)
+   - Panel 3 for (row 0, col 2)
+   - Panel 4 for (row 0, col 3)
+   - Panel 5 for (row 1, col 0)
+   - …continue in strict reading order until Panel K.
 
-2. ALL remaining cells in the final row MUST be filled with **blank white squares**, 
-which MUST occupy ONLY the RIGHTMOST columns.
+2. ALL remaining cells from K+1 up to 16 MUST be filled with **blank white squares**, 
+   and MUST use the remaining cells in reading order (left to right, top to bottom).
 
 Blank white squares are defined as:
 - pure white (#FFFFFF)
@@ -70,7 +83,9 @@ GRID & GUTTER REQUIREMENTS
 1. All cells (illustrated panels + blank squares) MUST be perfect squares.
 2. Every square MUST be identical in size.
 3. The complete grid MUST fill the entire 1024×1024 px canvas.
-4. Gutters MUST be:
+4. The size and number of cells (4×4, 16 total) MUST NEVER change,
+   no matter how many panels [N] you are asked to render.
+5. Gutters MUST be:
    - thin
    - clean
    - solid black (#000000)
@@ -102,7 +117,12 @@ Apply this style consistently to EVERY illustrated panel.
 ====================================================================
 CONTENT RENDERING (STRICT)
 - Render ONLY what is described in each panel's brief.  
-- DO NOT add text of any kind (no speech bubbles, labels, or captions).  
+- DO NOT add any text or writing anywhere in the image.  
+- NO speech bubbles, thought bubbles, or chat balloons.  
+- NO sound effect words (\"BANG\", \"WHOOSH\", \"POW\", etc.).  
+- NO labels, captions, signs with readable text, UI, or logos.  
+- If the story implies dialogue, show it ONLY through character poses,
+  facial expressions, and body language—NEVER as written words.  
 - DO NOT display panel numbers.  
 - DO NOT introduce new elements not present in the panel descriptions.  
 - DO NOT reinterpret or embellish beyond what the panel description specifies.  
@@ -117,9 +137,9 @@ Paste the list of panel descriptions here:
 
 OUTPUT
 Produce a single 1024×1024 px image containing:
-- R × 4 square grid cells  
+- 4 × 4 square grid cells (16 total)  
 - Illustrated panels placed based on the mathematical formula  
-- Blank white squares in unused rightmost cells of the final row  
+- Blank white squares in all unused cells after the last illustrated panel  
 - Perfectly aligned grid with clean black gutters  
 - A layout that can be programmatically sliced with simple pixel math
 ''';

@@ -18,6 +18,9 @@ class PreferencesService {
   static const String _keyStoryPersonalization = 'story_personalization_notes';
   static const String _keyStoryUseChildName = 'story_use_child_name';
   static const String _keyStoryGeneratorDraft = 'story_generator_draft_v1';
+  static const String _keyStoryModelId = 'story_model_id';
+  static const String _keyCoverImageModelId = 'cover_image_model_id';
+  static const String _keyPanelImageModelId = 'panel_image_model_id';
 
   /// Load settings from preferences
   Future<AppSettings> loadSettings() async {
@@ -172,6 +175,36 @@ class PreferencesService {
   Future<void> setStoryUseChildName(bool useChildName) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool(_keyStoryUseChildName, useChildName);
+  }
+
+  Future<String?> getStoryModelId() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(_keyStoryModelId);
+  }
+
+  Future<void> setStoryModelId(String modelId) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_keyStoryModelId, modelId);
+  }
+
+  Future<String?> getCoverImageModelId() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(_keyCoverImageModelId);
+  }
+
+  Future<void> setCoverImageModelId(String modelId) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_keyCoverImageModelId, modelId);
+  }
+
+  Future<String?> getPanelImageModelId() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(_keyPanelImageModelId);
+  }
+
+  Future<void> setPanelImageModelId(String modelId) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_keyPanelImageModelId, modelId);
   }
 
   Future<Map<String, dynamic>?> loadStoryGeneratorDraft() async {

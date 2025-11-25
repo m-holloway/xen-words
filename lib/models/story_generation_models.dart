@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import '../utils/reading_level_helper.dart';
+import '../config/model_config.dart';
 import 'story_models.dart';
 
 const _generatedStoryRecordUndefined = Object();
@@ -128,6 +129,7 @@ class GeneratedStoryRecord {
   final List<StoryRevision> revisions;
   final String? coverImagePath;
   final StoryPanelArtMetadata? panelArt;
+  final String? coverModelId; // Model used for latest cover art (if AI‑generated)
 
   GeneratedStoryRecord({
     required this.id,
@@ -156,6 +158,7 @@ class GeneratedStoryRecord {
     List<StoryRevision>? revisions,
     this.coverImagePath,
     this.panelArt,
+    this.coverModelId,
   }) : readMoments = readMoments ?? const [],
        revisions = revisions ?? const [];
 
@@ -187,6 +190,7 @@ class GeneratedStoryRecord {
       'revisions': revisions.map((r) => r.toJson()).toList(),
       'cover_image_path': coverImagePath,
       'panel_art': panelArt?.toJson(),
+      'cover_model_id': coverModelId,
     };
   }
 
@@ -237,6 +241,7 @@ class GeneratedStoryRecord {
               json['panel_art'] as Map<String, dynamic>,
             )
           : null,
+      coverModelId: json['cover_model_id'] as String?,
     );
   }
 
@@ -266,6 +271,7 @@ class GeneratedStoryRecord {
     List<StoryRevision>? revisions,
     Object? coverImagePath = _generatedStoryRecordUndefined,
     Object? panelArt = _generatedStoryRecordUndefined,
+    String? coverModelId,
   }) {
     final coverImageValue =
         identical(coverImagePath, _generatedStoryRecordUndefined)
@@ -302,6 +308,7 @@ class GeneratedStoryRecord {
       revisions: revisions ?? this.revisions,
       coverImagePath: coverImageValue,
       panelArt: panelArtValue,
+      coverModelId: coverModelId ?? this.coverModelId,
     );
   }
 }
@@ -313,6 +320,7 @@ class StoryPanelArtMetadata {
   final String sheetImagePath;
   final DateTime importedAt;
   final Map<int, String> assignments; // narrationBeatIndex -> panelPath
+  final String? modelId; // Model used to generate this panel grid (if AI‑generated)
 
   const StoryPanelArtMetadata({
     required this.columns,
@@ -321,6 +329,7 @@ class StoryPanelArtMetadata {
     required this.sheetImagePath,
     required this.importedAt,
     this.assignments = const {},
+    this.modelId,
   });
 
   Map<String, dynamic> toJson() {
@@ -331,6 +340,7 @@ class StoryPanelArtMetadata {
       'sheet_image_path': sheetImagePath,
       'imported_at': importedAt.toIso8601String(),
       'assignments': assignments.map((key, value) => MapEntry(key.toString(), value)),
+      'model_id': modelId,
     };
   }
 
@@ -349,6 +359,7 @@ class StoryPanelArtMetadata {
       assignments: rawAssignments.map(
         (key, value) => MapEntry(int.tryParse(key) ?? -1, value.toString()),
       )..removeWhere((key, value) => key == -1),
+      modelId: json['model_id'] as String?,
     );
   }
 
@@ -359,6 +370,7 @@ class StoryPanelArtMetadata {
     String? sheetImagePath,
     DateTime? importedAt,
     Map<int, String>? assignments,
+    String? modelId,
   }) {
     return StoryPanelArtMetadata(
       columns: columns ?? this.columns,
@@ -367,6 +379,7 @@ class StoryPanelArtMetadata {
       sheetImagePath: sheetImagePath ?? this.sheetImagePath,
       importedAt: importedAt ?? this.importedAt,
       assignments: assignments ?? this.assignments,
+      modelId: modelId ?? this.modelId,
     );
   }
 }
@@ -411,8 +424,9 @@ class StoryRevision {
 }
 
 class StoryGenerationDefaults {
-  static const String primaryModelId = 'google/gemini-2.5-flash';
-  static const String fallbackModelId = 'moonshotai/kimi-k2-thinking'; //'openai/gpt-5.1'; //'qwen/qwen-2.5-72b-instruct';
+  static const String primaryModelId = ModelConfig.defaultStoryModelId;
+  static const String fallbackModelId =
+      'google/gemini-2.5-flash-preview-09-2025';
   static const String defaultModelId = primaryModelId;
   static const int minMinutes = 5;
   static const int maxMinutes = 20;

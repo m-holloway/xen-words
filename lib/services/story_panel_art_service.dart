@@ -30,14 +30,14 @@ Future<List<String>> _processPanelArt(_PanelProcessingConfig config) async {
     throw StoryPanelArtException('We could not read that image file.');
   }
 
-  // Trim solid black borders (Optimized)
-  // final trimmed = _trimBlackBorders(composite); // Removed aggressive global trim
+  // Fixed grid: always 4×4 (16 cells), matching the image generation prompt.
+  // [panelCount] only controls how many slices we keep, not the grid geometry.
+  const int cols = 4;
+  const int rows = 4;
+  const int maxCells = cols * rows;
 
-  // Use robust grid detection based on panel count and image aspect ratio
-  final idealCols = sqrt(config.panelCount * composite.width / composite.height);
-  final cols = max(1, idealCols.round());
-  final rows = (config.panelCount / cols).ceil();
-  
+  final int targetPanels = min(config.panelCount, maxCells);
+
   final cellW = composite.width ~/ cols;
   final cellH = composite.height ~/ rows;
 
@@ -45,35 +45,26 @@ Future<List<String>> _processPanelArt(_PanelProcessingConfig config) async {
   final panelPaths = <String>[];
   for (int r = 0; r < rows; r++) {
     for (int c = 0; c < cols; c++) {
-      if (panelPaths.length >= config.panelCount) {
+      if (panelPaths.length >= targetPanels) {
         return panelPaths;
       }
-      
+
       // Calculate rough center of the cell
       final cx = (c + 0.5) * cellW;
       final cy = (r + 0.5) * cellH;
-      
-      // Scan from center out to find content bounds
-      final bounds = _scanContentBounds(composite, cx.toInt(), cy.toInt(), cellW, cellH);
-      
-      final cropW = bounds.width;
-      final cropH = bounds.height;
-      
-      // Enforce square crop? User said "Square panels".
-      // If detection is noisy, it might not be square.
-      // Let's take the MIN dimension to ensure we don't include borders if it's rectangular?
-      // Or MAX dimension if we want to include everything?
-      // Usually grids are square. Let's take the detected bounds and if it's close to square, force square.
-      // Actually, just crop the detected content.
-      
+
+      // Scan from center out to find content bounds inside this cell
+      final bounds =
+          _scanContentBounds(composite, cx.toInt(), cy.toInt(), cellW, cellH);
+
       final cropped = img.copyCrop(
         composite,
         x: bounds.left,
         y: bounds.top,
-        width: cropW,
-        height: cropH,
+        width: bounds.width,
+        height: bounds.height,
       );
-      
+
       final outFile = File(
         '${config.outputDirPath}/panel_${panelPaths.length + 1}.jpg',
       );

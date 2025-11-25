@@ -28,9 +28,9 @@ class OpenRouterImageClient {
   static const _referer = 'https://xen.words.app/dev';
   static const _title = 'Xen Words';
 
-  // Model constants
+  // Model constants (defaults; user-selectable in Story Time settings)
   static const String coverModel = 'google/gemini-2.5-flash-image';
-  static const String panelModel = 'google/gemini-3-pro-image-preview';
+  static const String panelModel = 'qwen/qwen3-vl-30b-a3b-instruct';
 
   String get _apiKey {
     final localKey = local_secret.openRouterApiKey.trim();
@@ -77,8 +77,25 @@ class OpenRouterImageClient {
     if (aspectRatio != null) {
       body['image_config'] = {'aspect_ratio': aspectRatio};
     }
-
-    AppLogger.system.d('Generating image with model $model');
+    final promptChars = prompt.length;
+    final approxInputTokens = (promptChars / 4).round();
+    final start = DateTime.now();
+    if (AppLogger.enableGenAiLogging) {
+      AppLogger.genai.progress(
+        'Image request → model=$model aspect=$aspectRatio '
+        'chars=$promptChars approxTokens=$approxInputTokens',
+      );
+      if (AppLogger.enableGenAiVerbose) {
+        AppLogger.genai.i(
+          'IMAGE SYSTEM PROMPT (model=$model):\n${systemPrompt ?? '(none)'}',
+        );
+        AppLogger.genai.i(
+          'IMAGE USER PROMPT (model=$model):\n$prompt',
+        );
+      }
+    } else {
+      AppLogger.system.d('Generating image with model $model');
+    }
 
     final response = await _client.post(
       Uri.parse(_endpoint),
@@ -111,6 +128,18 @@ class OpenRouterImageClient {
     final imageData = images.first as Map<String, dynamic>;
     final imageUrl = imageData['image_url'] as Map<String, dynamic>;
     final dataUrl = imageUrl['url'] as String;
+    final elapsedMs = DateTime.now().difference(start).inMilliseconds;
+    if (AppLogger.enableGenAiLogging) {
+      AppLogger.genai.success(
+        'Image response ← model=$model elapsed=${elapsedMs}ms '
+        'dataUrlLen=${dataUrl.length}',
+      );
+      if (AppLogger.enableGenAiVerbose) {
+        AppLogger.genai.i(
+          'IMAGE DATA URL (model=$model, length=${dataUrl.length}):\n$dataUrl',
+        );
+      }
+    }
 
     return OpenRouterImageResult(imageDataUrl: dataUrl, modelId: model);
   }
@@ -187,8 +216,26 @@ class OpenRouterImageClient {
     if (aspectRatio != null) {
       body['image_config'] = {'aspect_ratio': aspectRatio};
     }
-
-    AppLogger.system.d('Generating image with input using model $model');
+    final promptChars = prompt.length;
+    final approxInputTokens = (promptChars / 4).round();
+    final start = DateTime.now();
+    if (AppLogger.enableGenAiLogging) {
+      AppLogger.genai.progress(
+        'Image+input request → model=$model aspect=$aspectRatio '
+        'chars=$promptChars approxTokens=$approxInputTokens '
+        'imageBytes=${imageBytes.length}',
+      );
+      if (AppLogger.enableGenAiVerbose) {
+        AppLogger.genai.i(
+          'IMAGE+INPUT SYSTEM PROMPT (model=$model):\n${systemPrompt ?? '(none)'}',
+        );
+        AppLogger.genai.i(
+          'IMAGE+INPUT USER PROMPT (model=$model):\n$prompt',
+        );
+      }
+    } else {
+      AppLogger.system.d('Generating image with input using model $model');
+    }
 
     final response = await _client.post(
       Uri.parse(_endpoint),
@@ -221,6 +268,18 @@ class OpenRouterImageClient {
     final imageData = images.first as Map<String, dynamic>;
     final imageUrl = imageData['image_url'] as Map<String, dynamic>;
     final dataUrl = imageUrl['url'] as String;
+    final elapsedMs = DateTime.now().difference(start).inMilliseconds;
+    if (AppLogger.enableGenAiLogging) {
+      AppLogger.genai.success(
+        'Image+input response ← model=$model elapsed=${elapsedMs}ms '
+        'dataUrlLen=${dataUrl.length}',
+      );
+      if (AppLogger.enableGenAiVerbose) {
+        AppLogger.genai.i(
+          'IMAGE+INPUT DATA URL (model=$model, length=${dataUrl.length}):\n$dataUrl',
+        );
+      }
+    }
 
     return OpenRouterImageResult(imageDataUrl: dataUrl, modelId: model);
   }

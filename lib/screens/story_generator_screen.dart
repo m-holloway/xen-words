@@ -10,6 +10,7 @@ import 'package:share_plus/share_plus.dart';
 import '../models/child_profile.dart';
 import '../utils/app_logger.dart';
 import '../models/story_generation_models.dart';
+import '../config/model_config.dart';
 import '../models/story_world_models.dart';
 import '../models/story_models.dart';
 import '../services/preferences_service.dart';
@@ -77,6 +78,9 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen>
   String? _activeProfileId;
   List<StoryCharacterEntity> _availableCharacters = [];
   final Set<String> _selectedCharacterIds = <String>{};
+  String _storyModelId = ModelConfig.defaultStoryModelId;
+  String _coverModelId = ModelConfig.defaultCoverModelId;
+  String _panelModelId = ModelConfig.defaultPanelModelId;
 
   @override
   void initState() {
@@ -219,6 +223,18 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen>
         availableCharacters = world.characters.values.toList()
           ..sort((a, b) => a.createdAt.compareTo(b.createdAt));
       }
+      final storyModelId =
+          await _preferencesService.getStoryModelId() ?? ModelConfig.defaultStoryModelId;
+      final coverModelId =
+          await _preferencesService.getCoverImageModelId() ?? ModelConfig.defaultCoverModelId;
+      final panelModelId =
+          await _preferencesService.getPanelImageModelId() ?? ModelConfig.defaultPanelModelId;
+
+      setState(() {
+        _storyModelId = storyModelId;
+        _coverModelId = coverModelId;
+        _panelModelId = panelModelId;
+      });
     } catch (e) {
       AppLogger.system.e('Failed to load Story World cast for generator', error: e);
     }
@@ -251,6 +267,32 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen>
       _activeProfileId = activeProfileId;
       _availableCharacters = availableCharacters;
     });
+  }
+
+  Future<void> _openStoryTimeSettings() async {
+    final result = await showModalBottomSheet<_StoryTimeModelSelection>(
+      context: context,
+      showDragHandle: true,
+      isScrollControlled: true,
+      builder: (context) {
+        return _StoryTimeSettingsSheet(
+          storyModelId: _storyModelId,
+          coverModelId: _coverModelId,
+          panelModelId: _panelModelId,
+        );
+      },
+    );
+    if (result == null) return;
+
+    setState(() {
+      _storyModelId = result.storyModelId;
+      _coverModelId = result.coverModelId;
+      _panelModelId = result.panelModelId;
+    });
+
+    await _preferencesService.setStoryModelId(result.storyModelId);
+    await _preferencesService.setCoverImageModelId(result.coverModelId);
+    await _preferencesService.setPanelImageModelId(result.panelModelId);
   }
 
   Future<String?> _loadActiveProfileName() async {
@@ -556,6 +598,7 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen>
         profileId: _activeProfileId,
         castContext: castContext,
         castCharacterIds: castIds,
+        model: _storyModelId,
         includeChildName: childName != null,
       );
 
@@ -668,6 +711,11 @@ class _StoryGeneratorScreenState extends State<StoryGeneratorScreen>
       appBar: AppBar(
         title: const Text('Story Time'),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            tooltip: 'Story Time settings',
+            onPressed: _openStoryTimeSettings,
+          ),
           if (!isLibraryView)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
@@ -2138,6 +2186,11 @@ class _StoryListTile extends StatelessWidget {
                         Icons.history,
                         _readsThisMonthText(story),
                       ),
+                      _tonalMetricChip(
+                        context,
+                        Icons.memory,
+                        _modelSummary(story),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 12),
@@ -2247,6 +2300,19 @@ class _StoryListTile extends StatelessWidget {
         .length;
     return count == 0 ? 'New' : '${count}× this month';
   }
+
+  String _modelSummary(GeneratedStoryRecord story) {
+    String short(String? id) {
+      if (id == null || id.isEmpty) return 'n/a';
+      final parts = id.split('/');
+      return parts.isNotEmpty ? parts.last : id;
+    }
+
+    final storyModel = short(story.model);
+    final coverModel = short(story.coverModelId);
+    final panelModel = short(story.panelArt?.modelId);
+    return 'Story: $storyModel • Cover: $coverModel • Panels: $panelModel';
+  }
 }
 
 class _StoryRatingSheet extends StatelessWidget {
@@ -2305,6 +2371,194 @@ class _StoryRatingSheet extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _StoryTimeModelSelection {
+  final String storyModelId;
+  final String coverModelId;
+  final String panelModelId;
+
+  const _StoryTimeModelSelection({
+    required this.storyModelId,
+    required this.coverModelId,
+    required this.panelModelId,
+  });
+}
+
+class _StoryTimeSettingsSheet extends StatefulWidget {
+  const _StoryTimeSettingsSheet({
+    required this.storyModelId,
+    required this.coverModelId,
+    required this.panelModelId,
+  });
+
+  final String storyModelId;
+  final String coverModelId;
+  final String panelModelId;
+
+  @override
+  State<_StoryTimeSettingsSheet> createState() =>
+      _StoryTimeSettingsSheetState();
+}
+
+class _StoryTimeSettingsSheetState extends State<_StoryTimeSettingsSheet> {
+  late String _storyModelId;
+  late String _coverModelId;
+  late String _panelModelId;
+
+  @override
+  void initState() {
+    super.initState();
+    _storyModelId = widget.storyModelId;
+    _coverModelId = widget.coverModelId;
+    _panelModelId = widget.panelModelId;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return SafeArea(
+      child: Padding(
+        padding: EdgeInsets.only(
+          left: 24,
+          right: 24,
+          top: 16,
+          bottom: 24 + MediaQuery.of(context).viewInsets.bottom,
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.primary.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: Icon(
+                    Icons.tune,
+                    color: theme.colorScheme.primary,
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Story Time models',
+                      style: theme.textTheme.titleMedium
+                          ?.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      'Choose which models to use for stories and art.',
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: theme.colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            _buildSectionHeader('Story text model'),
+            const SizedBox(height: 8),
+            _buildModelChips(
+              currentId: _storyModelId,
+              options: ModelConfig.storyModels,
+              onChanged: (id) => setState(() => _storyModelId = id),
+            ),
+            const SizedBox(height: 16),
+            _buildSectionHeader('Cover art model'),
+            const SizedBox(height: 8),
+            _buildModelChips(
+              currentId: _coverModelId,
+              options: ModelConfig.imageModels,
+              onChanged: (id) => setState(() => _coverModelId = id),
+            ),
+            const SizedBox(height: 16),
+            _buildSectionHeader('Panel art model'),
+            const SizedBox(height: 8),
+            _buildModelChips(
+              currentId: _panelModelId,
+              options: ModelConfig.imageModels,
+              onChanged: (id) => setState(() => _panelModelId = id),
+            ),
+            const SizedBox(height: 24),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: const Text('Cancel'),
+                ),
+                const SizedBox(width: 8),
+                FilledButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(
+                      _StoryTimeModelSelection(
+                        storyModelId: _storyModelId,
+                        coverModelId: _coverModelId,
+                        panelModelId: _panelModelId,
+                      ),
+                    );
+                  },
+                  child: const Text('Save'),
+                ),
+              ],
+            ),
+          ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSectionHeader(String title) {
+    return Text(
+      title,
+      style: const TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 14,
+      ),
+    );
+  }
+
+  Widget _buildModelChips({
+    required String currentId,
+    required List<ModelOption> options,
+    required ValueChanged<String> onChanged,
+  }) {
+    final scheme = Theme.of(context).colorScheme;
+    return Wrap(
+      spacing: 8,
+      runSpacing: 8,
+      children: options.map((option) {
+        final selected = option.id == currentId;
+        return ChoiceChip(
+          label: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(option.label),
+              if (option.note != null)
+                Text(
+                  option.note!,
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: scheme.onSurfaceVariant,
+                  ),
+                ),
+            ],
+          ),
+          selected: selected,
+          onSelected: (_) => onChanged(option.id),
+        );
+      }).toList(),
     );
   }
 }
@@ -2394,6 +2648,34 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
   bool _isGeneratingPanelArt = false;
   bool _isGeneratingCoverArt = false;
 
+  Future<void> _openStoryTimeSettings(BuildContext context) async {
+    final prefs = PreferencesService();
+    final storyModelId =
+        await prefs.getStoryModelId() ?? ModelConfig.defaultStoryModelId;
+    final coverModelId =
+        await prefs.getCoverImageModelId() ?? ModelConfig.defaultCoverModelId;
+    final panelModelId =
+        await prefs.getPanelImageModelId() ?? ModelConfig.defaultPanelModelId;
+
+    final result = await showModalBottomSheet<_StoryTimeModelSelection>(
+      context: context,
+      showDragHandle: true,
+      isScrollControlled: true,
+      builder: (context) {
+        return _StoryTimeSettingsSheet(
+          storyModelId: storyModelId,
+          coverModelId: coverModelId,
+          panelModelId: panelModelId,
+        );
+      },
+    );
+    if (result == null) return;
+
+    await prefs.setStoryModelId(result.storyModelId);
+    await prefs.setCoverImageModelId(result.coverModelId);
+    await prefs.setPanelImageModelId(result.panelModelId);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -2428,6 +2710,7 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
       final updated = await widget.storyService.updateStoryCover(
         _story.id,
         coverPath,
+        modelId: null,
       );
       if (updated != null && mounted) {
         setState(() {
@@ -2460,6 +2743,7 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
       final updated = await widget.storyService.updateStoryCover(
         _story.id,
         null,
+        modelId: null,
       );
       if (updated != null && mounted) {
         setState(() {
@@ -2651,9 +2935,15 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
       // For now, we'll use a default age
       final childAge = 6; // TODO: Get from active profile
 
+      // Load current panel model preference
+      final prefs = PreferencesService();
+      final panelModelId =
+          await prefs.getPanelImageModelId() ?? ModelConfig.defaultPanelModelId;
+
       final metadata = await widget.storyService.generatePanelArt(
         _story,
         childAge: childAge,
+        panelModelId: panelModelId,
         onProgress: (step) {
           // Progress updates can be shown via snackbar or dialog if needed
           AppLogger.system.d('Panel art generation: $step');
@@ -2695,10 +2985,16 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
       // Use panel art as reference if available
       final panelArtPath = _story.panelArt?.sheetImagePath;
 
+      // Load current cover model preference
+      final prefs = PreferencesService();
+      final coverModelId =
+          await prefs.getCoverImageModelId() ?? ModelConfig.defaultCoverModelId;
+
       final coverPath = await widget.storyService.generateCoverArt(
         _story,
         panelArtImagePath: panelArtPath,
         childAge: childAge,
+        coverModelId: coverModelId,
         onProgress: (step) {
           // Progress updates can be shown via snackbar or dialog if needed
           AppLogger.system.d('Cover art generation: $step');
@@ -2760,6 +3056,11 @@ class _StoryDetailScreenState extends State<_StoryDetailScreen> {
               onPressed: () => Navigator.of(context).pop(),
             ),
             actions: [
+              IconButton(
+                icon: const Icon(Icons.settings, color: Colors.white),
+                tooltip: 'Story Time settings',
+                onPressed: () => _openStoryTimeSettings(context),
+              ),
               IconButton(
                 icon: const Icon(Icons.ios_share, color: Colors.white),
                 tooltip: 'Share story',
@@ -3541,6 +3842,33 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
     return false;
   }
 
+  Future<void> _openStoryTimeSettings(BuildContext context) async {
+    final prefs = PreferencesService();
+    final storyModelId = await prefs.getStoryModelId() ?? ModelConfig.defaultStoryModelId;
+    final coverModelId =
+        await prefs.getCoverImageModelId() ?? ModelConfig.defaultCoverModelId;
+    final panelModelId =
+        await prefs.getPanelImageModelId() ?? ModelConfig.defaultPanelModelId;
+
+    final result = await showModalBottomSheet<_StoryTimeModelSelection>(
+      context: context,
+      showDragHandle: true,
+      isScrollControlled: true,
+      builder: (context) {
+        return _StoryTimeSettingsSheet(
+          storyModelId: storyModelId,
+          coverModelId: coverModelId,
+          panelModelId: panelModelId,
+        );
+      },
+    );
+    if (result == null) return;
+
+    await prefs.setStoryModelId(result.storyModelId);
+    await prefs.setCoverImageModelId(result.coverModelId);
+    await prefs.setPanelImageModelId(result.panelModelId);
+  }
+
   void _onTextChanged() {
     // Check if any controller is dirty compared to its beat
     bool anyDirty = false;
@@ -3900,6 +4228,11 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
             onPressed: () => Navigator.of(context).pop(_story),
           ),
           actions: [
+            IconButton(
+              icon: const Icon(Icons.settings),
+              tooltip: 'Story Time settings',
+              onPressed: () => _openStoryTimeSettings(context),
+            ),
             TextButton.icon(
               onPressed: canSave ? _saveStoryText : null,
               icon: _isSavingText
@@ -4194,10 +4527,26 @@ class _StoryEditorScreenState extends State<_StoryEditorScreen> {
                   onPressed: _isUpdatingPanelArt ? null : _removePanelArt,
                   icon: const Icon(Icons.delete_outline),
                   label: const Text('Remove'),
-              ),
+                ),
+              if (art?.sheetImagePath.isNotEmpty == true)
+                OutlinedButton.icon(
+                  onPressed: () => _viewPanelSheet(theme),
+                  icon: const Icon(Icons.photo),
+                  label: const Text('View original grid'),
+                ),
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  void _viewPanelSheet(ThemeData theme) {
+    final sheetPath = _story.panelArt?.sheetImagePath;
+    if (sheetPath == null || sheetPath.isEmpty) return;
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => _PanelSheetViewerScreen(imagePath: sheetPath),
       ),
     );
   }
@@ -4985,6 +5334,34 @@ class _PanelPickerDialog extends StatelessWidget {
           child: const Text('Cancel'),
         ),
       ],
+    );
+  }
+}
+
+class _PanelSheetViewerScreen extends StatelessWidget {
+  const _PanelSheetViewerScreen({required this.imagePath});
+
+  final String imagePath;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        foregroundColor: Colors.white,
+        title: const Text('Original grid'),
+      ),
+      body: Center(
+        child: InteractiveViewer(
+          minScale: 0.5,
+          maxScale: 4.0,
+          child: Image.file(
+            File(imagePath),
+            fit: BoxFit.contain,
+          ),
+        ),
+      ),
     );
   }
 }

@@ -305,8 +305,24 @@ Remember: The parent's prompt is a SEED. Your job is to grow it into something m
       'max_output_tokens': maxOutputTokens,
       'messages': messages,
     };
+    final encodedMessages = jsonEncode(messages);
+    final approxInputTokens = (encodedMessages.length / 4).round();
 
-    AppLogger.system.d('Calling OpenRouter with model $modelId');
+    final start = DateTime.now();
+    if (AppLogger.enableGenAiLogging) {
+      AppLogger.genai.progress(
+        'Story LLM request → model=$modelId '
+        'temp=$temperature maxTokens=$maxOutputTokens '
+        'chars=${encodedMessages.length} approxTokens=$approxInputTokens',
+      );
+      if (AppLogger.enableGenAiVerbose) {
+        AppLogger.genai.i(
+          'STORY JSON MESSAGES (model=$modelId):\n$encodedMessages',
+        );
+      }
+    } else {
+      AppLogger.system.d('Calling OpenRouter with model $modelId');
+    }
 
     final response = await _client.post(
       Uri.parse(_endpoint),
@@ -336,6 +352,19 @@ Remember: The parent's prompt is a SEED. Your job is to grow it into something m
         : content?.toString() ?? '';
 
     final extracted = _extractFirstJsonObject(contentString);
+    final elapsedMs = DateTime.now().difference(start).inMilliseconds;
+    if (AppLogger.enableGenAiLogging) {
+      AppLogger.genai.success(
+        'Story LLM response ← model=$modelId '
+        'elapsed=${elapsedMs}ms outChars=${contentString.length}',
+      );
+      if (AppLogger.enableGenAiVerbose) {
+        AppLogger.genai.i(
+          'STORY RAW JSON (model=$modelId):\n$extracted',
+        );
+      }
+    }
+
     return jsonDecode(extracted) as Map<String, dynamic>;
   }
 
