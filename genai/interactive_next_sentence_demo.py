@@ -68,6 +68,30 @@ def _system_prompt() -> str:
         "    They must NOT depend on, continue, or reference each other.\n"
         "    If the user chooses candidate 2, it should still work as the immediate\n"
         "    next line even if candidate 1 is never used.\n"
+        "  * The JSON input includes `child_event.utterance_text` (the last line) and\n"
+        "    a boolean `last_line_is_fragment`.\n"
+        "    - If `last_line_is_fragment` is true (e.g., the last line ends with '...'\n"
+        "      or sets up a phrase like 'Its name was...'), treat your `sentence` as a\n"
+        "      DIRECT continuation that, when appended, makes a single natural sentence.\n"
+        "      Do not repeat the same setup (e.g., do NOT write 'Its name was Twinkle'\n"
+        "      after 'Its name was...' — instead write 'Twinkle, and it sparkled with all\n"
+        "      the colors of the rainbow.').\n"
+        "    - If `last_line_is_fragment` is false, your `sentence` should be a complete\n"
+        "      next line on its own.\n"
+        "  * The JSON input also includes `pacing.story_step` and\n"
+        "    `pacing.target_sentence_count`.\n"
+        "    - In the early part of the story (first third of target sentences), focus on\n"
+        "      introducing characters, setting, and a gentle sense of curiosity.\n"
+        "    - In the middle third, deepen the situation or small challenge, but do not\n"
+        "      endlessly add new characters or magical objects.\n"
+        "    - In the final third (when `story_step` is close to\n"
+        "      `target_sentence_count`), gently move toward closure:\n"
+        "        • resolve at least one open question or tension,\n"
+        "        • bring emotional payoff (relief, joy, pride),\n"
+        "        • avoid opening brand-new plot threads.\n"
+        "    - It's okay for the story to end softly and satisfyingly at or near the\n"
+        "      target sentence count; do not always assume the story must keep going\n"
+        "      forever.\n"
         "  * Build directly on the child's idea and the current story context.\n"
         "  * Match the current beat goal and target tension.\n"
         "  * Align with the family's values and content boundaries.\n"
@@ -138,6 +162,23 @@ def _build_payload(
 
     effective_child_line = child_line or "The turtle finds a glowing rock."
 
+    # Very simple pacing signal: how far into the story we are and roughly
+    # where we aim to land for a single-session arc.
+    story_step = len(story_so_far) + 1
+    target_sentence_count = 12  # soft target; model can overshoot a bit.
+
+    def _is_fragment(line: str) -> bool:
+        s = line.strip()
+        if not s:
+            return False
+        # Treat lines ending with "..." or containing blanks as fragments.
+        if s.endswith("...") or "____" in s:
+            return True
+        # Heuristic: if it doesn't end with sentence punctuation, consider it fragment-like.
+        if s[-1] not in ".?!":
+            return True
+        return False
+
     return {
         "context": {
             "story_id": "demo_story",
@@ -162,6 +203,10 @@ def _build_payload(
             "tension_target": 0.2,
             "values_tags": ["curiosity", "warmth"],
         },
+        "pacing": {
+            "story_step": story_step,
+            "target_sentence_count": target_sentence_count,
+        },
         "recent_turns": [
             {
                 "speaker": "narrator",
@@ -176,6 +221,7 @@ def _build_payload(
             "utterance_text": effective_child_line,
             "choice_id": None,
         },
+        "last_line_is_fragment": _is_fragment(effective_child_line),
         "user_guidance": guidance,
         "num_candidates": num_candidates,
     }
@@ -260,6 +306,92 @@ def _parse_model_output(text: str) -> Dict[str, Any]:
         "candidates": candidates,
         "suggested_beat_transition": {},
     }
+
+
+def _suggest_blank_fills(
+    fragment: str,
+    api_key: str,
+    model: str,
+) -> List[str]:
+    """
+    Ask the model for short, child-friendly completions to fill a single blank
+    (represented by '_____') in a starting fragment.
+
+    Returns up to 4 fill strings, or an empty list on failure.
+    """
+    system = (
+        "You help design fun, child-friendly completions for a single blank in a "
+        "story opening fragment. The blank is represented by '_____'.\n\n"
+        "Constraints:\n"
+        "- 1–3 words per fill\n"
+        "- Age-appropriate for 4–8 year olds\n"
+        "- Warm, imaginative, non-scary\n"
+        "- Avoid brand names and real people\n"
+        "- Each fill should plug directly into the blank and read naturally.\n"
+        "Output JSON only, no commentary."
+    )
+
+    user = {
+        "fragment": fragment,
+        "instructions": (
+            "Propose about 4 diverse options that could fill the blank. "
+            "Return JSON:\n"
+            "{\n"
+            '  "fills": [\n'
+            '    "curious turtle",\n'
+            '    "kind robot",\n'
+            '    \"tiny dragon\", \n'
+            '    \"glittery cloud\"\n'
+            "  ]\n"
+            "}\n"
+        ),
+    }
+
+    body = {
+        "model": model,
+        "messages": [
+            {"role": "system", "content": system},
+            {
+                "role": "user",
+                "content": json.dumps(user, ensure_ascii=False),
+            },
+        ],
+        "temperature": 0.9,
+        "max_output_tokens": 512,
+    }
+
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://xen.words.app/dev",
+        "X-Title": "Xen Words - Blank Fill Suggester",
+    }
+
+    data_bytes = json.dumps(body).encode("utf-8")
+    req = urllib.request.Request(
+        "https://openrouter.ai/api/v1/chat/completions", method="POST"
+    )
+    for k, v in headers.items():
+        req.add_header(k, v)
+    req.data = data_bytes
+
+    try:
+        with urllib.request.urlopen(req, timeout=60) as response:
+            raw = response.read().decode("utf-8")
+            data = json.loads(raw)
+    except Exception:
+        return []
+
+    content = data["choices"][0]["message"]["content"]
+    text = _strip_markdown_fences(str(content or ""))
+    try:
+        extracted = _extract_first_json_object(text)
+        parsed = json.loads(extracted)
+    except json.JSONDecodeError:
+        return []
+
+    fills = parsed.get("fills") or []
+    return [str(f).strip() for f in fills if str(f).strip()]
 
 
 def _save_story(
@@ -376,7 +508,9 @@ def main() -> None:
             print("  C) Write my own opening line")
             print("  D) Show two different sparks")
 
-            start_choice = input("Choose A/B, C to write your own, or D to reshuffle: ").strip().upper()
+            start_choice = input(
+                "Choose A/B, C to write your own, or D to reshuffle: "
+            ).strip().upper()
             if start_choice == "A":
                 base_opening = picks[0]
                 break
@@ -393,14 +527,62 @@ def main() -> None:
             else:
                 print("Invalid choice, please try again.")
 
-        # If the fragment contains a blank, let the user fill it.
+        # If the fragment contains a blank, we can either suggest fills or let the user type one.
         if "____" in base_opening:
-            fill = input(
-                "Fill in the blank (e.g., 'curious turtle', 'kind robot'), "
-                "or press Enter to keep it as-is: "
-            ).strip()
-            if fill:
-                base_opening = base_opening.replace("_____", fill).replace("____", fill)
+            print(
+                "\nThis spark has a blank. You can:\n"
+                "  A) See 4 suggested ways to fill it\n"
+                "  B) Type your own fill\n"
+                "  C) Keep the blank as-is"
+            )
+            mode = input("Choose A/B/C: ").strip().upper()
+            if mode == "A":
+                fills = _suggest_blank_fills(base_opening, api_key, model)
+                if fills:
+                    fills = fills[:4]
+                    print("\nSuggested fills:")
+                    label_map = {}
+                    for idx, fill in enumerate(fills):
+                        label = chr(ord("A") + idx)
+                        print(f"  {label}) {fill}")
+                        label_map[label] = fill
+                    print("  E) Type my own")
+                    print("  F) Keep blank")
+                    choice = input("Choose a fill (A-D), or E/F: ").strip().upper()
+                    if choice in label_map:
+                        chosen_fill = label_map[choice]
+                        base_opening = (
+                            base_opening.replace("_____", chosen_fill).replace("____", chosen_fill)
+                        )
+                    elif choice == "E":
+                        manual = input(
+                            "Type your fill (e.g., 'curious turtle', 'kind robot'): "
+                        ).strip()
+                        if manual:
+                            base_opening = (
+                                base_opening.replace("_____", manual).replace("____", manual)
+                            )
+                    # If F or anything else, leave the blank as-is.
+                else:
+                    # Fallback to manual if suggestions fail.
+                    manual = input(
+                        "Type your fill (e.g., 'curious turtle', 'kind robot'), "
+                        "or press Enter to keep it as-is: "
+                    ).strip()
+                    if manual:
+                        base_opening = (
+                            base_opening.replace("_____", manual).replace("____", manual)
+                        )
+            elif mode == "B":
+                manual = input(
+                    "Type your fill (e.g., 'curious turtle', 'kind robot'), "
+                    "or press Enter to keep it as-is: "
+                ).strip()
+                if manual:
+                    base_opening = (
+                        base_opening.replace("_____", manual).replace("____", manual)
+                    )
+            # mode C keeps the blank as-is.
     else:
         # Fallback to simple manual opening if no fragments are available.
         base_opening = input(

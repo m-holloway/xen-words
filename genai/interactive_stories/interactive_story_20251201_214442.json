@@ -1,0 +1,370 @@
+{
+  "model": "google/gemini-2.5-flash",
+  "model_source": "STORY_BUILDER_BY_SENTENCE_MODEL",
+  "created_at": "2025-12-01T21:44:42.709318",
+  "story": [
+    "Lily's favorite blanket could magically turn into a flying carpet.",
+    "With a secret flutter, it was also ready for amazing adventures high above the clouds!",
+    "She wondered where her magic blanket would take her today, perhaps somewhere she'd never been before?",
+    "Just then, the blanket gave a little wiggle, as if it already knew exactly where to go!",
+    "The blanket lifted gently, carrying Lily and her teddy bear higher and higher into the soft morning sky.",
+    "The air grew cooler and sparkly as they soared past white, fluffy clouds that looked like giant cotton balls.",
+    "Suddenly Jill flew by!",
+    "Jill gave a friendly wave as she zoomed past on her own little cloud-scooter.",
+    "Just as Lily was waving back, something even more amazing twinkled into view from behind a puffy cloud!",
+    "A sparkling star-creature, with gentle, glowing eyes, floated gracefully towards them, looking very friendly.",
+    "It's name was...",
+    "It was named Twinkle, and it sparkled with all the colors of a rainbow.",
+    "Twinkle blinked its rainbow eyes and seemed to invite Lily and her teddy bear closer with a soft hum.",
+    "Lily looked at her teddy bear, who seemed to nod, and together they decided to follow the twinkling new friend.",
+    "Twinkle led them on a gentle path through the sky, and soon, a forest of swirly, red-and-white candy cane trees appeared below!",
+    "Each tree twisted and turned like a giant, delicious spiral reaching up to the sky.",
+    "Suddenly, a tiny, sad little whisper floated up from the candy cane forest, as if the trees themselves were feeling a bit glum.",
+    "Lily looked at Twinkle with a curious frown, silently asking, \"What's wrong?\"",
+    "Twinkle, with a soft shimmer, pointed a glowing antennae towards the forest, as if to say, \"Look!\"",
+    "Peeking through the swirly branches, Lily saw a tiny turtle friend, all curled up and looking a little lost.",
+    "The little turtle was snuggled deep inside its shell, looking very shy and a bit worried.",
+    "Lily knew just how that turtle felt sometimes, so she gently asked, \"Are you okay, little one?\""
+  ],
+  "turns": [
+    {
+      "step": 2,
+      "action": "choose_model_sentence",
+      "choice_label": "B",
+      "candidates": [
+        "It was soft and snuggly, perfect for snuggling up when she felt a little shy.",
+        "With a secret flutter, it was also ready for amazing adventures high above the clouds!"
+      ],
+      "chosen_sentence": "With a secret flutter, it was also ready for amazing adventures high above the clouds!",
+      "user_guidance": null
+    },
+    {
+      "step": 3,
+      "action": "choose_model_sentence",
+      "choice_label": "B",
+      "candidates": [
+        "One day, Lily felt a tickle in her tummy, the kind you get when something exciting is about to happen.",
+        "She wondered where her magic blanket would take her today, perhaps somewhere she'd never been before?"
+      ],
+      "chosen_sentence": "She wondered where her magic blanket would take her today, perhaps somewhere she'd never been before?",
+      "user_guidance": null
+    },
+    {
+      "step": 4,
+      "action": "choose_model_sentence",
+      "choice_label": "B",
+      "candidates": [
+        "Suddenly, a friendly breeze tickled her nose, gently tugging the blanket towards the window.",
+        "Just then, the blanket gave a little wiggle, as if it already knew exactly where to go!"
+      ],
+      "chosen_sentence": "Just then, the blanket gave a little wiggle, as if it already knew exactly where to go!",
+      "user_guidance": null
+    },
+    {
+      "step": 5,
+      "action": "choose_model_sentence",
+      "choice_label": "B",
+      "candidates": [
+        "Lily giggled, holding tight as her cozy blanket began to float up, up, and away from her window!",
+        "The blanket lifted gently, carrying Lily and her teddy bear higher and higher into the soft morning sky."
+      ],
+      "chosen_sentence": "The blanket lifted gently, carrying Lily and her teddy bear higher and higher into the soft morning sky.",
+      "user_guidance": null
+    },
+    {
+      "step": 6,
+      "action": "regenerate",
+      "candidates": [
+        "Soon they were floating above their sleepy town, which looked like a tiny toy village below.",
+        "The air was warm and smelled like morning dew, making Lily feel super cozy and safe."
+      ],
+      "chosen_sentence": null,
+      "user_guidance": "Where should she go that's super duper high?"
+    },
+    {
+      "step": 6,
+      "action": "choose_model_sentence",
+      "choice_label": "B",
+      "candidates": [
+        "Soon, they were floating above the tallest trees, looking down at the world like tiny colorful dots.",
+        "The air grew cooler and sparkly as they soared past white, fluffy clouds that looked like giant cotton balls."
+      ],
+      "chosen_sentence": "The air grew cooler and sparkly as they soared past white, fluffy clouds that looked like giant cotton balls.",
+      "user_guidance": null
+    },
+    {
+      "step": 7,
+      "action": "write_in",
+      "candidates": [
+        "They bounced gently on a fluffy cloud, like being on the softest trampoline.",
+        "Below them, the houses looked like tiny toys scattered across a green and blue rug."
+      ],
+      "chosen_sentence": "Suddenly Jill flew by!",
+      "user_guidance": null
+    },
+    {
+      "step": 8,
+      "action": "choose_model_sentence",
+      "choice_label": "A",
+      "candidates": [
+        "Jill gave a friendly wave as she zoomed past on her own little cloud-scooter.",
+        "It was her friend Jill, flying on a sparkling, rainbow-colored kite!"
+      ],
+      "chosen_sentence": "Jill gave a friendly wave as she zoomed past on her own little cloud-scooter.",
+      "user_guidance": null
+    },
+    {
+      "step": 9,
+      "action": "regenerate",
+      "candidates": [
+        "Lily giggled, delighted to see another adventurer in the sky, and waved back with all her might.",
+        "She wondered if Jill was going on an adventure too, perhaps to the sparkly star-dust fields she'd only dreamed of."
+      ],
+      "chosen_sentence": null,
+      "user_guidance": "More magical.  Big surprise!"
+    },
+    {
+      "step": 9,
+      "action": "choose_model_sentence",
+      "choice_label": "B",
+      "candidates": [
+        "Lily giggled, wondering if her blanket would next turn into a speedy star-hopper or a sparkly space-ship!",
+        "Just as Lily was waving back, something even more amazing twinkled into view from behind a puffy cloud!"
+      ],
+      "chosen_sentence": "Just as Lily was waving back, something even more amazing twinkled into view from behind a puffy cloud!",
+      "user_guidance": null
+    },
+    {
+      "step": 10,
+      "action": "choose_model_sentence",
+      "choice_label": "B",
+      "candidates": [
+        "It was a tiny, shimmering spaceship, no bigger than a teacup, with little lights blinking all around it.",
+        "A sparkling star-creature, with gentle, glowing eyes, floated gracefully towards them, looking very friendly."
+      ],
+      "chosen_sentence": "A sparkling star-creature, with gentle, glowing eyes, floated gracefully towards them, looking very friendly.",
+      "user_guidance": null
+    },
+    {
+      "step": 11,
+      "action": "write_in",
+      "candidates": [
+        "The star-creature had a shimmering tail that left a trail of tiny, happy sparkles in the air.",
+        "It seemed to blink its big, kind eyes and offer a silent, starry hello."
+      ],
+      "chosen_sentence": "It's name was...",
+      "user_guidance": null
+    },
+    {
+      "step": 12,
+      "action": "choose_model_sentence",
+      "choice_label": "A",
+      "candidates": [
+        "It was named Twinkle, and it sparkled with all the colors of a rainbow.",
+        "The star-creature's name was Nova, and it hummed a quiet, sparkly tune as it floated closer."
+      ],
+      "chosen_sentence": "It was named Twinkle, and it sparkled with all the colors of a rainbow.",
+      "user_guidance": null
+    },
+    {
+      "step": 13,
+      "action": "choose_model_sentence",
+      "choice_label": "A",
+      "candidates": [
+        "Twinkle blinked its rainbow eyes and seemed to invite Lily and her teddy bear closer with a soft hum.",
+        "Lily couldn't help but smile at the friendly star-creature, whose colors shimmered like a secret message just for her."
+      ],
+      "chosen_sentence": "Twinkle blinked its rainbow eyes and seemed to invite Lily and her teddy bear closer with a soft hum.",
+      "user_guidance": null
+    },
+    {
+      "step": 14,
+      "action": "regenerate",
+      "candidates": [
+        "Lily giggled, feeling a warm, bubbly feeling in her tummy as Twinkle floated even closer.",
+        "Her teddy bear, Barnaby, gave a little happy wiggle too, as if he understood Twinkle's invitation."
+      ],
+      "chosen_sentence": null,
+      "user_guidance": null
+    },
+    {
+      "step": 14,
+      "action": "choose_model_sentence",
+      "choice_label": "B",
+      "candidates": [
+        "Lily giggled, a little thrill buzzing in her toes, as Twinkle led them gently into a sky filled with shimmering stardust.",
+        "Lily looked at her teddy bear, who seemed to nod, and together they decided to follow the twinkling new friend."
+      ],
+      "chosen_sentence": "Lily looked at her teddy bear, who seemed to nod, and together they decided to follow the twinkling new friend.",
+      "user_guidance": null
+    },
+    {
+      "step": 15,
+      "action": "regenerate",
+      "candidates": [
+        "Twinkle led them on a gentle journey through the starry sky, past planets that glowed in soft colors.",
+        "The star-creature hummed a soft, happy tune as they floated along, showing them the most beautiful parts of space."
+      ],
+      "chosen_sentence": null,
+      "user_guidance": "Take us to a candy cane forest"
+    },
+    {
+      "step": 15,
+      "action": "choose_model_sentence",
+      "choice_label": "A",
+      "candidates": [
+        "Twinkle led them on a gentle path through the sky, and soon, a forest of swirly, red-and-white candy cane trees appeared below!",
+        "As they followed Twinkle, the sky shimmered a little, and suddenly, they were floating above a magical forest where every tree was a giant, striped candy cane!"
+      ],
+      "chosen_sentence": "Twinkle led them on a gentle path through the sky, and soon, a forest of swirly, red-and-white candy cane trees appeared below!",
+      "user_guidance": null
+    },
+    {
+      "step": 16,
+      "action": "choose_model_sentence",
+      "choice_label": "B",
+      "candidates": [
+        "The candy cane trees sparkled with sugary frost, and Lily imagined they smelled like peppermint and vanilla.",
+        "Each tree twisted and turned like a giant, delicious spiral reaching up to the sky."
+      ],
+      "chosen_sentence": "Each tree twisted and turned like a giant, delicious spiral reaching up to the sky.",
+      "user_guidance": null
+    },
+    {
+      "step": 17,
+      "action": "regenerate",
+      "candidates": [
+        "The candy cane trees smelled faintly of peppermint, making Lily want to take a tiny, delicious sniff!",
+        "Lily couldn't believe her eyes; it was like flying through a gingerbread house, but even better!"
+      ],
+      "chosen_sentence": null,
+      "user_guidance": null
+    },
+    {
+      "step": 17,
+      "action": "regenerate",
+      "candidates": [
+        "The candy cane trees filled the air with a sweet, minty smell, making Lily's tummy rumble a little!",
+        "Lily couldn't believe her eyes; it was like flying into a delicious dream!"
+      ],
+      "chosen_sentence": null,
+      "user_guidance": "what is wrong here?"
+    },
+    {
+      "step": 17,
+      "action": "regenerate",
+      "candidates": [
+        "Lily giggled, imagining picking a sweet peppermint leaf right off a branch!",
+        "The air smelled like sweet mint and sugar, making Lily's tummy rumble with delight."
+      ],
+      "chosen_sentence": null,
+      "user_guidance": "Introduce a conflict or tension"
+    },
+    {
+      "step": 17,
+      "action": "choose_model_sentence",
+      "choice_label": "B",
+      "candidates": [
+        "But as they looked closer, they noticed that some of the candy cane trees were a little droopy and their stripes weren't quite as bright.",
+        "Suddenly, a tiny, sad little whisper floated up from the candy cane forest, as if the trees themselves were feeling a bit glum."
+      ],
+      "chosen_sentence": "Suddenly, a tiny, sad little whisper floated up from the candy cane forest, as if the trees themselves were feeling a bit glum.",
+      "user_guidance": null
+    },
+    {
+      "step": 18,
+      "action": "regenerate",
+      "candidates": [
+        "Lily leaned closer to her teddy bear, wondering what could make candy cane trees so sad.",
+        "The whisper sounded like a little sigh, floating up from the sweet-smelling branches below."
+      ],
+      "chosen_sentence": null,
+      "user_guidance": "Lily asks her guide about this"
+    },
+    {
+      "step": 18,
+      "action": "choose_model_sentence",
+      "choice_label": "A",
+      "candidates": [
+        "Lily looked at Twinkle with a curious frown, silently asking, \"What's wrong?\"",
+        "She gently nudged Twinkle, wondering if their new friend knew why the candy cane forest sounded so sad."
+      ],
+      "chosen_sentence": "Lily looked at Twinkle with a curious frown, silently asking, \"What's wrong?\"",
+      "user_guidance": null
+    },
+    {
+      "step": 19,
+      "action": "choose_model_sentence",
+      "choice_label": "A",
+      "candidates": [
+        "Twinkle, with a soft shimmer, pointed a glowing antennae towards the forest, as if to say, \"Look!\"",
+        "Twinkle's rainbow eyes flickered with a little concern as it gently nudged Lily's blanket towards the candy cane trees."
+      ],
+      "chosen_sentence": "Twinkle, with a soft shimmer, pointed a glowing antennae towards the forest, as if to say, \"Look!\"",
+      "user_guidance": null
+    },
+    {
+      "step": 20,
+      "action": "choose_model_sentence",
+      "choice_label": "B",
+      "candidates": [
+        "Down among the candy cane trees, a little creature with a sparkly shell was huddled, looking very shy.",
+        "Peeking through the swirly branches, Lily saw a tiny turtle friend, all curled up and looking a little lost."
+      ],
+      "chosen_sentence": "Peeking through the swirly branches, Lily saw a tiny turtle friend, all curled up and looking a little lost.",
+      "user_guidance": null
+    },
+    {
+      "step": 21,
+      "action": "regenerate",
+      "candidates": [
+        "The little turtle's shell was a pretty shade of green, but it looked dull and dusty, as if it hadn't seen the sun in a while.",
+        "The turtle was so small, it could almost hide completely inside a single candy cane curl."
+      ],
+      "chosen_sentence": null,
+      "user_guidance": "what's wrong with the turtle?"
+    },
+    {
+      "step": 21,
+      "action": "choose_model_sentence",
+      "choice_label": "A",
+      "candidates": [
+        "The little turtle was snuggled deep inside its shell, looking very shy and a bit worried.",
+        "It was so small that its little eyes were barely peeking out, and it looked like it really needed a friend."
+      ],
+      "chosen_sentence": "The little turtle was snuggled deep inside its shell, looking very shy and a bit worried.",
+      "user_guidance": null
+    },
+    {
+      "step": 22,
+      "action": "regenerate",
+      "candidates": [
+        "It seemed like the turtle was trying to hide, wishing it could just disappear.",
+        "Lily wondered if the turtle was feeling a little bit like she sometimes felt when meeting new friends."
+      ],
+      "chosen_sentence": null,
+      "user_guidance": "How does this connect to our main story and the candy cane forest?"
+    },
+    {
+      "step": 22,
+      "action": "regenerate",
+      "candidates": [
+        "The little turtle, whose name was Shelly, was so quiet you could barely hear a peep, even from a candy cane tree.",
+        "It looked like Shelly the turtle was feeling a little bit shy in the big, swirly candy cane forest."
+      ],
+      "chosen_sentence": null,
+      "user_guidance": "Move the story along and wrap it up within a few lines"
+    },
+    {
+      "step": 22,
+      "action": "choose_model_sentence",
+      "choice_label": "A",
+      "candidates": [
+        "Lily knew just how that turtle felt sometimes, so she gently asked, \"Are you okay, little one?\"",
+        "With a soft whisper, Lily wondered if the candy cane trees felt lonely and made the little turtle feel shy too."
+      ],
+      "chosen_sentence": "Lily knew just how that turtle felt sometimes, so she gently asked, \"Are you okay, little one?\"",
+      "user_guidance": null
+    }
+  ]
+}
