@@ -1,0 +1,150 @@
+{
+  "template": {
+    "title": "Emma and the Stuck Swing",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "Emma helps a swing move, learning patience and teamwork.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play on the playground after school.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One afternoon, [[slot_child]] saw a [[slot_swing_type]] swing that wouldn't move.",
+        "slot_ids": [
+          "slot_child",
+          "slot_swing_type"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The swing was stuck, and the wind could not push it.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] thought, 'Maybe I can help it.'",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "She gently pulled the rope, but the swing still stayed still.",
+        "slot_ids": []
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "Then she called her friend [[slot_friend_name]] for help.",
+        "slot_ids": [
+          "slot_friend_name"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "[[slot_friend_name]] laughed and said, 'Let's try together!'",
+        "slot_ids": [
+          "slot_friend_name"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "They both pulled the rope, and the swing began to sway.",
+        "slot_ids": []
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "As the swing moved, a bright [[slot_kite_color]] [[slot_kite_design]] kite flew from the nearby tree.",
+        "slot_ids": [
+          "slot_kite_color",
+          "slot_kite_design"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "Emma and [[slot_friend_name]] smiled, and the playground felt happy.",
+        "slot_ids": [
+          "slot_friend_name"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the child character",
+        "child_prompt": "Can you give a name for the child?",
+        "examples": [
+          "Emma",
+          "Liam",
+          "Olivia"
+        ]
+      },
+      {
+        "id": "slot_swing_type",
+        "type": "swing_type",
+        "author_description": "Type of swing",
+        "child_prompt": "Can you name a type of swing?",
+        "examples": [
+          "traditional wooden",
+          "hanging rope",
+          "plastic"
+        ]
+      },
+      {
+        "id": "slot_kite_design",
+        "type": "kite_design",
+        "author_description": "Design of a kite",
+        "child_prompt": "Can you describe a kite shape?",
+        "examples": [
+          "diamond",
+          "square",
+          "heart"
+        ]
+      },
+      {
+        "id": "slot_kite_color",
+        "type": "color",
+        "author_description": "Color of kite",
+        "child_prompt": "Can you name a bright color?",
+        "examples": [
+          "red",
+          "blue",
+          "yellow"
+        ]
+      },
+      {
+        "id": "slot_playground_item",
+        "type": "playground_item",
+        "author_description": "Item in playground",
+        "child_prompt": "Can you name something you might see in a playground?",
+        "examples": [
+          "slide",
+          "sandbox",
+          "slide"
+        ]
+      },
+      {
+        "id": "slot_friend_name",
+        "type": "friend_name",
+        "author_description": "Name of a friend",
+        "child_prompt": "Can you give a name for Emma's friend?",
+        "examples": [
+          "Noah",
+          "Mia",
+          "Lily"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G3_patterns_menu_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

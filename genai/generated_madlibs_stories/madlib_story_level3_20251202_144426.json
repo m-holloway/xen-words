@@ -1,0 +1,158 @@
+{
+  "template": {
+    "title": "The Kind Butterfly in the Garden",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child helps a shy butterfly find its way home in the garden.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play in the backyard garden.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny morning, a [[slot_color]] butterfly fluttered near the [[slot_flower]].",
+        "slot_ids": [
+          "slot_color",
+          "slot_flower"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The butterfly looked sad because it could not find its home.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] wanted to help, but the butterfly was shy.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "First, [[slot_child]] tried to touch the butterfly, but it fluttered away.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "Then, [[slot_child]] remembered a small [[slot_tool]] in the pocket.",
+        "slot_ids": [
+          "slot_child",
+          "slot_tool"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "Using the net, [[slot_child]] gently guided the butterfly to a bright [[slot_flower]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_flower"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "The butterfly landed and its wings shone like a [[slot_color]] rainbow.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "It sang a soft [[slot_sound]] that made the garden feel calm.",
+        "slot_ids": [
+          "slot_sound"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "[[slot_child]] smiled and felt warm inside.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "The butterfly thanked [[slot_child]] with a flutter and flew home.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "Now, whenever [[slot_child]] sees a butterfly, they remember to be kind.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the main child character",
+        "child_prompt": "What is the name of the child in the story?",
+        "examples": [
+          "Sam",
+          "Lily",
+          "Noah"
+        ]
+      },
+      {
+        "id": "slot_flower",
+        "type": "plant_flower",
+        "author_description": "Name of a flower",
+        "child_prompt": "Name a flower you see in the garden",
+        "examples": [
+          "Rose",
+          "Sunflower",
+          "Daisy"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color",
+        "child_prompt": "Name a bright color",
+        "examples": [
+          "red",
+          "blue",
+          "green"
+        ]
+      },
+      {
+        "id": "slot_tool",
+        "type": "object",
+        "author_description": "A small tool the child might have",
+        "child_prompt": "Name a small tool you might carry",
+        "examples": [
+          "net",
+          "stick",
+          "bucket"
+        ]
+      },
+      {
+        "id": "slot_sound",
+        "type": "sound",
+        "author_description": "A soft sound",
+        "child_prompt": "Name a soft sound",
+        "examples": [
+          "buzz",
+          "whisper",
+          "humming"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G3_patterns_menu_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

@@ -1,0 +1,25 @@
+Original title: Untitled Story
+Refined title:  The Curious Day at the Playground
+Reading level:   3 (Grades 1–2)
+Target minutes:  5
+Summary (refined): A child learns to share a kite with a friend at the playground.
+
+Judge scores:
+- overall: 0.88
+- story_arc: 0.90
+- character_engagement: 0.80
+- emotional_warmth: 0.90
+- curiosity_hooks: 0.70
+- madlibs_usability: 0.95
+- reading_level_fit: 0.90
+
+--- Original template ---
+
+--- Refined template ---
+s1: One sunny morning, {slot_child} woke up and ran to the playground.
+s2: They brought their favorite {slot_toy}, a bright {slot_color} kite, to fly.
+s3: At the playground, they met {slot_friend}, who wanted to play too.
+s4: But the kite was too big, and they couldn't share it.
+s5: So they decided to take turns, and {slot_child} learned to let others have fun.
+s6: After playing, they ate a tasty {slot_snack} together, feeling happy.
+s7: They promised to bring more friends next time and share their toys.

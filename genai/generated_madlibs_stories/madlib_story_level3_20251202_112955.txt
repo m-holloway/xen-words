@@ -1,0 +1,44 @@
+Title: The Lost Toy Adventure
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A warm story about a child, a pet, and a small adventure that ends happily.
+
+Slots:
+- slot_child (child_name): The name of the main character.
+  Child prompt: What is your name?
+  Examples: Sam, Lily, Noah
+- slot_pet (animal_pet): A friendly animal companion.
+  Child prompt: Can you name an animal you would love to be friends with?
+  Examples: puppy, bunny, kitten
+- slot_toy (toy): A favorite toy the child plays with.
+  Child prompt: What is your favorite toy?
+  Examples: ball, teddy bear, blocks
+- slot_color (color): A bright color.
+  Child prompt: What is a bright color you like?
+  Examples: yellow, blue, pink
+- slot_mood (emotion): How the child feels at the start.
+  Child prompt: How are you feeling today?
+  Examples: happy, curious, excited
+- slot_place (location): A place the child visits.
+  Child prompt: Where do you like to go?
+  Examples: park, beach, garden
+- slot_action (verb): An action the child does.
+  Child prompt: What do you like to do?
+  Examples: run, jump, play
+- slot_problem (noun): A small, gentle problem.
+  Child prompt: What is a small problem you might have?
+  Examples: lost ball, missing shoe, paper cut
+
+Story template:
+s1: [[slot_child]] felt [[slot_mood]] this morning.
+s2: He/she had a [[slot_pet]] and a [[slot_toy]] that loved to play with.
+s3: In the [[slot_place]], they [[slot_action]] and laughed.
+s4: Suddenly, the [[slot_toy]] was gone!
+s5: There was a small problem: the [[slot_problem]].
+s6: But [[slot_child]] and [[slot_pet]] decided to look for it.
+s7: They searched under the [[slot_color]] tree and behind the [[slot_color]] bench.
+s8: Finally, they found the [[slot_toy]] tucked inside a [[slot_color]] box.
+s9: They were happy and gave each other a hug.
+s10: The day ended with a bright sunset over the [[slot_place]].
+s11: They learned that sharing and looking together solves problems.
+s12: And they promised to play again tomorrow.

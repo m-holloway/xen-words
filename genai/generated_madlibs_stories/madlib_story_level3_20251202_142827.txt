@@ -1,0 +1,45 @@
+Title: The Wiggling Toy and the Kind Heart
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child shares a toy that falls into water, helping it and sharing a snack, and the story ends with a gentle, happy moment.
+
+Slots:
+- slot_child (child_name): The name of the main character.
+  Child prompt: Can you give a name for the child in the story?
+  Examples: Mia, Sam, Lily
+- slot_pet (animal_pet): A friendly animal the child might like.
+  Child prompt: Can you name an animal you would love to be friends with?
+  Examples: puppy, bunny, kitten
+- slot_toy (toy_object): A toy that the child plays with.
+  Child prompt: Can you think of a toy the child might have?
+  Examples: ball, doll, robot
+- slot_color (color): A bright color for the toy.
+  Child prompt: Can you name a color?
+  Examples: yellow, purple, green
+- slot_snack (snack_food): A snack the child can share.
+  Child prompt: Can you name a snack you like?
+  Examples: cookies, apple slices, granola bar
+- slot_place (place_name): A place where the child plays.
+  Child prompt: Can you name a place where you like to play?
+  Examples: park, garden, backyard
+- slot_sound (sound): A sound that can describe the toy's wiggle.
+  Child prompt: Can you think of a sound that feels happy?
+  Examples: whoosh, ding, hum
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the [[slot_place]].
+s2: The toy was a [[slot_color]] [[slot_toy]] that liked to wiggle.
+s3: One day, the toy slipped off a bench and fell into a puddle.
+s4: [[slot_child]] felt sad, but then thought of [[slot_pet]].
+s5: [[slot_child]] ran to [[slot_pet]] and whispered, "Help!"
+s6: [[slot_pet]] nuzzled the toy and lifted it out of the water.
+s7: The toy squeaked, and [[slot_child]] giggled.
+s8: [[slot_child]] decided to share a [[slot_snack]] with [[slot_pet]].
+s9: They sat on a blanket and watched the clouds.
+s10: [[slot_child]] imagined the toy dancing like a [[slot_sound]].
+s11: The toy's wiggle turned into a gentle rhythm.
+s12: [[slot_child]] felt warm inside.
+s13: When the sun set, they waved goodbye to the toy.
+s14: [[slot_child]] promised to bring [[slot_toy]] to the [[slot_place]] again.
+s15: The [[slot_place]] felt brighter with the toy's happy wiggle.
+s16: And they all lived happily, playing and sharing.

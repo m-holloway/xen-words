@@ -1,0 +1,42 @@
+Original title: Mia and the Little Bird
+Refined title:  Mia and the Little Bird
+Reading level:   3 (Grades 1–2)
+Target minutes:  5
+Summary (refined): Mia discovers a tiny bird with a broken wing, learns to help with kindness, and feels happy after caring for a friend.
+
+Judge scores:
+- overall: 0.86
+- story_arc: 0.90
+- character_engagement: 0.85
+- emotional_warmth: 0.95
+- curiosity_hooks: 0.80
+- madlibs_usability: 0.90
+- reading_level_fit: 0.90
+- novelty: 0.70
+- memorable_moment: 0.85
+- show_vs_tell: 0.90
+- character_depth: 0.80
+
+--- Original template ---
+s1: Mia loved to play with [[slot_toy]] on [[slot_place]].
+s2: One day, she heard a soft chirp from a tiny bird perched on a branch.
+s3: The bird's wing was as soft as a [[slot_color]] feather.
+s4: Mia felt sad and wondered how she could help the little bird.
+s5: She thought maybe [[slot_friend]] could give her a good idea.
+s6: She remembered the story about kindness and decided not to drop the bird.
+s7: Instead, she carefully tucked the bird into a tiny blanket and whispered, 'Take care.'
+s8: The next day, Mia brought [[slot_snack]] and shared it with the bird.
+s9: The bird sang a bright [[slot_sound]] that made Mia smile.
+s10: The bird fluttered its wings, flew away, leaving glittering [[slot_color]] sparkles, and Mia felt warm inside for helping a friend.
+
+--- Refined template ---
+s1: Mia loved to play with [[slot_toy]] on [[slot_place]].
+s2: One day, she heard a soft chirp from a tiny bird perched on a branch.
+s3: The bird's wing was as soft as a [[slot_color]] feather.
+s4: Mia felt a flutter in her heart and wondered how she could help the little bird.
+s5: She thought maybe [[slot_friend]] could give her a gentle plan.
+s6: She remembered a story about kindness and decided to keep the bird safe.
+s7: Instead, she carefully tucked the bird into a tiny blanket and whispered, 'Take care.'
+s8: The next day, Mia brought [[slot_snack]] and shared it with the bird.
+s9: The bird sang a bright [[slot_sound]] that made Mia's eyes sparkle.
+s10: The bird fluttered its wings, flew away, leaving glittering [[slot_color]] sparkles, and Mia felt warm inside for helping a friend.

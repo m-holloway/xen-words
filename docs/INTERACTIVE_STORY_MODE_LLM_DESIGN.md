@@ -458,6 +458,53 @@ For some experiences (not all modes), we may let the child *steer* the story fee
   - These values are included in `tuning_tokens` in every LLM call for that session.
   - In a future iteration, we could make this per-turn (spend/earn each round), mirroring the envisioned touch UI, but the current design keeps it simple while we evaluate how strongly the model responds to these signals.
 
+---
+
+### 10. Future: conversational “Mad Libs” mode
+
+Separately from free-form, sentence-by-sentence co-creation, we can offer a **curated Mad Libs–style experience** that is more constrained, easier to run on-device, and very friendly to early readers (or even pre-sight-word kids):
+
+- **Pre-authored, level-tagged templates**
+  - Maintain a small library of hand-checked story skeletons per reading level (e.g., 10–30 “best of” stories for L1–L3).
+  - Each skeleton is a sequence of short sentences with **typed blanks**, e.g.:
+    - `The [adj_cozy] [animal_pet] loved to play with a [toy_object].`
+    - `One day, the [animal_pet] found a [surprising_object] in the [place_outdoor].`
+  - Templates carry metadata:
+    - `reading_level`, `reading_band`
+    - `age_hint` (e.g., 4–6, 6–8)
+    - `blank_prompts`: natural-language ways to ask the child for each blank.
+
+- **Conversational fill flow (speech-first)**
+  - For each blank, the coach/character asks out loud via TTS, with simple, kid-facing language:
+    - “Can you name something you like to play with? It can be any toy or fun object.”
+  - Use the existing speech-recognition pipeline to:
+    - Capture the child’s utterance.
+    - Extract/clean the keyword or short phrase (with a small LLM assist if needed).
+  - As blanks are filled, we:
+    - Persist the choices (for future conditioning).
+    - Immediately re-read the updated sentence with TTS, **highlighting the new word** in the Flutter reader view.
+
+- **On-device structure engine, cloud-assisted ranking**
+  - Structure generation (which template, which blank types, what arc) can be:
+    - Precomputed offline, or
+    - Driven by a tiny on-device model / ruleset trained on children’s story arcs.
+  - For more dynamic experiences, we can:
+    - Sample several possible **future paths** (e.g., 3–4 sentences ahead, 2 variants per step → ~16 paths).
+    - Use a small “discriminator” model (cloud or on-device) to:
+      - Score paths for values alignment, tension curve, and level fit.
+      - Surface the best **next 1–2 sentences** to the child, even though the system has looked ahead.
+
+- **Relationship to interactive mode**
+  - This mode reuses:
+    - `reading_level` / `reading_band`
+    - Parent values block
+    - The same logging of child choices
+  - It differs primarily in that:
+    - The **structure** is largely fixed (templates + simple structure engine).
+    - The child’s creative input is focused on **slots** (spoken nouns/adjectives), with the LLM helping:
+      - Clean/normalize the spoken words.
+      - Optionally propose a few fun alternatives if the child is stuck.
+
 ### 8. Next steps
 
 - **Backend**

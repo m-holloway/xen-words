@@ -1,0 +1,160 @@
+{
+  "template": {
+    "title": "The Lost Stuffed Animal",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child finds a lost stuffed animal on the bus and helps its owner get it back.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved riding the bus to school.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "On the bus, a [[slot_color]] stuffed animal fell into a seat cushion.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The animal looked sad because it could not find its owner.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] wanted to keep it, but the animal was lonely.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "First, [[slot_child]] looked around the bus but no one was near the cushion.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "Then, [[slot_child]] remembered the back seat cushion where the animal was.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "They lifted the cushion and the animal's eyes sparkled like tiny [[slot_color]] fireflies.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "[[slot_child]] felt a tug of wanting to keep it.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "Instead, [[slot_child]] asked the teacher, 'Who owns this animal?'",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "The teacher smiled and said the animal belonged to a classmate.",
+        "slot_ids": []
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "The classmate thanked [[slot_child]] and gave the animal a big hug.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "The bus ride ended with a soft [[slot_sound]] of the bell.",
+        "slot_ids": [
+          "slot_sound"
+        ]
+      },
+      {
+        "id": "s13",
+        "text_with_blanks": "Now, [[slot_child]] knows sharing makes friends happy.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the main child character",
+        "child_prompt": "What is the name of the child in the story?",
+        "examples": [
+          "Sam",
+          "Lily",
+          "Noah"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color",
+        "child_prompt": "Name a bright color",
+        "examples": [
+          "red",
+          "blue",
+          "green"
+        ]
+      },
+      {
+        "id": "slot_stuffed_animal",
+        "type": "toy_animal",
+        "author_description": "A stuffed animal",
+        "child_prompt": "Name a stuffed animal",
+        "examples": [
+          "teddy bear",
+          "bunny",
+          "dragon"
+        ]
+      },
+      {
+        "id": "slot_bus_seat",
+        "type": "object",
+        "author_description": "A bus seat",
+        "child_prompt": "Name a bus seat",
+        "examples": [
+          "front seat",
+          "back seat",
+          "window seat"
+        ]
+      },
+      {
+        "id": "slot_sound",
+        "type": "sound",
+        "author_description": "A soft sound",
+        "child_prompt": "Name a soft sound",
+        "examples": [
+          "ding",
+          "whisper",
+          "humming"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G3_patterns_menu_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

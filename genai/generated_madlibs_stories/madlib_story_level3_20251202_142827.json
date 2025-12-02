@@ -1,0 +1,207 @@
+{
+  "template": {
+    "title": "The Wiggling Toy and the Kind Heart",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child shares a toy that falls into water, helping it and sharing a snack, and the story ends with a gentle, happy moment.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the [[slot_place]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy",
+          "slot_place"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "The toy was a [[slot_color]] [[slot_toy]] that liked to wiggle.",
+        "slot_ids": [
+          "slot_color",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "One day, the toy slipped off a bench and fell into a puddle.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] felt sad, but then thought of [[slot_pet]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "[[slot_child]] ran to [[slot_pet]] and whispered, \"Help!\"",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "[[slot_pet]] nuzzled the toy and lifted it out of the water.",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "The toy squeaked, and [[slot_child]] giggled.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "[[slot_child]] decided to share a [[slot_snack]] with [[slot_pet]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_snack",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "They sat on a blanket and watched the clouds.",
+        "slot_ids": []
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "[[slot_child]] imagined the toy dancing like a [[slot_sound]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_sound"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "The toy's wiggle turned into a gentle rhythm.",
+        "slot_ids": []
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "[[slot_child]] felt warm inside.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s13",
+        "text_with_blanks": "When the sun set, they waved goodbye to the toy.",
+        "slot_ids": []
+      },
+      {
+        "id": "s14",
+        "text_with_blanks": "[[slot_child]] promised to bring [[slot_toy]] to the [[slot_place]] again.",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy",
+          "slot_place"
+        ]
+      },
+      {
+        "id": "s15",
+        "text_with_blanks": "The [[slot_place]] felt brighter with the toy's happy wiggle.",
+        "slot_ids": [
+          "slot_place"
+        ]
+      },
+      {
+        "id": "s16",
+        "text_with_blanks": "And they all lived happily, playing and sharing.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "The name of the main character.",
+        "child_prompt": "Can you give a name for the child in the story?",
+        "examples": [
+          "Mia",
+          "Sam",
+          "Lily"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "A friendly animal the child might like.",
+        "child_prompt": "Can you name an animal you would love to be friends with?",
+        "examples": [
+          "puppy",
+          "bunny",
+          "kitten"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A toy that the child plays with.",
+        "child_prompt": "Can you think of a toy the child might have?",
+        "examples": [
+          "ball",
+          "doll",
+          "robot"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color for the toy.",
+        "child_prompt": "Can you name a color?",
+        "examples": [
+          "yellow",
+          "purple",
+          "green"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A snack the child can share.",
+        "child_prompt": "Can you name a snack you like?",
+        "examples": [
+          "cookies",
+          "apple slices",
+          "granola bar"
+        ]
+      },
+      {
+        "id": "slot_place",
+        "type": "place_name",
+        "author_description": "A place where the child plays.",
+        "child_prompt": "Can you name a place where you like to play?",
+        "examples": [
+          "park",
+          "garden",
+          "backyard"
+        ]
+      },
+      {
+        "id": "slot_sound",
+        "type": "sound",
+        "author_description": "A sound that can describe the toy's wiggle.",
+        "child_prompt": "Can you think of a sound that feels happy?",
+        "examples": [
+          "whoosh",
+          "ding",
+          "hum"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G3_patterns_menu_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

@@ -1,0 +1,36 @@
+Title: Emma and the Stuck Swing
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: Emma helps a swing move, learning patience and teamwork.
+
+Slots:
+- slot_child (child_name): Name of the child character
+  Child prompt: Can you give a name for the child?
+  Examples: Emma, Liam, Olivia
+- slot_swing_type (swing_type): Type of swing
+  Child prompt: Can you name a type of swing?
+  Examples: traditional wooden, hanging rope, plastic
+- slot_kite_design (kite_design): Design of a kite
+  Child prompt: Can you describe a kite shape?
+  Examples: diamond, square, heart
+- slot_kite_color (color): Color of kite
+  Child prompt: Can you name a bright color?
+  Examples: red, blue, yellow
+- slot_playground_item (playground_item): Item in playground
+  Child prompt: Can you name something you might see in a playground?
+  Examples: slide, sandbox, slide
+- slot_friend_name (friend_name): Name of a friend
+  Child prompt: Can you give a name for Emma's friend?
+  Examples: Noah, Mia, Lily
+
+Story template:
+s1: [[slot_child]] loved to play on the playground after school.
+s2: One afternoon, [[slot_child]] saw a [[slot_swing_type]] swing that wouldn't move.
+s3: The swing was stuck, and the wind could not push it.
+s4: [[slot_child]] thought, 'Maybe I can help it.'
+s5: She gently pulled the rope, but the swing still stayed still.
+s6: Then she called her friend [[slot_friend_name]] for help.
+s7: [[slot_friend_name]] laughed and said, 'Let's try together!'
+s8: They both pulled the rope, and the swing began to sway.
+s9: As the swing moved, a bright [[slot_kite_color]] [[slot_kite_design]] kite flew from the nearby tree.
+s10: Emma and [[slot_friend_name]] smiled, and the playground felt happy.

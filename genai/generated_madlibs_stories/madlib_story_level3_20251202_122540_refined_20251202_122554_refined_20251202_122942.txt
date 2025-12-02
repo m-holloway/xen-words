@@ -1,0 +1,38 @@
+Original title: Mia and the Lost Kite
+Refined title:  Mia and the Lost Kite
+Reading level:   3 (Grades 1–2)
+Target minutes:  5
+Summary (refined): A gentle story about Mia, a lost kite, and a happy friendship.
+
+Judge scores:
+- overall: 0.86
+- story_arc: 0.90
+- character_engagement: 0.80
+- emotional_warmth: 0.90
+- curiosity_hooks: 0.80
+- madlibs_usability: 0.90
+- reading_level_fit: 0.85
+
+--- Original template ---
+s1: [[slot_child]] loved to play in the park with her [[slot_toy]].
+s2: One sunny day she flew a bright [[slot_color]] kite into the sky.
+s3: The kite rose higher and then vanished behind a cloud.
+s4: [[slot_child]] felt sad and wondered where the kite went.
+s5: She asked her friend, [[slot_animal]], to help find it.
+s6: Together they looked over the grass and climbed a tall tree.
+s7: From the top they spotted the kite tangled in a pine tree.
+s8: They carefully pulled the kite down and untangled it.
+s9: [[slot_child]] thanked her friend and they shared a [[slot_snack]].
+s10: They laughed and played until the sun set, and the kite flew again.
+
+--- Refined template ---
+s1: [[slot_child]] loved to play in the park with her [[slot_toy]].
+s2: One sunny day she flew a bright [[slot_color]] kite into the sky.
+s3: The kite rose higher and then disappeared behind a fluffy cloud.
+s4: [[slot_child]] felt a little sad and wondered where the kite had gone.
+s5: She asked her friend [[slot_animal]] to help find the missing kite.
+s6: Together they searched the grass and climbed a tall pine tree.
+s7: From the top they saw the kite tangled in the branches.
+s8: They carefully pulled the kite down and untangled it with a smile.
+s9: [[slot_child]] thanked her friend and they shared a tasty [[slot_snack]].
+s10: They laughed and played until the sun set, and the kite flew again, bright and free.

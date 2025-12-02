@@ -1,0 +1,32 @@
+Title: Mia and the Kite‑Hidden Toy
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: Mia finds her missing toy with help of a friendly animal.
+
+Slots:
+- slot_toy (toy_object): A small toy the child might play with.
+  Child prompt: Can you name a toy you like to play with?
+  Examples: ball, puzzle, teddy bear
+- slot_color (color): A bright color you see in the sky.
+  Child prompt: What is a bright color you see?
+  Examples: red, blue, yellow
+- slot_animal (animal_pet): A friendly animal that might be in the park.
+  Child prompt: Can you name a friendly animal?
+  Examples: dog, rabbit, deer
+- slot_snack (snack_food): A crunchy snack you might share.
+  Child prompt: What is a crunchy snack you like?
+  Examples: crackers, carrot sticks, apple slices
+
+Story template:
+s1: Mia loved to play with [[slot_toy]] in the park.
+s2: One sunny morning, she saw her [[slot_toy]] missing on the swing.
+s3: She looked under the slide, over the sandpit, and even at the big oak tree.
+s4: Just then, a bright [[slot_color]] kite flew by and made a funny shape in the sky.
+s5: Mia thought the kite might have hidden her toy, so she followed it.
+s6: The kite landed on a hill, and a gentle [[slot_animal]] was there, munching on a crunchy [[slot_snack]].
+s7: The [[slot_animal]] looked at Mia and said, 'I found your [[slot_toy]]!'
+s8: Mia felt happy and thanked the [[slot_animal]] with a big smile.
+s9: She almost shouted, but she chose to say, 'Thank you, friend!'.
+s10: The [[slot_animal]] wagged its tail, and they both laughed.
+s11: They sat on the hill, sharing the crunchy [[slot_snack]] while watching the rainbow that formed after the rain.
+s12: Mia felt brave and ready for new adventures.

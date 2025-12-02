@@ -1,0 +1,38 @@
+Title: Playful Picnic in the Park
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child and a friendly animal share a toy, snack, and a fun game in the park.
+
+Slots:
+- slot_child (person_name): A name for the main child character.
+  Child prompt: Can you give a name for the child?
+  Examples: Lily, Max, Sam
+- slot_toy (toy_object): A toy the child likes.
+  Child prompt: Can you name a toy the child loves?
+  Examples: ball, doll, teddy bear
+- slot_animal (animal_pet): A friendly animal friend.
+  Child prompt: Can you name a friendly animal?
+  Examples: puppy, bunny, kitten
+- slot_activity (playground_activity): A playground game to play.
+  Child prompt: Can you think of a playground game?
+  Examples: tag, hide-and-seek, swing
+- slot_snack (snack_food): A snack to share.
+  Child prompt: Can you name a snack?
+  Examples: cookie, sandwich, fruit
+- slot_color (color): A color for the blanket.
+  Child prompt: Can you name a color?
+  Examples: blue, red, green
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the sunny park.
+s2: One day, a friendly [[slot_animal]] hopped up to [[slot_child]].
+s3: The [[slot_animal]] asked, 'Can we play together?'
+s4: [[slot_child]] smiled and said, 'Yes, let’s play a game of [[slot_activity]]!'
+s5: They both ran to the big swing set and started to swing high.
+s6: After swinging, they sat on the bench and shared a warm [[slot_snack]].
+s7: The [[slot_animal]] said, 'That snack tastes great! Thank you, [[slot_child]]!'
+s8: [[slot_child]] felt proud to share and to be friends.
+s9: When the sun went down, they waved goodbye and promised to meet again.
+s10: Back home, [[slot_child]] tucked the toy into a soft [[slot_color]] blanket.
+s11: They dreamed of playing [[slot_activity]] again tomorrow.
+s12: And they all lived happily, ready for new adventures.

@@ -116,14 +116,20 @@ def main() -> None:
     body = {
         "model": model,
         "messages": [
-            {"role": "system", "content": cfg["system"]},
+            {
+                "role": "system",
+                "content": cfg["system"],
+                "cache_control": {"type": "ephemeral"},
+            },
             {
                 "role": "user",
                 "content": json.dumps(cfg["user"], ensure_ascii=False),
+                "cache_control": {"type": "ephemeral"},
             },
         ],
         "temperature": 0.9,
         "max_output_tokens": 2048,
+        "usage": {"include": True},
     }
 
     headers = {
@@ -151,6 +157,11 @@ def main() -> None:
         raise SystemExit(f"OpenRouter API error {e.code}: {error_body}")
     except Exception as e:
         raise SystemExit(f"Request failed: {e}")
+
+    # Optional: show usage to inspect cached vs uncached tokens
+    usage = data.get("usage")
+    if usage:
+        print(f"Usage: {usage}")
 
     content = data["choices"][0]["message"]["content"]
     text = _strip_markdown_fences(content)

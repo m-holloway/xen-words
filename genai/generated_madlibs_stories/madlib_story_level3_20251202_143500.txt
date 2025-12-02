@@ -1,0 +1,38 @@
+Title: The Little Bell‑Bird and the Kind Visitor
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child helps a tiny, singing bird and shares a snack, learning a gentle lesson about kindness.
+
+Slots:
+- slot_child (animal_name): The name of the main child character.
+  Child prompt: Can you give a name for the child in the story?
+  Examples: Sam, Lily, Noah
+- slot_toy (toy_object): A favorite toy that the child plays with.
+  Child prompt: What is a toy the child loves?
+  Examples: plush dinosaur, soft rabbit, toy car
+- slot_color (color): The color of the bird.
+  Child prompt: What color is the bird?
+  Examples: blue, green, yellow
+- slot_snack (snack_food): A snack the child shares with the bird.
+  Child prompt: What snack does the child give?
+  Examples: apple slice, candy bar, crackers
+- slot_friend (person_name): A friend who also enjoys the bird's song.
+  Child prompt: Name a friend who likes the bird too.
+  Examples: Mia, Ethan, Olivia
+- slot_place (place_name): A place where the bird visits often.
+  Child prompt: Where does the bird visit?
+  Examples: garden, backyard, playground
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the park.
+s2: One sunny day, they saw a tiny [[slot_color]] bird perched on a high branch.
+s3: The bird sang a song that sounded like a little bell.
+s4: [[slot_child]] wondered if the bird could get down.
+s5: They tried to shout, but the bird stayed put.
+s6: [[slot_child]] almost walked away, thinking the bird would be fine.
+s7: Then they remembered the kind rule they learned at school: help a friend.
+s8: [[slot_child]] carefully climbed the tree and reached the bird.
+s9: The bird hopped onto [[slot_toy]]'s back and flew down.
+s10: [[slot_child]] shared a bite of [[slot_snack]] with the bird.
+s11: The bird chirped happily and thanked [[slot_child]] with a bright smile.
+s12: From then on, the bird visited every [[slot_place]] and sang for [[slot_child]] and [[slot_friend]].

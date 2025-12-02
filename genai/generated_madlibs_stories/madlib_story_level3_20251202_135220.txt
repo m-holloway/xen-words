@@ -1,0 +1,39 @@
+Title: Milo's Magic Kite
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A gentle story about Milo learning to ask for help and sharing joy with a puppy while flying a kite.
+
+Slots:
+- slot_toy (toy_object): A small toy that Milo can play with.
+  Child prompt: Can you name a toy you like to play with?
+  Examples: kite, balloon, toy car
+- slot_color (color): A bright color for the toy.
+  Child prompt: What is a bright color you like?
+  Examples: blue, green, pink
+- slot_place (place): A place where Milo plays.
+  Child prompt: Can you name a place you like to go to?
+  Examples: park, garden, meadow
+- slot_pet (animal_pet): A friendly animal that Milo has.
+  Child prompt: Can you name an animal you would love to be friends with?
+  Examples: puppy, bunny, kitten
+- slot_sound (sound): A soft sound the kite makes.
+  Child prompt: What is a soft sound you hear in nature?
+  Examples: whir, hum, chirp
+- slot_snack (snack_food): A snack Milo can share with his pet.
+  Child prompt: What is a snack you like to eat?
+  Examples: cookie, apple, carrot
+
+Story template:
+s1: Milo loved to play with his [[slot_toy]] in the [[slot_place]].
+s2: The [[slot_toy]] was bright [[slot_color]] and looked like a rainbow dragon.
+s3: He tried to lift it up, but the wind blew it down.
+s4: Milo felt a little sad.
+s5: He almost put the [[slot_toy]] on the ground and say goodbye.
+s6: Then he remembered his [[slot_pet]] who loved to chase butterflies.
+s7: Milo whispered, "Come on, [[slot_pet]]! Let's help me."
+s8: The [[slot_pet]] wagged its tail and jumped, catching the kite's string.
+s9: Together, they lifted the kite higher, and it sang a soft [[slot_sound]].
+s10: Milo and his [[slot_pet]] shared a [[slot_snack]] while watching the kite dance.
+s11: The kite flew over the [[slot_place]] and painted the sky with colors.
+s12: Milo felt happy and thanked his friend.
+s13: They promised to play again tomorrow.

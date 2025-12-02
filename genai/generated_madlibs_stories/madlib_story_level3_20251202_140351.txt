@@ -1,0 +1,48 @@
+Title: The Lost Toy Adventure
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child, a pet, and a friendly animal find a lost toy in a magical park.
+
+Slots:
+- slot_child (child_name): Child's name
+  Child prompt: What is the name of the child in the story?
+  Examples: Mia, Liam, Sofia
+- slot_pet (animal_pet): A friendly animal the child might have.
+  Child prompt: Name a pet you would like.
+  Examples: puppy, bunny, kitten
+- slot_toy (toy_object): A toy the child likes to play with.
+  Child prompt: What toy do you love?
+  Examples: ball, doll, car
+- slot_friend (child_name): A friend of the child.
+  Child prompt: Name a friend of the child.
+  Examples: Emma, Noah, Ava
+- slot_friendly_animal (animal_pet): A kind animal that helps.
+  Child prompt: Name a friendly animal that could help.
+  Examples: squirrel, rabbit, deer
+- slot_mysterious_object (object): A strange object in the park.
+  Child prompt: Name a strange object you might see in a park.
+  Examples: rainbow mushroom, glowing rock, giant leaf
+- slot_color (color): Color of the toy.
+  Child prompt: What color is the toy?
+  Examples: pink, blue, green
+- slot_snack (snack_food): A snack to share.
+  Child prompt: Name a snack you like to eat.
+  Examples: cookies, fruit, sandwich
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the park.
+s2: [[slot_child]] had a [[slot_pet]] that liked to nap under the big oak tree.
+s3: One sunny day, [[slot_child]] carried a bright [[slot_color]] [[slot_toy]] to the playground.
+s4: When they reached the sandbox, the [[slot_toy]] was gone.
+s5: [[slot_child]] looked left and right, but the toy was not there.
+s6: [[slot_child]] almost ran home, but decided to keep looking.
+s7: A friendly [[slot_friendly_animal]] hopped over, asking if something was missing.
+s8: [[slot_child]] told the [[slot_friendly_animal]] about the missing toy.
+s9: The [[slot_friendly_animal]] led them to a [[slot_mysterious_object]] that glowed like a rainbow.
+s10: Inside the [[slot_mysterious_object]], the [[slot_toy]] floated like a bright [[slot_color]] balloon.
+s11: [[slot_child]] thanked the [[slot_friendly_animal]] and brought the toy home.
+s12: At home, [[slot_child]] shared the toy with [[slot_friend]] and they ate a [[slot_snack]] together.
+s13: They laughed and played until the sun set.
+s14: [[slot_child]] felt happy that the toy was safe and that friends help each other.
+s15: The park looked quiet, but the trees whispered stories of the day.
+s16: [[slot_child]] promised to always look for the [[slot_toy]] before leaving home.

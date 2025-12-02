@@ -1,0 +1,221 @@
+{
+  "template": {
+    "title": "The Humming Kite Adventure",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A kind child helps a humming kite get back to its owner, sharing a snack and making a new friend.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the park.",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny day, [[slot_child]] saw a shiny [[slot_kite_color]] kite humming in the sky.",
+        "slot_ids": [
+          "slot_child",
+          "slot_kite_color"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The kite was stuck high in a tall tree, and it made a gentle [[slot_musical_sound]].",
+        "slot_ids": [
+          "slot_musical_sound"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] wondered who the kite belonged to.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "The [[slot_pet]] hopped beside [[slot_child]] and gave a friendly bark.",
+        "slot_ids": [
+          "slot_pet",
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "At first, [[slot_child]] thought maybe the kite would just fall down soon.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "But then [[slot_child]] remembered the kind voice of the kite, and decided to help.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "[[slot_child]] climbed the [[slot_activity]] slowly, holding onto the branches.",
+        "slot_ids": [
+          "slot_child",
+          "slot_activity"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "When [[slot_child]] reached the kite, it was warm and friendly.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "With a gentle pull, [[slot_child]] brought the kite down to the ground.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "The kite's owner, [[slot_owner_name]], ran over and thanked [[slot_child]] with a big smile.",
+        "slot_ids": [
+          "slot_owner_name",
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "To celebrate, the kite sang a bright [[slot_musical_sound]] that sounded like a xylophone.",
+        "slot_ids": [
+          "slot_musical_sound"
+        ]
+      },
+      {
+        "id": "s13",
+        "text_with_blanks": "[[slot_child]] and [[slot_pet]] shared a [[slot_snack]] under the tree.",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet",
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s14",
+        "text_with_blanks": "They watched the kite flutter like a rainbow feather in the wind.",
+        "slot_ids": []
+      },
+      {
+        "id": "s15",
+        "text_with_blanks": "The day ended with laughter and a new friendship.",
+        "slot_ids": []
+      },
+      {
+        "id": "s16",
+        "text_with_blanks": "And [[slot_child]] promised to visit the park again soon.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "The name of the main character.",
+        "child_prompt": "Can you give a name for the child who loves to play?",
+        "examples": [
+          "Lily",
+          "Sam",
+          "Mia"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A toy the child enjoys playing with.",
+        "child_prompt": "What toy does the child like to play with?",
+        "examples": [
+          "paper kite",
+          "soft doll",
+          "toy car"
+        ]
+      },
+      {
+        "id": "slot_kite_color",
+        "type": "color",
+        "author_description": "The color of the kite.",
+        "child_prompt": "What color is the kite?",
+        "examples": [
+          "red",
+          "blue",
+          "green"
+        ]
+      },
+      {
+        "id": "slot_musical_sound",
+        "type": "sound",
+        "author_description": "A musical sound the kite makes.",
+        "child_prompt": "What sound does the kite make?",
+        "examples": [
+          "twinkle",
+          "hum",
+          "chirp"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A snack the child shares.",
+        "child_prompt": "What snack does the child share?",
+        "examples": [
+          "banana",
+          "cookie",
+          "candy"
+        ]
+      },
+      {
+        "id": "slot_activity",
+        "type": "playground_activity",
+        "author_description": "An activity the child does in the playground.",
+        "child_prompt": "What playground activity does the child do?",
+        "examples": [
+          "slide",
+          "swing",
+          "climb"
+        ]
+      },
+      {
+        "id": "slot_owner_name",
+        "type": "person_name",
+        "author_description": "The name of the kite's owner.",
+        "child_prompt": "What is the kite's owner's name?",
+        "examples": [
+          "Emma",
+          "Noah",
+          "Olivia"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "A cozy or friendly animal the child might like.",
+        "child_prompt": "Can you name an animal you would love to be friends with?",
+        "examples": [
+          "puppy",
+          "bunny",
+          "kitten"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G3_patterns_menu_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "title": "Milo's Missing Balloon",
+  "reading_level": 3,
+  "reading_band": "Grades 1–2",
+  "target_minutes": 5,
+  "summary": "A gentle story about Milo, a missing balloon, and friends helping to find it.",
+  "sentences": [
+    {
+      "id": "s1",
+      "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the [[slot_place]].",
+      "slot_ids": [
+        "slot_child",
+        "slot_toy",
+        "slot_place"
+      ]
+    },
+    {
+      "id": "s2",
+      "text_with_blanks": "One day, the [[slot_toy]] floated away.",
+      "slot_ids": [
+        "slot_toy"
+      ]
+    },
+    {
+      "id": "s3",
+      "text_with_blanks": "[[slot_child]] felt sad and looked around.",
+      "slot_ids": [
+        "slot_child"
+      ]
+    },
+    {
+      "id": "s4",
+      "text_with_blanks": "He called his friend [[slot_friend]] for help.",
+      "slot_ids": [
+        "slot_friend"
+      ]
+    },
+    {
+      "id": "s5",
+      "text_with_blanks": "They decided to play [[slot_activity]] to find the balloon.",
+      "slot_ids": [
+        "slot_activity"
+      ]
+    },
+    {
+      "id": "s6",
+      "text_with_blanks": "While searching, they found a shiny [[slot_color]] [[slot_toy]] under a tree.",
+      "slot_ids": [
+        "slot_color",
+        "slot_toy"
+      ]
+    },
+    {
+      "id": "s7",
+      "text_with_blanks": "[[slot_child]] was happy and thanked [[slot_friend]].",
+      "slot_ids": [
+        "slot_child",
+        "slot_friend"
+      ]
+    },
+    {
+      "id": "s8",
+      "text_with_blanks": "They shared a tasty [[slot_snack]] and sang a song.",
+      "slot_ids": [
+        "slot_snack"
+      ]
+    },
+    {
+      "id": "s9",
+      "text_with_blanks": "They sang the [[slot_song]] together.",
+      "slot_ids": [
+        "slot_song"
+      ]
+    },
+    {
+      "id": "s10",
+      "text_with_blanks": "[[slot_child]] learned that friends help find lost toys.",
+      "slot_ids": [
+        "slot_child"
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "id": "slot_child",
+      "type": "child_name",
+      "author_description": "A name for the main child character.",
+      "child_prompt": "Can you name a child who might be in the story?",
+      "examples": [
+        "Milo",
+        "Emma",
+        "Tommy"
+      ]
+    },
+    {
+      "id": "slot_toy",
+      "type": "toy_object",
+      "author_description": "A toy that the child loves.",
+      "child_prompt": "Can you name a toy you like to play with?",
+      "examples": [
+        "balloon",
+        "doll",
+        "teddy bear"
+      ]
+    },
+    {
+      "id": "slot_color",
+      "type": "color",
+      "author_description": "Color of the balloon.",
+      "child_prompt": "What is a bright color?",
+      "examples": [
+        "red",
+        "blue",
+        "yellow"
+      ]
+    },
+    {
+      "id": "slot_place",
+      "type": "place_name",
+      "author_description": "A place where the play happens.",
+      "child_prompt": "Can you name a place where kids play?",
+      "examples": [
+        "park",
+        "garden",
+        "playground"
+      ]
+    },
+    {
+      "id": "slot_friend",
+      "type": "friend_name",
+      "author_description": "A friend who helps.",
+      "child_prompt": "Can you name a friend?",
+      "examples": [
+        "Lily",
+        "Sam",
+        "Olivia"
+      ]
+    },
+    {
+      "id": "slot_activity",
+      "type": "playground_activity",
+      "author_description": "An activity they do to find the balloon.",
+      "child_prompt": "Can you name a game kids play?",
+      "examples": [
+        "hide-and-seek",
+        "tag",
+        "ring toss"
+      ]
+    },
+    {
+      "id": "slot_snack",
+      "type": "snack_food",
+      "author_description": "A tasty food they share.",
+      "child_prompt": "What is a snack you like?",
+      "examples": [
+        "cookies",
+        "fruit",
+        "granola bar"
+      ]
+    },
+    {
+      "id": "slot_song",
+      "type": "song_name",
+      "author_description": "A song they sing together.",
+      "child_prompt": "Can you name a kids' song?",
+      "examples": [
+        "Twinkle Twinkle",
+        "Old McDonald",
+        "The Wheels on the Bus"
+      ]
+    }
+  ]
+}

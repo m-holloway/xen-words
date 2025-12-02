@@ -1,0 +1,201 @@
+{
+  "template": {
+    "title": "The Music of Kindness",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A kind child helps a lost pet find its blanket and they all share a snack.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the park.",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One bright day, [[slot_toy]] sang a soft tune that made the trees sway.",
+        "slot_ids": [
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "As they walked, they saw a [[slot_pet]] with sad eyes.",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "The [[slot_pet]] was looking for its favorite blanket, a bright [[slot_blanket]].",
+        "slot_ids": [
+          "slot_pet",
+          "slot_blanket"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "[[slot_child]] felt sorry and wanted to help.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "First, [[slot_child]] asked a friendly [[slot_insect]] for clues.",
+        "slot_ids": [
+          "slot_child",
+          "slot_insect"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "The [[slot_insect]] pointed to a hill where the blanket might be.",
+        "slot_ids": [
+          "slot_insect"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "[[slot_child]] almost ran to the hill, but remembered the [[slot_pet]]'s lonely heart.",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "Instead, [[slot_child]] stayed and sang with [[slot_toy]], hoping to cheer the [[slot_pet]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "The music grew louder, and the [[slot_blanket]] floated down like a tiny rainbow.",
+        "slot_ids": [
+          "slot_blanket"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "[[slot_child]] picked up the blanket and gave it to the [[slot_pet]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "The [[slot_pet]] wagged its tail, and its eyes sparkled like stars.",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s13",
+        "text_with_blanks": "[[slot_toy]] sang a happy note, and the park smelled of fresh daisies.",
+        "slot_ids": [
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s14",
+        "text_with_blanks": "Together, they shared a tasty [[slot_snack]] under the big oak tree.",
+        "slot_ids": [
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s15",
+        "text_with_blanks": "[[slot_child]] felt warm inside, knowing kindness makes friends.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s16",
+        "text_with_blanks": "The day ended with a gentle breeze and the sound of laughter.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "A name for the main child character",
+        "child_prompt": "What is your favorite name for a child?",
+        "examples": [
+          "Mia",
+          "Liam",
+          "Sofia"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A toy that makes music",
+        "child_prompt": "What is a toy that makes music?",
+        "examples": [
+          "musical doll",
+          "singing kite",
+          "talking toy"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "A friendly animal",
+        "child_prompt": "What is a friendly animal you like?",
+        "examples": [
+          "puppy",
+          "bunny",
+          "kitten"
+        ]
+      },
+      {
+        "id": "slot_blanket",
+        "type": "color",
+        "author_description": "Color of the blanket",
+        "child_prompt": "What is a bright color?",
+        "examples": [
+          "red",
+          "blue",
+          "yellow"
+        ]
+      },
+      {
+        "id": "slot_insect",
+        "type": "insect",
+        "author_description": "A helpful insect",
+        "child_prompt": "What is an insect that could help?",
+        "examples": [
+          "ladybug",
+          "butterfly",
+          "beetle"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A tasty snack",
+        "child_prompt": "What is a snack you like?",
+        "examples": [
+          "cookies",
+          "fruit",
+          "pretzel"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G3_patterns_menu_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

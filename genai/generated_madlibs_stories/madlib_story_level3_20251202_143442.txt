@@ -1,0 +1,45 @@
+Title: The Kite That Learned to Sing
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child, a pet, and a bright kite find a gentle way to solve a small problem and celebrate together.
+
+Slots:
+- slot_child (child_name): The name of the main child character.
+  Child prompt: What is your favorite name for a child?
+  Examples: Mia, Leo, Sam
+- slot_pet (animal_pet): A cozy or friendly animal the child might like.
+  Child prompt: Can you name an animal you would love to be friends with?
+  Examples: bunny, puppy, kitten
+- slot_toy (toy_object): A small toy that can be played with outdoors.
+  Child prompt: Name a toy you like to play with in the park.
+  Examples: kite, ball, spinning top
+- slot_place (place_name): A place where the child can play.
+  Child prompt: Where do you like to play?
+  Examples: backyard, park, garden
+- slot_color (color): A bright color for the toy.
+  Child prompt: What is a bright color you like?
+  Examples: red, blue, yellow
+- slot_weather (weather_condition): The weather in the story.
+  Child prompt: What is the weather like today?
+  Examples: sunny, cloudy, windy
+- slot_snack (snack_food): A snack the child can share.
+  Child prompt: What is a snack you like to eat after playing?
+  Examples: apple, banana, candy
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_pet]] and a [[slot_toy]] in the [[slot_place]].
+s2: The [[slot_toy]] was bright [[slot_color]] and danced in the [[slot_weather]] sky.
+s3: One day, the kite got stuck high in a tall tree.
+s4: [[slot_child]] looked up and felt a little sad.
+s5: [[slot_child]] thought about climbing the tree, but then remembered that [[slot_pet]] liked to hop.
+s6: Instead of climbing, [[slot_child]] sang a gentle song to the kite.
+s7: The kite twitched and, with a soft sigh, fell back to the ground.
+s8: [[slot_child]] and [[slot_pet]] cheered and shared a [[slot_snack]].
+s9: [[slot_child]] felt happy when the kite flew again.
+s10: They played hop and chase with the kite for a long time.
+s11: When the sun began to set, [[slot_child]] tucked the kite into a basket.
+s12: [[slot_child]] said, “We’ll fly again tomorrow.”
+s13: The backyard looked peaceful, and [[slot_child]] felt calm.
+s14: [[slot_child]] thanked the wind for the gentle breeze.
+s15: They all went home, dreaming of bright colors.
+s16: The next day, the kite was ready for another adventure.

@@ -1,0 +1,36 @@
+Title: Mia and the Little Bird
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: Mia sees a tiny bird with a broken wing, thinks about how to help, and learns kindness through gentle action.
+
+Slots:
+- slot_toy (toy_object): A toy you like to play with
+  Child prompt: Can you name a toy you like?
+  Examples: ball, doll, block
+- slot_place (place_name): A place you go to play
+  Child prompt: Can you name a place you like to play at?
+  Examples: park, garden, beach
+- slot_color (color): A bright color
+  Child prompt: Can you name a bright color?
+  Examples: pink, blue, yellow
+- slot_friend (animal_pet): A friendly animal friend
+  Child prompt: Can you name a friendly animal you like?
+  Examples: puppy, bunny, kitten
+- slot_snack (snack_food): A favorite snack
+  Child prompt: Can you name a snack you like?
+  Examples: apple, granola bar, pretzel
+- slot_sound (sound): A pleasant sound
+  Child prompt: Can you name a sound you like?
+  Examples: chirp, rumble, whistle
+
+Story template:
+s1: Mia loved to play with [[slot_toy]] on [[slot_place]].
+s2: One day, she saw a tiny bird drooping its wing.
+s3: The bird's wing was as soft as a [[slot_color]] feather.
+s4: Mia felt sad and wanted to help.
+s5: She thought about [[slot_friend]] might know what to do.
+s6: She almost tossed the bird onto the ground, but then remembered the story about kindness.
+s7: Instead, she tucked the bird into a small blanket and whispered, 'Take care.'
+s8: The next day, Mia brought [[slot_snack]] and shared it with the bird.
+s9: The bird sang a bright [[slot_sound]] that made Mia smile.
+s10: Soon the bird fluttered its wings and flew away, leaving a trail of glittering [[slot_color]] sparkles.

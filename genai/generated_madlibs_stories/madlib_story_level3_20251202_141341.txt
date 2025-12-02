@@ -1,0 +1,44 @@
+Title: The Singing Kite Adventure
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child and a sweet pet find a humming kite and learn to share a snack together.
+
+Slots:
+- slot_child (child_name): A name for the main child character.
+  Child prompt: Can you give a name for the child who will be the main character?
+  Examples: Mia, Leo, Sofia
+- slot_pet (animal_pet): A cozy or friendly animal the child might like.
+  Child prompt: Can you name an animal you would love to be friends with?
+  Examples: bunny, puppy, kitten
+- slot_toy (toy_object): A small toy that the child loves to play with.
+  Child prompt: Can you name a small toy that you like to play with?
+  Examples: plush dinosaur, toy car, balloon
+- slot_place (place_name): A place where the child plays.
+  Child prompt: Can you name a place where you like to play?
+  Examples: park, garden, backyard
+- slot_color (color): A bright color for the kite.
+  Child prompt: Can you name a bright color?
+  Examples: red, orange, yellow
+- slot_light_color (color): A warm color for the kite's glow.
+  Child prompt: Can you name a warm color?
+  Examples: gold, amber, warm white
+- slot_activity (playground_activity): An activity the child can do in the park.
+  Child prompt: Can you name an activity you like to do in the park?
+  Examples: swing, slide, hike
+- slot_snack (snack_food): A snack the child can eat.
+  Child prompt: Can you name a snack you like?
+  Examples: apple slices, candy, cheese sticks
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the [[slot_place]].
+s2: Their best friend, a soft [[slot_pet]], hopped beside them.
+s3: One sunny day, they found a bright [[slot_color]] kite fluttering.
+s4: The kite sang a gentle hum when [[slot_child]] laughed.
+s5: The hum made the kite glow a warm [[slot_light_color]].
+s6: But the kite was a little too big for the [[slot_child]]'s hands.
+s7: First, [[slot_child]] thought to toss the kite away.
+s8: Then they remembered that [[slot_pet]] liked to chase bright things.
+s9: So [[slot_child]] gently tied the kite to their backpack and walked to the [[slot_activity]].
+s10: The kite pulsed, humming a happy tune as they rode.
+s11: At the end of the ride, [[slot_child]] took a bite of [[slot_snack]] and shared it with [[slot_pet]].
+s12: Both smiled, and the kite sang a soft lullaby.

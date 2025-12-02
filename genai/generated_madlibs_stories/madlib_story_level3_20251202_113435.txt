@@ -1,0 +1,36 @@
+Title: The Lost Ball Adventure
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A friendly child and their pet find a lost ball with a gentle problem helped by a helpful friend.
+
+Slots:
+- slot_name (child_name): The main character's name
+  Child prompt: What is your name?
+  Examples: Sam, Lily, Mia
+- slot_pet (animal_pet): A cozy or friendly animal the child might like
+  Child prompt: Can you name a pet you would love to be friends with?
+  Examples: puppy, bunny, kitten
+- slot_toy (toy): A favorite toy the child plays with
+  Child prompt: What is your favorite toy?
+  Examples: ball, teddy bear, doll
+- slot_item (object): An item that gets lost
+  Child prompt: What is something you might lose?
+  Examples: cup, shoe, hat
+- slot_friend (friend): A friendly companion
+  Child prompt: What is the name of a friend you like to play with?
+  Examples: Tommy, Anna, Josh
+- slot_place (place): A place where the adventure happens
+  Child prompt: Where do you like to play?
+  Examples: park, garden, beach
+
+Story template:
+s1: [[slot_name]] loved to play with [[slot_toy]] in the [[slot_place]].
+s2: One sunny day, [[slot_pet]] barked happily as they chased the [[slot_toy]].
+s3: Suddenly, the [[slot_toy]] slipped from [[slot_name]]'s hands and rolled away.
+s4: [[slot_name]] looked around and saw the [[slot_toy]] missing.
+s5: They asked [[slot_friend]] if they saw it.
+s6: [[slot_friend]] said, "I saw it under the big tree!"
+s7: Together they ran to the tree and found the [[slot_toy]] resting on a leaf.
+s8: [[slot_name]] was happy and thanked [[slot_friend]] and [[slot_pet]] for helping.
+s9: They all played again, this time keeping the [[slot_toy]] close.
+s10: At the end of the day, they curled up on the grass and dreamed of new adventures.

@@ -1,0 +1,43 @@
+Title: The Rainbow Kite Rescue
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A kind child helps rescue a kite from a tree and shares it with a friend, learning about caring and sharing.
+
+Slots:
+- slot_child (person_name): The name of the child protagonist.
+  Child prompt: Can you tell me the name of the child in the story?
+  Examples: Mia, Liam, Sofia
+- slot_pet (animal_pet): A cozy or friendly animal that the child might like.
+  Child prompt: Can you name an animal you would love to be friends with?
+  Examples: puppy, bunny, kitten
+- slot_toy (toy_object): A favorite toy of the child.
+  Child prompt: What is your favorite toy?
+  Examples: balloon, train, doll
+- slot_kite (color): The color of the kite.
+  Child prompt: What color is the kite?
+  Examples: purple, red, blue
+- slot_neighbor (person_name): The name of a kind neighbor who helps.
+  Child prompt: Can you give a name for the helpful neighbor?
+  Examples: Mrs. Lee, Mr. Patel, Sam
+- slot_friend (person_name): A name of the child's friend who will share the kite with.
+  Child prompt: What is the name of the child’s friend?
+  Examples: Noah, Ava, Ethan
+- slot_snack (snack_food): A snack that the child enjoys.
+  Child prompt: What snack does the child like?
+  Examples: apple slices, cereal, cookies
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the park.
+s2: She had a fluffy [[slot_pet]] that followed her everywhere.
+s3: One sunny day, she saw a bright [[slot_kite]] kite stuck high in a tree.
+s4: The kite looked like a rainbow balloon, glinting in the wind.
+s5: She wanted to climb the tree to get it down, but the ladder was too high.
+s6: She thought about climbing, but then remembered the kind neighbor, [[slot_neighbor]].
+s7: She ran to the neighbor and said, "Please help me get the kite!"
+s8: [[slot_neighbor]] smiled and gave her a sturdy ladder.
+s9: She climbed carefully, grabbed the kite, and lowered it to the ground.
+s10: The kite flapped happily, and the wind sang a gentle tune.
+s11: She invited her friend, [[slot_friend]], to play with the kite.
+s12: They ran, laughed, and the kite danced like a happy bird in the sky.
+s13: After a while, they sat on the grass and ate [[slot_snack]] while watching the kite.
+s14: The kite stayed in the sky, and the friends felt warm and bright inside.

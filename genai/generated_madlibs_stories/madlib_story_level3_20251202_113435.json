@@ -1,0 +1,152 @@
+{
+  "title": "The Lost Ball Adventure",
+  "reading_level": 3,
+  "reading_band": "Grades 1–2",
+  "target_minutes": 5,
+  "summary": "A friendly child and their pet find a lost ball with a gentle problem helped by a helpful friend.",
+  "sentences": [
+    {
+      "id": "s1",
+      "text_with_blanks": "[[slot_name]] loved to play with [[slot_toy]] in the [[slot_place]].",
+      "slot_ids": [
+        "slot_name",
+        "slot_toy",
+        "slot_place"
+      ]
+    },
+    {
+      "id": "s2",
+      "text_with_blanks": "One sunny day, [[slot_pet]] barked happily as they chased the [[slot_toy]].",
+      "slot_ids": [
+        "slot_pet",
+        "slot_toy"
+      ]
+    },
+    {
+      "id": "s3",
+      "text_with_blanks": "Suddenly, the [[slot_toy]] slipped from [[slot_name]]'s hands and rolled away.",
+      "slot_ids": [
+        "slot_toy",
+        "slot_name"
+      ]
+    },
+    {
+      "id": "s4",
+      "text_with_blanks": "[[slot_name]] looked around and saw the [[slot_toy]] missing.",
+      "slot_ids": [
+        "slot_name",
+        "slot_toy"
+      ]
+    },
+    {
+      "id": "s5",
+      "text_with_blanks": "They asked [[slot_friend]] if they saw it.",
+      "slot_ids": [
+        "slot_friend"
+      ]
+    },
+    {
+      "id": "s6",
+      "text_with_blanks": "[[slot_friend]] said, \"I saw it under the big tree!\"",
+      "slot_ids": [
+        "slot_friend"
+      ]
+    },
+    {
+      "id": "s7",
+      "text_with_blanks": "Together they ran to the tree and found the [[slot_toy]] resting on a leaf.",
+      "slot_ids": [
+        "slot_toy"
+      ]
+    },
+    {
+      "id": "s8",
+      "text_with_blanks": "[[slot_name]] was happy and thanked [[slot_friend]] and [[slot_pet]] for helping.",
+      "slot_ids": [
+        "slot_name",
+        "slot_friend",
+        "slot_pet"
+      ]
+    },
+    {
+      "id": "s9",
+      "text_with_blanks": "They all played again, this time keeping the [[slot_toy]] close.",
+      "slot_ids": [
+        "slot_toy"
+      ]
+    },
+    {
+      "id": "s10",
+      "text_with_blanks": "At the end of the day, they curled up on the grass and dreamed of new adventures.",
+      "slot_ids": []
+    }
+  ],
+  "slots": [
+    {
+      "id": "slot_name",
+      "type": "child_name",
+      "author_description": "The main character's name",
+      "child_prompt": "What is your name?",
+      "examples": [
+        "Sam",
+        "Lily",
+        "Mia"
+      ]
+    },
+    {
+      "id": "slot_pet",
+      "type": "animal_pet",
+      "author_description": "A cozy or friendly animal the child might like",
+      "child_prompt": "Can you name a pet you would love to be friends with?",
+      "examples": [
+        "puppy",
+        "bunny",
+        "kitten"
+      ]
+    },
+    {
+      "id": "slot_toy",
+      "type": "toy",
+      "author_description": "A favorite toy the child plays with",
+      "child_prompt": "What is your favorite toy?",
+      "examples": [
+        "ball",
+        "teddy bear",
+        "doll"
+      ]
+    },
+    {
+      "id": "slot_item",
+      "type": "object",
+      "author_description": "An item that gets lost",
+      "child_prompt": "What is something you might lose?",
+      "examples": [
+        "cup",
+        "shoe",
+        "hat"
+      ]
+    },
+    {
+      "id": "slot_friend",
+      "type": "friend",
+      "author_description": "A friendly companion",
+      "child_prompt": "What is the name of a friend you like to play with?",
+      "examples": [
+        "Tommy",
+        "Anna",
+        "Josh"
+      ]
+    },
+    {
+      "id": "slot_place",
+      "type": "place",
+      "author_description": "A place where the adventure happens",
+      "child_prompt": "Where do you like to play?",
+      "examples": [
+        "park",
+        "garden",
+        "beach"
+      ]
+    }
+  ]
+}

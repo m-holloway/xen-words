@@ -1,0 +1,36 @@
+Title: A Playful Day in the Park
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child meets a sad dog, shares a toy, and they become friends in the park.
+
+Slots:
+- slot_child (person_name): Name of the child protagonist.
+  Child prompt: What is your name?
+  Examples: Emma, Liam, Mia
+- slot_toy (toy_object): A toy the child enjoys playing with.
+  Child prompt: Can you name a toy you love?
+  Examples: ball, doll, kite
+- slot_pet (animal_pet): A small animal the child might meet.
+  Child prompt: What is a small animal you like?
+  Examples: dog, cat, bunny
+- slot_color (color): A bright color to describe the sky.
+  Child prompt: What is a bright color you see?
+  Examples: blue, yellow, pink
+- slot_snack (snack_food): A tasty snack the child can share.
+  Child prompt: What is a snack you like?
+  Examples: apple, cookie, sandwich
+- slot_activity (playground_activity): An activity the animal can do.
+  Child prompt: What is a fun activity you do in the park?
+  Examples: run, climb, slide
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the park.
+s2: One sunny day, the park was full of [[slot_color]] clouds.
+s3: While [[slot_child]] was playing, a small [[slot_pet]] walked up.
+s4: The [[slot_pet]] looked sad and did not have a friend to play with.
+s5: [[slot_child]] felt kind and wanted to help the [[slot_pet]].
+s6: [[slot_child]] offered the [[slot_toy]] and said, “Let’s play together!”
+s7: The [[slot_pet]] wagged its tail and started to [[slot_activity]].
+s8: Together they ran, jumped, and laughed under the bright sky.
+s9: After a while, [[slot_child]] took a bite of [[slot_snack]] and shared it with the [[slot_pet]].
+s10: The park felt happy, and [[slot_child]] and the [[slot_pet]] became best friends.

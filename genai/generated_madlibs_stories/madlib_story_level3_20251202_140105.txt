@@ -1,0 +1,38 @@
+Title: The Kind Stick Adventure
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A kind child helps a stuck bird in the park using a stick and shares a snack.
+
+Slots:
+- slot_child (child_name): The name of the main child character.
+  Child prompt: What is your name?
+  Examples: Sam, Lily, Max
+- slot_toy (toy_object): A toy the child loves to play with.
+  Child prompt: What is your favorite toy?
+  Examples: teddy bear, rubber duck, play dinosaur
+- slot_animal (animal_small): A small animal that appears in the story.
+  Child prompt: Name a small animal you like.
+  Examples: bird, squirrel, frog
+- slot_tool (tool): A tool the child can use.
+  Child prompt: What is a long tool you might find?
+  Examples: stick, rope, ladder
+- slot_color (color): A color used to describe the bird's song.
+  Child prompt: Name a color you see often.
+  Examples: blue, green, red
+- slot_snack (snack_food): A snack the child shares.
+  Child prompt: What is a snack you like?
+  Examples: cookie, apple, sandwich
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the park.
+s2: One sunny day, a tiny [[slot_animal]] fluttered down from a tree.
+s3: The bird was stuck in a high branch and could not fall.
+s4: [[slot_child]] wanted to climb the tree to help.
+s5: But the tree was tall, and the climb looked scary.
+s6: [[slot_child]] thought of a long [[slot_tool]] that could reach the bird.
+s7: He used the stick to gently tap the branch.
+s8: The bird sang a bright [[slot_color]] song that sounded like a tiny rainbow.
+s9: [[slot_child]] smiled and waved the stick.
+s10: The bird hopped down, happy and safe.
+s11: [[slot_child]] then shared a [[slot_snack]] with the bird.
+s12: The bird thanked [[slot_child]] with a sweet chirp, and they played together for a while.

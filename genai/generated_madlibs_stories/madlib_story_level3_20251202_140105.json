@@ -1,0 +1,163 @@
+{
+  "template": {
+    "title": "The Kind Stick Adventure",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A kind child helps a stuck bird in the park using a stick and shares a snack.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the park.",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny day, a tiny [[slot_animal]] fluttered down from a tree.",
+        "slot_ids": [
+          "slot_animal"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The bird was stuck in a high branch and could not fall.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] wanted to climb the tree to help.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "But the tree was tall, and the climb looked scary.",
+        "slot_ids": []
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "[[slot_child]] thought of a long [[slot_tool]] that could reach the bird.",
+        "slot_ids": [
+          "slot_child",
+          "slot_tool"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "He used the stick to gently tap the branch.",
+        "slot_ids": []
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "The bird sang a bright [[slot_color]] song that sounded like a tiny rainbow.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "[[slot_child]] smiled and waved the stick.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "The bird hopped down, happy and safe.",
+        "slot_ids": []
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "[[slot_child]] then shared a [[slot_snack]] with the bird.",
+        "slot_ids": [
+          "slot_child",
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "The bird thanked [[slot_child]] with a sweet chirp, and they played together for a while.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "The name of the main child character.",
+        "child_prompt": "What is your name?",
+        "examples": [
+          "Sam",
+          "Lily",
+          "Max"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A toy the child loves to play with.",
+        "child_prompt": "What is your favorite toy?",
+        "examples": [
+          "teddy bear",
+          "rubber duck",
+          "play dinosaur"
+        ]
+      },
+      {
+        "id": "slot_animal",
+        "type": "animal_small",
+        "author_description": "A small animal that appears in the story.",
+        "child_prompt": "Name a small animal you like.",
+        "examples": [
+          "bird",
+          "squirrel",
+          "frog"
+        ]
+      },
+      {
+        "id": "slot_tool",
+        "type": "tool",
+        "author_description": "A tool the child can use.",
+        "child_prompt": "What is a long tool you might find?",
+        "examples": [
+          "stick",
+          "rope",
+          "ladder"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A color used to describe the bird's song.",
+        "child_prompt": "Name a color you see often.",
+        "examples": [
+          "blue",
+          "green",
+          "red"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A snack the child shares.",
+        "child_prompt": "What is a snack you like?",
+        "examples": [
+          "cookie",
+          "apple",
+          "sandwich"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G1_novel_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

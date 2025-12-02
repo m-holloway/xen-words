@@ -1,0 +1,35 @@
+Model: google/gemini-2.5-flash (source=STORY_BUILDER_BY_SENTENCE_MODEL)
+Created at: 2025-12-02T07:47:04.330379
+
+1. Sue loved
+2. learning new things, especially about the tiny creatures in the grass.
+3. One sunny morning, she saw something sparkly wiggling in the green blades.
+4. It was a tiny, glowing beetle, no bigger than her thumb!
+5. Sue watched it carefully, her eyes wide with surprise and wonder.
+
+
+=== Turn log ===
+
+Step 2, action=choose_model_sentence
+  candidates:
+    1) to explore the big, green garden behind her house.
+    2) learning new things, especially about the tiny creatures in the grass.
+  chosen: learning new things, especially about the tiny creatures in the grass.
+
+Step 3, action=choose_model_sentence
+  candidates:
+    1) One sunny morning, she saw something sparkly wiggling in the green blades.
+    2) She often watched little ladybugs climb up tall stems.
+  chosen: One sunny morning, she saw something sparkly wiggling in the green blades.
+
+Step 4, action=choose_model_sentence
+  candidates:
+    1) It was a tiny, glowing beetle, no bigger than her thumb!
+    2) It zipped through the air with a soft, bright hum.
+  chosen: It was a tiny, glowing beetle, no bigger than her thumb!
+
+Step 5, action=choose_model_sentence
+  candidates:
+    1) The little beetle shimmered with all the colors of the rainbow, like a tiny jewel.
+    2) Sue watched it carefully, her eyes wide with surprise and wonder.
+  chosen: Sue watched it carefully, her eyes wide with surprise and wonder.

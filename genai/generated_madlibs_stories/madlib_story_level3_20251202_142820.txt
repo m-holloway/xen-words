@@ -1,0 +1,41 @@
+Title: The Kite That Loved a Ribbon
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child helps a stuck kite with the help of a pet and a friendly animal, learning kindness and courage.
+
+Slots:
+- slot_child (child_name): Name of the child
+  Child prompt: What is your name?
+  Examples: Mia, Noah, Luna
+- slot_toy (toy_object): Toy the child plays with
+  Child prompt: What toy would you love to play with?
+  Examples: kite, ball, doll
+- slot_place (place_name): Place where the child plays
+  Child prompt: Where do you like to play?
+  Examples: park, garden, beach
+- slot_pet (animal_pet): Pet that helps the child
+  Child prompt: What pet would you like to have?
+  Examples: bunny, dog, cat
+- slot_snack (snack_food): Snack that makes the child brave
+  Child prompt: What snack makes you feel brave?
+  Examples: candy apple, banana, cookie
+- slot_friend (animal_friend): Friendly animal that helps
+  Child prompt: What friendly animal would help?
+  Examples: turtle, bird, elephant
+- slot_color (color): Color of the kite ribbon
+  Child prompt: What color would you choose for the ribbon?
+  Examples: bright blue, emerald green, crimson red
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the [[slot_place]].
+s2: One sunny day, the kite got stuck high in a tree.
+s3: [[slot_child]] looked up and felt a little sad.
+s4: [[slot_pet]] hopped over and said, "I can help!"
+s5: Together they tried to climb, but the branch was too high.
+s6: [[slot_child]] thought about climbing alone, but then remembered the [[slot_snack]] on the bench.
+s7: The snack was sweet, and it made [[slot_child]] feel brave.
+s8: [[slot_child]] and [[slot_pet]] sang a gentle song to the kite.
+s9: The song made the kite wobble, and a friendly [[slot_friend]] fluttered down.
+s10: The [[slot_friend]] lifted the kite down with its tiny feet.
+s11: [[slot_child]] thanked the [[slot_friend]] and gave the kite a new [[slot_color]] ribbon.
+s12: The kite flew happily, and [[slot_child]] felt warm inside.

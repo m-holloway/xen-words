@@ -1,0 +1,48 @@
+Title: The Humming Kite Adventure
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A kind child helps a humming kite get back to its owner, sharing a snack and making a new friend.
+
+Slots:
+- slot_child (child_name): The name of the main character.
+  Child prompt: Can you give a name for the child who loves to play?
+  Examples: Lily, Sam, Mia
+- slot_toy (toy_object): A toy the child enjoys playing with.
+  Child prompt: What toy does the child like to play with?
+  Examples: paper kite, soft doll, toy car
+- slot_kite_color (color): The color of the kite.
+  Child prompt: What color is the kite?
+  Examples: red, blue, green
+- slot_musical_sound (sound): A musical sound the kite makes.
+  Child prompt: What sound does the kite make?
+  Examples: twinkle, hum, chirp
+- slot_snack (snack_food): A snack the child shares.
+  Child prompt: What snack does the child share?
+  Examples: banana, cookie, candy
+- slot_activity (playground_activity): An activity the child does in the playground.
+  Child prompt: What playground activity does the child do?
+  Examples: slide, swing, climb
+- slot_owner_name (person_name): The name of the kite's owner.
+  Child prompt: What is the kite's owner's name?
+  Examples: Emma, Noah, Olivia
+- slot_pet (animal_pet): A cozy or friendly animal the child might like.
+  Child prompt: Can you name an animal you would love to be friends with?
+  Examples: puppy, bunny, kitten
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the park.
+s2: One sunny day, [[slot_child]] saw a shiny [[slot_kite_color]] kite humming in the sky.
+s3: The kite was stuck high in a tall tree, and it made a gentle [[slot_musical_sound]].
+s4: [[slot_child]] wondered who the kite belonged to.
+s5: The [[slot_pet]] hopped beside [[slot_child]] and gave a friendly bark.
+s6: At first, [[slot_child]] thought maybe the kite would just fall down soon.
+s7: But then [[slot_child]] remembered the kind voice of the kite, and decided to help.
+s8: [[slot_child]] climbed the [[slot_activity]] slowly, holding onto the branches.
+s9: When [[slot_child]] reached the kite, it was warm and friendly.
+s10: With a gentle pull, [[slot_child]] brought the kite down to the ground.
+s11: The kite's owner, [[slot_owner_name]], ran over and thanked [[slot_child]] with a big smile.
+s12: To celebrate, the kite sang a bright [[slot_musical_sound]] that sounded like a xylophone.
+s13: [[slot_child]] and [[slot_pet]] shared a [[slot_snack]] under the tree.
+s14: They watched the kite flutter like a rainbow feather in the wind.
+s15: The day ended with laughter and a new friendship.
+s16: And [[slot_child]] promised to visit the park again soon.

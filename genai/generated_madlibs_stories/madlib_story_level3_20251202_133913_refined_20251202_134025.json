@@ -1,0 +1,415 @@
+{
+  "original": {
+    "title": " The Little Lost Treasure",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child finds a shiny object outside and has to decide whether to keep it or return it to a worried animal friend.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "One sunny morning, [[slot_name]] went for a walk in the [[slot_place]].",
+        "slot_ids": [
+          "slot_name",
+          "slot_place"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "Something [[slot_color]] sparkled near a big rock.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "It was a tiny [[slot_object]], smooth and shiny.",
+        "slot_ids": [
+          "slot_object"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_name]] picked it up and squeezed it tight.",
+        "slot_ids": [
+          "slot_name"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "\"I will keep this treasure forever,\" [[slot_name]] whispered.",
+        "slot_ids": [
+          "slot_name"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "Suddenly, a soft noise came from the bushes.",
+        "slot_ids": []
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "A little [[slot_animal]] peeked out from behind a fern.",
+        "slot_ids": [
+          "slot_animal"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "The creature looked very [[slot_feeling]].",
+        "slot_ids": [
+          "slot_feeling"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "It was sniffing the ground, looking for something important.",
+        "slot_ids": []
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "[[slot_name]] looked at the shiny treasure, then back at the sad animal.",
+        "slot_ids": [
+          "slot_name"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "It was hard to let go, but [[slot_name]] gently opened their hand.",
+        "slot_ids": [
+          "slot_name"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "The animal’s eyes went wide with surprise.",
+        "slot_ids": []
+      },
+      {
+        "id": "s13",
+        "text_with_blanks": "It grabbed the treasure and did a happy [[slot_movement]].",
+        "slot_ids": [
+          "slot_movement"
+        ]
+      },
+      {
+        "id": "s14",
+        "text_with_blanks": "To say thank you, the creature pushed a [[slot_snack]] toward [[slot_name]].",
+        "slot_ids": [
+          "slot_snack",
+          "slot_name"
+        ]
+      },
+      {
+        "id": "s15",
+        "text_with_blanks": "[[slot_name]] smiled, because sharing felt even better than finding treasure.",
+        "slot_ids": [
+          "slot_name"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_name",
+        "type": "person_name",
+        "author_description": "The main character's name.",
+        "child_prompt": "What is the name of a brave boy or girl?",
+        "examples": [
+          "Leo",
+          "Maya",
+          "Sam"
+        ]
+      },
+      {
+        "id": "slot_place",
+        "type": "place_outdoor",
+        "author_description": "A specific outdoor location.",
+        "child_prompt": "Name a place outside where you like to play.",
+        "examples": [
+          "playground",
+          "forest",
+          "garden"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A color describing the object.",
+        "child_prompt": "What is your favorite bright color?",
+        "examples": [
+          "silver",
+          "purple",
+          "bright blue"
+        ]
+      },
+      {
+        "id": "slot_object",
+        "type": "small_object",
+        "author_description": "A small item a child might find.",
+        "child_prompt": "Name something small you might keep in your pocket.",
+        "examples": [
+          "marble",
+          "button",
+          "key"
+        ]
+      },
+      {
+        "id": "slot_animal",
+        "type": "animal_forest",
+        "author_description": "A small animal.",
+        "child_prompt": "Name a small, fuzzy animal.",
+        "examples": [
+          "squirrel",
+          "mouse",
+          "bunny"
+        ]
+      },
+      {
+        "id": "slot_feeling",
+        "type": "adjective_emotion",
+        "author_description": "An emotion (negative/concerned).",
+        "child_prompt": "How do you look when you lose your favorite toy?",
+        "examples": [
+          "worried",
+          "sad",
+          "scared"
+        ]
+      },
+      {
+        "id": "slot_movement",
+        "type": "movement_noun",
+        "author_description": "A movement word used as a noun (e.g., a jump).",
+        "child_prompt": "Name a funny move, like a 'wiggle' or a 'hop'.",
+        "examples": [
+          "flip",
+          "dance",
+          "shimmy"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "food_snack",
+        "author_description": "A treat.",
+        "child_prompt": "What is a yummy snack?",
+        "examples": [
+          "cookie",
+          "strawberry",
+          "cracker"
+        ]
+      }
+    ]
+  },
+  "refined": {
+    "title": "The Little Lost Treasure",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child finds a lost item and returns it to a worried animal, making a new friend in the process.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "One morning, [[slot_name]] was exploring a secret corner of the [[slot_place]].",
+        "slot_ids": [
+          "slot_name",
+          "slot_place"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "Suddenly, a flash of [[slot_color]] light shone from the grass.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "It was not a rock, but a very special [[slot_object]].",
+        "slot_ids": [
+          "slot_object"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_name]] picked it up and rubbed the dirt off.",
+        "slot_ids": [
+          "slot_name"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "\"I wonder who lost this?\" asked [[slot_name]].",
+        "slot_ids": [
+          "slot_name"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "Just then, the bushes began to rustle and shake.",
+        "slot_ids": []
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "A tiny [[slot_animal]] hopped out, sniffing the ground wildly.",
+        "slot_ids": [
+          "slot_animal"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "The poor thing looked [[slot_feeling]] and upset.",
+        "slot_ids": [
+          "slot_feeling"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "It was searching for something precious it had dropped.",
+        "slot_ids": []
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "[[slot_name]] held out the shiny find so the creature could see.",
+        "slot_ids": [
+          "slot_name"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "\"Is this yours?\" asked [[slot_name]] gently.",
+        "slot_ids": [
+          "slot_name"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "The creature's eyes went wide with joy.",
+        "slot_ids": []
+      },
+      {
+        "id": "s13",
+        "text_with_blanks": "It took the treasure back and did a happy [[slot_movement]].",
+        "slot_ids": [
+          "slot_movement"
+        ]
+      },
+      {
+        "id": "s14",
+        "text_with_blanks": "To say thank you, the animal left a delicious [[slot_snack]] for [[slot_name]].",
+        "slot_ids": [
+          "slot_snack",
+          "slot_name"
+        ]
+      },
+      {
+        "id": "s15",
+        "text_with_blanks": "[[slot_name]] waved goodbye, happy to help a forest friend.",
+        "slot_ids": [
+          "slot_name"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_name",
+        "type": "person_name",
+        "author_description": "The main character's name.",
+        "child_prompt": "What is the name of a brave boy or girl?",
+        "examples": [
+          "Leo",
+          "Maya",
+          "Sam"
+        ]
+      },
+      {
+        "id": "slot_place",
+        "type": "place_outdoor",
+        "author_description": "A specific outdoor location.",
+        "child_prompt": "Name a place outside where you like to play.",
+        "examples": [
+          "playground",
+          "forest",
+          "garden"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A color describing the object.",
+        "child_prompt": "What is your favorite bright color?",
+        "examples": [
+          "silver",
+          "purple",
+          "bright blue"
+        ]
+      },
+      {
+        "id": "slot_object",
+        "type": "small_object",
+        "author_description": "A small item a child might find.",
+        "child_prompt": "Name something small you might keep in your pocket.",
+        "examples": [
+          "marble",
+          "button",
+          "key"
+        ]
+      },
+      {
+        "id": "slot_animal",
+        "type": "animal_forest",
+        "author_description": "A small animal.",
+        "child_prompt": "Name a small, fuzzy animal.",
+        "examples": [
+          "squirrel",
+          "mouse",
+          "bunny"
+        ]
+      },
+      {
+        "id": "slot_feeling",
+        "type": "adjective_emotion",
+        "author_description": "An emotion (negative/concerned).",
+        "child_prompt": "How do you look when you lose your favorite toy?",
+        "examples": [
+          "worried",
+          "sad",
+          "scared"
+        ]
+      },
+      {
+        "id": "slot_movement",
+        "type": "movement_noun",
+        "author_description": "A movement word used as a noun (e.g., a jump).",
+        "child_prompt": "Name a funny move, like a 'wiggle' or a 'hop'.",
+        "examples": [
+          "flip",
+          "dance",
+          "shimmy"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "food_snack",
+        "author_description": "A treat.",
+        "child_prompt": "What is a yummy snack?",
+        "examples": [
+          "cookie",
+          "strawberry",
+          "cracker"
+        ]
+      }
+    ]
+  },
+  "judge_scores": {
+    "overall": 0.72,
+    "story_arc": 0.9,
+    "character_engagement": 0.6,
+    "emotional_warmth": 0.9,
+    "curiosity_hooks": 0.7,
+    "madlibs_usability": 1.0,
+    "reading_level_fit": 0.9,
+    "novelty": 0.4,
+    "memorable_moment": 0.6,
+    "show_vs_tell": 0.6,
+    "character_depth": 0.4
+  }
+}

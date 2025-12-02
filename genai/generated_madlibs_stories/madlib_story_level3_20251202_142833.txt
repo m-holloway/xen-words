@@ -1,0 +1,36 @@
+Title: The Day the Toy Shared a Snack
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child learns to share a toy with a sad animal, and together they find a lost snack.
+
+Slots:
+- slot_child (person_name): The name of the child character.
+  Child prompt: Can you tell me the name of the child in the story?
+  Examples: Liam, Mia, Noah
+- slot_toy (toy_object): A favorite toy of the child.
+  Child prompt: What is a toy that the child loves to play with?
+  Examples: soft dinosaur, toy car, fluffy bear
+- slot_place (place): A place where the child plays.
+  Child prompt: Where does the child play with the toy?
+  Examples: park, backyard, garden
+- slot_pet (animal_pet): A small animal that appears in the story.
+  Child prompt: Can you name a small animal that the child meets?
+  Examples: kitten, bunny, chipmunk
+- slot_food (snack_food): The snack that the animal lost.
+  Child prompt: What is a snack that the animal likes?
+  Examples: carrot, apple slice, candy
+- slot_color (color): A bright color of the snack.
+  Child prompt: What is a bright color you can see in the snack?
+  Examples: orange, yellow, red
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the [[slot_place]].
+s2: One sunny day, a tiny [[slot_pet]] hopped onto the bench.
+s3: The [[slot_pet]] looked sad because it had lost its favorite [[slot_food]].
+s4: [[slot_child]] felt a tug in the heart.
+s5: First, [[slot_child]] thought to keep the [[slot_toy]] for themselves.
+s6: Then, [[slot_child]] decided to share the [[slot_toy]] with the [[slot_pet]].
+s7: The [[slot_toy]] gave a gentle giggle that sounded like wind chimes.
+s8: The [[slot_food]] appeared, glowing a bright [[slot_color]].
+s9: The [[slot_pet]] purred and jumped onto [[slot_child]]'s lap.
+s10: They all sat together, watching the clouds drift by.

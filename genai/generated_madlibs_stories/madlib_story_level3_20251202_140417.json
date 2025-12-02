@@ -1,0 +1,185 @@
+{
+  "template": {
+    "title": "The Glistening Ball and the Kind Rabbit",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child learns kindness by sharing a glowing ball with a shy rabbit in the park.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the [[slot_place]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy",
+          "slot_place"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny afternoon, the [[slot_toy]] rolled into a small clearing.",
+        "slot_ids": [
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "It was a bright [[slot_color]] ball that glowed like a firefly.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "Near the ball, a shy [[slot_pet]] hopped and stared.",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "[[slot_child]] felt the ball was fun, but the rabbit looked lonely.",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "[[slot_child]] almost kept the ball for themselves.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "Then [[slot_child]] remembered how the rabbit seemed sad.",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "[[slot_child]] decided to give the ball to the [[slot_pet]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "The rabbit's eyes sparkled and it twirled the ball.",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "Together they played [[slot_activity]] and laughed.",
+        "slot_ids": [
+          "slot_activity"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "After a while, [[slot_child]] shared a [[slot_snack]] with the rabbit.",
+        "slot_ids": [
+          "slot_child",
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "The rabbit nibbled, and they all curled up under a big oak tree.",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "person_name",
+        "author_description": "A name for the main child",
+        "child_prompt": "What is your name?",
+        "examples": [
+          "Sam",
+          "Lily",
+          "Max"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "A cozy or friendly animal the child might like",
+        "child_prompt": "Can you name an animal you would love to be friends with?",
+        "examples": [
+          "bunny",
+          "kitten",
+          "puppy"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A toy the child plays with",
+        "child_prompt": "What is a toy you like to play with?",
+        "examples": [
+          "ball",
+          "doll",
+          "puzzle"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color for the toy",
+        "child_prompt": "What is a bright color you like?",
+        "examples": [
+          "orange",
+          "pink",
+          "green"
+        ]
+      },
+      {
+        "id": "slot_place",
+        "type": "place_name",
+        "author_description": "A place in the park",
+        "child_prompt": "Where do you like to play in the park?",
+        "examples": [
+          "meadow",
+          "trail",
+          "bench"
+        ]
+      },
+      {
+        "id": "slot_activity",
+        "type": "activity",
+        "author_description": "An activity the child and friend do together",
+        "child_prompt": "What is an activity you like to do with a friend?",
+        "examples": [
+          "tag",
+          "hide‑and‑seek",
+          "dance"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A snack the child shares",
+        "child_prompt": "What is a snack you like to share?",
+        "examples": [
+          "apple slice",
+          "cereal",
+          "pretzel"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G1_novel_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

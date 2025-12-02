@@ -1,0 +1,208 @@
+{
+  "template": {
+    "title": "Mia's Missing Button Adventure",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A gentle story about Mia, her stuffed animal, and a friendly friend learning to help each other.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "Mia, a bright little girl, loved to play with her favorite stuffed [[slot_pet]] in the sunny park.",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One day, her [[slot_toy]] had a missing button, and Mia felt a little sad.",
+        "slot_ids": [
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "She looked around and saw her friend [[slot_friend]] waving from the swing set.",
+        "slot_ids": [
+          "slot_friend"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "Mia thought she could just keep playing, but then she remembered how [[slot_friend]] always helped her.",
+        "slot_ids": [
+          "slot_friend"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "She walked over and said, 'Can you help me find the button?'",
+        "slot_ids": []
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "Together they searched under the big [[slot_tree]] and near the sparkling [[slot_water_feature]].",
+        "slot_ids": [
+          "slot_tree",
+          "slot_water_feature"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "Suddenly, they heard a tiny [[slot_sound]] that sounded like a giggling bell.",
+        "slot_ids": [
+          "slot_sound"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "They followed the sound and found the button stuck in a patch of bright [[slot_color]] moss.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "Mia gently pulled it out, and the toy clicked back into place.",
+        "slot_ids": []
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "She smiled and gave the [[slot_pet]] a big hug, feeling warm like a sunrise.",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "Then she invited [[slot_friend]] to share a [[slot_snack_food]] under the shade.",
+        "slot_ids": [
+          "slot_friend",
+          "slot_snack_food"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "They laughed as the [[slot_snack_food]] fell like tiny rain drops on the grass.",
+        "slot_ids": [
+          "slot_snack_food"
+        ]
+      },
+      {
+        "id": "s13",
+        "text_with_blanks": "Mia realized that sharing made the day brighter, just like the bright sunlight.",
+        "slot_ids": []
+      },
+      {
+        "id": "s14",
+        "text_with_blanks": "They promised to always help each other, no matter how small the problem.",
+        "slot_ids": []
+      },
+      {
+        "id": "s15",
+        "text_with_blanks": "When the sun set, they waved goodbye, feeling happy and safe.",
+        "slot_ids": []
+      },
+      {
+        "id": "s16",
+        "text_with_blanks": "And they went home, dreaming of new adventures with their friends and toys.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "A cozy or friendly animal the child might like.",
+        "child_prompt": "Can you name an animal you would love to be friends with?",
+        "examples": [
+          "puppy",
+          "bunny",
+          "kitten"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A favorite toy that the child plays with.",
+        "child_prompt": "What is your favorite toy?",
+        "examples": [
+          "teddy bear",
+          "plastic dinosaur",
+          "foam puzzle"
+        ]
+      },
+      {
+        "id": "slot_friend",
+        "type": "friend_name",
+        "author_description": "A friend's name.",
+        "child_prompt": "What is your best friend's name?",
+        "examples": [
+          "Sam",
+          "Lily",
+          "Tom"
+        ]
+      },
+      {
+        "id": "slot_tree",
+        "type": "tree_type",
+        "author_description": "A type of tree in the park.",
+        "child_prompt": "What kind of tree do you see in the park?",
+        "examples": [
+          "oak",
+          "maple",
+          "palm"
+        ]
+      },
+      {
+        "id": "slot_water_feature",
+        "type": "water_feature",
+        "author_description": "A water feature in the park.",
+        "child_prompt": "What is a water feature you see in a park?",
+        "examples": [
+          "fountain",
+          "pond",
+          "stream"
+        ]
+      },
+      {
+        "id": "slot_sound",
+        "type": "sound_type",
+        "author_description": "A sound that sounds like a giggling bell.",
+        "child_prompt": "What is a sound that sounds like a giggling bell?",
+        "examples": [
+          "tinkle",
+          "ring",
+          "clink"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color.",
+        "child_prompt": "Name a bright color you like.",
+        "examples": [
+          "yellow",
+          "orange",
+          "pink"
+        ]
+      },
+      {
+        "id": "slot_snack_food",
+        "type": "snack_food",
+        "author_description": "A snack food the child might share.",
+        "child_prompt": "What is a snack food you like to share?",
+        "examples": [
+          "apple slice",
+          "cookie",
+          "granola bar"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G1_novel_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

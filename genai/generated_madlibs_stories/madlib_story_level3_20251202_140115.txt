@@ -1,0 +1,45 @@
+Title: The Balloon Pet Adventure
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A kind child helps a lost balloon‑tied pet find its home in the park.
+
+Slots:
+- slot_child (person_name): The name of the main child character.
+  Child prompt: Can you tell me the name of the child in the story?
+  Examples: Mia, Liam, Sofia
+- slot_place (place_name): The name of the park where the story happens.
+  Child prompt: What is the name of the park?
+  Examples: Sunny Park, Riverbend Park, Maple Grove
+- slot_color (color): The color of the balloon.
+  Child prompt: What color is the balloon?
+  Examples: blue, orange, purple
+- slot_pet (animal_pet): The type of animal tied to the balloon.
+  Child prompt: What animal is tied to the balloon?
+  Examples: rabbit, hamster, duck
+- slot_snack (snack_food): The snack the child brings.
+  Child prompt: What snack does the child bring?
+  Examples: apple slice, candy cane, pretzel
+- slot_toy (toy_object): The toy the child almost takes home.
+  Child prompt: What toy does the child have?
+  Examples: ball, doll, blocks
+- slot_neighbor (person_name): The name of the friendly neighbor.
+  Child prompt: What is the neighbor's name?
+  Examples: Mrs. Patel, Mr. Gomez, Nina
+
+Story template:
+s1: [[slot_child]] loved to play in [[slot_place]] on sunny days.
+s2: One morning, [[slot_child]] saw a tiny [[slot_color]] balloon bobbing in the grass.
+s3: The balloon was tied to a small [[slot_pet]] that looked lost and shy.
+s4: [[slot_child]] felt a tug in the heart and wondered where the [[slot_pet]] came from.
+s5: The child almost ran home to get [[slot_toy]], but decided to stay and help.
+s6: [[slot_child]] whispered, “I will find you home,” and put a soft [[slot_snack]] on the ground.
+s7: The [[slot_pet]] sniffed the snack and followed the scent.
+s8: Together they walked past the fountain and the big oak tree.
+s9: A friendly [[slot_neighbor]] noticed the balloon and asked, “Are you looking for someone?”
+s10: [[slot_child]] explained the situation, and [[slot_neighbor]] remembered seeing a [[slot_pet]] with a blue collar near the playground.
+s11: They all followed the trail of the blue collar.
+s12: At the playground, a little boy waved and said, “That’s my [[slot_pet]]!” He laughed and thanked [[slot_child]].
+s13: [[slot_child]] felt warm inside, like a sunrise.
+s14: The balloon floated up and disappeared into the sky, leaving a bright memory.
+s15: From then on, [[slot_child]] always kept a snack for friends in the park.
+s16: And every day, the park smelled of adventure and kindness.

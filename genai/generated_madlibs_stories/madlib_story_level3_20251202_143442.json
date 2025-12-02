@@ -1,0 +1,205 @@
+{
+  "template": {
+    "title": "The Kite That Learned to Sing",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child, a pet, and a bright kite find a gentle way to solve a small problem and celebrate together.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_pet]] and a [[slot_toy]] in the [[slot_place]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet",
+          "slot_toy",
+          "slot_place"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "The [[slot_toy]] was bright [[slot_color]] and danced in the [[slot_weather]] sky.",
+        "slot_ids": [
+          "slot_toy",
+          "slot_color",
+          "slot_weather"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "One day, the kite got stuck high in a tall tree.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] looked up and felt a little sad.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "[[slot_child]] thought about climbing the tree, but then remembered that [[slot_pet]] liked to hop.",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "Instead of climbing, [[slot_child]] sang a gentle song to the kite.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "The kite twitched and, with a soft sigh, fell back to the ground.",
+        "slot_ids": []
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "[[slot_child]] and [[slot_pet]] cheered and shared a [[slot_snack]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet",
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "[[slot_child]] felt happy when the kite flew again.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "They played hop and chase with the kite for a long time.",
+        "slot_ids": []
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "When the sun began to set, [[slot_child]] tucked the kite into a basket.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "[[slot_child]] said, “We’ll fly again tomorrow.”",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s13",
+        "text_with_blanks": "The backyard looked peaceful, and [[slot_child]] felt calm.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s14",
+        "text_with_blanks": "[[slot_child]] thanked the wind for the gentle breeze.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s15",
+        "text_with_blanks": "They all went home, dreaming of bright colors.",
+        "slot_ids": []
+      },
+      {
+        "id": "s16",
+        "text_with_blanks": "The next day, the kite was ready for another adventure.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "The name of the main child character.",
+        "child_prompt": "What is your favorite name for a child?",
+        "examples": [
+          "Mia",
+          "Leo",
+          "Sam"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "A cozy or friendly animal the child might like.",
+        "child_prompt": "Can you name an animal you would love to be friends with?",
+        "examples": [
+          "bunny",
+          "puppy",
+          "kitten"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A small toy that can be played with outdoors.",
+        "child_prompt": "Name a toy you like to play with in the park.",
+        "examples": [
+          "kite",
+          "ball",
+          "spinning top"
+        ]
+      },
+      {
+        "id": "slot_place",
+        "type": "place_name",
+        "author_description": "A place where the child can play.",
+        "child_prompt": "Where do you like to play?",
+        "examples": [
+          "backyard",
+          "park",
+          "garden"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color for the toy.",
+        "child_prompt": "What is a bright color you like?",
+        "examples": [
+          "red",
+          "blue",
+          "yellow"
+        ]
+      },
+      {
+        "id": "slot_weather",
+        "type": "weather_condition",
+        "author_description": "The weather in the story.",
+        "child_prompt": "What is the weather like today?",
+        "examples": [
+          "sunny",
+          "cloudy",
+          "windy"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A snack the child can share.",
+        "child_prompt": "What is a snack you like to eat after playing?",
+        "examples": [
+          "apple",
+          "banana",
+          "candy"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G3_patterns_menu_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

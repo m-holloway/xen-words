@@ -1,0 +1,154 @@
+{
+  "template": {
+    "title": "Lily and the Hummingbird in the Garden",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "Lily helps a shy hummingbird find its way, learning kindness and patience.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play in the backyard garden.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny morning, [[slot_child]] saw a [[slot_pet]] hopping near a [[slot_flower]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet",
+          "slot_flower"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The [[slot_pet]] was shy, and a tiny hummingbird was stuck in the petals.",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "The hummingbird tried to fly, but it couldn't get out.",
+        "slot_ids": []
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "[[slot_child]] decided to help the hummingbird.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "She gathered a soft [[slot_nest_material]] and made a little nest.",
+        "slot_ids": [
+          "slot_nest_material"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "The hummingbird rested, and its feathers shone like a [[slot_feather_color]] star.",
+        "slot_ids": [
+          "slot_feather_color"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "Soon, the hummingbird was ready to fly again.",
+        "slot_ids": []
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "It fluttered out of the flower, thanked [[slot_child]] with a bright chirp, and disappeared.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "Later, a single [[slot_feather_color]] feather fell to the ground, and [[slot_child]] placed it on the garden bench.",
+        "slot_ids": [
+          "slot_feather_color",
+          "slot_child",
+          "slot_garden_item"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the child character",
+        "child_prompt": "Can you give a name for the child?",
+        "examples": [
+          "Lily",
+          "Sam",
+          "Mia"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "A cozy or friendly animal the child might like",
+        "child_prompt": "Can you name an animal you would love to be friends with?",
+        "examples": [
+          "puppy",
+          "bunny",
+          "kitten"
+        ]
+      },
+      {
+        "id": "slot_flower",
+        "type": "flower",
+        "author_description": "A type of flower in the garden",
+        "child_prompt": "Can you name a flower that grows in gardens?",
+        "examples": [
+          "rose",
+          "tulip",
+          "daisy"
+        ]
+      },
+      {
+        "id": "slot_nest_material",
+        "type": "material",
+        "author_description": "Something the child can use to make a nest",
+        "child_prompt": "Can you think of something soft that could be used as a nest?",
+        "examples": [
+          "cotton",
+          "leaf",
+          "grass"
+        ]
+      },
+      {
+        "id": "slot_feather_color",
+        "type": "color",
+        "author_description": "Color of a feather",
+        "child_prompt": "Can you name a bright color?",
+        "examples": [
+          "red",
+          "blue",
+          "yellow"
+        ]
+      },
+      {
+        "id": "slot_garden_item",
+        "type": "garden_item",
+        "author_description": "An item in the garden",
+        "child_prompt": "Can you name something you might see in a garden?",
+        "examples": [
+          "watering can",
+          "shovel",
+          "bench"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G3_patterns_menu_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "title": "The Lost Toy Adventure",
+  "reading_level": 3,
+  "reading_band": "Grades 1–2",
+  "target_minutes": 5,
+  "summary": "A child and a friendly pet find a lost toy in the park, learning teamwork and sharing.",
+  "sentences": [
+    {
+      "id": "s1",
+      "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in [[slot_park]].",
+      "slot_ids": [
+        "slot_child",
+        "slot_toy",
+        "slot_park"
+      ]
+    },
+    {
+      "id": "s2",
+      "text_with_blanks": "One sunny day, [[slot_child]] and [[slot_pet]] went to [[slot_park]].",
+      "slot_ids": [
+        "slot_child",
+        "slot_pet",
+        "slot_park"
+      ]
+    },
+    {
+      "id": "s3",
+      "text_with_blanks": "[[slot_child]] rolled the [[slot_toy]] high and low.",
+      "slot_ids": [
+        "slot_child",
+        "slot_toy"
+      ]
+    },
+    {
+      "id": "s4",
+      "text_with_blanks": "Suddenly, the [[slot_toy]] slipped out of [[slot_child]]'s hands.",
+      "slot_ids": [
+        "slot_toy",
+        "slot_child"
+      ]
+    },
+    {
+      "id": "s5",
+      "text_with_blanks": "It rolled into the big [[slot_color]] tunnel.",
+      "slot_ids": [
+        "slot_color"
+      ]
+    },
+    {
+      "id": "s6",
+      "text_with_blanks": "[[slot_child]] felt a little sad.",
+      "slot_ids": [
+        "slot_child"
+      ]
+    },
+    {
+      "id": "s7",
+      "text_with_blanks": "[[slot_pet]] sniffed around and found a small [[slot_snack]].",
+      "slot_ids": [
+        "slot_pet",
+        "slot_snack"
+      ]
+    },
+    {
+      "id": "s8",
+      "text_with_blanks": "[[slot_pet]] said, \"I can help you find it!\"",
+      "slot_ids": [
+        "slot_pet"
+      ]
+    },
+    {
+      "id": "s9",
+      "text_with_blanks": "Together, they followed the tunnel.",
+      "slot_ids": []
+    },
+    {
+      "id": "s10",
+      "text_with_blanks": "They met [[slot_friend]] who was playing on the [[slot_activity]].",
+      "slot_ids": [
+        "slot_friend",
+        "slot_activity"
+      ]
+    },
+    {
+      "id": "s11",
+      "text_with_blanks": "[[slot_friend]] said, \"I saw the [[slot_toy]] near the swing.\"",
+      "slot_ids": [
+        "slot_friend",
+        "slot_toy"
+      ]
+    },
+    {
+      "id": "s12",
+      "text_with_blanks": "[[slot_child]] and [[slot_pet]] ran to the swing.",
+      "slot_ids": [
+        "slot_child",
+        "slot_pet"
+      ]
+    },
+    {
+      "id": "s13",
+      "text_with_blanks": "The [[slot_toy]] was stuck in a bush.",
+      "slot_ids": [
+        "slot_toy"
+      ]
+    },
+    {
+      "id": "s14",
+      "text_with_blanks": "[[slot_child]] gently pulled it out.",
+      "slot_ids": [
+        "slot_child"
+      ]
+    },
+    {
+      "id": "s15",
+      "text_with_blanks": "They all cheered and shared the [[slot_snack]].",
+      "slot_ids": [
+        "slot_snack"
+      ]
+    },
+    {
+      "id": "s16",
+      "text_with_blanks": "From then on, they played happily together.",
+      "slot_ids": []
+    }
+  ],
+  "slots": [
+    {
+      "id": "slot_child",
+      "type": "child_name",
+      "author_description": "The name of the main child character.",
+      "child_prompt": "What is your name?",
+      "examples": [
+        "Lily",
+        "Max",
+        "Sam"
+      ]
+    },
+    {
+      "id": "slot_toy",
+      "type": "toy_object",
+      "author_description": "A toy the child likes to play with.",
+      "child_prompt": "What toy do you love to play with?",
+      "examples": [
+        "ball",
+        "doll",
+        "teddy bear"
+      ]
+    },
+    {
+      "id": "slot_park",
+      "type": "park_name",
+      "author_description": "The name of the park or playground.",
+      "child_prompt": "What is the name of the park you like?",
+      "examples": [
+        "Sunny Park",
+        "Greenwood Playground",
+        "Riverbend"
+      ]
+    },
+    {
+      "id": "slot_pet",
+      "type": "animal_pet",
+      "author_description": "A cozy or friendly animal the child might like.",
+      "child_prompt": "Can you name an animal you would love to be friends with?",
+      "examples": [
+        "puppy",
+        "bunny",
+        "kitten"
+      ]
+    },
+    {
+      "id": "slot_color",
+      "type": "color",
+      "author_description": "A bright color.",
+      "child_prompt": "What is a bright color you like?",
+      "examples": [
+        "red",
+        "blue",
+        "yellow"
+      ]
+    },
+    {
+      "id": "slot_snack",
+      "type": "snack_food",
+      "author_description": "A small snack the child enjoys.",
+      "child_prompt": "What snack do you like?",
+      "examples": [
+        "apple",
+        "cookie",
+        "granola bar"
+      ]
+    },
+    {
+      "id": "slot_friend",
+      "type": "friend_name",
+      "author_description": "The name of a friend the child meets.",
+      "child_prompt": "What is your friend's name?",
+      "examples": [
+        "Sam",
+        "Jenna",
+        "Leo"
+      ]
+    },
+    {
+      "id": "slot_activity",
+      "type": "playground_activity",
+      "author_description": "An activity played at the playground.",
+      "child_prompt": "What playground activity do you like?",
+      "examples": [
+        "swing",
+        "slide",
+        "slide"
+      ]
+    }
+  ]
+}

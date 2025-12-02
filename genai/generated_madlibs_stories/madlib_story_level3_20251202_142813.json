@@ -1,0 +1,133 @@
+{
+  "template": {
+    "title": "The Singing Kite and the Lost Balloon",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A kind child helps a sad toy find its missing balloon friend, and they play together with a warm cookie.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the sunny park.",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One day, the [[slot_toy]] stopped humming and looked very quiet.",
+        "slot_ids": [
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "It had lost its friend, a tiny blue balloon.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "The [[slot_child]] felt sad, and wanted to help.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "First, [[slot_child]] tried to find the balloon in the sandbox.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "But the sandbox was empty, and the balloon was not there.",
+        "slot_ids": []
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "Then [[slot_child]] looked under the big oak tree.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "There, a bright rainbow kite was stuck in a branch.",
+        "slot_ids": []
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "The kite sang a soft song when it was touched.",
+        "slot_ids": []
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "[[slot_child]] gently pulled the kite down and sang a friendly tune.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "The kite fluttered, and the balloon floated up, joining the kite.",
+        "slot_ids": []
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "Now the [[slot_toy]] hummed again, and the child and the balloon played together.",
+        "slot_ids": [
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s13",
+        "text_with_blanks": "They ate a warm [[slot_food]], and the park smelled like cinnamon.",
+        "slot_ids": [
+          "slot_food"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "A friendly name for the main character.",
+        "child_prompt": "Can you name a child who loves to play?",
+        "examples": [
+          "Lily",
+          "Tom",
+          "Sam"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_name",
+        "author_description": "A cute toy that the child plays with.",
+        "child_prompt": "Can you name a toy that you like?",
+        "examples": [
+          "Mr. Fluffy",
+          "Sunny the Teddy",
+          "Blue Rocket"
+        ]
+      },
+      {
+        "id": "slot_food",
+        "type": "snack_food",
+        "author_description": "A tasty snack they share at the end.",
+        "child_prompt": "Can you name a snack you like to eat?",
+        "examples": [
+          "cookie",
+          "fruit",
+          "sandwich"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G3_patterns_menu_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

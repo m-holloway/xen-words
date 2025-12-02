@@ -1,0 +1,75 @@
+## Interactive Story Mode – Eval Log
+
+- Initial eval scaffolding created by autonomous agent.
+- Goal: iterate toward high-quality, level-aware one-sentence suggestions (levels 1–5) using structured tests and simple metrics.
+
+
+
+
+### Eval run at 2025-12-02T07:47:14.743717 (model=google/gemini-2.5-flash, source=STORY_BUILDER_BY_SENTENCE_MODEL)
+- **L1-decoder-simple** (level 1)
+  - seed: `Sam can run.`
+  - cand 1: Sam sees a little bug.
+    - metrics: {'word_count': 5, 'avg_word_len': 3.4, 'long_word_count': 0, 'internal_capitals': 0, 'comma_count': 0, 'exclaim_count': 0, 'period_count': 1}
+    - flags: {'ok_word_count': True, 'ok_long_words': True, 'ok_commas': True}
+  - cand 2: Sam likes to play.
+    - metrics: {'word_count': 4, 'avg_word_len': 3.5, 'long_word_count': 0, 'internal_capitals': 0, 'comma_count': 0, 'exclaim_count': 0, 'period_count': 1}
+    - flags: {'ok_word_count': True, 'ok_long_words': True, 'ok_commas': True}
+  - cand 3: Sam is a good friend.
+    - metrics: {'word_count': 5, 'avg_word_len': 3.2, 'long_word_count': 0, 'internal_capitals': 0, 'comma_count': 0, 'exclaim_count': 0, 'period_count': 1}
+    - flags: {'ok_word_count': True, 'ok_long_words': True, 'ok_commas': True}
+- **L1-fragment** (level 1)
+  - seed: `See Sam`
+  - cand 1: Sam is a little fox.
+    - metrics: {'word_count': 5, 'avg_word_len': 3.0, 'long_word_count': 0, 'internal_capitals': 0, 'comma_count': 0, 'exclaim_count': 0, 'period_count': 1}
+    - flags: {'ok_word_count': True, 'ok_long_words': True, 'ok_commas': True}
+  - cand 2: Sam is a small bear.
+    - metrics: {'word_count': 5, 'avg_word_len': 3.0, 'long_word_count': 0, 'internal_capitals': 0, 'comma_count': 0, 'exclaim_count': 0, 'period_count': 1}
+    - flags: {'ok_word_count': True, 'ok_long_words': True, 'ok_commas': True}
+  - cand 3: Sam is a fluffy bunny.
+    - metrics: {'word_count': 5, 'avg_word_len': 3.4, 'long_word_count': 0, 'internal_capitals': 0, 'comma_count': 0, 'exclaim_count': 0, 'period_count': 1}
+    - flags: {'ok_word_count': True, 'ok_long_words': True, 'ok_commas': True}
+- **L2-simple-story** (level 2)
+  - seed: `The little cat sat on the rug.`
+  - cand 1: Its fur was soft and orange.
+    - metrics: {'word_count': 6, 'avg_word_len': 3.6666666666666665, 'long_word_count': 0, 'internal_capitals': 0, 'comma_count': 0, 'exclaim_count': 0, 'period_count': 1}
+    - flags: {'ok_word_count': True, 'ok_long_words': True, 'ok_commas': True}
+  - cand 2: It looked out the window.
+    - metrics: {'word_count': 5, 'avg_word_len': 4.0, 'long_word_count': 0, 'internal_capitals': 0, 'comma_count': 0, 'exclaim_count': 0, 'period_count': 1}
+    - flags: {'ok_word_count': True, 'ok_long_words': True, 'ok_commas': True}
+  - cand 3: The cat had green eyes.
+    - metrics: {'word_count': 5, 'avg_word_len': 3.6, 'long_word_count': 0, 'internal_capitals': 0, 'comma_count': 0, 'exclaim_count': 0, 'period_count': 1}
+    - flags: {'ok_word_count': True, 'ok_long_words': True, 'ok_commas': True}
+- **L3-richer** (level 3)
+  - seed: `On a warm day, Mia walked to the park.`
+  - cand 1: She loved to see the fluffy white clouds drift by.
+    - metrics: {'word_count': 10, 'avg_word_len': 4.0, 'long_word_count': 0, 'internal_capitals': 0, 'comma_count': 0, 'exclaim_count': 0, 'period_count': 1}
+    - flags: {'ok_word_count': True, 'ok_long_words': True, 'ok_commas': True}
+  - cand 2: Today, she hoped to find something new and interesting.
+    - metrics: {'word_count': 9, 'avg_word_len': 5.0, 'long_word_count': 2, 'internal_capitals': 0, 'comma_count': 1, 'exclaim_count': 0, 'period_count': 1}
+    - flags: {'ok_word_count': True, 'ok_long_words': True, 'ok_commas': True}
+  - cand 3: The park was always full of happy sounds and bright colors.
+    - metrics: {'word_count': 11, 'avg_word_len': 4.363636363636363, 'long_word_count': 0, 'internal_capitals': 0, 'comma_count': 0, 'exclaim_count': 0, 'period_count': 1}
+    - flags: {'ok_word_count': True, 'ok_long_words': True, 'ok_commas': True}
+- **L4-dialogue** (level 4)
+  - seed: `"Let's try again," Leo said, picking up the kite string.`
+  - cand 1: He looked at the sky, which was a soft, sleepy blue, perfect for kite-flying.
+    - metrics: {'word_count': 14, 'avg_word_len': 4.285714285714286, 'long_word_count': 2, 'internal_capitals': 0, 'comma_count': 3, 'exclaim_count': 0, 'period_count': 1}
+    - flags: {'ok_word_count': True, 'ok_long_words': True, 'ok_commas': True}
+  - cand 2: A little gust of wind tickled his nose, as if to say, 'Ready for an adventure?'
+    - metrics: {'word_count': 16, 'avg_word_len': 3.6875, 'long_word_count': 2, 'internal_capitals': 1, 'comma_count': 2, 'exclaim_count': 0, 'period_count': 0}
+    - flags: {'ok_word_count': True, 'ok_long_words': True, 'ok_commas': True}
+  - cand 3: Leo held the kite carefully, its colorful tail swaying gently in the breeze.
+    - metrics: {'word_count': 13, 'avg_word_len': 4.769230769230769, 'long_word_count': 3, 'internal_capitals': 0, 'comma_count': 1, 'exclaim_count': 0, 'period_count': 1}
+    - flags: {'ok_word_count': True, 'ok_long_words': True, 'ok_commas': True}
+- **L5-figurative** (level 5)
+  - seed: `The city lights flickered like a net of tiny stars below the hill.`
+  - cand 1: But high above, nestled on the very top of Sparkle Hill, lived a small, fluffy creature named Pip.
+    - metrics: {'word_count': 18, 'avg_word_len': 4.277777777777778, 'long_word_count': 3, 'internal_capitals': 3, 'comma_count': 3, 'exclaim_count': 0, 'period_count': 1}
+    - flags: {'ok_word_count': True, 'ok_long_words': True, 'ok_commas': True}
+  - cand 2: From her cozy window, a little girl named Lily watched the tiny lights twinkle.
+    - metrics: {'word_count': 14, 'avg_word_len': 4.571428571428571, 'long_word_count': 2, 'internal_capitals': 1, 'comma_count': 1, 'exclaim_count': 0, 'period_count': 1}
+    - flags: {'ok_word_count': True, 'ok_long_words': True, 'ok_commas': True}
+  - cand 3: It was a view that always made Barnaby Bear feel warm and fuzzy inside, especially on quiet evenings like this.
+    - metrics: {'word_count': 20, 'avg_word_len': 4.5, 'long_word_count': 3, 'internal_capitals': 2, 'comma_count': 1, 'exclaim_count': 0, 'period_count': 1}
+    - flags: {'ok_word_count': True, 'ok_long_words': True, 'ok_commas': True}

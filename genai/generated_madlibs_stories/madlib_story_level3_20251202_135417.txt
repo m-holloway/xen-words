@@ -1,0 +1,35 @@
+Title: The Rainbow Toy Rescue
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child and a friendly animal rescue a toy that falls into a puddle, discovering a rainbow surprise along the way.
+
+Slots:
+- slot_child (person_name): The name of the main child character.
+  Child prompt: What is your name?
+  Examples: Lily, Tommy, Mia
+- slot_toy (toy_object): A toy the child loves to play with.
+  Child prompt: Can you name a toy you like?
+  Examples: ball, doll, puzzle
+- slot_pet (animal_pet): A friendly animal that helps the child.
+  Child prompt: What is a friendly animal you would like as a friend?
+  Examples: puppy, bunny, kitten
+- slot_color (color): A bright color for the rainbow.
+  Child prompt: Name a bright color you like.
+  Examples: blue, green, purple
+- slot_sound (sound): A gentle sound that ends the story.
+  Child prompt: What is a soft sound you hear?
+  Examples: humming, whisper, chirping
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the park.
+s2: One sunny day, the [[slot_toy]] slipped off the swing and fell into a puddle.
+s3: [[slot_child]] felt sad and wondered where the toy would go.
+s4: Then a friendly [[slot_pet]] hopped over and nudged the toy with its nose.
+s5: The toy popped up, and a bright [[slot_color]] rainbow sprouted from its top.
+s6: [[slot_child]] gasped and laughed, amazed by the rainbow.
+s7: But the toy was still wet, and [[slot_child]] thought to dry it on the bench.
+s8: [[slot_child]] almost left the toy there, but then remembered the park's shade.
+s9: So [[slot_child]] carried the toy under the big tree and let the sun dry it.
+s10: After a few minutes, the toy was dry and the rainbow faded.
+s11: [[slot_child]] thanked the [[slot_pet]] and they both played with the toy again.
+s12: The day ended with a gentle [[slot_sound]] of birds singing, and [[slot_child]] felt happy.

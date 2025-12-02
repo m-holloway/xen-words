@@ -1,0 +1,38 @@
+Original title: A Playful Day in the Park
+Refined title:  A Playful Day in the Park
+Reading level:   3 (Grades 1–2)
+Target minutes:  5
+Summary (refined): A child meets a sad dog, shares a toy, and they become friends in the park.
+
+Judge scores:
+- overall: 0.88
+- story_arc: 0.90
+- character_engagement: 0.85
+- emotional_warmth: 0.90
+- curiosity_hooks: 0.80
+- madlibs_usability: 0.95
+- reading_level_fit: 0.90
+
+--- Original template ---
+s1: [[slot_child]] loved to play with [[slot_toy]] in the park.
+s2: One sunny day, the park was full of [[slot_color]] clouds.
+s3: While [[slot_child]] was playing, a small [[slot_pet]] walked up.
+s4: The [[slot_pet]] looked sad and did not have a friend to play with.
+s5: [[slot_child]] felt kind and wanted to help the [[slot_pet]].
+s6: [[slot_child]] offered the [[slot_toy]] and said, “Let’s play together!”
+s7: The [[slot_pet]] wagged its tail and started to [[slot_activity]].
+s8: Together they ran, jumped, and laughed under the bright sky.
+s9: After a while, [[slot_child]] took a bite of [[slot_snack]] and shared it with the [[slot_pet]].
+s10: The park felt happy, and [[slot_child]] and the [[slot_pet]] became best friends.
+
+--- Refined template ---
+s1: [[slot_child]] loved to play with [[slot_toy]] on the bright grass of the park.
+s2: On a sunny day, the sky over the park was filled with [[slot_color]] clouds.
+s3: While [[slot_child]] was playing, a small [[slot_pet]] wandered up.
+s4: The [[slot_pet]] looked sad and had no one to play with.
+s5: [[slot_child]] felt kind and wanted to help the [[slot_pet]].
+s6: [[slot_child]] offered the [[slot_toy]] and said, “Let’s play together!”
+s7: The [[slot_pet]] wagged its tail and started to [[slot_activity]].
+s8: Together they ran, jumped, and the [[slot_pet]] surprised them by doing a little dance under the bright sky.
+s9: After a while, [[slot_child]] took a bite of [[slot_snack]] and shared it with the hungry [[slot_pet]].
+s10: The park felt happy, and [[slot_child]] and the [[slot_pet]] became best friends.

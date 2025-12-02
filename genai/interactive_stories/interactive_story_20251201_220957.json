@@ -1,0 +1,54 @@
+{
+  "model": "google/gemini-2.5-flash",
+  "model_source": "STORY_BUILDER_BY_SENTENCE_MODEL",
+  "created_at": "2025-12-01T22:09:57.790371",
+  "story": [
+    "The polite little monster always said 'please' and 'thank you.'",
+    "even when he was very, very hungry for his favorite snack, blueberry muffins.",
+    "One day, as he was carefully arranging his muffins on a plate, he heard a tiny squeak from under his cozy armchair."
+  ],
+  "turns": [
+    {
+      "step": 2,
+      "action": "regenerate",
+      "candidates": [
+        "even when asking for a hug or a crunchy leaf to eat.",
+        "and sometimes even added a little bow with a flourish."
+      ],
+      "chosen_sentence": null,
+      "user_guidance": null
+    },
+    {
+      "step": 2,
+      "action": "regenerate",
+      "candidates": [
+        "and had the biggest, friendliest grin you ever did see.",
+        "and loved to share its toys with everyone."
+      ],
+      "chosen_sentence": null,
+      "user_guidance": null
+    },
+    {
+      "step": 2,
+      "action": "choose_model_sentence",
+      "choice_label": "A",
+      "candidates": [
+        "even when he was very, very hungry for his favorite snack, blueberry muffins.",
+        "especially when he was helping his friends count the stars in the night sky."
+      ],
+      "chosen_sentence": "even when he was very, very hungry for his favorite snack, blueberry muffins.",
+      "user_guidance": null
+    },
+    {
+      "step": 3,
+      "action": "choose_model_sentence",
+      "choice_label": "A",
+      "candidates": [
+        "One day, as he was carefully arranging his muffins on a plate, he heard a tiny squeak from under his cozy armchair.",
+        "He had a special muffin-eating ritual, which involved humming a happy tune and wiggling his toes with delight."
+      ],
+      "chosen_sentence": "One day, as he was carefully arranging his muffins on a plate, he heard a tiny squeak from under his cozy armchair.",
+      "user_guidance": null
+    }
+  ]
+}

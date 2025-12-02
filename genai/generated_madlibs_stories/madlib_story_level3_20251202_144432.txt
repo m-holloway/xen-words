@@ -1,0 +1,36 @@
+Title: The Lost Stuffed Animal
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child finds a lost stuffed animal on the bus and helps its owner get it back.
+
+Slots:
+- slot_child (child_name): Name of the main child character
+  Child prompt: What is the name of the child in the story?
+  Examples: Sam, Lily, Noah
+- slot_color (color): A bright color
+  Child prompt: Name a bright color
+  Examples: red, blue, green
+- slot_stuffed_animal (toy_animal): A stuffed animal
+  Child prompt: Name a stuffed animal
+  Examples: teddy bear, bunny, dragon
+- slot_bus_seat (object): A bus seat
+  Child prompt: Name a bus seat
+  Examples: front seat, back seat, window seat
+- slot_sound (sound): A soft sound
+  Child prompt: Name a soft sound
+  Examples: ding, whisper, humming
+
+Story template:
+s1: [[slot_child]] loved riding the bus to school.
+s2: On the bus, a [[slot_color]] stuffed animal fell into a seat cushion.
+s3: The animal looked sad because it could not find its owner.
+s4: [[slot_child]] wanted to keep it, but the animal was lonely.
+s5: First, [[slot_child]] looked around the bus but no one was near the cushion.
+s6: Then, [[slot_child]] remembered the back seat cushion where the animal was.
+s7: They lifted the cushion and the animal's eyes sparkled like tiny [[slot_color]] fireflies.
+s8: [[slot_child]] felt a tug of wanting to keep it.
+s9: Instead, [[slot_child]] asked the teacher, 'Who owns this animal?'
+s10: The teacher smiled and said the animal belonged to a classmate.
+s11: The classmate thanked [[slot_child]] and gave the animal a big hug.
+s12: The bus ride ended with a soft [[slot_sound]] of the bell.
+s13: Now, [[slot_child]] knows sharing makes friends happy.

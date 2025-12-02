@@ -1,0 +1,174 @@
+{
+  "template": {
+    "title": "The Lost Toy and the Balloon Friend",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child finds a lost toy with the help of a friendly animal and learns to keep looking.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] on the park bench.",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny day, [[slot_child]] put [[slot_toy]] under a big oak tree.",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "When [[slot_child]] looked up, the toy was gone.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] felt sad and wondered where the toy had gone.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "A friendly [[slot_pet]] hopped over and asked, \"Do you need help?\"",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "[[slot_child]] said, \"Yes, I lost my [[slot_toy]].\"",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "The [[slot_pet]] sniffed the air and found a bright [[color]] balloon tied to the tree.",
+        "slot_ids": [
+          "slot_pet",
+          "color"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "The balloon floated like a rainbow, and the toy was on a tiny leaf.",
+        "slot_ids": []
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "[[slot_child]] almost gave up, but remembered the [[slot_pet]]'s smile and decided to look again.",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "[[slot_child]] reached the leaf and got [[slot_toy]] back.",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "[[slot_child]] and the [[slot_pet]] shared a [[slot_snack]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet",
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "They sat under the tree and watched the clouds.",
+        "slot_ids": []
+      },
+      {
+        "id": "s13",
+        "text_with_blanks": "[[slot_child]] felt happy and thanked the [[slot_pet]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s14",
+        "text_with_blanks": "The day ended with a gentle breeze and a new friendship.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "person_name",
+        "author_description": "Name of the main child character.",
+        "child_prompt": "Can you give a name for the child in the story?",
+        "examples": [
+          "Sam",
+          "Lily",
+          "Max"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A favorite toy the child plays with.",
+        "child_prompt": "What is a toy you would like the child to have?",
+        "examples": [
+          "ball",
+          "doll",
+          "train"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "A friendly animal that helps the child.",
+        "child_prompt": "Name a friendly animal you like.",
+        "examples": [
+          "puppy",
+          "bunny",
+          "kitten"
+        ]
+      },
+      {
+        "id": "color",
+        "type": "color",
+        "author_description": "A bright color for the balloon.",
+        "child_prompt": "What is a bright color you like?",
+        "examples": [
+          "red",
+          "blue",
+          "green"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A snack the child shares with the animal.",
+        "child_prompt": "What is a snack you like to eat?",
+        "examples": [
+          "cookie",
+          "sandwich",
+          "apple"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G1_novel_innerChoice_showDontTell",
+    "judge_model": "google/gemini-3-pro-preview"
+  }
+}

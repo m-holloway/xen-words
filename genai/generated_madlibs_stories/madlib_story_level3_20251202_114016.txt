@@ -1,0 +1,48 @@
+Title: Lily and the Lost Rabbit
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A gentle story about helping a lost rabbit find its home.
+
+Slots:
+- slot_child (animal_pet): The name of the main child character.
+  Child prompt: Can you give a name for the child?
+  Examples: Lily, Tommy, Sofia
+- slot_toy (toy_object): A toy the child likes to play with.
+  Child prompt: What is a toy you love?
+  Examples: ball, doll, blocks
+- slot_friend (animal_pet): The name of the child’s friend.
+  Child prompt: What is a friend’s name?
+  Examples: Sam, Mia, Ben
+- slot_snack (snack_food): A snack the child offers to the animal.
+  Child prompt: What snack would you share?
+  Examples: cookie, lettuce, popcorn
+- slot_color (color): A color to describe the park.
+  Child prompt: What color is the park?
+  Examples: blue, green, yellow
+- slot_activity (playground_activity): An activity the children do together.
+  Child prompt: What activity do you like to do?
+  Examples: swing, climb, skip rope
+- slot_place (place_name): A place in the park where the animal lives.
+  Child prompt: What is a place in the park?
+  Examples: treehouse, sandbox, fountain
+- slot_fruit (fruit): A fruit the child offers to the animal.
+  Child prompt: What fruit would you give?
+  Examples: apple, banana, strawberry
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the park.
+s2: One sunny day, a small rabbit hopped lost in the park.
+s3: [[slot_child]] felt sad and wanted to help the rabbit.
+s4: She asked her friend [[slot_friend]] for help.
+s5: [[slot_friend]] said, 'Let’s find the rabbit’s home together.'
+s6: They walked to the [[slot_place]] where the rabbit lived.
+s7: The rabbit was happy to see [[slot_child]] and [[slot_friend]].
+s8: [[slot_child]] gave the rabbit a tasty [[slot_fruit]].
+s9: [[slot_friend]] offered a [[slot_snack]] to the rabbit.
+s10: The rabbit nibbled the apple and the cookie.
+s11: [[slot_child]] and [[slot_friend]] [[slot_activity]] a gentle song.
+s12: The rabbit hopped happily back home.
+s13: [[slot_child]] felt proud and happy.
+s14: She promised to visit the rabbit often.
+s15: The park was bright and [[slot_color]] that day.
+s16: Every day, [[slot_child]] played with [[slot_toy]] and made new friends.

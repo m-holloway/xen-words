@@ -1,0 +1,47 @@
+Title:  The Little Lost Treasure
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child finds a shiny object outside and has to decide whether to keep it or return it to a worried animal friend.
+
+Slots:
+- slot_name (person_name): The main character's name.
+  Child prompt: What is the name of a brave boy or girl?
+  Examples: Leo, Maya, Sam
+- slot_place (place_outdoor): A specific outdoor location.
+  Child prompt: Name a place outside where you like to play.
+  Examples: playground, forest, garden
+- slot_color (color): A color describing the object.
+  Child prompt: What is your favorite bright color?
+  Examples: silver, purple, bright blue
+- slot_object (small_object): A small item a child might find.
+  Child prompt: Name something small you might keep in your pocket.
+  Examples: marble, button, key
+- slot_animal (animal_forest): A small animal.
+  Child prompt: Name a small, fuzzy animal.
+  Examples: squirrel, mouse, bunny
+- slot_feeling (adjective_emotion): An emotion (negative/concerned).
+  Child prompt: How do you look when you lose your favorite toy?
+  Examples: worried, sad, scared
+- slot_movement (movement_noun): A movement word used as a noun (e.g., a jump).
+  Child prompt: Name a funny move, like a 'wiggle' or a 'hop'.
+  Examples: flip, dance, shimmy
+- slot_snack (food_snack): A treat.
+  Child prompt: What is a yummy snack?
+  Examples: cookie, strawberry, cracker
+
+Story template:
+s1: One sunny morning, [[slot_name]] went for a walk in the [[slot_place]].
+s2: Something [[slot_color]] sparkled near a big rock.
+s3: It was a tiny [[slot_object]], smooth and shiny.
+s4: [[slot_name]] picked it up and squeezed it tight.
+s5: "I will keep this treasure forever," [[slot_name]] whispered.
+s6: Suddenly, a soft noise came from the bushes.
+s7: A little [[slot_animal]] peeked out from behind a fern.
+s8: The creature looked very [[slot_feeling]].
+s9: It was sniffing the ground, looking for something important.
+s10: [[slot_name]] looked at the shiny treasure, then back at the sad animal.
+s11: It was hard to let go, but [[slot_name]] gently opened their hand.
+s12: The animal’s eyes went wide with surprise.
+s13: It grabbed the treasure and did a happy [[slot_movement]].
+s14: To say thank you, the creature pushed a [[slot_snack]] toward [[slot_name]].
+s15: [[slot_name]] smiled, because sharing felt even better than finding treasure.

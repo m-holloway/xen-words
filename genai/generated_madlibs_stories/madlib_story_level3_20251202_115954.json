@@ -1,0 +1,164 @@
+{
+  "title": "The Missing Snack Adventure",
+  "reading_level": 3,
+  "reading_band": "Grades 1–2",
+  "target_minutes": 5,
+  "summary": "A child forgets a snack and finds it with a friendly animal, sharing it with a friend.",
+  "sentences": [
+    {
+      "id": "s1",
+      "text_with_blanks": "[[slot_child_name]] loved to play in the park.",
+      "slot_ids": [
+        "slot_child_name"
+      ]
+    },
+    {
+      "id": "s2",
+      "text_with_blanks": "One sunny day, [[slot_child_name]] brought a [[slot_toy]] and a bright [[slot_color]] backpack.",
+      "slot_ids": [
+        "slot_child_name",
+        "slot_toy",
+        "slot_color"
+      ]
+    },
+    {
+      "id": "s3",
+      "text_with_blanks": "[[slot_child_name]] wanted to share a snack with [[slot_friend]].",
+      "slot_ids": [
+        "slot_child_name",
+        "slot_friend"
+      ]
+    },
+    {
+      "id": "s4",
+      "text_with_blanks": "But [[slot_child_name]] forgot to put the snack inside the backpack.",
+      "slot_ids": [
+        "slot_child_name"
+      ]
+    },
+    {
+      "id": "s5",
+      "text_with_blanks": "[[slot_child_name]] looked everywhere, but the snack was missing.",
+      "slot_ids": [
+        "slot_child_name"
+      ]
+    },
+    {
+      "id": "s6",
+      "text_with_blanks": "[[slot_child_name]] asked [[slot_animal]] for help.",
+      "slot_ids": [
+        "slot_child_name",
+        "slot_animal"
+      ]
+    },
+    {
+      "id": "s7",
+      "text_with_blanks": "[[slot_animal]] nudged the backpack and found a small [[slot_snack]] hidden under a leaf.",
+      "slot_ids": [
+        "slot_animal",
+        "slot_snack"
+      ]
+    },
+    {
+      "id": "s8",
+      "text_with_blanks": "[[slot_child_name]] and [[slot_friend]] ate the snack together.",
+      "slot_ids": [
+        "slot_child_name",
+        "slot_friend"
+      ]
+    },
+    {
+      "id": "s9",
+      "text_with_blanks": "They laughed and played on the [[slot_activity]].",
+      "slot_ids": [
+        "slot_activity"
+      ]
+    },
+    {
+      "id": "s10",
+      "text_with_blanks": "At the end of the day, [[slot_child_name]] felt happy and tired.",
+      "slot_ids": [
+        "slot_child_name"
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "id": "slot_child_name",
+      "type": "child_name",
+      "author_description": "Name of the child character",
+      "child_prompt": "What is your favorite name for a child?",
+      "examples": [
+        "Lily",
+        "Tommy",
+        "Mia"
+      ]
+    },
+    {
+      "id": "slot_toy",
+      "type": "toy_object",
+      "author_description": "A toy the child likes",
+      "child_prompt": "What toy do you like to play with?",
+      "examples": [
+        "ball",
+        "teddy bear",
+        "toy car"
+      ]
+    },
+    {
+      "id": "slot_color",
+      "type": "color",
+      "author_description": "A bright color",
+      "child_prompt": "What bright color do you like?",
+      "examples": [
+        "red",
+        "blue",
+        "yellow"
+      ]
+    },
+    {
+      "id": "slot_friend",
+      "type": "friend_name",
+      "author_description": "Name of a friend",
+      "child_prompt": "What is the name of a friend you like?",
+      "examples": [
+        "Sam",
+        "Zoe",
+        "Ben"
+      ]
+    },
+    {
+      "id": "slot_animal",
+      "type": "animal_pet",
+      "author_description": "A friendly animal",
+      "child_prompt": "Name a friendly animal you would like to be friends with?",
+      "examples": [
+        "puppy",
+        "bunny",
+        "kitten"
+      ]
+    },
+    {
+      "id": "slot_snack",
+      "type": "snack_food",
+      "author_description": "A snack the child can eat",
+      "child_prompt": "What snack do you like?",
+      "examples": [
+        "apple slices",
+        "pretzel sticks",
+        "candy"
+      ]
+    },
+    {
+      "id": "slot_activity",
+      "type": "playground_activity",
+      "author_description": "An activity at the playground",
+      "child_prompt": "What playground activity do you enjoy?",
+      "examples": [
+        "swing",
+        "slide",
+        "climbing frame"
+      ]
+    }
+  ]
+}

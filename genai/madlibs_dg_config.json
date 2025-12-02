@@ -1,0 +1,17 @@
+{
+  "//_note": "Sampling / temperature configuration for Mad Libs DG experiments.",
+  "generator_temperature": 1.3,
+  "evolver_generator_temperature": 1.3,
+  "refiner_temperature": 0.4,
+  "judge_temperature": 0.1,
+  "//_judge_ladder_note": "Recommended judge ladder for multi-round DG runs.",
+  "rough_judge_model": "inception/mercury",
+  "rough_judge_rounds": 1,
+  "mid_judge_model": "google/gemini-2.5-flash",
+  "mid_judge_rounds": 1,
+  "final_judge_model": "google/gemini-3-pro-preview",
+  "final_judge_rounds": 1
+}
+
+
+

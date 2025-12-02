@@ -1,0 +1,38 @@
+Title: The Glowing Moss and the Kind Request
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child named [[slot_child]] learns to ask for help when a toy gets stuck, turning a small problem into a big adventure.
+
+Slots:
+- slot_child (child_name): The name of the main child character.
+  Child prompt: Can you name a child you like to read stories about?
+  Examples: Sam, Lily, Mia
+- slot_pet (animal_pet): A cozy or friendly animal the child might like.
+  Child prompt: Can you name an animal you would love to be friends with?
+  Examples: bunny, puppy, kitten
+- slot_toy (toy_object): A small toy the child might play with.
+  Child prompt: Can you name a toy you like to play with?
+  Examples: dollhouse, train set, building blocks
+- slot_color (color): A bright color.
+  Child prompt: Can you name a bright color?
+  Examples: emerald, turquoise, amber
+- slot_snack (snack_food): A tasty snack.
+  Child prompt: Can you name a snack you like?
+  Examples: apple slices, banana chips, granola bar
+- slot_friend (animal_pet): A small animal friend the child meets.
+  Child prompt: Can you name a small animal you like?
+  Examples: hedgehog, squirrel, otter
+
+Story template:
+s1: [[slot_child]] loved to play with his [[slot_pet]] in the park.
+s2: One day, [[slot_child]] found a shiny dollhouse [[slot_toy]] near a big oak tree.
+s3: He wanted to bring it home, but the dollhouse slipped into a small hole.
+s4: [[slot_child]] tried to pull it out with his hands, but the hole was too deep.
+s5: Then he used a stick, but the dollhouse stayed stuck.
+s6: [[slot_child]] felt sad and thought about throwing the dollhouse away.
+s7: But he remembered his promise to be kind, so he decided to ask the park keeper for help.
+s8: The keeper smiled and used a tiny shovel to pull the dollhouse out.
+s9: When the dollhouse appeared, it was covered in [[slot_color]] moss that glowed like a lantern.
+s10: [[slot_child]] and his [[slot_pet]] shared the dollhouse with a new friend, a small hedgehog named [[slot_friend]].
+s11: They all ate [[slot_snack]] and laughed.
+s12: From then on, [[slot_child]] learned that asking for help can turn a small problem into a big adventure.

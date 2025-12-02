@@ -1,0 +1,176 @@
+{
+  "title": "The Lost Toy Adventure",
+  "reading_level": 3,
+  "reading_band": "Grades 1–2",
+  "target_minutes": 5,
+  "summary": "A friendly child and a new animal friend find a lost toy together and share a snack.",
+  "sentences": [
+    {
+      "id": "s1",
+      "text_with_blanks": "[[slot_child]] loved to play in [[slot_park]].",
+      "slot_ids": [
+        "slot_child",
+        "slot_park"
+      ]
+    },
+    {
+      "id": "s2",
+      "text_with_blanks": "One sunny morning, [[slot_child]] packed a [[slot_snack]] for a picnic.",
+      "slot_ids": [
+        "slot_child",
+        "slot_snack"
+      ]
+    },
+    {
+      "id": "s3",
+      "text_with_blanks": "[[slot_child]] brought a bright [[slot_color]] [[slot_toy]].",
+      "slot_ids": [
+        "slot_child",
+        "slot_color",
+        "slot_toy"
+      ]
+    },
+    {
+      "id": "s4",
+      "text_with_blanks": "While running, [[slot_child]] saw a [[slot_animal]] named [[slot_animal_name]].",
+      "slot_ids": [
+        "slot_child",
+        "slot_animal",
+        "slot_animal_name"
+      ]
+    },
+    {
+      "id": "s5",
+      "text_with_blanks": "The [[slot_animal]] wagged its tail and asked for a game.",
+      "slot_ids": [
+        "slot_animal"
+      ]
+    },
+    {
+      "id": "s6",
+      "text_with_blanks": "[[slot_child]] wanted to play hide‑and‑seek with the [[slot_animal]].",
+      "slot_ids": [
+        "slot_child",
+        "slot_animal"
+      ]
+    },
+    {
+      "id": "s7",
+      "text_with_blanks": "[[slot_child]] hid behind a tree, but the [[slot_toy]] slipped from their hands.",
+      "slot_ids": [
+        "slot_child",
+        "slot_toy"
+      ]
+    },
+    {
+      "id": "s8",
+      "text_with_blanks": "The toy rolled into the river and floated away.",
+      "slot_ids": []
+    },
+    {
+      "id": "s9",
+      "text_with_blanks": "[[slot_child]] felt sad but decided to ask the [[slot_animal]] for help.",
+      "slot_ids": [
+        "slot_child",
+        "slot_animal"
+      ]
+    },
+    {
+      "id": "s10",
+      "text_with_blanks": "Together, they followed the toy’s trail of bubbles.",
+      "slot_ids": []
+    },
+    {
+      "id": "s11",
+      "text_with_blanks": "The toy stopped at a shiny rock, and a fish jumped out.",
+      "slot_ids": []
+    },
+    {
+      "id": "s12",
+      "text_with_blanks": "[[slot_child]] and the [[slot_animal]] shared the fish and the [[slot_snack]], and they laughed.",
+      "slot_ids": [
+        "slot_child",
+        "slot_animal",
+        "slot_snack"
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "id": "slot_child",
+      "type": "character_name",
+      "author_description": "A name for the main child character.",
+      "child_prompt": "What is your favorite name for a child?",
+      "examples": [
+        "Lily",
+        "Sam",
+        "Mia"
+      ]
+    },
+    {
+      "id": "slot_park",
+      "type": "park_name",
+      "author_description": "A friendly park name.",
+      "child_prompt": "What is the name of a park you like?",
+      "examples": [
+        "Sunny Park",
+        "Green Meadow"
+      ]
+    },
+    {
+      "id": "slot_snack",
+      "type": "snack_food",
+      "author_description": "A small snack the child brings.",
+      "child_prompt": "What snack would you bring?",
+      "examples": [
+        "apple",
+        "candy bar",
+        "cheese stick"
+      ]
+    },
+    {
+      "id": "slot_color",
+      "type": "color",
+      "author_description": "A bright color.",
+      "child_prompt": "What bright color do you like?",
+      "examples": [
+        "red",
+        "blue",
+        "yellow"
+      ]
+    },
+    {
+      "id": "slot_toy",
+      "type": "toy_object",
+      "author_description": "A toy the child plays with.",
+      "child_prompt": "What toy would you like to play with?",
+      "examples": [
+        "ball",
+        "doll",
+        "kite"
+      ]
+    },
+    {
+      "id": "slot_animal",
+      "type": "animal_pet",
+      "author_description": "A friendly animal the child meets.",
+      "child_prompt": "What friendly animal would you meet?",
+      "examples": [
+        "dog",
+        "cat",
+        "rabbit"
+      ]
+    },
+    {
+      "id": "slot_animal_name",
+      "type": "animal_name",
+      "author_description": "Name for the animal friend.",
+      "child_prompt": "What name would you give the animal?",
+      "examples": [
+        "Buddy",
+        "Whiskers",
+        "Nibbles"
+      ]
+    }
+  ]
+}

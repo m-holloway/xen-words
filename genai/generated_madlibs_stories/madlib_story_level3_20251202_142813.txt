@@ -1,0 +1,30 @@
+Title: The Singing Kite and the Lost Balloon
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A kind child helps a sad toy find its missing balloon friend, and they play together with a warm cookie.
+
+Slots:
+- slot_child (child_name): A friendly name for the main character.
+  Child prompt: Can you name a child who loves to play?
+  Examples: Lily, Tom, Sam
+- slot_toy (toy_name): A cute toy that the child plays with.
+  Child prompt: Can you name a toy that you like?
+  Examples: Mr. Fluffy, Sunny the Teddy, Blue Rocket
+- slot_food (snack_food): A tasty snack they share at the end.
+  Child prompt: Can you name a snack you like to eat?
+  Examples: cookie, fruit, sandwich
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the sunny park.
+s2: One day, the [[slot_toy]] stopped humming and looked very quiet.
+s3: It had lost its friend, a tiny blue balloon.
+s4: The [[slot_child]] felt sad, and wanted to help.
+s5: First, [[slot_child]] tried to find the balloon in the sandbox.
+s6: But the sandbox was empty, and the balloon was not there.
+s7: Then [[slot_child]] looked under the big oak tree.
+s8: There, a bright rainbow kite was stuck in a branch.
+s9: The kite sang a soft song when it was touched.
+s10: [[slot_child]] gently pulled the kite down and sang a friendly tune.
+s11: The kite fluttered, and the balloon floated up, joining the kite.
+s12: Now the [[slot_toy]] hummed again, and the child and the balloon played together.
+s13: They ate a warm [[slot_food]], and the park smelled like cinnamon.

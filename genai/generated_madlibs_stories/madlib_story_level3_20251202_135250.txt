@@ -1,0 +1,39 @@
+Title: The Balloon and the Lost Toy
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child learns kindness by finding a lost toy and sharing it with a new friend.
+
+Slots:
+- slot_child (person): The name of the main child character.
+  Child prompt: Can you name a child you would like to read this story with?
+  Examples: Mia, Liam, Emma
+- slot_toy (toy): A favorite toy the child likes to play with.
+  Child prompt: What is a toy you love to play with?
+  Examples: ball, doll, puzzle
+- slot_place (place): A place where the child plays.
+  Child prompt: Name a place you like to go to play?
+  Examples: park, garden, playground
+- slot_color (color): A bright color for the balloon.
+  Child prompt: What is a bright color you like?
+  Examples: orange, purple, green
+- slot_friend (person): A new friend the child meets.
+  Child prompt: Name a new friend you would like to meet in the story.
+  Examples: Sam, Ava, Noah
+- slot_food (snack_food): A tasty snack to share.
+  Child prompt: What is a snack you like to share with a friend?
+  Examples: apple, candy, pretzel
+- slot_activity (playground_activity): A fun activity to do together.
+  Child prompt: What is a fun activity you like to do with friends?
+  Examples: tag, hide‑and‑seek, jump rope
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the bright [[slot_place]].
+s2: One sunny day, the [[slot_toy]] rolled away into a big, [[slot_color]] balloon.
+s3: The balloon floated up, like a lazy kite, and the toy was lost.
+s4: She felt a little sad and thought, 'Maybe I should just walk home.'
+s5: But then she remembered her promise to be kind, so she took a deep breath.
+s6: She called out, 'Hello? Is anyone here?' and a friendly [[slot_friend]] answered.
+s7: The [[slot_friend]] asked, 'Do you want to play?' and together they looked for the toy.
+s8: They found the toy hidden under the balloon, sparkling like a tiny star.
+s9: They shared the toy, and [[slot_child]] gave the [[slot_friend]] a tasty [[slot_food]].
+s10: They laughed and played [[slot_activity]] until the sun set, feeling happy and brave.

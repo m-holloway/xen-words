@@ -1,0 +1,36 @@
+Title: The Lost Toy Adventure
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A gentle adventure where a child learns to ask for help and finds a lost toy with a friendly pet.
+
+Slots:
+- slot_child (child_name): Name of the child character
+  Child prompt: Can you give a name for the child?
+  Examples: Sam, Lily, Max
+- slot_toy (toy_object): A toy the child likes
+  Child prompt: What is a toy you love to play with?
+  Examples: balloon, kite, toy car
+- slot_place (place_name): A place where the child plays
+  Child prompt: Where does the child play?
+  Examples: park, garden, beach
+- slot_color (color): A bright color
+  Child prompt: What is a bright color you like?
+  Examples: yellow, blue, purple
+- slot_pet (animal_pet): A friendly animal friend
+  Child prompt: Can you name an animal you would love to be friends with?
+  Examples: bunny, puppy, kitten
+- slot_snack (snack_food): A snack the child enjoys
+  Child prompt: What is a snack you like to eat?
+  Examples: cookies, fruit, pretzels
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the [[slot_place]].
+s2: One sunny day, the [[slot_toy]] floated up into the sky like a tiny bright cloud.
+s3: It drifted over the [[slot_color]] trees and disappeared behind a cloud.
+s4: [[slot_child]] felt sad and wanted to run home.
+s5: But then [[slot_child]] thought, "I can ask my [[slot_pet]] for help."
+s6: [[slot_pet]] sniffed the air and followed a rainbow trail.
+s7: The trail led to a hidden pond where the [[slot_toy]] bobbed in the water.
+s8: [[slot_child]] and [[slot_pet]] lifted the toy out together.
+s9: They sat on a blanket and ate [[slot_snack]] while watching the sun set.
+s10: From then on, [[slot_child]] always asked for help when something was lost.

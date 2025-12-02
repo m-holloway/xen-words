@@ -1,0 +1,145 @@
+{
+  "template": {
+    "title": "Max and the Missing Page in the Library",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "Max fills a missing page with a picture, discovering creativity.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to read in the school library.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One day, [[slot_child]] opened a book called [[slot_book_title]] and found a missing page.",
+        "slot_ids": [
+          "slot_child",
+          "slot_book_title"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The page was empty, and the story felt sad.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] thought, 'I can make this page fun!'",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "He drew a picture of a [[slot_picture_subject]] playing a piano.",
+        "slot_ids": [
+          "slot_picture_subject"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "He used bright [[slot_color]] crayons to color the picture.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "The picture made the story smile, and the missing page looked happy.",
+        "slot_ids": []
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "When the teacher saw it, she praised [[slot_child]] for being creative.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "Later, [[slot_child]] placed the book back on the [[slot_school_item]] and shared his picture with friends.",
+        "slot_ids": [
+          "slot_child",
+          "slot_school_item"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the child character",
+        "child_prompt": "Can you give a name for the child?",
+        "examples": [
+          "Max",
+          "Emma",
+          "Noah"
+        ]
+      },
+      {
+        "id": "slot_book_title",
+        "type": "book_title",
+        "author_description": "Title of a book",
+        "child_prompt": "Can you think of a book title?",
+        "examples": [
+          "The Adventures of Tom",
+          "The Magic Garden",
+          "Space Explorers"
+        ]
+      },
+      {
+        "id": "slot_missing_page_content",
+        "type": "page_content",
+        "author_description": "What could be on the missing page?",
+        "child_prompt": "What picture would you draw on a missing page?",
+        "examples": [
+          "a cat playing piano",
+          "a rainbow over a hill",
+          "a smiling robot"
+        ]
+      },
+      {
+        "id": "slot_picture_subject",
+        "type": "subject",
+        "author_description": "Subject of the picture",
+        "child_prompt": "Can you name something you like to draw?",
+        "examples": [
+          "cat",
+          "dog",
+          "tree"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "Bright color",
+        "child_prompt": "Can you name a bright color?",
+        "examples": [
+          "orange",
+          "purple",
+          "green"
+        ]
+      },
+      {
+        "id": "slot_school_item",
+        "type": "school_item",
+        "author_description": "An item in the school",
+        "child_prompt": "Can you name something you might see in a school?",
+        "examples": [
+          "library shelf",
+          "blackboard",
+          "chalk"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G3_patterns_menu_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

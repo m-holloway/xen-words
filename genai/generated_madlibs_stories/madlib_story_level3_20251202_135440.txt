@@ -1,0 +1,30 @@
+Title: The Missing Star Puzzle
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A gentle story about a child finding a missing puzzle piece with the help of a friendly animal.
+
+Slots:
+- slot_child (child_name): Name of the main child character.
+  Child prompt: What is your name?
+  Examples: Lily, Max, Sam
+- slot_toy (toy_object): A toy that the child plays with.
+  Child prompt: What is your favorite toy?
+  Examples: ball, doll, puzzle
+- slot_pet (animal_pet): A friendly animal friend.
+  Child prompt: What is the name of a friendly animal you like?
+  Examples: Bobby the dog, Milo the rabbit, Kitty the kitten
+- slot_snack (snack_food): A crunchy snack they share.
+  Child prompt: What is a crunchy snack you enjoy?
+  Examples: chips, crackers, apple slices
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the park.
+s2: One day, the toy was a picture of the sun, but one bright yellow star piece was missing.
+s3: The child looked around and wondered where the piece had gone.
+s4: She almost decided to throw the puzzle away, but then thought of her friend [[slot_pet]].
+s5: She called out, "Hello [[slot_pet]], can you see the missing star?"
+s6: The [[slot_pet]] sniffed the air and trotted to the big oak tree.
+s7: Under the tree, the star piece glowed like a tiny sunrise.
+s8: The child reached out and placed the piece into the picture.
+s9: The sun picture shone brighter, and the park felt warmer.
+s10: They celebrated with a crunchy [[slot_snack]] and laughed together.

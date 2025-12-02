@@ -1,0 +1,170 @@
+{
+  "template": {
+    "title": "Milo's Magic Kite",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A gentle story about Milo learning to ask for help and sharing joy with a puppy while flying a kite.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "Milo loved to play with his [[slot_toy]] in the [[slot_place]].",
+        "slot_ids": [
+          "slot_toy",
+          "slot_place"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "The [[slot_toy]] was bright [[slot_color]] and looked like a rainbow dragon.",
+        "slot_ids": [
+          "slot_toy",
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "He tried to lift it up, but the wind blew it down.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "Milo felt a little sad.",
+        "slot_ids": []
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "He almost put the [[slot_toy]] on the ground and say goodbye.",
+        "slot_ids": [
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "Then he remembered his [[slot_pet]] who loved to chase butterflies.",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "Milo whispered, \"Come on, [[slot_pet]]! Let's help me.\"",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "The [[slot_pet]] wagged its tail and jumped, catching the kite's string.",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "Together, they lifted the kite higher, and it sang a soft [[slot_sound]].",
+        "slot_ids": [
+          "slot_sound"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "Milo and his [[slot_pet]] shared a [[slot_snack]] while watching the kite dance.",
+        "slot_ids": [
+          "slot_pet",
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "The kite flew over the [[slot_place]] and painted the sky with colors.",
+        "slot_ids": [
+          "slot_place"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "Milo felt happy and thanked his friend.",
+        "slot_ids": []
+      },
+      {
+        "id": "s13",
+        "text_with_blanks": "They promised to play again tomorrow.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A small toy that Milo can play with.",
+        "child_prompt": "Can you name a toy you like to play with?",
+        "examples": [
+          "kite",
+          "balloon",
+          "toy car"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color for the toy.",
+        "child_prompt": "What is a bright color you like?",
+        "examples": [
+          "blue",
+          "green",
+          "pink"
+        ]
+      },
+      {
+        "id": "slot_place",
+        "type": "place",
+        "author_description": "A place where Milo plays.",
+        "child_prompt": "Can you name a place you like to go to?",
+        "examples": [
+          "park",
+          "garden",
+          "meadow"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "A friendly animal that Milo has.",
+        "child_prompt": "Can you name an animal you would love to be friends with?",
+        "examples": [
+          "puppy",
+          "bunny",
+          "kitten"
+        ]
+      },
+      {
+        "id": "slot_sound",
+        "type": "sound",
+        "author_description": "A soft sound the kite makes.",
+        "child_prompt": "What is a soft sound you hear in nature?",
+        "examples": [
+          "whir",
+          "hum",
+          "chirp"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A snack Milo can share with his pet.",
+        "child_prompt": "What is a snack you like to eat?",
+        "examples": [
+          "cookie",
+          "apple",
+          "carrot"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G1_novel_innerChoice_showDontTell",
+    "judge_model": "google/gemini-3-pro-preview"
+  }
+}

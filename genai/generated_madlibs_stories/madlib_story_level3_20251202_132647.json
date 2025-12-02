@@ -1,0 +1,146 @@
+{
+  "template": {
+    "title": "Mia and the Little Bird",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "Mia sees a tiny bird with a broken wing, thinks about how to help, and learns kindness through gentle action.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "Mia loved to play with [[slot_toy]] on [[slot_place]].",
+        "slot_ids": [
+          "slot_toy",
+          "slot_place"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One day, she saw a tiny bird drooping its wing.",
+        "slot_ids": []
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The bird's wing was as soft as a [[slot_color]] feather.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "Mia felt sad and wanted to help.",
+        "slot_ids": []
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "She thought about [[slot_friend]] might know what to do.",
+        "slot_ids": [
+          "slot_friend"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "She almost tossed the bird onto the ground, but then remembered the story about kindness.",
+        "slot_ids": []
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "Instead, she tucked the bird into a small blanket and whispered, 'Take care.'",
+        "slot_ids": []
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "The next day, Mia brought [[slot_snack]] and shared it with the bird.",
+        "slot_ids": [
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "The bird sang a bright [[slot_sound]] that made Mia smile.",
+        "slot_ids": [
+          "slot_sound"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "Soon the bird fluttered its wings and flew away, leaving a trail of glittering [[slot_color]] sparkles.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A toy you like to play with",
+        "child_prompt": "Can you name a toy you like?",
+        "examples": [
+          "ball",
+          "doll",
+          "block"
+        ]
+      },
+      {
+        "id": "slot_place",
+        "type": "place_name",
+        "author_description": "A place you go to play",
+        "child_prompt": "Can you name a place you like to play at?",
+        "examples": [
+          "park",
+          "garden",
+          "beach"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color",
+        "child_prompt": "Can you name a bright color?",
+        "examples": [
+          "pink",
+          "blue",
+          "yellow"
+        ]
+      },
+      {
+        "id": "slot_friend",
+        "type": "animal_pet",
+        "author_description": "A friendly animal friend",
+        "child_prompt": "Can you name a friendly animal you like?",
+        "examples": [
+          "puppy",
+          "bunny",
+          "kitten"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A favorite snack",
+        "child_prompt": "Can you name a snack you like?",
+        "examples": [
+          "apple",
+          "granola bar",
+          "pretzel"
+        ]
+      },
+      {
+        "id": "slot_sound",
+        "type": "sound",
+        "author_description": "A pleasant sound",
+        "child_prompt": "Can you name a sound you like?",
+        "examples": [
+          "chirp",
+          "rumble",
+          "whistle"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G1_novel_innerChoice_showDontTell"
+  }
+}

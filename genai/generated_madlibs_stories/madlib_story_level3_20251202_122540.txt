@@ -1,0 +1,33 @@
+Title: Mia and the Lost Kite
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A gentle story about Mia, a small problem, and a happy ending.
+
+Slots:
+- slot_child (child_name): A child name
+  Child prompt: What's your name?
+  Examples: Mia, Liam, Emma
+- slot_toy (toy_object): A toy the child loves
+  Child prompt: What is your favorite toy?
+  Examples: ball, doll, car
+- slot_color (color): A bright color
+  Child prompt: Name a bright color you like.
+  Examples: red, blue, green
+- slot_animal (animal_pet): A friendly animal to help
+  Child prompt: Name a friendly animal that could be a friend.
+  Examples: dog, cat, rabbit
+- slot_snack (snack_food): A snack to share
+  Child prompt: What snack do you like to share?
+  Examples: ice cream, cookies, fruit
+
+Story template:
+s1: [[slot_child]] loved to play in the park with her [[slot_toy]].
+s2: One sunny day, she flew a bright [[slot_color]] kite.
+s3: But then the kite flew up high and disappeared.
+s4: [[slot_child]] looked everywhere, but she could not find it.
+s5: She asked her friend, [[slot_animal]], for help.
+s6: They climbed the tall tree and looked over the grass.
+s7: They saw the kite tangled in a pine tree.
+s8: Together they gently pulled the kite down.
+s9: [[slot_child]] thanked her friend and they shared a [[slot_snack]].
+s10: They played happily until the sun set, and the kite flew again.

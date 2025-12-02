@@ -1,0 +1,173 @@
+{
+  "template": {
+    "title": "Lily and the Kite in the Tree",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A gentle story about Lily, a kite stuck in a tree, and how a kind squirrel helps her, showing friendship and teamwork.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the park.",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny day, the kite was bright [[slot_color]] and danced in the blue sky.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "When a gentle wind blew, the kite slipped from [[slot_child]]'s hands and flew up into a tall oak tree.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "She looked down and saw the kite stuck among the branches.",
+        "slot_ids": []
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "She almost climbed the tree to get it, but then she thought about being safe.",
+        "slot_ids": []
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "She ran over to the friendly squirrel [[slot_squirrel]] who lived near the tree.",
+        "slot_ids": [
+          "slot_squirrel"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "The squirrel said, 'I can help! I have a little rope [[slot_rope]] that can pull the kite down.'",
+        "slot_ids": [
+          "slot_rope"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "Together they tied the rope to the kite and pulled gently.",
+        "slot_ids": []
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "The kite fluttered like a rainbow butterfly, bright and beautiful.",
+        "slot_ids": []
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "When it landed, [[slot_child]] and the squirrel shared a snack of [[slot_snack]] and laughed.",
+        "slot_ids": [
+          "slot_child",
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "The kite flew again, and [[slot_child]] waved goodbye to the squirrel.",
+        "slot_ids": []
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "She felt happy that she had helped the kite and made a new friend.",
+        "slot_ids": []
+      },
+      {
+        "id": "s13",
+        "text_with_blanks": "Every time she visited the park, she would bring her kite and share it with the squirrel.",
+        "slot_ids": []
+      },
+      {
+        "id": "s14",
+        "text_with_blanks": "The park became a place of friendship and bright colors.",
+        "slot_ids": []
+      },
+      {
+        "id": "s15",
+        "text_with_blanks": "And the kite always remembered how a kind hand helped it soar.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "person_name",
+        "author_description": "The name of the main child character.",
+        "child_prompt": "Can you name a child you would like to be friends with?",
+        "examples": [
+          "Lily",
+          "Tommy",
+          "Emma"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A toy the child likes to play with.",
+        "child_prompt": "Can you name a toy you like to play with?",
+        "examples": [
+          "kite",
+          "ball",
+          "puzzle"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color.",
+        "child_prompt": "Can you name a bright color?",
+        "examples": [
+          "purple",
+          "red",
+          "green"
+        ]
+      },
+      {
+        "id": "slot_squirrel",
+        "type": "animal_pet",
+        "author_description": "A friendly animal you might see in the park.",
+        "child_prompt": "Can you name a friendly animal you might see in the park?",
+        "examples": [
+          "squirrel",
+          "bird",
+          "rabbit"
+        ]
+      },
+      {
+        "id": "slot_rope",
+        "type": "tool_object",
+        "author_description": "A small rope or string.",
+        "child_prompt": "Can you name a small rope or string you might use?",
+        "examples": [
+          "rope",
+          "string",
+          "twine"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A tasty snack.",
+        "child_prompt": "Can you name a tasty snack you like?",
+        "examples": [
+          "candy apples",
+          "fruit",
+          "cookies"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G3_patterns_menu_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "template": {
+    "title": "The Balloon Dragon Adventure",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child and their pet try to bring a floating balloon down, learning kindness and teamwork.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_pet]] and [[slot_toy]] in the [[slot_place]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet",
+          "slot_toy",
+          "slot_place"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One bright [[slot_weather]] day, a shiny [[slot_color]] balloon floated up, like a tiny dragon dancing in the sky.",
+        "slot_ids": [
+          "slot_weather",
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "It twirled and sang, and [[slot_child]] felt a little curious.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "The balloon drifted higher, and [[slot_child]] wondered how to reach it.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "Almost [[slot_child]] shouted for help, but then remembered the kind words of [[slot_pet]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "Instead, [[slot_child]] whispered, 'Let’s use the [[slot_activity]] to bring it down.'",
+        "slot_ids": [
+          "slot_child",
+          "slot_activity"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "They tied a bright ribbon to the balloon and let it glide like a friendly kite.",
+        "slot_ids": []
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "The balloon landed gently on a tree, and [[slot_child]] and [[slot_pet]] shared a tasty [[slot_snack]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet",
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "The balloon smiled and floated back, inviting them to play again.",
+        "slot_ids": []
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "They laughed and danced, and the sky looked brighter.",
+        "slot_ids": []
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "When the sun set, the balloon floated home, and [[slot_child]] felt proud.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "From that day, every [[slot_weather]] day, [[slot_child]] and [[slot_pet]] would look up for new adventures.",
+        "slot_ids": [
+          "slot_weather",
+          "slot_child",
+          "slot_pet"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the main character.",
+        "child_prompt": "What is your name?",
+        "examples": [
+          "Sam",
+          "Lily",
+          "Max"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "A cozy or friendly animal the child might like.",
+        "child_prompt": "Can you name a friendly animal you like?",
+        "examples": [
+          "puppy",
+          "bunny",
+          "kitten"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A toy the child loves to play with.",
+        "child_prompt": "What is your favorite toy?",
+        "examples": [
+          "ball",
+          "doll",
+          "blocks"
+        ]
+      },
+      {
+        "id": "slot_place",
+        "type": "place_name",
+        "author_description": "A place where the child plays.",
+        "child_prompt": "Where do you like to play?",
+        "examples": [
+          "playground",
+          "flower garden",
+          "park"
+        ]
+      },
+      {
+        "id": "slot_weather",
+        "type": "weather",
+        "author_description": "A type of weather the child enjoys.",
+        "child_prompt": "What weather do you like?",
+        "examples": [
+          "sunny",
+          "cloudy",
+          "rainy"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color for the balloon.",
+        "child_prompt": "What is a bright color you like?",
+        "examples": [
+          "rainbow",
+          "purple",
+          "orange"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A snack the child loves.",
+        "child_prompt": "What snack do you love?",
+        "examples": [
+          "cookies",
+          "fruit",
+          "granola bar"
+        ]
+      },
+      {
+        "id": "slot_activity",
+        "type": "activity",
+        "author_description": "A fun activity the child does.",
+        "child_prompt": "What fun activity do you do?",
+        "examples": [
+          "sing",
+          "dance",
+          "skip rope"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G1_novel_innerChoice_showDontTell",
+    "judge_model": "google/gemini-3-pro-preview"
+  }
+}

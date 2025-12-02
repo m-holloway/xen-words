@@ -1,0 +1,161 @@
+{
+  "template": {
+    "title": "The Balloon and the Lost Toy",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child learns kindness by finding a lost toy and sharing it with a new friend.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the bright [[slot_place]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy",
+          "slot_place"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny day, the [[slot_toy]] rolled away into a big, [[slot_color]] balloon.",
+        "slot_ids": [
+          "slot_toy",
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The balloon floated up, like a lazy kite, and the toy was lost.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "She felt a little sad and thought, 'Maybe I should just walk home.'",
+        "slot_ids": []
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "But then she remembered her promise to be kind, so she took a deep breath.",
+        "slot_ids": []
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "She called out, 'Hello? Is anyone here?' and a friendly [[slot_friend]] answered.",
+        "slot_ids": [
+          "slot_friend"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "The [[slot_friend]] asked, 'Do you want to play?' and together they looked for the toy.",
+        "slot_ids": []
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "They found the toy hidden under the balloon, sparkling like a tiny star.",
+        "slot_ids": []
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "They shared the toy, and [[slot_child]] gave the [[slot_friend]] a tasty [[slot_food]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy",
+          "slot_friend",
+          "slot_food"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "They laughed and played [[slot_activity]] until the sun set, feeling happy and brave.",
+        "slot_ids": [
+          "slot_activity"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "person",
+        "author_description": "The name of the main child character.",
+        "child_prompt": "Can you name a child you would like to read this story with?",
+        "examples": [
+          "Mia",
+          "Liam",
+          "Emma"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy",
+        "author_description": "A favorite toy the child likes to play with.",
+        "child_prompt": "What is a toy you love to play with?",
+        "examples": [
+          "ball",
+          "doll",
+          "puzzle"
+        ]
+      },
+      {
+        "id": "slot_place",
+        "type": "place",
+        "author_description": "A place where the child plays.",
+        "child_prompt": "Name a place you like to go to play?",
+        "examples": [
+          "park",
+          "garden",
+          "playground"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color for the balloon.",
+        "child_prompt": "What is a bright color you like?",
+        "examples": [
+          "orange",
+          "purple",
+          "green"
+        ]
+      },
+      {
+        "id": "slot_friend",
+        "type": "person",
+        "author_description": "A new friend the child meets.",
+        "child_prompt": "Name a new friend you would like to meet in the story.",
+        "examples": [
+          "Sam",
+          "Ava",
+          "Noah"
+        ]
+      },
+      {
+        "id": "slot_food",
+        "type": "snack_food",
+        "author_description": "A tasty snack to share.",
+        "child_prompt": "What is a snack you like to share with a friend?",
+        "examples": [
+          "apple",
+          "candy",
+          "pretzel"
+        ]
+      },
+      {
+        "id": "slot_activity",
+        "type": "playground_activity",
+        "author_description": "A fun activity to do together.",
+        "child_prompt": "What is a fun activity you like to do with friends?",
+        "examples": [
+          "tag",
+          "hide‑and‑seek",
+          "jump rope"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G1_novel_innerChoice_showDontTell",
+    "judge_model": "google/gemini-3-pro-preview"
+  }
+}

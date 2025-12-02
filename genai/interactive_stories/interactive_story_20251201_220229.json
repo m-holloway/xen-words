@@ -1,0 +1,32 @@
+{
+  "model": "google/gemini-2.5-flash",
+  "model_source": "STORY_BUILDER_BY_SENTENCE_MODEL",
+  "created_at": "2025-12-01T22:02:29.581948",
+  "story": [
+    "Imagine a world where every single cloud was a fluffy marshmallow.",
+    "And nestled among those soft, fluffy clouds was a tiny, cozy home, perfect for a very special friend."
+  ],
+  "turns": [
+    {
+      "step": 2,
+      "action": "regenerate",
+      "candidates": [
+        "And in that world lived a very special turtle.",
+        "It was a very soft and sweet world, perfect for a little turtle."
+      ],
+      "chosen_sentence": null,
+      "user_guidance": null
+    },
+    {
+      "step": 2,
+      "action": "choose_model_sentence",
+      "choice_label": "B",
+      "candidates": [
+        "In this soft, sweet sky lived a little turtle named Timmy, who loved to watch the clouds drift by.",
+        "And nestled among those soft, fluffy clouds was a tiny, cozy home, perfect for a very special friend."
+      ],
+      "chosen_sentence": "And nestled among those soft, fluffy clouds was a tiny, cozy home, perfect for a very special friend.",
+      "user_guidance": null
+    }
+  ]
+}

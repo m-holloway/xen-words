@@ -1,0 +1,38 @@
+Title: The Missing Puzzle Piece
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child finds a missing puzzle piece and shares it with a classmate.
+
+Slots:
+- slot_child (child_name): Name of the main child character
+  Child prompt: What is the name of the child in the story?
+  Examples: Sam, Lily, Noah
+- slot_color (color): A bright color
+  Child prompt: Name a bright color
+  Examples: red, blue, green
+- slot_puzzle_piece (object): A puzzle piece
+  Child prompt: Name a puzzle piece
+  Examples: square, triangle, circle
+- slot_object (object): A classroom object
+  Child prompt: Name a classroom object
+  Examples: desk, chair, board
+- slot_classmate (person): A classmate
+  Child prompt: Name a classmate
+  Examples: Alex, Mia, Jordan
+- slot_sound (sound): A soft sound
+  Child prompt: Name a soft sound
+  Examples: clack, whisper, humming
+
+Story template:
+s1: [[slot_child]] loved to help the class with puzzles.
+s2: One rainy day, the class was putting together a big picture.
+s3: A small [[slot_color]] piece was missing from the jigsaw.
+s4: [[slot_child]] looked for the piece but it was not there.
+s5: They noticed a [[slot_puzzle_piece]] under the [[slot_object]].
+s6: The piece glowed like a tiny [[slot_color]] star.
+s7: [[slot_child]] felt a tug of wanting to keep it.
+s8: Instead, [[slot_child]] gave the piece to [[slot_classmate]].
+s9: The classmate smiled and placed the piece in the puzzle.
+s10: The picture finished and made a soft [[slot_sound]].
+s11: Everyone cheered, and [[slot_child]] felt proud.
+s12: Now, [[slot_child]] knows sharing makes puzzles complete.

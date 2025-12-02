@@ -1,0 +1,39 @@
+Title: The Tiny Piano Bird
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child helps a small bird stuck in a bush, learns kindness, and shares a snack under a tree.
+
+Slots:
+- slot_child (noun): The name of the child character.
+  Child prompt: Can you name the child in the story?
+  Examples: Lily, Tommy, Mia
+- slot_toy (noun): A toy the child loves to play with.
+  Child prompt: What is a toy the child likes?
+  Examples: plush rabbit, toy car, doll
+- slot_animal (animal): A small animal that appears in the garden.
+  Child prompt: Name a small animal that could be in the garden.
+  Examples: bluebird, squirrel, dragonfly
+- slot_color (color): A bright color of a feather.
+  Child prompt: What is a bright color you like?
+  Examples: emerald, sapphire, violet
+- slot_tool (noun): A simple tool the child uses to help.
+  Child prompt: Name a small tool the child could use.
+  Examples: stick, leaf, ribbon
+- slot_snack_food (food): A snack the child shares.
+  Child prompt: What is a snack the child might share?
+  Examples: cookie, apple slice, pretzel
+- slot_tree (noun): A tree in the garden where they sit.
+  Child prompt: Name a tree that could be in the garden.
+  Examples: oak, maple, birch
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the garden.
+s2: One sunny day, they heard a soft chirp from a [[slot_animal]] perched on a branch.
+s3: The [[slot_animal]] had a bright [[slot_color]] feather that fell to the ground.
+s4: [[slot_child]] looked at the feather and felt a tug in their heart.
+s5: They could have taken the feather and kept it, but they chose to help the [[slot_animal]].
+s6: Using a [[slot_tool]], [[slot_child]] gently freed the bird from the tangled bush.
+s7: The bird sang a song that sounded like a tiny piano, and the garden filled with music.
+s8: [[slot_child]] shared their [[slot_snack_food]] with the bird, and they both sat under the [[slot_tree]] tree.
+s9: The bird flapped its wings and flew away, leaving a trail of glittering dust.
+s10: [[slot_child]] felt warm and happy, knowing they made a new friend.

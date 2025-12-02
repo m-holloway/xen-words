@@ -1,0 +1,170 @@
+{
+  "template": {
+    "title": "The Lost Toy and the Friendly Kite",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child loses a toy in the park, finds help from a friendly animal, and shares a snack to end the day happily.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the park.",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny day, the [[slot_toy]] slid down the slide and fell into the big green [[slot_forest]].",
+        "slot_ids": [
+          "slot_toy",
+          "slot_forest"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "[[slot_child]] looked everywhere but could not find the [[slot_toy]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] felt sad and thought about walking home.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "Then a friendly [[slot_pet]] hopped over with a bright [[slot_color]] kite.",
+        "slot_ids": [
+          "slot_pet",
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "The kite fluttered like a dragonfly and made a soft humming sound.",
+        "slot_ids": []
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "[[slot_pet]] sniffed the air and said, \"Let me help!\"",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "Together they searched under the [[slot_color]] kite and found the [[slot_toy]] hidden inside a fluffy cloud of cotton candy.",
+        "slot_ids": [
+          "slot_color",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "[[slot_child]] thanked the [[slot_pet]] and shared a crunchy [[slot_snack]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet",
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "They all played a game of tag in the park.",
+        "slot_ids": []
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "The [[slot_child]] felt happy, and the [[slot_pet]] wagged its tail.",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "At the end of the day, they promised to meet again.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "The name of the main child character.",
+        "child_prompt": "What is your favorite name to use for the main character?",
+        "examples": [
+          "Mia",
+          "Liam",
+          "Sofia"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A small toy the child loves to play with.",
+        "child_prompt": "Can you name a toy you would love to play with?",
+        "examples": [
+          "ball",
+          "kite",
+          "toy car"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "A friendly animal that helps the child.",
+        "child_prompt": "Can you name an animal you would love to be friends with?",
+        "examples": [
+          "puppy",
+          "bunny",
+          "kitten"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color for the kite.",
+        "child_prompt": "What is a bright color you like?",
+        "examples": [
+          "bright blue",
+          "rainbow",
+          "sunny yellow"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A crunchy snack to share.",
+        "child_prompt": "Can you name a crunchy snack you like?",
+        "examples": [
+          "pretzel",
+          "apple slice",
+          "candy corn"
+        ]
+      },
+      {
+        "id": "slot_forest",
+        "type": "place_name",
+        "author_description": "A place in the park where the toy fell.",
+        "child_prompt": "What is a place in the park you like?",
+        "examples": [
+          "forest",
+          "woodland",
+          "grove"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G1_novel_innerChoice_showDontTell",
+    "judge_model": "google/gemini-3-pro-preview"
+  }
+}

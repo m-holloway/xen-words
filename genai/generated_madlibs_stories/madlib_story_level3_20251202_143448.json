@@ -1,0 +1,176 @@
+{
+  "template": {
+    "title": "The Singing Ball and the Kind Heart",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child, a pet, and a lost toy learn to share and find the ball’s owner.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_pet]] in the sunny park.",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One day, they found a [[slot_color]] [[slot_toy]] that was shiny and bright.",
+        "slot_ids": [
+          "slot_color",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The [[slot_toy]] made a soft [[slot_sound]] when it rolled.",
+        "slot_ids": [
+          "slot_toy",
+          "slot_sound"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "It seemed to hum when it was happy.",
+        "slot_ids": []
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "But the ball was not theirs. They wondered where it belonged.",
+        "slot_ids": []
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "They asked their friendly neighbor, [[slot_neighbor]].",
+        "slot_ids": [
+          "slot_neighbor"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "[[slot_neighbor]] said, 'Maybe it belongs to little [[slot_child]] who loves to play.'",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "The child felt a tug in their heart. They almost kept the ball for themselves.",
+        "slot_ids": []
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "Then they thought about the [[slot_pet]] who might miss a friend.",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "So the child placed the ball on the bench and called out, 'Here, little friend!'",
+        "slot_ids": []
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "A kind voice answered, 'Thank you, [[slot_child]]! I found my ball in the park.'",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "The child and [[slot_pet]] shared a yummy [[slot_food]] and giggled together.",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet",
+          "slot_food"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "The name of the child protagonist.",
+        "child_prompt": "Can you give a name for the child?",
+        "examples": [
+          "Sam",
+          "Lily",
+          "Max"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "A cozy or friendly animal the child might like.",
+        "child_prompt": "Can you name an animal you would love to be friends with?",
+        "examples": [
+          "bunny",
+          "kitten",
+          "puppy"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A simple color for the toy.",
+        "child_prompt": "Can you choose a color?",
+        "examples": [
+          "red",
+          "blue",
+          "green"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A small toy the child might find.",
+        "child_prompt": "Can you name a small toy?",
+        "examples": [
+          "ball",
+          "doll",
+          "puzzle"
+        ]
+      },
+      {
+        "id": "slot_sound",
+        "type": "sound",
+        "author_description": "A soft sound the toy makes.",
+        "child_prompt": "Can you think of a soft sound?",
+        "examples": [
+          "whoosh",
+          "hum",
+          "ring"
+        ]
+      },
+      {
+        "id": "slot_neighbor",
+        "type": "neighbor_name",
+        "author_description": "The name of a friendly neighbor.",
+        "child_prompt": "Can you give a name for the neighbor?",
+        "examples": [
+          "Mrs. Lee",
+          "Mr. Patel",
+          "Grandma Sue"
+        ]
+      },
+      {
+        "id": "slot_food",
+        "type": "snack_food",
+        "author_description": "A yummy snack the child shares.",
+        "child_prompt": "Can you name a snack you like?",
+        "examples": [
+          "cookies",
+          "fruit",
+          "sandwich"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G3_patterns_menu_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "template": {
+    "title": "The Lost Toy Adventure",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A gentle adventure where a child learns to ask for help and finds a lost toy with a friendly pet.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the [[slot_place]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy",
+          "slot_place"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny day, the [[slot_toy]] floated up into the sky like a tiny bright cloud.",
+        "slot_ids": [
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "It drifted over the [[slot_color]] trees and disappeared behind a cloud.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] felt sad and wanted to run home.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "But then [[slot_child]] thought, \"I can ask my [[slot_pet]] for help.\"",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "[[slot_pet]] sniffed the air and followed a rainbow trail.",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "The trail led to a hidden pond where the [[slot_toy]] bobbed in the water.",
+        "slot_ids": [
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "[[slot_child]] and [[slot_pet]] lifted the toy out together.",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "They sat on a blanket and ate [[slot_snack]] while watching the sun set.",
+        "slot_ids": [
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "From then on, [[slot_child]] always asked for help when something was lost.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the child character",
+        "child_prompt": "Can you give a name for the child?",
+        "examples": [
+          "Sam",
+          "Lily",
+          "Max"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A toy the child likes",
+        "child_prompt": "What is a toy you love to play with?",
+        "examples": [
+          "balloon",
+          "kite",
+          "toy car"
+        ]
+      },
+      {
+        "id": "slot_place",
+        "type": "place_name",
+        "author_description": "A place where the child plays",
+        "child_prompt": "Where does the child play?",
+        "examples": [
+          "park",
+          "garden",
+          "beach"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color",
+        "child_prompt": "What is a bright color you like?",
+        "examples": [
+          "yellow",
+          "blue",
+          "purple"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "A friendly animal friend",
+        "child_prompt": "Can you name an animal you would love to be friends with?",
+        "examples": [
+          "bunny",
+          "puppy",
+          "kitten"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A snack the child enjoys",
+        "child_prompt": "What is a snack you like to eat?",
+        "examples": [
+          "cookies",
+          "fruit",
+          "pretzels"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G1_novel_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "template": {
+    "title": "The Happy Toy and the Kind Friend",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child finds a sad toy, decides to help it, and together they bring joy to the playground.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_pet]] in the [[slot_place]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet",
+          "slot_place"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny day, they saw a [[slot_color]] [[slot_toy]] that looked sad.",
+        "slot_ids": [
+          "slot_color",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The toy was lonely because it had no friends to play with.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] thought, 'Maybe I can make it happy.'",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "[[slot_child]] wondered if they should just leave the toy alone, but they chose to help.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "First, [[slot_child]] tried to sing a song, but the toy stayed quiet.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "Then [[slot_child]] brought a [[slot_snack]] to share, hoping the toy would smile.",
+        "slot_ids": [
+          "slot_child",
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "The toy's eyes twinkled, and it started to hum like a tiny drum.",
+        "slot_ids": []
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "That humming made the whole playground light up with a soft glow.",
+        "slot_ids": []
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "[[slot_child]] decided to invite the [[slot_pet]] to play with the toy.",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "Together, they played [[slot_activity]] and the toy laughed, humming louder.",
+        "slot_ids": [
+          "slot_activity"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "The [[slot_color]] toy glowed brighter, like a sunrise on a cloud.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s13",
+        "text_with_blanks": "When the sun set, the toy said, 'Thank you, friend,' and they all went home happy.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "The name of the main child character.",
+        "child_prompt": "Can you give a name for the child?",
+        "examples": [
+          "Lily",
+          "Tom",
+          "Mia"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "A cozy or friendly animal the child might like.",
+        "child_prompt": "Can you name an animal you would love to be friends with?",
+        "examples": [
+          "puppy",
+          "bunny",
+          "kitten"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A small toy that the child can play with.",
+        "child_prompt": "Can you name a toy that you like?",
+        "examples": [
+          "doll",
+          "car",
+          "ball"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color to describe the toy.",
+        "child_prompt": "What is a bright color you like?",
+        "examples": [
+          "pink",
+          "orange",
+          "green"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A tasty snack the child can share.",
+        "child_prompt": "Can you name a snack you like?",
+        "examples": [
+          "cookies",
+          "fruit",
+          "popcorn"
+        ]
+      },
+      {
+        "id": "slot_place",
+        "type": "place_name",
+        "author_description": "A place where the playground is located.",
+        "child_prompt": "Where is the playground?",
+        "examples": [
+          "city park",
+          "suburban park",
+          "schoolyard"
+        ]
+      },
+      {
+        "id": "slot_activity",
+        "type": "playground_activity",
+        "author_description": "An activity the child can do at the playground.",
+        "child_prompt": "What is a playground activity you like?",
+        "examples": [
+          "tag",
+          "slide",
+          "climb"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G2_noCliche_oneTwist_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

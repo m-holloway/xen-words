@@ -1,0 +1,38 @@
+Original title: Mia and the Lost Kite
+Refined title:  Mia and the Lost Kite
+Reading level:   3 (Grades 1–2)
+Target minutes:  5
+Summary (refined): A sweet adventure where Mia discovers teamwork and friendship while finding her kite.
+
+Judge scores:
+- overall: 0.92
+- story_arc: 0.90
+- character_engagement: 0.90
+- emotional_warmth: 0.95
+- curiosity_hooks: 0.88
+- madlibs_usability: 0.96
+- reading_level_fit: 0.93
+
+--- Original template ---
+s1: [[slot_child]] loved to play in the park with her [[slot_toy]].
+s2: One sunny day she flew a bright [[slot_color]] kite into the sky.
+s3: The kite rose higher and then disappeared behind a fluffy cloud.
+s4: [[slot_child]] felt a little sad and wondered where the kite had gone.
+s5: She asked her friend [[slot_animal]] to help find the missing kite.
+s6: Together they searched the grass and climbed a tall pine tree.
+s7: From the top they saw the kite tangled in the branches.
+s8: They carefully pulled the kite down and untangled it with a smile.
+s9: [[slot_child]] thanked her friend and they shared a tasty [[slot_snack]].
+s10: They laughed and played until the sun set, and the kite flew again, bright and free.
+
+--- Refined template ---
+s1: [[slot_child]] loved to play in the park with her [[slot_toy]].
+s2: One sunny day she flew a bright [[slot_color]] kite into the sky.
+s3: The kite rose higher and then disappeared behind a fluffy cloud, leaving a trail of wonder.
+s4: [[slot_child]] felt a little sad and wondered where the kite had gone.
+s5: She asked her friend [[slot_animal]] to help find the missing kite, and they set off together.
+s6: They searched the grass, climbed a tall pine tree, and looked under the big oak tree.
+s7: From the top they saw the kite tangled in the branches of a friendly maple tree.
+s8: They carefully pulled the kite down and untangled it, feeling proud of their teamwork.
+s9: [[slot_child]] thanked her friend and they shared a tasty [[slot_snack]] while watching the kite fly.
+s10: They laughed and played until the sun set, and the kite flew again, bright and free, just like their friendship.

@@ -1,0 +1,181 @@
+{
+  "template": {
+    "title": "The Kite That Loved a Ribbon",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child helps a stuck kite with the help of a pet and a friendly animal, learning kindness and courage.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the [[slot_place]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy",
+          "slot_place"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny day, the kite got stuck high in a tree.",
+        "slot_ids": []
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "[[slot_child]] looked up and felt a little sad.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_pet]] hopped over and said, \"I can help!\"",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "Together they tried to climb, but the branch was too high.",
+        "slot_ids": []
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "[[slot_child]] thought about climbing alone, but then remembered the [[slot_snack]] on the bench.",
+        "slot_ids": [
+          "slot_child",
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "The snack was sweet, and it made [[slot_child]] feel brave.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "[[slot_child]] and [[slot_pet]] sang a gentle song to the kite.",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "The song made the kite wobble, and a friendly [[slot_friend]] fluttered down.",
+        "slot_ids": [
+          "slot_friend"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "The [[slot_friend]] lifted the kite down with its tiny feet.",
+        "slot_ids": [
+          "slot_friend"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "[[slot_child]] thanked the [[slot_friend]] and gave the kite a new [[slot_color]] ribbon.",
+        "slot_ids": [
+          "slot_child",
+          "slot_friend",
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "The kite flew happily, and [[slot_child]] felt warm inside.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the child",
+        "child_prompt": "What is your name?",
+        "examples": [
+          "Mia",
+          "Noah",
+          "Luna"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "Toy the child plays with",
+        "child_prompt": "What toy would you love to play with?",
+        "examples": [
+          "kite",
+          "ball",
+          "doll"
+        ]
+      },
+      {
+        "id": "slot_place",
+        "type": "place_name",
+        "author_description": "Place where the child plays",
+        "child_prompt": "Where do you like to play?",
+        "examples": [
+          "park",
+          "garden",
+          "beach"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "Pet that helps the child",
+        "child_prompt": "What pet would you like to have?",
+        "examples": [
+          "bunny",
+          "dog",
+          "cat"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "Snack that makes the child brave",
+        "child_prompt": "What snack makes you feel brave?",
+        "examples": [
+          "candy apple",
+          "banana",
+          "cookie"
+        ]
+      },
+      {
+        "id": "slot_friend",
+        "type": "animal_friend",
+        "author_description": "Friendly animal that helps",
+        "child_prompt": "What friendly animal would help?",
+        "examples": [
+          "turtle",
+          "bird",
+          "elephant"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "Color of the kite ribbon",
+        "child_prompt": "What color would you choose for the ribbon?",
+        "examples": [
+          "bright blue",
+          "emerald green",
+          "crimson red"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G3_patterns_menu_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

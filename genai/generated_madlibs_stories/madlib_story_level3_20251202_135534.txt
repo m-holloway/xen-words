@@ -1,0 +1,43 @@
+Title: The Lost Balloon Adventure
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A gentle adventure about finding a missing toy and sharing with a friend.
+
+Slots:
+- slot_child (child_name): Name of the main child character
+  Child prompt: What is the name of the child?
+  Examples: Sam, Lily, Alex
+- slot_toy (toy_object): A small toy the child likes
+  Child prompt: What toy does the child like to play with?
+  Examples: balloon, teddy bear, doll
+- slot_pet (animal_pet): The child's pet animal
+  Child prompt: What pet does the child have?
+  Examples: puppy, bunny, kitten
+- slot_color (color): A bright color
+  Child prompt: Name a bright color.
+  Examples: red, blue, yellow
+- slot_friend_name (friend_name): Name of the child's friend
+  Child prompt: What is the name of the child's friend?
+  Examples: Sam, Mia, Jordan
+- slot_activity (playground_activity): An activity at the playground
+  Child prompt: What activity do they do at the playground?
+  Examples: building a castle, climbing a slide, playing tag
+- slot_food (snack_food): A crunchy snack
+  Child prompt: What crunchy snack do they eat?
+  Examples: chips, crackers, apple slices
+- slot_weather (weather): A weather condition
+  Child prompt: What weather is it?
+  Examples: sunny, cloudy, rainy
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the park.
+s2: One sunny day, the [[slot_toy]] was gone!
+s3: [[slot_child]] looked under the big [[slot_color]] slide.
+s4: Then they saw the [[slot_toy]] floating like a tiny [[slot_color]] sun in the sky.
+s5: They reached up, but the toy was too high.
+s6: [[slot_child]] almost pushed the toy away, but remembered how [[slot_pet]] liked to share.
+s7: So they gently pulled the toy down and gave it to their friend [[slot_friend_name]].
+s8: [[slot_friend_name]] giggled and said, 'Thank you! Let's play together.'
+s9: They built a castle with blocks and ate a crunchy [[slot_food]] for snack.
+s10: The [[slot_weather]] made the day feel like a warm hug.
+s11: They laughed and played until the sun set.

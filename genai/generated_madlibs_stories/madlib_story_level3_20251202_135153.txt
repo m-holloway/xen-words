@@ -1,0 +1,37 @@
+Title: The Lost Toy and the Balloon Friend
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child finds a lost toy with the help of a friendly animal and learns to keep looking.
+
+Slots:
+- slot_child (person_name): Name of the main child character.
+  Child prompt: Can you give a name for the child in the story?
+  Examples: Sam, Lily, Max
+- slot_toy (toy_object): A favorite toy the child plays with.
+  Child prompt: What is a toy you would like the child to have?
+  Examples: ball, doll, train
+- slot_pet (animal_pet): A friendly animal that helps the child.
+  Child prompt: Name a friendly animal you like.
+  Examples: puppy, bunny, kitten
+- color (color): A bright color for the balloon.
+  Child prompt: What is a bright color you like?
+  Examples: red, blue, green
+- slot_snack (snack_food): A snack the child shares with the animal.
+  Child prompt: What is a snack you like to eat?
+  Examples: cookie, sandwich, apple
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] on the park bench.
+s2: One sunny day, [[slot_child]] put [[slot_toy]] under a big oak tree.
+s3: When [[slot_child]] looked up, the toy was gone.
+s4: [[slot_child]] felt sad and wondered where the toy had gone.
+s5: A friendly [[slot_pet]] hopped over and asked, "Do you need help?"
+s6: [[slot_child]] said, "Yes, I lost my [[slot_toy]]."
+s7: The [[slot_pet]] sniffed the air and found a bright [[color]] balloon tied to the tree.
+s8: The balloon floated like a rainbow, and the toy was on a tiny leaf.
+s9: [[slot_child]] almost gave up, but remembered the [[slot_pet]]'s smile and decided to look again.
+s10: [[slot_child]] reached the leaf and got [[slot_toy]] back.
+s11: [[slot_child]] and the [[slot_pet]] shared a [[slot_snack]].
+s12: They sat under the tree and watched the clouds.
+s13: [[slot_child]] felt happy and thanked the [[slot_pet]].
+s14: The day ended with a gentle breeze and a new friendship.

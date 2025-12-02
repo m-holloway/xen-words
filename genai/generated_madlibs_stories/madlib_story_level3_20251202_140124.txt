@@ -1,0 +1,44 @@
+Title: The Kite That Fell in the Puddle
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A kind child helps a sad animal find a lost toy and shares a snack.
+
+Slots:
+- slot_child (child_name): The name of the child protagonist.
+  Child prompt: What is your favorite name to use for a child?
+  Examples: Sam, Lily, Jade
+- slot_toy (toy_object): A toy that the child loves.
+  Child prompt: Can you name a toy you like to play with?
+  Examples: kite, ball, doll
+- slot_animal (animal_pet): A friendly animal the child might like.
+  Child prompt: Name an animal you would love to be friends with.
+  Examples: dog, cat, bunny
+- slot_sound (sound_word): A short sound word.
+  Child prompt: What sound does a bee make?
+  Examples: buzz, chirp, hiss
+- slot_place (place_name): A place in the park.
+  Child prompt: Where do you like to sit in the park?
+  Examples: bench, tree, sandbox
+- slot_friend (person_name): The name of the child's friend.
+  Child prompt: What is your friend's name?
+  Examples: Alex, Mia, Noah
+- slot_snack (snack_food): A tasty snack.
+  Child prompt: What snack do you like to share?
+  Examples: cookies, fruit, granola bar
+- slot_activity (playground_activity): An activity in the park.
+  Child prompt: What do you like to do in the park?
+  Examples: slide, sandbox, swings
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the park.
+s2: One sunny day, the [[slot_toy]] fell into a puddle and became shiny like a fish.
+s3: The [[slot_child]] looked around and saw a little [[slot_animal]] with a sad face.
+s4: The [[slot_animal]] said, 'My [[slot_toy]] is missing!'
+s5: [[slot_child]] thought, 'I could keep it and play all day.'
+s6: But then [[slot_child]] remembered the kind smile of the [[slot_animal]] and decided to help.
+s7: They brushed the [[slot_toy]] with a leaf and made it sparkle like a rainbow.
+s8: The [[slot_animal]] jumped up and gave a tiny [[slot_sound]] that sounded like a giggling bee.
+s9: Together they walked to the [[slot_place]] where the friend [[slot_friend]] waited.
+s10: The friend hugged the [[slot_toy]] and thanked [[slot_child]] with a big hug.
+s11: To celebrate, the friend offered a [[slot_snack]] that tasted like sunshine.
+s12: They all sat on the [[slot_activity]] and watched the clouds turn into fluffy cats.

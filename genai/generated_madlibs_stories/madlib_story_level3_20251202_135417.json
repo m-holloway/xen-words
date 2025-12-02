@@ -1,0 +1,158 @@
+{
+  "template": {
+    "title": "The Rainbow Toy Rescue",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child and a friendly animal rescue a toy that falls into a puddle, discovering a rainbow surprise along the way.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the park.",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny day, the [[slot_toy]] slipped off the swing and fell into a puddle.",
+        "slot_ids": [
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "[[slot_child]] felt sad and wondered where the toy would go.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "Then a friendly [[slot_pet]] hopped over and nudged the toy with its nose.",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "The toy popped up, and a bright [[slot_color]] rainbow sprouted from its top.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "[[slot_child]] gasped and laughed, amazed by the rainbow.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "But the toy was still wet, and [[slot_child]] thought to dry it on the bench.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "[[slot_child]] almost left the toy there, but then remembered the park's shade.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "So [[slot_child]] carried the toy under the big tree and let the sun dry it.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "After a few minutes, the toy was dry and the rainbow faded.",
+        "slot_ids": []
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "[[slot_child]] thanked the [[slot_pet]] and they both played with the toy again.",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "The day ended with a gentle [[slot_sound]] of birds singing, and [[slot_child]] felt happy.",
+        "slot_ids": [
+          "slot_sound",
+          "slot_child"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "person_name",
+        "author_description": "The name of the main child character.",
+        "child_prompt": "What is your name?",
+        "examples": [
+          "Lily",
+          "Tommy",
+          "Mia"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A toy the child loves to play with.",
+        "child_prompt": "Can you name a toy you like?",
+        "examples": [
+          "ball",
+          "doll",
+          "puzzle"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "A friendly animal that helps the child.",
+        "child_prompt": "What is a friendly animal you would like as a friend?",
+        "examples": [
+          "puppy",
+          "bunny",
+          "kitten"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color for the rainbow.",
+        "child_prompt": "Name a bright color you like.",
+        "examples": [
+          "blue",
+          "green",
+          "purple"
+        ]
+      },
+      {
+        "id": "slot_sound",
+        "type": "sound",
+        "author_description": "A gentle sound that ends the story.",
+        "child_prompt": "What is a soft sound you hear?",
+        "examples": [
+          "humming",
+          "whisper",
+          "chirping"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G1_novel_innerChoice_showDontTell",
+    "judge_model": "google/gemini-3-pro-preview"
+  }
+}

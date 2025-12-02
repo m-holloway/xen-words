@@ -1,0 +1,168 @@
+{
+  "template": {
+    "title": "The Missing Puzzle Piece",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child finds a missing puzzle piece and shares it with a classmate.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to help the class with puzzles.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One rainy day, the class was putting together a big picture.",
+        "slot_ids": []
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "A small [[slot_color]] piece was missing from the jigsaw.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] looked for the piece but it was not there.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "They noticed a [[slot_puzzle_piece]] under the [[slot_object]].",
+        "slot_ids": [
+          "slot_puzzle_piece",
+          "slot_object"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "The piece glowed like a tiny [[slot_color]] star.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "[[slot_child]] felt a tug of wanting to keep it.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "Instead, [[slot_child]] gave the piece to [[slot_classmate]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_classmate"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "The classmate smiled and placed the piece in the puzzle.",
+        "slot_ids": [
+          "slot_classmate"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "The picture finished and made a soft [[slot_sound]].",
+        "slot_ids": [
+          "slot_sound"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "Everyone cheered, and [[slot_child]] felt proud.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "Now, [[slot_child]] knows sharing makes puzzles complete.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the main child character",
+        "child_prompt": "What is the name of the child in the story?",
+        "examples": [
+          "Sam",
+          "Lily",
+          "Noah"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color",
+        "child_prompt": "Name a bright color",
+        "examples": [
+          "red",
+          "blue",
+          "green"
+        ]
+      },
+      {
+        "id": "slot_puzzle_piece",
+        "type": "object",
+        "author_description": "A puzzle piece",
+        "child_prompt": "Name a puzzle piece",
+        "examples": [
+          "square",
+          "triangle",
+          "circle"
+        ]
+      },
+      {
+        "id": "slot_object",
+        "type": "object",
+        "author_description": "A classroom object",
+        "child_prompt": "Name a classroom object",
+        "examples": [
+          "desk",
+          "chair",
+          "board"
+        ]
+      },
+      {
+        "id": "slot_classmate",
+        "type": "person",
+        "author_description": "A classmate",
+        "child_prompt": "Name a classmate",
+        "examples": [
+          "Alex",
+          "Mia",
+          "Jordan"
+        ]
+      },
+      {
+        "id": "slot_sound",
+        "type": "sound",
+        "author_description": "A soft sound",
+        "child_prompt": "Name a soft sound",
+        "examples": [
+          "clack",
+          "whisper",
+          "humming"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G3_patterns_menu_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

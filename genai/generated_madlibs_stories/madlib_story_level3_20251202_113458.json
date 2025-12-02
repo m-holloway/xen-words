@@ -1,0 +1,197 @@
+{
+  "title": "Lila's Little Adventure",
+  "reading_level": 3,
+  "reading_band": "Grades 1–2",
+  "target_minutes": 5,
+  "summary": "A kind child loses a toy and finds it with the help of a pet, learning to be careful and grateful.",
+  "sentences": [
+    {
+      "id": "s1",
+      "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] at the park.",
+      "slot_ids": [
+        "slot_child",
+        "slot_toy"
+      ]
+    },
+    {
+      "id": "s2",
+      "text_with_blanks": "One sunny day, [[slot_child]] went to the park with [[slot_pet]].",
+      "slot_ids": [
+        "slot_child",
+        "slot_pet"
+      ]
+    },
+    {
+      "id": "s3",
+      "text_with_blanks": "[[slot_child]] laughed and chased [[slot_toy]] around the trees.",
+      "slot_ids": [
+        "slot_child",
+        "slot_toy"
+      ]
+    },
+    {
+      "id": "s4",
+      "text_with_blanks": "Suddenly, [[slot_toy]] disappeared! [[slot_child]] looked everywhere.",
+      "slot_ids": [
+        "slot_toy",
+        "slot_child"
+      ]
+    },
+    {
+      "id": "s5",
+      "text_with_blanks": "[[slot_child]] asked [[slot_pet]] for help.",
+      "slot_ids": [
+        "slot_child",
+        "slot_pet"
+      ]
+    },
+    {
+      "id": "s6",
+      "text_with_blanks": "[[slot_pet]] sniffed the air and said, \"I hear a [[slot_sound]] coming from the [[slot_place]]!\"",
+      "slot_ids": [
+        "slot_pet",
+        "slot_sound",
+        "slot_place"
+      ]
+    },
+    {
+      "id": "s7",
+      "text_with_blanks": "[[slot_child]] and [[slot_pet]] followed the sound.",
+      "slot_ids": [
+        "slot_child",
+        "slot_pet"
+      ]
+    },
+    {
+      "id": "s8",
+      "text_with_blanks": "They reached a [[slot_color]] [[slot_noun]] in the [[slot_place]].",
+      "slot_ids": [
+        "slot_color",
+        "slot_noun",
+        "slot_place"
+      ]
+    },
+    {
+      "id": "s9",
+      "text_with_blanks": "[[slot_child]] found [[slot_toy]] tucked under the leaf.",
+      "slot_ids": [
+        "slot_child",
+        "slot_toy"
+      ]
+    },
+    {
+      "id": "s10",
+      "text_with_blanks": "[[slot_child]] hugged [[slot_toy]] and thanked [[slot_pet]].",
+      "slot_ids": [
+        "slot_child",
+        "slot_toy",
+        "slot_pet"
+      ]
+    },
+    {
+      "id": "s11",
+      "text_with_blanks": "They both laughed and promised to always keep [[slot_toy]] safe.",
+      "slot_ids": [
+        "slot_toy"
+      ]
+    },
+    {
+      "id": "s12",
+      "text_with_blanks": "From that day, [[slot_child]] and [[slot_pet]] had many more adventures together.",
+      "slot_ids": [
+        "slot_child",
+        "slot_pet"
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "id": "slot_child",
+      "type": "character_name",
+      "author_description": "Name of the child character.",
+      "child_prompt": "What is your name?",
+      "examples": [
+        "Lila",
+        "Sam",
+        "Mia"
+      ]
+    },
+    {
+      "id": "slot_pet",
+      "type": "animal_pet",
+      "author_description": "A cozy or friendly animal the child might like.",
+      "child_prompt": "Can you name an animal you would love to be friends with?",
+      "examples": [
+        "puppy",
+        "bunny",
+        "kitten"
+      ]
+    },
+    {
+      "id": "slot_toy",
+      "type": "toy",
+      "author_description": "A small toy the child plays with.",
+      "child_prompt": "What is your favorite toy?",
+      "examples": [
+        "rabbit",
+        "doll",
+        "teddy bear"
+      ]
+    },
+    {
+      "id": "slot_place",
+      "type": "place",
+      "author_description": "A location in the park where the adventure happens.",
+      "child_prompt": "Where do you like to go in the park?",
+      "examples": [
+        "garden",
+        "treehouse",
+        "pond"
+      ]
+    },
+    {
+      "id": "slot_sound",
+      "type": "sound",
+      "author_description": "A gentle sound that guides the child.",
+      "child_prompt": "What is a soft sound you hear in nature?",
+      "examples": [
+        "whisper",
+        "chirp",
+        "rumble"
+      ]
+    },
+    {
+      "id": "slot_color",
+      "type": "color",
+      "author_description": "A bright color that describes the setting.",
+      "child_prompt": "What is a bright color you like?",
+      "examples": [
+        "red",
+        "blue",
+        "yellow"
+      ]
+    },
+    {
+      "id": "slot_noun",
+      "type": "noun",
+      "author_description": "A noun that describes something in the park.",
+      "child_prompt": "What is a plant or tree you see?",
+      "examples": [
+        "flower",
+        "bush",
+        "tree"
+      ]
+    },
+    {
+      "id": "slot_action",
+      "type": "verb",
+      "author_description": "An action the child does.",
+      "child_prompt": "What do you do when you find something?",
+      "examples": [
+        "search",
+        "look",
+        "pick"
+      ]
+    }
+  ]
+}

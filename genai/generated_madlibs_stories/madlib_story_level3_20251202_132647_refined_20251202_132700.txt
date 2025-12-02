@@ -1,0 +1,42 @@
+Original title: Mia and the Little Bird
+Refined title:  Mia and the Little Bird
+Reading level:   3 (Grades 1–2)
+Target minutes:  5
+Summary (refined): Mia sees a tiny bird with a broken wing, learns how to help, and grows kinder through gentle action.
+
+Judge scores:
+- overall: 0.84
+- story_arc: 0.90
+- character_engagement: 0.85
+- emotional_warmth: 0.90
+- curiosity_hooks: 0.80
+- madlibs_usability: 0.95
+- reading_level_fit: 0.90
+- novelty: 0.70
+- memorable_moment: 0.85
+- show_vs_tell: 0.90
+- character_depth: 0.80
+
+--- Original template ---
+s1: Mia loved to play with [[slot_toy]] on [[slot_place]].
+s2: One day, she saw a tiny bird drooping its wing.
+s3: The bird's wing was as soft as a [[slot_color]] feather.
+s4: Mia felt sad and wanted to help.
+s5: She thought about [[slot_friend]] might know what to do.
+s6: She almost tossed the bird onto the ground, but then remembered the story about kindness.
+s7: Instead, she tucked the bird into a small blanket and whispered, 'Take care.'
+s8: The next day, Mia brought [[slot_snack]] and shared it with the bird.
+s9: The bird sang a bright [[slot_sound]] that made Mia smile.
+s10: Soon the bird fluttered its wings and flew away, leaving a trail of glittering [[slot_color]] sparkles.
+
+--- Refined template ---
+s1: Mia loved to play with [[slot_toy]] on [[slot_place]].
+s2: One day, she heard a soft chirp from a tiny bird perched on a branch.
+s3: The bird's wing was as soft as a [[slot_color]] feather.
+s4: Mia felt sad and wondered how she could help the little bird.
+s5: She thought maybe [[slot_friend]] could give her a good idea.
+s6: She almost tossed the bird onto the ground, but remembered the story about kindness.
+s7: Instead, she tucked the bird into a tiny blanket and whispered, 'Take care.'
+s8: The next day, Mia brought [[slot_snack]] and shared it with the bird.
+s9: The bird sang a bright [[slot_sound]] that made Mia smile.
+s10: The bird fluttered its wings and flew away, leaving a trail of glittering [[slot_color]] sparkles, and Mia felt warm inside for helping a friend.

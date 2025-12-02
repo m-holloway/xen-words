@@ -1,0 +1,210 @@
+{
+  "title": "Lily and the Lost Rabbit",
+  "reading_level": 3,
+  "reading_band": "Grades 1–2",
+  "target_minutes": 5,
+  "summary": "A gentle story about helping a lost rabbit find its home.",
+  "sentences": [
+    {
+      "id": "s1",
+      "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the park.",
+      "slot_ids": [
+        "slot_child",
+        "slot_toy"
+      ]
+    },
+    {
+      "id": "s2",
+      "text_with_blanks": "One sunny day, a small rabbit hopped lost in the park.",
+      "slot_ids": []
+    },
+    {
+      "id": "s3",
+      "text_with_blanks": "[[slot_child]] felt sad and wanted to help the rabbit.",
+      "slot_ids": [
+        "slot_child"
+      ]
+    },
+    {
+      "id": "s4",
+      "text_with_blanks": "She asked her friend [[slot_friend]] for help.",
+      "slot_ids": [
+        "slot_friend"
+      ]
+    },
+    {
+      "id": "s5",
+      "text_with_blanks": "[[slot_friend]] said, 'Let’s find the rabbit’s home together.'",
+      "slot_ids": [
+        "slot_friend"
+      ]
+    },
+    {
+      "id": "s6",
+      "text_with_blanks": "They walked to the [[slot_place]] where the rabbit lived.",
+      "slot_ids": [
+        "slot_place"
+      ]
+    },
+    {
+      "id": "s7",
+      "text_with_blanks": "The rabbit was happy to see [[slot_child]] and [[slot_friend]].",
+      "slot_ids": [
+        "slot_child",
+        "slot_friend"
+      ]
+    },
+    {
+      "id": "s8",
+      "text_with_blanks": "[[slot_child]] gave the rabbit a tasty [[slot_fruit]].",
+      "slot_ids": [
+        "slot_child",
+        "slot_fruit"
+      ]
+    },
+    {
+      "id": "s9",
+      "text_with_blanks": "[[slot_friend]] offered a [[slot_snack]] to the rabbit.",
+      "slot_ids": [
+        "slot_friend",
+        "slot_snack"
+      ]
+    },
+    {
+      "id": "s10",
+      "text_with_blanks": "The rabbit nibbled the apple and the cookie.",
+      "slot_ids": []
+    },
+    {
+      "id": "s11",
+      "text_with_blanks": "[[slot_child]] and [[slot_friend]] [[slot_activity]] a gentle song.",
+      "slot_ids": [
+        "slot_child",
+        "slot_friend",
+        "slot_activity"
+      ]
+    },
+    {
+      "id": "s12",
+      "text_with_blanks": "The rabbit hopped happily back home.",
+      "slot_ids": []
+    },
+    {
+      "id": "s13",
+      "text_with_blanks": "[[slot_child]] felt proud and happy.",
+      "slot_ids": [
+        "slot_child"
+      ]
+    },
+    {
+      "id": "s14",
+      "text_with_blanks": "She promised to visit the rabbit often.",
+      "slot_ids": []
+    },
+    {
+      "id": "s15",
+      "text_with_blanks": "The park was bright and [[slot_color]] that day.",
+      "slot_ids": [
+        "slot_color"
+      ]
+    },
+    {
+      "id": "s16",
+      "text_with_blanks": "Every day, [[slot_child]] played with [[slot_toy]] and made new friends.",
+      "slot_ids": [
+        "slot_child",
+        "slot_toy"
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "id": "slot_child",
+      "type": "animal_pet",
+      "author_description": "The name of the main child character.",
+      "child_prompt": "Can you give a name for the child?",
+      "examples": [
+        "Lily",
+        "Tommy",
+        "Sofia"
+      ]
+    },
+    {
+      "id": "slot_toy",
+      "type": "toy_object",
+      "author_description": "A toy the child likes to play with.",
+      "child_prompt": "What is a toy you love?",
+      "examples": [
+        "ball",
+        "doll",
+        "blocks"
+      ]
+    },
+    {
+      "id": "slot_friend",
+      "type": "animal_pet",
+      "author_description": "The name of the child’s friend.",
+      "child_prompt": "What is a friend’s name?",
+      "examples": [
+        "Sam",
+        "Mia",
+        "Ben"
+      ]
+    },
+    {
+      "id": "slot_snack",
+      "type": "snack_food",
+      "author_description": "A snack the child offers to the animal.",
+      "child_prompt": "What snack would you share?",
+      "examples": [
+        "cookie",
+        "lettuce",
+        "popcorn"
+      ]
+    },
+    {
+      "id": "slot_color",
+      "type": "color",
+      "author_description": "A color to describe the park.",
+      "child_prompt": "What color is the park?",
+      "examples": [
+        "blue",
+        "green",
+        "yellow"
+      ]
+    },
+    {
+      "id": "slot_activity",
+      "type": "playground_activity",
+      "author_description": "An activity the children do together.",
+      "child_prompt": "What activity do you like to do?",
+      "examples": [
+        "swing",
+        "climb",
+        "skip rope"
+      ]
+    },
+    {
+      "id": "slot_place",
+      "type": "place_name",
+      "author_description": "A place in the park where the animal lives.",
+      "child_prompt": "What is a place in the park?",
+      "examples": [
+        "treehouse",
+        "sandbox",
+        "fountain"
+      ]
+    },
+    {
+      "id": "slot_fruit",
+      "type": "fruit",
+      "author_description": "A fruit the child offers to the animal.",
+      "child_prompt": "What fruit would you give?",
+      "examples": [
+        "apple",
+        "banana",
+        "strawberry"
+      ]
+    }
+  ]
+}

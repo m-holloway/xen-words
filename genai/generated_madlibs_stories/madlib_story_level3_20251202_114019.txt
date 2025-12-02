@@ -1,0 +1,42 @@
+Title: Milo's Missing Balloon
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A gentle story about Milo, a missing balloon, and friends helping to find it.
+
+Slots:
+- slot_child (child_name): A name for the main child character.
+  Child prompt: Can you name a child who might be in the story?
+  Examples: Milo, Emma, Tommy
+- slot_toy (toy_object): A toy that the child loves.
+  Child prompt: Can you name a toy you like to play with?
+  Examples: balloon, doll, teddy bear
+- slot_color (color): Color of the balloon.
+  Child prompt: What is a bright color?
+  Examples: red, blue, yellow
+- slot_place (place_name): A place where the play happens.
+  Child prompt: Can you name a place where kids play?
+  Examples: park, garden, playground
+- slot_friend (friend_name): A friend who helps.
+  Child prompt: Can you name a friend?
+  Examples: Lily, Sam, Olivia
+- slot_activity (playground_activity): An activity they do to find the balloon.
+  Child prompt: Can you name a game kids play?
+  Examples: hide-and-seek, tag, ring toss
+- slot_snack (snack_food): A tasty food they share.
+  Child prompt: What is a snack you like?
+  Examples: cookies, fruit, granola bar
+- slot_song (song_name): A song they sing together.
+  Child prompt: Can you name a kids' song?
+  Examples: Twinkle Twinkle, Old McDonald, The Wheels on the Bus
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the [[slot_place]].
+s2: One day, the [[slot_toy]] floated away.
+s3: [[slot_child]] felt sad and looked around.
+s4: He called his friend [[slot_friend]] for help.
+s5: They decided to play [[slot_activity]] to find the balloon.
+s6: While searching, they found a shiny [[slot_color]] [[slot_toy]] under a tree.
+s7: [[slot_child]] was happy and thanked [[slot_friend]].
+s8: They shared a tasty [[slot_snack]] and sang a song.
+s9: They sang the [[slot_song]] together.
+s10: [[slot_child]] learned that friends help find lost toys.

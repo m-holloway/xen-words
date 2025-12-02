@@ -1,0 +1,140 @@
+{
+  "template": {
+    "title": "Mia and the Kite‑Hidden Toy",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "Mia finds her missing toy with help of a friendly animal.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "Mia loved to play with [[slot_toy]] in the park.",
+        "slot_ids": [
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny morning, she saw her [[slot_toy]] missing on the swing.",
+        "slot_ids": [
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "She looked under the slide, over the sandpit, and even at the big oak tree.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "Just then, a bright [[slot_color]] kite flew by and made a funny shape in the sky.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "Mia thought the kite might have hidden her toy, so she followed it.",
+        "slot_ids": []
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "The kite landed on a hill, and a gentle [[slot_animal]] was there, munching on a crunchy [[slot_snack]].",
+        "slot_ids": [
+          "slot_animal",
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "The [[slot_animal]] looked at Mia and said, 'I found your [[slot_toy]]!'",
+        "slot_ids": [
+          "slot_animal",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "Mia felt happy and thanked the [[slot_animal]] with a big smile.",
+        "slot_ids": [
+          "slot_animal"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "She almost shouted, but she chose to say, 'Thank you, friend!'.",
+        "slot_ids": []
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "The [[slot_animal]] wagged its tail, and they both laughed.",
+        "slot_ids": [
+          "slot_animal"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "They sat on the hill, sharing the crunchy [[slot_snack]] while watching the rainbow that formed after the rain.",
+        "slot_ids": [
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "Mia felt brave and ready for new adventures.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A small toy the child might play with.",
+        "child_prompt": "Can you name a toy you like to play with?",
+        "examples": [
+          "ball",
+          "puzzle",
+          "teddy bear"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color you see in the sky.",
+        "child_prompt": "What is a bright color you see?",
+        "examples": [
+          "red",
+          "blue",
+          "yellow"
+        ]
+      },
+      {
+        "id": "slot_animal",
+        "type": "animal_pet",
+        "author_description": "A friendly animal that might be in the park.",
+        "child_prompt": "Can you name a friendly animal?",
+        "examples": [
+          "dog",
+          "rabbit",
+          "deer"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A crunchy snack you might share.",
+        "child_prompt": "What is a crunchy snack you like?",
+        "examples": [
+          "crackers",
+          "carrot sticks",
+          "apple slices"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G1_novel_innerChoice_showDontTell",
+    "judge_model": "google/gemini-3-pro-preview"
+  }
+}

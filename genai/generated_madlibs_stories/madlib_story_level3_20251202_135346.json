@@ -1,0 +1,182 @@
+{
+  "template": {
+    "title": "The Rainbow Kite Rescue",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A kind child helps rescue a kite from a tree and shares it with a friend, learning about caring and sharing.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the park.",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "She had a fluffy [[slot_pet]] that followed her everywhere.",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "One sunny day, she saw a bright [[slot_kite]] kite stuck high in a tree.",
+        "slot_ids": [
+          "slot_kite"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "The kite looked like a rainbow balloon, glinting in the wind.",
+        "slot_ids": []
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "She wanted to climb the tree to get it down, but the ladder was too high.",
+        "slot_ids": []
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "She thought about climbing, but then remembered the kind neighbor, [[slot_neighbor]].",
+        "slot_ids": [
+          "slot_neighbor"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "She ran to the neighbor and said, \"Please help me get the kite!\"",
+        "slot_ids": [
+          "slot_neighbor"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "[[slot_neighbor]] smiled and gave her a sturdy ladder.",
+        "slot_ids": [
+          "slot_neighbor"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "She climbed carefully, grabbed the kite, and lowered it to the ground.",
+        "slot_ids": []
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "The kite flapped happily, and the wind sang a gentle tune.",
+        "slot_ids": []
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "She invited her friend, [[slot_friend]], to play with the kite.",
+        "slot_ids": [
+          "slot_friend"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "They ran, laughed, and the kite danced like a happy bird in the sky.",
+        "slot_ids": []
+      },
+      {
+        "id": "s13",
+        "text_with_blanks": "After a while, they sat on the grass and ate [[slot_snack]] while watching the kite.",
+        "slot_ids": [
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s14",
+        "text_with_blanks": "The kite stayed in the sky, and the friends felt warm and bright inside.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "person_name",
+        "author_description": "The name of the child protagonist.",
+        "child_prompt": "Can you tell me the name of the child in the story?",
+        "examples": [
+          "Mia",
+          "Liam",
+          "Sofia"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "A cozy or friendly animal that the child might like.",
+        "child_prompt": "Can you name an animal you would love to be friends with?",
+        "examples": [
+          "puppy",
+          "bunny",
+          "kitten"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A favorite toy of the child.",
+        "child_prompt": "What is your favorite toy?",
+        "examples": [
+          "balloon",
+          "train",
+          "doll"
+        ]
+      },
+      {
+        "id": "slot_kite",
+        "type": "color",
+        "author_description": "The color of the kite.",
+        "child_prompt": "What color is the kite?",
+        "examples": [
+          "purple",
+          "red",
+          "blue"
+        ]
+      },
+      {
+        "id": "slot_neighbor",
+        "type": "person_name",
+        "author_description": "The name of a kind neighbor who helps.",
+        "child_prompt": "Can you give a name for the helpful neighbor?",
+        "examples": [
+          "Mrs. Lee",
+          "Mr. Patel",
+          "Sam"
+        ]
+      },
+      {
+        "id": "slot_friend",
+        "type": "person_name",
+        "author_description": "A name of the child's friend who will share the kite with.",
+        "child_prompt": "What is the name of the child’s friend?",
+        "examples": [
+          "Noah",
+          "Ava",
+          "Ethan"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A snack that the child enjoys.",
+        "child_prompt": "What snack does the child like?",
+        "examples": [
+          "apple slices",
+          "cereal",
+          "cookies"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G1_novel_innerChoice_showDontTell",
+    "judge_model": "google/gemini-3-pro-preview"
+  }
+}

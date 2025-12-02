@@ -1,0 +1,38 @@
+Original title: Mia and the Lost Kite
+Refined title:  Mia and the Lost Kite
+Reading level:   3 (Grades 1–2)
+Target minutes:  5
+Summary (refined): A sweet adventure where Mia discovers teamwork and friendship while finding her kite.
+
+Judge scores:
+- overall: 0.91
+- story_arc: 0.90
+- character_engagement: 0.90
+- emotional_warmth: 0.95
+- curiosity_hooks: 0.85
+- madlibs_usability: 0.95
+- reading_level_fit: 0.90
+
+--- Original template ---
+s1: [[slot_child]] loved to play in the park with her [[slot_toy]].
+s2: One sunny day she flew a bright [[slot_color]] kite into the sky.
+s3: The kite rose higher and then disappeared behind a fluffy cloud, leaving a trail of wonder.
+s4: [[slot_child]] felt a little sad and wondered where the kite had gone.
+s5: She asked her friend [[slot_animal]] to help find the missing kite, and they set off together.
+s6: They searched the grass, climbed a tall pine tree, and looked under the big oak tree.
+s7: From the top they saw the kite tangled in the branches of a friendly maple tree.
+s8: They carefully pulled the kite down and untangled it, feeling proud of their teamwork.
+s9: [[slot_child]] thanked her friend and they shared a tasty [[slot_snack]] while watching the kite fly.
+s10: They laughed and played until the sun set, and the kite flew again, bright and free, just like their friendship.
+
+--- Refined template ---
+s1: [[slot_child]] loved to play in the park with her [[slot_toy]].
+s2: One sunny day she launched a bright [[slot_color]] kite into the sky.
+s3: The kite rose higher and then vanished behind a fluffy cloud, leaving a trail of wonder.
+s4: [[slot_child]] felt a little sad and wondered where the kite had gone.
+s5: She asked her friend [[slot_animal]] to help find the missing kite, and they set off together.
+s6: They searched the grass, climbed a tall pine tree, and looked under the big oak tree.
+s7: From the top they saw the kite tangled in the branches of a friendly maple tree.
+s8: They carefully pulled the kite down, untangled it, and realized that working together makes everything easier, feeling proud of their teamwork.
+s9: [[slot_child]] thanked her friend and they shared a tasty [[slot_snack]] while watching the kite fly.
+s10: They laughed and played until the sun set, and the kite flew again, bright and free, just like their friendship.

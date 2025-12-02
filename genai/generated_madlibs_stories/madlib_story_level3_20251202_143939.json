@@ -1,0 +1,164 @@
+{
+  "template": {
+    "title": "The Glowing Moss and the Kind Request",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child named [[slot_child]] learns to ask for help when a toy gets stuck, turning a small problem into a big adventure.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with his [[slot_pet]] in the park.",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One day, [[slot_child]] found a shiny dollhouse [[slot_toy]] near a big oak tree.",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "He wanted to bring it home, but the dollhouse slipped into a small hole.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] tried to pull it out with his hands, but the hole was too deep.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "Then he used a stick, but the dollhouse stayed stuck.",
+        "slot_ids": []
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "[[slot_child]] felt sad and thought about throwing the dollhouse away.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "But he remembered his promise to be kind, so he decided to ask the park keeper for help.",
+        "slot_ids": []
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "The keeper smiled and used a tiny shovel to pull the dollhouse out.",
+        "slot_ids": []
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "When the dollhouse appeared, it was covered in [[slot_color]] moss that glowed like a lantern.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "[[slot_child]] and his [[slot_pet]] shared the dollhouse with a new friend, a small hedgehog named [[slot_friend]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet",
+          "slot_friend"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "They all ate [[slot_snack]] and laughed.",
+        "slot_ids": [
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "From then on, [[slot_child]] learned that asking for help can turn a small problem into a big adventure.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "The name of the main child character.",
+        "child_prompt": "Can you name a child you like to read stories about?",
+        "examples": [
+          "Sam",
+          "Lily",
+          "Mia"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "A cozy or friendly animal the child might like.",
+        "child_prompt": "Can you name an animal you would love to be friends with?",
+        "examples": [
+          "bunny",
+          "puppy",
+          "kitten"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A small toy the child might play with.",
+        "child_prompt": "Can you name a toy you like to play with?",
+        "examples": [
+          "dollhouse",
+          "train set",
+          "building blocks"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color.",
+        "child_prompt": "Can you name a bright color?",
+        "examples": [
+          "emerald",
+          "turquoise",
+          "amber"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A tasty snack.",
+        "child_prompt": "Can you name a snack you like?",
+        "examples": [
+          "apple slices",
+          "banana chips",
+          "granola bar"
+        ]
+      },
+      {
+        "id": "slot_friend",
+        "type": "animal_pet",
+        "author_description": "A small animal friend the child meets.",
+        "child_prompt": "Can you name a small animal you like?",
+        "examples": [
+          "hedgehog",
+          "squirrel",
+          "otter"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G3_patterns_menu_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

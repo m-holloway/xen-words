@@ -1,0 +1,172 @@
+{
+  "template": {
+    "title": "The Marble and the Moonlit Snail",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A kind child helps a snail and finds a glowing pebble.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_name]] loved to play with [[slot_pet]] and [[slot_toy]] on sunny days.",
+        "slot_ids": [
+          "slot_name",
+          "slot_pet",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One morning, they went to the park and saw a big sandbox called [[slot_sandbox]].",
+        "slot_ids": [
+          "slot_sandbox"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "When [[slot_name]] rolled [[slot_toy]] into the sandbox, it disappeared under the sand.",
+        "slot_ids": [
+          "slot_name",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_name]] felt sad and searched for the marble.",
+        "slot_ids": [
+          "slot_name"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "Suddenly, a tiny snail with a shell that looked like a [[slot_pebble]] slid by.",
+        "slot_ids": [
+          "slot_pebble"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "The snail was slow, and [[slot_name]] thought about pushing it away.",
+        "slot_ids": [
+          "slot_name"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "But [[slot_name]] remembered how [[slot_pet]] liked to help others, so they gently lifted the snail.",
+        "slot_ids": [
+          "slot_name",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "They followed the snail to a bright flower pot where the snail's home was.",
+        "slot_ids": []
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "The snail thanked [[slot_name]] by giving a glowing [[slot_pebble]] that sparkled like a tiny star.",
+        "slot_ids": [
+          "slot_name",
+          "slot_pebble"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "[[slot_name]] shared the glowing pebble with [[slot_friend]] and they both giggled.",
+        "slot_ids": [
+          "slot_name",
+          "slot_friend"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "Later, [[slot_name]] and [[slot_pet]] played with the marble again, and the pebble shone beside them.",
+        "slot_ids": [
+          "slot_name",
+          "slot_pet",
+          "slot_pebble"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "They learned that caring for a small friend can bring bright surprises.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_name",
+        "type": "child_name",
+        "author_description": "Name of the main character",
+        "child_prompt": "Can you think of a name for the main character?",
+        "examples": [
+          "Lily",
+          "Max",
+          "Sam"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "A cozy stuffed animal the child might like",
+        "child_prompt": "Can you name a stuffed animal you would love to be friends with?",
+        "examples": [
+          "Bunny",
+          "Puppy",
+          "Kitten"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A favorite toy the child loves",
+        "child_prompt": "Can you name a toy you like to play with?",
+        "examples": [
+          "Marble",
+          "Doll",
+          "Puzzle"
+        ]
+      },
+      {
+        "id": "slot_sandbox",
+        "type": "location",
+        "author_description": "Name of the sandbox at the park",
+        "child_prompt": "Can you think of a name for a sandbox?",
+        "examples": [
+          "Sunny Sandbox",
+          "Blue Bin",
+          "Green Box"
+        ]
+      },
+      {
+        "id": "slot_pebble",
+        "type": "object",
+        "author_description": "A small glowing pebble",
+        "child_prompt": "Can you think of a small glowing pebble?",
+        "examples": [
+          "glowing pebble",
+          "sparkling stone",
+          "tiny star"
+        ]
+      },
+      {
+        "id": "slot_friend",
+        "type": "child_name",
+        "author_description": "Name of a friend the child meets",
+        "child_prompt": "Can you think of a name for a friend?",
+        "examples": [
+          "Emma",
+          "Noah",
+          "Olivia"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G3_patterns_menu_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

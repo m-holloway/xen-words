@@ -1,0 +1,42 @@
+Title: The Music of Kindness
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A kind child helps a lost pet find its blanket and they all share a snack.
+
+Slots:
+- slot_child (child_name): A name for the main child character
+  Child prompt: What is your favorite name for a child?
+  Examples: Mia, Liam, Sofia
+- slot_toy (toy_object): A toy that makes music
+  Child prompt: What is a toy that makes music?
+  Examples: musical doll, singing kite, talking toy
+- slot_pet (animal_pet): A friendly animal
+  Child prompt: What is a friendly animal you like?
+  Examples: puppy, bunny, kitten
+- slot_blanket (color): Color of the blanket
+  Child prompt: What is a bright color?
+  Examples: red, blue, yellow
+- slot_insect (insect): A helpful insect
+  Child prompt: What is an insect that could help?
+  Examples: ladybug, butterfly, beetle
+- slot_snack (snack_food): A tasty snack
+  Child prompt: What is a snack you like?
+  Examples: cookies, fruit, pretzel
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the park.
+s2: One bright day, [[slot_toy]] sang a soft tune that made the trees sway.
+s3: As they walked, they saw a [[slot_pet]] with sad eyes.
+s4: The [[slot_pet]] was looking for its favorite blanket, a bright [[slot_blanket]].
+s5: [[slot_child]] felt sorry and wanted to help.
+s6: First, [[slot_child]] asked a friendly [[slot_insect]] for clues.
+s7: The [[slot_insect]] pointed to a hill where the blanket might be.
+s8: [[slot_child]] almost ran to the hill, but remembered the [[slot_pet]]'s lonely heart.
+s9: Instead, [[slot_child]] stayed and sang with [[slot_toy]], hoping to cheer the [[slot_pet]].
+s10: The music grew louder, and the [[slot_blanket]] floated down like a tiny rainbow.
+s11: [[slot_child]] picked up the blanket and gave it to the [[slot_pet]].
+s12: The [[slot_pet]] wagged its tail, and its eyes sparkled like stars.
+s13: [[slot_toy]] sang a happy note, and the park smelled of fresh daisies.
+s14: Together, they shared a tasty [[slot_snack]] under the big oak tree.
+s15: [[slot_child]] felt warm inside, knowing kindness makes friends.
+s16: The day ended with a gentle breeze and the sound of laughter.

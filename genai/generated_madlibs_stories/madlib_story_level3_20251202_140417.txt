@@ -1,0 +1,41 @@
+Title: The Glistening Ball and the Kind Rabbit
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child learns kindness by sharing a glowing ball with a shy rabbit in the park.
+
+Slots:
+- slot_child (person_name): A name for the main child
+  Child prompt: What is your name?
+  Examples: Sam, Lily, Max
+- slot_pet (animal_pet): A cozy or friendly animal the child might like
+  Child prompt: Can you name an animal you would love to be friends with?
+  Examples: bunny, kitten, puppy
+- slot_toy (toy_object): A toy the child plays with
+  Child prompt: What is a toy you like to play with?
+  Examples: ball, doll, puzzle
+- slot_color (color): A bright color for the toy
+  Child prompt: What is a bright color you like?
+  Examples: orange, pink, green
+- slot_place (place_name): A place in the park
+  Child prompt: Where do you like to play in the park?
+  Examples: meadow, trail, bench
+- slot_activity (activity): An activity the child and friend do together
+  Child prompt: What is an activity you like to do with a friend?
+  Examples: tag, hide‑and‑seek, dance
+- slot_snack (snack_food): A snack the child shares
+  Child prompt: What is a snack you like to share?
+  Examples: apple slice, cereal, pretzel
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the [[slot_place]].
+s2: One sunny afternoon, the [[slot_toy]] rolled into a small clearing.
+s3: It was a bright [[slot_color]] ball that glowed like a firefly.
+s4: Near the ball, a shy [[slot_pet]] hopped and stared.
+s5: [[slot_child]] felt the ball was fun, but the rabbit looked lonely.
+s6: [[slot_child]] almost kept the ball for themselves.
+s7: Then [[slot_child]] remembered how the rabbit seemed sad.
+s8: [[slot_child]] decided to give the ball to the [[slot_pet]].
+s9: The rabbit's eyes sparkled and it twirled the ball.
+s10: Together they played [[slot_activity]] and laughed.
+s11: After a while, [[slot_child]] shared a [[slot_snack]] with the rabbit.
+s12: The rabbit nibbled, and they all curled up under a big oak tree.

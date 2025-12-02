@@ -1,0 +1,123 @@
+{
+  "template": {
+    "title": "The Missing Star Puzzle",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A gentle story about a child finding a missing puzzle piece with the help of a friendly animal.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the park.",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One day, the toy was a picture of the sun, but one bright yellow star piece was missing.",
+        "slot_ids": []
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The child looked around and wondered where the piece had gone.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "She almost decided to throw the puzzle away, but then thought of her friend [[slot_pet]].",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "She called out, \"Hello [[slot_pet]], can you see the missing star?\"",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "The [[slot_pet]] sniffed the air and trotted to the big oak tree.",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "Under the tree, the star piece glowed like a tiny sunrise.",
+        "slot_ids": []
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "The child reached out and placed the piece into the picture.",
+        "slot_ids": []
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "The sun picture shone brighter, and the park felt warmer.",
+        "slot_ids": []
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "They celebrated with a crunchy [[slot_snack]] and laughed together.",
+        "slot_ids": [
+          "slot_snack"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the main child character.",
+        "child_prompt": "What is your name?",
+        "examples": [
+          "Lily",
+          "Max",
+          "Sam"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A toy that the child plays with.",
+        "child_prompt": "What is your favorite toy?",
+        "examples": [
+          "ball",
+          "doll",
+          "puzzle"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "A friendly animal friend.",
+        "child_prompt": "What is the name of a friendly animal you like?",
+        "examples": [
+          "Bobby the dog",
+          "Milo the rabbit",
+          "Kitty the kitten"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A crunchy snack they share.",
+        "child_prompt": "What is a crunchy snack you enjoy?",
+        "examples": [
+          "chips",
+          "crackers",
+          "apple slices"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G1_novel_innerChoice_showDontTell",
+    "judge_model": "google/gemini-3-pro-preview"
+  }
+}

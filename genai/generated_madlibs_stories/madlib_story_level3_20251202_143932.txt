@@ -1,0 +1,41 @@
+Title: Lily and the Kite in the Tree
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A gentle story about Lily, a kite stuck in a tree, and how a kind squirrel helps her, showing friendship and teamwork.
+
+Slots:
+- slot_child (person_name): The name of the main child character.
+  Child prompt: Can you name a child you would like to be friends with?
+  Examples: Lily, Tommy, Emma
+- slot_toy (toy_object): A toy the child likes to play with.
+  Child prompt: Can you name a toy you like to play with?
+  Examples: kite, ball, puzzle
+- slot_color (color): A bright color.
+  Child prompt: Can you name a bright color?
+  Examples: purple, red, green
+- slot_squirrel (animal_pet): A friendly animal you might see in the park.
+  Child prompt: Can you name a friendly animal you might see in the park?
+  Examples: squirrel, bird, rabbit
+- slot_rope (tool_object): A small rope or string.
+  Child prompt: Can you name a small rope or string you might use?
+  Examples: rope, string, twine
+- slot_snack (snack_food): A tasty snack.
+  Child prompt: Can you name a tasty snack you like?
+  Examples: candy apples, fruit, cookies
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the park.
+s2: One sunny day, the kite was bright [[slot_color]] and danced in the blue sky.
+s3: When a gentle wind blew, the kite slipped from [[slot_child]]'s hands and flew up into a tall oak tree.
+s4: She looked down and saw the kite stuck among the branches.
+s5: She almost climbed the tree to get it, but then she thought about being safe.
+s6: She ran over to the friendly squirrel [[slot_squirrel]] who lived near the tree.
+s7: The squirrel said, 'I can help! I have a little rope [[slot_rope]] that can pull the kite down.'
+s8: Together they tied the rope to the kite and pulled gently.
+s9: The kite fluttered like a rainbow butterfly, bright and beautiful.
+s10: When it landed, [[slot_child]] and the squirrel shared a snack of [[slot_snack]] and laughed.
+s11: The kite flew again, and [[slot_child]] waved goodbye to the squirrel.
+s12: She felt happy that she had helped the kite and made a new friend.
+s13: Every time she visited the park, she would bring her kite and share it with the squirrel.
+s14: The park became a place of friendship and bright colors.
+s15: And the kite always remembered how a kind hand helped it soar.

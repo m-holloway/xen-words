@@ -1,0 +1,41 @@
+Title: The Missing Toy Adventure
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A friendly child searches for a missing toy and shares it with a new friend, learning kindness through play.
+
+Slots:
+- slot_child (child_name): Name of the main child character
+  Child prompt: Can you give a name for the main character?
+  Examples: Lily, Sam, Mia
+- slot_toy (toy_object): Favorite toy the child plays with
+  Child prompt: Name a toy you like to play with.
+  Examples: rubber duck, teddy bear, ball
+- slot_place (place_name): Where the story happens
+  Child prompt: Name a place you love to visit.
+  Examples: park, yard, garden
+- slot_playground (playground_activity): Activity at the playground
+  Child prompt: Name a playground activity.
+  Examples: slide, see-saw, climbing frame
+- slot_color (color): A bright color
+  Child prompt: Name a bright color.
+  Examples: green, red, blue
+- slot_neighbor (neighbor_name): Name of a friendly neighbor
+  Child prompt: Name a friendly neighbor.
+  Examples: Mr. Jones, Mrs. Lee, Sammy
+- slot_animal (animal_pet): A small animal friend
+  Child prompt: Name a small animal you like.
+  Examples: bunny, kitten, puppy
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the [[slot_place]].
+s2: One sunny morning, the [[slot_toy]] was gone.
+s3: [[slot_child]] felt a little sad, but decided to look for it.
+s4: First, [[slot_child]] checked the [[slot_playground]].
+s5: The [[slot_playground]] was busy, and the [[slot_toy]] was not there.
+s6: Next, [[slot_child]] asked [[slot_neighbor]] if they had seen the toy.
+s7: [[slot_neighbor]] smiled and said, "I saw a bright [[slot_color]] backpack on the bench."
+s8: [[slot_child]] ran to the bench and opened the backpack.
+s9: Inside, the [[slot_toy]] was tucked inside a soft [[slot_animal]] plush.
+s10: [[slot_child]] felt the toy hug and thanked the backpack.
+s11: Then, [[slot_child]] shared the [[slot_toy]] with [[slot_animal]]'s friend, a small [[slot_animal]].
+s12: They all played together, and the [[slot_place]] rang with laughter.

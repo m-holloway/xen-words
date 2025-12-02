@@ -1,0 +1,36 @@
+Title: Lily and the Hummingbird in the Garden
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: Lily helps a shy hummingbird find its way, learning kindness and patience.
+
+Slots:
+- slot_child (child_name): Name of the child character
+  Child prompt: Can you give a name for the child?
+  Examples: Lily, Sam, Mia
+- slot_pet (animal_pet): A cozy or friendly animal the child might like
+  Child prompt: Can you name an animal you would love to be friends with?
+  Examples: puppy, bunny, kitten
+- slot_flower (flower): A type of flower in the garden
+  Child prompt: Can you name a flower that grows in gardens?
+  Examples: rose, tulip, daisy
+- slot_nest_material (material): Something the child can use to make a nest
+  Child prompt: Can you think of something soft that could be used as a nest?
+  Examples: cotton, leaf, grass
+- slot_feather_color (color): Color of a feather
+  Child prompt: Can you name a bright color?
+  Examples: red, blue, yellow
+- slot_garden_item (garden_item): An item in the garden
+  Child prompt: Can you name something you might see in a garden?
+  Examples: watering can, shovel, bench
+
+Story template:
+s1: [[slot_child]] loved to play in the backyard garden.
+s2: One sunny morning, [[slot_child]] saw a [[slot_pet]] hopping near a [[slot_flower]].
+s3: The [[slot_pet]] was shy, and a tiny hummingbird was stuck in the petals.
+s4: The hummingbird tried to fly, but it couldn't get out.
+s5: [[slot_child]] decided to help the hummingbird.
+s6: She gathered a soft [[slot_nest_material]] and made a little nest.
+s7: The hummingbird rested, and its feathers shone like a [[slot_feather_color]] star.
+s8: Soon, the hummingbird was ready to fly again.
+s9: It fluttered out of the flower, thanked [[slot_child]] with a bright chirp, and disappeared.
+s10: Later, a single [[slot_feather_color]] feather fell to the ground, and [[slot_child]] placed it on the garden bench.

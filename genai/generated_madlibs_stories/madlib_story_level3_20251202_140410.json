@@ -1,0 +1,188 @@
+{
+  "template": {
+    "title": "The Missing Toy Adventure",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A friendly child searches for a missing toy and shares it with a new friend, learning kindness through play.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the [[slot_place]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy",
+          "slot_place"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny morning, the [[slot_toy]] was gone.",
+        "slot_ids": [
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "[[slot_child]] felt a little sad, but decided to look for it.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "First, [[slot_child]] checked the [[slot_playground]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_playground"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "The [[slot_playground]] was busy, and the [[slot_toy]] was not there.",
+        "slot_ids": [
+          "slot_playground",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "Next, [[slot_child]] asked [[slot_neighbor]] if they had seen the toy.",
+        "slot_ids": [
+          "slot_child",
+          "slot_neighbor"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "[[slot_neighbor]] smiled and said, \"I saw a bright [[slot_color]] backpack on the bench.\"",
+        "slot_ids": [
+          "slot_neighbor",
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "[[slot_child]] ran to the bench and opened the backpack.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "Inside, the [[slot_toy]] was tucked inside a soft [[slot_animal]] plush.",
+        "slot_ids": [
+          "slot_toy",
+          "slot_animal"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "[[slot_child]] felt the toy hug and thanked the backpack.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "Then, [[slot_child]] shared the [[slot_toy]] with [[slot_animal]]'s friend, a small [[slot_animal]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy",
+          "slot_animal"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "They all played together, and the [[slot_place]] rang with laughter.",
+        "slot_ids": [
+          "slot_place"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the main child character",
+        "child_prompt": "Can you give a name for the main character?",
+        "examples": [
+          "Lily",
+          "Sam",
+          "Mia"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "Favorite toy the child plays with",
+        "child_prompt": "Name a toy you like to play with.",
+        "examples": [
+          "rubber duck",
+          "teddy bear",
+          "ball"
+        ]
+      },
+      {
+        "id": "slot_place",
+        "type": "place_name",
+        "author_description": "Where the story happens",
+        "child_prompt": "Name a place you love to visit.",
+        "examples": [
+          "park",
+          "yard",
+          "garden"
+        ]
+      },
+      {
+        "id": "slot_playground",
+        "type": "playground_activity",
+        "author_description": "Activity at the playground",
+        "child_prompt": "Name a playground activity.",
+        "examples": [
+          "slide",
+          "see-saw",
+          "climbing frame"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color",
+        "child_prompt": "Name a bright color.",
+        "examples": [
+          "green",
+          "red",
+          "blue"
+        ]
+      },
+      {
+        "id": "slot_neighbor",
+        "type": "neighbor_name",
+        "author_description": "Name of a friendly neighbor",
+        "child_prompt": "Name a friendly neighbor.",
+        "examples": [
+          "Mr. Jones",
+          "Mrs. Lee",
+          "Sammy"
+        ]
+      },
+      {
+        "id": "slot_animal",
+        "type": "animal_pet",
+        "author_description": "A small animal friend",
+        "child_prompt": "Name a small animal you like.",
+        "examples": [
+          "bunny",
+          "kitten",
+          "puppy"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G1_novel_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "template": {
+    "title": "The Kite That Fell in the Puddle",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A kind child helps a sad animal find a lost toy and shares a snack.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the park.",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny day, the [[slot_toy]] fell into a puddle and became shiny like a fish.",
+        "slot_ids": [
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The [[slot_child]] looked around and saw a little [[slot_animal]] with a sad face.",
+        "slot_ids": [
+          "slot_child",
+          "slot_animal"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "The [[slot_animal]] said, 'My [[slot_toy]] is missing!'",
+        "slot_ids": [
+          "slot_animal",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "[[slot_child]] thought, 'I could keep it and play all day.'",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "But then [[slot_child]] remembered the kind smile of the [[slot_animal]] and decided to help.",
+        "slot_ids": [
+          "slot_child",
+          "slot_animal"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "They brushed the [[slot_toy]] with a leaf and made it sparkle like a rainbow.",
+        "slot_ids": [
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "The [[slot_animal]] jumped up and gave a tiny [[slot_sound]] that sounded like a giggling bee.",
+        "slot_ids": [
+          "slot_animal",
+          "slot_sound"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "Together they walked to the [[slot_place]] where the friend [[slot_friend]] waited.",
+        "slot_ids": [
+          "slot_place",
+          "slot_friend"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "The friend hugged the [[slot_toy]] and thanked [[slot_child]] with a big hug.",
+        "slot_ids": [
+          "slot_friend",
+          "slot_toy",
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "To celebrate, the friend offered a [[slot_snack]] that tasted like sunshine.",
+        "slot_ids": [
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "They all sat on the [[slot_activity]] and watched the clouds turn into fluffy cats.",
+        "slot_ids": [
+          "slot_activity"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "The name of the child protagonist.",
+        "child_prompt": "What is your favorite name to use for a child?",
+        "examples": [
+          "Sam",
+          "Lily",
+          "Jade"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A toy that the child loves.",
+        "child_prompt": "Can you name a toy you like to play with?",
+        "examples": [
+          "kite",
+          "ball",
+          "doll"
+        ]
+      },
+      {
+        "id": "slot_animal",
+        "type": "animal_pet",
+        "author_description": "A friendly animal the child might like.",
+        "child_prompt": "Name an animal you would love to be friends with.",
+        "examples": [
+          "dog",
+          "cat",
+          "bunny"
+        ]
+      },
+      {
+        "id": "slot_sound",
+        "type": "sound_word",
+        "author_description": "A short sound word.",
+        "child_prompt": "What sound does a bee make?",
+        "examples": [
+          "buzz",
+          "chirp",
+          "hiss"
+        ]
+      },
+      {
+        "id": "slot_place",
+        "type": "place_name",
+        "author_description": "A place in the park.",
+        "child_prompt": "Where do you like to sit in the park?",
+        "examples": [
+          "bench",
+          "tree",
+          "sandbox"
+        ]
+      },
+      {
+        "id": "slot_friend",
+        "type": "person_name",
+        "author_description": "The name of the child's friend.",
+        "child_prompt": "What is your friend's name?",
+        "examples": [
+          "Alex",
+          "Mia",
+          "Noah"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A tasty snack.",
+        "child_prompt": "What snack do you like to share?",
+        "examples": [
+          "cookies",
+          "fruit",
+          "granola bar"
+        ]
+      },
+      {
+        "id": "slot_activity",
+        "type": "playground_activity",
+        "author_description": "An activity in the park.",
+        "child_prompt": "What do you like to do in the park?",
+        "examples": [
+          "slide",
+          "sandbox",
+          "swings"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G1_novel_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

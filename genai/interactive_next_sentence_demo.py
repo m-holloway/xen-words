@@ -96,6 +96,26 @@ def _system_prompt() -> str:
         "  * Match the current beat goal and target tension.\n"
         "  * Align with the family's values and content boundaries.\n"
         "  * Fit the reading level while keeping language vivid and joyful.\n"
+        "    The JSON includes `reading_level` (1–5) and a `reading_band` descriptor.\n"
+        "    Treat these as firm constraints on sentence length and complexity:\n"
+        "      - Level 1 (Emerging Reader): child is just decoding. ONE very short\n"
+        "        sentence (about 4–8 words). Almost all words should be high‑frequency\n"
+        "        sight words or simple CVC/CVCC words. Avoid long adjectives,\n"
+        "        multi‑clause sentences, or rare vocabulary.\n"
+        "      - Level 2 (Developing Reader): still simple. 1 short sentence (or very\n"
+        "        occasionally 2). Mostly high‑frequency words with a few gently new\n"
+        "        words; very simple dialogue tags are okay.\n"
+        "      - Level 3 (Transitional Reader): can handle a bit more length and\n"
+        "        description. 1–2 sentences are acceptable. A few tier‑two words and\n"
+        "        simple clauses are fine.\n"
+        "      - Level 4 (Fluent Reader): longer sentences with clauses are fine;\n"
+        "        more precise vocabulary as long as context makes meaning clear.\n"
+        "      - Level 5 (Confident Reader): multi‑clause sentences, figurative\n"
+        "        language, and more complex themes are welcome.\n"
+        "  * Variety and freshness: avoid overusing the same kind of protagonist or\n"
+        "    creature (for example, do NOT keep introducing turtles unless one is\n"
+        "    already clearly part of this specific story). Let the spark, setting, and\n"
+        "    prior lines guide who or what appears next.\n"
         "- For each candidate, you will also SELF-SCORE how well it meets these criteria.\n\n"
         "Important constraints:\n"
         "- Do not contradict what already happened.\n"
@@ -136,12 +156,15 @@ def _build_payload(
     story_so_far: List[str],
     child_line: str,
     guidance: str | None,
+    reading_level: int,
+    reading_band: Dict[str, Any],
 ) -> Dict[str, Any]:
     """
     Build the JSON payload for the next-sentence request.
 
     - `story_so_far` is the list of sentences already chosen.
     - `child_line` is the most recent line the user added (seed for this turn).
+    - `reading_level`/`reading_band` mirror the Flutter app's reading level bands (1–5).
     """
     values = ValuesGoals(
         core_values=["kindness", "courage", "curiosity"],
@@ -151,7 +174,11 @@ def _build_payload(
             "avoid": ["bullying", "realistic injury", "death of family members"],
             "soften": ["monsters", "storms"],
         },
-        family_context_notes="Child sometimes worries about new situations; keep things cozy and safe.",
+        family_context_notes=(
+            "Child sometimes worries about new situations; keep things cozy and safe. "
+            "They enjoy many kinds of characters and creatures; do not default to the "
+            "same animal or hero type in every story."
+        ),
     )
 
     # Build a lightweight textual context from the running story.
@@ -184,10 +211,17 @@ def _build_payload(
             "story_id": "demo_story",
             "plan_id": "plan_1",
             "profile_id": "child_1",
-            "reading_level": 2,
-            "reading_band": {"grade_band": "K-1"},
-            "parent_prompt": "A cozy adventure with a shy turtle who learns to be brave.",
-            "child_context": "Loves turtles and space; sometimes worried about new things.",
+            "reading_level": reading_level,
+            "reading_band": reading_band,
+            "parent_prompt": (
+                "A cozy adventure that grows into something magical and meaningful, "
+                "with characters that fit the world of this particular story."
+            ),
+            "child_context": (
+                "Loves imaginative worlds, animals, robots, and space; sometimes worried "
+                "about new things but very curious. Avoid always choosing the same kind "
+                "of main character (like turtles) unless the story already established it."
+            ),
             "cast_context": None,
             "values_goals": asdict(values),
             "exemplar_snippets": [
@@ -350,14 +384,20 @@ def _suggest_blank_fills(
     body = {
         "model": model,
         "messages": [
-            {"role": "system", "content": system},
+            {
+                "role": "system",
+                "content": system,
+                "cache_control": {"type": "ephemeral"},
+            },
             {
                 "role": "user",
                 "content": json.dumps(user, ensure_ascii=False),
+                "cache_control": {"type": "ephemeral"},
             },
         ],
         "temperature": 0.9,
         "max_output_tokens": 512,
+        "usage": {"include": True},
     }
 
     headers = {
@@ -466,9 +506,9 @@ def main() -> None:
         model_source = "INTERACTIVE_STORY_MODEL"
     else:
         # Hardcoded fallback when no story-builder-specific override is present.
-        # Use the same Gemini 2.5 Flash ID you have configured in ModelConfig.
-        model = "google/gemini-2.5-flash-preview-09-2025"
-        model_source = "hardcoded fallback (gemini-2.5-flash-preview-09-2025)"
+        # Default to Qwen 3 Next 80B instruct on OpenRouter.
+        model = "qwen/qwen3-next-80b-a3b-instruct"
+        model_source = "hardcoded fallback (qwen/qwen3-next-80b-a3b-instruct)"
 
     headers = {
         "Authorization": f"Bearer {api_key}",
@@ -483,7 +523,87 @@ def main() -> None:
     guidance: str | None = None
     tuning_tokens: Dict[str, int] = {"crazy": 0, "challenge": 0, "cozy": 0}
 
+    usage_totals: Dict[str, Any] = {
+        "requests": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "prompt_cache_read_tokens": 0,
+        "prompt_cache_write_tokens": 0,
+        "cache_discounts": [],
+    }
+
+    # Reading level selection (mirrors Flutter app's 1–5 bands)
+    reading_bands: Dict[int, Dict[str, Any]] = {
+        1: {
+            "level": 1,
+            "label": "Level 1 • Emerging Reader",
+            "grade_band": "Late Pre-K to Kindergarten",
+            "lexile_band": "BR to 150L",
+            "description": (
+                "Decodable text with heavy picture support and repeated sight-word "
+                "patterns; 1 short sentence per page."
+            ),
+        },
+        2: {
+            "level": 2,
+            "label": "Level 2 • Developing Reader",
+            "grade_band": "Kindergarten to Early Grade 1",
+            "lexile_band": "150L – 300L",
+            "description": (
+                "2–4 short sentences; simple story arc with basic dialogue tags; "
+                "introduces consonant blends and two-syllable words."
+            ),
+        },
+        3: {
+            "level": 3,
+            "label": "Level 3 • Transitional Reader",
+            "grade_band": "Grades 1–2",
+            "lexile_band": "300L – 500L",
+            "description": (
+                "Paragraphs of 3–5 sentences, richer dialogue and description, "
+                "mixture of familiar and tier-two vocabulary."
+            ),
+        },
+        4: {
+            "level": 4,
+            "label": "Level 4 • Fluent Reader",
+            "grade_band": "Grades 2–3",
+            "lexile_band": "500L – 650L",
+            "description": (
+                "Fuller sentences with clauses; more precise vocabulary explained "
+                "in context; themes of problem solving and growth mindset."
+            ),
+        },
+        5: {
+            "level": 5,
+            "label": "Level 5 • Confident Reader",
+            "grade_band": "Grades 3–4",
+            "lexile_band": "650L – 750L",
+            "description": (
+                "Multi-clause sentences, figurative language, and higher-concept "
+                "themes; comparable to early chapter books."
+            ),
+        },
+    }
+
     print("\n=== Interactive Story Builder (one sentence at a time) ===")
+    print("\nChoose a reading level for this session (1–5):")
+    for lvl in range(1, 6):
+        band = reading_bands[lvl]
+        print(f"  {lvl}) {band['label']} — {band['grade_band']}")
+    raw_level = input("Enter level 1–5 (default 2): ").strip()
+    try:
+        reading_level = int(raw_level) if raw_level else 2
+    except ValueError:
+        reading_level = 2
+    if reading_level < 1 or reading_level > 5:
+        reading_level = 2
+    reading_band = reading_bands[reading_level]
+    print(
+        f"Using reading level {reading_level}: {reading_band['label']} "
+        f"({reading_band['grade_band']})"
+    )
 
     # Try to load starting fragments generated by generate_story_fragments.py
     fragments_path = Path(__file__).parent / "story_fragments.json"
@@ -631,20 +751,29 @@ def main() -> None:
                 story_so_far=story,
                 child_line=last_line,
                 guidance=guidance_to_use,
+                reading_level=reading_level,
+                reading_band=reading_band,
             )
             payload["tuning_tokens"] = tuning_tokens
 
             body = {
                 "model": model,
                 "messages": [
-                    {"role": "system", "content": _system_prompt()},
+                    {
+                        "role": "system",
+                        "content": _system_prompt(),
+                        "cache_control": {"type": "ephemeral"},
+                    },
                     {
                         "role": "user",
                         "content": json.dumps(payload, ensure_ascii=False),
+                        "cache_control": {"type": "ephemeral"},
                     },
                 ],
                 "temperature": 0.85,
                 "max_output_tokens": 512,
+                "usage": {"include": True},
+                "user": "story_builder_cli_demo",
             }
 
             print(
@@ -670,6 +799,20 @@ def main() -> None:
             except Exception as e:
                 print(f"\nRequest failed: {e}")
                 break
+
+            # Optional: print usage info so you can see cached vs uncached tokens
+            usage = data.get("usage")
+            if usage:
+                print(f"Usage: {usage}")
+                usage_totals["requests"] += 1
+                for key in ("prompt_tokens", "completion_tokens", "total_tokens"):
+                    if isinstance(usage.get(key), (int, float)):
+                        usage_totals[key] += usage[key]
+                for key in ("prompt_cache_read_tokens", "prompt_cache_write_tokens"):
+                    if isinstance(usage.get(key), (int, float)):
+                        usage_totals[key] += usage[key]
+                if isinstance(usage.get("cache_discount"), (int, float, float)):
+                    usage_totals["cache_discounts"].append(usage["cache_discount"])
 
             content = data["choices"][0]["message"]["content"]
             text = str(content or "")
@@ -790,6 +933,27 @@ def main() -> None:
             for i, line in enumerate(story, 1):
                 print(f"  {i}. {line}")
             _save_story(story, model, model_source or "unknown", turn_logs)
+
+            # Session-level usage summary
+            print("\n=== Session usage summary (as reported by provider) ===")
+            print(f"Requests: {usage_totals['requests']}")
+            print(
+                f"Prompt tokens: {usage_totals['prompt_tokens']}, "
+                f"Completion tokens: {usage_totals['completion_tokens']}, "
+                f"Total tokens: {usage_totals['total_tokens']}"
+            )
+            if usage_totals["prompt_cache_read_tokens"] or usage_totals[
+                "prompt_cache_write_tokens"
+            ]:
+                print(
+                    "Prompt cache tokens: "
+                    f"reads={usage_totals['prompt_cache_read_tokens']}, "
+                    f"writes={usage_totals['prompt_cache_write_tokens']}"
+                )
+            cds = usage_totals["cache_discounts"]
+            if cds:
+                avg_cd = sum(cds) / len(cds)
+                print(f"Average cache_discount: {avg_cd:.3f}")
         else:
             print("\nNo story was created.")
 
@@ -797,6 +961,14 @@ def main() -> None:
         print("\n\nInterrupted. Goodbye.")
         if story:
             _save_story(story, model, model_source or "unknown", turn_logs)
+            # Even on interrupt, print whatever usage we have so far.
+            print("\n=== Session usage summary (partial) ===")
+            print(f"Requests: {usage_totals['requests']}")
+            print(
+                f"Prompt tokens: {usage_totals['prompt_tokens']}, "
+                f"Completion tokens: {usage_totals['completion_tokens']}, "
+                f"Total tokens: {usage_totals['total_tokens']}"
+            )
 
 
 if __name__ == "__main__":

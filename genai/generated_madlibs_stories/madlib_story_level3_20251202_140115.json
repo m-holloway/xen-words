@@ -1,0 +1,208 @@
+{
+  "template": {
+    "title": "The Balloon Pet Adventure",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A kind child helps a lost balloon‑tied pet find its home in the park.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play in [[slot_place]] on sunny days.",
+        "slot_ids": [
+          "slot_child",
+          "slot_place"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One morning, [[slot_child]] saw a tiny [[slot_color]] balloon bobbing in the grass.",
+        "slot_ids": [
+          "slot_child",
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The balloon was tied to a small [[slot_pet]] that looked lost and shy.",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] felt a tug in the heart and wondered where the [[slot_pet]] came from.",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "The child almost ran home to get [[slot_toy]], but decided to stay and help.",
+        "slot_ids": [
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "[[slot_child]] whispered, “I will find you home,” and put a soft [[slot_snack]] on the ground.",
+        "slot_ids": [
+          "slot_child",
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "The [[slot_pet]] sniffed the snack and followed the scent.",
+        "slot_ids": [
+          "slot_pet",
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "Together they walked past the fountain and the big oak tree.",
+        "slot_ids": []
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "A friendly [[slot_neighbor]] noticed the balloon and asked, “Are you looking for someone?”",
+        "slot_ids": [
+          "slot_neighbor"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "[[slot_child]] explained the situation, and [[slot_neighbor]] remembered seeing a [[slot_pet]] with a blue collar near the playground.",
+        "slot_ids": [
+          "slot_child",
+          "slot_neighbor",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "They all followed the trail of the blue collar.",
+        "slot_ids": []
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "At the playground, a little boy waved and said, “That’s my [[slot_pet]]!” He laughed and thanked [[slot_child]].",
+        "slot_ids": [
+          "slot_pet",
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s13",
+        "text_with_blanks": "[[slot_child]] felt warm inside, like a sunrise.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s14",
+        "text_with_blanks": "The balloon floated up and disappeared into the sky, leaving a bright memory.",
+        "slot_ids": []
+      },
+      {
+        "id": "s15",
+        "text_with_blanks": "From then on, [[slot_child]] always kept a snack for friends in the park.",
+        "slot_ids": [
+          "slot_child",
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s16",
+        "text_with_blanks": "And every day, the park smelled of adventure and kindness.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "person_name",
+        "author_description": "The name of the main child character.",
+        "child_prompt": "Can you tell me the name of the child in the story?",
+        "examples": [
+          "Mia",
+          "Liam",
+          "Sofia"
+        ]
+      },
+      {
+        "id": "slot_place",
+        "type": "place_name",
+        "author_description": "The name of the park where the story happens.",
+        "child_prompt": "What is the name of the park?",
+        "examples": [
+          "Sunny Park",
+          "Riverbend Park",
+          "Maple Grove"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "The color of the balloon.",
+        "child_prompt": "What color is the balloon?",
+        "examples": [
+          "blue",
+          "orange",
+          "purple"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "The type of animal tied to the balloon.",
+        "child_prompt": "What animal is tied to the balloon?",
+        "examples": [
+          "rabbit",
+          "hamster",
+          "duck"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "The snack the child brings.",
+        "child_prompt": "What snack does the child bring?",
+        "examples": [
+          "apple slice",
+          "candy cane",
+          "pretzel"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "The toy the child almost takes home.",
+        "child_prompt": "What toy does the child have?",
+        "examples": [
+          "ball",
+          "doll",
+          "blocks"
+        ]
+      },
+      {
+        "id": "slot_neighbor",
+        "type": "person_name",
+        "author_description": "The name of the friendly neighbor.",
+        "child_prompt": "What is the neighbor's name?",
+        "examples": [
+          "Mrs. Patel",
+          "Mr. Gomez",
+          "Nina"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G1_novel_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

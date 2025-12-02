@@ -1,0 +1,267 @@
+{
+  "original": {
+    "title": "Mia and the Lost Kite",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A gentle story about Mia, a small problem, and a happy ending.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play in the park with her [[slot_toy]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny day, she flew a bright [[slot_color]] kite.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "But then the kite flew up high and disappeared.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] looked everywhere, but she could not find it.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "She asked her friend, [[slot_animal]], for help.",
+        "slot_ids": [
+          "slot_animal"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "They climbed the tall tree and looked over the grass.",
+        "slot_ids": []
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "They saw the kite tangled in a pine tree.",
+        "slot_ids": []
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "Together they gently pulled the kite down.",
+        "slot_ids": []
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "[[slot_child]] thanked her friend and they shared a [[slot_snack]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "They played happily until the sun set, and the kite flew again.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "A child name",
+        "child_prompt": "What's your name?",
+        "examples": [
+          "Mia",
+          "Liam",
+          "Emma"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A toy the child loves",
+        "child_prompt": "What is your favorite toy?",
+        "examples": [
+          "ball",
+          "doll",
+          "car"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color",
+        "child_prompt": "Name a bright color you like.",
+        "examples": [
+          "red",
+          "blue",
+          "green"
+        ]
+      },
+      {
+        "id": "slot_animal",
+        "type": "animal_pet",
+        "author_description": "A friendly animal to help",
+        "child_prompt": "Name a friendly animal that could be a friend.",
+        "examples": [
+          "dog",
+          "cat",
+          "rabbit"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A snack to share",
+        "child_prompt": "What snack do you like to share?",
+        "examples": [
+          "ice cream",
+          "cookies",
+          "fruit"
+        ]
+      }
+    ]
+  },
+  "refined": {
+    "title": "Mia and the Lost Kite",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A gentle story about Mia, a lost kite, and a happy friendship.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play in the park with her [[slot_toy]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny day she flew a bright [[slot_color]] kite into the sky.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The kite rose higher and then vanished behind a cloud.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] felt sad and wondered where the kite went.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "She asked her friend, [[slot_animal]], to help find it.",
+        "slot_ids": [
+          "slot_animal"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "Together they looked over the grass and climbed a tall tree.",
+        "slot_ids": []
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "From the top they spotted the kite tangled in a pine tree.",
+        "slot_ids": []
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "They carefully pulled the kite down and untangled it.",
+        "slot_ids": []
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "[[slot_child]] thanked her friend and they shared a [[slot_snack]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "They laughed and played until the sun set, and the kite flew again.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "A child name",
+        "child_prompt": "What's your name?",
+        "examples": [
+          "Mia",
+          "Liam",
+          "Emma"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A toy the child loves",
+        "child_prompt": "What is your favorite toy?",
+        "examples": [
+          "ball",
+          "doll",
+          "car"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color",
+        "child_prompt": "Name a bright color you like.",
+        "examples": [
+          "red",
+          "blue",
+          "green"
+        ]
+      },
+      {
+        "id": "slot_animal",
+        "type": "animal_pet",
+        "author_description": "A friendly animal to help",
+        "child_prompt": "Name a friendly animal that could be a friend.",
+        "examples": [
+          "dog",
+          "cat",
+          "rabbit"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A snack to share",
+        "child_prompt": "What snack do you like to share?",
+        "examples": [
+          "ice cream",
+          "cookies",
+          "fruit"
+        ]
+      }
+    ]
+  },
+  "judge_scores": {
+    "overall": 0.88,
+    "story_arc": 0.9,
+    "character_engagement": 0.85,
+    "emotional_warmth": 0.95,
+    "curiosity_hooks": 0.8,
+    "madlibs_usability": 0.9,
+    "reading_level_fit": 0.9
+  }
+}

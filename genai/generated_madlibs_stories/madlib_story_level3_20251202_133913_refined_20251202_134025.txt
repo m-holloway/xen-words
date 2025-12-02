@@ -1,0 +1,52 @@
+Original title:  The Little Lost Treasure
+Refined title:  The Little Lost Treasure
+Reading level:   3 (Grades 1–2)
+Target minutes:  5
+Summary (refined): A child finds a lost item and returns it to a worried animal, making a new friend in the process.
+
+Judge scores:
+- overall: 0.72
+- story_arc: 0.90
+- character_engagement: 0.60
+- emotional_warmth: 0.90
+- curiosity_hooks: 0.70
+- madlibs_usability: 1.00
+- reading_level_fit: 0.90
+- novelty: 0.40
+- memorable_moment: 0.60
+- show_vs_tell: 0.60
+- character_depth: 0.40
+
+--- Original template ---
+s1: One sunny morning, [[slot_name]] went for a walk in the [[slot_place]].
+s2: Something [[slot_color]] sparkled near a big rock.
+s3: It was a tiny [[slot_object]], smooth and shiny.
+s4: [[slot_name]] picked it up and squeezed it tight.
+s5: "I will keep this treasure forever," [[slot_name]] whispered.
+s6: Suddenly, a soft noise came from the bushes.
+s7: A little [[slot_animal]] peeked out from behind a fern.
+s8: The creature looked very [[slot_feeling]].
+s9: It was sniffing the ground, looking for something important.
+s10: [[slot_name]] looked at the shiny treasure, then back at the sad animal.
+s11: It was hard to let go, but [[slot_name]] gently opened their hand.
+s12: The animal’s eyes went wide with surprise.
+s13: It grabbed the treasure and did a happy [[slot_movement]].
+s14: To say thank you, the creature pushed a [[slot_snack]] toward [[slot_name]].
+s15: [[slot_name]] smiled, because sharing felt even better than finding treasure.
+
+--- Refined template ---
+s1: One morning, [[slot_name]] was exploring a secret corner of the [[slot_place]].
+s2: Suddenly, a flash of [[slot_color]] light shone from the grass.
+s3: It was not a rock, but a very special [[slot_object]].
+s4: [[slot_name]] picked it up and rubbed the dirt off.
+s5: "I wonder who lost this?" asked [[slot_name]].
+s6: Just then, the bushes began to rustle and shake.
+s7: A tiny [[slot_animal]] hopped out, sniffing the ground wildly.
+s8: The poor thing looked [[slot_feeling]] and upset.
+s9: It was searching for something precious it had dropped.
+s10: [[slot_name]] held out the shiny find so the creature could see.
+s11: "Is this yours?" asked [[slot_name]] gently.
+s12: The creature's eyes went wide with joy.
+s13: It took the treasure back and did a happy [[slot_movement]].
+s14: To say thank you, the animal left a delicious [[slot_snack]] for [[slot_name]].
+s15: [[slot_name]] waved goodbye, happy to help a forest friend.

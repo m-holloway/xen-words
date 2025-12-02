@@ -1,0 +1,112 @@
+{
+  "original": {
+    "title": "Untitled Story",
+    "reading_level": 3,
+    "reading_band": "",
+    "target_minutes": 5,
+    "summary": "",
+    "sentences": [],
+    "slots": []
+  },
+  "refined": {
+    "title": "The Curious Day at the Playground",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child learns to share a kite with a friend at the playground.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "One sunny morning, {slot_child} woke up and ran to the playground.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "They brought their favorite {slot_toy}, a bright {slot_color} kite, to fly.",
+        "slot_ids": [
+          "slot_toy",
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "At the playground, they met {slot_friend}, who wanted to play too.",
+        "slot_ids": [
+          "slot_friend"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "But the kite was too big, and they couldn't share it.",
+        "slot_ids": []
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "So they decided to take turns, and {slot_child} learned to let others have fun.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "After playing, they ate a tasty {slot_snack} together, feeling happy.",
+        "slot_ids": [
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "They promised to bring more friends next time and share their toys.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "noun",
+        "author_description": "",
+        "child_prompt": "",
+        "examples": []
+      },
+      {
+        "id": "slot_friend",
+        "type": "noun",
+        "author_description": "",
+        "child_prompt": "",
+        "examples": []
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy",
+        "author_description": "",
+        "child_prompt": "",
+        "examples": []
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "",
+        "child_prompt": "",
+        "examples": []
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack",
+        "author_description": "",
+        "child_prompt": "",
+        "examples": []
+      }
+    ]
+  },
+  "judge_scores": {
+    "overall": 0.88,
+    "story_arc": 0.9,
+    "character_engagement": 0.8,
+    "emotional_warmth": 0.9,
+    "curiosity_hooks": 0.7,
+    "madlibs_usability": 0.95,
+    "reading_level_fit": 0.9
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "template": {
+    "title": "The Lost Toy Adventure",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child, a pet, and a friendly animal find a lost toy in a magical park.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the park.",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "[[slot_child]] had a [[slot_pet]] that liked to nap under the big oak tree.",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "One sunny day, [[slot_child]] carried a bright [[slot_color]] [[slot_toy]] to the playground.",
+        "slot_ids": [
+          "slot_child",
+          "slot_color",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "When they reached the sandbox, the [[slot_toy]] was gone.",
+        "slot_ids": []
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "[[slot_child]] looked left and right, but the toy was not there.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "[[slot_child]] almost ran home, but decided to keep looking.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "A friendly [[slot_friendly_animal]] hopped over, asking if something was missing.",
+        "slot_ids": [
+          "slot_friendly_animal"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "[[slot_child]] told the [[slot_friendly_animal]] about the missing toy.",
+        "slot_ids": [
+          "slot_child",
+          "slot_friendly_animal"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "The [[slot_friendly_animal]] led them to a [[slot_mysterious_object]] that glowed like a rainbow.",
+        "slot_ids": [
+          "slot_friendly_animal",
+          "slot_mysterious_object"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "Inside the [[slot_mysterious_object]], the [[slot_toy]] floated like a bright [[slot_color]] balloon.",
+        "slot_ids": [
+          "slot_mysterious_object",
+          "slot_toy",
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "[[slot_child]] thanked the [[slot_friendly_animal]] and brought the toy home.",
+        "slot_ids": [
+          "slot_child",
+          "slot_friendly_animal"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "At home, [[slot_child]] shared the toy with [[slot_friend]] and they ate a [[slot_snack]] together.",
+        "slot_ids": [
+          "slot_child",
+          "slot_friend",
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s13",
+        "text_with_blanks": "They laughed and played until the sun set.",
+        "slot_ids": []
+      },
+      {
+        "id": "s14",
+        "text_with_blanks": "[[slot_child]] felt happy that the toy was safe and that friends help each other.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s15",
+        "text_with_blanks": "The park looked quiet, but the trees whispered stories of the day.",
+        "slot_ids": []
+      },
+      {
+        "id": "s16",
+        "text_with_blanks": "[[slot_child]] promised to always look for the [[slot_toy]] before leaving home.",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Child's name",
+        "child_prompt": "What is the name of the child in the story?",
+        "examples": [
+          "Mia",
+          "Liam",
+          "Sofia"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "A friendly animal the child might have.",
+        "child_prompt": "Name a pet you would like.",
+        "examples": [
+          "puppy",
+          "bunny",
+          "kitten"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A toy the child likes to play with.",
+        "child_prompt": "What toy do you love?",
+        "examples": [
+          "ball",
+          "doll",
+          "car"
+        ]
+      },
+      {
+        "id": "slot_friend",
+        "type": "child_name",
+        "author_description": "A friend of the child.",
+        "child_prompt": "Name a friend of the child.",
+        "examples": [
+          "Emma",
+          "Noah",
+          "Ava"
+        ]
+      },
+      {
+        "id": "slot_friendly_animal",
+        "type": "animal_pet",
+        "author_description": "A kind animal that helps.",
+        "child_prompt": "Name a friendly animal that could help.",
+        "examples": [
+          "squirrel",
+          "rabbit",
+          "deer"
+        ]
+      },
+      {
+        "id": "slot_mysterious_object",
+        "type": "object",
+        "author_description": "A strange object in the park.",
+        "child_prompt": "Name a strange object you might see in a park.",
+        "examples": [
+          "rainbow mushroom",
+          "glowing rock",
+          "giant leaf"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "Color of the toy.",
+        "child_prompt": "What color is the toy?",
+        "examples": [
+          "pink",
+          "blue",
+          "green"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A snack to share.",
+        "child_prompt": "Name a snack you like to eat.",
+        "examples": [
+          "cookies",
+          "fruit",
+          "sandwich"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G1_novel_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

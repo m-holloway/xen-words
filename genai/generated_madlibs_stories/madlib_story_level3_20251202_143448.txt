@@ -1,0 +1,41 @@
+Title: The Singing Ball and the Kind Heart
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child, a pet, and a lost toy learn to share and find the ball’s owner.
+
+Slots:
+- slot_child (child_name): The name of the child protagonist.
+  Child prompt: Can you give a name for the child?
+  Examples: Sam, Lily, Max
+- slot_pet (animal_pet): A cozy or friendly animal the child might like.
+  Child prompt: Can you name an animal you would love to be friends with?
+  Examples: bunny, kitten, puppy
+- slot_color (color): A simple color for the toy.
+  Child prompt: Can you choose a color?
+  Examples: red, blue, green
+- slot_toy (toy_object): A small toy the child might find.
+  Child prompt: Can you name a small toy?
+  Examples: ball, doll, puzzle
+- slot_sound (sound): A soft sound the toy makes.
+  Child prompt: Can you think of a soft sound?
+  Examples: whoosh, hum, ring
+- slot_neighbor (neighbor_name): The name of a friendly neighbor.
+  Child prompt: Can you give a name for the neighbor?
+  Examples: Mrs. Lee, Mr. Patel, Grandma Sue
+- slot_food (snack_food): A yummy snack the child shares.
+  Child prompt: Can you name a snack you like?
+  Examples: cookies, fruit, sandwich
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_pet]] in the sunny park.
+s2: One day, they found a [[slot_color]] [[slot_toy]] that was shiny and bright.
+s3: The [[slot_toy]] made a soft [[slot_sound]] when it rolled.
+s4: It seemed to hum when it was happy.
+s5: But the ball was not theirs. They wondered where it belonged.
+s6: They asked their friendly neighbor, [[slot_neighbor]].
+s7: [[slot_neighbor]] said, 'Maybe it belongs to little [[slot_child]] who loves to play.'
+s8: The child felt a tug in their heart. They almost kept the ball for themselves.
+s9: Then they thought about the [[slot_pet]] who might miss a friend.
+s10: So the child placed the ball on the bench and called out, 'Here, little friend!'
+s11: A kind voice answered, 'Thank you, [[slot_child]]! I found my ball in the park.'
+s12: The child and [[slot_pet]] shared a yummy [[slot_food]] and giggled together.

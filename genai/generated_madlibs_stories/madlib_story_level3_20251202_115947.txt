@@ -1,0 +1,41 @@
+Title: The Lost Toy Adventure
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A friendly child and a new animal friend find a lost toy together and share a snack.
+
+Slots:
+- slot_child (character_name): A name for the main child character.
+  Child prompt: What is your favorite name for a child?
+  Examples: Lily, Sam, Mia
+- slot_park (park_name): A friendly park name.
+  Child prompt: What is the name of a park you like?
+  Examples: Sunny Park, Green Meadow
+- slot_snack (snack_food): A small snack the child brings.
+  Child prompt: What snack would you bring?
+  Examples: apple, candy bar, cheese stick
+- slot_color (color): A bright color.
+  Child prompt: What bright color do you like?
+  Examples: red, blue, yellow
+- slot_toy (toy_object): A toy the child plays with.
+  Child prompt: What toy would you like to play with?
+  Examples: ball, doll, kite
+- slot_animal (animal_pet): A friendly animal the child meets.
+  Child prompt: What friendly animal would you meet?
+  Examples: dog, cat, rabbit
+- slot_animal_name (animal_name): Name for the animal friend.
+  Child prompt: What name would you give the animal?
+  Examples: Buddy, Whiskers, Nibbles
+
+Story template:
+s1: [[slot_child]] loved to play in [[slot_park]].
+s2: One sunny morning, [[slot_child]] packed a [[slot_snack]] for a picnic.
+s3: [[slot_child]] brought a bright [[slot_color]] [[slot_toy]].
+s4: While running, [[slot_child]] saw a [[slot_animal]] named [[slot_animal_name]].
+s5: The [[slot_animal]] wagged its tail and asked for a game.
+s6: [[slot_child]] wanted to play hide‑and‑seek with the [[slot_animal]].
+s7: [[slot_child]] hid behind a tree, but the [[slot_toy]] slipped from their hands.
+s8: The toy rolled into the river and floated away.
+s9: [[slot_child]] felt sad but decided to ask the [[slot_animal]] for help.
+s10: Together, they followed the toy’s trail of bubbles.
+s11: The toy stopped at a shiny rock, and a fish jumped out.
+s12: [[slot_child]] and the [[slot_animal]] shared the fish and the [[slot_snack]], and they laughed.

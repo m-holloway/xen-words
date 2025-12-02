@@ -1,0 +1,166 @@
+{
+  "template": {
+    "title": "The Little Bell‑Bird and the Kind Visitor",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child helps a tiny, singing bird and shares a snack, learning a gentle lesson about kindness.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the park.",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny day, they saw a tiny [[slot_color]] bird perched on a high branch.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The bird sang a song that sounded like a little bell.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] wondered if the bird could get down.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "They tried to shout, but the bird stayed put.",
+        "slot_ids": []
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "[[slot_child]] almost walked away, thinking the bird would be fine.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "Then they remembered the kind rule they learned at school: help a friend.",
+        "slot_ids": []
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "[[slot_child]] carefully climbed the tree and reached the bird.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "The bird hopped onto [[slot_toy]]'s back and flew down.",
+        "slot_ids": [
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "[[slot_child]] shared a bite of [[slot_snack]] with the bird.",
+        "slot_ids": [
+          "slot_child",
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "The bird chirped happily and thanked [[slot_child]] with a bright smile.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "From then on, the bird visited every [[slot_place]] and sang for [[slot_child]] and [[slot_friend]].",
+        "slot_ids": [
+          "slot_place",
+          "slot_child",
+          "slot_friend"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "animal_name",
+        "author_description": "The name of the main child character.",
+        "child_prompt": "Can you give a name for the child in the story?",
+        "examples": [
+          "Sam",
+          "Lily",
+          "Noah"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A favorite toy that the child plays with.",
+        "child_prompt": "What is a toy the child loves?",
+        "examples": [
+          "plush dinosaur",
+          "soft rabbit",
+          "toy car"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "The color of the bird.",
+        "child_prompt": "What color is the bird?",
+        "examples": [
+          "blue",
+          "green",
+          "yellow"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A snack the child shares with the bird.",
+        "child_prompt": "What snack does the child give?",
+        "examples": [
+          "apple slice",
+          "candy bar",
+          "crackers"
+        ]
+      },
+      {
+        "id": "slot_friend",
+        "type": "person_name",
+        "author_description": "A friend who also enjoys the bird's song.",
+        "child_prompt": "Name a friend who likes the bird too.",
+        "examples": [
+          "Mia",
+          "Ethan",
+          "Olivia"
+        ]
+      },
+      {
+        "id": "slot_place",
+        "type": "place_name",
+        "author_description": "A place where the bird visits often.",
+        "child_prompt": "Where does the bird visit?",
+        "examples": [
+          "garden",
+          "backyard",
+          "playground"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G3_patterns_menu_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

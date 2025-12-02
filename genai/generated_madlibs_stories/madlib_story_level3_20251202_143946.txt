@@ -1,0 +1,38 @@
+Title: The Marble and the Moonlit Snail
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A kind child helps a snail and finds a glowing pebble.
+
+Slots:
+- slot_name (child_name): Name of the main character
+  Child prompt: Can you think of a name for the main character?
+  Examples: Lily, Max, Sam
+- slot_pet (animal_pet): A cozy stuffed animal the child might like
+  Child prompt: Can you name a stuffed animal you would love to be friends with?
+  Examples: Bunny, Puppy, Kitten
+- slot_toy (toy_object): A favorite toy the child loves
+  Child prompt: Can you name a toy you like to play with?
+  Examples: Marble, Doll, Puzzle
+- slot_sandbox (location): Name of the sandbox at the park
+  Child prompt: Can you think of a name for a sandbox?
+  Examples: Sunny Sandbox, Blue Bin, Green Box
+- slot_pebble (object): A small glowing pebble
+  Child prompt: Can you think of a small glowing pebble?
+  Examples: glowing pebble, sparkling stone, tiny star
+- slot_friend (child_name): Name of a friend the child meets
+  Child prompt: Can you think of a name for a friend?
+  Examples: Emma, Noah, Olivia
+
+Story template:
+s1: [[slot_name]] loved to play with [[slot_pet]] and [[slot_toy]] on sunny days.
+s2: One morning, they went to the park and saw a big sandbox called [[slot_sandbox]].
+s3: When [[slot_name]] rolled [[slot_toy]] into the sandbox, it disappeared under the sand.
+s4: [[slot_name]] felt sad and searched for the marble.
+s5: Suddenly, a tiny snail with a shell that looked like a [[slot_pebble]] slid by.
+s6: The snail was slow, and [[slot_name]] thought about pushing it away.
+s7: But [[slot_name]] remembered how [[slot_pet]] liked to help others, so they gently lifted the snail.
+s8: They followed the snail to a bright flower pot where the snail's home was.
+s9: The snail thanked [[slot_name]] by giving a glowing [[slot_pebble]] that sparkled like a tiny star.
+s10: [[slot_name]] shared the glowing pebble with [[slot_friend]] and they both giggled.
+s11: Later, [[slot_name]] and [[slot_pet]] played with the marble again, and the pebble shone beside them.
+s12: They learned that caring for a small friend can bring bright surprises.

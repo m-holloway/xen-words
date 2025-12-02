@@ -1,0 +1,170 @@
+{
+  "template": {
+    "title": "The Tiny Piano Bird",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child helps a small bird stuck in a bush, learns kindness, and shares a snack under a tree.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the garden.",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny day, they heard a soft chirp from a [[slot_animal]] perched on a branch.",
+        "slot_ids": [
+          "slot_animal"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The [[slot_animal]] had a bright [[slot_color]] feather that fell to the ground.",
+        "slot_ids": [
+          "slot_animal",
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] looked at the feather and felt a tug in their heart.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "They could have taken the feather and kept it, but they chose to help the [[slot_animal]].",
+        "slot_ids": [
+          "slot_animal"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "Using a [[slot_tool]], [[slot_child]] gently freed the bird from the tangled bush.",
+        "slot_ids": [
+          "slot_tool",
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "The bird sang a song that sounded like a tiny piano, and the garden filled with music.",
+        "slot_ids": [
+          "slot_animal"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "[[slot_child]] shared their [[slot_snack_food]] with the bird, and they both sat under the [[slot_tree]] tree.",
+        "slot_ids": [
+          "slot_child",
+          "slot_snack_food",
+          "slot_tree"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "The bird flapped its wings and flew away, leaving a trail of glittering dust.",
+        "slot_ids": [
+          "slot_animal"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "[[slot_child]] felt warm and happy, knowing they made a new friend.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "noun",
+        "author_description": "The name of the child character.",
+        "child_prompt": "Can you name the child in the story?",
+        "examples": [
+          "Lily",
+          "Tommy",
+          "Mia"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "noun",
+        "author_description": "A toy the child loves to play with.",
+        "child_prompt": "What is a toy the child likes?",
+        "examples": [
+          "plush rabbit",
+          "toy car",
+          "doll"
+        ]
+      },
+      {
+        "id": "slot_animal",
+        "type": "animal",
+        "author_description": "A small animal that appears in the garden.",
+        "child_prompt": "Name a small animal that could be in the garden.",
+        "examples": [
+          "bluebird",
+          "squirrel",
+          "dragonfly"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color of a feather.",
+        "child_prompt": "What is a bright color you like?",
+        "examples": [
+          "emerald",
+          "sapphire",
+          "violet"
+        ]
+      },
+      {
+        "id": "slot_tool",
+        "type": "noun",
+        "author_description": "A simple tool the child uses to help.",
+        "child_prompt": "Name a small tool the child could use.",
+        "examples": [
+          "stick",
+          "leaf",
+          "ribbon"
+        ]
+      },
+      {
+        "id": "slot_snack_food",
+        "type": "food",
+        "author_description": "A snack the child shares.",
+        "child_prompt": "What is a snack the child might share?",
+        "examples": [
+          "cookie",
+          "apple slice",
+          "pretzel"
+        ]
+      },
+      {
+        "id": "slot_tree",
+        "type": "noun",
+        "author_description": "A tree in the garden where they sit.",
+        "child_prompt": "Name a tree that could be in the garden.",
+        "examples": [
+          "oak",
+          "maple",
+          "birch"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G3_patterns_menu_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

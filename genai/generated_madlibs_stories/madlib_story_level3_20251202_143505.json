@@ -1,0 +1,159 @@
+{
+  "template": {
+    "title": "The Hummingbird Toy's Gentle Song",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child discovers a toy that has lost its song, decides to help it, and shares the joy with a friend.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the [[slot_place]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy",
+          "slot_place"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny day, the toy was missing its [[slot_color]] [[slot_sound]].",
+        "slot_ids": [
+          "slot_color",
+          "slot_sound"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The child felt a little sad and thought about [[slot_friend]].",
+        "slot_ids": [
+          "slot_friend"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] almost kept the toy for themselves, but then remembered how [[slot_friend]] liked to share.",
+        "slot_ids": [
+          "slot_child",
+          "slot_friend"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "The child tried to make the toy happy by singing a soft [[slot_sound]].",
+        "slot_ids": [
+          "slot_sound"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "The toy twitched its tiny wings and made a gentle [[slot_sound]] that sounded like a tiny bell.",
+        "slot_ids": [
+          "slot_sound"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "Suddenly, a soft breeze blew through the [[slot_place]], and the toy's wings fluttered like a rainbow.",
+        "slot_ids": [
+          "slot_place"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "The child decided to give the toy to [[slot_friend]] so they could both play together.",
+        "slot_ids": [
+          "slot_friend"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "[[slot_friend]] smiled and said, \"Thank you, [[slot_child]]!\"",
+        "slot_ids": [
+          "slot_friend",
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "They both played with the toy, and the [[slot_place]] filled with laughter and bright colors.",
+        "slot_ids": [
+          "slot_place"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "The name of the main character.",
+        "child_prompt": "Can you give a name to the child in the story?",
+        "examples": [
+          "Mia",
+          "Noah",
+          "Lily"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A small, friendly toy the child might like.",
+        "child_prompt": "What is the toy the child plays with?",
+        "examples": [
+          "hummingbird",
+          "kites",
+          "balloon"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "The color of the toy's missing sound.",
+        "child_prompt": "What color is the toy's missing sound?",
+        "examples": [
+          "blue",
+          "green",
+          "yellow"
+        ]
+      },
+      {
+        "id": "slot_friend",
+        "type": "person_name",
+        "author_description": "The name of the child's neighbor or friend.",
+        "child_prompt": "What is the name of the child's friend?",
+        "examples": [
+          "Sam",
+          "Lily",
+          "Ben"
+        ]
+      },
+      {
+        "id": "slot_place",
+        "type": "place_name",
+        "author_description": "A familiar place where the child plays.",
+        "child_prompt": "Where does the child play?",
+        "examples": [
+          "park",
+          "garden",
+          "backyard"
+        ]
+      },
+      {
+        "id": "slot_sound",
+        "type": "sound_word",
+        "author_description": "A sound that the toy might make.",
+        "child_prompt": "What sound does the toy make?",
+        "examples": [
+          "song",
+          "hum",
+          "chirp"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G3_patterns_menu_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

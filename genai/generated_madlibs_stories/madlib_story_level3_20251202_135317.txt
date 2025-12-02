@@ -1,0 +1,38 @@
+Title: The Lost Toy and the Friendly Kite
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child loses a toy in the park, finds help from a friendly animal, and shares a snack to end the day happily.
+
+Slots:
+- slot_child (child_name): The name of the main child character.
+  Child prompt: What is your favorite name to use for the main character?
+  Examples: Mia, Liam, Sofia
+- slot_toy (toy_object): A small toy the child loves to play with.
+  Child prompt: Can you name a toy you would love to play with?
+  Examples: ball, kite, toy car
+- slot_pet (animal_pet): A friendly animal that helps the child.
+  Child prompt: Can you name an animal you would love to be friends with?
+  Examples: puppy, bunny, kitten
+- slot_color (color): A bright color for the kite.
+  Child prompt: What is a bright color you like?
+  Examples: bright blue, rainbow, sunny yellow
+- slot_snack (snack_food): A crunchy snack to share.
+  Child prompt: Can you name a crunchy snack you like?
+  Examples: pretzel, apple slice, candy corn
+- slot_forest (place_name): A place in the park where the toy fell.
+  Child prompt: What is a place in the park you like?
+  Examples: forest, woodland, grove
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the park.
+s2: One sunny day, the [[slot_toy]] slid down the slide and fell into the big green [[slot_forest]].
+s3: [[slot_child]] looked everywhere but could not find the [[slot_toy]].
+s4: [[slot_child]] felt sad and thought about walking home.
+s5: Then a friendly [[slot_pet]] hopped over with a bright [[slot_color]] kite.
+s6: The kite fluttered like a dragonfly and made a soft humming sound.
+s7: [[slot_pet]] sniffed the air and said, "Let me help!"
+s8: Together they searched under the [[slot_color]] kite and found the [[slot_toy]] hidden inside a fluffy cloud of cotton candy.
+s9: [[slot_child]] thanked the [[slot_pet]] and shared a crunchy [[slot_snack]].
+s10: They all played a game of tag in the park.
+s11: The [[slot_child]] felt happy, and the [[slot_pet]] wagged its tail.
+s12: At the end of the day, they promised to meet again.

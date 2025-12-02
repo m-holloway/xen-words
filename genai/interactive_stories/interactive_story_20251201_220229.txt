@@ -1,0 +1,19 @@
+Model: google/gemini-2.5-flash (source=STORY_BUILDER_BY_SENTENCE_MODEL)
+Created at: 2025-12-01T22:02:29.581423
+
+1. Imagine a world where every single cloud was a fluffy marshmallow.
+2. And nestled among those soft, fluffy clouds was a tiny, cozy home, perfect for a very special friend.
+
+
+=== Turn log ===
+
+Step 2, action=regenerate
+  candidates:
+    1) And in that world lived a very special turtle.
+    2) It was a very soft and sweet world, perfect for a little turtle.
+
+Step 2, action=choose_model_sentence
+  candidates:
+    1) In this soft, sweet sky lived a little turtle named Timmy, who loved to watch the clouds drift by.
+    2) And nestled among those soft, fluffy clouds was a tiny, cozy home, perfect for a very special friend.
+  chosen: And nestled among those soft, fluffy clouds was a tiny, cozy home, perfect for a very special friend.

@@ -1,0 +1,44 @@
+Title: Mia and the Singing Kite
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child, a kite, and a friendly bird work together to solve a gentle problem.
+
+Slots:
+- slot_child (child_name): A name for the main child character.
+  Child prompt: Can you name a child who loves to play outside?
+  Examples: Mia, Liam, Sofia
+- slot_toy (toy_object): A toy that can fly or be played with.
+  Child prompt: Can you name a toy you would love to play with?
+  Examples: kite, ball, doll
+- slot_color (color): A bright color for the toy.
+  Child prompt: Can you name a bright color?
+  Examples: rainbow, sunny, emerald
+- slot_garden (place_name): A place where the child plays.
+  Child prompt: Can you name a place where you like to play?
+  Examples: flower garden, park, backyard
+- slot_stick (object): An object the child might use to climb or pull.
+  Child prompt: Can you name an object you could use to reach high places?
+  Examples: stick, rope, ladder
+- slot_bird (animal_pet): A friendly bird that can sing.
+  Child prompt: Can you name a bird that sings?
+  Examples: sparrow, finch, blue jay
+- slot_snack (snack_food): A tasty snack the child can share.
+  Child prompt: Can you name a snack you like?
+  Examples: cookies, apple slices, granola bar
+- slot_music (sound): A sound that describes the bird's song.
+  Child prompt: Can you name a sound that is happy?
+  Examples: humming, chirping, melody
+
+Story template:
+s1: [[slot_child]] loved to play with a [[slot_color]] [[slot_toy]] in the [[slot_garden]].
+s2: One sunny day, the [[slot_toy]] flew up high and got stuck in a tall oak tree.
+s3: [[slot_child]] looked up and felt sad.
+s4: [[slot_child]] thought about using a [[slot_stick]] to pull it down.
+s5: But [[slot_child]] remembered the kind [[slot_bird]] that sang in the trees.
+s6: [[slot_child]] walked over to the tree and whispered, "Can you help me?"
+s7: The [[slot_bird]] fluttered down and said, "I can sing you a song and bring the kite back."
+s8: [[slot_child]] smiled and shared a bite of [[slot_snack]] with the bird.
+s9: The [[slot_bird]] sang a bright, [[slot_music]] tune.
+s10: The song made the oak leaves dance, and the kite fell gently to the ground.
+s11: [[slot_child]] thanked the bird and gave it a tiny feather.
+s12: From then on, every time the kite flew, the bird sang, and they both felt happy.

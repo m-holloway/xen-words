@@ -1,0 +1,35 @@
+Title: The Kind Butterfly in the Garden
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child helps a shy butterfly find its way home in the garden.
+
+Slots:
+- slot_child (child_name): Name of the main child character
+  Child prompt: What is the name of the child in the story?
+  Examples: Sam, Lily, Noah
+- slot_flower (plant_flower): Name of a flower
+  Child prompt: Name a flower you see in the garden
+  Examples: Rose, Sunflower, Daisy
+- slot_color (color): A bright color
+  Child prompt: Name a bright color
+  Examples: red, blue, green
+- slot_tool (object): A small tool the child might have
+  Child prompt: Name a small tool you might carry
+  Examples: net, stick, bucket
+- slot_sound (sound): A soft sound
+  Child prompt: Name a soft sound
+  Examples: buzz, whisper, humming
+
+Story template:
+s1: [[slot_child]] loved to play in the backyard garden.
+s2: One sunny morning, a [[slot_color]] butterfly fluttered near the [[slot_flower]].
+s3: The butterfly looked sad because it could not find its home.
+s4: [[slot_child]] wanted to help, but the butterfly was shy.
+s5: First, [[slot_child]] tried to touch the butterfly, but it fluttered away.
+s6: Then, [[slot_child]] remembered a small [[slot_tool]] in the pocket.
+s7: Using the net, [[slot_child]] gently guided the butterfly to a bright [[slot_flower]].
+s8: The butterfly landed and its wings shone like a [[slot_color]] rainbow.
+s9: It sang a soft [[slot_sound]] that made the garden feel calm.
+s10: [[slot_child]] smiled and felt warm inside.
+s11: The butterfly thanked [[slot_child]] with a flutter and flew home.
+s12: Now, whenever [[slot_child]] sees a butterfly, they remember to be kind.

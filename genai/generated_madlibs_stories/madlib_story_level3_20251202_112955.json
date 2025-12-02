@@ -1,0 +1,191 @@
+{
+  "title": "The Lost Toy Adventure",
+  "reading_level": 3,
+  "reading_band": "Grades 1–2",
+  "target_minutes": 5,
+  "summary": "A warm story about a child, a pet, and a small adventure that ends happily.",
+  "sentences": [
+    {
+      "id": "s1",
+      "text_with_blanks": "[[slot_child]] felt [[slot_mood]] this morning.",
+      "slot_ids": [
+        "slot_child",
+        "slot_mood"
+      ]
+    },
+    {
+      "id": "s2",
+      "text_with_blanks": "He/she had a [[slot_pet]] and a [[slot_toy]] that loved to play with.",
+      "slot_ids": [
+        "slot_pet",
+        "slot_toy"
+      ]
+    },
+    {
+      "id": "s3",
+      "text_with_blanks": "In the [[slot_place]], they [[slot_action]] and laughed.",
+      "slot_ids": [
+        "slot_place",
+        "slot_action"
+      ]
+    },
+    {
+      "id": "s4",
+      "text_with_blanks": "Suddenly, the [[slot_toy]] was gone!",
+      "slot_ids": [
+        "slot_toy"
+      ]
+    },
+    {
+      "id": "s5",
+      "text_with_blanks": "There was a small problem: the [[slot_problem]].",
+      "slot_ids": [
+        "slot_problem"
+      ]
+    },
+    {
+      "id": "s6",
+      "text_with_blanks": "But [[slot_child]] and [[slot_pet]] decided to look for it.",
+      "slot_ids": [
+        "slot_child",
+        "slot_pet"
+      ]
+    },
+    {
+      "id": "s7",
+      "text_with_blanks": "They searched under the [[slot_color]] tree and behind the [[slot_color]] bench.",
+      "slot_ids": [
+        "slot_color"
+      ]
+    },
+    {
+      "id": "s8",
+      "text_with_blanks": "Finally, they found the [[slot_toy]] tucked inside a [[slot_color]] box.",
+      "slot_ids": [
+        "slot_toy",
+        "slot_color"
+      ]
+    },
+    {
+      "id": "s9",
+      "text_with_blanks": "They were happy and gave each other a hug.",
+      "slot_ids": [
+        "slot_child",
+        "slot_pet"
+      ]
+    },
+    {
+      "id": "s10",
+      "text_with_blanks": "The day ended with a bright sunset over the [[slot_place]].",
+      "slot_ids": [
+        "slot_place"
+      ]
+    },
+    {
+      "id": "s11",
+      "text_with_blanks": "They learned that sharing and looking together solves problems.",
+      "slot_ids": [
+        "slot_child",
+        "slot_pet"
+      ]
+    },
+    {
+      "id": "s12",
+      "text_with_blanks": "And they promised to play again tomorrow.",
+      "slot_ids": [
+        "slot_child",
+        "slot_pet"
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "id": "slot_child",
+      "type": "child_name",
+      "author_description": "The name of the main character.",
+      "child_prompt": "What is your name?",
+      "examples": [
+        "Sam",
+        "Lily",
+        "Noah"
+      ]
+    },
+    {
+      "id": "slot_pet",
+      "type": "animal_pet",
+      "author_description": "A friendly animal companion.",
+      "child_prompt": "Can you name an animal you would love to be friends with?",
+      "examples": [
+        "puppy",
+        "bunny",
+        "kitten"
+      ]
+    },
+    {
+      "id": "slot_toy",
+      "type": "toy",
+      "author_description": "A favorite toy the child plays with.",
+      "child_prompt": "What is your favorite toy?",
+      "examples": [
+        "ball",
+        "teddy bear",
+        "blocks"
+      ]
+    },
+    {
+      "id": "slot_color",
+      "type": "color",
+      "author_description": "A bright color.",
+      "child_prompt": "What is a bright color you like?",
+      "examples": [
+        "yellow",
+        "blue",
+        "pink"
+      ]
+    },
+    {
+      "id": "slot_mood",
+      "type": "emotion",
+      "author_description": "How the child feels at the start.",
+      "child_prompt": "How are you feeling today?",
+      "examples": [
+        "happy",
+        "curious",
+        "excited"
+      ]
+    },
+    {
+      "id": "slot_place",
+      "type": "location",
+      "author_description": "A place the child visits.",
+      "child_prompt": "Where do you like to go?",
+      "examples": [
+        "park",
+        "beach",
+        "garden"
+      ]
+    },
+    {
+      "id": "slot_action",
+      "type": "verb",
+      "author_description": "An action the child does.",
+      "child_prompt": "What do you like to do?",
+      "examples": [
+        "run",
+        "jump",
+        "play"
+      ]
+    },
+    {
+      "id": "slot_problem",
+      "type": "noun",
+      "author_description": "A small, gentle problem.",
+      "child_prompt": "What is a small problem you might have?",
+      "examples": [
+        "lost ball",
+        "missing shoe",
+        "paper cut"
+      ]
+    }
+  ]
+}

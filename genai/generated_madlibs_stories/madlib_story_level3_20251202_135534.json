@@ -1,0 +1,185 @@
+{
+  "template": {
+    "title": "The Lost Balloon Adventure",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A gentle adventure about finding a missing toy and sharing with a friend.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the park.",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny day, the [[slot_toy]] was gone!",
+        "slot_ids": [
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "[[slot_child]] looked under the big [[slot_color]] slide.",
+        "slot_ids": [
+          "slot_child",
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "Then they saw the [[slot_toy]] floating like a tiny [[slot_color]] sun in the sky.",
+        "slot_ids": [
+          "slot_toy",
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "They reached up, but the toy was too high.",
+        "slot_ids": [
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "[[slot_child]] almost pushed the toy away, but remembered how [[slot_pet]] liked to share.",
+        "slot_ids": [
+          "slot_child",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "So they gently pulled the toy down and gave it to their friend [[slot_friend_name]].",
+        "slot_ids": [
+          "slot_friend_name"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "[[slot_friend_name]] giggled and said, 'Thank you! Let's play together.'",
+        "slot_ids": [
+          "slot_friend_name"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "They built a castle with blocks and ate a crunchy [[slot_food]] for snack.",
+        "slot_ids": [
+          "slot_food"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "The [[slot_weather]] made the day feel like a warm hug.",
+        "slot_ids": [
+          "slot_weather"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "They laughed and played until the sun set.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the main child character",
+        "child_prompt": "What is the name of the child?",
+        "examples": [
+          "Sam",
+          "Lily",
+          "Alex"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A small toy the child likes",
+        "child_prompt": "What toy does the child like to play with?",
+        "examples": [
+          "balloon",
+          "teddy bear",
+          "doll"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "The child's pet animal",
+        "child_prompt": "What pet does the child have?",
+        "examples": [
+          "puppy",
+          "bunny",
+          "kitten"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color",
+        "child_prompt": "Name a bright color.",
+        "examples": [
+          "red",
+          "blue",
+          "yellow"
+        ]
+      },
+      {
+        "id": "slot_friend_name",
+        "type": "friend_name",
+        "author_description": "Name of the child's friend",
+        "child_prompt": "What is the name of the child's friend?",
+        "examples": [
+          "Sam",
+          "Mia",
+          "Jordan"
+        ]
+      },
+      {
+        "id": "slot_activity",
+        "type": "playground_activity",
+        "author_description": "An activity at the playground",
+        "child_prompt": "What activity do they do at the playground?",
+        "examples": [
+          "building a castle",
+          "climbing a slide",
+          "playing tag"
+        ]
+      },
+      {
+        "id": "slot_food",
+        "type": "snack_food",
+        "author_description": "A crunchy snack",
+        "child_prompt": "What crunchy snack do they eat?",
+        "examples": [
+          "chips",
+          "crackers",
+          "apple slices"
+        ]
+      },
+      {
+        "id": "slot_weather",
+        "type": "weather",
+        "author_description": "A weather condition",
+        "child_prompt": "What weather is it?",
+        "examples": [
+          "sunny",
+          "cloudy",
+          "rainy"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G1_novel_innerChoice_showDontTell",
+    "judge_model": "google/gemini-3-pro-preview"
+  }
+}

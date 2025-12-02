@@ -1,0 +1,44 @@
+Title: The Balloon Dragon Adventure
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child and their pet try to bring a floating balloon down, learning kindness and teamwork.
+
+Slots:
+- slot_child (child_name): Name of the main character.
+  Child prompt: What is your name?
+  Examples: Sam, Lily, Max
+- slot_pet (animal_pet): A cozy or friendly animal the child might like.
+  Child prompt: Can you name a friendly animal you like?
+  Examples: puppy, bunny, kitten
+- slot_toy (toy_object): A toy the child loves to play with.
+  Child prompt: What is your favorite toy?
+  Examples: ball, doll, blocks
+- slot_place (place_name): A place where the child plays.
+  Child prompt: Where do you like to play?
+  Examples: playground, flower garden, park
+- slot_weather (weather): A type of weather the child enjoys.
+  Child prompt: What weather do you like?
+  Examples: sunny, cloudy, rainy
+- slot_color (color): A bright color for the balloon.
+  Child prompt: What is a bright color you like?
+  Examples: rainbow, purple, orange
+- slot_snack (snack_food): A snack the child loves.
+  Child prompt: What snack do you love?
+  Examples: cookies, fruit, granola bar
+- slot_activity (activity): A fun activity the child does.
+  Child prompt: What fun activity do you do?
+  Examples: sing, dance, skip rope
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_pet]] and [[slot_toy]] in the [[slot_place]].
+s2: One bright [[slot_weather]] day, a shiny [[slot_color]] balloon floated up, like a tiny dragon dancing in the sky.
+s3: It twirled and sang, and [[slot_child]] felt a little curious.
+s4: The balloon drifted higher, and [[slot_child]] wondered how to reach it.
+s5: Almost [[slot_child]] shouted for help, but then remembered the kind words of [[slot_pet]].
+s6: Instead, [[slot_child]] whispered, 'Let’s use the [[slot_activity]] to bring it down.'
+s7: They tied a bright ribbon to the balloon and let it glide like a friendly kite.
+s8: The balloon landed gently on a tree, and [[slot_child]] and [[slot_pet]] shared a tasty [[slot_snack]].
+s9: The balloon smiled and floated back, inviting them to play again.
+s10: They laughed and danced, and the sky looked brighter.
+s11: When the sun set, the balloon floated home, and [[slot_child]] felt proud.
+s12: From that day, every [[slot_weather]] day, [[slot_child]] and [[slot_pet]] would look up for new adventures.

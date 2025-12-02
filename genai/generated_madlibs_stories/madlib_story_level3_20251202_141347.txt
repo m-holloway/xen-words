@@ -1,0 +1,42 @@
+Title: The Happy Toy and the Kind Friend
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child finds a sad toy, decides to help it, and together they bring joy to the playground.
+
+Slots:
+- slot_child (child_name): The name of the main child character.
+  Child prompt: Can you give a name for the child?
+  Examples: Lily, Tom, Mia
+- slot_pet (animal_pet): A cozy or friendly animal the child might like.
+  Child prompt: Can you name an animal you would love to be friends with?
+  Examples: puppy, bunny, kitten
+- slot_toy (toy_object): A small toy that the child can play with.
+  Child prompt: Can you name a toy that you like?
+  Examples: doll, car, ball
+- slot_color (color): A bright color to describe the toy.
+  Child prompt: What is a bright color you like?
+  Examples: pink, orange, green
+- slot_snack (snack_food): A tasty snack the child can share.
+  Child prompt: Can you name a snack you like?
+  Examples: cookies, fruit, popcorn
+- slot_place (place_name): A place where the playground is located.
+  Child prompt: Where is the playground?
+  Examples: city park, suburban park, schoolyard
+- slot_activity (playground_activity): An activity the child can do at the playground.
+  Child prompt: What is a playground activity you like?
+  Examples: tag, slide, climb
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_pet]] in the [[slot_place]].
+s2: One sunny day, they saw a [[slot_color]] [[slot_toy]] that looked sad.
+s3: The toy was lonely because it had no friends to play with.
+s4: [[slot_child]] thought, 'Maybe I can make it happy.'
+s5: [[slot_child]] wondered if they should just leave the toy alone, but they chose to help.
+s6: First, [[slot_child]] tried to sing a song, but the toy stayed quiet.
+s7: Then [[slot_child]] brought a [[slot_snack]] to share, hoping the toy would smile.
+s8: The toy's eyes twinkled, and it started to hum like a tiny drum.
+s9: That humming made the whole playground light up with a soft glow.
+s10: [[slot_child]] decided to invite the [[slot_pet]] to play with the toy.
+s11: Together, they played [[slot_activity]] and the toy laughed, humming louder.
+s12: The [[slot_color]] toy glowed brighter, like a sunrise on a cloud.
+s13: When the sun set, the toy said, 'Thank you, friend,' and they all went home happy.

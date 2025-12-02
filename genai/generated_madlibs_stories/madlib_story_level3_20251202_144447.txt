@@ -1,0 +1,35 @@
+Title: Max and the Missing Page in the Library
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: Max fills a missing page with a picture, discovering creativity.
+
+Slots:
+- slot_child (child_name): Name of the child character
+  Child prompt: Can you give a name for the child?
+  Examples: Max, Emma, Noah
+- slot_book_title (book_title): Title of a book
+  Child prompt: Can you think of a book title?
+  Examples: The Adventures of Tom, The Magic Garden, Space Explorers
+- slot_missing_page_content (page_content): What could be on the missing page?
+  Child prompt: What picture would you draw on a missing page?
+  Examples: a cat playing piano, a rainbow over a hill, a smiling robot
+- slot_picture_subject (subject): Subject of the picture
+  Child prompt: Can you name something you like to draw?
+  Examples: cat, dog, tree
+- slot_color (color): Bright color
+  Child prompt: Can you name a bright color?
+  Examples: orange, purple, green
+- slot_school_item (school_item): An item in the school
+  Child prompt: Can you name something you might see in a school?
+  Examples: library shelf, blackboard, chalk
+
+Story template:
+s1: [[slot_child]] loved to read in the school library.
+s2: One day, [[slot_child]] opened a book called [[slot_book_title]] and found a missing page.
+s3: The page was empty, and the story felt sad.
+s4: [[slot_child]] thought, 'I can make this page fun!'
+s5: He drew a picture of a [[slot_picture_subject]] playing a piano.
+s6: He used bright [[slot_color]] crayons to color the picture.
+s7: The picture made the story smile, and the missing page looked happy.
+s8: When the teacher saw it, she praised [[slot_child]] for being creative.
+s9: Later, [[slot_child]] placed the book back on the [[slot_school_item]] and shared his picture with friends.

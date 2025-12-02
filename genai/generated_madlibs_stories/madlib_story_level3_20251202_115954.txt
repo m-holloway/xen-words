@@ -1,0 +1,39 @@
+Title: The Missing Snack Adventure
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child forgets a snack and finds it with a friendly animal, sharing it with a friend.
+
+Slots:
+- slot_child_name (child_name): Name of the child character
+  Child prompt: What is your favorite name for a child?
+  Examples: Lily, Tommy, Mia
+- slot_toy (toy_object): A toy the child likes
+  Child prompt: What toy do you like to play with?
+  Examples: ball, teddy bear, toy car
+- slot_color (color): A bright color
+  Child prompt: What bright color do you like?
+  Examples: red, blue, yellow
+- slot_friend (friend_name): Name of a friend
+  Child prompt: What is the name of a friend you like?
+  Examples: Sam, Zoe, Ben
+- slot_animal (animal_pet): A friendly animal
+  Child prompt: Name a friendly animal you would like to be friends with?
+  Examples: puppy, bunny, kitten
+- slot_snack (snack_food): A snack the child can eat
+  Child prompt: What snack do you like?
+  Examples: apple slices, pretzel sticks, candy
+- slot_activity (playground_activity): An activity at the playground
+  Child prompt: What playground activity do you enjoy?
+  Examples: swing, slide, climbing frame
+
+Story template:
+s1: [[slot_child_name]] loved to play in the park.
+s2: One sunny day, [[slot_child_name]] brought a [[slot_toy]] and a bright [[slot_color]] backpack.
+s3: [[slot_child_name]] wanted to share a snack with [[slot_friend]].
+s4: But [[slot_child_name]] forgot to put the snack inside the backpack.
+s5: [[slot_child_name]] looked everywhere, but the snack was missing.
+s6: [[slot_child_name]] asked [[slot_animal]] for help.
+s7: [[slot_animal]] nudged the backpack and found a small [[slot_snack]] hidden under a leaf.
+s8: [[slot_child_name]] and [[slot_friend]] ate the snack together.
+s9: They laughed and played on the [[slot_activity]].
+s10: At the end of the day, [[slot_child_name]] felt happy and tired.

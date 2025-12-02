@@ -1,0 +1,160 @@
+{
+  "title": "Playful Picnic in the Park",
+  "reading_level": 3,
+  "reading_band": "Grades 1–2",
+  "target_minutes": 5,
+  "summary": "A child and a friendly animal share a toy, snack, and a fun game in the park.",
+  "sentences": [
+    {
+      "id": "s1",
+      "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the sunny park.",
+      "slot_ids": [
+        "slot_child",
+        "slot_toy"
+      ]
+    },
+    {
+      "id": "s2",
+      "text_with_blanks": "One day, a friendly [[slot_animal]] hopped up to [[slot_child]].",
+      "slot_ids": [
+        "slot_animal",
+        "slot_child"
+      ]
+    },
+    {
+      "id": "s3",
+      "text_with_blanks": "The [[slot_animal]] asked, 'Can we play together?'",
+      "slot_ids": [
+        "slot_animal"
+      ]
+    },
+    {
+      "id": "s4",
+      "text_with_blanks": "[[slot_child]] smiled and said, 'Yes, let’s play a game of [[slot_activity]]!'",
+      "slot_ids": [
+        "slot_child",
+        "slot_activity"
+      ]
+    },
+    {
+      "id": "s5",
+      "text_with_blanks": "They both ran to the big swing set and started to swing high.",
+      "slot_ids": []
+    },
+    {
+      "id": "s6",
+      "text_with_blanks": "After swinging, they sat on the bench and shared a warm [[slot_snack]].",
+      "slot_ids": [
+        "slot_snack"
+      ]
+    },
+    {
+      "id": "s7",
+      "text_with_blanks": "The [[slot_animal]] said, 'That snack tastes great! Thank you, [[slot_child]]!'",
+      "slot_ids": [
+        "slot_animal",
+        "slot_child"
+      ]
+    },
+    {
+      "id": "s8",
+      "text_with_blanks": "[[slot_child]] felt proud to share and to be friends.",
+      "slot_ids": [
+        "slot_child"
+      ]
+    },
+    {
+      "id": "s9",
+      "text_with_blanks": "When the sun went down, they waved goodbye and promised to meet again.",
+      "slot_ids": []
+    },
+    {
+      "id": "s10",
+      "text_with_blanks": "Back home, [[slot_child]] tucked the toy into a soft [[slot_color]] blanket.",
+      "slot_ids": [
+        "slot_child",
+        "slot_color"
+      ]
+    },
+    {
+      "id": "s11",
+      "text_with_blanks": "They dreamed of playing [[slot_activity]] again tomorrow.",
+      "slot_ids": [
+        "slot_activity"
+      ]
+    },
+    {
+      "id": "s12",
+      "text_with_blanks": "And they all lived happily, ready for new adventures.",
+      "slot_ids": []
+    }
+  ],
+  "slots": [
+    {
+      "id": "slot_child",
+      "type": "person_name",
+      "author_description": "A name for the main child character.",
+      "child_prompt": "Can you give a name for the child?",
+      "examples": [
+        "Lily",
+        "Max",
+        "Sam"
+      ]
+    },
+    {
+      "id": "slot_toy",
+      "type": "toy_object",
+      "author_description": "A toy the child likes.",
+      "child_prompt": "Can you name a toy the child loves?",
+      "examples": [
+        "ball",
+        "doll",
+        "teddy bear"
+      ]
+    },
+    {
+      "id": "slot_animal",
+      "type": "animal_pet",
+      "author_description": "A friendly animal friend.",
+      "child_prompt": "Can you name a friendly animal?",
+      "examples": [
+        "puppy",
+        "bunny",
+        "kitten"
+      ]
+    },
+    {
+      "id": "slot_activity",
+      "type": "playground_activity",
+      "author_description": "A playground game to play.",
+      "child_prompt": "Can you think of a playground game?",
+      "examples": [
+        "tag",
+        "hide-and-seek",
+        "swing"
+      ]
+    },
+    {
+      "id": "slot_snack",
+      "type": "snack_food",
+      "author_description": "A snack to share.",
+      "child_prompt": "Can you name a snack?",
+      "examples": [
+        "cookie",
+        "sandwich",
+        "fruit"
+      ]
+    },
+    {
+      "id": "slot_color",
+      "type": "color",
+      "author_description": "A color for the blanket.",
+      "child_prompt": "Can you name a color?",
+      "examples": [
+        "blue",
+        "red",
+        "green"
+      ]
+    }
+  ]
+}

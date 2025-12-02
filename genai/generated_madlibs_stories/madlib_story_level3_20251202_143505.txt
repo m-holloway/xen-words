@@ -1,0 +1,36 @@
+Title: The Hummingbird Toy's Gentle Song
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child discovers a toy that has lost its song, decides to help it, and shares the joy with a friend.
+
+Slots:
+- slot_child (child_name): The name of the main character.
+  Child prompt: Can you give a name to the child in the story?
+  Examples: Mia, Noah, Lily
+- slot_toy (toy_object): A small, friendly toy the child might like.
+  Child prompt: What is the toy the child plays with?
+  Examples: hummingbird, kites, balloon
+- slot_color (color): The color of the toy's missing sound.
+  Child prompt: What color is the toy's missing sound?
+  Examples: blue, green, yellow
+- slot_friend (person_name): The name of the child's neighbor or friend.
+  Child prompt: What is the name of the child's friend?
+  Examples: Sam, Lily, Ben
+- slot_place (place_name): A familiar place where the child plays.
+  Child prompt: Where does the child play?
+  Examples: park, garden, backyard
+- slot_sound (sound_word): A sound that the toy might make.
+  Child prompt: What sound does the toy make?
+  Examples: song, hum, chirp
+
+Story template:
+s1: [[slot_child]] loved to play with [[slot_toy]] in the [[slot_place]].
+s2: One sunny day, the toy was missing its [[slot_color]] [[slot_sound]].
+s3: The child felt a little sad and thought about [[slot_friend]].
+s4: [[slot_child]] almost kept the toy for themselves, but then remembered how [[slot_friend]] liked to share.
+s5: The child tried to make the toy happy by singing a soft [[slot_sound]].
+s6: The toy twitched its tiny wings and made a gentle [[slot_sound]] that sounded like a tiny bell.
+s7: Suddenly, a soft breeze blew through the [[slot_place]], and the toy's wings fluttered like a rainbow.
+s8: The child decided to give the toy to [[slot_friend]] so they could both play together.
+s9: [[slot_friend]] smiled and said, "Thank you, [[slot_child]]!"
+s10: They both played with the toy, and the [[slot_place]] filled with laughter and bright colors.

@@ -1,0 +1,193 @@
+{
+  "template": {
+    "title": "Mia and the Singing Kite",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child, a kite, and a friendly bird work together to solve a gentle problem.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with a [[slot_color]] [[slot_toy]] in the [[slot_garden]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_color",
+          "slot_toy",
+          "slot_garden"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny day, the [[slot_toy]] flew up high and got stuck in a tall oak tree.",
+        "slot_ids": [
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "[[slot_child]] looked up and felt sad.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] thought about using a [[slot_stick]] to pull it down.",
+        "slot_ids": [
+          "slot_child",
+          "slot_stick"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "But [[slot_child]] remembered the kind [[slot_bird]] that sang in the trees.",
+        "slot_ids": [
+          "slot_child",
+          "slot_bird"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "[[slot_child]] walked over to the tree and whispered, \"Can you help me?\"",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "The [[slot_bird]] fluttered down and said, \"I can sing you a song and bring the kite back.\"",
+        "slot_ids": [
+          "slot_bird"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "[[slot_child]] smiled and shared a bite of [[slot_snack]] with the bird.",
+        "slot_ids": [
+          "slot_child",
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "The [[slot_bird]] sang a bright, [[slot_music]] tune.",
+        "slot_ids": [
+          "slot_bird",
+          "slot_music"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "The song made the oak leaves dance, and the kite fell gently to the ground.",
+        "slot_ids": []
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "[[slot_child]] thanked the bird and gave it a tiny feather.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "From then on, every time the kite flew, the bird sang, and they both felt happy.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "A name for the main child character.",
+        "child_prompt": "Can you name a child who loves to play outside?",
+        "examples": [
+          "Mia",
+          "Liam",
+          "Sofia"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A toy that can fly or be played with.",
+        "child_prompt": "Can you name a toy you would love to play with?",
+        "examples": [
+          "kite",
+          "ball",
+          "doll"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color for the toy.",
+        "child_prompt": "Can you name a bright color?",
+        "examples": [
+          "rainbow",
+          "sunny",
+          "emerald"
+        ]
+      },
+      {
+        "id": "slot_garden",
+        "type": "place_name",
+        "author_description": "A place where the child plays.",
+        "child_prompt": "Can you name a place where you like to play?",
+        "examples": [
+          "flower garden",
+          "park",
+          "backyard"
+        ]
+      },
+      {
+        "id": "slot_stick",
+        "type": "object",
+        "author_description": "An object the child might use to climb or pull.",
+        "child_prompt": "Can you name an object you could use to reach high places?",
+        "examples": [
+          "stick",
+          "rope",
+          "ladder"
+        ]
+      },
+      {
+        "id": "slot_bird",
+        "type": "animal_pet",
+        "author_description": "A friendly bird that can sing.",
+        "child_prompt": "Can you name a bird that sings?",
+        "examples": [
+          "sparrow",
+          "finch",
+          "blue jay"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A tasty snack the child can share.",
+        "child_prompt": "Can you name a snack you like?",
+        "examples": [
+          "cookies",
+          "apple slices",
+          "granola bar"
+        ]
+      },
+      {
+        "id": "slot_music",
+        "type": "sound",
+        "author_description": "A sound that describes the bird's song.",
+        "child_prompt": "Can you name a sound that is happy?",
+        "examples": [
+          "humming",
+          "chirping",
+          "melody"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G3_patterns_menu_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}

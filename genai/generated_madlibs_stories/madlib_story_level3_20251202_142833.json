@@ -1,0 +1,160 @@
+{
+  "template": {
+    "title": "The Day the Toy Shared a Snack",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child learns to share a toy with a sad animal, and together they find a lost snack.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] loved to play with [[slot_toy]] in the [[slot_place]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy",
+          "slot_place"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One sunny day, a tiny [[slot_pet]] hopped onto the bench.",
+        "slot_ids": [
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The [[slot_pet]] looked sad because it had lost its favorite [[slot_food]].",
+        "slot_ids": [
+          "slot_pet",
+          "slot_food"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] felt a tug in the heart.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "First, [[slot_child]] thought to keep the [[slot_toy]] for themselves.",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "Then, [[slot_child]] decided to share the [[slot_toy]] with the [[slot_pet]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_toy",
+          "slot_pet"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "The [[slot_toy]] gave a gentle giggle that sounded like wind chimes.",
+        "slot_ids": [
+          "slot_toy"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "The [[slot_food]] appeared, glowing a bright [[slot_color]].",
+        "slot_ids": [
+          "slot_food",
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "The [[slot_pet]] purred and jumped onto [[slot_child]]'s lap.",
+        "slot_ids": [
+          "slot_pet",
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "They all sat together, watching the clouds drift by.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "person_name",
+        "author_description": "The name of the child character.",
+        "child_prompt": "Can you tell me the name of the child in the story?",
+        "examples": [
+          "Liam",
+          "Mia",
+          "Noah"
+        ]
+      },
+      {
+        "id": "slot_toy",
+        "type": "toy_object",
+        "author_description": "A favorite toy of the child.",
+        "child_prompt": "What is a toy that the child loves to play with?",
+        "examples": [
+          "soft dinosaur",
+          "toy car",
+          "fluffy bear"
+        ]
+      },
+      {
+        "id": "slot_place",
+        "type": "place",
+        "author_description": "A place where the child plays.",
+        "child_prompt": "Where does the child play with the toy?",
+        "examples": [
+          "park",
+          "backyard",
+          "garden"
+        ]
+      },
+      {
+        "id": "slot_pet",
+        "type": "animal_pet",
+        "author_description": "A small animal that appears in the story.",
+        "child_prompt": "Can you name a small animal that the child meets?",
+        "examples": [
+          "kitten",
+          "bunny",
+          "chipmunk"
+        ]
+      },
+      {
+        "id": "slot_food",
+        "type": "snack_food",
+        "author_description": "The snack that the animal lost.",
+        "child_prompt": "What is a snack that the animal likes?",
+        "examples": [
+          "carrot",
+          "apple slice",
+          "candy"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A bright color of the snack.",
+        "child_prompt": "What is a bright color you can see in the snack?",
+        "examples": [
+          "orange",
+          "yellow",
+          "red"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_prompt_version": "G3_patterns_menu_innerChoice_showDontTell",
+    "judge_model": "google/gemini-2.5-flash"
+  }
+}
