@@ -1,0 +1,5 @@
+Model: google/gemini-2.5-flash (source=STORY_BUILDER_BY_SENTENCE_MODEL)
+Created at: 2025-12-01T21:09:30.373333
+
+1. The sleepy cat purred a soft, rumbling tune for its Best Friend Addy!.
+2. Every morning, Addy loved to give her purring friend a big, gentle hug.

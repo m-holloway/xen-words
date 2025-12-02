@@ -419,6 +419,45 @@ Output JSON:
 
 ---
 
+### 9. Future: child-facing tuning controls ("story tokens")
+
+For some experiences (not all modes), we may let the child *steer* the story feel each round using a tiny, game-like control surface:
+
+- **Concept**:
+  - Child gets a small number of "tokens" (e.g., 3 per round) that they can allocate along curated axes such as:
+    - **crazy / surprising**
+    - **challenge / stakes**
+    - **cozy / gentle**
+  - In the Flutter UI, this might be:
+    - A strip of coins at the top showing remaining tokens.
+    - A small set of labeled controls (e.g., "More wild", "More challenge", "More cozy") each with up/down arrows.
+    - Tapping moves a coin from the reserve onto an axis (up) or back (down), visually encoding how many tokens are currently spent on that dimension.
+
+- **LLM integration**:
+  - For each turn, we send a structured block such as:
+
+    ```json
+    {
+      "tuning_tokens": {
+        "crazy": 2,
+        "challenge": 1,
+        "cozy": 0
+      }
+    }
+    ```
+
+  - The system prompt instructs the model to:
+    - Treat these as *soft steering signals*, balanced against:
+      - Parent values / content boundaries.
+      - Overall story coherence.
+      - Emotional safety rules.
+    - E.g., "If crazy is high, favor playful surprises and unusual imagery; if cozy is high, favor warm, reassuring beats."
+
+- **Prototype text interface (current CLI demo)**:
+  - On session start, the CLI asks the adult to set a one-time allocation of 3 tokens across `crazy`, `challenge`, and `cozy`.
+  - These values are included in `tuning_tokens` in every LLM call for that session.
+  - In a future iteration, we could make this per-turn (spend/earn each round), mirroring the envisioned touch UI, but the current design keeps it simple while we evaluate how strongly the model responds to these signals.
+
 ### 8. Next steps
 
 - **Backend**

@@ -1,0 +1,14 @@
+Model: google/gemini-2.5-flash (source=STORY_BUILDER_BY_SENTENCE_MODEL)
+Created at: 2025-12-01T21:20:34.097905
+
+1. On her birthday, Maya wished for a pet that could fly.
+2. She imagined soaring through the sky on the back of a magnificent, feathery friend.
+
+
+=== Turn log ===
+
+Step 2, action=choose_model_sentence
+  candidates:
+    1) She imagined soaring through the sky on the back of a magnificent, feathery friend.
+    2) But what kind of flying pet could it be? A bird? A dragon? Or something else entirely?
+  chosen: She imagined soaring through the sky on the back of a magnificent, feathery friend.

@@ -1,0 +1,4 @@
+Model: google/gemini-2.5-flash (source=STORY_BUILDER_BY_SENTENCE_MODEL)
+Created at: 2025-12-01T21:15:00.763019
+
+1. Up in the sky, the moon smiled a golden, sleepy smile,
