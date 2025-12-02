@@ -264,6 +264,7 @@ class StoryPanelArtService {
       rows: estimatedRows,
       panelImagePaths: selectedPaths,
       sheetImagePath: sheetPath,
+      sheetImagePaths: [sheetPath],
       importedAt: DateTime.now(),
       assignments: initialAssignments,
     );
@@ -340,7 +341,7 @@ class StoryPanelArtService {
     if (art == null) return;
     final files = [
       ...art.panelImagePaths,
-      art.sheetImagePath,
+      ...art.sheetImagePaths,
     ];
     for (final path in files) {
       if (path.isEmpty) continue;

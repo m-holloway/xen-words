@@ -1,0 +1,201 @@
+You are generating a single high-resolution comic page image.  
+Follow ALL instructions below EXACTLY and WITHOUT EXCEPTION.
+
+====================================================================
+GOAL
+Create a 1024×1024 px comic page containing EXACTLY 16 illustrated 
+story panels, arranged inside a strict 4-column grid.  
+The grid is ALWAYS 4 rows by 4 columns (16 total square cells).  
+Any cells not used for illustrated panels MUST be filled with blank
+white squares.
+
+THIS IS A **WORDLESS ILLUSTRATION** PAGE:
+- Absolutely NO written text anywhere in the image.
+- NO speech bubbles, chat balloons, or thought bubbles.
+- NO sound effects ("BANG", "WHOOSH", "POW", etc.).
+- NO labels, captions, UI elements, logos, or typography of any kind.
+====================================================================
+
+====================================================================
+GRID LAYOUT (STRICT, MATHEMATICAL, NON-NEGOTIABLE)
+You MUST place each illustrated panel k (starting at 1) using this formula:
+
+    row_index r = floor((k - 1) / 4)
+    column_index c = (k - 1) mod 4
+
+This creates a 4-column layout:
+Panel 1  → row 0, col 0  
+Panel 2  → row 0, col 1  
+Panel 3  → row 0, col 2  
+Panel 4  → row 0, col 3  
+Panel 5  → row 1, col 0  
+Panel 6  → row 1, col 1  
+…continue sequentially through Panel 16.
+
+- NO reordering.  
+- NO centering.  
+- NO shifting for aesthetic reasons.  
+- NO creative reinterpretation of panel positions.  
+This layout is mechanical and MUST be followed precisely.
+
+Number of rows:  
+Let R = 4.  
+You MUST generate exactly 4 rows and exactly 4 columns per row  
+for a total of 16 square cells, regardless of 16.  
+Never change the number of rows or columns based on 16.
+====================================================================
+
+====================================================================
+UNUSED CELLS RULE (CRITICAL)
+There are ALWAYS 16 cells in the grid (4 rows × 4 columns).  
+You will receive 16 panel descriptions. Let K = min(16, 16).
+
+1. You MUST create illustrated panels for **exactly K** panels:
+   - Use Panel 1 for cell (row 0, col 0)
+   - Panel 2 for (row 0, col 1)
+   - Panel 3 for (row 0, col 2)
+   - Panel 4 for (row 0, col 3)
+   - Panel 5 for (row 1, col 0)
+   - …continue in strict reading order until Panel K.
+
+2. ALL remaining cells from K+1 up to 16 MUST be filled with **blank white squares**, 
+   and MUST use the remaining cells in reading order (left to right, top to bottom).
+
+Blank white squares are defined as:
+- pure white (#FFFFFF)
+- no shading, texture, gradients, symbols, or decoration
+- identical in size to the illustrated panels
+
+Under NO circumstances may the model:
+- center the last row's illustrated panels  
+- shift illustrated panels into the middle  
+- add art to blank squares  
+- modify the grid structure  
+====================================================================
+
+====================================================================
+GRID & GUTTER REQUIREMENTS
+1. All cells (illustrated panels + blank squares) MUST be perfect squares.
+2. Every square MUST be identical in size.
+3. The complete grid MUST fill the entire 1024×1024 px canvas.
+4. The size and number of cells (4×4, 16 total) MUST NEVER change,
+   no matter how many panels 16 you are asked to render.
+5. Gutters MUST be:
+   - thin
+   - clean
+   - solid black (#000000)
+   - uniform width between all cells
+
+Absolutely NO artwork may spill across gutters.
+====================================================================
+
+====================================================================
+RENDERING ORDER (MANDATORY)
+You MUST perform the following steps IN ORDER:
+
+1. Construct the entire empty grid of R rows × 4 columns.
+2. Fill the illustrated panels IN NUMERICAL ORDER:
+   Panel 1 → Panel 2 → Panel 3 → … → Panel 16.
+3. After all illustrated panels are filled,  
+   insert blank white squares into any remaining rightmost cells.
+4. Do NOT fill illustrated panels out of order.
+5. Do NOT add imagery to blank squares.
+====================================================================
+
+====================================================================
+ART STYLE
+Whimsical children's book illustration style, vibrant colors, soft lighting, age-appropriate for 6 years old, warm and engaging
+
+Apply this style consistently to EVERY illustrated panel.
+====================================================================
+
+====================================================================
+CONTENT RENDERING (STRICT)
+- Render ONLY what is described in each panel's brief.  
+- DO NOT add any text or writing anywhere in the image.  
+- NO speech bubbles, thought bubbles, or chat balloons.  
+- NO sound effect words ("BANG", "WHOOSH", "POW", etc.).  
+- NO labels, captions, signs with readable text, UI, or logos.  
+- If the story implies dialogue, show it ONLY through character poses,
+  facial expressions, and body language—NEVER as written words.  
+- DO NOT display panel numbers.  
+- DO NOT introduce new elements not present in the panel descriptions.  
+- DO NOT reinterpret or embellish beyond what the panel description specifies.  
+====================================================================
+
+====================================================================
+PANEL CONTENT (RENDER LITERALLY)
+Paste the list of panel descriptions here:
+
+Panel 1:
+Panel 1:
+Soft lamplight spills across a cozy bedroom where two bunk beds sit beneath a frost-dusted window. Snowflakes swirl outside like tiny ballerinas, while multicolored Christmas-tree lights blink cheerily against the wall. AZ, tall and golden-haired, sits cross-legged on the top bunk, her mp3 player glowing faintly as she braids her shiny shoulder-length hair. Below, little Adalyn kneels on her mattress, notebook balanced on the quilt, sketching candy canes with quick, excited strokes; her glasses reflect the twinkling lights. Mittens the fluffy white cat curls at the foot of Addy’s bed, whiskers twitching in sleepy contentment. The room feels hushed, warm, and full of anticipatory Christmas magic. This panel captures the moment when the sisters share peaceful holiday bedtime rituals, unaware that adventure is about to sparkle to life.
+
+Panel 2:
+Panel 2:
+The festive glow suddenly gutters—each bulb snuffed by a crawling ribbon of inky shadow that slithers along the wire like living spilled ink. The tree’s brilliance fades to dull gray, casting the room in chilly twilight. Addy freezes mid-sketch, hazel eyes huge behind her glasses, one hand flung toward AZ in alarm. AZ leans over the bunk rail, braid half-finished, blue eyes narrowing at the creeping darkness. Mittens arches on the windowsill, white fur bristling, mouth open in a silent hiss as whiskers tremble. The contrast between cheerful décor and encroaching gloom feels startling, almost breath-stealing. This panel captures the instant Christmas cheer is mysteriously stolen by creeping shadows.
+
+Panel 3:
+Panel 3:
+Mittens paws frantically at the cold windowpane; beyond the glass, a swirling peppermint-striped portal spirals where the snowy yard should be, red-and-white stripes spinning like a hypnotic candy vortex. AZ, decisive, swings down the bunk-ladder and grabs Addy’s small hand, mp3 player clipped to her pajama pocket. Addy shoves her glasses firmly up her nose, notebook clutched under one arm, ready for anything. Together they step toward the window, Mittens leaping ahead, white tail a bold brushstroke against the night. The bedroom behind them remains dimmed, but the portal’s sugary glow promises wonder. This panel captures the sisters choosing to follow their cat into the unknown rather than stay frightened in the dark.
+
+Panel 4:
+Panel 4:
+They tumble onto a cobblestone path beneath a sky of ashy snowflakes—once-bright candy canes now droop like wilted tulips beside a frozen chocolate river. The air smells flat, missing its expected sugar-spun sparkle. A tiny elf in a drooping peppermint cap rushes toward them, tear tracks striping her cheeks, gesturing wildly toward the distant gingerbread palace. AZ straightens, brushing sugary dust from her golden hair, while Addy’s energetic bounce falters at the sight of the dreary landscape. Mittens sniffs the ground, whiskers twitching in puzzled concern. The palette has shifted from festive reds to mournful grays, underscoring the land’s heartache. This panel captures the sisters’ first glimpse of Candy Cane Lane robbed of its laughter and light.
+
+Panel 5:
+Panel 5:
+Inside the gumdrop-bedecked palace, the Candy Cane Queen sits on her crystalline throne; her short red-and-silver hair still glows warmly, but sorrow dims her twinkling eyes. She cradles her sparkly tennis-racquet sceptre across her lap, the crowned letters “TQ” glinting like a tiny beacon. AZ and Addy stand before her, holding hands; Addy tilts her head, glasses reflecting the Queen’s gentle smile. Mittens sits between them, tail curled neatly over white paws, gaze steady. Gingerbread walls remain stalwart, yet sugar-crystal chandeliers hang dull and quiet, matching the room’s heavy mood. This panel captures the moment the Queen entrusts the sisters with the quest to restore joy.
+
+Panel 6:
+Panel 6:
+The Queen unfurls a map etched on pliable fruit leather across a low table; AZ leans in, tall frame casting a slender shadow, finger tracing the route: Sour Swamp, Gumdrop Cliffs, Mount Peppermint. Addy bounces on her toes, fists clenched with excited determination, glasses sliding slightly. Mittens pats a paw at the map’s curled edge, whiskers twitching in curiosity. Warm candlelight from the Queen’s sceptre-handle glimmers over their concentrated faces, promising guidance. The royal gown’s sugar-crystals shimmer faintly, hinting that hope is not entirely extinguished. This panel captures the planning stage of the perilous journey toward the Giggle-Gobbler’s fortress.
+
+Panel 7:
+Panel 7:
+At the edge of Sour Swamp, thick green goo belches bubbles that smell suspiciously of old laundry; licorice vines hang like ropes overhead. AZ, using her aerial-silk agility, ties a sturdy licorice lasso and swings across first, golden hair streaming. Addy follows nimbly, hopping between half-submerged gum-drop stepping stones, arms windmilling for balance yet grinning at the challenge. Mittens leaps graceful arcs from log to log, white fur miraculously unstained. The background gurgles and slurps, but the trio’s brisk motion keeps fear at bay. Sunlight struggles through gray clouds, spotlighting their courage. This panel captures the sisters conquering the first obstacle with teamwork and laughter thin but alive.
+
+Panel 8:
+Panel 8:
+Vertical Gumdrop Cliffs tower, their once-bright colors crumbling into chalky rubble; AZ grips a magic humming candy-cane like a climbing pick, scaling steadily, tall reach advantageous. Below, Addy clips her own candy-cane to AZ’s makeshift licorice belay, feet finding purchase on sugary outcrops, glasses glinting with gritted determination. Mittens watches from a safe ledge, tail flicking encouragement. Wisps of cotton-candy clouds drift past, cool breeze tugging at clothes and fur. The high angle shows how far they’ve climbed, emphasizing peril and perseverance. This panel captures the midpoint ascent where sisterly trust keeps them moving upward.
+
+Panel 9:
+Panel 9:
+Inside the gloomy fruitcake fortress, bars of frozen molasses form a yawning window; AZ and Addy slip inside, silhouetted against the sickly green interior glow. Center-stage sits Grumblesnatch: a round, furry creature whose long wobbly nose droops like unset gelatin, tiny eyes red-rimmed; before him rests a glowing box rattling with trapped giggles. AZ places a protective arm in front of Addy, who peers around, notebook tucked tight beneath her elbow. The air feels thick with unshed tears and stale crumbs, oppressive yet fragile. This panel captures the tense first sight of the so-called villain and his shimmering prisoner of laughter.
+
+Panel 10:
+Panel 10:
+A cage of smoky sighs materializes, swirling around the sisters and lifting them inches off the ground; Addy’s fists clench, glasses fogging with indignant breath, ready to shout. AZ, however, meets Grumblesnatch’s watery gaze, her blue eyes softening with empathy; she reaches into her pajama pocket. Mittens, outside the cage, arches, white fur sparking with static, ready to pounce but held by AZ’s subtle headshake. The fortress interior feels colder, grayer, yet a faint rainbow glint from AZ’s pocket hints at a different weapon than anger. This panel captures the pivotal decision to trade confrontation for compassion.
+
+Panel 11:
+Panel 11:
+AZ extends a small, loom-woven rainbow bracelet through the dissolving bars; Grumblesnatch’s wobbling nose quivers as tiny eyes widen, furry fingers timidly accepting the gift. Addy relaxes her stance, leaning in to gently pat his furry hand, voice hushed with genuine curiosity. The cage vapors fade, freeing the sisters; the giggle-box beside them glows brighter, sensing the mood shift. Warm pastel light from the bracelet begins to tint the scene, pushing back gray shadows. This panel captures the exact heartbeat when kindness cracks the Giggle-Gobbler’s shell of loneliness.
+
+Panel 12:
+Panel 12:
+The lid flips open—an explosion of shimmering giggles bursts forth like sunlight through storm clouds, swirling around the room in translucent, joyful spirals. Grumblesnatch’s own laugh rumbles, growing from uncertain huff to booming, belly-deep chuckle; his fur shifts visibly from dull gray to warm, rich brown. AZ and Addy laugh too, the sound finally full and musical again, hair and pajamas ruffled by the magical breeze. Mittens bats playfully at drifting sparkles of mirth, whiskers twitching in delight. The fortress stones seem to brighten, sugary mortar twinkling in response. This panel captures the instant stolen happiness returns, transforming foe into friend.
+
+Panel 13:
+Panel 13:
+Back at the gingerbread palace, elves string K-pop carol lights that blink in sync with AZ’s mp3 player now clipped to a festive garland. The chocolate river gurgles anew, steaming cocoa mist curling into the candy-pink sky. Grumblesnatch, sporting the rainbow bracelet, hangs an oversized glossy ornament with careful pride, his wobbly nose jiggling with every happy motion. Addy dances nearby, arms overhead, glasses slightly askew, while AZ helps steady a ladder of licorice. Mittens chases sugarplums that float like shiny soap bubbles. The palette bursts with saturated reds, greens, and golds, signaling full restoration. This panel captures preparations for the triumphant celebration.
+
+Panel 14:
+Panel 14:
+On a candy-stone balcony, the Candy Cane Queen stands radiant, gown shimmering with a thousand sugar crystals catching firework sparks; she raises her sparkly tennis-racquet sceptre in salute. AZ and Addy flank her, necks adorned with a single glowing Crystal of Kindness that throws prismatic light onto their awestruck faces. Grumblesnatch bows beside them, bracelet glinting, while elves and creatures cheer below. Peppermint-horn fanfare arches overhead, and glittering sugar fireworks bloom like brilliant flowers in the night sky. The composition looks down on the jubilant throng, emphasizing communal joy. This panel captures the royal proclamation that courage and kindness have saved Christmas.
+
+Panel 15:
+Panel 15:
+The Queen embraces the sisters in a grandmotherly hug, eyes twinkling, as the portal back home swirls open behind them like a gentle peppermint whirlpool. Grumblesnatch offers two freshly conjured magic candy canes—striped passports for future visits—which AZ and Addy accept with grateful smiles. Mittens purrs in Addy’s arms, tail curled contentedly. Palace lanterns glow softly, casting long, warm shadows that say both goodbye and welcome anytime. The mood is bittersweet yet comforting, adventure complete but friendship lasting. This panel captures the farewell moment, sealing bonds across worlds.
+
+Panel 16:
+Panel 16:
+The sisters tumble softly onto their rug just as the grandfather clock chimes twelve; the Christmas tree blazes with renewed brilliance, colors richer than before. Two new packages—one labeled with a tiny loom icon, the other with craft supplies—materialize beneath the lowest boughs. On the nightstand between their bunk beds rests the Crystal of Kindness, pulsing gently like a heartbeat of rainbow light. Mittens nestles between their pillows, white fur luminous against festive quilts, whiskers twitching in dream-filled sleep. Snowflakes still dance beyond the window, but now they seem to giggle too. This panel captures the magical homecoming that proves every kindness, once released, returns brighter than ever.
+====================================================================
+
+OUTPUT
+Produce a single 1024×1024 px image containing:
+- 4 × 4 square grid cells (16 total)  
+- Illustrated panels placed based on the mathematical formula  
+- Blank white squares in all unused cells after the last illustrated panel  
+- Perfectly aligned grid with clean black gutters  
+- A layout that can be programmatically sliced with simple pixel math

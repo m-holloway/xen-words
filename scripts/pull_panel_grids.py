@@ -55,20 +55,26 @@ def check_device_connected() -> bool:
 
 
 def list_panel_grids_on_device() -> List[str]:
-  """List PNG files in the app's panel grid directory using run-as."""
-  print(f"Listing panel grids on device in {APP_DIR} …")
+  """List files in the app's panel art/debug directory using run-as.
+
+  We pull:
+    - PNG panel grid sheets
+    - Any debug artifacts (.txt, .json, .log) written alongside them
+  """
+  print(f"Listing panel grids and debug artifacts on device in {APP_DIR} …")
   cmd = f'adb shell "run-as {PACKAGE_NAME} ls {APP_DIR} 2>/dev/null"'
   output = run_adb_command(cmd)
   if not output:
     print("No files found on device (or run-as failed).")
     return []
 
+  exts = (".png", ".txt", ".json", ".log")
   files = [
     f.strip()
     for f in output.splitlines()
-    if f.strip().lower().endswith(".png")
+    if any(f.strip().lower().endswith(ext) for ext in exts)
   ]
-  print(f"Found {len(files)} PNG files on device.")
+  print(f"Found {len(files)} files on device with extensions {exts}.")
   return files
 
 

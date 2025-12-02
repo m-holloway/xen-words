@@ -318,6 +318,8 @@ class StoryPanelArtMetadata {
   final int rows;
   final List<String> panelImagePaths;
   final String sheetImagePath;
+  /// All underlying grid images (first entry should match [sheetImagePath]).
+  final List<String> sheetImagePaths;
   final DateTime importedAt;
   final Map<int, String> assignments; // narrationBeatIndex -> panelPath
   final String? modelId; // Model used to generate this panel grid (if AI‑generated)
@@ -327,6 +329,7 @@ class StoryPanelArtMetadata {
     required this.rows,
     required this.panelImagePaths,
     required this.sheetImagePath,
+    this.sheetImagePaths = const [],
     required this.importedAt,
     this.assignments = const {},
     this.modelId,
@@ -338,6 +341,7 @@ class StoryPanelArtMetadata {
       'rows': rows,
       'panel_image_paths': panelImagePaths,
       'sheet_image_path': sheetImagePath,
+      'sheet_image_paths': sheetImagePaths.isEmpty ? [sheetImagePath] : sheetImagePaths,
       'imported_at': importedAt.toIso8601String(),
       'assignments': assignments.map((key, value) => MapEntry(key.toString(), value)),
       'model_id': modelId,
@@ -346,13 +350,21 @@ class StoryPanelArtMetadata {
 
   factory StoryPanelArtMetadata.fromJson(Map<String, dynamic> json) {
     final rawAssignments = json['assignments'] as Map<String, dynamic>? ?? {};
+    final legacySheet = json['sheet_image_path'] as String? ?? '';
+    final rawSheets = (json['sheet_image_paths'] as List<dynamic>?)
+            ?.map((e) => e.toString())
+            .toList() ??
+        const <String>[];
+    final sheets =
+        rawSheets.isNotEmpty ? rawSheets : (legacySheet.isNotEmpty ? [legacySheet] : const <String>[]);
     return StoryPanelArtMetadata(
       columns: json['columns'] as int? ?? 1,
       rows: json['rows'] as int? ?? 1,
       panelImagePaths: (json['panel_image_paths'] as List<dynamic>? ?? [])
           .map((value) => value.toString())
           .toList(),
-      sheetImagePath: json['sheet_image_path'] as String? ?? '',
+      sheetImagePath: legacySheet,
+      sheetImagePaths: sheets,
       importedAt:
           DateTime.tryParse(json['imported_at'] as String? ?? '') ??
           DateTime.now(),
@@ -368,6 +380,7 @@ class StoryPanelArtMetadata {
     int? rows,
     List<String>? panelImagePaths,
     String? sheetImagePath,
+    List<String>? sheetImagePaths,
     DateTime? importedAt,
     Map<int, String>? assignments,
     String? modelId,
@@ -377,6 +390,7 @@ class StoryPanelArtMetadata {
       rows: rows ?? this.rows,
       panelImagePaths: panelImagePaths ?? this.panelImagePaths,
       sheetImagePath: sheetImagePath ?? this.sheetImagePath,
+      sheetImagePaths: sheetImagePaths ?? this.sheetImagePaths,
       importedAt: importedAt ?? this.importedAt,
       assignments: assignments ?? this.assignments,
       modelId: modelId ?? this.modelId,

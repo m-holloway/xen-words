@@ -54,6 +54,37 @@ class OpenRouterStoryClient {
 
     final vocabulary = ReadingLevelHelper.vocabularyForBand(request.readingBand);
 
+    // Rough words-per-minute guidance by reading level, for back-of-envelope
+    // total word targets. These are intentionally soft bands, not hard caps.
+    final normalizedLevel =
+        ReadingLevelHelper.normalizeLevel(request.readingLevel);
+    int lowWpm;
+    int highWpm;
+    switch (normalizedLevel) {
+      case 1:
+        lowWpm = 90;
+        highWpm = 110;
+        break;
+      case 2:
+        lowWpm = 110;
+        highWpm = 130;
+        break;
+      case 3:
+        lowWpm = 130;
+        highWpm = 150;
+        break;
+      case 4:
+      case 5:
+      default:
+        lowWpm = 150;
+        highWpm = 170;
+        break;
+    }
+    final minWords =
+        (request.durationMinutes * lowWpm * 0.9).round(); // 10% slack
+    final maxWords =
+        (request.durationMinutes * highWpm * 1.1).round(); // 10% slack
+
     final systemPrompt = '''
 You are a master storyteller in the tradition of Arnold Lobel, Beatrix Potter, and Maurice Sendak—a weaver of bedtime tales that children beg to hear again and again.
 
@@ -82,8 +113,11 @@ You're writing for children at Level ${request.readingLevel} (${request.readingB
 Include 85-90% familiar words so children can flow through the story with confidence. Sprinkle in 4-6 new or challenging words that context makes clear—these are gifts of language, chances to grow.
 
 Technical Notes:
-• Target ${request.durationMinutes} minutes of read-aloud time (roughly ${(request.durationMinutes * 150 * 0.9).round()}-${(request.durationMinutes * 150 * 1.1).round()} words)
-• Break the narrative into natural story "beats"—scenes or moments where something shifts
+• Target ${request.durationMinutes} minutes of read-aloud time.
+• For a Level ${request.readingLevel} (${request.readingBand.gradeBand}) reader, this usually means a total length between about $minWords and $maxWords words. Stay roughly in this band unless there is an exceptionally strong story reason not to.
+• Break the narrative into natural story "beats"—scenes or moments where something shifts.
+• For this picture-book style flow, aim for roughly 12–20 beats for most stories; for very long requests (15–20 minutes), you may use up to about 24 beats so no beat becomes a giant wall of text.
+• Each beat should be a comfortable read-aloud unit: typically 2–5 sentences (roughly 40–120 words) instead of a huge block.
 • Output JSON only, no markdown fences or commentary
 
 Your mission: Transform their simple prompt into a story that makes bedtime magical. Expand, enhance, and ENCHANT.
@@ -247,7 +281,7 @@ OUTPUT FORMAT (JSON, no markdown):
     {
       "id": "beat_1",
       "type": "narration",
-      "text": "A paragraph or two of story narrative. Each beat is a natural story moment—a scene, a shift, a development. Break the story into 8-15 beats for pacing and read-aloud flow."
+      "text": "A paragraph or two of story narrative. Each beat is a natural story moment—a scene, a shift, a development. Break the story into roughly 12-20 beats for pacing and read-aloud flow. For long requested durations (15-20 minutes), you may use up to around 24 beats if needed to keep each beat easy to read aloud."
     }
   ],
   "metadata": {
