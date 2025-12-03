@@ -286,3 +286,77 @@
     - Stories with a single, clear “hook sentence” (singing kite; humming toy that lights the playground) rise to the top.
   - Remaining gap:
     - Motifs are still fairly close to our existing comfort zone (kites, toys, playgrounds); next variants could push on **setting diversity** (e.g., kitchen, bedtime, bus ride) while preserving the new twist + retellability constraints.
+
+### 2025-12-02 – Reality-show coaching loop & coached refinement experiments
+
+- **New tooling**
+  - `genai/madlibs_coach_round.py`:
+    - Generates a cohort of N Level 3 templates (via batch Mercury).
+    - Judges each with Gemini 2.5 Flash (same axes as evolver).
+    - Calls a coach model (Gemini 2.5 Flash, different system prompt) to produce:
+      - `cohort_summary` (common strengths/weaknesses, `patterns_to_reduce`, `patterns_to_explore`),
+      - `per_story_feedback` (per-candidate `headline`, `strengths`, `weaknesses`, `next_round_goals`, `is_standout`).
+    - Saves a round log such as [`coach_round_level3_20251202_150820.json`](../genai/generated_madlibs_stories/coach_round_level3_20251202_150820.json).
+  - `genai/madlibs_refine_with_coach.py`:
+    - Reads a coach-round JSON and a `story_id`.
+    - Rebuilds the original `MadLibStoryTemplate` and its Flash scores.
+    - Builds a `feedback` object that includes:
+      - Per-story feedback from the coach,
+      - A `refinement_mode` (`'polish'` for standouts, `'reboot'` for non-standouts),
+      - A `direction_hint` distilled from `patterns_to_reduce`,
+      - A small set of `exemplar_stories` (other standouts in the same cohort, with titles, summaries, sample sentences, and coach-highlighted strengths).
+    - Calls a coach-aware refiner (Mercury) with `{template, feedback}` using a system prompt that:
+      - For `'polish'` → makes local, targeted edits while preserving situation/setting/problem.
+      - For `'reboot'` → allows a fresh take on the story while learning from the feedback and exemplars (new situation/setting/problem, adjusted slot set, etc.).
+    - Re-judges the refined story with Gemini 2.5 Flash and optionally Gemini 3 Pro, and writes a comparison JSON (original vs refined templates + scores), e.g.:
+      - [`madlib_story_level3_20251202_150820_c2_coached_refined_20251202_151417.json`](../genai/generated_madlibs_stories/madlib_story_level3_20251202_150820_c2_coached_refined_20251202_151417.json)
+      - [`madlib_story_level3_20251202_150820_c1_coached_refined_20251202_165302.json`](../genai/generated_madlibs_stories/madlib_story_level3_20251202_150820_c1_coached_refined_20251202_165302.json)
+
+- **Coaching quality**
+  - The coach (Flash with a “panelist” prompt) consistently produces high-signal critiques:
+    - It calls out overused patterns (“lost object + snack”, “gentle tug of curiosity/kindness” as a stock phrase).
+    - It identifies genuine strengths (e.g., “tiny robot stuck in a book”, “sad seashell on the beach”) and suggests concrete `next_round_goals` (clarify the mini-puzzle, add a specific magical behavior, make the payoff more vivid).
+  - Example: for `Backyard Butterfly Adventure` (see comparison file `...150820_c1_coached_refined_20251202_165302.json`):
+    - Headline: “A sweet but somewhat generic butterfly tale.”
+    - Weaknesses: cliché trope, tell-not-show motivation, low memorability.
+    - Next-round goals: more specific butterfly challenge, action-based curiosity, richer sensory detail.
+  - Overall, we consider the **coaching itself to be strong**; the limiting factor has been how much the refiner actually leans into that feedback.
+
+- **Polish mode on strong seeds – meaningful gains**
+  - Case: **Library Robot Rescue** (standout `c2` in `coach_round_level3_20251202_150820.json`).
+    - Original: child helps tiny robot “stuck in a book”; nice idea but somewhat under-specified.
+    - Coached polish (see [`...c2_coached_refined_20251202_151417.json`](../genai/generated_madlibs_stories/madlib_story_level3_20251202_150820_c2_coached_refined_20202_151417.json)):
+      - Clarifies the puzzle: robot is “tangled in a bright bookmark and a folded page”.
+      - Makes the rescue concrete: child gently unfolds the page and slides out the bookmark while reading.
+      - Gives the robot a distinct behavior: soft “ding”, tiny twirl, “cheerful beep”.
+    - Flash scores:
+      - `overall` 0.75 → **0.80**, `novelty` 0.7 → 0.8, `memorable_moment` 0.8 → 0.9, `character_depth` 0.6 → 0.7.
+    - Gemini 3 Pro still caps this around `overall ≈ 0.55` (good but not “bookstore-tier”), but this is a **clear qualitative and quantitative improvement** over the seed.
+
+- **Polish (or gentle shift) on weak/mid seeds – limited or negative gain**
+  - Case: **Backyard Butterfly Adventure** (non-standout `c1`, multiple refinement attempts).
+    - Original: classic “lost butterfly in backyard finds the right flower” arc, with a stock line (“felt a gentle tug of curiosity”).
+    - Coached line-level refinement (earlier run `...c1_coached_refined_20251202_151526.json`):
+      - Replaces the “tug” with a better inner action (“[[slot_child]] leaned closer, wondering why the butterfly looked so sad.”).
+      - Adds sensory color to the flower and sunbeam.
+      - Leaves the core arc and motif unchanged.
+    - Flash scores went **down** (0.65 → 0.45 overall; novelty/memorable_moment dropped), and Gemini 3 Pro remained in the weak/generic band.
+    - Even after switching to a bolder refiner prompt that allowed structural change and adding exemplars, a rebooted variant (`Butterfly's Bright Flower Quest` in [`...c1_coached_refined_20251202_165302.json`](../genai/generated_madlibs_stories/madlib_story_level3_20251202_150820_c1_coached_refined_20251202_165302.txt)) still clung to the same basic pattern (lost/shy butterfly + find flower in backyard).
+      - Flash: `overall` dropped to 0.55 with `novelty` only 0.4, `memorable_moment` 0.6.
+      - Gemini 3 Pro: `overall` ~0.5; still not library-worthy.
+  - Similar behavior appears for other mid-tier seeds like `Tom and the Shy Butterfly` and `Nina's Sad Seashell`: the refiner readily executes **local** coaching (phrases, details) but often leaves the core trope intact, so judges continue to rate them as pleasant but unremarkable.
+
+- **Reboot mode for non-standouts – first impressions**
+  - We introduced a `'reboot'` refinement mode for non-standouts:
+    - The prompt explicitly allows a fresh take on the story concept (new situation/setting/problem) while drawing on:
+      - Per-story `weaknesses`/`next_round_goals`,
+      - Cohort `patterns_to_reduce` (e.g., “lost object + snack”),
+      - A handful of `exemplar_stories` from the same round with strong coach praise.
+    - In practice, our first reboot attempt for `Backyard Butterfly Adventure` remained very close to the original motif (shy butterfly + special flower), adding a bit of fear-of-bees and extra sensory detail without truly escaping the “lost/stuck object + snack” basin.
+  - Conclusion so far:
+    - **For strong seeds**, coached polish is clearly beneficial.
+    - **For weak/mid seeds**, both polish and reboot modes tend to produce more of the same pattern with better adjectives, and judges (especially Gemini 3 Pro) do not materially revise their assessment.
+    - This suggests that for library-building, the right move is likely:
+      - Use coaching + refinement only on stories that already clear a quality bar (e.g., Flash `overall ≥ ~0.7` and decent `novelty`/`memorable_moment`),
+      - Give non-standouts at most one coached pass to confirm the diagnosis, then **prune** them rather than attempting multiple rescue rounds.
+      - Rely on Mercury batch generation + motif-diversity + cohort coaching to surface new seeds, instead of trying to force mid-tier drafts into greatness.

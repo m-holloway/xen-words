@@ -1,0 +1,274 @@
+{
+  "coach_round_path": "generated_madlibs_stories/coach_round_level3_20251202_161254.json",
+  "story_id": "c1",
+  "original": {
+    "title": "The Curious Kite in the Park",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "Sam helps a kite that lost its string, sharing the adventure with his friend and painting the sky with colors.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "Sam loved to fly the [[slot_kite]] in the sunny park.",
+        "slot_ids": [
+          "slot_kite"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One day, the string slipped from his hands.",
+        "slot_ids": []
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The kite floated up, like a bright balloon.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "Sam looked up and saw the kite dancing in the clouds.",
+        "slot_ids": []
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "He felt sad that his friend was far away.",
+        "slot_ids": []
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "Sam thought: 'I could tie a new string, but I could also share this adventure.'",
+        "slot_ids": []
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "He ran to the bench where his friend [[slot_friend]] was sitting.",
+        "slot_ids": [
+          "slot_friend"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "Sam offered to tie the string together.",
+        "slot_ids": []
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "Together they made a new, stronger string.",
+        "slot_ids": []
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "They flew the kite, and it painted the sky with [[slot_color]] swirls while they ate a [[slot_snack]].",
+        "slot_ids": [
+          "slot_color",
+          "slot_snack"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_kite",
+        "type": "toy_object",
+        "author_description": "A bright kite you love to fly.",
+        "child_prompt": "Can you name a kite you would like to fly?",
+        "examples": [
+          "rainbow kite",
+          "sunny kite"
+        ]
+      },
+      {
+        "id": "slot_friend",
+        "type": "person_name",
+        "author_description": "The name of a friend.",
+        "child_prompt": "What is your friend's name?",
+        "examples": [
+          "Mia",
+          "Tom"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A color you like.",
+        "child_prompt": "What is your favorite color?",
+        "examples": [
+          "blue",
+          "pink"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A tasty snack.",
+        "child_prompt": "What is a snack you enjoy?",
+        "examples": [
+          "apple",
+          "candy"
+        ]
+      }
+    ]
+  },
+  "original_scores_main": {
+    "overall": 0.75,
+    "story_arc": 0.8,
+    "character_engagement": 0.7,
+    "emotional_warmth": 0.9,
+    "curiosity_hooks": 0.6,
+    "madlibs_usability": 0.9,
+    "reading_level_fit": 0.9,
+    "novelty": 0.5,
+    "memorable_moment": 0.7,
+    "show_vs_tell": 0.8,
+    "character_depth": 0.7,
+    "kid_retellability": 0.8
+  },
+  "feedback": {
+    "story_id": "c1",
+    "is_standout": true,
+    "headline": "A sweet, classic tale with potential for more visual flair.",
+    "strengths": [
+      "Strong emotional warmth and a clear, relatable problem.",
+      "The imagery of the kite dancing in the clouds is evocative.",
+      "Good setup for Mad Libs with the 'slot_kite' placeholder."
+    ],
+    "weaknesses": [
+      "The resolution feels a bit understated; what happens *after* the kite is caught?",
+      "Could benefit from more sensory details beyond just visual.",
+      "Novelty is moderate; it's a familiar 'lost item' trope."
+    ],
+    "next_round_goals": [
+      "Expand on the adventure of retrieving the kite. Does Sam have to climb something? Does a friendly animal help?",
+      "Introduce a more vivid 'memorable moment' when the kite is finally secured, perhaps a unique sound or a surprising discovery attached to the kite.",
+      "Vary the language used to describe the kite's movement and appearance to enhance the 'show, don't tell' aspect."
+    ]
+  },
+  "refined": {
+    "title": "The Curious Kite in the Park",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "Sam helps a kite that lost its string, sharing the adventure with his friend and painting the sky with colors.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "Sam loved to fly the [[slot_kite]] across the bright, sunny park, feeling the wind whisper through its ribbons.",
+        "slot_ids": [
+          "slot_kite"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One day, the string slipped from his hands.",
+        "slot_ids": []
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The kite floated up, like a bright balloon.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "Sam looked up and saw the kite dancing in the clouds.",
+        "slot_ids": []
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "He felt sad that his friend was far away.",
+        "slot_ids": []
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "Sam thought: 'I could tie a new string, but maybe a friendly squirrel could help me climb up and grab the kite.'",
+        "slot_ids": []
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "He ran to the bench where his friend [[slot_friend]] was sitting.",
+        "slot_ids": [
+          "slot_friend"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "Sam offered to tie the string together.",
+        "slot_ids": []
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "Together they made a new, stronger string.",
+        "slot_ids": []
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "They flew the kite, and it painted the sky with [[slot_color]] swirls while they ate a [[slot_snack]] and felt the warm breeze on their faces.",
+        "slot_ids": [
+          "slot_color",
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "With a gentle tug, the kite landed on the bench, making a soft 'whoosh' sound that made everyone laugh.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_kite",
+        "type": "toy_object",
+        "author_description": "A bright kite you love to fly.",
+        "child_prompt": "Can you name a kite you would like to fly?",
+        "examples": [
+          "rainbow kite",
+          "sunny kite"
+        ]
+      },
+      {
+        "id": "slot_friend",
+        "type": "person_name",
+        "author_description": "The name of a friend.",
+        "child_prompt": "What is your friend's name?",
+        "examples": [
+          "Mia",
+          "Tom"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A color you like.",
+        "child_prompt": "What is your favorite color?",
+        "examples": [
+          "blue",
+          "pink"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A tasty snack.",
+        "child_prompt": "What is a snack you enjoy?",
+        "examples": [
+          "apple",
+          "candy"
+        ]
+      }
+    ]
+  },
+  "refined_scores_main": {
+    "overall": 0.55,
+    "story_arc": 0.6,
+    "character_engagement": 0.5,
+    "emotional_warmth": 0.7,
+    "curiosity_hooks": 0.4,
+    "madlibs_usability": 0.8,
+    "reading_level_fit": 0.7,
+    "novelty": 0.3,
+    "memorable_moment": 0.4,
+    "show_vs_tell": 0.5,
+    "character_depth": 0.4,
+    "kid_retellability": 0.6
+  },
+  "refined_scores_final": null
+}

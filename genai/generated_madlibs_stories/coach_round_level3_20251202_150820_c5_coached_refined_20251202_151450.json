@@ -1,0 +1,323 @@
+{
+  "coach_round_path": "generated_madlibs_stories/coach_round_level3_20251202_150820.json",
+  "story_id": "c5",
+  "original": {
+    "title": "Beach Shell Discovery",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A beach day where a child discovers a shy seashell under a sandcastle.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "On the sunny beach, [[slot_child]] loved to build a [[slot_sandcastle]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_sandcastle"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "A shy [[slot_shell]] hid under the sandcastle.",
+        "slot_ids": [
+          "slot_shell"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The shell was too quiet to be heard.",
+        "slot_ids": [
+          "slot_shell"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] felt a gentle tug of curiosity.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "First, [[slot_child]] dug with a small shovel.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "The sand fell, revealing the shell.",
+        "slot_ids": []
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "Then [[slot_child]] whispered, 'Let me help you,' and sang a soft [[slot_wave]] song.",
+        "slot_ids": [
+          "slot_child",
+          "slot_wave"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "The song made the shell glow with a bright [[slot_star]].",
+        "slot_ids": [
+          "slot_star"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "The shell thanked [[slot_child]] with a tiny sparkle.",
+        "slot_ids": []
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "They both waved to the waves and felt happy.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the child character",
+        "child_prompt": "Can you give a name for the child?",
+        "examples": [
+          "Mia",
+          "Noah",
+          "Lily"
+        ]
+      },
+      {
+        "id": "slot_sandcastle",
+        "type": "noun",
+        "author_description": "A sandcastle",
+        "child_prompt": "Name a sandcastle you might build.",
+        "examples": [
+          "sandcastle",
+          "castle of sand"
+        ]
+      },
+      {
+        "id": "slot_shell",
+        "type": "shell",
+        "author_description": "A seashell the child might like",
+        "child_prompt": "Name a seashell you might find.",
+        "examples": [
+          "seashell",
+          "tiny shell"
+        ]
+      },
+      {
+        "id": "slot_wave",
+        "type": "sound",
+        "author_description": "The sound of waves",
+        "child_prompt": "What sound do waves make?",
+        "examples": [
+          "soft wave",
+          "gentle wave"
+        ]
+      },
+      {
+        "id": "slot_star",
+        "type": "noun",
+        "author_description": "A starfish or star",
+        "child_prompt": "Name a star you see on the beach.",
+        "examples": [
+          "starfish",
+          "bright star"
+        ]
+      }
+    ]
+  },
+  "original_scores_main": {
+    "overall": 0.75,
+    "story_arc": 0.7,
+    "character_engagement": 0.7,
+    "emotional_warmth": 0.9,
+    "curiosity_hooks": 0.7,
+    "madlibs_usability": 0.8,
+    "reading_level_fit": 0.9,
+    "novelty": 0.7,
+    "memorable_moment": 0.8,
+    "show_vs_tell": 0.8,
+    "character_depth": 0.6,
+    "kid_retellability": 0.8
+  },
+  "feedback": {
+    "story_id": "c5",
+    "is_standout": true,
+    "headline": "A sweet beach discovery with potential for wonder.",
+    "strengths": [
+      "High emotional warmth and a sense of gentle discovery.",
+      "Good novelty with the 'shy shell' concept.",
+      "Engaging beach setting with familiar elements like sandcastles.",
+      "Strong kid-retellability due to the charming premise."
+    ],
+    "weaknesses": [
+      "The 'shy shell' could be given a more distinct characteristic or a reason for its shyness.",
+      "The resolution of the shell being 'too quiet to be heard' and the child's subsequent action isn't fully developed.",
+      "Similar to other stories, the 'tug of curiosity' is a bit of a shortcut for character motivation."
+    ],
+    "next_round_goals": [
+      "Give the shy shell a unique visual detail or a tiny, subtle sound it makes when it's happy or sad.",
+      "Expand on how the child helps the shell overcome its shyness. Does the child whisper to it? Build a special home for it? Introduce it to other shells?",
+      "Replace 'felt a gentle tug of curiosity' with an action that shows the child's empathy or wonder, e.g., '[[slot_child]] knelt down, wondering what made the little shell so quiet.'"
+    ]
+  },
+  "refined": {
+    "title": "Beach Shell Discovery",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A beach day where a child discovers a shy seashell under a sandcastle.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "On the sunny beach, [[slot_child]] loved to build a [[slot_sandcastle]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_sandcastle"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "A shy [[slot_shell]] hid under the sandcastle, its shell a pale blue with a tiny silver speck that glittered when it felt happy.",
+        "slot_ids": [
+          "slot_shell"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The shell made a faint, gentle hum that sounded like a whisper of wind.",
+        "slot_ids": [
+          "slot_shell"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] knelt down, wondering what made the little shell so quiet.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "First, [[slot_child]] dug with a small shovel, careful not to disturb the shell's quiet.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "The sand fell, revealing the shell.",
+        "slot_ids": []
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "Then [[slot_child]] whispered, 'Let me help you,' and sang a soft [[slot_wave]] song.",
+        "slot_ids": [
+          "slot_child",
+          "slot_wave"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "The song made the shell glow with a bright [[slot_star]], and its silver speck shimmered.",
+        "slot_ids": [
+          "slot_star"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "The shell thanked [[slot_child]] with a tiny sparkle, and it began to hum a little louder.",
+        "slot_ids": []
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "They both waved to the waves and felt happy, and [[slot_child]] promised to visit the shell again.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the child character",
+        "child_prompt": "Can you give a name for the child?",
+        "examples": [
+          "Mia",
+          "Noah",
+          "Lily"
+        ]
+      },
+      {
+        "id": "slot_sandcastle",
+        "type": "noun",
+        "author_description": "A sandcastle",
+        "child_prompt": "Name a sandcastle you might build.",
+        "examples": [
+          "sandcastle",
+          "castle of sand"
+        ]
+      },
+      {
+        "id": "slot_shell",
+        "type": "shell",
+        "author_description": "A seashell the child might like",
+        "child_prompt": "Name a seashell you might find.",
+        "examples": [
+          "seashell",
+          "tiny shell"
+        ]
+      },
+      {
+        "id": "slot_wave",
+        "type": "sound",
+        "author_description": "The sound of waves",
+        "child_prompt": "What sound do waves make?",
+        "examples": [
+          "soft wave",
+          "gentle wave"
+        ]
+      },
+      {
+        "id": "slot_star",
+        "type": "noun",
+        "author_description": "A starfish or star",
+        "child_prompt": "Name a star you see on the beach.",
+        "examples": [
+          "starfish",
+          "bright star"
+        ]
+      }
+    ]
+  },
+  "refined_scores_main": {
+    "overall": 0.75,
+    "story_arc": 0.8,
+    "character_engagement": 0.7,
+    "emotional_warmth": 0.9,
+    "curiosity_hooks": 0.8,
+    "madlibs_usability": 0.7,
+    "reading_level_fit": 0.9,
+    "novelty": 0.7,
+    "memorable_moment": 0.8,
+    "show_vs_tell": 0.8,
+    "character_depth": 0.6,
+    "kid_retellability": 0.8
+  },
+  "refined_scores_final": {
+    "overall": 0.45,
+    "story_arc": 0.4,
+    "character_engagement": 0.4,
+    "emotional_warmth": 0.7,
+    "curiosity_hooks": 0.5,
+    "madlibs_usability": 0.3,
+    "reading_level_fit": 0.8,
+    "novelty": 0.4,
+    "memorable_moment": 0.5,
+    "show_vs_tell": 0.5,
+    "character_depth": 0.3,
+    "kid_retellability": 0.5
+  }
+}

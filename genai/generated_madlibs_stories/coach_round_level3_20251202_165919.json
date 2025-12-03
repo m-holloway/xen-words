@@ -1,0 +1,1498 @@
+{
+  "config": {
+    "level": 3,
+    "generator_model": "inception/mercury",
+    "judge_model": "google/gemini-2.5-flash",
+    "coach_model": "google/gemini-2.5-flash",
+    "cohort_size": 9
+  },
+  "candidates": [
+    {
+      "id": "c1",
+      "template": {
+        "title": "The Garden Adventure",
+        "reading_level": 3,
+        "reading_band": "Grades 1–2",
+        "target_minutes": 5,
+        "summary": "A child learns kindness by helping a shy animal find its way out of a garden.",
+        "sentences": [
+          {
+            "id": "s1",
+            "text_with_blanks": "[[slot_child]] loved to play in the backyard garden.",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s2",
+            "text_with_blanks": "One sunny morning, [[slot_child]] saw a shy [[slot_animal]] hide under a [[slot_flower]].",
+            "slot_ids": [
+              "slot_child",
+              "slot_animal",
+              "slot_flower"
+            ]
+          },
+          {
+            "id": "s3",
+            "text_with_blanks": "The [[slot_animal]] looked up with big eyes.",
+            "slot_ids": [
+              "slot_animal"
+            ]
+          },
+          {
+            "id": "s4",
+            "text_with_blanks": "[[slot_child]] thought, \"Should I shoo it away or stay?\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s5",
+            "text_with_blanks": "Instead of shooing, [[slot_child]] whispered, \"Hello, I'm friendly.\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s6",
+            "text_with_blanks": "The [[slot_animal]] slowly came out and nuzzled [[slot_child]].",
+            "slot_ids": [
+              "slot_animal",
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s7",
+            "text_with_blanks": "[[slot_child]] gave the [[slot_animal]] a tiny [[slot_snack]].",
+            "slot_ids": [
+              "slot_child",
+              "slot_animal",
+              "slot_snack"
+            ]
+          },
+          {
+            "id": "s8",
+            "text_with_blanks": "The [[slot_animal]] twitched its whiskers and gave a tiny [[slot_color]] puff of smoke.",
+            "slot_ids": [
+              "slot_animal",
+              "slot_color"
+            ]
+          },
+          {
+            "id": "s9",
+            "text_with_blanks": "[[slot_child]] laughed and said, \"You are my new friend.\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s10",
+            "text_with_blanks": "From then on, they played together every day.",
+            "slot_ids": []
+          }
+        ],
+        "slots": [
+          {
+            "id": "slot_child",
+            "type": "child_name",
+            "author_description": "The name of the child character.",
+            "child_prompt": "Can you name the child in the story?",
+            "examples": [
+              "Mia",
+              "Liam",
+              "Sofia"
+            ]
+          },
+          {
+            "id": "slot_animal",
+            "type": "animal_pet",
+            "author_description": "A cozy or friendly animal the child might like.",
+            "child_prompt": "Can you name an animal you would love to be friends with?",
+            "examples": [
+              "raccoon",
+              "bunny",
+              "kitten"
+            ]
+          },
+          {
+            "id": "slot_flower",
+            "type": "flower",
+            "author_description": "A type of flower in the garden.",
+            "child_prompt": "Can you name a flower that grows in a garden?",
+            "examples": [
+              "daisy",
+              "tulip",
+              "rose"
+            ]
+          },
+          {
+            "id": "slot_snack",
+            "type": "snack_food",
+            "author_description": "A small snack the child can give to the animal.",
+            "child_prompt": "Can you name a snack you might share?",
+            "examples": [
+              "crunchy carrot",
+              "apple slice",
+              "cheese cube"
+            ]
+          },
+          {
+            "id": "slot_color",
+            "type": "color",
+            "author_description": "A color that can describe a puff of smoke or a flower.",
+            "child_prompt": "Can you name a color?",
+            "examples": [
+              "soft pink",
+              "bright blue",
+              "golden"
+            ]
+          }
+        ]
+      },
+      "scores": {
+        "overall": 0.65,
+        "story_arc": 0.7,
+        "character_engagement": 0.6,
+        "emotional_warmth": 0.8,
+        "curiosity_hooks": 0.5,
+        "madlibs_usability": 0.9,
+        "reading_level_fit": 0.8,
+        "novelty": 0.5,
+        "memorable_moment": 0.6,
+        "show_vs_tell": 0.7,
+        "character_depth": 0.6,
+        "kid_retellability": 0.7
+      }
+    },
+    {
+      "id": "c2",
+      "template": {
+        "title": "The Park Hummingbird",
+        "reading_level": 3,
+        "reading_band": "Grades 1–2",
+        "target_minutes": 5,
+        "summary": "A child discovers a hummingbird stuck in a spiderweb and helps it fly free.",
+        "sentences": [
+          {
+            "id": "s1",
+            "text_with_blanks": "[[slot_child]] loved to walk in the city park.",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s2",
+            "text_with_blanks": "One bright day, [[slot_child]] saw a tiny [[slot_hummingbird]] stuck in a [[slot_spiderweb]].",
+            "slot_ids": [
+              "slot_child",
+              "slot_hummingbird",
+              "slot_spiderweb"
+            ]
+          },
+          {
+            "id": "s3",
+            "text_with_blanks": "The [[slot_hummingbird]] flapped its wings but could not escape.",
+            "slot_ids": [
+              "slot_hummingbird"
+            ]
+          },
+          {
+            "id": "s4",
+            "text_with_blanks": "[[slot_child]] wondered, \"Should I pull it out or leave it?\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s5",
+            "text_with_blanks": "Instead of pulling, [[slot_child]] whispered, \"Hold on, I'm here.\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s6",
+            "text_with_blanks": "[[slot_child]] gently untangled the [[slot_spiderweb]].",
+            "slot_ids": [
+              "slot_child",
+              "slot_spiderweb"
+            ]
+          },
+          {
+            "id": "s7",
+            "text_with_blanks": "The [[slot_hummingbird]] chirped and fluttered away.",
+            "slot_ids": [
+              "slot_hummingbird"
+            ]
+          },
+          {
+            "id": "s8",
+            "text_with_blanks": "[[slot_child]] felt happy and gave the bird a tiny [[slot_snack]].",
+            "slot_ids": [
+              "slot_child",
+              "slot_snack"
+            ]
+          },
+          {
+            "id": "s9",
+            "text_with_blanks": "The bird sang a sweet song that echoed through the park.",
+            "slot_ids": []
+          },
+          {
+            "id": "s10",
+            "text_with_blanks": "From then on, [[slot_child]] always looked for ways to help.",
+            "slot_ids": [
+              "slot_child"
+            ]
+          }
+        ],
+        "slots": [
+          {
+            "id": "slot_child",
+            "type": "child_name",
+            "author_description": "The name of the child character.",
+            "child_prompt": "Can you name the child in the story?",
+            "examples": [
+              "Mia",
+              "Liam",
+              "Sofia"
+            ]
+          },
+          {
+            "id": "slot_hummingbird",
+            "type": "animal_pet",
+            "author_description": "A small bird the child might like.",
+            "child_prompt": "Can you name a bird that flaps quickly?",
+            "examples": [
+              "hummingbird",
+              "sparrow",
+              "blue jay"
+            ]
+          },
+          {
+            "id": "slot_spiderweb",
+            "type": "object",
+            "author_description": "A sticky web in the park.",
+            "child_prompt": "Can you name a thing that spiders make?",
+            "examples": [
+              "spiderweb",
+              "net",
+              "web"
+            ]
+          },
+          {
+            "id": "slot_snack",
+            "type": "snack_food",
+            "author_description": "A small snack the child can give to the bird.",
+            "child_prompt": "Can you name a snack you might share?",
+            "examples": [
+              "crunchy carrot",
+              "apple slice",
+              "cheese cube"
+            ]
+          },
+          {
+            "id": "slot_color",
+            "type": "color",
+            "author_description": "A color that can describe the bird's glow.",
+            "child_prompt": "Can you name a color?",
+            "examples": [
+              "soft pink",
+              "bright blue",
+              "golden"
+            ]
+          }
+        ]
+      },
+      "scores": {
+        "overall": 0.75,
+        "story_arc": 0.8,
+        "character_engagement": 0.7,
+        "emotional_warmth": 0.9,
+        "curiosity_hooks": 0.7,
+        "madlibs_usability": 0.8,
+        "reading_level_fit": 0.9,
+        "novelty": 0.6,
+        "memorable_moment": 0.7,
+        "show_vs_tell": 0.7,
+        "character_depth": 0.6,
+        "kid_retellability": 0.8
+      }
+    },
+    {
+      "id": "c3",
+      "template": {
+        "title": "The Playroom Car",
+        "reading_level": 3,
+        "reading_band": "Grades 1–2",
+        "target_minutes": 5,
+        "summary": "A child fixes a toy car by removing a tiny rock, learning patience and care.",
+        "sentences": [
+          {
+            "id": "s1",
+            "text_with_blanks": "[[slot_child]] loved to play with their [[slot_toy_car]] in the playroom.",
+            "slot_ids": [
+              "slot_child",
+              "slot_toy_car"
+            ]
+          },
+          {
+            "id": "s2",
+            "text_with_blanks": "One rainy afternoon, the car stopped moving.",
+            "slot_ids": []
+          },
+          {
+            "id": "s3",
+            "text_with_blanks": "[[slot_child]] looked at the car and thought, \"Why won't it go?\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s4",
+            "text_with_blanks": "[[slot_child]] checked the wheels and found a tiny [[slot_rock]] stuck.",
+            "slot_ids": [
+              "slot_child",
+              "slot_rock"
+            ]
+          },
+          {
+            "id": "s5",
+            "text_with_blanks": "Instead of throwing the car away, [[slot_child]] gently pushed the [[slot_rock]] out.",
+            "slot_ids": [
+              "slot_child",
+              "slot_rock"
+            ]
+          },
+          {
+            "id": "s6",
+            "text_with_blanks": "The car rolled smoothly again.",
+            "slot_ids": []
+          },
+          {
+            "id": "s7",
+            "text_with_blanks": "[[slot_child]] gave the car a shiny [[slot_color]] sticker.",
+            "slot_ids": [
+              "slot_child",
+              "slot_color"
+            ]
+          },
+          {
+            "id": "s8",
+            "text_with_blanks": "The car seemed to smile and zoomed around the floor.",
+            "slot_ids": []
+          },
+          {
+            "id": "s9",
+            "text_with_blanks": "[[slot_child]] laughed and said, \"You are my brave friend.\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s10",
+            "text_with_blanks": "They played together until the window was painted.",
+            "slot_ids": []
+          }
+        ],
+        "slots": [
+          {
+            "id": "slot_child",
+            "type": "child_name",
+            "author_description": "The name of the child character.",
+            "child_prompt": "Can you name the child in the story?",
+            "examples": [
+              "Mia",
+              "Liam",
+              "Sofia"
+            ]
+          },
+          {
+            "id": "slot_toy_car",
+            "type": "toy",
+            "author_description": "A toy car the child might play with.",
+            "child_prompt": "Can you name a toy car?",
+            "examples": [
+              "red car",
+              "blue truck",
+              "toy wagon"
+            ]
+          },
+          {
+            "id": "slot_rock",
+            "type": "object",
+            "author_description": "A small rock that can get stuck.",
+            "child_prompt": "Can you name a small rock?",
+            "examples": [
+              "pebble",
+              "gravel",
+              "stone"
+            ]
+          },
+          {
+            "id": "slot_color",
+            "type": "color",
+            "author_description": "A color that can describe a sticker.",
+            "child_prompt": "Can you name a color?",
+            "examples": [
+              "bright red",
+              "deep blue",
+              "golden"
+            ]
+          },
+          {
+            "id": "slot_snack",
+            "type": "snack_food",
+            "author_description": "A small snack the child can give to the car.",
+            "child_prompt": "Can you name a snack you might share?",
+            "examples": [
+              "crunchy carrot",
+              "apple slice",
+              "cheese cube"
+            ]
+          }
+        ]
+      },
+      "scores": {
+        "overall": 0.65,
+        "story_arc": 0.7,
+        "character_engagement": 0.6,
+        "emotional_warmth": 0.7,
+        "curiosity_hooks": 0.5,
+        "madlibs_usability": 0.8,
+        "reading_level_fit": 0.8,
+        "novelty": 0.5,
+        "memorable_moment": 0.6,
+        "show_vs_tell": 0.7,
+        "character_depth": 0.6,
+        "kid_retellability": 0.7
+      }
+    },
+    {
+      "id": "c4",
+      "template": {
+        "title": "The Library Kitten",
+        "reading_level": 3,
+        "reading_band": "Grades 1–2",
+        "target_minutes": 5,
+        "summary": "A child discovers a shy kitten in a library and learns to be gentle.",
+        "sentences": [
+          {
+            "id": "s1",
+            "text_with_blanks": "[[slot_child]] loved to read books in the library.",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s2",
+            "text_with_blanks": "One quiet day, a shy [[slot_kitten]] peeked out from behind a shelf.",
+            "slot_ids": [
+              "slot_kitten"
+            ]
+          },
+          {
+            "id": "s3",
+            "text_with_blanks": "The kitten meowed softly.",
+            "slot_ids": []
+          },
+          {
+            "id": "s4",
+            "text_with_blanks": "[[slot_child]] wondered, \"Should I scare it or stay?\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s5",
+            "text_with_blanks": "Instead of scaring, [[slot_child]] whispered, \"Hello, I'm friendly.\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s6",
+            "text_with_blanks": "The kitten twitched its tail and came closer.",
+            "slot_ids": []
+          },
+          {
+            "id": "s7",
+            "text_with_blanks": "[[slot_child]] offered a tiny [[slot_snack]] of cheese.",
+            "slot_ids": [
+              "slot_child",
+              "slot_snack"
+            ]
+          },
+          {
+            "id": "s8",
+            "text_with_blanks": "The kitten licked the cheese and purred.",
+            "slot_ids": []
+          },
+          {
+            "id": "s9",
+            "text_with_blanks": "[[slot_child]] felt warm and said, \"You are my new friend.\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s10",
+            "text_with_blanks": "From then on, they shared stories together.",
+            "slot_ids": []
+          }
+        ],
+        "slots": [
+          {
+            "id": "slot_child",
+            "type": "child_name",
+            "author_description": "The name of the child character.",
+            "child_prompt": "Can you name the child in the story?",
+            "examples": [
+              "Mia",
+              "Liam",
+              "Sofia"
+            ]
+          },
+          {
+            "id": "slot_kitten",
+            "type": "animal_pet",
+            "author_description": "A small kitten the child might like.",
+            "child_prompt": "Can you name a kitten?",
+            "examples": [
+              "kitten",
+              "purr",
+              "furry"
+            ]
+          },
+          {
+            "id": "slot_snack",
+            "type": "snack_food",
+            "author_description": "A small snack the child can give to the kitten.",
+            "child_prompt": "Can you name a snack you might share?",
+            "examples": [
+              "crunchy carrot",
+              "apple slice",
+              "cheese cube"
+            ]
+          },
+          {
+            "id": "slot_color",
+            "type": "color",
+            "author_description": "A color that can describe a soft glow.",
+            "child_prompt": "Can you name a color?",
+            "examples": [
+              "soft pink",
+              "bright blue",
+              "golden"
+            ]
+          }
+        ]
+      },
+      "scores": {
+        "overall": 0.75,
+        "story_arc": 0.8,
+        "character_engagement": 0.8,
+        "emotional_warmth": 0.9,
+        "curiosity_hooks": 0.7,
+        "madlibs_usability": 0.8,
+        "reading_level_fit": 0.9,
+        "novelty": 0.6,
+        "memorable_moment": 0.7,
+        "show_vs_tell": 0.8,
+        "character_depth": 0.7,
+        "kid_retellability": 0.8
+      }
+    },
+    {
+      "id": "c5",
+      "template": {
+        "title": "The Pond Dragonfly",
+        "reading_level": 3,
+        "reading_band": "Grades 1–2",
+        "target_minutes": 5,
+        "summary": "A child gently invites a dragonfly to share the pond, learning patience.",
+        "sentences": [
+          {
+            "id": "s1",
+            "text_with_blanks": "[[slot_child]] loved to sit by the pond.",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s2",
+            "text_with_blanks": "One breezy morning, a gentle [[slot_dragonfly]] hovered near the water.",
+            "slot_ids": [
+              "slot_dragonfly"
+            ]
+          },
+          {
+            "id": "s3",
+            "text_with_blanks": "The dragonfly flicked its wings like a tiny kite.",
+            "slot_ids": []
+          },
+          {
+            "id": "s4",
+            "text_with_blanks": "[[slot_child]] wondered, \"Should I wave or stay still?\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s5",
+            "text_with_blanks": "Instead of waving, [[slot_child]] gently held out a leaf.",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s6",
+            "text_with_blanks": "The dragonfly landed on the leaf and glowed a soft [[slot_color]].",
+            "slot_ids": [
+              "slot_color"
+            ]
+          },
+          {
+            "id": "s7",
+            "text_with_blanks": "[[slot_child]] gave the dragonfly a tiny [[slot_snack]] of honey.",
+            "slot_ids": [
+              "slot_child",
+              "slot_snack"
+            ]
+          },
+          {
+            "id": "s8",
+            "text_with_blanks": "The dragonfly buzzed happily and flew away.",
+            "slot_ids": []
+          },
+          {
+            "id": "s9",
+            "text_with_blanks": "[[slot_child]] smiled and said, \"Thank you for the dance.\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s10",
+            "text_with_blanks": "Every day, the dragonfly returned to play.",
+            "slot_ids": []
+          }
+        ],
+        "slots": [
+          {
+            "id": "slot_child",
+            "type": "child_name",
+            "author_description": "The name of the child character.",
+            "child_prompt": "Can you name the child in the story?",
+            "examples": [
+              "Mia",
+              "Liam",
+              "Sofia"
+            ]
+          },
+          {
+            "id": "slot_dragonfly",
+            "type": "animal_pet",
+            "author_description": "A small dragonfly the child might like.",
+            "child_prompt": "Can you name a dragonfly?",
+            "examples": [
+              "dragonfly",
+              "midge",
+              "mosquito"
+            ]
+          },
+          {
+            "id": "slot_color",
+            "type": "color",
+            "author_description": "A color that can describe the dragonfly's glow.",
+            "child_prompt": "Can you name a color?",
+            "examples": [
+              "soft pink",
+              "bright blue",
+              "golden"
+            ]
+          },
+          {
+            "id": "slot_snack",
+            "type": "snack_food",
+            "author_description": "A small snack the child can give to the dragonfly.",
+            "child_prompt": "Can you name a snack you might share?",
+            "examples": [
+              "crunchy carrot",
+              "apple slice",
+              "cheese cube"
+            ]
+          }
+        ]
+      },
+      "scores": {
+        "overall": 0.75,
+        "story_arc": 0.8,
+        "character_engagement": 0.7,
+        "emotional_warmth": 0.9,
+        "curiosity_hooks": 0.7,
+        "madlibs_usability": 0.8,
+        "reading_level_fit": 0.9,
+        "novelty": 0.6,
+        "memorable_moment": 0.7,
+        "show_vs_tell": 0.8,
+        "character_depth": 0.6,
+        "kid_retellability": 0.8
+      }
+    },
+    {
+      "id": "c6",
+      "template": {
+        "title": "The School Hallway Squirrel",
+        "reading_level": 3,
+        "reading_band": "Grades 1–2",
+        "target_minutes": 5,
+        "summary": "A child meets a curious squirrel in the hallway and learns to share.",
+        "sentences": [
+          {
+            "id": "s1",
+            "text_with_blanks": "[[slot_child]] loved to walk through the school hallway.",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s2",
+            "text_with_blanks": "One day, a curious [[slot_squirrel]] climbed onto the hallway sign.",
+            "slot_ids": [
+              "slot_squirrel"
+            ]
+          },
+          {
+            "id": "s3",
+            "text_with_blanks": "The squirrel looked at [[slot_child]] with wide eyes.",
+            "slot_ids": []
+          },
+          {
+            "id": "s4",
+            "text_with_blanks": "[[slot_child]] wondered, \"Should I shoo it or stay?\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s5",
+            "text_with_blanks": "Instead of shooing, [[slot_child]] whispered, \"Hello, I'm friendly.\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s6",
+            "text_with_blanks": "The squirrel nibbled a tiny [[slot_snack]] of peanut butter.",
+            "slot_ids": [
+              "slot_snack"
+            ]
+          },
+          {
+            "id": "s7",
+            "text_with_blanks": "[[slot_child]] gave the squirrel a soft [[slot_color]] acorn.",
+            "slot_ids": [
+              "slot_color"
+            ]
+          },
+          {
+            "id": "s8",
+            "text_with_blanks": "The squirrel twitched its tail and trotted away.",
+            "slot_ids": []
+          },
+          {
+            "id": "s9",
+            "text_with_blanks": "[[slot_child]] felt happy and said, \"You are my new buddy.\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s10",
+            "text_with_blanks": "From then on, they shared the hallway each day.",
+            "slot_ids": []
+          }
+        ],
+        "slots": [
+          {
+            "id": "slot_child",
+            "type": "child_name",
+            "author_description": "The name of the child character.",
+            "child_prompt": "Can you name the child in the story?",
+            "examples": [
+              "Mia",
+              "Liam",
+              "Sofia"
+            ]
+          },
+          {
+            "id": "slot_squirrel",
+            "type": "animal_pet",
+            "author_description": "A small squirrel the child might like.",
+            "child_prompt": "Can you name a squirrel?",
+            "examples": [
+              "squirrel",
+              "chipmunk",
+              "nibbler"
+            ]
+          },
+          {
+            "id": "slot_snack",
+            "type": "snack_food",
+            "author_description": "A small snack the child can give to the squirrel.",
+            "child_prompt": "Can you name a snack you might share?",
+            "examples": [
+              "crunchy carrot",
+              "apple slice",
+              "cheese cube"
+            ]
+          },
+          {
+            "id": "slot_color",
+            "type": "color",
+            "author_description": "A color that can describe the acorn.",
+            "child_prompt": "Can you name a color?",
+            "examples": [
+              "soft pink",
+              "bright blue",
+              "golden"
+            ]
+          }
+        ]
+      },
+      "scores": {
+        "overall": 0.0,
+        "story_arc": 0.0,
+        "character_engagement": 0.0,
+        "emotional_warmth": 0.0,
+        "curiosity_hooks": 0.0,
+        "madlibs_usability": 0.0,
+        "reading_level_fit": 0.0,
+        "novelty": 0.0,
+        "memorable_moment": 0.0,
+        "show_vs_tell": 0.0,
+        "character_depth": 0.0,
+        "kid_retellability": 0.0
+      }
+    },
+    {
+      "id": "c7",
+      "template": {
+        "title": "The Meadow Deer",
+        "reading_level": 3,
+        "reading_band": "Grades 1–2",
+        "target_minutes": 5,
+        "summary": "A child meets a gentle deer in the meadow and learns to be calm.",
+        "sentences": [
+          {
+            "id": "s1",
+            "text_with_blanks": "[[slot_child]] loved to wander in the meadow.",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s2",
+            "text_with_blanks": "One sunny afternoon, a gentle [[slot_deer]] stepped out of the grass.",
+            "slot_ids": [
+              "slot_deer"
+            ]
+          },
+          {
+            "id": "s3",
+            "text_with_blanks": "The deer bowed its head.",
+            "slot_ids": []
+          },
+          {
+            "id": "s4",
+            "text_with_blanks": "[[slot_child]] wondered, \"Should I talk to it or stay quiet?\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s5",
+            "text_with_blanks": "Instead of staying quiet, [[slot_child]] whispered, \"Hello, I'm friendly.\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s6",
+            "text_with_blanks": "The deer nuzzled [[slot_child]] and gave a soft [[slot_color]] sigh.",
+            "slot_ids": [
+              "slot_color"
+            ]
+          },
+          {
+            "id": "s7",
+            "text_with_blanks": "[[slot_child]] offered a tiny [[slot_snack]] of carrot.",
+            "slot_ids": [
+              "slot_snack"
+            ]
+          },
+          {
+            "id": "s8",
+            "text_with_blanks": "The deer ate and bowed again.",
+            "slot_ids": []
+          },
+          {
+            "id": "s9",
+            "text_with_blanks": "[[slot_child]] felt warm and said, \"You are my new friend.\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s10",
+            "text_with_blanks": "They played together until the sun set.",
+            "slot_ids": []
+          }
+        ],
+        "slots": [
+          {
+            "id": "slot_child",
+            "type": "child_name",
+            "author_description": "The name of the child character.",
+            "child_prompt": "Can you name the child in the story?",
+            "examples": [
+              "Mia",
+              "Liam",
+              "Sofia"
+            ]
+          },
+          {
+            "id": "slot_deer",
+            "type": "animal_pet",
+            "author_description": "A gentle deer the child might like.",
+            "child_prompt": "Can you name a deer?",
+            "examples": [
+              "deer",
+              "fawn",
+              "buck"
+            ]
+          },
+          {
+            "id": "slot_snack",
+            "type": "snack_food",
+            "author_description": "A small snack the child can give to the deer.",
+            "child_prompt": "Can you name a snack you might share?",
+            "examples": [
+              "crunchy carrot",
+              "apple slice",
+              "cheese cube"
+            ]
+          },
+          {
+            "id": "slot_color",
+            "type": "color",
+            "author_description": "A color that can describe the deer's sigh.",
+            "child_prompt": "Can you name a color?",
+            "examples": [
+              "soft pink",
+              "bright blue",
+              "golden"
+            ]
+          }
+        ]
+      },
+      "scores": {
+        "overall": 0.65,
+        "story_arc": 0.7,
+        "character_engagement": 0.6,
+        "emotional_warmth": 0.8,
+        "curiosity_hooks": 0.5,
+        "madlibs_usability": 0.8,
+        "reading_level_fit": 0.8,
+        "novelty": 0.5,
+        "memorable_moment": 0.6,
+        "show_vs_tell": 0.7,
+        "character_depth": 0.6,
+        "kid_retellability": 0.7
+      }
+    },
+    {
+      "id": "c8",
+      "template": {
+        "title": "The Garage Robot",
+        "reading_level": 3,
+        "reading_band": "Grades 1–2",
+        "target_minutes": 5,
+        "summary": "A child helps a friendly robot and learns cooperation.",
+        "sentences": [
+          {
+            "id": "s1",
+            "text_with_blanks": "[[slot_child]] loved to explore the garage.",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s2",
+            "text_with_blanks": "One rainy day, a friendly [[slot_robot]] rolled out of the toolbox.",
+            "slot_ids": [
+              "slot_robot"
+            ]
+          },
+          {
+            "id": "s3",
+            "text_with_blanks": "The robot blinked its lights.",
+            "slot_ids": []
+          },
+          {
+            "id": "s4",
+            "text_with_blanks": "[[slot_child]] wondered, \"Should I push it away or stay?\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s5",
+            "text_with_blanks": "Instead of pulling, [[slot_child]] whispered, \"Hello, I'm friendly.\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s6",
+            "text_with_blanks": "The robot turned its head and gave a tiny [[slot_color]] beep.",
+            "slot_ids": [
+              "slot_color"
+            ]
+          },
+          {
+            "id": "s7",
+            "text_with_blanks": "[[slot_child]] offered a tiny [[slot_snack]] of chocolate chip.",
+            "slot_ids": [
+              "slot_snack"
+            ]
+          },
+          {
+            "id": "s8",
+            "text_with_blanks": "The robot pressed a button and sang a happy tune.",
+            "slot_ids": []
+          },
+          {
+            "id": "s9",
+            "text_with_blanks": "[[slot_child]] laughed and said, \"You are my new friend.\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s10",
+            "text_with_blanks": "They played together until the storm passed.",
+            "slot_ids": []
+          }
+        ],
+        "slots": [
+          {
+            "id": "slot_child",
+            "type": "child_name",
+            "author_description": "The name of the child character.",
+            "child_prompt": "Can you name the child in the story?",
+            "examples": [
+              "Mia",
+              "Liam",
+              "Sofia"
+            ]
+          },
+          {
+            "id": "slot_robot",
+            "type": "toy",
+            "author_description": "A small robot the child might play with.",
+            "child_prompt": "Can you name a robot?",
+            "examples": [
+              "robot",
+              "droid",
+              "circuit"
+            ]
+          },
+          {
+            "id": "slot_snack",
+            "type": "snack_food",
+            "author_description": "A small snack the child can give to the robot.",
+            "child_prompt": "Can you name a snack you might share?",
+            "examples": [
+              "crunchy carrot",
+              "apple slice",
+              "cheese cube"
+            ]
+          },
+          {
+            "id": "slot_color",
+            "type": "color",
+            "author_description": "A color that can describe the robot's light.",
+            "child_prompt": "Can you name a color?",
+            "examples": [
+              "soft pink",
+              "bright blue",
+              "golden"
+            ]
+          }
+        ]
+      },
+      "scores": {
+        "overall": 0.65,
+        "story_arc": 0.7,
+        "character_engagement": 0.6,
+        "emotional_warmth": 0.8,
+        "curiosity_hooks": 0.6,
+        "madlibs_usability": 0.8,
+        "reading_level_fit": 0.8,
+        "novelty": 0.5,
+        "memorable_moment": 0.6,
+        "show_vs_tell": 0.7,
+        "character_depth": 0.5,
+        "kid_retellability": 0.7
+      }
+    },
+    {
+      "id": "c9",
+      "template": {
+        "title": "The Bedroom Cloud",
+        "reading_level": 3,
+        "reading_band": "Grades 1–2",
+        "target_minutes": 5,
+        "summary": "A child meets a cloud that drifts into the window and learns to share dreams.",
+        "sentences": [
+          {
+            "id": "s1",
+            "text_with_blanks": "[[slot_child]] loved to look at the night sky from their bedroom.",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s2",
+            "text_with_blanks": "One clear night, a fluffy [[slot_cloud]] drifted into the window.",
+            "slot_ids": [
+              "slot_cloud"
+            ]
+          },
+          {
+            "id": "s3",
+            "text_with_blanks": "The cloud looked like a giant cotton candy.",
+            "slot_ids": []
+          },
+          {
+            "id": "s4",
+            "text_with_blanks": "[[slot_child]] wondered, \"Should I wave or stay still?\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s5",
+            "text_with_blanks": "Instead of staying still, [[slot_child]] whispered, \"Hello, I'm friendly.\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s6",
+            "text_with_blanks": "The cloud puffed a soft [[slot_color]] glow.",
+            "slot_ids": [
+              "slot_color"
+            ]
+          },
+          {
+            "id": "s7",
+            "text_with_blanks": "[[slot_child]] gave the cloud a tiny [[slot_snack]] of starlight.",
+            "slot_ids": [
+              "slot_snack"
+            ]
+          },
+          {
+            "id": "s8",
+            "text_with_blanks": "The cloud floated away, leaving a gentle breeze.",
+            "slot_ids": []
+          },
+          {
+            "id": "s9",
+            "text_with_blanks": "[[slot_child]] felt happy and said, \"Thank you for the dream.\"",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s10",
+            "text_with_blanks": "Every night, the cloud returned to visit.",
+            "slot_ids": []
+          }
+        ],
+        "slots": [
+          {
+            "id": "slot_child",
+            "type": "child_name",
+            "author_description": "The name of the child character.",
+            "child_prompt": "Can you name the child in the story?",
+            "examples": [
+              "Mia",
+              "Liam",
+              "Sofia"
+            ]
+          },
+          {
+            "id": "slot_cloud",
+            "type": "object",
+            "author_description": "A fluffy cloud that can drift into a window.",
+            "child_prompt": "Can you name a cloud?",
+            "examples": [
+              "cloud",
+              "fluff",
+              "puff"
+            ]
+          },
+          {
+            "id": "slot_snack",
+            "type": "snack_food",
+            "author_description": "A small snack the child can give to the cloud.",
+            "child_prompt": "Can you name a snack you might share?",
+            "examples": [
+              "crunchy carrot",
+              "apple slice",
+              "cheese cube"
+            ]
+          },
+          {
+            "id": "slot_color",
+            "type": "color",
+            "author_description": "A color that can describe the cloud's glow.",
+            "child_prompt": "Can you name a color?",
+            "examples": [
+              "soft pink",
+              "bright blue",
+              "golden"
+            ]
+          }
+        ]
+      },
+      "scores": {
+        "overall": 0.75,
+        "story_arc": 0.7,
+        "character_engagement": 0.7,
+        "emotional_warmth": 0.9,
+        "curiosity_hooks": 0.8,
+        "madlibs_usability": 0.9,
+        "reading_level_fit": 0.9,
+        "novelty": 0.7,
+        "memorable_moment": 0.8,
+        "show_vs_tell": 0.7,
+        "character_depth": 0.6,
+        "kid_retellability": 0.8
+      }
+    }
+  ],
+  "coach_feedback": {
+    "cohort_summary": {
+      "common_strengths": [
+        "Strong emphasis on emotional warmth and positive character traits like kindness, patience, and gentleness.",
+        "Good fit for reading level 3, with clear, simple sentence structures.",
+        "High Mad Libs usability, with clear slot indicators and simple, direct prompts.",
+        "Focus on a single child character encountering a single other entity (animal, object, or fantastical element)."
+      ],
+      "common_weaknesses": [
+        "Lack of novelty and originality; many stories follow a very similar 'child meets creature/object and helps it' pattern.",
+        "Limited character depth; the child character often acts as a generic 'good' protagonist without much internal struggle or unique personality.",
+        "Predictable story arcs; the conflict is usually minor and resolved quickly with a positive outcome.",
+        "Repetitive narrative structure, often starting with '[[slot_child]] loved to [activity]' and ending with a moral lesson."
+      ],
+      "patterns_to_reduce": [
+        "The 'child encounters a small, vulnerable creature/object and helps it' trope.",
+        "The '[[slot_child]] wondered, \"Should I [negative action] or [positive action]?\"' internal monologue as the primary conflict driver.",
+        "Over-reliance on animals as the 'other' character.",
+        "Stories where the core conflict is simply a mild inconvenience (e.g., a rock in a toy car)."
+      ],
+      "patterns_to_explore": [
+        "More diverse settings beyond gardens, parks, and bedrooms.",
+        "Introducing a secondary character (another child, a parent, a talking animal) to create more dynamic interactions.",
+        "Exploring different types of challenges or mysteries for the child to solve.",
+        "Stories with a slightly more complex emotional range beyond just 'kindness' or 'gentleness'.",
+        "Incorporating elements of humor or lighthearted adventure."
+      ]
+    },
+    "per_story_feedback": [
+      {
+        "story_id": "c1",
+        "is_standout": false,
+        "headline": "A sweet but familiar tale of kindness.",
+        "strengths": [
+          "Clear moral message of kindness.",
+          "Simple and relatable scenario for young children.",
+          "Good Mad Libs slot placement."
+        ],
+        "weaknesses": [
+          "Very similar to other stories in the cohort, lacking novelty.",
+          "The 'shy animal' trope is common.",
+          "The conflict (animal needing help out of a garden) is low-stakes."
+        ],
+        "next_round_goals": [
+          "Introduce a slightly more unique animal or a more unusual reason for it to be in the garden.",
+          "Add a small, unexpected twist to the resolution, beyond just 'helping it out'.",
+          "Vary the child's initial reaction to the animal; perhaps they are initially scared or confused, adding a touch more character depth."
+        ]
+      },
+      {
+        "story_id": "c2",
+        "is_standout": true,
+        "headline": "A strong contender with a clear, engaging challenge.",
+        "strengths": [
+          "Specific and vivid imagery (hummingbird, spiderweb).",
+          "Clear and immediate problem for the child to solve.",
+          "High emotional warmth and potential for a memorable moment.",
+          "Good pacing for a Level 3 story."
+        ],
+        "weaknesses": [
+          "The 'wondered, \"Should I pull it out or leave it?\"' internal dialogue is a bit generic.",
+          "Could benefit from a slightly more active solution from the child, rather than just 'helping it fly free'."
+        ],
+        "next_round_goals": [
+          "Describe *how* the child helps the hummingbird more actively, e.g., '[[slot_child]] gently used a [[slot_leaf]] to free its tiny wing.'",
+          "Add a small, unique detail about the hummingbird's reaction or appearance after being freed.",
+          "Consider a slightly more descriptive opening for the park setting to enhance the atmosphere."
+        ]
+      },
+      {
+        "story_id": "c3",
+        "is_standout": false,
+        "headline": "A practical but less imaginative scenario.",
+        "strengths": [
+          "Relatable problem for children who play with toys.",
+          "Teaches patience and problem-solving.",
+          "Good Mad Libs usability for toy and obstacle slots."
+        ],
+        "weaknesses": [
+          "Lacks the emotional depth and wonder of stories involving living creatures.",
+          "The 'rock in a toy car' conflict is very low-stakes and not particularly novel.",
+          "Could be perceived as less engaging than stories with animals or fantastical elements."
+        ],
+        "next_round_goals": [
+          "Elevate the stakes slightly; perhaps the toy car is needed for a special race or to help another toy.",
+          "Introduce a more imaginative 'obstacle' than a rock, perhaps something silly or unexpected.",
+          "Focus more on the child's internal process of figuring out the problem, showing their thought rather than just stating it."
+        ]
+      },
+      {
+        "story_id": "c4",
+        "is_standout": true,
+        "headline": "A charming and heartwarming library encounter.",
+        "strengths": [
+          "Unique setting (library) for an animal encounter.",
+          "High emotional warmth and character engagement.",
+          "The 'shy kitten' is inherently appealing to young readers.",
+          "Strong 'show, don't tell' in the sample sentences."
+        ],
+        "weaknesses": [
+          "The internal monologue 'Should I scare it or stay?' is a bit repetitive across the cohort.",
+          "The resolution could be made more specific than just 'learning to be gentle'."
+        ],
+        "next_round_goals": [
+          "Describe the child's gentle actions in more detail, e.g., '[[slot_child]] slowly offered a [[slot_soft_item]] to the kitten.'",
+          "Give the kitten a small, unique characteristic or action that makes it memorable.",
+          "Expand on the library setting; perhaps the kitten leads the child to a special book or hidden nook."
+        ]
+      },
+      {
+        "story_id": "c5",
+        "is_standout": true,
+        "headline": "A serene and gentle story with a touch of nature's magic.",
+        "strengths": [
+          "Beautiful imagery ('dragonfly flicked its wings like a tiny kite').",
+          "Promotes patience and observation.",
+          "Good emotional warmth and sense of calm.",
+          "Novelty in the choice of animal and interaction."
+        ],
+        "weaknesses": [
+          "The internal monologue 'Should I wave or stay still?' is a common pattern.",
+          "The 'learning patience' moral could be shown more actively rather than just stated."
+        ],
+        "next_round_goals": [
+          "Describe the child's patient observation in more detail, e.g., '[[slot_child]] sat as still as a [[slot_statue]], watching its [[slot_color]] wings.'",
+          "Introduce a small, positive interaction between the child and the dragonfly, even if it's just a shared moment of quiet.",
+          "Consider what the dragonfly might 'teach' the child beyond just patience – perhaps about the beauty of nature or the cycle of life."
+        ]
+      },
+      {
+        "story_id": "c6",
+        "is_standout": false,
+        "headline": "A story with potential, but currently lacking detail and scores.",
+        "strengths": [
+          "Unusual setting (school hallway) for an animal encounter, offering novelty.",
+          "The idea of a 'curious squirrel' is engaging."
+        ],
+        "weaknesses": [
+          "Missing judge scores, making it difficult to fully evaluate.",
+          "The 'shoo it or stay' internal monologue is overused.",
+          "The summary 'learns to share' feels a bit disconnected from the squirrel encounter as described."
+        ],
+        "next_round_goals": [
+          "Clearly define *what* the child shares with the squirrel and *how* that interaction unfolds.",
+          "Elaborate on the squirrel's actions and personality beyond just 'curious'.",
+          "Add more specific details about the school hallway setting to make it more vivid."
+        ]
+      },
+      {
+        "story_id": "c7",
+        "is_standout": false,
+        "headline": "A peaceful but somewhat generic nature encounter.",
+        "strengths": [
+          "Promotes calmness and respect for nature.",
+          "Relatable setting (meadow).",
+          "Gentle tone."
+        ],
+        "weaknesses": [
+          "Very similar to other 'child meets animal' stories in the cohort.",
+          "The deer bowing its head feels a bit anthropomorphic and less natural.",
+          "The conflict ('talk to it or stay quiet?') is very mild."
+        ],
+        "next_round_goals": [
+          "Focus on a more natural and less human-like interaction with the deer.",
+          "Introduce a unique detail about the meadow or the deer itself to make it stand out.",
+          "Explore a slightly more active way the child learns to be calm, perhaps by observing something specific the deer does."
+        ]
+      },
+      {
+        "story_id": "c8",
+        "is_standout": false,
+        "headline": "An interesting premise that needs more development.",
+        "strengths": [
+          "Novelty of a robot character in a common setting (garage).",
+          "Potential for imaginative play and problem-solving.",
+          "Good Mad Libs slots for robot characteristics."
+        ],
+        "weaknesses": [
+          "The robot's 'blinking lights' and the child's 'push it away or stay' reaction are a bit underdeveloped.",
+          "The summary 'learns cooperation' isn't fully supported by the sample sentences.",
+          "Lacks a clear, immediate problem or goal for the robot."
+        ],
+        "next_round_goals": [
+          "Give the robot a specific, simple problem it needs help with, enabling the child to 'cooperate'.",
+          "Describe the robot's appearance or actions in more detail to make it more distinct.",
+          "Show, rather than tell, how the child learns cooperation through their interaction with the robot."
+        ]
+      },
+      {
+        "story_id": "c9",
+        "is_standout": true,
+        "headline": "A wonderfully imaginative and whimsical story.",
+        "strengths": [
+          "High novelty and imaginative concept (cloud in bedroom).",
+          "Strong curiosity hooks and emotional warmth.",
+          "Vivid imagery ('looks like a giant cotton candy').",
+          "Excellent potential for a memorable moment and dream-like quality."
+        ],
+        "weaknesses": [
+          "The 'wave or stay still?' internal monologue is a recurring pattern.",
+          "The concept of 'sharing dreams' needs to be more concretely illustrated in the narrative."
+        ],
+        "next_round_goals": [
+          "Describe *how* the child and cloud 'share dreams' – perhaps the cloud shows the child images, or they embark on a mini-adventure together.",
+          "Expand on the cloud's appearance or actions to make it even more magical and interactive.",
+          "Consider what specific dream or feeling the cloud might evoke in the child, making the lesson more tangible."
+        ]
+      }
+    ]
+  }
+}

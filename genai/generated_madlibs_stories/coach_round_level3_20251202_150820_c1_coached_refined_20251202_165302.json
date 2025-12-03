@@ -1,0 +1,365 @@
+{
+  "coach_round_path": "generated_madlibs_stories/coach_round_level3_20251202_150820.json",
+  "story_id": "c1",
+  "original": {
+    "title": "Backyard Butterfly Adventure",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A backyard adventure where a child helps a lost butterfly find a flower.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "In the sunny backyard, [[slot_child]] loved to watch the [[slot_butterfly]] flutter.",
+        "slot_ids": [
+          "slot_child",
+          "slot_butterfly"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "The [[slot_butterfly]] was looking for a bright [[slot_sunbeam]] sunbeam.",
+        "slot_ids": [
+          "slot_butterfly",
+          "slot_sunbeam"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "But the [[slot_butterfly]] had lost its way and could not find the [[slot_flower]].",
+        "slot_ids": [
+          "slot_butterfly",
+          "slot_flower"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] felt a gentle tug of curiosity.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "First, [[slot_child]] tried to follow the [[slot_butterfly]]'s trail of tiny [[slot_herb]] leaves.",
+        "slot_ids": [
+          "slot_child",
+          "slot_butterfly",
+          "slot_herb"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "The trail led to a hidden [[slot_nest]] under the old oak tree.",
+        "slot_ids": [
+          "slot_nest"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "Inside the nest, the [[slot_butterfly]] was safe but a little sad.",
+        "slot_ids": [
+          "slot_butterfly"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "[[slot_child]] whispered, 'Come, let me help you find a flower.'",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "Together they fluttered to the [[slot_flower]] which sang a sweet song.",
+        "slot_ids": [
+          "slot_flower"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "The [[slot_butterfly]] thanked [[slot_child]] with a bright flash of [[slot_sunbeam]].",
+        "slot_ids": [
+          "slot_butterfly",
+          "slot_child",
+          "slot_sunbeam"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the child character",
+        "child_prompt": "Can you give a name for the child?",
+        "examples": [
+          "Mia",
+          "Noah",
+          "Lily"
+        ]
+      },
+      {
+        "id": "slot_butterfly",
+        "type": "butterfly",
+        "author_description": "A friendly butterfly the child might like",
+        "child_prompt": "Name a butterfly you would love to be friends with.",
+        "examples": [
+          "butterfly",
+          "dragonfly"
+        ]
+      },
+      {
+        "id": "slot_sunbeam",
+        "type": "color",
+        "author_description": "Color of the sunbeam",
+        "child_prompt": "What color is the sunbeam?",
+        "examples": [
+          "yellow",
+          "orange"
+        ]
+      },
+      {
+        "id": "slot_flower",
+        "type": "flower",
+        "author_description": "A flower the child might like",
+        "child_prompt": "Name a flower you like.",
+        "examples": [
+          "daisy",
+          "tulip"
+        ]
+      },
+      {
+        "id": "slot_herb",
+        "type": "plant",
+        "author_description": "A herb the child might like",
+        "child_prompt": "Name a herb you know.",
+        "examples": [
+          "mint",
+          "basil"
+        ]
+      },
+      {
+        "id": "slot_nest",
+        "type": "noun",
+        "author_description": "A cozy spot where the butterfly can rest",
+        "child_prompt": "Name a cozy spot for a butterfly.",
+        "examples": [
+          "nest",
+          "home"
+        ]
+      }
+    ]
+  },
+  "original_scores_main": {
+    "overall": 0.65,
+    "story_arc": 0.7,
+    "character_engagement": 0.6,
+    "emotional_warmth": 0.8,
+    "curiosity_hooks": 0.5,
+    "madlibs_usability": 0.7,
+    "reading_level_fit": 0.8,
+    "novelty": 0.5,
+    "memorable_moment": 0.6,
+    "show_vs_tell": 0.7,
+    "character_depth": 0.5,
+    "kid_retellability": 0.7
+  },
+  "feedback": {
+    "story_id": "c1",
+    "is_standout": false,
+    "headline": "A sweet but somewhat generic butterfly tale.",
+    "strengths": [
+      "Gentle and warm tone, perfect for the target age group.",
+      "Clear, simple problem and resolution.",
+      "Good Mad Libs usability."
+    ],
+    "weaknesses": [
+      "Lacks novelty; the 'lost butterfly' is a very common trope.",
+      "The 'gentle tug of curiosity' feels a bit forced and tells rather than shows the child's motivation.",
+      "The solution is very straightforward, offering little in terms of a memorable moment."
+    ],
+    "next_round_goals": [
+      "Introduce a slightly more unique challenge for the butterfly, perhaps it's not just lost but needs a specific type of flower or is afraid of something.",
+      "Replace 'felt a gentle tug of curiosity' with an action or thought that demonstrates the child's curiosity, e.g., '[[slot_child]] leaned closer, wondering why the butterfly looked so sad.'",
+      "Add a small, sensory detail about the butterfly or the flower to make the moment more vivid."
+    ]
+  },
+  "refined": {
+    "title": "Butterfly's Bright Flower Quest",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A backyard adventure where a child helps a shy butterfly find a bright flower that sings a sweet song.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "In the sunny backyard, [[slot_child]] loved to watch the [[slot_butterfly]] flutter.",
+        "slot_ids": [
+          "slot_child",
+          "slot_butterfly"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "The [[slot_butterfly]] was looking for a bright [[slot_sunbeam]] sunbeam.",
+        "slot_ids": [
+          "slot_butterfly",
+          "slot_sunbeam"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "But the [[slot_butterfly]] was shy and scared of the loud buzzing bees, and it couldn't find the [[slot_flower]] that sang a sweet song.",
+        "slot_ids": [
+          "slot_butterfly",
+          "slot_flower"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] leaned closer, wondering why the butterfly looked so sad.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "First, [[slot_child]] tried to follow the [[slot_butterfly]]'s trail of tiny [[slot_herb]] leaves.",
+        "slot_ids": [
+          "slot_child",
+          "slot_butterfly",
+          "slot_herb"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "The trail led to a hidden [[slot_nest]] under the old oak tree.",
+        "slot_ids": [
+          "slot_nest"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "Inside the nest, the [[slot_butterfly]] was safe but a little sad.",
+        "slot_ids": [
+          "slot_butterfly"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "[[slot_child]] whispered, 'Come, let me help you find a bright flower.'",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "Together they fluttered to the [[slot_flower]] which sang a sweet song and smelled like fresh [[slot_herb]].",
+        "slot_ids": [
+          "slot_flower",
+          "slot_herb"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "The [[slot_butterfly]] thanked [[slot_child]] with a bright flash of [[slot_sunbeam]].",
+        "slot_ids": [
+          "slot_butterfly",
+          "slot_child",
+          "slot_sunbeam"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the child character",
+        "child_prompt": "Can you give a name for the child?",
+        "examples": [
+          "Mia",
+          "Noah",
+          "Lily"
+        ]
+      },
+      {
+        "id": "slot_butterfly",
+        "type": "butterfly",
+        "author_description": "A friendly butterfly the child might like",
+        "child_prompt": "Name a butterfly you would love to be friends with.",
+        "examples": [
+          "butterfly",
+          "dragonfly"
+        ]
+      },
+      {
+        "id": "slot_sunbeam",
+        "type": "color",
+        "author_description": "Color of the sunbeam",
+        "child_prompt": "What color is the sunbeam?",
+        "examples": [
+          "yellow",
+          "orange"
+        ]
+      },
+      {
+        "id": "slot_flower",
+        "type": "flower",
+        "author_description": "A flower the child might like",
+        "child_prompt": "Name a flower you like.",
+        "examples": [
+          "daisy",
+          "tulip"
+        ]
+      },
+      {
+        "id": "slot_herb",
+        "type": "plant",
+        "author_description": "A herb the child might like",
+        "child_prompt": "Name a herb you know.",
+        "examples": [
+          "mint",
+          "basil"
+        ]
+      },
+      {
+        "id": "slot_nest",
+        "type": "noun",
+        "author_description": "A cozy spot where the butterfly can rest",
+        "child_prompt": "Name a cozy spot for a butterfly.",
+        "examples": [
+          "nest",
+          "home"
+        ]
+      }
+    ]
+  },
+  "refined_scores_main": {
+    "overall": 0.55,
+    "story_arc": 0.7,
+    "character_engagement": 0.6,
+    "emotional_warmth": 0.8,
+    "curiosity_hooks": 0.5,
+    "madlibs_usability": 0.4,
+    "reading_level_fit": 0.7,
+    "novelty": 0.4,
+    "memorable_moment": 0.6,
+    "show_vs_tell": 0.6,
+    "character_depth": 0.4,
+    "kid_retellability": 0.6
+  },
+  "refined_scores_final": {
+    "overall": 0.5,
+    "story_arc": 0.4,
+    "character_engagement": 0.6,
+    "emotional_warmth": 0.7,
+    "curiosity_hooks": 0.5,
+    "madlibs_usability": 0.5,
+    "reading_level_fit": 0.8,
+    "novelty": 0.4,
+    "memorable_moment": 0.5,
+    "show_vs_tell": 0.3,
+    "character_depth": 0.3,
+    "kid_retellability": 0.7
+  }
+}

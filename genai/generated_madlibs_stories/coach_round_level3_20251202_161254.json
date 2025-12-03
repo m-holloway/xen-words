@@ -1,0 +1,862 @@
+{
+  "config": {
+    "level": 3,
+    "generator_model": "inception/mercury",
+    "judge_model": "google/gemini-2.5-flash",
+    "coach_model": "google/gemini-2.5-flash",
+    "cohort_size": 6
+  },
+  "candidates": [
+    {
+      "id": "c1",
+      "template": {
+        "title": "The Curious Kite in the Park",
+        "reading_level": 3,
+        "reading_band": "Grades 1–2",
+        "target_minutes": 5,
+        "summary": "Sam helps a kite that lost its string, sharing the adventure with his friend and painting the sky with colors.",
+        "sentences": [
+          {
+            "id": "s1",
+            "text_with_blanks": "Sam loved to fly the [[slot_kite]] in the sunny park.",
+            "slot_ids": [
+              "slot_kite"
+            ]
+          },
+          {
+            "id": "s2",
+            "text_with_blanks": "One day, the string slipped from his hands.",
+            "slot_ids": []
+          },
+          {
+            "id": "s3",
+            "text_with_blanks": "The kite floated up, like a bright balloon.",
+            "slot_ids": []
+          },
+          {
+            "id": "s4",
+            "text_with_blanks": "Sam looked up and saw the kite dancing in the clouds.",
+            "slot_ids": []
+          },
+          {
+            "id": "s5",
+            "text_with_blanks": "He felt sad that his friend was far away.",
+            "slot_ids": []
+          },
+          {
+            "id": "s6",
+            "text_with_blanks": "Sam thought: 'I could tie a new string, but I could also share this adventure.'",
+            "slot_ids": []
+          },
+          {
+            "id": "s7",
+            "text_with_blanks": "He ran to the bench where his friend [[slot_friend]] was sitting.",
+            "slot_ids": [
+              "slot_friend"
+            ]
+          },
+          {
+            "id": "s8",
+            "text_with_blanks": "Sam offered to tie the string together.",
+            "slot_ids": []
+          },
+          {
+            "id": "s9",
+            "text_with_blanks": "Together they made a new, stronger string.",
+            "slot_ids": []
+          },
+          {
+            "id": "s10",
+            "text_with_blanks": "They flew the kite, and it painted the sky with [[slot_color]] swirls while they ate a [[slot_snack]].",
+            "slot_ids": [
+              "slot_color",
+              "slot_snack"
+            ]
+          }
+        ],
+        "slots": [
+          {
+            "id": "slot_kite",
+            "type": "toy_object",
+            "author_description": "A bright kite you love to fly.",
+            "child_prompt": "Can you name a kite you would like to fly?",
+            "examples": [
+              "rainbow kite",
+              "sunny kite"
+            ]
+          },
+          {
+            "id": "slot_friend",
+            "type": "person_name",
+            "author_description": "The name of a friend.",
+            "child_prompt": "What is your friend's name?",
+            "examples": [
+              "Mia",
+              "Tom"
+            ]
+          },
+          {
+            "id": "slot_color",
+            "type": "color",
+            "author_description": "A color you like.",
+            "child_prompt": "What is your favorite color?",
+            "examples": [
+              "blue",
+              "pink"
+            ]
+          },
+          {
+            "id": "slot_snack",
+            "type": "snack_food",
+            "author_description": "A tasty snack.",
+            "child_prompt": "What is a snack you enjoy?",
+            "examples": [
+              "apple",
+              "candy"
+            ]
+          }
+        ]
+      },
+      "scores": {
+        "overall": 0.75,
+        "story_arc": 0.8,
+        "character_engagement": 0.7,
+        "emotional_warmth": 0.9,
+        "curiosity_hooks": 0.6,
+        "madlibs_usability": 0.9,
+        "reading_level_fit": 0.9,
+        "novelty": 0.5,
+        "memorable_moment": 0.7,
+        "show_vs_tell": 0.8,
+        "character_depth": 0.7,
+        "kid_retellability": 0.8
+      }
+    },
+    {
+      "id": "c2",
+      "template": {
+        "title": "Mia's Missing Spoon",
+        "reading_level": 3,
+        "reading_band": "Grades 1–2",
+        "target_minutes": 5,
+        "summary": "Mia finds a spoon in the sink and decides to help her grandma, sharing a snack and a smile.",
+        "sentences": [
+          {
+            "id": "s1",
+            "text_with_blanks": "Mia was making soup when her spoon fell into the sink.",
+            "slot_ids": [
+              "slot_spoon"
+            ]
+          },
+          {
+            "id": "s2",
+            "text_with_blanks": "She looked down and saw the spoon splash in the water.",
+            "slot_ids": []
+          },
+          {
+            "id": "s3",
+            "text_with_blanks": "Mia felt a little sad because she needed the spoon.",
+            "slot_ids": []
+          },
+          {
+            "id": "s4",
+            "text_with_blanks": "She thought: 'I could keep the spoon for myself, but I could also help Grandma.'",
+            "slot_ids": []
+          },
+          {
+            "id": "s5",
+            "text_with_blanks": "Mia ran to the kitchen where Grandma [[slot_grandma]] was stirring the pot.",
+            "slot_ids": [
+              "slot_grandma"
+            ]
+          },
+          {
+            "id": "s6",
+            "text_with_blanks": "She offered to grab the spoon from the sink.",
+            "slot_ids": []
+          },
+          {
+            "id": "s7",
+            "text_with_blanks": "Grandma laughed and said, 'Thank you, dear!'",
+            "slot_ids": []
+          },
+          {
+            "id": "s8",
+            "text_with_blanks": "Mia helped Grandma finish the soup, and they both tasted it.",
+            "slot_ids": []
+          },
+          {
+            "id": "s9",
+            "text_with_blanks": "They shared a [[slot_snack]] while the soup smelled like [[slot_color]] carrots.",
+            "slot_ids": [
+              "slot_snack",
+              "slot_color"
+            ]
+          },
+          {
+            "id": "s10",
+            "text_with_blanks": "Mia felt happy because she helped Grandma and shared a tasty snack together.",
+            "slot_ids": []
+          }
+        ],
+        "slots": [
+          {
+            "id": "slot_spoon",
+            "type": "toy_object",
+            "author_description": "A utensil you use for eating.",
+            "child_prompt": "Can you name a utensil you use?",
+            "examples": [
+              "spoon",
+              "fork"
+            ]
+          },
+          {
+            "id": "slot_grandma",
+            "type": "person_name",
+            "author_description": "The name of a grandma.",
+            "child_prompt": "What is your grandma's name?",
+            "examples": [
+              "Nana",
+              "Grandma"
+            ]
+          },
+          {
+            "id": "slot_color",
+            "type": "color",
+            "author_description": "A color you like.",
+            "child_prompt": "What is your favorite color?",
+            "examples": [
+              "green",
+              "orange"
+            ]
+          },
+          {
+            "id": "slot_snack",
+            "type": "snack_food",
+            "author_description": "A tasty snack.",
+            "child_prompt": "What is a snack you enjoy?",
+            "examples": [
+              "banana",
+              "granola bar"
+            ]
+          }
+        ]
+      },
+      "scores": {
+        "overall": 0.55,
+        "story_arc": 0.6,
+        "character_engagement": 0.5,
+        "emotional_warmth": 0.7,
+        "curiosity_hooks": 0.4,
+        "madlibs_usability": 0.8,
+        "reading_level_fit": 0.8,
+        "novelty": 0.3,
+        "memorable_moment": 0.3,
+        "show_vs_tell": 0.5,
+        "character_depth": 0.5,
+        "kid_retellability": 0.6
+      }
+    },
+    {
+      "id": "c3",
+      "template": {
+        "title": "Tom and the Shy Butterfly",
+        "reading_level": 3,
+        "reading_band": "Grades 1–2",
+        "target_minutes": 5,
+        "summary": "Tom helps a shy butterfly find a flower, sharing petals and a gentle smile.",
+        "sentences": [
+          {
+            "id": "s1",
+            "text_with_blanks": "Tom was walking in the garden when he saw a [[slot_butterfly]] perched on a leaf.",
+            "slot_ids": [
+              "slot_butterfly"
+            ]
+          },
+          {
+            "id": "s2",
+            "text_with_blanks": "The butterfly seemed shy and stayed still.",
+            "slot_ids": []
+          },
+          {
+            "id": "s3",
+            "text_with_blanks": "Tom felt a little sad that the butterfly was alone.",
+            "slot_ids": []
+          },
+          {
+            "id": "s4",
+            "text_with_blanks": "He thought: 'I could keep the butterfly for myself, but I could also help it find a flower.'",
+            "slot_ids": []
+          },
+          {
+            "id": "s5",
+            "text_with_blanks": "Tom walked to the corner where a [[slot_flower]] was blooming.",
+            "slot_ids": [
+              "slot_flower"
+            ]
+          },
+          {
+            "id": "s6",
+            "text_with_blanks": "He gently offered a petal to the butterfly.",
+            "slot_ids": []
+          },
+          {
+            "id": "s7",
+            "text_with_blanks": "The butterfly flapped its wings and flew to the flower.",
+            "slot_ids": []
+          },
+          {
+            "id": "s8",
+            "text_with_blanks": "Tom and the butterfly shared a [[slot_snack]] on the grass.",
+            "slot_ids": [
+              "slot_snack"
+            ]
+          },
+          {
+            "id": "s9",
+            "text_with_blanks": "The flower glowed with [[slot_color]] petals, and the butterfly sang a quiet tune.",
+            "slot_ids": [
+              "slot_color"
+            ]
+          },
+          {
+            "id": "s10",
+            "text_with_blanks": "Tom felt happy because he helped the butterfly find a friend and shared a snack together.",
+            "slot_ids": []
+          }
+        ],
+        "slots": [
+          {
+            "id": "slot_butterfly",
+            "type": "animal_pet",
+            "author_description": "A small flying insect you like.",
+            "child_prompt": "Can you name a butterfly?",
+            "examples": [
+              "monarch",
+              "butterfly"
+            ]
+          },
+          {
+            "id": "slot_flower",
+            "type": "toy_object",
+            "author_description": "A flower you can touch.",
+            "child_prompt": "What is a flower you like?",
+            "examples": [
+              "daisy",
+              "rose"
+            ]
+          },
+          {
+            "id": "slot_color",
+            "type": "color",
+            "author_description": "A color you like.",
+            "child_prompt": "What is your favorite color?",
+            "examples": [
+              "yellow",
+              "purple"
+            ]
+          },
+          {
+            "id": "slot_snack",
+            "type": "snack_food",
+            "author_description": "A tasty snack.",
+            "child_prompt": "What is a snack you enjoy?",
+            "examples": [
+              "cookies",
+              "fruit"
+            ]
+          }
+        ]
+      },
+      "scores": {
+        "overall": 0.75,
+        "story_arc": 0.8,
+        "character_engagement": 0.7,
+        "emotional_warmth": 0.9,
+        "curiosity_hooks": 0.6,
+        "madlibs_usability": 0.9,
+        "reading_level_fit": 0.9,
+        "novelty": 0.6,
+        "memorable_moment": 0.7,
+        "show_vs_tell": 0.7,
+        "character_depth": 0.8,
+        "kid_retellability": 0.8
+      }
+    },
+    {
+      "id": "c4",
+      "template": {
+        "title": "Lily's Book on the High Shelf",
+        "reading_level": 3,
+        "reading_band": "Grades 1–2",
+        "target_minutes": 5,
+        "summary": "Lily helps a book get down from a high shelf, sharing the adventure with a friend.",
+        "sentences": [
+          {
+            "id": "s1",
+            "text_with_blanks": "Lily was in the library when she saw a [[slot_book]] on the highest shelf.",
+            "slot_ids": [
+              "slot_book"
+            ]
+          },
+          {
+            "id": "s2",
+            "text_with_blanks": "She tried to reach it but the shelf was too high.",
+            "slot_ids": []
+          },
+          {
+            "id": "s3",
+            "text_with_blanks": "Lily felt a little sad that the book was out of reach.",
+            "slot_ids": []
+          },
+          {
+            "id": "s4",
+            "text_with_blanks": "She thought: 'I could climb the ladder, but I could also ask a friend for help.'",
+            "slot_ids": []
+          },
+          {
+            "id": "s5",
+            "text_with_blanks": "Lily ran to the desk where her friend [[slot_friend]] was reading.",
+            "slot_ids": [
+              "slot_friend"
+            ]
+          },
+          {
+            "id": "s6",
+            "text_with_blanks": "She asked [[slot_friend]] to help her reach the book.",
+            "slot_ids": [
+              "slot_friend"
+            ]
+          },
+          {
+            "id": "s7",
+            "text_with_blanks": "Together they lifted the book down safely.",
+            "slot_ids": []
+          },
+          {
+            "id": "s8",
+            "text_with_blanks": "They opened the book and read a story about a [[slot_color]] dragon.",
+            "slot_ids": [
+              "slot_color"
+            ]
+          },
+          {
+            "id": "s9",
+            "text_with_blanks": "After reading, they shared a [[slot_snack]] and laughed.",
+            "slot_ids": [
+              "slot_snack"
+            ]
+          },
+          {
+            "id": "s10",
+            "text_with_blanks": "Lily felt happy because she helped the book get down and shared the story with a friend.",
+            "slot_ids": []
+          }
+        ],
+        "slots": [
+          {
+            "id": "slot_book",
+            "type": "toy_object",
+            "author_description": "A book you can read.",
+            "child_prompt": "Can you name a book you like?",
+            "examples": [
+              "storybook",
+              "picture book"
+            ]
+          },
+          {
+            "id": "slot_friend",
+            "type": "person_name",
+            "author_description": "The name of a friend.",
+            "child_prompt": "What is your friend's name?",
+            "examples": [
+              "Mia",
+              "Tom"
+            ]
+          },
+          {
+            "id": "slot_color",
+            "type": "color",
+            "author_description": "A color you like.",
+            "child_prompt": "What is your favorite color?",
+            "examples": [
+              "red",
+              "blue"
+            ]
+          },
+          {
+            "id": "slot_snack",
+            "type": "snack_food",
+            "author_description": "A tasty snack.",
+            "child_prompt": "What is a snack you enjoy?",
+            "examples": [
+              "chips",
+              "popcorn"
+            ]
+          }
+        ]
+      },
+      "scores": {
+        "overall": 0.65,
+        "story_arc": 0.8,
+        "character_engagement": 0.6,
+        "emotional_warmth": 0.8,
+        "curiosity_hooks": 0.5,
+        "madlibs_usability": 0.9,
+        "reading_level_fit": 0.9,
+        "novelty": 0.5,
+        "memorable_moment": 0.4,
+        "show_vs_tell": 0.7,
+        "character_depth": 0.6,
+        "kid_retellability": 0.7
+      }
+    },
+    {
+      "id": "c5",
+      "template": {
+        "title": "Ben's Lost Ticket on the Bus",
+        "reading_level": 3,
+        "reading_band": "Grades 1–2",
+        "target_minutes": 5,
+        "summary": "Ben finds a lost ticket, helps his teacher, and shares a snack on the bus.",
+        "sentences": [
+          {
+            "id": "s1",
+            "text_with_blanks": "Ben was on the bus when he saw a [[slot_ticket]] on the floor.",
+            "slot_ids": [
+              "slot_ticket"
+            ]
+          },
+          {
+            "id": "s2",
+            "text_with_blanks": "He picked it up and realized it was his ticket to school.",
+            "slot_ids": []
+          },
+          {
+            "id": "s3",
+            "text_with_blanks": "Ben felt a little sad that the ticket was lost.",
+            "slot_ids": []
+          },
+          {
+            "id": "s4",
+            "text_with_blanks": "He thought: 'I could keep the ticket for myself, but I could also help my teacher.'",
+            "slot_ids": []
+          },
+          {
+            "id": "s5",
+            "text_with_blanks": "Ben ran to the back of the bus where his teacher [[slot_teacher]] was checking seats.",
+            "slot_ids": [
+              "slot_teacher"
+            ]
+          },
+          {
+            "id": "s6",
+            "text_with_blanks": "He gave the ticket to [[slot_teacher]] and said, 'I found it.'",
+            "slot_ids": [
+              "slot_teacher"
+            ]
+          },
+          {
+            "id": "s7",
+            "text_with_blanks": "[[slot_teacher]] thanked Ben and said, 'Great job!'.",
+            "slot_ids": [
+              "slot_teacher"
+            ]
+          },
+          {
+            "id": "s8",
+            "text_with_blanks": "Ben and his classmates shared a [[slot_snack]] while the bus rode through a [[slot_color]] sky.",
+            "slot_ids": [
+              "slot_snack",
+              "slot_color"
+            ]
+          },
+          {
+            "id": "s9",
+            "text_with_blanks": "The bus ride felt friendly and bright.",
+            "slot_ids": []
+          },
+          {
+            "id": "s10",
+            "text_with_blanks": "Ben felt happy because he helped his teacher and shared a snack with friends.",
+            "slot_ids": []
+          }
+        ],
+        "slots": [
+          {
+            "id": "slot_ticket",
+            "type": "toy_object",
+            "author_description": "A piece of paper you need for travel.",
+            "child_prompt": "Can you name a ticket?",
+            "examples": [
+              "bus ticket",
+              "train ticket"
+            ]
+          },
+          {
+            "id": "slot_teacher",
+            "type": "person_name",
+            "author_description": "The name of a teacher.",
+            "child_prompt": "What is your teacher's name?",
+            "examples": [
+              "Mr. Lee",
+              "Mrs. Patel"
+            ]
+          },
+          {
+            "id": "slot_color",
+            "type": "color",
+            "author_description": "A color you like.",
+            "child_prompt": "What is your favorite color?",
+            "examples": [
+              "purple",
+              "green"
+            ]
+          },
+          {
+            "id": "slot_snack",
+            "type": "snack_food",
+            "author_description": "A tasty snack.",
+            "child_prompt": "What is a snack you enjoy?",
+            "examples": [
+              "sandwich",
+              "fruit cup"
+            ]
+          }
+        ]
+      },
+      "scores": {
+        "overall": 0.55,
+        "story_arc": 0.7,
+        "character_engagement": 0.5,
+        "emotional_warmth": 0.8,
+        "curiosity_hooks": 0.4,
+        "madlibs_usability": 0.8,
+        "reading_level_fit": 0.8,
+        "novelty": 0.3,
+        "memorable_moment": 0.3,
+        "show_vs_tell": 0.6,
+        "character_depth": 0.5,
+        "kid_retellability": 0.6
+      }
+    },
+    {
+      "id": "c6",
+      "template": {
+        "title": "Nina's Sad Seashell",
+        "reading_level": 3,
+        "reading_band": "Grades 1–2",
+        "target_minutes": 5,
+        "summary": "Nina finds a seashell that makes a sad sound, helps it find a friend, and shares a snack on the beach.",
+        "sentences": [
+          {
+            "id": "s1",
+            "text_with_blanks": "Nina was walking on the beach when she found a [[slot_seashell]] that made a sad sound.",
+            "slot_ids": [
+              "slot_seashell"
+            ]
+          },
+          {
+            "id": "s2",
+            "text_with_blanks": "She picked it up and heard it say, 'I'm lonely.'",
+            "slot_ids": []
+          },
+          {
+            "id": "s3",
+            "text_with_blanks": "Nina felt a little sad that the seashell was alone.",
+            "slot_ids": []
+          },
+          {
+            "id": "s4",
+            "text_with_blanks": "She thought: 'I could keep the seashell for myself, but I could also find it a friend.'",
+            "slot_ids": []
+          },
+          {
+            "id": "s5",
+            "text_with_blanks": "Nina ran to the shore where her friend [[slot_friend]] was building a sandcastle.",
+            "slot_ids": [
+              "slot_friend"
+            ]
+          },
+          {
+            "id": "s6",
+            "text_with_blanks": "She gave the seashell to [[slot_friend]] and said, 'It needs a friend.'",
+            "slot_ids": [
+              "slot_friend"
+            ]
+          },
+          {
+            "id": "s7",
+            "text_with_blanks": "[[slot_friend]] smiled and said, 'I'll be its friend!'.",
+            "slot_ids": [
+              "slot_friend"
+            ]
+          },
+          {
+            "id": "s8",
+            "text_with_blanks": "Together they placed the seashell on a rock and sang a gentle song.",
+            "slot_ids": []
+          },
+          {
+            "id": "s9",
+            "text_with_blanks": "They shared a [[slot_snack]] while the waves glowed with [[slot_color]] light.",
+            "slot_ids": [
+              "slot_snack",
+              "slot_color"
+            ]
+          },
+          {
+            "id": "s10",
+            "text_with_blanks": "Nina felt happy because she helped the seashell find a friend and shared a snack on the beach.",
+            "slot_ids": []
+          }
+        ],
+        "slots": [
+          {
+            "id": "slot_seashell",
+            "type": "toy_object",
+            "author_description": "A shell you can hold.",
+            "child_prompt": "Can you name a seashell?",
+            "examples": [
+              "seashell",
+              "shell"
+            ]
+          },
+          {
+            "id": "slot_friend",
+            "type": "person_name",
+            "author_description": "The name of a friend.",
+            "child_prompt": "What is your friend's name?",
+            "examples": [
+              "Mia",
+              "Tom"
+            ]
+          },
+          {
+            "id": "slot_color",
+            "type": "color",
+            "author_description": "A color you like.",
+            "child_prompt": "What is your favorite color?",
+            "examples": [
+              "beige",
+              "teal"
+            ]
+          },
+          {
+            "id": "slot_snack",
+            "type": "snack_food",
+            "author_description": "A tasty snack.",
+            "child_prompt": "What is a snack you enjoy?",
+            "examples": [
+              "sandwich",
+              "fruit"
+            ]
+          }
+        ]
+      },
+      "scores": {
+        "overall": 0.75,
+        "story_arc": 0.8,
+        "character_engagement": 0.7,
+        "emotional_warm-th": 0.9,
+        "curiosity_hooks": 0.7,
+        "madlibs_usability": 0.9,
+        "reading_level_fit": 0.9,
+        "novelty": 0.6,
+        "memorable_moment": 0.7,
+        "show_vs_tell": 0.8,
+        "character_depth": 0.7,
+        "kid_retellability": 0.8
+      }
+    }
+  ],
+  "coach_feedback": {
+    "cohort_summary": {
+      "common_strengths": [
+        "Clear, simple story arcs that are easy for young readers to follow.",
+        "Strong emphasis on positive social-emotional themes like helping others and empathy.",
+        "Good fit for Mad Libs usability with clear slot indicators.",
+        "Appropriate reading level for Grades 1-2."
+      ],
+      "common_weaknesses": [
+        "Lack of novelty and predictability in plot structures.",
+        "Limited character depth; protagonists often feel interchangeable.",
+        "Repetitive narrative devices, particularly the 'I could keep it for myself, but I could also help...' internal monologue.",
+        "Memorable moments are often understated or absent, leading to less engaging stories."
+      ],
+      "patterns_to_reduce": [
+        "The 'character finds object, feels a little sad, considers selfish vs. altruistic action' internal monologue.",
+        "Stories where the primary conflict is a misplaced or lost inanimate object.",
+        "Resolutions that involve simply 'sharing a snack' as a reward or conclusion."
+      ],
+      "patterns_to_explore": [
+        "More diverse settings and fantastical elements.",
+        "Introducing a wider range of emotions beyond 'sad' and 'happy'.",
+        "Conflicts that require more creative problem-solving than simply helping an object or person.",
+        "Developing secondary characters beyond just a 'friend' or 'grandma'."
+      ]
+    },
+    "per_story_feedback": [
+      {
+        "story_id": "c1",
+        "is_standout": true,
+        "headline": "A sweet, classic tale with potential for more visual flair.",
+        "strengths": [
+          "Strong emotional warmth and a clear, relatable problem.",
+          "The imagery of the kite dancing in the clouds is evocative.",
+          "Good setup for Mad Libs with the 'slot_kite' placeholder."
+        ],
+        "weaknesses": [
+          "The resolution feels a bit understated; what happens *after* the kite is caught?",
+          "Could benefit from more sensory details beyond just visual.",
+          "Novelty is moderate; it's a familiar 'lost item' trope."
+        ],
+        "next_round_goals": [
+          "Expand on the adventure of retrieving the kite. Does Sam have to climb something? Does a friendly animal help?",
+          "Introduce a more vivid 'memorable moment' when the kite is finally secured, perhaps a unique sound or a surprising discovery attached to the kite.",
+          "Vary the language used to describe the kite's movement and appearance to enhance the 'show, don't tell' aspect."
+        ]
+      },
+      {
+        "story_id": "c3",
+        "is_standout": true,
+        "headline": "A gentle story with a lovely premise, begging for more whimsical detail.",
+        "strengths": [
+          "The concept of a 'shy butterfly' is charming and immediately creates empathy.",
+          "The character's internal thought process (helping the butterfly) is well-aligned with the target audience's values.",
+          "Good opportunity for visual descriptions of the garden and the butterfly."
+        ],
+        "weaknesses": [
+          "The resolution is a bit too simple; finding 'a flower' could be more specific or challenging.",
+          "The butterfly's shyness could be shown more actively rather than just stated.",
+          "The 'sharing petals' line in the summary is a bit abstract and doesn't fully land."
+        ],
+        "next_round_goals": [
+          "Give the shy butterfly a unique characteristic or a specific type of flower it's looking for, creating a mini-quest.",
+          "Describe the butterfly's shyness through its actions (e.g., hiding behind a leaf, fluttering away quickly) rather than just stating it's shy.",
+          "Introduce a small, unexpected obstacle or a delightful discovery during the search for the perfect flower."
+        ]
+      },
+      {
+        "story_id": "c6",
+        "is_standout": true,
+        "headline": "A wonderfully imaginative concept that needs a stronger narrative journey.",
+        "strengths": [
+          "The core idea of a 'sad seashell' that speaks is highly novel and engaging for young readers.",
+          "Strong emotional hook with the seashell feeling lonely.",
+          "Excellent potential for sensory details of the beach environment."
+        ],
+        "weaknesses": [
+          "The resolution of 'finding it a friend' is vague; what kind of friend? Another seashell? A crab?",
+          "The 'sharing a snack on the beach' feels tacked on and doesn't connect strongly to the seashell's plight.",
+          "The story could lean more into the fantastical element of a talking seashell."
+        ],
+        "next_round_goals": [
+          "Elaborate on the seashell's 'sad sound' – what does it sound like? How does Nina interpret it?",
+          "Create a more specific and imaginative solution for the lonely seashell. Perhaps Nina introduces it to a friendly hermit crab, or builds it a tiny shell-castle, or finds it a perfect companion shell.",
+          "Integrate the 'snack' element more organically, perhaps as part of the celebration of the seashell finding happiness, or as a moment of comfort while Nina is thinking of how to help."
+        ]
+      }
+    ]
+  }
+}

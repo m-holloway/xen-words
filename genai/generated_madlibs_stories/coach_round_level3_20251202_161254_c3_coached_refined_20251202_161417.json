@@ -1,0 +1,284 @@
+{
+  "coach_round_path": "generated_madlibs_stories/coach_round_level3_20251202_161254.json",
+  "story_id": "c3",
+  "original": {
+    "title": "Tom and the Shy Butterfly",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "Tom helps a shy butterfly find a flower, sharing petals and a gentle smile.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "Tom was walking in the garden when he saw a [[slot_butterfly]] perched on a leaf.",
+        "slot_ids": [
+          "slot_butterfly"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "The butterfly seemed shy and stayed still.",
+        "slot_ids": []
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "Tom felt a little sad that the butterfly was alone.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "He thought: 'I could keep the butterfly for myself, but I could also help it find a flower.'",
+        "slot_ids": []
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "Tom walked to the corner where a [[slot_flower]] was blooming.",
+        "slot_ids": [
+          "slot_flower"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "He gently offered a petal to the butterfly.",
+        "slot_ids": []
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "The butterfly flapped its wings and flew to the flower.",
+        "slot_ids": []
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "Tom and the butterfly shared a [[slot_snack]] on the grass.",
+        "slot_ids": [
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "The flower glowed with [[slot_color]] petals, and the butterfly sang a quiet tune.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "Tom felt happy because he helped the butterfly find a friend and shared a snack together.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_butterfly",
+        "type": "animal_pet",
+        "author_description": "A small flying insect you like.",
+        "child_prompt": "Can you name a butterfly?",
+        "examples": [
+          "monarch",
+          "butterfly"
+        ]
+      },
+      {
+        "id": "slot_flower",
+        "type": "toy_object",
+        "author_description": "A flower you can touch.",
+        "child_prompt": "What is a flower you like?",
+        "examples": [
+          "daisy",
+          "rose"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A color you like.",
+        "child_prompt": "What is your favorite color?",
+        "examples": [
+          "yellow",
+          "purple"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A tasty snack.",
+        "child_prompt": "What is a snack you enjoy?",
+        "examples": [
+          "cookies",
+          "fruit"
+        ]
+      }
+    ]
+  },
+  "original_scores_main": {
+    "overall": 0.75,
+    "story_arc": 0.8,
+    "character_engagement": 0.7,
+    "emotional_warmth": 0.9,
+    "curiosity_hooks": 0.6,
+    "madlibs_usability": 0.9,
+    "reading_level_fit": 0.9,
+    "novelty": 0.6,
+    "memorable_moment": 0.7,
+    "show_vs_tell": 0.7,
+    "character_depth": 0.8,
+    "kid_retellability": 0.8
+  },
+  "feedback": {
+    "story_id": "c3",
+    "is_standout": true,
+    "headline": "A gentle story with a lovely premise, begging for more whimsical detail.",
+    "strengths": [
+      "The concept of a 'shy butterfly' is charming and immediately creates empathy.",
+      "The character's internal thought process (helping the butterfly) is well-aligned with the target audience's values.",
+      "Good opportunity for visual descriptions of the garden and the butterfly."
+    ],
+    "weaknesses": [
+      "The resolution is a bit too simple; finding 'a flower' could be more specific or challenging.",
+      "The butterfly's shyness could be shown more actively rather than just stated.",
+      "The 'sharing petals' line in the summary is a bit abstract and doesn't fully land."
+    ],
+    "next_round_goals": [
+      "Give the shy butterfly a unique characteristic or a specific type of flower it's looking for, creating a mini-quest.",
+      "Describe the butterfly's shyness through its actions (e.g., hiding behind a leaf, fluttering away quickly) rather than just stating it's shy.",
+      "Introduce a small, unexpected obstacle or a delightful discovery during the search for the perfect flower."
+    ]
+  },
+  "refined": {
+    "title": "Tom and the Shy Butterfly",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "Tom helps a shy butterfly find a flower, sharing petals and a gentle smile.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "Tom was walking in the garden when he saw a [[slot_butterfly]] perched on a leaf.",
+        "slot_ids": [
+          "slot_butterfly"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "The butterfly peeked out, then quickly hid behind the leaf, fluttering its wings softly.",
+        "slot_ids": []
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "Tom felt a little sad that the butterfly was alone.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "He thought: 'I could keep the butterfly for myself, but I could also help it find a flower.'",
+        "slot_ids": []
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "Tom walked to the corner where a [[slot_flower]] was blooming, but it was hidden behind a small bush.",
+        "slot_ids": [
+          "slot_flower"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "He gently offered a petal to the butterfly, inviting it to taste the sweet garden air.",
+        "slot_ids": []
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "The butterfly flapped its wings and flew to the flower.",
+        "slot_ids": []
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "Tom and the butterfly shared a [[slot_snack]] on the grass.",
+        "slot_ids": [
+          "slot_snack"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "The flower glowed with [[slot_color]] petals, and the butterfly sang a quiet tune.",
+        "slot_ids": [
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "Tom felt happy because he helped the butterfly find a friend and shared a snack together.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_butterfly",
+        "type": "animal_pet",
+        "author_description": "A small flying insect you like.",
+        "child_prompt": "Can you name a butterfly?",
+        "examples": [
+          "monarch",
+          "butterfly"
+        ]
+      },
+      {
+        "id": "slot_flower",
+        "type": "toy_object",
+        "author_description": "A flower you can touch.",
+        "child_prompt": "What is a flower you like?",
+        "examples": [
+          "daisy",
+          "rose"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A color you like.",
+        "child_prompt": "What is your favorite color?",
+        "examples": [
+          "yellow",
+          "purple"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A tasty snack.",
+        "child_prompt": "What is a snack you enjoy?",
+        "examples": [
+          "cookies",
+          "fruit"
+        ]
+      }
+    ]
+  },
+  "refined_scores_main": {
+    "overall": 0.75,
+    "story_arc": 0.8,
+    "character_engagement": 0.7,
+    "emotional_warmth": 0.9,
+    "curiosity_hooks": 0.6,
+    "madlibs_usability": 0.9,
+    "reading_level_fit": 0.9,
+    "novelty": 0.6,
+    "memorable_moment": 0.7,
+    "show_vs_tell": 0.8,
+    "character_depth": 0.7,
+    "kid_retellability": 0.8
+  },
+  "refined_scores_final": {
+    "overall": 0.5,
+    "story_arc": 0.5,
+    "character_engagement": 0.4,
+    "emotional_warmth": 0.7,
+    "curiosity_hooks": 0.4,
+    "madlibs_usability": 0.7,
+    "reading_level_fit": 0.9,
+    "novelty": 0.3,
+    "memorable_moment": 0.4,
+    "show_vs_tell": 0.2,
+    "character_depth": 0.4,
+    "kid_retellability": 0.7
+  }
+}

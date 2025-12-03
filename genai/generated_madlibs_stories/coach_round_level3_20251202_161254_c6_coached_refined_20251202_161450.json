@@ -1,0 +1,290 @@
+{
+  "coach_round_path": "generated_madlibs_stories/coach_round_level3_20251202_161254.json",
+  "story_id": "c6",
+  "original": {
+    "title": "Nina's Sad Seashell",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "Nina finds a seashell that makes a sad sound, helps it find a friend, and shares a snack on the beach.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "Nina was walking on the beach when she found a [[slot_seashell]] that made a sad sound.",
+        "slot_ids": [
+          "slot_seashell"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "She picked it up and heard it say, 'I'm lonely.'",
+        "slot_ids": []
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "Nina felt a little sad that the seashell was alone.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "She thought: 'I could keep the seashell for myself, but I could also find it a friend.'",
+        "slot_ids": []
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "Nina ran to the shore where her friend [[slot_friend]] was building a sandcastle.",
+        "slot_ids": [
+          "slot_friend"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "She gave the seashell to [[slot_friend]] and said, 'It needs a friend.'",
+        "slot_ids": [
+          "slot_friend"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "[[slot_friend]] smiled and said, 'I'll be its friend!'.",
+        "slot_ids": [
+          "slot_friend"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "Together they placed the seashell on a rock and sang a gentle song.",
+        "slot_ids": []
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "They shared a [[slot_snack]] while the waves glowed with [[slot_color]] light.",
+        "slot_ids": [
+          "slot_snack",
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "Nina felt happy because she helped the seashell find a friend and shared a snack on the beach.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_seashell",
+        "type": "toy_object",
+        "author_description": "A shell you can hold.",
+        "child_prompt": "Can you name a seashell?",
+        "examples": [
+          "seashell",
+          "shell"
+        ]
+      },
+      {
+        "id": "slot_friend",
+        "type": "person_name",
+        "author_description": "The name of a friend.",
+        "child_prompt": "What is your friend's name?",
+        "examples": [
+          "Mia",
+          "Tom"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A color you like.",
+        "child_prompt": "What is your favorite color?",
+        "examples": [
+          "beige",
+          "teal"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A tasty snack.",
+        "child_prompt": "What is a snack you enjoy?",
+        "examples": [
+          "sandwich",
+          "fruit"
+        ]
+      }
+    ]
+  },
+  "original_scores_main": {
+    "overall": 0.75,
+    "story_arc": 0.8,
+    "character_engagement": 0.7,
+    "emotional_warm-th": 0.9,
+    "curiosity_hooks": 0.7,
+    "madlibs_usability": 0.9,
+    "reading_level_fit": 0.9,
+    "novelty": 0.6,
+    "memorable_moment": 0.7,
+    "show_vs_tell": 0.8,
+    "character_depth": 0.7,
+    "kid_retellability": 0.8
+  },
+  "feedback": {
+    "story_id": "c6",
+    "is_standout": true,
+    "headline": "A wonderfully imaginative concept that needs a stronger narrative journey.",
+    "strengths": [
+      "The core idea of a 'sad seashell' that speaks is highly novel and engaging for young readers.",
+      "Strong emotional hook with the seashell feeling lonely.",
+      "Excellent potential for sensory details of the beach environment."
+    ],
+    "weaknesses": [
+      "The resolution of 'finding it a friend' is vague; what kind of friend? Another seashell? A crab?",
+      "The 'sharing a snack on the beach' feels tacked on and doesn't connect strongly to the seashell's plight.",
+      "The story could lean more into the fantastical element of a talking seashell."
+    ],
+    "next_round_goals": [
+      "Elaborate on the seashell's 'sad sound' – what does it sound like? How does Nina interpret it?",
+      "Create a more specific and imaginative solution for the lonely seashell. Perhaps Nina introduces it to a friendly hermit crab, or builds it a tiny shell-castle, or finds it a perfect companion shell.",
+      "Integrate the 'snack' element more organically, perhaps as part of the celebration of the seashell finding happiness, or as a moment of comfort while Nina is thinking of how to help."
+    ]
+  },
+  "refined": {
+    "title": "Nina's Sad Seashell",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "Nina finds a seashell that makes a sad sound, helps it find a friend, and shares a snack on the beach.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "Nina was walking on the beach when she found a [[slot_seashell]] that made a soft, sighing sound like a tiny wind chime.",
+        "slot_ids": [
+          "slot_seashell"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "She picked it up and heard it say, 'I'm lonely.'",
+        "slot_ids": []
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "Nina felt a little sad that the seashell was alone.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "She thought: 'I could keep the seashell for myself, but I could also find it a friend.'",
+        "slot_ids": []
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "Nina ran to the shore where her friend [[slot_friend]] was building a sandcastle.",
+        "slot_ids": [
+          "slot_friend"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "She gave the seashell to [[slot_friend]] and said, 'It needs a friend.'",
+        "slot_ids": [
+          "slot_friend"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "[[slot_friend]] smiled and said, 'I'll be its friend!'.",
+        "slot_ids": [
+          "slot_friend"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "Together they placed the seashell on a rock and sang a gentle song, while a friendly hermit crab came to join them.",
+        "slot_ids": []
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "They shared a [[slot_snack]] while the waves glowed with [[slot_color]] light, and the seashell hummed happily.",
+        "slot_ids": [
+          "slot_snack",
+          "slot_color"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "Nina felt happy because she helped the seashell find a friend and shared a snack on the beach.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_seashell",
+        "type": "toy_object",
+        "author_description": "A shell you can hold.",
+        "child_prompt": "Can you name a seashell?",
+        "examples": [
+          "seashell",
+          "shell"
+        ]
+      },
+      {
+        "id": "slot_friend",
+        "type": "person_name",
+        "author_description": "The name of a friend.",
+        "child_prompt": "What is your friend's name?",
+        "examples": [
+          "Mia",
+          "Tom"
+        ]
+      },
+      {
+        "id": "slot_color",
+        "type": "color",
+        "author_description": "A color you like.",
+        "child_prompt": "What is your favorite color?",
+        "examples": [
+          "beige",
+          "teal"
+        ]
+      },
+      {
+        "id": "slot_snack",
+        "type": "snack_food",
+        "author_description": "A tasty snack.",
+        "child_prompt": "What is a snack you enjoy?",
+        "examples": [
+          "sandwich",
+          "fruit"
+        ]
+      }
+    ]
+  },
+  "refined_scores_main": {
+    "overall": 0.75,
+    "story_arc": 0.8,
+    "character_engagement": 0.7,
+    "emotional_warmth": 0.9,
+    "curiosity_hooks": 0.7,
+    "madlibs_usability": 0.9,
+    "reading_level_fit": 0.9,
+    "novelty": 0.6,
+    "memorable_moment": 0.7,
+    "show_vs_tell": 0.6,
+    "character_depth": 0.8,
+    "kid_retellability": 0.8
+  },
+  "refined_scores_final": {
+    "overall": 0.55,
+    "story_arc": 0.7,
+    "character_engagement": 0.6,
+    "emotional_warmth": 0.8,
+    "curiosity_hooks": 0.6,
+    "madlibs_usability": 0.3,
+    "reading_level_fit": 0.9,
+    "novelty": 0.5,
+    "memorable_moment": 0.6,
+    "show_vs_tell": 0.3,
+    "character_depth": 0.7,
+    "kid_retellability": 0.8
+  }
+}

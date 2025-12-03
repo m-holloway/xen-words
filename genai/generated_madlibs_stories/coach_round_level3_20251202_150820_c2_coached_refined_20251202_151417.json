@@ -1,0 +1,337 @@
+{
+  "coach_round_path": "generated_madlibs_stories/coach_round_level3_20251202_150820.json",
+  "story_id": "c2",
+  "original": {
+    "title": "Library Robot Rescue",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A library story where a child frees a tiny robot from a book.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "At the school library, [[slot_child]] loved to read the [[slot_book]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_book"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One day, a tiny [[slot_robot]] peeked out from the [[slot_shelf]].",
+        "slot_ids": [
+          "slot_robot",
+          "slot_shelf"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The [[slot_robot]] was stuck inside the book and couldn't come out.",
+        "slot_ids": [
+          "slot_robot"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] felt a tug of kindness.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "First, [[slot_child]] tried to pull the book open with a gentle tug.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "The book creaked, but the [[slot_robot]] was still inside.",
+        "slot_ids": [
+          "slot_robot"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "Then [[slot_child]] whispered, 'Let me help you,' and breathed a soft [[slot_reading]] story.",
+        "slot_ids": [
+          "slot_child",
+          "slot_reading"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "The story made the [[slot_robot]] smile and it popped out of the book.",
+        "slot_ids": [
+          "slot_robot"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "Together they waved goodbye to the [[slot_shelf]] and went to the next story.",
+        "slot_ids": [
+          "slot_shelf"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "The [[slot_robot]] promised to visit again and bring a new adventure.",
+        "slot_ids": [
+          "slot_robot"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the child character",
+        "child_prompt": "Can you give a name for the child?",
+        "examples": [
+          "Mia",
+          "Noah",
+          "Lily"
+        ]
+      },
+      {
+        "id": "slot_robot",
+        "type": "robot",
+        "author_description": "A friendly robot the child might like",
+        "child_prompt": "Name a robot you would love to be friends with.",
+        "examples": [
+          "tiny robot",
+          "friendly robot"
+        ]
+      },
+      {
+        "id": "slot_book",
+        "type": "book_title",
+        "author_description": "Title of a book",
+        "child_prompt": "Give a title for a book.",
+        "examples": [
+          "The Brave Little Tree",
+          "The Lost Treasure"
+        ]
+      },
+      {
+        "id": "slot_shelf",
+        "type": "noun",
+        "author_description": "A shelf or bookcase",
+        "child_prompt": "Name a place where books sit.",
+        "examples": [
+          "shelf",
+          "bookcase"
+        ]
+      },
+      {
+        "id": "slot_reading",
+        "type": "action",
+        "author_description": "A calm reading activity",
+        "child_prompt": "What kind of reading do you do?",
+        "examples": [
+          "quiet reading",
+          "gentle reading"
+        ]
+      }
+    ]
+  },
+  "original_scores_main": {
+    "overall": 0.75,
+    "story_arc": 0.8,
+    "character_engagement": 0.7,
+    "emotional_warmth": 0.9,
+    "curiosity_hooks": 0.8,
+    "madlibs_usability": 0.7,
+    "reading_level_fit": 0.9,
+    "novelty": 0.7,
+    "memorable_moment": 0.8,
+    "show_vs_tell": 0.8,
+    "character_depth": 0.6,
+    "kid_retellability": 0.8
+  },
+  "feedback": {
+    "story_id": "c2",
+    "is_standout": true,
+    "headline": "Charming library adventure with a touch of magic.",
+    "strengths": [
+      "Good novelty with the tiny robot in a book.",
+      "Strong emotional warmth and clear character motivation ('tug of kindness').",
+      "High kid-retellability due to the imaginative premise.",
+      "The library setting is engaging and offers good opportunities for Mad Libs slots."
+    ],
+    "weaknesses": [
+      "The robot's 'stuckness' could be more clearly defined to create a stronger sense of urgency or mystery.",
+      "The resolution might be a little too simple; how exactly does the child free the robot?",
+      "Character depth is still limited; the child is kind, but we don't learn much else."
+    ],
+    "next_round_goals": [
+      "Elaborate on *how* the robot is stuck and *how* the child helps it. Is it tangled in a bookmark? Is a page folded over it? This adds a mini-puzzle.",
+      "Give the robot a tiny, distinct personality trait or a sound it makes to enhance its character.",
+      "Add a small, unexpected consequence or reward for the child's kindness, like the robot winking or doing a tiny dance."
+    ]
+  },
+  "refined": {
+    "title": "Library Robot Rescue",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A library story where a child frees a tiny robot from a book.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "At the school library, [[slot_child]] loved to read the [[slot_book]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_book"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "One day, a tiny [[slot_robot]] peeked out from the [[slot_shelf]].",
+        "slot_ids": [
+          "slot_robot",
+          "slot_shelf"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The [[slot_robot]] was stuck inside the book, tangled in a bright bookmark and a folded page, and couldn't come out.",
+        "slot_ids": [
+          "slot_robot"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] felt a tug of kindness.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "First, [[slot_child]] tried to pull the book open with a gentle tug, but the bookmark clung tight.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "The book creaked, and the [[slot_robot]] made a soft 'ding' sound, still trapped.",
+        "slot_ids": [
+          "slot_robot"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "Then [[slot_child]] whispered, 'Let me help you,' and read a soft [[slot_reading]] story while carefully unfolding the folded page and sliding the bookmark out.",
+        "slot_ids": [
+          "slot_child",
+          "slot_reading"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "The gentle gesture made the [[slot_robot]] smile and it popped out of the book, doing a tiny twirl.",
+        "slot_ids": [
+          "slot_robot"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "Together they waved goodbye to the [[slot_shelf]] and went to the next story.",
+        "slot_ids": [
+          "slot_shelf"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "The [[slot_robot]] promised to visit again, winking and saying 'thank you' with a cheerful beep.",
+        "slot_ids": [
+          "slot_robot"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the child character",
+        "child_prompt": "Can you give a name for the child?",
+        "examples": [
+          "Mia",
+          "Noah",
+          "Lily"
+        ]
+      },
+      {
+        "id": "slot_robot",
+        "type": "robot",
+        "author_description": "A friendly robot the child might like",
+        "child_prompt": "Name a robot you would love to be friends with.",
+        "examples": [
+          "tiny robot",
+          "friendly robot"
+        ]
+      },
+      {
+        "id": "slot_book",
+        "type": "book_title",
+        "author_description": "Title of a book",
+        "child_prompt": "Give a title for a book.",
+        "examples": [
+          "The Brave Little Tree",
+          "The Lost Treasure"
+        ]
+      },
+      {
+        "id": "slot_shelf",
+        "type": "noun",
+        "author_description": "A shelf or bookcase",
+        "child_prompt": "Name a place where books sit.",
+        "examples": [
+          "shelf",
+          "bookcase"
+        ]
+      },
+      {
+        "id": "slot_reading",
+        "type": "action",
+        "author_description": "A calm reading activity",
+        "child_prompt": "What kind of reading do you do?",
+        "examples": [
+          "quiet reading",
+          "gentle reading"
+        ]
+      }
+    ]
+  },
+  "refined_scores_main": {
+    "overall": 0.8,
+    "story_arc": 0.8,
+    "character_engagement": 0.8,
+    "emotional_warmth": 0.9,
+    "curiosity_hooks": 0.8,
+    "madlibs_usability": 0.9,
+    "reading_level_fit": 0.9,
+    "novelty": 0.8,
+    "memorable_moment": 0.9,
+    "show_vs_tell": 0.8,
+    "character_depth": 0.7,
+    "kid_retellability": 0.8
+  },
+  "refined_scores_final": {
+    "overall": 0.55,
+    "story_arc": 0.6,
+    "character_engagement": 0.5,
+    "emotional_warmth": 0.7,
+    "curiosity_hooks": 0.6,
+    "madlibs_usability": 0.4,
+    "reading_level_fit": 0.7,
+    "novelty": 0.6,
+    "memorable_moment": 0.6,
+    "show_vs_tell": 0.4,
+    "character_depth": 0.3,
+    "kid_retellability": 0.6
+  }
+}

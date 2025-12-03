@@ -1,0 +1,1062 @@
+{
+  "config": {
+    "level": 3,
+    "generator_model": "inception/mercury",
+    "judge_model": "google/gemini-2.5-flash",
+    "coach_model": "google/gemini-2.5-flash",
+    "cohort_size": 6
+  },
+  "candidates": [
+    {
+      "id": "c1",
+      "template": {
+        "title": "Backyard Butterfly Adventure",
+        "reading_level": 3,
+        "reading_band": "Grades 1–2",
+        "target_minutes": 5,
+        "summary": "A backyard adventure where a child helps a lost butterfly find a flower.",
+        "sentences": [
+          {
+            "id": "s1",
+            "text_with_blanks": "In the sunny backyard, [[slot_child]] loved to watch the [[slot_butterfly]] flutter.",
+            "slot_ids": [
+              "slot_child",
+              "slot_butterfly"
+            ]
+          },
+          {
+            "id": "s2",
+            "text_with_blanks": "The [[slot_butterfly]] was looking for a bright [[slot_sunbeam]] sunbeam.",
+            "slot_ids": [
+              "slot_butterfly",
+              "slot_sunbeam"
+            ]
+          },
+          {
+            "id": "s3",
+            "text_with_blanks": "But the [[slot_butterfly]] had lost its way and could not find the [[slot_flower]].",
+            "slot_ids": [
+              "slot_butterfly",
+              "slot_flower"
+            ]
+          },
+          {
+            "id": "s4",
+            "text_with_blanks": "[[slot_child]] felt a gentle tug of curiosity.",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s5",
+            "text_with_blanks": "First, [[slot_child]] tried to follow the [[slot_butterfly]]'s trail of tiny [[slot_herb]] leaves.",
+            "slot_ids": [
+              "slot_child",
+              "slot_butterfly",
+              "slot_herb"
+            ]
+          },
+          {
+            "id": "s6",
+            "text_with_blanks": "The trail led to a hidden [[slot_nest]] under the old oak tree.",
+            "slot_ids": [
+              "slot_nest"
+            ]
+          },
+          {
+            "id": "s7",
+            "text_with_blanks": "Inside the nest, the [[slot_butterfly]] was safe but a little sad.",
+            "slot_ids": [
+              "slot_butterfly"
+            ]
+          },
+          {
+            "id": "s8",
+            "text_with_blanks": "[[slot_child]] whispered, 'Come, let me help you find a flower.'",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s9",
+            "text_with_blanks": "Together they fluttered to the [[slot_flower]] which sang a sweet song.",
+            "slot_ids": [
+              "slot_flower"
+            ]
+          },
+          {
+            "id": "s10",
+            "text_with_blanks": "The [[slot_butterfly]] thanked [[slot_child]] with a bright flash of [[slot_sunbeam]].",
+            "slot_ids": [
+              "slot_butterfly",
+              "slot_child",
+              "slot_sunbeam"
+            ]
+          }
+        ],
+        "slots": [
+          {
+            "id": "slot_child",
+            "type": "child_name",
+            "author_description": "Name of the child character",
+            "child_prompt": "Can you give a name for the child?",
+            "examples": [
+              "Mia",
+              "Noah",
+              "Lily"
+            ]
+          },
+          {
+            "id": "slot_butterfly",
+            "type": "butterfly",
+            "author_description": "A friendly butterfly the child might like",
+            "child_prompt": "Name a butterfly you would love to be friends with.",
+            "examples": [
+              "butterfly",
+              "dragonfly"
+            ]
+          },
+          {
+            "id": "slot_sunbeam",
+            "type": "color",
+            "author_description": "Color of the sunbeam",
+            "child_prompt": "What color is the sunbeam?",
+            "examples": [
+              "yellow",
+              "orange"
+            ]
+          },
+          {
+            "id": "slot_flower",
+            "type": "flower",
+            "author_description": "A flower the child might like",
+            "child_prompt": "Name a flower you like.",
+            "examples": [
+              "daisy",
+              "tulip"
+            ]
+          },
+          {
+            "id": "slot_herb",
+            "type": "plant",
+            "author_description": "A herb the child might like",
+            "child_prompt": "Name a herb you know.",
+            "examples": [
+              "mint",
+              "basil"
+            ]
+          },
+          {
+            "id": "slot_nest",
+            "type": "noun",
+            "author_description": "A cozy spot where the butterfly can rest",
+            "child_prompt": "Name a cozy spot for a butterfly.",
+            "examples": [
+              "nest",
+              "home"
+            ]
+          }
+        ]
+      },
+      "scores": {
+        "overall": 0.65,
+        "story_arc": 0.7,
+        "character_engagement": 0.6,
+        "emotional_warmth": 0.8,
+        "curiosity_hooks": 0.5,
+        "madlibs_usability": 0.7,
+        "reading_level_fit": 0.8,
+        "novelty": 0.5,
+        "memorable_moment": 0.6,
+        "show_vs_tell": 0.7,
+        "character_depth": 0.5,
+        "kid_retellability": 0.7
+      }
+    },
+    {
+      "id": "c2",
+      "template": {
+        "title": "Library Robot Rescue",
+        "reading_level": 3,
+        "reading_band": "Grades 1–2",
+        "target_minutes": 5,
+        "summary": "A library story where a child frees a tiny robot from a book.",
+        "sentences": [
+          {
+            "id": "s1",
+            "text_with_blanks": "At the school library, [[slot_child]] loved to read the [[slot_book]].",
+            "slot_ids": [
+              "slot_child",
+              "slot_book"
+            ]
+          },
+          {
+            "id": "s2",
+            "text_with_blanks": "One day, a tiny [[slot_robot]] peeked out from the [[slot_shelf]].",
+            "slot_ids": [
+              "slot_robot",
+              "slot_shelf"
+            ]
+          },
+          {
+            "id": "s3",
+            "text_with_blanks": "The [[slot_robot]] was stuck inside the book and couldn't come out.",
+            "slot_ids": [
+              "slot_robot"
+            ]
+          },
+          {
+            "id": "s4",
+            "text_with_blanks": "[[slot_child]] felt a tug of kindness.",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s5",
+            "text_with_blanks": "First, [[slot_child]] tried to pull the book open with a gentle tug.",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s6",
+            "text_with_blanks": "The book creaked, but the [[slot_robot]] was still inside.",
+            "slot_ids": [
+              "slot_robot"
+            ]
+          },
+          {
+            "id": "s7",
+            "text_with_blanks": "Then [[slot_child]] whispered, 'Let me help you,' and breathed a soft [[slot_reading]] story.",
+            "slot_ids": [
+              "slot_child",
+              "slot_reading"
+            ]
+          },
+          {
+            "id": "s8",
+            "text_with_blanks": "The story made the [[slot_robot]] smile and it popped out of the book.",
+            "slot_ids": [
+              "slot_robot"
+            ]
+          },
+          {
+            "id": "s9",
+            "text_with_blanks": "Together they waved goodbye to the [[slot_shelf]] and went to the next story.",
+            "slot_ids": [
+              "slot_shelf"
+            ]
+          },
+          {
+            "id": "s10",
+            "text_with_blanks": "The [[slot_robot]] promised to visit again and bring a new adventure.",
+            "slot_ids": [
+              "slot_robot"
+            ]
+          }
+        ],
+        "slots": [
+          {
+            "id": "slot_child",
+            "type": "child_name",
+            "author_description": "Name of the child character",
+            "child_prompt": "Can you give a name for the child?",
+            "examples": [
+              "Mia",
+              "Noah",
+              "Lily"
+            ]
+          },
+          {
+            "id": "slot_robot",
+            "type": "robot",
+            "author_description": "A friendly robot the child might like",
+            "child_prompt": "Name a robot you would love to be friends with.",
+            "examples": [
+              "tiny robot",
+              "friendly robot"
+            ]
+          },
+          {
+            "id": "slot_book",
+            "type": "book_title",
+            "author_description": "Title of a book",
+            "child_prompt": "Give a title for a book.",
+            "examples": [
+              "The Brave Little Tree",
+              "The Lost Treasure"
+            ]
+          },
+          {
+            "id": "slot_shelf",
+            "type": "noun",
+            "author_description": "A shelf or bookcase",
+            "child_prompt": "Name a place where books sit.",
+            "examples": [
+              "shelf",
+              "bookcase"
+            ]
+          },
+          {
+            "id": "slot_reading",
+            "type": "action",
+            "author_description": "A calm reading activity",
+            "child_prompt": "What kind of reading do you do?",
+            "examples": [
+              "quiet reading",
+              "gentle reading"
+            ]
+          }
+        ]
+      },
+      "scores": {
+        "overall": 0.75,
+        "story_arc": 0.8,
+        "character_engagement": 0.7,
+        "emotional_warmth": 0.9,
+        "curiosity_hooks": 0.8,
+        "madlibs_usability": 0.7,
+        "reading_level_fit": 0.9,
+        "novelty": 0.7,
+        "memorable_moment": 0.8,
+        "show_vs_tell": 0.8,
+        "character_depth": 0.6,
+        "kid_retellability": 0.8
+      }
+    },
+    {
+      "id": "c3",
+      "template": {
+        "title": "Swing Set Kite Tangle",
+        "reading_level": 3,
+        "reading_band": "Grades 1–2",
+        "target_minutes": 5,
+        "summary": "A playground tale of untangling a kite from a swing.",
+        "sentences": [
+          {
+            "id": "s1",
+            "text_with_blanks": "At the playground, [[slot_child]] loved to swing on the [[slot_swing]].",
+            "slot_ids": [
+              "slot_child",
+              "slot_swing"
+            ]
+          },
+          {
+            "id": "s2",
+            "text_with_blanks": "A bright [[slot_kite]] flew in the sky and got tangled in the swing.",
+            "slot_ids": [
+              "slot_kite",
+              "slot_swing"
+            ]
+          },
+          {
+            "id": "s3",
+            "text_with_blanks": "The kite's string was stuck to the [[slot_swing]]'s pole.",
+            "slot_ids": [
+              "slot_swing"
+            ]
+          },
+          {
+            "id": "s4",
+            "text_with_blanks": "[[slot_child]] felt a tug of curiosity.",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s5",
+            "text_with_blanks": "First, [[slot_child]] tried to untangle the string with a gentle pull.",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s6",
+            "text_with_blanks": "The string snapped, but the kite was still stuck.",
+            "slot_ids": []
+          },
+          {
+            "id": "s7",
+            "text_with_blanks": "Then [[slot_child]] whispered, 'Let me help you,' and blew a soft [[slot_wind]].",
+            "slot_ids": [
+              "slot_child",
+              "slot_wind"
+            ]
+          },
+          {
+            "id": "s8",
+            "text_with_blanks": "The wind lifted the kite, and it floated up into the [[slot_cloud]].",
+            "slot_ids": [
+              "slot_cloud"
+            ]
+          },
+          {
+            "id": "s9",
+            "text_with_blanks": "The kite thanked [[slot_child]] with a twirl of bright [[slot_kite]] color.",
+            "slot_ids": [
+              "slot_kite"
+            ]
+          },
+          {
+            "id": "s10",
+            "text_with_blanks": "They both smiled as the kite flew away over the playground.",
+            "slot_ids": []
+          }
+        ],
+        "slots": [
+          {
+            "id": "slot_child",
+            "type": "child_name",
+            "author_description": "Name of the child character",
+            "child_prompt": "Can you give a name for the child?",
+            "examples": [
+              "Mia",
+              "Noah",
+              "Lily"
+            ]
+          },
+          {
+            "id": "slot_kite",
+            "type": "kites",
+            "author_description": "A colorful kite the child might like",
+            "child_prompt": "Name a kite you would love to fly.",
+            "examples": [
+              "colorful kite",
+              "striped kite"
+            ]
+          },
+          {
+            "id": "slot_swing",
+            "type": "noun",
+            "author_description": "A swing or hanging swing",
+            "child_prompt": "Name a playground piece you like.",
+            "examples": [
+              "swing",
+              "hanging swing"
+            ]
+          },
+          {
+            "id": "slot_wind",
+            "type": "noun",
+            "author_description": "A gentle breeze",
+            "child_prompt": "What do you call a gentle breeze?",
+            "examples": [
+              "soft wind",
+              "gentle breeze"
+            ]
+          },
+          {
+            "id": "slot_cloud",
+            "type": "noun",
+            "author_description": "A fluffy cloud",
+            "child_prompt": "Name a cloud you see in the sky.",
+            "examples": [
+              "cloud",
+              "fluffy cloud"
+            ]
+          }
+        ]
+      },
+      "scores": {
+        "overall": 0.0,
+        "story_arc": 0.0,
+        "character_engagement": 0.0,
+        "emotional_warmth": 0.0,
+        "curiosity_hooks": 0.0,
+        "madlibs_usability": 0.0,
+        "reading_level_fit": 0.0,
+        "novelty": 0.0,
+        "memorable_moment": 0.0,
+        "show_vs_tell": 0.0,
+        "character_depth": 0.0,
+        "kid_retellability": 0.0
+      }
+    },
+    {
+      "id": "c4",
+      "template": {
+        "title": "Warm Cookie Rescue",
+        "reading_level": 3,
+        "reading_band": "Grades 1–2",
+        "target_minutes": 5,
+        "summary": "A kitchen adventure where a child warms a cold cookie.",
+        "sentences": [
+          {
+            "id": "s1",
+            "text_with_blanks": "In the kitchen, [[slot_child]] loved to bake a [[slot_cookie]].",
+            "slot_ids": [
+              "slot_child",
+              "slot_cookie"
+            ]
+          },
+          {
+            "id": "s2",
+            "text_with_blanks": "The cookie was too cold and couldn't be eaten.",
+            "slot_ids": [
+              "slot_cookie"
+            ]
+          },
+          {
+            "id": "s3",
+            "text_with_blanks": "[[slot_child]] thought of a warm solution.",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s4",
+            "text_with_blanks": "First, [[slot_child]] turned on the [[slot_oven]] to a gentle heat.",
+            "slot_ids": [
+              "slot_oven"
+            ]
+          },
+          {
+            "id": "s5",
+            "text_with_blanks": "The oven hummed, but the cookie was still cold.",
+            "slot_ids": []
+          },
+          {
+            "id": "s6",
+            "text_with_blanks": "Then [[slot_child]] whispered, 'Let me give you a sunny nap,' and placed the cookie on a [[slot_sun]] plate.",
+            "slot_ids": [
+              "slot_child",
+              "slot_sun"
+            ]
+          },
+          {
+            "id": "s7",
+            "text_with_blanks": "The plate glowed like a warm [[slot_sun]] sun.",
+            "slot_ids": [
+              "slot_sun"
+            ]
+          },
+          {
+            "id": "s8",
+            "text_with_blanks": "Soon the cookie softened and smelled sweet.",
+            "slot_ids": []
+          },
+          {
+            "id": "s9",
+            "text_with_blanks": "The cookie thanked [[slot_child]] with a tiny [[slot_crumb]] of joy.",
+            "slot_ids": [
+              "slot_crumb"
+            ]
+          },
+          {
+            "id": "s10",
+            "text_with_blanks": "They shared the warm cookie and laughed together.",
+            "slot_ids": []
+          }
+        ],
+        "slots": [
+          {
+            "id": "slot_child",
+            "type": "child_name",
+            "author_description": "Name of the child character",
+            "child_prompt": "Can you give a name for the child?",
+            "examples": [
+              "Mia",
+              "Noah",
+              "Lily"
+            ]
+          },
+          {
+            "id": "slot_cookie",
+            "type": "food",
+            "author_description": "A cookie the child might like",
+            "child_prompt": "Name a cookie you like.",
+            "examples": [
+              "chocolate chip cookie",
+              "oatmeal cookie"
+            ]
+          },
+          {
+            "id": "slot_oven",
+            "type": "noun",
+            "author_description": "An oven or stove",
+            "child_prompt": "Name a kitchen appliance you know.",
+            "examples": [
+              "oven",
+              "stove"
+            ]
+          },
+          {
+            "id": "slot_sun",
+            "type": "color",
+            "author_description": "Color of a sun",
+            "child_prompt": "What color is the sun?",
+            "examples": [
+              "yellow",
+              "golden"
+            ]
+          },
+          {
+            "id": "slot_crumb",
+            "type": "noun",
+            "author_description": "A crumb or small piece",
+            "child_prompt": "Name a small piece of food.",
+            "examples": [
+              "crumb",
+              "small piece"
+            ]
+          }
+        ]
+      },
+      "scores": {
+        "overall": 0.55,
+        "story_arc": 0.6,
+        "character_engagement": 0.5,
+        "emotional_warmth": 0.7,
+        "curiosity_hooks": 0.4,
+        "madlibs_usability": 0.8,
+        "reading_level_fit": 0.8,
+        "novelty": 0.4,
+        "memorable_moment": 0.5,
+        "show_vs_tell": 0.6,
+        "character_depth": 0.3,
+        "kid_retellability": 0.6
+      }
+    },
+    {
+      "id": "c5",
+      "template": {
+        "title": "Beach Shell Discovery",
+        "reading_level": 3,
+        "reading_band": "Grades 1–2",
+        "target_minutes": 5,
+        "summary": "A beach day where a child discovers a shy seashell under a sandcastle.",
+        "sentences": [
+          {
+            "id": "s1",
+            "text_with_blanks": "On the sunny beach, [[slot_child]] loved to build a [[slot_sandcastle]].",
+            "slot_ids": [
+              "slot_child",
+              "slot_sandcastle"
+            ]
+          },
+          {
+            "id": "s2",
+            "text_with_blanks": "A shy [[slot_shell]] hid under the sandcastle.",
+            "slot_ids": [
+              "slot_shell"
+            ]
+          },
+          {
+            "id": "s3",
+            "text_with_blanks": "The shell was too quiet to be heard.",
+            "slot_ids": [
+              "slot_shell"
+            ]
+          },
+          {
+            "id": "s4",
+            "text_with_blanks": "[[slot_child]] felt a gentle tug of curiosity.",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s5",
+            "text_with_blanks": "First, [[slot_child]] dug with a small shovel.",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s6",
+            "text_with_blanks": "The sand fell, revealing the shell.",
+            "slot_ids": []
+          },
+          {
+            "id": "s7",
+            "text_with_blanks": "Then [[slot_child]] whispered, 'Let me help you,' and sang a soft [[slot_wave]] song.",
+            "slot_ids": [
+              "slot_child",
+              "slot_wave"
+            ]
+          },
+          {
+            "id": "s8",
+            "text_with_blanks": "The song made the shell glow with a bright [[slot_star]].",
+            "slot_ids": [
+              "slot_star"
+            ]
+          },
+          {
+            "id": "s9",
+            "text_with_blanks": "The shell thanked [[slot_child]] with a tiny sparkle.",
+            "slot_ids": []
+          },
+          {
+            "id": "s10",
+            "text_with_blanks": "They both waved to the waves and felt happy.",
+            "slot_ids": []
+          }
+        ],
+        "slots": [
+          {
+            "id": "slot_child",
+            "type": "child_name",
+            "author_description": "Name of the child character",
+            "child_prompt": "Can you give a name for the child?",
+            "examples": [
+              "Mia",
+              "Noah",
+              "Lily"
+            ]
+          },
+          {
+            "id": "slot_sandcastle",
+            "type": "noun",
+            "author_description": "A sandcastle",
+            "child_prompt": "Name a sandcastle you might build.",
+            "examples": [
+              "sandcastle",
+              "castle of sand"
+            ]
+          },
+          {
+            "id": "slot_shell",
+            "type": "shell",
+            "author_description": "A seashell the child might like",
+            "child_prompt": "Name a seashell you might find.",
+            "examples": [
+              "seashell",
+              "tiny shell"
+            ]
+          },
+          {
+            "id": "slot_wave",
+            "type": "sound",
+            "author_description": "The sound of waves",
+            "child_prompt": "What sound do waves make?",
+            "examples": [
+              "soft wave",
+              "gentle wave"
+            ]
+          },
+          {
+            "id": "slot_star",
+            "type": "noun",
+            "author_description": "A starfish or star",
+            "child_prompt": "Name a star you see on the beach.",
+            "examples": [
+              "starfish",
+              "bright star"
+            ]
+          }
+        ]
+      },
+      "scores": {
+        "overall": 0.75,
+        "story_arc": 0.7,
+        "character_engagement": 0.7,
+        "emotional_warmth": 0.9,
+        "curiosity_hooks": 0.7,
+        "madlibs_usability": 0.8,
+        "reading_level_fit": 0.9,
+        "novelty": 0.7,
+        "memorable_moment": 0.8,
+        "show_vs_tell": 0.8,
+        "character_depth": 0.6,
+        "kid_retellability": 0.8
+      }
+    },
+    {
+      "id": "c6",
+      "template": {
+        "title": "Moon Dimmer",
+        "reading_level": 3,
+        "reading_band": "Grades 1–2",
+        "target_minutes": 5,
+        "summary": "A bedtime scene where a child dims a bright moon with a blanket.",
+        "sentences": [
+          {
+            "id": "s1",
+            "text_with_blanks": "In the bedroom, [[slot_child]] loved to look at the [[slot_moon]].",
+            "slot_ids": [
+              "slot_child",
+              "slot_moon"
+            ]
+          },
+          {
+            "id": "s2",
+            "text_with_blanks": "The moon was too bright and made [[slot_child]]'s eyes sleepy.",
+            "slot_ids": [
+              "slot_moon",
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s3",
+            "text_with_blanks": "[[slot_child]] wanted to make the moon softer.",
+            "slot_ids": [
+              "slot_child"
+            ]
+          },
+          {
+            "id": "s4",
+            "text_with_blanks": "First, [[slot_child]] pulled on the [[slot_blanket]] and tucked it in.",
+            "slot_ids": [
+              "slot_blanket"
+            ]
+          },
+          {
+            "id": "s5",
+            "text_with_blanks": "The blanket was warm and cozy.",
+            "slot_ids": []
+          },
+          {
+            "id": "s6",
+            "text_with_blanks": "Then [[slot_child]] whispered, 'Let me dim you,' and closed the [[slot_night]] window.",
+            "slot_ids": [
+              "slot_child",
+              "slot_night"
+            ]
+          },
+          {
+            "id": "s7",
+            "text_with_blanks": "The night grew calm and the moon dimmed to a gentle [[slot_star]].",
+            "slot_ids": [
+              "slot_star"
+            ]
+          },
+          {
+            "id": "s8",
+            "text_with_blanks": "The moon thanked [[slot_child]] with a soft glow.",
+            "slot_ids": []
+          },
+          {
+            "id": "s9",
+            "text_with_blanks": "They both fell asleep to the gentle hum of the night.",
+            "slot_ids": []
+          },
+          {
+            "id": "s10",
+            "text_with_blanks": "When [[slot_child]] woke up, the moon was still shining softly.",
+            "slot_ids": [
+              "slot_child"
+            ]
+          }
+        ],
+        "slots": [
+          {
+            "id": "slot_child",
+            "type": "child_name",
+            "author_description": "Name of the child character",
+            "child_prompt": "Can you give a name for the child?",
+            "examples": [
+              "Mia",
+              "Noah",
+              "Lily"
+            ]
+          },
+          {
+            "id": "slot_moon",
+            "type": "noun",
+            "author_description": "The moon",
+            "child_prompt": "Name the moon or a moon you see.",
+            "examples": [
+              "moon",
+              "bright moon"
+            ]
+          },
+          {
+            "id": "slot_blanket",
+            "type": "noun",
+            "author_description": "A cozy blanket",
+            "child_prompt": "Name a blanket you like.",
+            "examples": [
+              "blanket",
+              "soft blanket"
+            ]
+          },
+          {
+            "id": "slot_star",
+            "type": "noun",
+            "author_description": "A star or starfish",
+            "child_prompt": "Name a star you see in the night sky.",
+            "examples": [
+              "star",
+              "soft star"
+            ]
+          },
+          {
+            "id": "slot_night",
+            "type": "noun",
+            "author_description": "The night or darkness",
+            "child_prompt": "Name a time when it is dark.",
+            "examples": [
+              "night",
+              "dark night"
+            ]
+          }
+        ]
+      },
+      "scores": {
+        "overall": 0.65,
+        "story_arc": 0.7,
+        "character_engagement": 0.6,
+        "emotional_warmth": 0.9,
+        "curiosity_hooks": 0.5,
+        "madlibs_usability": 0.8,
+        "reading_level_fit": 0.8,
+        "novelty": 0.6,
+        "memorable_moment": 0.6,
+        "show_vs_tell": 0.7,
+        "character_depth": 0.5,
+        "kid_retellability": 0.7
+      }
+    }
+  ],
+  "coach_feedback": {
+    "cohort_summary": {
+      "common_strengths": [
+        "Strong emotional warmth and positive tone, making them suitable for young readers.",
+        "Good fit for the Level 3 reading level with simple sentence structures and clear narratives.",
+        "Effective use of Mad Libs slots that integrate well into the story flow.",
+        "Focus on relatable, everyday scenarios (backyard, library, beach, kitchen, bedroom) that children can easily connect with."
+      ],
+      "common_weaknesses": [
+        "Limited novelty and originality; many stories follow a similar 'child helps object' or 'child solves minor problem' formula.",
+        "Character depth is consistently low, with the child protagonist often acting as a generic 'helper' without distinct personality.",
+        "Repetitive phrasing, particularly the '[[slot_child]] felt a gentle tug of curiosity/kindness' which feels like a placeholder for emotional development rather than showing it.",
+        "Lack of significant story arc or rising action; problems are often simple and quickly resolved without much tension or challenge."
+      ],
+      "patterns_to_reduce": [
+        "The 'child helps a lost/stuck/cold/bright object' narrative structure.",
+        "The phrase '[[slot_child]] felt a gentle tug of [emotion]' as a primary way to convey character feeling.",
+        "Over-reliance on a single, easily resolved problem without any build-up or minor complications."
+      ],
+      "patterns_to_explore": [
+        "Introducing a secondary character (animal, friend, parent) to add dynamic interaction.",
+        "Varying the types of problems and solutions, perhaps involving a bit more ingenuity or a multi-step process.",
+        "Exploring different emotional responses beyond 'curiosity' or 'kindness' in the child character.",
+        "Adding a touch of gentle humor or unexpected elements to increase novelty."
+      ]
+    },
+    "per_story_feedback": [
+      {
+        "story_id": "c1",
+        "is_standout": false,
+        "headline": "A sweet but somewhat generic butterfly tale.",
+        "strengths": [
+          "Gentle and warm tone, perfect for the target age group.",
+          "Clear, simple problem and resolution.",
+          "Good Mad Libs usability."
+        ],
+        "weaknesses": [
+          "Lacks novelty; the 'lost butterfly' is a very common trope.",
+          "The 'gentle tug of curiosity' feels a bit forced and tells rather than shows the child's motivation.",
+          "The solution is very straightforward, offering little in terms of a memorable moment."
+        ],
+        "next_round_goals": [
+          "Introduce a slightly more unique challenge for the butterfly, perhaps it's not just lost but needs a specific type of flower or is afraid of something.",
+          "Replace 'felt a gentle tug of curiosity' with an action or thought that demonstrates the child's curiosity, e.g., '[[slot_child]] leaned closer, wondering why the butterfly looked so sad.'",
+          "Add a small, sensory detail about the butterfly or the flower to make the moment more vivid."
+        ]
+      },
+      {
+        "story_id": "c2",
+        "is_standout": true,
+        "headline": "Charming library adventure with a touch of magic.",
+        "strengths": [
+          "Good novelty with the tiny robot in a book.",
+          "Strong emotional warmth and clear character motivation ('tug of kindness').",
+          "High kid-retellability due to the imaginative premise.",
+          "The library setting is engaging and offers good opportunities for Mad Libs slots."
+        ],
+        "weaknesses": [
+          "The robot's 'stuckness' could be more clearly defined to create a stronger sense of urgency or mystery.",
+          "The resolution might be a little too simple; how exactly does the child free the robot?",
+          "Character depth is still limited; the child is kind, but we don't learn much else."
+        ],
+        "next_round_goals": [
+          "Elaborate on *how* the robot is stuck and *how* the child helps it. Is it tangled in a bookmark? Is a page folded over it? This adds a mini-puzzle.",
+          "Give the robot a tiny, distinct personality trait or a sound it makes to enhance its character.",
+          "Add a small, unexpected consequence or reward for the child's kindness, like the robot winking or doing a tiny dance."
+        ]
+      },
+      {
+        "story_id": "c3",
+        "is_standout": false,
+        "headline": "A placeholder story that needs a complete rewrite.",
+        "strengths": [
+          "The concept of a kite tangled in a swing is relatable to children."
+        ],
+        "weaknesses": [
+          "All scores are zero, indicating a fundamental lack of development.",
+          "The summary and sample sentences are extremely basic and offer no narrative flow or emotional engagement.",
+          "The 'tug of curiosity' is reused without any context or build-up."
+        ],
+        "next_round_goals": [
+          "Develop a clear story arc with a beginning, middle, and end, focusing on the child's actions to untangle the kite.",
+          "Introduce a challenge or a moment of slight difficulty in freeing the kite to create minor tension.",
+          "Replace generic phrases with descriptive language and actions that show the child's feelings and efforts."
+        ]
+      },
+      {
+        "story_id": "c4",
+        "is_standout": false,
+        "headline": "A lukewarm cookie tale that needs more flavor.",
+        "strengths": [
+          "Relatable domestic setting (kitchen, baking).",
+          "Clear, simple problem and solution.",
+          "Good Mad Libs usability."
+        ],
+        "weaknesses": [
+          "Low novelty; warming a cold cookie isn't a particularly exciting adventure.",
+          "The 'warm solution' is very straightforward and lacks any imaginative element.",
+          "Character depth is minimal; the child is just performing a task."
+        ],
+        "next_round_goals": [
+          "Elevate the 'cold cookie' problem. Is it a special cookie? Does it have a name? Does it *feel* cold in a funny way?",
+          "Introduce a small, playful obstacle or a silly idea the child tries before finding the 'warm solution'.",
+          "Add a sensory detail about the cookie's transformation – the smell, the texture, the taste – to make the resolution more satisfying."
+        ]
+      },
+      {
+        "story_id": "c5",
+        "is_standout": true,
+        "headline": "A sweet beach discovery with potential for wonder.",
+        "strengths": [
+          "High emotional warmth and a sense of gentle discovery.",
+          "Good novelty with the 'shy shell' concept.",
+          "Engaging beach setting with familiar elements like sandcastles.",
+          "Strong kid-retellability due to the charming premise."
+        ],
+        "weaknesses": [
+          "The 'shy shell' could be given a more distinct characteristic or a reason for its shyness.",
+          "The resolution of the shell being 'too quiet to be heard' and the child's subsequent action isn't fully developed.",
+          "Similar to other stories, the 'tug of curiosity' is a bit of a shortcut for character motivation."
+        ],
+        "next_round_goals": [
+          "Give the shy shell a unique visual detail or a tiny, subtle sound it makes when it's happy or sad.",
+          "Expand on how the child helps the shell overcome its shyness. Does the child whisper to it? Build a special home for it? Introduce it to other shells?",
+          "Replace 'felt a gentle tug of curiosity' with an action that shows the child's empathy or wonder, e.g., '[[slot_child]] knelt down, wondering what made the little shell so quiet.'"
+        ]
+      },
+      {
+        "story_id": "c6",
+        "is_standout": false,
+        "headline": "A cozy bedtime story that needs a spark of imagination.",
+        "strengths": [
+          "High emotional warmth, creating a comforting bedtime atmosphere.",
+          "Relatable problem for children (moon too bright at bedtime).",
+          "Clear, simple solution with good Mad Libs usability."
+        ],
+        "weaknesses": [
+          "The novelty is moderate; dimming the moon with a blanket is a bit whimsical but not deeply imaginative.",
+          "The resolution is very quick and simple, lacking any build-up or a memorable moment beyond the action itself.",
+          "Character depth is low; the child is simply solving a personal comfort issue."
+        ],
+        "next_round_goals": [
+          "Introduce a playful interaction with the moon before dimming it. Does the child wave at it? Talk to it? Ask it to be quieter?",
+          "Add a small, magical or imaginative detail to the act of dimming the moon, perhaps the blanket shimmers or the room fills with a soft, new color.",
+          "Show the child's feeling of comfort or accomplishment *after* the moon is dimmed, rather than just stating the problem."
+        ]
+      }
+    ]
+  }
+}
