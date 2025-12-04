@@ -1,0 +1,446 @@
+{
+  "config": {
+    "model": "google/gemini-3-pro-preview",
+    "count": 6
+  },
+  "blueprints": [
+    {
+      "id": "bp_unexpected_ingredient",
+      "pattern_name": "The Happy Accident",
+      "logline": "A child tries to create something perfect, makes a big messy mistake, but realizes the result is even better than the original plan.",
+      "setting": "kitchen, art room, or garden",
+      "emotional_theme": "creativity and resilience",
+      "age_range": "6–8",
+      "beats": [
+        {
+          "id": "beginning",
+          "role": "goal",
+          "description": "The child sets out to make a specific, perfect item for a special occasion."
+        },
+        {
+          "id": "middle1",
+          "role": "mistake",
+          "description": "A distraction or stumble causes a strange, unintended ingredient or material to fall into the mix."
+        },
+        {
+          "id": "middle2",
+          "role": "reaction",
+          "description": "The child worries the creation is ruined but decides to bake/build/finish it anyway to see what happens."
+        },
+        {
+          "id": "resolution",
+          "role": "success",
+          "description": "The final result looks weird but turns out to be delightful, teaching the child that mistakes can be magical."
+        }
+      ],
+      "centerpiece_moment": "The oven door/box opens and a cloud of colorful steam or glitter puffs out, revealing a lumpy but magnificent creation.",
+      "slot_ideas": [
+        {
+          "id": "slot_child",
+          "type": "child_name",
+          "role": "protagonist",
+          "examples": [
+            "Leo",
+            "Maya",
+            "Sam"
+          ]
+        },
+        {
+          "id": "slot_creation",
+          "type": "craft_or_food",
+          "role": "what they are making",
+          "examples": [
+            "super-cake",
+            "clay statue",
+            "robot costume"
+          ]
+        },
+        {
+          "id": "slot_weird_item",
+          "type": "odd_object",
+          "role": "the mistake ingredient",
+          "examples": [
+            "spicy pepper",
+            "silver glitter",
+            "sour pickle juice"
+          ]
+        },
+        {
+          "id": "slot_recipient",
+          "type": "person_or_group",
+          "role": "who receives the gift",
+          "examples": [
+            "the Mayor",
+            "Mom",
+            "the Science Teacher"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bp_misunderstood_creature",
+      "pattern_name": "The Grump's Secret",
+      "logline": "A child investigates a grumpy neighbor or creature and discovers they are only grumpy because they have a small, fixable problem.",
+      "setting": "backyard fence, park bridge, or apartment hallway",
+      "emotional_theme": "empathy and kindness",
+      "age_range": "6–8",
+      "beats": [
+        {
+          "id": "beginning",
+          "role": "observation",
+          "description": "The child hears strange, grumpy noises coming from a hidden spot nearby."
+        },
+        {
+          "id": "middle1",
+          "role": "investigation",
+          "description": "Instead of running away, the child creeps closer and sees the 'scary' figure is actually struggling with something mundane."
+        },
+        {
+          "id": "middle2",
+          "role": "intervention",
+          "description": "The child uses a small object from their pocket to solve the figure's problem."
+        },
+        {
+          "id": "resolution",
+          "role": "friendship",
+          "description": "The figure stops being grumpy and shares a quiet, happy moment with the child."
+        }
+      ],
+      "centerpiece_moment": "The scary figure puts on the child's gift (like glasses or a bandage) and instantly smiles, looking completely different.",
+      "slot_ideas": [
+        {
+          "id": "slot_creature",
+          "type": "character_type",
+          "role": "the grumpy figure",
+          "examples": [
+            "troll",
+            "old dog",
+            "neighbor Mr. Grump"
+          ]
+        },
+        {
+          "id": "slot_noise",
+          "type": "sound",
+          "role": "evidence of grumpiness",
+          "examples": [
+            "loud growling",
+            "angry muttering",
+            "stomping"
+          ]
+        },
+        {
+          "id": "slot_problem",
+          "type": "minor_problem",
+          "role": "why they are grumpy",
+          "examples": [
+            "thorn in paw",
+            "lost reading glasses",
+            "hiccups"
+          ]
+        },
+        {
+          "id": "slot_gift",
+          "type": "solution_object",
+          "role": "what fixes the problem",
+          "examples": [
+            "tweezers",
+            "magnifying glass",
+            "glass of water"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bp_magic_transit",
+      "pattern_name": "The Impossible Detour",
+      "logline": "A boring trip on a vehicle takes a magical turn when the driver presses a secret button, showing the child a hidden wonder.",
+      "setting": "bus, train, or backseat of a car",
+      "emotional_theme": "wonder and imagination",
+      "age_range": "6–8",
+      "beats": [
+        {
+          "id": "beginning",
+          "role": "boredom",
+          "description": "The child is bored on a long, ordinary ride, staring out the window at gray streets."
+        },
+        {
+          "id": "middle1",
+          "role": "shift",
+          "description": "The vehicle turns down a street not on any map, and the colors outside begin to change."
+        },
+        {
+          "id": "middle2",
+          "role": "spectacle",
+          "description": "They pass through a fantastic landscape filled with impossible things, just for a minute."
+        },
+        {
+          "id": "resolution",
+          "role": "return",
+          "description": "The vehicle returns to the normal route, but the child holds a souvenir proving the detour was real."
+        }
+      ],
+      "centerpiece_moment": "The child presses their face to the glass and sees a giant [animal] floating gracefully past the window.",
+      "slot_ideas": [
+        {
+          "id": "slot_vehicle",
+          "type": "vehicle_type",
+          "role": "mode of transport",
+          "examples": [
+            "school bus",
+            "subway train",
+            "mom's van"
+          ]
+        },
+        {
+          "id": "slot_driver",
+          "type": "character_role",
+          "role": "who steers the vehicle",
+          "examples": [
+            "driver with a purple hat",
+            "robot conductor",
+            "grandpa"
+          ]
+        },
+        {
+          "id": "slot_fantasy_sight",
+          "type": "magical_entity",
+          "role": "what they see outside",
+          "examples": [
+            "flying whales",
+            "candy castles",
+            "dancing dinosaurs"
+          ]
+        },
+        {
+          "id": "slot_souvenir",
+          "type": "small_object",
+          "role": "proof of the trip",
+          "examples": [
+            "glowing ticket",
+            "blue leaf",
+            "star-shaped stone"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bp_scattered_treasure",
+      "pattern_name": "The Great Scatter",
+      "logline": "A sudden force scatters a child's precious collection, and they must run through the setting to catch them all with the help of others.",
+      "setting": "windy park, busy school hallway, or city sidewalk",
+      "emotional_theme": "community and persistence",
+      "age_range": "6–8",
+      "beats": [
+        {
+          "id": "beginning",
+          "role": "pride",
+          "description": "The child is proudly carrying a stack or box of their favorite things to show someone."
+        },
+        {
+          "id": "middle1",
+          "role": "disaster",
+          "description": "A sudden event (wind, bump, sneeze) knocks the items out of the child's hands and sends them flying everywhere."
+        },
+        {
+          "id": "middle2",
+          "role": "chase",
+          "description": "The child scrambles to catch the items as they land in funny/difficult places, getting help from passersby."
+        },
+        {
+          "id": "resolution",
+          "role": "gathering",
+          "description": "The collection is back together, slightly messy but safe, and the child thanks the helpers."
+        }
+      ],
+      "centerpiece_moment": "The items swirl into the air like a flock of birds, landing on high branches, statues, and people's hats.",
+      "slot_ideas": [
+        {
+          "id": "slot_child",
+          "type": "child_name",
+          "role": "protagonist",
+          "examples": [
+            "Kiko",
+            "Ben",
+            "Aria"
+          ]
+        },
+        {
+          "id": "slot_collection",
+          "type": "plural_objects",
+          "role": "what gets scattered",
+          "examples": [
+            "drawing pages",
+            "baseball cards",
+            "dried leaves"
+          ]
+        },
+        {
+          "id": "slot_force",
+          "type": "cause_of_disaster",
+          "role": "what causes the scatter",
+          "examples": [
+            "gust of wind",
+            "running dog",
+            "giant sneeze"
+          ]
+        },
+        {
+          "id": "slot_helper",
+          "type": "person_or_animal",
+          "role": "who helps catch one",
+          "examples": [
+            "mail carrier",
+            "squirrel",
+            "crossing guard"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bp_secret_helper",
+      "pattern_name": "The Midnight Worker",
+      "logline": "A child stays awake/hides to see who does a specific chore and discovers a magical creature or animal is secretly helping.",
+      "setting": "library at closing time, bedroom at night, or shoe store",
+      "emotional_theme": "curiosity and gratitude",
+      "age_range": "6–8",
+      "beats": [
+        {
+          "id": "beginning",
+          "role": "mystery",
+          "description": "Every morning, the child notices a messy place has been perfectly cleaned or organized by magic."
+        },
+        {
+          "id": "middle1",
+          "role": "stakeout",
+          "description": "The child decides to hide and watch the spot instead of leaving/sleeping."
+        },
+        {
+          "id": "middle2",
+          "role": "discovery",
+          "description": "A tiny or unexpected visitor appears and skillfully does the work using a unique method."
+        },
+        {
+          "id": "resolution",
+          "role": "secret_pact",
+          "description": "The child leaves a thank-you note or snack, promising to keep the helper's secret."
+        }
+      ],
+      "centerpiece_moment": "The visitor uses their tail/ears/magic wand to stack objects impossibly high without making a sound.",
+      "slot_ideas": [
+        {
+          "id": "slot_place",
+          "type": "location_room",
+          "role": "where the mystery happens",
+          "examples": [
+            "toy shelf",
+            "baker's kitchen",
+            "garden shed"
+          ]
+        },
+        {
+          "id": "slot_helper",
+          "type": "creature_small",
+          "role": "the secret worker",
+          "examples": [
+            "mouse in a vest",
+            "tiny robot",
+            "brownie elf"
+          ]
+        },
+        {
+          "id": "slot_chore",
+          "type": "verb_ing",
+          "role": "what they are doing",
+          "examples": [
+            "sorting books",
+            "polishing shoes",
+            "braiding flowers"
+          ]
+        },
+        {
+          "id": "slot_snack",
+          "type": "food_item",
+          "role": "the reward left behind",
+          "examples": [
+            "cheese crumb",
+            "shiny button",
+            "drop of honey"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bp_lucky_charm",
+      "pattern_name": "The Courage Charm",
+      "logline": "A nervous child finds an object they think is lucky, uses it to face a fear, loses the object, but succeeds anyway.",
+      "setting": "school stage, swimming pool, or bicycle path",
+      "emotional_theme": "courage and self-belief",
+      "age_range": "6–8",
+      "beats": [
+        {
+          "id": "beginning",
+          "role": "fear",
+          "description": "The child is terrified to do a specific activity that everyone else seems to find easy."
+        },
+        {
+          "id": "middle1",
+          "role": "crutch",
+          "description": "The child finds a 'lucky' object and feels brave enough to try the activity."
+        },
+        {
+          "id": "middle2",
+          "role": "loss",
+          "description": "Right before the big moment, the object gets lost or left behind."
+        },
+        {
+          "id": "resolution",
+          "role": "growth",
+          "description": "The child takes a deep breath, does the activity without the object, and realizes the bravery was inside them all along."
+        }
+      ],
+      "centerpiece_moment": "The child stands at the edge (of the stage/pool/path), closes their eyes, fists clenched, and takes the first step forward alone.",
+      "slot_ideas": [
+        {
+          "id": "slot_activity",
+          "type": "activity_event",
+          "role": "the scary thing",
+          "examples": [
+            "jumping off the diving board",
+            "reading a poem aloud",
+            "riding without training wheels"
+          ]
+        },
+        {
+          "id": "slot_charm",
+          "type": "small_object",
+          "role": "the fake source of luck",
+          "examples": [
+            "shiny penny",
+            "red feather",
+            "hero action figure"
+          ]
+        },
+        {
+          "id": "slot_mentor",
+          "type": "person_support",
+          "role": "encouraging figure",
+          "examples": [
+            "Coach",
+            "Big Sister",
+            "Grandpa"
+          ]
+        },
+        {
+          "id": "slot_feeling",
+          "type": "emotion_adjective",
+          "role": "how they feel at the end",
+          "examples": [
+            "proud",
+            "tall",
+            "unstoppable"
+          ]
+        }
+      ]
+    }
+  ]
+}

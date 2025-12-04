@@ -1,0 +1,28 @@
+Title: The Silent Day of Charades
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: When a child can't speak, they use drawings and gestures to share breakfast and have a fun family dinner.
+
+Slots:
+- slot_food (food): Name of the breakfast food the child wants.
+  Child prompt: Name a breakfast food you like.
+  Examples: pancakes, waffles, scrambled eggs
+- slot_gesture (action_verb): Verb describing a gesture the child makes.
+  Child prompt: Give a verb that describes a gesture you might make.
+  Examples: pointed, jumped, waved
+- slot_misunderstanding (noun): A silly thing a grown‑up might guess when the child acts out a food.
+  Child prompt: Name a silly thing a grown‑up might guess when you act out a food.
+  Examples: elephant, helicopter, dancing
+- slot_family (group_name): Name of the group of people who will join the game.
+  Child prompt: Name the group of people who will join the game.
+  Examples: family, class, friends
+
+Story template:
+s1: The child woke up and tried to say hello, but only a squeak came out.
+s2: They went to the kitchen and wanted [[slot_food]], but the grown‑up gave them a banana instead.
+s3: The child made a big hand‑shake and [[slot_gesture]] to show they wanted the food, but the grown‑up thought they were asking for a [[slot_misunderstanding]].
+s4: After a few more silly gestures, the child realized they could act it out like a game of charades.
+s5: They flapped their arms like a bird to ask for chicken nuggets, and everyone laughed.
+s6: The family, [[slot_family]], joined in and started making pictures and gestures for the whole day.
+s7: At dinner, they all used only hands to order, and the child got the chicken nuggets they wanted.
+s8: Everyone cheered, and the child felt happy that they could share without words.

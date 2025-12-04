@@ -1,0 +1,3178 @@
+{
+  "meta": {
+    "judge_model": "google/gemini-3-pro-preview",
+    "timestamp": "20251203_082805",
+    "total_blueprints": 36,
+    "judged_count": 36
+  },
+  "entries": [
+    {
+      "source_file": "blueprints_level3_20251202_183633.json",
+      "index_in_file": 2,
+      "blueprint": {
+        "id": "bp_magic_transit",
+        "pattern_name": "The Impossible Detour",
+        "logline": "A boring trip on a vehicle takes a magical turn when the driver presses a secret button, showing the child a hidden wonder.",
+        "setting": "bus, train, or backseat of a car",
+        "emotional_theme": "wonder and imagination",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "boredom",
+            "description": "The child is bored on a long, ordinary ride, staring out the window at gray streets."
+          },
+          {
+            "id": "middle1",
+            "role": "shift",
+            "description": "The vehicle turns down a street not on any map, and the colors outside begin to change."
+          },
+          {
+            "id": "middle2",
+            "role": "spectacle",
+            "description": "They pass through a fantastic landscape filled with impossible things, just for a minute."
+          },
+          {
+            "id": "resolution",
+            "role": "return",
+            "description": "The vehicle returns to the normal route, but the child holds a souvenir proving the detour was real."
+          }
+        ],
+        "centerpiece_moment": "The child presses their face to the glass and sees a giant [animal] floating gracefully past the window.",
+        "slot_ideas": [
+          {
+            "id": "slot_vehicle",
+            "type": "vehicle_type",
+            "role": "mode of transport",
+            "examples": [
+              "school bus",
+              "subway train",
+              "mom's van"
+            ]
+          },
+          {
+            "id": "slot_driver",
+            "type": "character_role",
+            "role": "who steers the vehicle",
+            "examples": [
+              "driver with a purple hat",
+              "robot conductor",
+              "grandpa"
+            ]
+          },
+          {
+            "id": "slot_fantasy_sight",
+            "type": "magical_entity",
+            "role": "what they see outside",
+            "examples": [
+              "flying whales",
+              "candy castles",
+              "dancing dinosaurs"
+            ]
+          },
+          {
+            "id": "slot_souvenir",
+            "type": "small_object",
+            "role": "proof of the trip",
+            "examples": [
+              "glowing ticket",
+              "blue leaf",
+              "star-shaped stone"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.85,
+        "story_arc_potential": 0.8,
+        "emotional_warmth": 0.85,
+        "novelty": 0.75,
+        "variety_potential": 0.9,
+        "kid_retellability": 0.95,
+        "blueprint_clarity": 0.95,
+        "one_line_feedback": "A classic, cozy 'portal' structure that validates a child's imagination; while the protagonist is somewhat passive, the visual potential and 'souvenir' ending make it highly satisfying."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 10,
+      "blueprint": {
+        "id": "bp_unhappy_plant",
+        "pattern_name": "The Plant Doctor",
+        "logline": "A child notices a wilting plant and tries various funny methods to cheer it up.",
+        "setting": "windowsill",
+        "emotional_theme": "empathy and care",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "diagnosis",
+            "description": "The child sees the houseplant looks sad and droopy."
+          },
+          {
+            "id": "middle1",
+            "role": "experiments",
+            "description": "They try reading to it, playing music, or giving it a toy."
+          },
+          {
+            "id": "middle2",
+            "role": "clue",
+            "description": "They notice the soil is dry or the sun is blocked."
+          },
+          {
+            "id": "resolution",
+            "role": "blooming",
+            "description": "After water and light, the plant perks up, and the child believes the music helped too."
+          }
+        ],
+        "centerpiece_moment": "The child puts headphones on the plant's pot so it can listen to their favorite song.",
+        "slot_ideas": [
+          {
+            "id": "slot_plant",
+            "type": "plant_type",
+            "role": "patient",
+            "examples": [
+              "cactus",
+              "fern",
+              "sunflower"
+            ]
+          },
+          {
+            "id": "slot_cure_action",
+            "type": "verb_activity",
+            "role": "silly cure",
+            "examples": [
+              "singing",
+              "dancing",
+              "telling jokes"
+            ]
+          },
+          {
+            "id": "slot_music_type",
+            "type": "music_genre",
+            "role": "music",
+            "examples": [
+              "rock and roll",
+              "opera",
+              "lullabies"
+            ]
+          },
+          {
+            "id": "slot_change",
+            "type": "visual_change",
+            "role": "recovery sign",
+            "examples": [
+              "green leaf",
+              "tiny flower",
+              "straight stem"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.85,
+        "story_arc_potential": 0.85,
+        "emotional_warmth": 0.9,
+        "novelty": 0.65,
+        "variety_potential": 0.7,
+        "kid_retellability": 0.95,
+        "blueprint_clarity": 0.95,
+        "one_line_feedback": "Sweet, accessible concept that perfectly balances scientific logic with age-appropriate magical thinking, making it highly relatable and retellable."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 17,
+      "blueprint": {
+        "id": "bp_supermarket_helper",
+        "pattern_name": "The Grocery Mission",
+        "logline": "A child is given a short list of items to find in the supermarket alone (in the next aisle) and takes the job very seriously.",
+        "setting": "supermarket",
+        "emotional_theme": "independence",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "assignment",
+            "description": "The adult gives the child a list with three items and sends them to the next aisle."
+          },
+          {
+            "id": "middle1",
+            "role": "search",
+            "description": "The child navigates the giant shelves looking for the specific brand."
+          },
+          {
+            "id": "middle2",
+            "role": "dilemma",
+            "description": "They can't find the exact one, so they have to make a smart choice on a substitute."
+          },
+          {
+            "id": "resolution",
+            "role": "triumph",
+            "description": "They return to the cart, and the adult praises their good choice."
+          }
+        ],
+        "centerpiece_moment": "The cereal boxes are stacked so high they look like a wall of colorful bricks.",
+        "slot_ideas": [
+          {
+            "id": "slot_item1",
+            "type": "grocery_item",
+            "role": "target",
+            "examples": [
+              "tomato soup",
+              "bag of apples",
+              "orange juice"
+            ]
+          },
+          {
+            "id": "slot_item2",
+            "type": "grocery_item",
+            "role": "target",
+            "examples": [
+              "bread",
+              "milk",
+              "cookies"
+            ]
+          },
+          {
+            "id": "slot_brand",
+            "type": "brand_name_silly",
+            "role": "specific type",
+            "examples": [
+              "Super-Crunch",
+              "Grandma's Best",
+              "Choco-Blast"
+            ]
+          },
+          {
+            "id": "slot_parent",
+            "type": "parent_role",
+            "role": "boss",
+            "examples": [
+              "Dad",
+              "Mom",
+              "Aunt"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.85,
+        "story_arc_potential": 0.9,
+        "emotional_warmth": 0.8,
+        "novelty": 0.6,
+        "variety_potential": 0.75,
+        "kid_retellability": 0.95,
+        "blueprint_clarity": 0.95,
+        "one_line_feedback": "Captures a relatable developmental milestone perfectly; the 'substitution dilemma' beat adds excellent agency for the child character."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251202_183633.json",
+      "index_in_file": 1,
+      "blueprint": {
+        "id": "bp_misunderstood_creature",
+        "pattern_name": "The Grump's Secret",
+        "logline": "A child investigates a grumpy neighbor or creature and discovers they are only grumpy because they have a small, fixable problem.",
+        "setting": "backyard fence, park bridge, or apartment hallway",
+        "emotional_theme": "empathy and kindness",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "observation",
+            "description": "The child hears strange, grumpy noises coming from a hidden spot nearby."
+          },
+          {
+            "id": "middle1",
+            "role": "investigation",
+            "description": "Instead of running away, the child creeps closer and sees the 'scary' figure is actually struggling with something mundane."
+          },
+          {
+            "id": "middle2",
+            "role": "intervention",
+            "description": "The child uses a small object from their pocket to solve the figure's problem."
+          },
+          {
+            "id": "resolution",
+            "role": "friendship",
+            "description": "The figure stops being grumpy and shares a quiet, happy moment with the child."
+          }
+        ],
+        "centerpiece_moment": "The scary figure puts on the child's gift (like glasses or a bandage) and instantly smiles, looking completely different.",
+        "slot_ideas": [
+          {
+            "id": "slot_creature",
+            "type": "character_type",
+            "role": "the grumpy figure",
+            "examples": [
+              "troll",
+              "old dog",
+              "neighbor Mr. Grump"
+            ]
+          },
+          {
+            "id": "slot_noise",
+            "type": "sound",
+            "role": "evidence of grumpiness",
+            "examples": [
+              "loud growling",
+              "angry muttering",
+              "stomping"
+            ]
+          },
+          {
+            "id": "slot_problem",
+            "type": "minor_problem",
+            "role": "why they are grumpy",
+            "examples": [
+              "thorn in paw",
+              "lost reading glasses",
+              "hiccups"
+            ]
+          },
+          {
+            "id": "slot_gift",
+            "type": "solution_object",
+            "role": "what fixes the problem",
+            "examples": [
+              "tweezers",
+              "magnifying glass",
+              "glass of water"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.82,
+        "story_arc_potential": 0.9,
+        "emotional_warmth": 0.85,
+        "novelty": 0.5,
+        "variety_potential": 0.85,
+        "kid_retellability": 0.95,
+        "blueprint_clarity": 0.95,
+        "one_line_feedback": "A timeless, high-empathy structure that works beautifully for this age group, though the 'solution object' needs careful setup in the opening to avoid feeling like a deus ex machina."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 13,
+      "blueprint": {
+        "id": "bp_stray_friend",
+        "pattern_name": "The Patient Tamer",
+        "logline": "A stray animal is scared, and a child learns that sitting still is the best way to make friends.",
+        "setting": "front porch or park bench",
+        "emotional_theme": "patience and trust",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "sighting",
+            "description": "A nervous animal appears near the child but won't come close."
+          },
+          {
+            "id": "middle1",
+            "role": "fail",
+            "description": "The child tries to chase it or call it loudly, and it runs away."
+          },
+          {
+            "id": "middle2",
+            "role": "stillness",
+            "description": "The child decides to sit like a statue and hold out a treat."
+          },
+          {
+            "id": "resolution",
+            "role": "contact",
+            "description": "The animal slowly creeps forward and sniffs the child's hand."
+          }
+        ],
+        "centerpiece_moment": "The child holds a breath, watching the animal take one tiny step forward, then another.",
+        "slot_ideas": [
+          {
+            "id": "slot_animal",
+            "type": "animal",
+            "role": "visitor",
+            "examples": [
+              "cat",
+              "dog",
+              "bunny"
+            ]
+          },
+          {
+            "id": "slot_treat",
+            "type": "food",
+            "role": "lure",
+            "examples": [
+              "cheese",
+              "cracker",
+              "carrot"
+            ]
+          },
+          {
+            "id": "slot_name",
+            "type": "pet_name",
+            "role": "given name",
+            "examples": [
+              "Shadow",
+              "Scout",
+              "Goldie"
+            ]
+          },
+          {
+            "id": "slot_noise",
+            "type": "soft_sound",
+            "role": "animal sound",
+            "examples": [
+              "purr",
+              "whimper",
+              "sniff"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.8,
+        "story_arc_potential": 0.9,
+        "emotional_warmth": 0.9,
+        "novelty": 0.4,
+        "variety_potential": 0.6,
+        "kid_retellability": 0.95,
+        "blueprint_clarity": 0.95,
+        "one_line_feedback": "A timeless, emotionally resonant arc that perfectly suits the age group, though it relies on a very standard trope with limited room for plot variation."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 15,
+      "blueprint": {
+        "id": "bp_nature_collection",
+        "pattern_name": "The Missing Piece",
+        "logline": "A child collects nature items (rocks, leaves) and searches for one specific color or shape to finish the set.",
+        "setting": "forest path",
+        "emotional_theme": "perseverance",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "setup",
+            "description": "The child arranges their collection and notices one empty spot."
+          },
+          {
+            "id": "middle1",
+            "role": "hunt",
+            "description": "They go outside looking specifically for a 'round white one' or 'red pointy one'."
+          },
+          {
+            "id": "middle2",
+            "role": "discovery",
+            "description": "They find something that isn't what they looked for, but is even cooler."
+          },
+          {
+            "id": "resolution",
+            "role": "adaptation",
+            "description": "They change the collection to include the new treasure."
+          }
+        ],
+        "centerpiece_moment": "On a tree stump, the child lines up ten smooth stones in a perfect circle.",
+        "slot_ideas": [
+          {
+            "id": "slot_collection_type",
+            "type": "nature_object",
+            "role": "items",
+            "examples": [
+              "rocks",
+              "leaves",
+              "acorns"
+            ]
+          },
+          {
+            "id": "slot_rare_feature",
+            "type": "adjective",
+            "role": "target quality",
+            "examples": [
+              "sparkly",
+              "blue",
+              "heart-shaped"
+            ]
+          },
+          {
+            "id": "slot_container",
+            "type": "container",
+            "role": "holder",
+            "examples": [
+              "egg carton",
+              "shoe box",
+              "pocket"
+            ]
+          },
+          {
+            "id": "slot_surprise_item",
+            "type": "object",
+            "role": "the twist find",
+            "examples": [
+              "fossil",
+              "bird feather",
+              "piece of glass"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.78,
+        "story_arc_potential": 0.8,
+        "emotional_warmth": 0.8,
+        "novelty": 0.55,
+        "variety_potential": 0.85,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.95,
+        "one_line_feedback": "A cozy, highly retellable pattern that taps into the universal childhood love of sorting, though the theme is actually 'flexibility' rather than 'perseverance'."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 28,
+      "blueprint": {
+        "id": "bp_secret_correspondence",
+        "pattern_name": "The Tree Hollow Mailbox",
+        "logline": "A child leaves a letter in a hollow tree and gets a mysterious, kind reply (likely from a neighbor, but left ambiguous).",
+        "setting": "edge of woods/park",
+        "emotional_theme": "mystery and connection",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "deposit",
+            "description": "The child puts a drawing or note inside a hole in an old tree."
+          },
+          {
+            "id": "middle1",
+            "role": "waiting",
+            "description": "They come back the next day, hoping for magic."
+          },
+          {
+            "id": "middle2",
+            "role": "reply",
+            "description": "They find a small, interesting object or a note in return."
+          },
+          {
+            "id": "resolution",
+            "role": "friendship",
+            "description": "The child writes 'Thank you' and feels they have a secret friend."
+          }
+        ],
+        "centerpiece_moment": "Looking into the dark hole of the tree, a white envelope shines in the gloom.",
+        "slot_ideas": [
+          {
+            "id": "slot_gift_given",
+            "type": "small_item",
+            "role": "offering",
+            "examples": [
+              "pretty stone",
+              "acorn",
+              "drawing"
+            ]
+          },
+          {
+            "id": "slot_gift_received",
+            "type": "small_item",
+            "role": "reply",
+            "examples": [
+              "feather",
+              "poem",
+              "carved wood"
+            ]
+          },
+          {
+            "id": "slot_imagined_friend",
+            "type": "fantasy_being",
+            "role": "mind's eye",
+            "examples": [
+              "gnome",
+              "fairy",
+              "owl"
+            ]
+          },
+          {
+            "id": "slot_tree_type",
+            "type": "tree",
+            "role": "mailbox",
+            "examples": [
+              "oak",
+              "willow",
+              "maple"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.78,
+        "story_arc_potential": 0.65,
+        "emotional_warmth": 0.9,
+        "novelty": 0.5,
+        "variety_potential": 0.75,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.95,
+        "one_line_feedback": "Timeless and cozy, capturing the magic of secret worlds, though the arc is a gentle vignette that lacks a specific obstacle or complication to drive the middle."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 21,
+      "blueprint": {
+        "id": "bp_note_story",
+        "pattern_name": "The Paper Trail",
+        "logline": "A story told partly through notes left between a child and a family member (or 'magic' visitor) on the fridge or pillow.",
+        "setting": "kitchen fridge or pillow",
+        "emotional_theme": "connection",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "first_note",
+            "description": "The child finds a funny note asking a question."
+          },
+          {
+            "id": "middle1",
+            "role": "reply",
+            "description": "The child writes a reply and hides it in the special spot."
+          },
+          {
+            "id": "middle2",
+            "role": "escalation",
+            "description": "The notes turn into a scavenger hunt around the house."
+          },
+          {
+            "id": "resolution",
+            "role": "meeting",
+            "description": "The final note leads to a surprise treat or a hug from the writer."
+          }
+        ],
+        "centerpiece_moment": "A sticky note on the bathroom mirror has a drawing of a smiley face with silly glasses.",
+        "slot_ideas": [
+          {
+            "id": "slot_writer",
+            "type": "person_or_creature",
+            "role": "pen pal",
+            "examples": [
+              "Elf",
+              "Dad",
+              "Secret Agent"
+            ]
+          },
+          {
+            "id": "slot_spot",
+            "type": "location_in_house",
+            "role": "mailbox",
+            "examples": [
+              "fridge",
+              "pillow",
+              "shoe"
+            ]
+          },
+          {
+            "id": "slot_treat",
+            "type": "small_item",
+            "role": "prize",
+            "examples": [
+              "cookie",
+              "book",
+              "new pencil"
+            ]
+          },
+          {
+            "id": "slot_question",
+            "type": "question",
+            "role": "prompt",
+            "examples": [
+              "Who is the best?",
+              "Where is the cat?",
+              "What is for lunch?"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.75,
+        "story_arc_potential": 0.65,
+        "emotional_warmth": 0.8,
+        "novelty": 0.6,
+        "variety_potential": 0.7,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.9,
+        "one_line_feedback": "A cozy, interactive format that encourages reading, though the sudden shift to a 'scavenger hunt' in the middle limits the potential for a deeper emotional arc found in sustained correspondence."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251202_183633.json",
+      "index_in_file": 3,
+      "blueprint": {
+        "id": "bp_scattered_treasure",
+        "pattern_name": "The Great Scatter",
+        "logline": "A sudden force scatters a child's precious collection, and they must run through the setting to catch them all with the help of others.",
+        "setting": "windy park, busy school hallway, or city sidewalk",
+        "emotional_theme": "community and persistence",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "pride",
+            "description": "The child is proudly carrying a stack or box of their favorite things to show someone."
+          },
+          {
+            "id": "middle1",
+            "role": "disaster",
+            "description": "A sudden event (wind, bump, sneeze) knocks the items out of the child's hands and sends them flying everywhere."
+          },
+          {
+            "id": "middle2",
+            "role": "chase",
+            "description": "The child scrambles to catch the items as they land in funny/difficult places, getting help from passersby."
+          },
+          {
+            "id": "resolution",
+            "role": "gathering",
+            "description": "The collection is back together, slightly messy but safe, and the child thanks the helpers."
+          }
+        ],
+        "centerpiece_moment": "The items swirl into the air like a flock of birds, landing on high branches, statues, and people's hats.",
+        "slot_ideas": [
+          {
+            "id": "slot_child",
+            "type": "child_name",
+            "role": "protagonist",
+            "examples": [
+              "Kiko",
+              "Ben",
+              "Aria"
+            ]
+          },
+          {
+            "id": "slot_collection",
+            "type": "plural_objects",
+            "role": "what gets scattered",
+            "examples": [
+              "drawing pages",
+              "baseball cards",
+              "dried leaves"
+            ]
+          },
+          {
+            "id": "slot_force",
+            "type": "cause_of_disaster",
+            "role": "what causes the scatter",
+            "examples": [
+              "gust of wind",
+              "running dog",
+              "giant sneeze"
+            ]
+          },
+          {
+            "id": "slot_helper",
+            "type": "person_or_animal",
+            "role": "who helps catch one",
+            "examples": [
+              "mail carrier",
+              "squirrel",
+              "crossing guard"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.75,
+        "story_arc_potential": 0.8,
+        "emotional_warmth": 0.75,
+        "novelty": 0.5,
+        "variety_potential": 0.85,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.9,
+        "one_line_feedback": "A highly functional, action-oriented pattern that excels in visual storytelling and community warmth, though the core 'chasing blowing papers' trope is quite familiar."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 18,
+      "blueprint": {
+        "id": "bp_lost_voice_charades",
+        "pattern_name": "The Silent Day",
+        "logline": "A child loses their voice (sore throat) and has to communicate using drawings and gestures for a whole day.",
+        "setting": "home and school",
+        "emotional_theme": "communication",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "problem",
+            "description": "The child wakes up and tries to speak, but only a squeak comes out."
+          },
+          {
+            "id": "middle1",
+            "role": "struggle",
+            "description": "They try to tell someone they want a specific breakfast but get the wrong thing."
+          },
+          {
+            "id": "middle2",
+            "role": "solution",
+            "description": "They start acting it out like a game of charades."
+          },
+          {
+            "id": "resolution",
+            "role": "fun",
+            "description": "The family joins in, and they have a quiet, funny dinner using only hands."
+          }
+        ],
+        "centerpiece_moment": "The child flaps their arms like a bird to ask for chicken nuggets.",
+        "slot_ideas": [
+          {
+            "id": "slot_food",
+            "type": "food",
+            "role": "desired object",
+            "examples": [
+              "pancakes",
+              "juice",
+              "banana"
+            ]
+          },
+          {
+            "id": "slot_gesture",
+            "type": "action_verb",
+            "role": "mime action",
+            "examples": [
+              "pointed",
+              "jumped",
+              "waved"
+            ]
+          },
+          {
+            "id": "slot_misunderstanding",
+            "type": "noun",
+            "role": "wrong guess",
+            "examples": [
+              "elephant",
+              "helicopter",
+              "dancing"
+            ]
+          },
+          {
+            "id": "slot_family",
+            "type": "group_name",
+            "role": "audience",
+            "examples": [
+              "family",
+              "class",
+              "friends"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.75,
+        "story_arc_potential": 0.8,
+        "emotional_warmth": 0.8,
+        "novelty": 0.5,
+        "variety_potential": 0.6,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.9,
+        "one_line_feedback": "A classic, cozy sick-day setup that excels in retellability and physical humor, though the scope for variety is somewhat limited to different misunderstandings."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 1,
+      "blueprint": {
+        "id": "bp_kitchen_mishap",
+        "pattern_name": "The Culinary Rescue",
+        "logline": "A cooking attempt goes wrong, but creative thinking turns the mess into a new family favorite.",
+        "setting": "kitchen",
+        "emotional_theme": "resilience and creativity",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "ambition",
+            "description": "The child wants to help an adult make a specific special dish."
+          },
+          {
+            "id": "middle1",
+            "role": "accident",
+            "description": "An ingredient is missing or spilled, ruining the original plan."
+          },
+          {
+            "id": "middle2",
+            "role": "improvisation",
+            "description": "Instead of giving up, the child suggests a weird but fun substitute ingredient."
+          },
+          {
+            "id": "resolution",
+            "role": "tasting",
+            "description": "The new dish looks funny but tastes surprisingly good, becoming a 'secret recipe'."
+          }
+        ],
+        "centerpiece_moment": "Flour puffs into the air like a cloud as the child tosses in a handful of unexpected colorful snacks.",
+        "slot_ideas": [
+          {
+            "id": "slot_dish",
+            "type": "food_dish",
+            "role": "target meal",
+            "examples": [
+              "pancakes",
+              "pizza",
+              "cookies"
+            ]
+          },
+          {
+            "id": "slot_oops",
+            "type": "kitchen_disaster",
+            "role": "the mistake",
+            "examples": [
+              "dropped egg",
+              "spilled milk",
+              "burnt toast"
+            ]
+          },
+          {
+            "id": "slot_weird_ingredient",
+            "type": "food_item",
+            "role": "the substitute",
+            "examples": [
+              "jellybeans",
+              "cheese puffs",
+              "blueberries"
+            ]
+          },
+          {
+            "id": "slot_adult",
+            "type": "family_member",
+            "role": "helper",
+            "examples": [
+              "Mom",
+              "Grandpa",
+              "Auntie"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.75,
+        "story_arc_potential": 0.85,
+        "emotional_warmth": 0.8,
+        "novelty": 0.45,
+        "variety_potential": 0.75,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.95,
+        "one_line_feedback": "A classic, cozy structure that is highly relatable and easy to execute, though it relies on a very familiar trope without adding a unique structural twist."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251202_183633.json",
+      "index_in_file": 0,
+      "blueprint": {
+        "id": "bp_unexpected_ingredient",
+        "pattern_name": "The Happy Accident",
+        "logline": "A child tries to create something perfect, makes a big messy mistake, but realizes the result is even better than the original plan.",
+        "setting": "kitchen, art room, or garden",
+        "emotional_theme": "creativity and resilience",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "goal",
+            "description": "The child sets out to make a specific, perfect item for a special occasion."
+          },
+          {
+            "id": "middle1",
+            "role": "mistake",
+            "description": "A distraction or stumble causes a strange, unintended ingredient or material to fall into the mix."
+          },
+          {
+            "id": "middle2",
+            "role": "reaction",
+            "description": "The child worries the creation is ruined but decides to bake/build/finish it anyway to see what happens."
+          },
+          {
+            "id": "resolution",
+            "role": "success",
+            "description": "The final result looks weird but turns out to be delightful, teaching the child that mistakes can be magical."
+          }
+        ],
+        "centerpiece_moment": "The oven door/box opens and a cloud of colorful steam or glitter puffs out, revealing a lumpy but magnificent creation.",
+        "slot_ideas": [
+          {
+            "id": "slot_child",
+            "type": "child_name",
+            "role": "protagonist",
+            "examples": [
+              "Leo",
+              "Maya",
+              "Sam"
+            ]
+          },
+          {
+            "id": "slot_creation",
+            "type": "craft_or_food",
+            "role": "what they are making",
+            "examples": [
+              "super-cake",
+              "clay statue",
+              "robot costume"
+            ]
+          },
+          {
+            "id": "slot_weird_item",
+            "type": "odd_object",
+            "role": "the mistake ingredient",
+            "examples": [
+              "spicy pepper",
+              "silver glitter",
+              "sour pickle juice"
+            ]
+          },
+          {
+            "id": "slot_recipient",
+            "type": "person_or_group",
+            "role": "who receives the gift",
+            "examples": [
+              "the Mayor",
+              "Mom",
+              "the Science Teacher"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.75,
+        "story_arc_potential": 0.9,
+        "emotional_warmth": 0.8,
+        "novelty": 0.4,
+        "variety_potential": 0.75,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.95,
+        "one_line_feedback": "A structurally perfect but very familiar 'Beautiful Oops' pattern; it will reliably produce cozy stories, though they may feel derivative without highly specific, zany slot choices."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251202_183633.json",
+      "index_in_file": 4,
+      "blueprint": {
+        "id": "bp_secret_helper",
+        "pattern_name": "The Midnight Worker",
+        "logline": "A child stays awake/hides to see who does a specific chore and discovers a magical creature or animal is secretly helping.",
+        "setting": "library at closing time, bedroom at night, or shoe store",
+        "emotional_theme": "curiosity and gratitude",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "mystery",
+            "description": "Every morning, the child notices a messy place has been perfectly cleaned or organized by magic."
+          },
+          {
+            "id": "middle1",
+            "role": "stakeout",
+            "description": "The child decides to hide and watch the spot instead of leaving/sleeping."
+          },
+          {
+            "id": "middle2",
+            "role": "discovery",
+            "description": "A tiny or unexpected visitor appears and skillfully does the work using a unique method."
+          },
+          {
+            "id": "resolution",
+            "role": "secret_pact",
+            "description": "The child leaves a thank-you note or snack, promising to keep the helper's secret."
+          }
+        ],
+        "centerpiece_moment": "The visitor uses their tail/ears/magic wand to stack objects impossibly high without making a sound.",
+        "slot_ideas": [
+          {
+            "id": "slot_place",
+            "type": "location_room",
+            "role": "where the mystery happens",
+            "examples": [
+              "toy shelf",
+              "baker's kitchen",
+              "garden shed"
+            ]
+          },
+          {
+            "id": "slot_helper",
+            "type": "creature_small",
+            "role": "the secret worker",
+            "examples": [
+              "mouse in a vest",
+              "tiny robot",
+              "brownie elf"
+            ]
+          },
+          {
+            "id": "slot_chore",
+            "type": "verb_ing",
+            "role": "what they are doing",
+            "examples": [
+              "sorting books",
+              "polishing shoes",
+              "braiding flowers"
+            ]
+          },
+          {
+            "id": "slot_snack",
+            "type": "food_item",
+            "role": "the reward left behind",
+            "examples": [
+              "cheese crumb",
+              "shiny button",
+              "drop of honey"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.75,
+        "story_arc_potential": 0.85,
+        "emotional_warmth": 0.75,
+        "novelty": 0.4,
+        "variety_potential": 0.7,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.9,
+        "one_line_feedback": "A cozy, reliable adaptation of the 'Elves and the Shoemaker' trope that guarantees high retellability, though it leans on very traditional folklore structures."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 14,
+      "blueprint": {
+        "id": "bp_clothing_sentiment",
+        "pattern_name": "The Favorite Sweater",
+        "logline": "A child outgrows a favorite article of clothing and struggles to let it go, eventually passing it to a smaller friend or sibling.",
+        "setting": "bedroom",
+        "emotional_theme": "growing up and sharing",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "problem",
+            "description": "The child tries to put on their favorite item, but it is way too tight."
+          },
+          {
+            "id": "middle1",
+            "role": "denial",
+            "description": "They insist on wearing it anyway, which ends up being uncomfortable or funny."
+          },
+          {
+            "id": "middle2",
+            "role": "realization",
+            "description": "They see a younger child who looks cold or needs an outfit."
+          },
+          {
+            "id": "resolution",
+            "role": "gift",
+            "description": "They give the item to the smaller child and feel proud of being 'big'."
+          }
+        ],
+        "centerpiece_moment": "The sleeves are so short that the child's arms stick out like a scarecrow.",
+        "slot_ideas": [
+          {
+            "id": "slot_clothing",
+            "type": "clothing_item",
+            "role": "small item",
+            "examples": [
+              "sweater",
+              "pajamas",
+              "raincoat"
+            ]
+          },
+          {
+            "id": "slot_pattern",
+            "type": "pattern",
+            "role": "design",
+            "examples": [
+              "dinosaurs",
+              "stars",
+              "stripes"
+            ]
+          },
+          {
+            "id": "slot_recipient",
+            "type": "person_category",
+            "role": "new owner",
+            "examples": [
+              "baby cousin",
+              "little sister",
+              "teddy bear"
+            ]
+          },
+          {
+            "id": "slot_feeling",
+            "type": "emotion",
+            "role": "reaction",
+            "examples": [
+              "proud",
+              "warm",
+              "happy"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.75,
+        "story_arc_potential": 0.9,
+        "emotional_warmth": 0.85,
+        "novelty": 0.4,
+        "variety_potential": 0.6,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.95,
+        "one_line_feedback": "A structurally perfect but very traditional 'milestone' story; high emotional resonance, though it relies on specific voice or art to distinguish it from similar classics."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251202_183633.json",
+      "index_in_file": 5,
+      "blueprint": {
+        "id": "bp_lucky_charm",
+        "pattern_name": "The Courage Charm",
+        "logline": "A nervous child finds an object they think is lucky, uses it to face a fear, loses the object, but succeeds anyway.",
+        "setting": "school stage, swimming pool, or bicycle path",
+        "emotional_theme": "courage and self-belief",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "fear",
+            "description": "The child is terrified to do a specific activity that everyone else seems to find easy."
+          },
+          {
+            "id": "middle1",
+            "role": "crutch",
+            "description": "The child finds a 'lucky' object and feels brave enough to try the activity."
+          },
+          {
+            "id": "middle2",
+            "role": "loss",
+            "description": "Right before the big moment, the object gets lost or left behind."
+          },
+          {
+            "id": "resolution",
+            "role": "growth",
+            "description": "The child takes a deep breath, does the activity without the object, and realizes the bravery was inside them all along."
+          }
+        ],
+        "centerpiece_moment": "The child stands at the edge (of the stage/pool/path), closes their eyes, fists clenched, and takes the first step forward alone.",
+        "slot_ideas": [
+          {
+            "id": "slot_activity",
+            "type": "activity_event",
+            "role": "the scary thing",
+            "examples": [
+              "jumping off the diving board",
+              "reading a poem aloud",
+              "riding without training wheels"
+            ]
+          },
+          {
+            "id": "slot_charm",
+            "type": "small_object",
+            "role": "the fake source of luck",
+            "examples": [
+              "shiny penny",
+              "red feather",
+              "hero action figure"
+            ]
+          },
+          {
+            "id": "slot_mentor",
+            "type": "person_support",
+            "role": "encouraging figure",
+            "examples": [
+              "Coach",
+              "Big Sister",
+              "Grandpa"
+            ]
+          },
+          {
+            "id": "slot_feeling",
+            "type": "emotion_adjective",
+            "role": "how they feel at the end",
+            "examples": [
+              "proud",
+              "tall",
+              "unstoppable"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.75,
+        "story_arc_potential": 0.9,
+        "emotional_warmth": 0.8,
+        "novelty": 0.3,
+        "variety_potential": 0.75,
+        "kid_retellability": 0.95,
+        "blueprint_clarity": 0.95,
+        "one_line_feedback": "A structurally perfect execution of the classic 'Dumbo's Feather' trope; highly effective for this age group, though it relies entirely on unique 'slot' details to avoid feeling cliché."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 16,
+      "blueprint": {
+        "id": "bp_class_pet_weekend",
+        "pattern_name": "The Class Pet Sleepover",
+        "logline": "A child brings the class pet home for the weekend and worries it is bored, trying too hard to entertain it.",
+        "setting": "child's home",
+        "emotional_theme": "responsibility",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "arrival",
+            "description": "The child proudly carries the cage home."
+          },
+          {
+            "id": "middle1",
+            "role": "worry",
+            "description": "The pet just sleeps, and the child thinks it hates the house."
+          },
+          {
+            "id": "middle2",
+            "role": "entertainment",
+            "description": "The child puts on a show or builds a playground for the pet."
+          },
+          {
+            "id": "resolution",
+            "role": "acceptance",
+            "description": "The pet wakes up, eats a treat from the child's hand, and they cuddle."
+          }
+        ],
+        "centerpiece_moment": "The hamster runs in its wheel, making a whirring sound that fills the quiet room.",
+        "slot_ideas": [
+          {
+            "id": "slot_pet",
+            "type": "small_animal",
+            "role": "the guest",
+            "examples": [
+              "hamster",
+              "turtle",
+              "guinea pig"
+            ]
+          },
+          {
+            "id": "slot_pet_name",
+            "type": "name",
+            "role": "pet name",
+            "examples": [
+              "Squeaky",
+              "Turbo",
+              "Nibbles"
+            ]
+          },
+          {
+            "id": "slot_activity",
+            "type": "activity",
+            "role": "entertainment",
+            "examples": [
+              "magic show",
+              "reading aloud",
+              "toy car ride"
+            ]
+          },
+          {
+            "id": "slot_snack",
+            "type": "vegetable",
+            "role": "food",
+            "examples": [
+              "lettuce",
+              "apple slice",
+              "celery"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.75,
+        "story_arc_potential": 0.9,
+        "emotional_warmth": 0.85,
+        "novelty": 0.3,
+        "variety_potential": 0.6,
+        "kid_retellability": 0.95,
+        "blueprint_clarity": 0.9,
+        "one_line_feedback": "A timeless, reliable structure that perfectly captures the 'performance anxiety' of early responsibility, though the premise is a staple of the genre."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 9,
+      "blueprint": {
+        "id": "bp_tooth_fairy_engineer",
+        "pattern_name": "The Tooth Fairy Trap",
+        "logline": "A child loses a tooth and builds a complicated contraption to try and see the Tooth Fairy.",
+        "setting": "bedroom",
+        "emotional_theme": "curiosity",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "event",
+            "description": "A loose tooth finally falls out."
+          },
+          {
+            "id": "middle1",
+            "role": "plan",
+            "description": "Instead of sleeping, the child sets up a harmless trap or alarm system."
+          },
+          {
+            "id": "middle2",
+            "role": "wait",
+            "description": "They try to stay awake, watching their invention, but eventually drift off."
+          },
+          {
+            "id": "resolution",
+            "role": "surprise",
+            "description": "In the morning, the trap hasn't triggered, but the money is there with a tiny note admiring the engineering."
+          }
+        ],
+        "centerpiece_moment": "A string tied to the doorknob connects to a tower of empty cans ready to crash.",
+        "slot_ideas": [
+          {
+            "id": "slot_trap_part",
+            "type": "household_object",
+            "role": "trap component",
+            "examples": [
+              "bells",
+              "flour",
+              "video camera"
+            ]
+          },
+          {
+            "id": "slot_treasure",
+            "type": "currency",
+            "role": "reward",
+            "examples": [
+              "shiny coin",
+              "dollar bill",
+              "gold sticker"
+            ]
+          },
+          {
+            "id": "slot_fairy_gift",
+            "type": "small_gift",
+            "role": "extra surprise",
+            "examples": [
+              "glitter",
+              "tiny letter",
+              "magic dust"
+            ]
+          },
+          {
+            "id": "slot_hiding_spot",
+            "type": "place_in_room",
+            "role": "tooth location",
+            "examples": [
+              "under pillow",
+              "in a glass",
+              "on the nightstand"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.7,
+        "story_arc_potential": 0.8,
+        "emotional_warmth": 0.75,
+        "novelty": 0.5,
+        "variety_potential": 0.55,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.9,
+        "one_line_feedback": "A classic, kid-pleasing concept with high retellability, though the 'catching a magical creature' trope is quite common; the focus on engineering adds a nice specific flavor."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 5,
+      "blueprint": {
+        "id": "bp_bus_window",
+        "pattern_name": "The Window Watcher",
+        "logline": "On a long bus ride, a child sees a series of funny events outside the window that tell a silent story.",
+        "setting": "city bus or school bus",
+        "emotional_theme": "observation",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "departure",
+            "description": "The child settles into a window seat, ready for a boring ride."
+          },
+          {
+            "id": "middle1",
+            "role": "sighting_1",
+            "description": "At the first stop, they see someone lose a specific item."
+          },
+          {
+            "id": "middle2",
+            "role": "sighting_2",
+            "description": "At the next stop, an animal or another person finds the item and does something funny with it."
+          },
+          {
+            "id": "resolution",
+            "role": "arrival",
+            "description": "The child arrives at their stop, happy to have witnessed a secret adventure."
+          }
+        ],
+        "centerpiece_moment": "Through the glass, the child sees a stray dog proudly wearing a bright red scarf that fell from a lady's bag.",
+        "slot_ideas": [
+          {
+            "id": "slot_vehicle",
+            "type": "vehicle",
+            "role": "transport",
+            "examples": [
+              "bus",
+              "train",
+              "car"
+            ]
+          },
+          {
+            "id": "slot_lost_item",
+            "type": "clothing_item",
+            "role": "the traveling object",
+            "examples": [
+              "hat",
+              "glove",
+              "umbrella"
+            ]
+          },
+          {
+            "id": "slot_finder",
+            "type": "animal_or_person",
+            "role": "who finds it",
+            "examples": [
+              "squirrel",
+              "clown",
+              "garbage collector"
+            ]
+          },
+          {
+            "id": "slot_destination",
+            "type": "place_name",
+            "role": "end of trip",
+            "examples": [
+              "school",
+              "zoo",
+              "dentist"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.65,
+        "story_arc_potential": 0.6,
+        "emotional_warmth": 0.7,
+        "novelty": 0.75,
+        "variety_potential": 0.6,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.95,
+        "one_line_feedback": "Charming concept for visual storytelling, but the protagonist is too passive for a strong Level 3 narrative; needs a beat where the child interacts with the world or the observation solves a problem."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 0,
+      "blueprint": {
+        "id": "bp_backyard_safari",
+        "pattern_name": "Micro-Nature Expedition",
+        "logline": "A child shrinks their perspective to observe the tiny, busy world of bugs and plants in their own yard.",
+        "setting": "backyard or local park",
+        "emotional_theme": "wonder and patience",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "setup",
+            "description": "The child is bored with big toys and looks down at the grass instead."
+          },
+          {
+            "id": "middle1",
+            "role": "discovery",
+            "description": "They spot a tiny creature carrying something and decide to follow it."
+          },
+          {
+            "id": "middle2",
+            "role": "obstacle",
+            "description": "The creature faces a huge obstacle (a twig or puddle) and the child watches it struggle."
+          },
+          {
+            "id": "resolution",
+            "role": "assistance",
+            "description": "The child gently helps remove the obstacle, solving the problem without disrupting the tiny world."
+          }
+        ],
+        "centerpiece_moment": "The child lies on their stomach to stare eye-to-eye with a beetle moving a crumb over a giant leaf.",
+        "slot_ideas": [
+          {
+            "id": "slot_child",
+            "type": "child_name",
+            "role": "observer",
+            "examples": [
+              "Leo",
+              "Aisha",
+              "Ben"
+            ]
+          },
+          {
+            "id": "slot_creature",
+            "type": "small_animal",
+            "role": "tiny protagonist",
+            "examples": [
+              "ant",
+              "ladybug",
+              "snail"
+            ]
+          },
+          {
+            "id": "slot_obstacle",
+            "type": "small_object",
+            "role": "the barrier",
+            "examples": [
+              "pebble",
+              "fallen leaf",
+              "twig"
+            ]
+          },
+          {
+            "id": "slot_tool",
+            "type": "object",
+            "role": "observation tool",
+            "examples": [
+              "magnifying glass",
+              "jar",
+              "sunglasses"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.65,
+        "story_arc_potential": 0.6,
+        "emotional_warmth": 0.8,
+        "novelty": 0.45,
+        "variety_potential": 0.55,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.95,
+        "one_line_feedback": "A gentle, cozy concept that scores high on empathy, though the protagonist is somewhat passive and the plot may be too thin for advanced Level 3 readers."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 3,
+      "blueprint": {
+        "id": "bp_library_book_magic",
+        "pattern_name": "The Story That Came Out",
+        "logline": "A child reads a book so vividly that the characters seem to appear in the library.",
+        "setting": "school library",
+        "emotional_theme": "imagination",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "selection",
+            "description": "The child picks a dusty book from the back of the shelf."
+          },
+          {
+            "id": "middle1",
+            "role": "immersion",
+            "description": "As they read, the library environment seems to change (sounds, temperature)."
+          },
+          {
+            "id": "middle2",
+            "role": "interaction",
+            "description": "A character or object from the book seems to sit right next to them for a moment."
+          },
+          {
+            "id": "resolution",
+            "role": "connection",
+            "description": "The child closes the book, the magic fades, but they excitedly share the book with a friend."
+          }
+        ],
+        "centerpiece_moment": "The library carpet turns into green grass and a gentle wind blows through the bookshelves.",
+        "slot_ideas": [
+          {
+            "id": "slot_genre",
+            "type": "book_topic",
+            "role": "theme of book",
+            "examples": [
+              "pirates",
+              "space",
+              "jungle"
+            ]
+          },
+          {
+            "id": "slot_character",
+            "type": "fictional_character",
+            "role": "visitor",
+            "examples": [
+              "talking parrot",
+              "alien",
+              "knight"
+            ]
+          },
+          {
+            "id": "slot_librarian",
+            "type": "adult_title",
+            "role": "witness",
+            "examples": [
+              "Mr. Reed",
+              "Mrs. Lee",
+              "the Librarian"
+            ]
+          },
+          {
+            "id": "slot_effect",
+            "type": "sensory_detail",
+            "role": "magical change",
+            "examples": [
+              "smell of ocean",
+              "sound of drums",
+              "floating stars"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.65,
+        "story_arc_potential": 0.55,
+        "emotional_warmth": 0.75,
+        "novelty": 0.45,
+        "variety_potential": 0.85,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.9,
+        "one_line_feedback": "A sweet, highly variable celebration of reading, though the arc is quite flat without a specific obstacle or internal conflict to overcome."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 8,
+      "blueprint": {
+        "id": "bp_lost_skill",
+        "pattern_name": "The Practice Breakthrough",
+        "logline": "A child struggles to learn a physical skill (whistling, snapping, skipping), gives up, then accidentally succeeds.",
+        "setting": "park or schoolyard",
+        "emotional_theme": "perseverance",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "struggle",
+            "description": "The child tries hard to do a cool trick that their friends can do, but fails."
+          },
+          {
+            "id": "middle1",
+            "role": "frustration",
+            "description": "They get angry and decide they will never learn it."
+          },
+          {
+            "id": "middle2",
+            "role": "distraction",
+            "description": "Later, while relaxed and doing something else, they try it absent-mindedly."
+          },
+          {
+            "id": "resolution",
+            "role": "success",
+            "description": "It works! They rush to show someone, proud of the new ability."
+          }
+        ],
+        "centerpiece_moment": "The child puffs out their cheeks until they turn red, but no sound comes out.",
+        "slot_ideas": [
+          {
+            "id": "slot_skill",
+            "type": "skill_verb",
+            "role": "goal",
+            "examples": [
+              "whistle",
+              "snap fingers",
+              "blow a bubble"
+            ]
+          },
+          {
+            "id": "slot_friend",
+            "type": "child_name",
+            "role": "expert",
+            "examples": [
+              "Maya",
+              "Jordan",
+              "Alex"
+            ]
+          },
+          {
+            "id": "slot_sound",
+            "type": "sound_effect",
+            "role": "success sound",
+            "examples": [
+              "TWEET",
+              "POP",
+              "SNAP"
+            ]
+          },
+          {
+            "id": "slot_location",
+            "type": "place",
+            "role": "practice spot",
+            "examples": [
+              "bus stop",
+              "swing set",
+              "bathtub"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.65,
+        "story_arc_potential": 0.8,
+        "emotional_warmth": 0.75,
+        "novelty": 0.4,
+        "variety_potential": 0.55,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.9,
+        "one_line_feedback": "A highly relatable and structurally sound 'Whistle for Willie' style arc, though it relies on a very standard trope that limits how many unique stories can be generated from it."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 4,
+      "blueprint": {
+        "id": "bp_broken_treasure",
+        "pattern_name": "The Accidental Break",
+        "logline": "A child accidentally breaks something precious and goes through the hard work of fixing it and confessing.",
+        "setting": "living room",
+        "emotional_theme": "honesty and responsibility",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "accident",
+            "description": "While playing too roughly, the child knocks over a special item."
+          },
+          {
+            "id": "middle1",
+            "role": "panic",
+            "description": "The child tries to hide the pieces or glue them back together clumsily."
+          },
+          {
+            "id": "middle2",
+            "role": "guilt",
+            "description": "The guilt feels heavy, so the child admits what happened to the owner."
+          },
+          {
+            "id": "resolution",
+            "role": "forgiveness",
+            "description": "The owner is sad but appreciates the truth; they fix it together or repurpose the pieces."
+          }
+        ],
+        "centerpiece_moment": "The child holds the two broken halves in their hands, feeling their heart beat very fast.",
+        "slot_ideas": [
+          {
+            "id": "slot_toy",
+            "type": "activity_object",
+            "role": "cause of break",
+            "examples": [
+              "ball",
+              "jump rope",
+              "airplane"
+            ]
+          },
+          {
+            "id": "slot_break_sound",
+            "type": "sound_effect",
+            "role": "the crash",
+            "examples": [
+              "CRASH",
+              "clink",
+              "thud"
+            ]
+          },
+          {
+            "id": "slot_precious_item",
+            "type": "fragile_object",
+            "role": "broken thing",
+            "examples": [
+              "vase",
+              "picture frame",
+              "ceramic cat"
+            ]
+          },
+          {
+            "id": "slot_owner",
+            "type": "family_role",
+            "role": "owner",
+            "examples": [
+              "Mom",
+              "Dad",
+              "Grandma"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.65,
+        "story_arc_potential": 0.85,
+        "emotional_warmth": 0.8,
+        "novelty": 0.2,
+        "variety_potential": 0.5,
+        "kid_retellability": 0.95,
+        "blueprint_clarity": 0.9,
+        "one_line_feedback": "A timeless and structurally sound moral lesson, though it relies heavily on a very standard trope without offering a unique twist to differentiate it."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 25,
+      "blueprint": {
+        "id": "bp_roof_garden",
+        "pattern_name": "The Sky Garden",
+        "logline": "A city child discovers a hidden garden on a rooftop or balcony, a secret patch of green in the grey city.",
+        "setting": "city apartment roof",
+        "emotional_theme": "sanctuary",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "exploration",
+            "description": "The child follows a cat or climbs a stair they usually ignore."
+          },
+          {
+            "id": "middle1",
+            "role": "discovery",
+            "description": "They open a door to find pots of flowers and vegetables high above the street."
+          },
+          {
+            "id": "middle2",
+            "role": "meeting",
+            "description": "A neighbor is there tending the plants and lets the child help water them."
+          },
+          {
+            "id": "resolution",
+            "role": "secret",
+            "description": "The child looks down at the busy cars, feeling peaceful in their secret spot."
+          }
+        ],
+        "centerpiece_moment": "A bright red tomato grows on a vine, with grey skyscrapers behind it.",
+        "slot_ideas": [
+          {
+            "id": "slot_city_sound",
+            "type": "noise",
+            "role": "contrast",
+            "examples": [
+              "horns",
+              "sirens",
+              "traffic"
+            ]
+          },
+          {
+            "id": "slot_plant",
+            "type": "plant",
+            "role": "nature item",
+            "examples": [
+              "tomato",
+              "mint",
+              "marigold"
+            ]
+          },
+          {
+            "id": "slot_neighbor",
+            "type": "person",
+            "role": "gardener",
+            "examples": [
+              "Mr. Jones",
+              "The lady in 4B",
+              "Old Man Rivers"
+            ]
+          },
+          {
+            "id": "slot_tool",
+            "type": "garden_tool",
+            "role": "helper",
+            "examples": [
+              "watering can",
+              "hose",
+              "trowel"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.6,
+        "story_arc_potential": 0.5,
+        "emotional_warmth": 0.8,
+        "novelty": 0.6,
+        "variety_potential": 0.5,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.9,
+        "one_line_feedback": "Atmospherically lovely and cozy, but structurally thin; it lacks a specific conflict or hurdle to drive a satisfying plot beyond just 'finding a place'."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 26,
+      "blueprint": {
+        "id": "bp_sound_catcher",
+        "pattern_name": "The Noise Collection",
+        "logline": "A child goes around their neighborhood recording or writing down different interesting sounds.",
+        "setting": "neighborhood walk",
+        "emotional_theme": "mindfulness",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "mission",
+            "description": "The child takes a notebook/recorder to catch sounds."
+          },
+          {
+            "id": "middle1",
+            "role": "loud_sound",
+            "description": "They find a big, loud mechanical sound."
+          },
+          {
+            "id": "middle2",
+            "role": "quiet_sound",
+            "description": "They have to be very quiet to catch a tiny nature sound."
+          },
+          {
+            "id": "resolution",
+            "role": "mix",
+            "description": "They listen to the 'music' of their neighborhood."
+          }
+        ],
+        "centerpiece_moment": "The child closes their eyes and hears the rhythm: clack-clack, whoosh, tweet.",
+        "slot_ideas": [
+          {
+            "id": "slot_loud_source",
+            "type": "machine",
+            "role": "loud noise",
+            "examples": [
+              "jackhammer",
+              "bus",
+              "garbage truck"
+            ]
+          },
+          {
+            "id": "slot_quiet_source",
+            "type": "animal_or_nature",
+            "role": "soft noise",
+            "examples": [
+              "bird",
+              "wind",
+              "cricket"
+            ]
+          },
+          {
+            "id": "slot_sound_word",
+            "type": "onomatopoeia",
+            "role": "sound desc",
+            "examples": [
+              "BEEP",
+              "rustle",
+              "clang"
+            ]
+          },
+          {
+            "id": "slot_tool",
+            "type": "recording_device",
+            "role": "catcher",
+            "examples": [
+              "notebook",
+              "tape recorder",
+              "phone"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.6,
+        "story_arc_potential": 0.5,
+        "emotional_warmth": 0.65,
+        "novelty": 0.4,
+        "variety_potential": 0.6,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.9,
+        "one_line_feedback": "A classic 'sensory walk' structure excellent for teaching onomatopoeia, though it lacks the narrative conflict or character growth usually expected by Level 3 readers."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 2,
+      "blueprint": {
+        "id": "bp_lost_sound",
+        "pattern_name": "The Mystery Noise",
+        "logline": "A strange sound in the house keeps a child awake, leading to a gentle investigation.",
+        "setting": "house at night",
+        "emotional_theme": "overcoming fear",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "hook",
+            "description": "The child is in bed but hears a repetitive, funny noise."
+          },
+          {
+            "id": "middle1",
+            "role": "imagination",
+            "description": "The child imagines wild, scary explanations for the sound."
+          },
+          {
+            "id": "middle2",
+            "role": "bravery",
+            "description": "Holding a comfort object, the child creeps down the hall to find the source."
+          },
+          {
+            "id": "resolution",
+            "role": "relief",
+            "description": "The source is something silly (a pet, a heater, a toy), and the child laughs before sleeping."
+          }
+        ],
+        "centerpiece_moment": "The beam of a flashlight cuts through the dark to reveal the family cat batting at a loose doorstopper.",
+        "slot_ideas": [
+          {
+            "id": "slot_sound",
+            "type": "sound_effect",
+            "role": "the noise",
+            "examples": [
+              "thump-thump",
+              "squeak-squeak",
+              "tap-tap"
+            ]
+          },
+          {
+            "id": "slot_protector",
+            "type": "toy_or_pet",
+            "role": "bravery charm",
+            "examples": [
+              "teddy bear",
+              "blanket",
+              "dog"
+            ]
+          },
+          {
+            "id": "slot_source",
+            "type": "object_or_animal",
+            "role": "noise maker",
+            "examples": [
+              "hamster",
+              "radiator",
+              "blind cord"
+            ]
+          },
+          {
+            "id": "slot_monster",
+            "type": "imaginary_creature",
+            "role": "imagined fear",
+            "examples": [
+              "dragon",
+              "giant",
+              "goblin"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.6,
+        "story_arc_potential": 0.85,
+        "emotional_warmth": 0.75,
+        "novelty": 0.3,
+        "variety_potential": 0.5,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.9,
+        "one_line_feedback": "A mechanically sound and cozy 'bread-and-butter' story structure, though it relies on a very common trope without offering a fresh twist."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 6,
+      "blueprint": {
+        "id": "bp_new_kid_bridge",
+        "pattern_name": "The Shy Hello",
+        "logline": "A child wants to befriend a new neighbor but is too shy to speak, so they use an object to bridge the gap.",
+        "setting": "playground or fence between houses",
+        "emotional_theme": "friendship and courage",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "desire",
+            "description": "The child sees a new kid playing alone but feels too nervous to say hi."
+          },
+          {
+            "id": "middle1",
+            "role": "attempt",
+            "description": "The child accidentally (or on purpose) rolls a toy toward the new kid."
+          },
+          {
+            "id": "middle2",
+            "role": "interaction",
+            "description": "The new kid picks it up and smiles, or adds something to the game."
+          },
+          {
+            "id": "resolution",
+            "role": "connection",
+            "description": "They explain the toy to each other and start playing without needing many words."
+          }
+        ],
+        "centerpiece_moment": "A bright yellow ball rolls slowly across the invisible line between the two children.",
+        "slot_ideas": [
+          {
+            "id": "slot_toy",
+            "type": "toy",
+            "role": "bridge object",
+            "examples": [
+              "soccer ball",
+              "chalk",
+              "race car"
+            ]
+          },
+          {
+            "id": "slot_new_kid",
+            "type": "child_name",
+            "role": "new friend",
+            "examples": [
+              "Sam",
+              "Priya",
+              "Chen"
+            ]
+          },
+          {
+            "id": "slot_action",
+            "type": "verb_play",
+            "role": "shared activity",
+            "examples": [
+              "kick",
+              "draw",
+              "race"
+            ]
+          },
+          {
+            "id": "slot_feeling",
+            "type": "emotion",
+            "role": "internal state",
+            "examples": [
+              "nervous",
+              "shy",
+              "excited"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.6,
+        "story_arc_potential": 0.8,
+        "emotional_warmth": 0.75,
+        "novelty": 0.3,
+        "variety_potential": 0.5,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.9,
+        "one_line_feedback": "Structurally sound and emotionally resonant for the age group, but relies on a very common trope that limits novelty."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 7,
+      "blueprint": {
+        "id": "bp_weather_mood",
+        "pattern_name": "The Rainy Day Turnaround",
+        "logline": "A child is disappointed by bad weather but invents an indoor world that is better than going outside.",
+        "setting": "living room / bedroom",
+        "emotional_theme": "resilience",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "disappointment",
+            "description": "The child stares out the window at the rain, upset that plans are canceled."
+          },
+          {
+            "id": "middle1",
+            "role": "boredom",
+            "description": "They lie upside down on the couch, bored, until they notice the furniture looks like a landscape."
+          },
+          {
+            "id": "middle2",
+            "role": "creation",
+            "description": "They build an elaborate fort or obstacle course using household items."
+          },
+          {
+            "id": "resolution",
+            "role": "satisfaction",
+            "description": "When the sun comes out, they decide to stay inside because the game is too good to stop."
+          }
+        ],
+        "centerpiece_moment": "A blanket draped over two chairs transforms into a dark cave guarded by pillow-monsters.",
+        "slot_ideas": [
+          {
+            "id": "slot_weather",
+            "type": "weather_condition",
+            "role": "spoiler",
+            "examples": [
+              "rain",
+              "snow storm",
+              "fog"
+            ]
+          },
+          {
+            "id": "slot_furniture",
+            "type": "furniture",
+            "role": "building block",
+            "examples": [
+              "sofa",
+              "dining chair",
+              "bed"
+            ]
+          },
+          {
+            "id": "slot_imagined_place",
+            "type": "location_fantasy",
+            "role": "fort theme",
+            "examples": [
+              "castle",
+              "spaceship",
+              "submarine"
+            ]
+          },
+          {
+            "id": "slot_snack",
+            "type": "food",
+            "role": "rations",
+            "examples": [
+              "crackers",
+              "grapes",
+              "popcorn"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.6,
+        "story_arc_potential": 0.8,
+        "emotional_warmth": 0.8,
+        "novelty": 0.3,
+        "variety_potential": 0.5,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.9,
+        "one_line_feedback": "A structurally sound and cozy pattern, but relies on the extremely common 'rainy day imagination' trope; needs a more specific twist or mechanism to feel fresh."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 22,
+      "blueprint": {
+        "id": "bp_night_laundromat",
+        "pattern_name": "The Galaxy spin",
+        "logline": "A child visits a laundromat at night and imagines the spinning machines are planets or time machines.",
+        "setting": "laundromat",
+        "emotional_theme": "wonder in mundane places",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "boredom",
+            "description": "The child sits on a plastic chair while parents load the wash."
+          },
+          {
+            "id": "middle1",
+            "role": "observation",
+            "description": "They stare into the round glass door of a machine spinning fast."
+          },
+          {
+            "id": "middle2",
+            "role": "fantasy",
+            "description": "The colors blur and the child imagines they are looking into space or a submarine window."
+          },
+          {
+            "id": "resolution",
+            "role": "comfort",
+            "description": "The dryer buzzes, and the warm, clean clothes feel like a hug."
+          }
+        ],
+        "centerpiece_moment": "The red shirt and blue jeans spin so fast they turn into a purple blur.",
+        "slot_ideas": [
+          {
+            "id": "slot_clothing_color",
+            "type": "color",
+            "role": "visual",
+            "examples": [
+              "bright pink",
+              "neon green",
+              "orange"
+            ]
+          },
+          {
+            "id": "slot_machine_sound",
+            "type": "sound",
+            "role": "ambience",
+            "examples": [
+              "whoosh",
+              "hummm",
+              "clank"
+            ]
+          },
+          {
+            "id": "slot_imagined_thing",
+            "type": "fantasy_object",
+            "role": "vision",
+            "examples": [
+              "planet",
+              "rocket ship",
+              "tornado"
+            ]
+          },
+          {
+            "id": "slot_comfort_item",
+            "type": "fabric_item",
+            "role": "warm object",
+            "examples": [
+              "blanket",
+              "towel",
+              "hoodie"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.55,
+        "story_arc_potential": 0.45,
+        "emotional_warmth": 0.8,
+        "novelty": 0.7,
+        "variety_potential": 0.4,
+        "kid_retellability": 0.8,
+        "blueprint_clarity": 0.9,
+        "one_line_feedback": "Evocative sensory details and a lovely setting, but lacks the narrative drive or conflict needed for a Level 3 reader; feels more like a picture book vignette than a story with a plot."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 27,
+      "blueprint": {
+        "id": "bp_shadow_detach",
+        "pattern_name": "The Rebel Shadow",
+        "logline": "A playful story where a child's shadow decides to do the opposite of what the child does for one afternoon.",
+        "setting": "sunny park",
+        "emotional_theme": "playfulness",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "notice",
+            "description": "The child waves their hand, but the shadow keeps its hand down."
+          },
+          {
+            "id": "middle1",
+            "role": "tricks",
+            "description": "The child tries to trick the shadow by moving fast, but the shadow dances instead."
+          },
+          {
+            "id": "middle2",
+            "role": "chase",
+            "description": "They run around trying to step on the shadow or catch it."
+          },
+          {
+            "id": "resolution",
+            "role": "reunion",
+            "description": "The sun goes behind a cloud, the shadow vanishes, and when it returns, it behaves normally again."
+          }
+        ],
+        "centerpiece_moment": "The shadow stretches long and thin across the grass, crossing its arms while the child waves.",
+        "slot_ideas": [
+          {
+            "id": "slot_action_child",
+            "type": "verb",
+            "role": "child action",
+            "examples": [
+              "jumped",
+              "waved",
+              "danced"
+            ]
+          },
+          {
+            "id": "slot_action_shadow",
+            "type": "verb",
+            "role": "shadow action",
+            "examples": [
+              "sat down",
+              "crossed arms",
+              "slept"
+            ]
+          },
+          {
+            "id": "slot_light_source",
+            "type": "light",
+            "role": "source",
+            "examples": [
+              "sun",
+              "street lamp",
+              "flashlight"
+            ]
+          },
+          {
+            "id": "slot_time",
+            "type": "time_of_day",
+            "role": "setting",
+            "examples": [
+              "noon",
+              "sunset",
+              "morning"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.55,
+        "story_arc_potential": 0.45,
+        "emotional_warmth": 0.6,
+        "novelty": 0.5,
+        "variety_potential": 0.6,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.9,
+        "one_line_feedback": "A classic playful concept, but the resolution is passive (weather change) rather than character-driven; needs a moment of connection or compromise to feel satisfying."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 12,
+      "blueprint": {
+        "id": "bp_beach_detective",
+        "pattern_name": "The Beachcomber Mystery",
+        "logline": "A child finds an odd object in the sand and imagines where it came from before finding the owner.",
+        "setting": "beach",
+        "emotional_theme": "curiosity",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "discovery",
+            "description": "Digging in the sand, the child hits something hard."
+          },
+          {
+            "id": "middle1",
+            "role": "theory",
+            "description": "It's a strange object. The child imagines it belongs to a mermaid or pirate."
+          },
+          {
+            "id": "middle2",
+            "role": "search",
+            "description": "They walk down the beach asking people if they lost a treasure."
+          },
+          {
+            "id": "resolution",
+            "role": "return",
+            "description": "An older person recognizes it as something ordinary but thanks the child for the 'treasure'."
+          }
+        ],
+        "centerpiece_moment": "The object is half-buried in wet sand, shining in the sunlight.",
+        "slot_ideas": [
+          {
+            "id": "slot_object",
+            "type": "beach_object",
+            "role": "the find",
+            "examples": [
+              "sunglasses",
+              "shiny watch",
+              "toy boat"
+            ]
+          },
+          {
+            "id": "slot_fantasy_owner",
+            "type": "mythical_being",
+            "role": "imagined owner",
+            "examples": [
+              "mermaid",
+              "sea monster",
+              "pirate captain"
+            ]
+          },
+          {
+            "id": "slot_real_owner",
+            "type": "person_type",
+            "role": "actual owner",
+            "examples": [
+              "surfer",
+              "lifeguard",
+              "grandpa"
+            ]
+          },
+          {
+            "id": "slot_reward",
+            "type": "treat",
+            "role": "thanks",
+            "examples": [
+              "ice cream",
+              "cool shell",
+              "high five"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.55,
+        "story_arc_potential": 0.65,
+        "emotional_warmth": 0.6,
+        "novelty": 0.35,
+        "variety_potential": 0.5,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.9,
+        "one_line_feedback": "A structurally sound but very familiar trope; to elevate it, the 'ordinary' object needs to have a surprising sentimental value to the owner rather than just being mundane."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 20,
+      "blueprint": {
+        "id": "bp_gift_switch",
+        "pattern_name": "The Homemade Gift",
+        "logline": "A child doesn't have money for a gift, so they make something that looks messy but means a lot.",
+        "setting": "art table",
+        "emotional_theme": "generosity",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "occasion",
+            "description": "It's a special birthday, and the child wants to give a present."
+          },
+          {
+            "id": "middle1",
+            "role": "creation",
+            "description": "They use glue, glitter, and paper to make a portrait or sculpture."
+          },
+          {
+            "id": "middle2",
+            "role": "doubt",
+            "description": "It looks kind of lopsided and sticky. The child worries it isn't good enough."
+          },
+          {
+            "id": "resolution",
+            "role": "reception",
+            "description": "The recipient cries happy tears and puts it in the place of honor."
+          }
+        ],
+        "centerpiece_moment": "The glue is still wet, and the glitter is everywhere, even on the child's nose.",
+        "slot_ideas": [
+          {
+            "id": "slot_occasion",
+            "type": "event",
+            "role": "reason",
+            "examples": [
+              "Mother's Day",
+              "Birthday",
+              "Christmas"
+            ]
+          },
+          {
+            "id": "slot_material",
+            "type": "craft_supply",
+            "role": "medium",
+            "examples": [
+              "macaroni",
+              "clay",
+              "stickers"
+            ]
+          },
+          {
+            "id": "slot_art_object",
+            "type": "art_type",
+            "role": "creation",
+            "examples": [
+              "picture frame",
+              "necklace",
+              "card"
+            ]
+          },
+          {
+            "id": "slot_recipient",
+            "type": "person",
+            "role": "receiver",
+            "examples": [
+              "Mom",
+              "Teacher",
+              "Best Friend"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.55,
+        "story_arc_potential": 0.65,
+        "emotional_warmth": 0.85,
+        "novelty": 0.25,
+        "variety_potential": 0.45,
+        "kid_retellability": 0.95,
+        "blueprint_clarity": 0.9,
+        "one_line_feedback": "A sweet and classic emotional core, but the pattern is extremely generic and lacks the specific narrative hook or twist needed to make it fresh."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 11,
+      "blueprint": {
+        "id": "bp_school_play_fright",
+        "pattern_name": "The Stage Fright Solution",
+        "logline": "A child has a small role in a play and is terrified, but a friend helps them find courage.",
+        "setting": "school auditorium",
+        "emotional_theme": "courage",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "assignment",
+            "description": "The child gets a costume for the school play."
+          },
+          {
+            "id": "middle1",
+            "role": "fear",
+            "description": "During rehearsal, they freeze up and forget their line."
+          },
+          {
+            "id": "middle2",
+            "role": "support",
+            "description": "Backstage, a friend teaches them a silly trick to relax."
+          },
+          {
+            "id": "resolution",
+            "role": "performance",
+            "description": "They step on stage, do the trick, and say the line loud and clear."
+          }
+        ],
+        "centerpiece_moment": "The bright stage lights make the audience look like a dark ocean of heads.",
+        "slot_ideas": [
+          {
+            "id": "slot_role",
+            "type": "costume_role",
+            "role": "part played",
+            "examples": [
+              "tree",
+              "sheep",
+              "king"
+            ]
+          },
+          {
+            "id": "slot_line",
+            "type": "short_phrase",
+            "role": "spoken line",
+            "examples": [
+              "Spring is here!",
+              "Moo!",
+              "Welcome friends!"
+            ]
+          },
+          {
+            "id": "slot_friend",
+            "type": "child_name",
+            "role": "supporter",
+            "examples": [
+              "Noah",
+              "Emma",
+              "Liam"
+            ]
+          },
+          {
+            "id": "slot_trick",
+            "type": "action",
+            "role": "calming method",
+            "examples": [
+              "wiggle toes",
+              "deep breath",
+              "think of puppies"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.55,
+        "story_arc_potential": 0.8,
+        "emotional_warmth": 0.7,
+        "novelty": 0.2,
+        "variety_potential": 0.4,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.95,
+        "one_line_feedback": "Structurally sound and age-appropriate, but relies heavily on a very overused trope; needs a specific twist (e.g., a prop malfunction or a misunderstanding) to distinguish it from generic school stories."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 29,
+      "blueprint": {
+        "id": "bp_subway_musician",
+        "pattern_name": "The Underground Concert",
+        "logline": "A child stops to listen to a street musician in the subway and imagines the music creates visual magic.",
+        "setting": "subway station",
+        "emotional_theme": "appreciation of art",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "rush",
+            "description": "Everyone is rushing, but the child hears a melody."
+          },
+          {
+            "id": "middle1",
+            "role": "stop",
+            "description": "The child pulls the parent's hand to stop and listen."
+          },
+          {
+            "id": "middle2",
+            "role": "vision",
+            "description": "As the music plays, the child imagines colorful shapes floating out of the instrument."
+          },
+          {
+            "id": "resolution",
+            "role": "contribution",
+            "description": "The child drops a coin in the case and the musician winks."
+          }
+        ],
+        "centerpiece_moment": "Gold and blue musical notes seem to float in the air, popping like bubbles.",
+        "slot_ideas": [
+          {
+            "id": "slot_instrument",
+            "type": "musical_instrument",
+            "role": "source",
+            "examples": [
+              "violin",
+              "guitar",
+              "saxophone"
+            ]
+          },
+          {
+            "id": "slot_coin",
+            "type": "currency",
+            "role": "gift",
+            "examples": [
+              "quarter",
+              "dollar",
+              "shiny penny"
+            ]
+          },
+          {
+            "id": "slot_visual_shape",
+            "type": "shape",
+            "role": "magic",
+            "examples": [
+              "stars",
+              "hearts",
+              "butterflies"
+            ]
+          },
+          {
+            "id": "slot_tune_mood",
+            "type": "emotion",
+            "role": "music style",
+            "examples": [
+              "happy",
+              "sad",
+              "bouncy"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.5,
+        "story_arc_potential": 0.4,
+        "emotional_warmth": 0.75,
+        "novelty": 0.6,
+        "variety_potential": 0.3,
+        "kid_retellability": 0.85,
+        "blueprint_clarity": 0.9,
+        "one_line_feedback": "A lovely atmospheric vignette, but it lacks the narrative conflict or active protagonist choices required to drive a robust Level 3 story."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 23,
+      "blueprint": {
+        "id": "bp_pavement_chalk",
+        "pattern_name": "The Living Drawings",
+        "logline": "A child draws a world on the sidewalk, and for a brief moment, the drawings seem to interact with the real world.",
+        "setting": "sidewalk or driveway",
+        "emotional_theme": "creativity",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "canvas",
+            "description": "The child has a fresh box of chalk and an empty driveway."
+          },
+          {
+            "id": "middle1",
+            "role": "creation",
+            "description": "They draw a specific animal or door on the ground."
+          },
+          {
+            "id": "middle2",
+            "role": "interaction",
+            "description": "A real ant walks along the chalk line, or the rain makes the drawing 'move'."
+          },
+          {
+            "id": "resolution",
+            "role": "impermanence",
+            "description": "The rain washes it away, but the child is happy to have made a temporary world."
+          }
+        ],
+        "centerpiece_moment": "The blue chalk dust covers the child's hands, making them look like a smurf.",
+        "slot_ideas": [
+          {
+            "id": "slot_drawing",
+            "type": "noun_fantasy",
+            "role": "art subject",
+            "examples": [
+              "dragon",
+              "castle",
+              "ocean"
+            ]
+          },
+          {
+            "id": "slot_color",
+            "type": "color",
+            "role": "chalk color",
+            "examples": [
+              "purple",
+              "yellow",
+              "blue"
+            ]
+          },
+          {
+            "id": "slot_real_interaction",
+            "type": "nature_element",
+            "role": "interactor",
+            "examples": [
+              "ant",
+              "rain drop",
+              "leaf"
+            ]
+          },
+          {
+            "id": "slot_feeling",
+            "type": "emotion",
+            "role": "reaction",
+            "examples": [
+              "amazed",
+              "proud",
+              "calm"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.5,
+        "story_arc_potential": 0.5,
+        "emotional_warmth": 0.7,
+        "novelty": 0.4,
+        "variety_potential": 0.4,
+        "kid_retellability": 0.8,
+        "blueprint_clarity": 0.9,
+        "one_line_feedback": "Sweet and contemplative, but feels more like a singular poetic vignette than a reusable plot engine; lacks the narrative drive or conflict usually needed to sustain a Level 3 reader's interest."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 19,
+      "blueprint": {
+        "id": "bp_cleaning_discovery",
+        "pattern_name": "The Messy Room Treasure",
+        "logline": "Forced to clean a disastrously messy room, a child rediscovers a long-lost toy buried under the pile.",
+        "setting": "messy bedroom",
+        "emotional_theme": "responsibility and reward",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "ultimatum",
+            "description": "The adult says no playing until the floor is clean."
+          },
+          {
+            "id": "middle1",
+            "role": "overwhelm",
+            "description": "The child looks at the mountain of clothes and toys and sighs."
+          },
+          {
+            "id": "middle2",
+            "role": "digging",
+            "description": "As they start sorting, they find something they thought was lost forever."
+          },
+          {
+            "id": "resolution",
+            "role": "joy",
+            "description": "The room gets clean, and the child plays happily with the recovered item."
+          }
+        ],
+        "centerpiece_moment": "Under a pile of dirty socks, a glint of gold reveals the missing action figure.",
+        "slot_ideas": [
+          {
+            "id": "slot_mess_item",
+            "type": "clutter",
+            "role": "trash",
+            "examples": [
+              "socks",
+              "wrappers",
+              "lego bricks"
+            ]
+          },
+          {
+            "id": "slot_lost_toy",
+            "type": "toy",
+            "role": "treasure",
+            "examples": [
+              "Yo-Yo",
+              "race car",
+              "doll"
+            ]
+          },
+          {
+            "id": "slot_adult",
+            "type": "family_member",
+            "role": "enforcer",
+            "examples": [
+              "Mom",
+              "Dad",
+              "Grandpa"
+            ]
+          },
+          {
+            "id": "slot_game",
+            "type": "activity",
+            "role": "reward play",
+            "examples": [
+              "racing",
+              "building",
+              "tea party"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.5,
+        "story_arc_potential": 0.6,
+        "emotional_warmth": 0.5,
+        "novelty": 0.3,
+        "variety_potential": 0.4,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.9,
+        "one_line_feedback": "Relatable slice-of-life structure, but feels too didactic and mundane without an imaginative twist or a deeper emotional connection to the lost object."
+      }
+    },
+    {
+      "source_file": "blueprints_level3_20251203_080749.json",
+      "index_in_file": 24,
+      "blueprint": {
+        "id": "bp_object_pov",
+        "pattern_name": "The Lost Mitten's Journey",
+        "logline": "A story told from the perspective of an object (like a mitten or toy) that gets dropped and waits to be found.",
+        "setting": "snowy park or street",
+        "emotional_theme": "hope",
+        "age_range": "6–8",
+        "beats": [
+          {
+            "id": "beginning",
+            "role": "drop",
+            "description": "The object falls out of a pocket and lands in the snow."
+          },
+          {
+            "id": "middle1",
+            "role": "wait",
+            "description": "The object sees feet walking by and gets cold."
+          },
+          {
+            "id": "middle2",
+            "role": "danger",
+            "description": "A dog sniffs it or a car drives close."
+          },
+          {
+            "id": "resolution",
+            "role": "rescue",
+            "description": "Familiar hands pick it up, shake it off, and put it back in the warmth."
+          }
+        ],
+        "centerpiece_moment": "I saw the world from sideways, watching giant boots stomp past my thumb.",
+        "slot_ideas": [
+          {
+            "id": "slot_object_self",
+            "type": "object_clothing",
+            "role": "narrator",
+            "examples": [
+              "mitten",
+              "hat",
+              "scarf"
+            ]
+          },
+          {
+            "id": "slot_weather",
+            "type": "weather",
+            "role": "environment",
+            "examples": [
+              "snow",
+              "rain",
+              "wind"
+            ]
+          },
+          {
+            "id": "slot_danger",
+            "type": "threat",
+            "role": "obstacle",
+            "examples": [
+              "dog",
+              "puddle",
+              "bicycle"
+            ]
+          },
+          {
+            "id": "slot_owner_name",
+            "type": "child_name",
+            "role": "rescuer",
+            "examples": [
+              "Billy",
+              "Sarah",
+              "Kai"
+            ]
+          }
+        ]
+      },
+      "judge_model": "google/gemini-3-pro-preview",
+      "scores": {
+        "overall": 0.5,
+        "story_arc_potential": 0.5,
+        "emotional_warmth": 0.8,
+        "novelty": 0.3,
+        "variety_potential": 0.5,
+        "kid_retellability": 0.9,
+        "blueprint_clarity": 0.9,
+        "one_line_feedback": "Sweet and cozy, but the passive protagonist (waiting to be found) is better suited for younger picture books than Level 3 readers who crave agency and problem-solving."
+      }
+    }
+  ]
+}

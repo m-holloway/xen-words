@@ -1,0 +1,27 @@
+Title: The Tree Hollow Mailbox
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child leaves a drawing in a hollow tree, receives a mysterious reply, and feels a secret friendship grow.
+
+Slots:
+- slot_child (child_name): Name of the child main character.
+  Child prompt: What is a name you like for the kid in this story?
+  Examples: Mia, Jamal, Sofia
+- slot_tree_type (tree): Type of tree that has a hollow trunk used as a mailbox.
+  Child prompt: What type of tree would you like to see in the story?
+  Examples: oak, willow, maple
+- slot_imagined_friend (fantasy_being): A friendly creature the child imagines listening from the tree's shadows.
+  Child prompt: What kind of friendly creature would you like the child to imagine?
+  Examples: gnome, fairy, owl
+
+Story template:
+s1: On a sunny morning, [[slot_child]] walked to the edge of the park and found a big [[slot_tree_type]] tree with a hollow trunk.
+s2: Inside the hollow, [[slot_child]] left a tiny drawing of a smiling sun and a note that said, 'Hello, friend!'
+s3: He closed his eyes and imagined a friendly [[slot_imagined_friend]] listening from the shadows.
+s4: The next day, [[slot_child]] returned, hoping the tree would whisper back.
+s5: When he peered into the dark hole, a shiny white envelope glowed in the gloom.
+s6: On the envelope was a tiny feather and a short poem that read, 'Your kindness brightens my day!'
+s7: Feeling warm inside, [[slot_child]] tucked the feather back into the hollow and drew a tiny star on the note.
+s8: He whispered, 'Thank you, mysterious friend,' and felt a gentle breeze that seemed to say, 'I am here!'
+s9: From that day on, [[slot_child]] looked at the [[slot_tree_type]] tree with new wonder, knowing a secret friend was watching.
+s10: Every time he walked past, the tree seemed to smile, and [[slot_child]] felt happy and connected to someone special.

@@ -1,0 +1,115 @@
+{
+  "template": {
+    "title": "The Great Scatter",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child’s collection is scattered by a sudden force, and with help from a friendly passerby, they gather it back together.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] was proud holding a pile of [[slot_collection]] to show to the teacher.",
+        "slot_ids": []
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "The park was windy, and a [[slot_force]] blew through the trees.",
+        "slot_ids": []
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "The [[slot_collection]] flew up like a flock of birds, swirling in the air.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "They landed on high branches, a statue, and a passing kid's hat.",
+        "slot_ids": []
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "[[slot_child]] chased after them, giggling as they tried to catch each piece.",
+        "slot_ids": []
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "A friendly [[slot_helper]] saw the mess and offered help.",
+        "slot_ids": []
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "Together, they gathered the [[slot_collection]] from the branches and the hat.",
+        "slot_ids": []
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "The pile was a little messy but still safe.",
+        "slot_ids": []
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "[[slot_child]] thanked the [[slot_helper]] and the teacher for their kindness.",
+        "slot_ids": []
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "They all celebrated with a small picnic, and the park felt brighter.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the child main character.",
+        "child_prompt": "What is a name you like for the kid in this story?",
+        "examples": [
+          "Kiko",
+          "Ben",
+          "Aria"
+        ]
+      },
+      {
+        "id": "slot_collection",
+        "type": "plural_objects",
+        "author_description": "The things that get scattered.",
+        "child_prompt": "What are some things that a child might collect?",
+        "examples": [
+          "drawing pages",
+          "baseball cards",
+          "dried leaves"
+        ]
+      },
+      {
+        "id": "slot_force",
+        "type": "cause_of_disaster",
+        "author_description": "What causes the items to scatter.",
+        "child_prompt": "What could suddenly blow or knock things away in a park?",
+        "examples": [
+          "gust of wind",
+          "running dog",
+          "giant sneeze"
+        ]
+      },
+      {
+        "id": "slot_helper",
+        "type": "person_or_animal",
+        "author_description": "Who helps the child catch the scattered items.",
+        "child_prompt": "Who might be friendly and help in a park?",
+        "examples": [
+          "mail carrier",
+          "squirrel",
+          "crossing guard"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_temperature": 1.3,
+    "blueprint_id": "bp_scattered_treasure",
+    "blueprint_pattern_name": "The Great Scatter",
+    "blueprint_logline": "A sudden force scatters a child's precious collection, and they must run through the setting to catch them all with the help of others.",
+    "blueprint_instantiated_at": "2025-12-03T08:38:16"
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "template": {
+    "title": "The Grocery Mission",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A brave child follows a list to find items in the supermarket, learns to make good choices, and feels proud of their independence.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] walked into the bright supermarket with a small basket, ready for a new adventure.",
+        "slot_ids": []
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "[[slot_parent]] gave [[slot_child]] a list with two items: [[slot_item1]] and [[slot_item2]], and said, \"Find them in the next aisle, and bring them back.\"",
+        "slot_ids": []
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "[[slot_child]] nodded, then headed toward the cereal aisle, where the boxes were stacked so high they looked like a wall of colorful bricks.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] looked for the brand [[slot_brand]] on the [[slot_item1]] box, but the label was missing.",
+        "slot_ids": []
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "[[slot_child]] thought hard, then chose a similar box that smelled sweet and looked friendly.",
+        "slot_ids": []
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "Next, [[slot_child]] searched for [[slot_item2]] and found a fresh box of the same brand.",
+        "slot_ids": []
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "[[slot_child]] felt proud, collected both items, and carried them back to the cart.",
+        "slot_ids": []
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "When [[slot_parent]] saw the basket, they smiled and said, \"Great job, [[slot_child]]! You did a wonderful job picking the best choices.\"",
+        "slot_ids": []
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "[[slot_child]] beamed, feeling very brave and independent.",
+        "slot_ids": []
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "The day ended with a happy snack, and [[slot_child]] dreamed of the next small adventure.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the child main character.",
+        "child_prompt": "What is a name you like for the kid in this story?",
+        "examples": [
+          "Mia",
+          "Jamal",
+          "Sofia"
+        ]
+      },
+      {
+        "id": "slot_parent",
+        "type": "parent_role",
+        "author_description": "The adult who gives the child the task.",
+        "child_prompt": "Who is the adult helping the child? (e.g., Mom, Dad, Aunt)",
+        "examples": [
+          "Mom",
+          "Dad",
+          "Aunt"
+        ]
+      },
+      {
+        "id": "slot_item1",
+        "type": "grocery_item",
+        "author_description": "First item on the child’s list.",
+        "child_prompt": "Name an item the child has to find (e.g., tomato soup, bag of apples).",
+        "examples": [
+          "tomato soup",
+          "bag of apples",
+          "orange juice"
+        ]
+      },
+      {
+        "id": "slot_item2",
+        "type": "grocery_item",
+        "author_description": "Second item on the child’s list.",
+        "child_prompt": "Name another item the child has to find (e.g., bread, milk).",
+        "examples": [
+          "bread",
+          "milk",
+          "cookies"
+        ]
+      },
+      {
+        "id": "slot_brand",
+        "type": "brand_name_silly",
+        "author_description": "Specific brand the child looks for.",
+        "child_prompt": "Choose a playful brand name (e.g., Super-Crunch, Grandma's Best).",
+        "examples": [
+          "Super-Crunch",
+          "Grandma's Best",
+          "Choco-Blast"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_temperature": 1.3,
+    "blueprint_id": "bp_supermarket_helper",
+    "blueprint_pattern_name": "The Grocery Mission",
+    "blueprint_logline": "A child is given a short list of items to find in the supermarket alone (in the next aisle) and takes the job very seriously.",
+    "blueprint_instantiated_at": "2025-12-03T08:35:56"
+  }
+}

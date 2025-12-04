@@ -1,0 +1,27 @@
+Title: The Blueberry Breakfast Rescue
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child helps fix a milk spill by adding blueberries, turning a kitchen mishap into a tasty new recipe.
+
+Slots:
+- slot_child (child_name): Name of the child main character.
+  Child prompt: What is a name you like for the kid in this story?
+  Examples: Mia, Jamal, Sofia
+- slot_adult (family_member): Name of the adult helper.
+  Child prompt: What is a name you like for the adult in this story?
+  Examples: Mom, Grandpa, Auntie
+- slot_dish (food_dish): The specific dish they are making.
+  Child prompt: What is a dish you like for them to make?
+  Examples: pancakes, pizza, cookies
+
+Story template:
+s1: [[slot_child]] was excited to help [[slot_adult]] make breakfast in the kitchen.
+s2: They were making [[slot_dish]] with fluffy batter and a big smile.
+s3: Suddenly, the milk spilled all over the counter, and the batter looked sad.
+s4: [[slot_child]] thought quickly and said, “Let’s add something sweet!”
+s5: The child tossed a handful of blueberries into the batter, and flour puffs into the air like a cloud.
+s6: The batter turned a pink, sparkling swirl, and the kitchen smelled like sunshine.
+s7: They mixed it all together, and the batter bubbled like a tiny friendly fire.
+s8: When they tasted the new [[slot_dish]], they giggled because it was a little strange but yummy.
+s9: [[slot_adult]] gave [[slot_child]] a big hug and said, “You made a secret recipe!”
+s10: The kitchen felt warm, and they promised to make it again, using more blueberries next time.

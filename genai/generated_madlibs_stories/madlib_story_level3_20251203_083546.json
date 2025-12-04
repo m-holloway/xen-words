@@ -1,0 +1,149 @@
+{
+  "template": {
+    "title": "The Plant Doctor's Song",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A kind child helps a sad plant feel better with fun experiments, water, light, and a special song.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] looked at the plant on the windowsill and felt a little sad.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "The [[slot_plant]] had drooping leaves and seemed thirsty.",
+        "slot_ids": [
+          "slot_plant"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "[[slot_child]] decided to try a funny cure, so [[slot_cure_action]] to the plant.",
+        "slot_ids": [
+          "slot_child",
+          "slot_cure_action"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "Then [[slot_child]] played a soft [[slot_music_type]] with the plant.",
+        "slot_ids": [
+          "slot_child",
+          "slot_music_type"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "The next day, [[slot_child]] noticed the soil was dry and the sun was hidden by clouds.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "[[slot_child]] poured water into the pot and moved the plant to a sunny spot.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "The centerpiece moment: [[slot_child]] put headphones on the pot so the plant could listen to their favorite song.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "After the water and light, the [[slot_plant]] perked up and showed a [[slot_change]].",
+        "slot_ids": [
+          "slot_plant",
+          "slot_change"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "[[slot_child]] smiled, happy that the plant was no longer sad.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "The window sill felt brighter, and both [[slot_child]] and the plant enjoyed the sunshine together.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the child main character.",
+        "child_prompt": "What is a name you like for the kid in this story?",
+        "examples": [
+          "Mia",
+          "Jamal",
+          "Sofia"
+        ]
+      },
+      {
+        "id": "slot_plant",
+        "type": "plant_type",
+        "author_description": "Type of plant that needs help.",
+        "child_prompt": "What kind of plant would you like to help?",
+        "examples": [
+          "cactus",
+          "fern",
+          "sunflower"
+        ]
+      },
+      {
+        "id": "slot_cure_action",
+        "type": "verb_activity",
+        "author_description": "A silly activity the child tries to cheer the plant.",
+        "child_prompt": "What fun thing could you do to make a plant smile?",
+        "examples": [
+          "singing",
+          "dancing",
+          "telling jokes"
+        ]
+      },
+      {
+        "id": "slot_music_type",
+        "type": "music_genre",
+        "author_description": "Music style the plant listens to.",
+        "child_prompt": "What kind of music would you play for the plant?",
+        "examples": [
+          "rock and roll",
+          "opera",
+          "lullabies"
+        ]
+      },
+      {
+        "id": "slot_change",
+        "type": "visual_change",
+        "author_description": "A sign that the plant is getting better.",
+        "child_prompt": "What small change would show the plant is happy again?",
+        "examples": [
+          "green leaf",
+          "tiny flower",
+          "straight stem"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_temperature": 1.3,
+    "blueprint_id": "bp_unhappy_plant",
+    "blueprint_pattern_name": "The Plant Doctor",
+    "blueprint_logline": "A child notices a wilting plant and tries various funny methods to cheer it up.",
+    "blueprint_instantiated_at": "2025-12-03T08:35:46"
+  }
+}

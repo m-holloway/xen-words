@@ -1,0 +1,36 @@
+Title: The Secret Detour
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A bored ride becomes a magical adventure when a secret turn reveals a giant animal and a sparkling souvenir.
+
+Slots:
+- slot_child (child_name): Name of the child main character.
+  Child prompt: What is a name you like for the kid in this story?
+  Examples: Mia, Jamal, Sofia
+- slot_vehicle (vehicle_type): The type of vehicle the child is riding in.
+  Child prompt: What kind of vehicle is the child riding? (e.g., school bus, subway train, mom's van)
+  Examples: school bus, subway train, mom's van
+- slot_driver (character_role): Who is driving or steering the vehicle.
+  Child prompt: Who is driving the vehicle? (e.g., driver with a purple hat, robot conductor, grandpa)
+  Examples: driver with a purple hat, robot conductor, grandpa
+- slot_animal (animal_name): A large animal that floats past the window.
+  Child prompt: Name a big animal you like. (e.g., whale, giraffe, dragon)
+  Examples: whale, giraffe, dragon
+- slot_fantasy_sight (magical_entity): A fantastical thing seen outside the vehicle.
+  Child prompt: What magical thing would you like to see outside? (e.g., flying whales, candy castles, dancing dinosaurs)
+  Examples: flying whales, candy castles, dancing dinosaurs
+- slot_souvenir (small_object): A small proof that the detour was real.
+  Child prompt: What small souvenir would you keep? (e.g., glowing ticket, blue leaf, star-shaped stone)
+  Examples: glowing ticket, blue leaf, star-shaped stone
+
+Story template:
+s1: [[slot_child]] stared out the window of the [[slot_vehicle]] and felt a little bored.
+s2: The driver, [[slot_driver]], was humming a song while the road stretched gray and plain.
+s3: Suddenly, the vehicle turned onto a street that wasn't on any map, and the sky turned pink.
+s4: [[slot_child]] pressed their face to the glass and saw a giant [[slot_animal]] floating gracefully past the window.
+s5: The animal waved, and tiny sparkles fell into the car, making the seats sparkle.
+s6: Inside, the driver laughed and said, "We're on a secret adventure!"
+s7: The vehicle zoomed through a field of [[slot_fantasy_sight]] for just a minute, and everything felt like a dream.
+s8: Then the road became ordinary again, but the vehicle headed back to the usual route.
+s9: When they arrived, [[slot_child]] held a [[slot_souvenir]] that glowed like a star, proof of the detour.
+s10: Everyone in the vehicle cheered, and the trip felt wonderful and full of wonder.

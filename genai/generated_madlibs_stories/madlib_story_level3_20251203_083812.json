@@ -1,0 +1,148 @@
+{
+  "template": {
+    "title": "The Sticky Note Adventure",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child discovers a series of friendly notes that turn into a playful treasure hunt, ending with a surprise hug and treat.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] stared at the sticky note on the [[slot_spot]], wondering what the note said.",
+        "slot_ids": [
+          "slot_child",
+          "slot_spot"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "The note read, \"Who is the best?\" and it made [[slot_child]] giggle.",
+        "slot_ids": []
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "[[slot_child]] wrote a reply on a fresh piece of paper, drawing a big smiley face with silly glasses.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "The reply was hidden in the [[slot_spot]] for the next note to find.",
+        "slot_ids": [
+          "slot_spot"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "The next morning, [[slot_child]] found another note that said, \"Find the blue box in the kitchen.\"",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "[[slot_child]] searched the kitchen, looking under the stove, behind the fridge, and inside the pantry, until a blue box popped out.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "Inside the box was a tiny treasure: a [[slot_treat]] and a note that said, \"You did great!\"",
+        "slot_ids": [
+          "slot_treat"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "[[slot_child]] felt warm and happy, and then a sticky note appeared on the bathroom mirror, drawing a smiley face with silly glasses.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "The note said, \"I am the [[slot_writer]] who sent you the notes, and I love seeing you smile.\"",
+        "slot_ids": [
+          "slot_writer"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "[[slot_child]] ran to the kitchen, where the [[slot_writer]] was waiting with a hug and a secret treat.",
+        "slot_ids": [
+          "slot_child",
+          "slot_writer"
+        ]
+      },
+      {
+        "id": "s11",
+        "text_with_blanks": "They shared the [[slot_treat]] together, laughing and planning the next note adventure.",
+        "slot_ids": [
+          "slot_treat"
+        ]
+      },
+      {
+        "id": "s12",
+        "text_with_blanks": "At bedtime, [[slot_child]] tucked the last note into the [[slot_spot]] and dreamed of more friendly messages.",
+        "slot_ids": [
+          "slot_child",
+          "slot_spot"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the child main character.",
+        "child_prompt": "What is a name you like for the kid in this story?",
+        "examples": [
+          "Mia",
+          "Jamal",
+          "Sofia"
+        ]
+      },
+      {
+        "id": "slot_spot",
+        "type": "location_in_house",
+        "author_description": "Where the notes are hidden (e.g., fridge, pillow).",
+        "child_prompt": "Where would you put a note in your house?",
+        "examples": [
+          "fridge",
+          "pillow",
+          "shoe"
+        ]
+      },
+      {
+        "id": "slot_writer",
+        "type": "person_or_creature",
+        "author_description": "The friendly writer of the notes (e.g., Elf, Dad).",
+        "child_prompt": "Who would you like to be the secret note‑writer?",
+        "examples": [
+          "Elf",
+          "Dad",
+          "Secret Agent"
+        ]
+      },
+      {
+        "id": "slot_treat",
+        "type": "small_item",
+        "author_description": "The small prize hidden in the box (e.g., cookie, book).",
+        "child_prompt": "What is a small treat you like?",
+        "examples": [
+          "cookie",
+          "book",
+          "new pencil"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_temperature": 1.3,
+    "blueprint_id": "bp_note_story",
+    "blueprint_pattern_name": "The Paper Trail",
+    "blueprint_logline": "A story told partly through notes left between a child and a family member (or 'magic' visitor) on the fridge or pillow.",
+    "blueprint_instantiated_at": "2025-12-03T08:38:12"
+  }
+}

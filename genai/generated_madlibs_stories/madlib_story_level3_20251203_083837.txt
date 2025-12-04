@@ -1,0 +1,30 @@
+Title: The Sparkly Cake Surprise
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child learns that a small mistake can turn a favorite creation into something even more special.
+
+Slots:
+- slot_child (child_name): Name of the child main character.
+  Child prompt: What is a name you like for the kid in this story?
+  Examples: Leo, Maya, Sam
+- slot_creation (craft_or_food): What the child is trying to make.
+  Child prompt: What is something the child is making, like a cake or a statue?
+  Examples: super-cake, clay statue, robot costume
+- slot_weird_item (odd_object): The unexpected ingredient or material that falls into the mix.
+  Child prompt: What is a silly or surprising thing that could fall into the batter?
+  Examples: spicy pepper, silver glitter, sour pickle juice
+- slot_recipient (person_or_group): Who receives the child’s creation.
+  Child prompt: Who is the special person or group that will get the gift?
+  Examples: the Mayor, Mom, the Science Teacher
+
+Story template:
+s1: [[slot_child]] set out to bake a shiny [[slot_creation]] for [[slot_recipient]]'s birthday.
+s2: He/she mixed flour, sugar, and milk, dreaming of bright frosting.
+s3: Suddenly, a spoon slipped and a splash of [[slot_weird_item]] fell into the batter.
+s4: The batter turned a strange color, and [[slot_child]] felt a little worried.
+s5: Instead of stopping, [[slot_child]] decided to keep baking, hoping the surprise would be fun.
+s6: When the timer rang, [[slot_child]] opened the oven door.
+s7: A cloud of colorful steam and glitter puffed out, revealing a lumpy but magnificent [[slot_creation]].
+s8: The [[slot_creation]] smelled sweet and a little tangy, and it looked like a rainbow blob.
+s9: [[slot_child]] laughed and gave the [[slot_creation]] to [[slot_recipient]], who cheered with delight.
+s10: They all learned that a little mistake can make a gift extra special.

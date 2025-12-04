@@ -1,0 +1,32 @@
+Title: The Sticky Note Adventure
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child discovers a series of friendly notes that turn into a playful treasure hunt, ending with a surprise hug and treat.
+
+Slots:
+- slot_child (child_name): Name of the child main character.
+  Child prompt: What is a name you like for the kid in this story?
+  Examples: Mia, Jamal, Sofia
+- slot_spot (location_in_house): Where the notes are hidden (e.g., fridge, pillow).
+  Child prompt: Where would you put a note in your house?
+  Examples: fridge, pillow, shoe
+- slot_writer (person_or_creature): The friendly writer of the notes (e.g., Elf, Dad).
+  Child prompt: Who would you like to be the secret note‑writer?
+  Examples: Elf, Dad, Secret Agent
+- slot_treat (small_item): The small prize hidden in the box (e.g., cookie, book).
+  Child prompt: What is a small treat you like?
+  Examples: cookie, book, new pencil
+
+Story template:
+s1: [[slot_child]] stared at the sticky note on the [[slot_spot]], wondering what the note said.
+s2: The note read, "Who is the best?" and it made [[slot_child]] giggle.
+s3: [[slot_child]] wrote a reply on a fresh piece of paper, drawing a big smiley face with silly glasses.
+s4: The reply was hidden in the [[slot_spot]] for the next note to find.
+s5: The next morning, [[slot_child]] found another note that said, "Find the blue box in the kitchen."
+s6: [[slot_child]] searched the kitchen, looking under the stove, behind the fridge, and inside the pantry, until a blue box popped out.
+s7: Inside the box was a tiny treasure: a [[slot_treat]] and a note that said, "You did great!"
+s8: [[slot_child]] felt warm and happy, and then a sticky note appeared on the bathroom mirror, drawing a smiley face with silly glasses.
+s9: The note said, "I am the [[slot_writer]] who sent you the notes, and I love seeing you smile."
+s10: [[slot_child]] ran to the kitchen, where the [[slot_writer]] was waiting with a hug and a secret treat.
+s11: They shared the [[slot_treat]] together, laughing and planning the next note adventure.
+s12: At bedtime, [[slot_child]] tucked the last note into the [[slot_spot]] and dreamed of more friendly messages.

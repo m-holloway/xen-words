@@ -1,0 +1,116 @@
+{
+  "template": {
+    "title": "The Blueberry Breakfast Rescue",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child helps fix a milk spill by adding blueberries, turning a kitchen mishap into a tasty new recipe.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] was excited to help [[slot_adult]] make breakfast in the kitchen.",
+        "slot_ids": [
+          "slot_child",
+          "slot_adult"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "They were making [[slot_dish]] with fluffy batter and a big smile.",
+        "slot_ids": [
+          "slot_dish"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "Suddenly, the milk spilled all over the counter, and the batter looked sad.",
+        "slot_ids": []
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "[[slot_child]] thought quickly and said, “Let’s add something sweet!”",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "The child tossed a handful of blueberries into the batter, and flour puffs into the air like a cloud.",
+        "slot_ids": []
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "The batter turned a pink, sparkling swirl, and the kitchen smelled like sunshine.",
+        "slot_ids": []
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "They mixed it all together, and the batter bubbled like a tiny friendly fire.",
+        "slot_ids": []
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "When they tasted the new [[slot_dish]], they giggled because it was a little strange but yummy.",
+        "slot_ids": [
+          "slot_dish"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "[[slot_adult]] gave [[slot_child]] a big hug and said, “You made a secret recipe!”",
+        "slot_ids": [
+          "slot_adult",
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "The kitchen felt warm, and they promised to make it again, using more blueberries next time.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the child main character.",
+        "child_prompt": "What is a name you like for the kid in this story?",
+        "examples": [
+          "Mia",
+          "Jamal",
+          "Sofia"
+        ]
+      },
+      {
+        "id": "slot_adult",
+        "type": "family_member",
+        "author_description": "Name of the adult helper.",
+        "child_prompt": "What is a name you like for the adult in this story?",
+        "examples": [
+          "Mom",
+          "Grandpa",
+          "Auntie"
+        ]
+      },
+      {
+        "id": "slot_dish",
+        "type": "food_dish",
+        "author_description": "The specific dish they are making.",
+        "child_prompt": "What is a dish you like for them to make?",
+        "examples": [
+          "pancakes",
+          "pizza",
+          "cookies"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_temperature": 1.3,
+    "blueprint_id": "bp_kitchen_mishap",
+    "blueprint_pattern_name": "The Culinary Rescue",
+    "blueprint_logline": "A cooking attempt goes wrong, but creative thinking turns the mess into a new family favorite.",
+    "blueprint_instantiated_at": "2025-12-03T08:38:31"
+  }
+}

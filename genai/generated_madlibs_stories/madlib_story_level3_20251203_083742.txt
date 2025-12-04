@@ -1,0 +1,30 @@
+Title: The Grumpy Garden Friend
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A curious child discovers a grumpy garden creature is sad because it lost its glasses, and a small gift turns the grump into a friend.
+
+Slots:
+- slot_child (child_name): Name of the child main character.
+  Child prompt: What is a name you like for the kid in this story?
+  Examples: Mia, Jamal, Sofia
+- slot_creature (character_type): The grumpy figure in the garden.
+  Child prompt: What kind of creature or person could be grumpy in a garden?
+  Examples: troll, old dog, neighbor Mr. Grump
+- slot_noise (sound): The sound that shows the creature is grumpy.
+  Child prompt: What sound does the grumpy creature make?
+  Examples: loud growling, angry muttering, stomping
+- slot_gift (solution_object): A small object that can fix the creature's problem.
+  Child prompt: What little thing could help the grumpy creature?
+  Examples: tweezers, magnifying glass, glass of water
+
+Story template:
+s1: [[slot_child]] peeked through the backyard fence and heard a [[slot_noise]] from the garden.
+s2: The noise sounded like a big growl, and [[slot_child]] felt a little curious.
+s3: Instead of running away, [[slot_child]] crept closer to the garden gate.
+s4: In the garden, [[slot_creature]] was stuck on a low branch, its eyes squinting.
+s5: [[slot_creature]] looked grumpy because it had lost its reading glasses, which made it feel sad.
+s6: [[slot_child]] remembered the [[slot_gift]] in its pocket and offered it to [[slot_creature]].
+s7: The [[slot_creature]] put on the glasses and instantly smiled, looking bright and happy.
+s8: [[slot_creature]] thanked [[slot_child]] and shared a quiet moment under the oak tree.
+s9: They both watched the clouds drift by, feeling warm and friendly.
+s10: When the sun set, [[slot_child]] waved goodbye, knowing a new friendship had grown.

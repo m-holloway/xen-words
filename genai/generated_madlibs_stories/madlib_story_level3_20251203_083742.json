@@ -1,0 +1,137 @@
+{
+  "template": {
+    "title": "The Grumpy Garden Friend",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A curious child discovers a grumpy garden creature is sad because it lost its glasses, and a small gift turns the grump into a friend.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] peeked through the backyard fence and heard a [[slot_noise]] from the garden.",
+        "slot_ids": [
+          "slot_child",
+          "slot_noise"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "The noise sounded like a big growl, and [[slot_child]] felt a little curious.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "Instead of running away, [[slot_child]] crept closer to the garden gate.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "In the garden, [[slot_creature]] was stuck on a low branch, its eyes squinting.",
+        "slot_ids": [
+          "slot_creature"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "[[slot_creature]] looked grumpy because it had lost its reading glasses, which made it feel sad.",
+        "slot_ids": [
+          "slot_creature"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "[[slot_child]] remembered the [[slot_gift]] in its pocket and offered it to [[slot_creature]].",
+        "slot_ids": [
+          "slot_child",
+          "slot_gift",
+          "slot_creature"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "The [[slot_creature]] put on the glasses and instantly smiled, looking bright and happy.",
+        "slot_ids": [
+          "slot_creature"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "[[slot_creature]] thanked [[slot_child]] and shared a quiet moment under the oak tree.",
+        "slot_ids": [
+          "slot_creature",
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "They both watched the clouds drift by, feeling warm and friendly.",
+        "slot_ids": []
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "When the sun set, [[slot_child]] waved goodbye, knowing a new friendship had grown.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the child main character.",
+        "child_prompt": "What is a name you like for the kid in this story?",
+        "examples": [
+          "Mia",
+          "Jamal",
+          "Sofia"
+        ]
+      },
+      {
+        "id": "slot_creature",
+        "type": "character_type",
+        "author_description": "The grumpy figure in the garden.",
+        "child_prompt": "What kind of creature or person could be grumpy in a garden?",
+        "examples": [
+          "troll",
+          "old dog",
+          "neighbor Mr. Grump"
+        ]
+      },
+      {
+        "id": "slot_noise",
+        "type": "sound",
+        "author_description": "The sound that shows the creature is grumpy.",
+        "child_prompt": "What sound does the grumpy creature make?",
+        "examples": [
+          "loud growling",
+          "angry muttering",
+          "stomping"
+        ]
+      },
+      {
+        "id": "slot_gift",
+        "type": "solution_object",
+        "author_description": "A small object that can fix the creature's problem.",
+        "child_prompt": "What little thing could help the grumpy creature?",
+        "examples": [
+          "tweezers",
+          "magnifying glass",
+          "glass of water"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_temperature": 1.3,
+    "blueprint_id": "bp_misunderstood_creature",
+    "blueprint_pattern_name": "The Grump's Secret",
+    "blueprint_logline": "A child investigates a grumpy neighbor or creature and discovers they are only grumpy because they have a small, fixable problem.",
+    "blueprint_instantiated_at": "2025-12-03T08:37:42"
+  }
+}

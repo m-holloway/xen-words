@@ -1,0 +1,33 @@
+Title: Patience on the Porch
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child learns that sitting still can help a scared animal become a friend.
+
+Slots:
+- slot_child (child_name): Name of the child main character.
+  Child prompt: What is a name you like for the kid in this story?
+  Examples: Mia, Jamal, Sofia
+- slot_animal (animal): Type of the stray animal.
+  Child prompt: What kind of animal do you like for the stray friend?
+  Examples: cat, dog, bunny
+- slot_treat (food): Treat to lure the animal.
+  Child prompt: What snack would you give to the animal?
+  Examples: cheese, cracker, carrot
+- slot_name (pet_name): Name you give the animal after it becomes a friend.
+  Child prompt: What name would you give to the animal?
+  Examples: Shadow, Scout, Goldie
+- slot_noise (soft_sound): Soft sound the animal makes.
+  Child prompt: What soft sound does the animal make?
+  Examples: purr, whimper, sniff
+
+Story template:
+s1: [[slot_child]] sat on the front porch, looking at the small [[slot_animal]] that peeked from behind a bush.
+s2: The [[slot_animal]] shivered and kept its distance, its [[slot_noise]] soft and shy.
+s3: [[slot_child]] tried to call the animal, shouting, "Come here!" but the animal ran away.
+s4: [[slot_child]] felt a little sad, then remembered a trick taught by a grown-up.
+s5: [[slot_child]] decided to sit still, just like a statue, and held out a piece of [[slot_treat]].
+s6: The animal watched [[slot_child]] with curious eyes, sniffing the air.
+s7: [[slot_child]] held breath, watching the [[slot_animal]] take one tiny step forward, then another.
+s8: The animal finally crept closer and sniffed [[slot_child]]'s hand, wagging its tail.
+s9: [[slot_child]] smiled and whispered, "Hello, [[slot_name]]!"
+s10: From that day, the [[slot_animal]] visited often, and [[slot_child]] learned that patience can make new friends.

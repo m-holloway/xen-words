@@ -1,0 +1,140 @@
+{
+  "template": {
+    "title": "The Forest Treasure Hunt",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A curious child collects nature treasures, searches for a special item, and learns that sometimes the unexpected can be the best addition to a collection.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] looked at the [[slot_collection_type]] in their [[slot_container]] and saw one empty spot.",
+        "slot_ids": [
+          "slot_child",
+          "slot_collection_type",
+          "slot_container"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "They decided to find the missing piece, a [[slot_rare_feature]] one that would finish the set.",
+        "slot_ids": [
+          "slot_rare_feature"
+        ]
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "Outside, [[slot_child]] walked along the forest path, looking for a round white rock or a red pointy leaf.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "They found a shiny leaf that was not the [[slot_rare_feature]] but it glittered in the sunlight.",
+        "slot_ids": [
+          "slot_rare_feature"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "On a tree stump, [[slot_child]] lines up ten smooth stones in a perfect circle, feeling proud.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "The shiny leaf caught their eye, and they thought maybe it could be the new treasure.",
+        "slot_ids": []
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "They added the leaf to the collection, and the empty spot was now filled with something special.",
+        "slot_ids": []
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "The forest seemed brighter, and [[slot_child]] felt happy that the collection was complete.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "They went back home, ready to show their friends the new addition.",
+        "slot_ids": []
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "And they knew that sometimes the best discoveries come when you look for something else.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the child main character.",
+        "child_prompt": "What is a name you like for the kid in this story?",
+        "examples": [
+          "Lily",
+          "Noah",
+          "Mia"
+        ]
+      },
+      {
+        "id": "slot_collection_type",
+        "type": "nature_object",
+        "author_description": "The type of nature items the child collects.",
+        "child_prompt": "What kind of nature items does the child collect? (e.g., rocks, leaves, acorns)",
+        "examples": [
+          "rocks",
+          "leaves",
+          "acorns"
+        ]
+      },
+      {
+        "id": "slot_rare_feature",
+        "type": "adjective",
+        "author_description": "The special feature or color the child is looking for.",
+        "child_prompt": "What special feature or color is the child looking for? (e.g., sparkly, blue, heart-shaped)",
+        "examples": [
+          "sparkly",
+          "blue",
+          "heart-shaped"
+        ]
+      },
+      {
+        "id": "slot_container",
+        "type": "container",
+        "author_description": "Where the child keeps their collection.",
+        "child_prompt": "Where does the child keep their collection? (e.g., egg carton, shoe box, pocket)",
+        "examples": [
+          "egg carton",
+          "shoe box",
+          "pocket"
+        ]
+      },
+      {
+        "id": "slot_surprise_item",
+        "type": "object",
+        "author_description": "The unexpected item the child finds.",
+        "child_prompt": "What unexpected item does the child find? (e.g., fossil, bird feather, piece of glass)",
+        "examples": [
+          "fossil",
+          "bird feather",
+          "piece of glass"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_temperature": 1.3,
+    "blueprint_id": "bp_nature_collection",
+    "blueprint_pattern_name": "The Missing Piece",
+    "blueprint_logline": "A child collects nature items (rocks, leaves) and searches for one specific color or shape to finish the set.",
+    "blueprint_instantiated_at": "2025-12-03T08:37:58"
+  }
+}

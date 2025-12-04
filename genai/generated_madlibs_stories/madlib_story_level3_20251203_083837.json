@@ -1,0 +1,135 @@
+{
+  "template": {
+    "title": "The Sparkly Cake Surprise",
+    "reading_level": 3,
+    "reading_band": "Grades 1–2",
+    "target_minutes": 5,
+    "summary": "A child learns that a small mistake can turn a favorite creation into something even more special.",
+    "sentences": [
+      {
+        "id": "s1",
+        "text_with_blanks": "[[slot_child]] set out to bake a shiny [[slot_creation]] for [[slot_recipient]]'s birthday.",
+        "slot_ids": [
+          "slot_child",
+          "slot_creation",
+          "slot_recipient"
+        ]
+      },
+      {
+        "id": "s2",
+        "text_with_blanks": "He/she mixed flour, sugar, and milk, dreaming of bright frosting.",
+        "slot_ids": []
+      },
+      {
+        "id": "s3",
+        "text_with_blanks": "Suddenly, a spoon slipped and a splash of [[slot_weird_item]] fell into the batter.",
+        "slot_ids": [
+          "slot_weird_item"
+        ]
+      },
+      {
+        "id": "s4",
+        "text_with_blanks": "The batter turned a strange color, and [[slot_child]] felt a little worried.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s5",
+        "text_with_blanks": "Instead of stopping, [[slot_child]] decided to keep baking, hoping the surprise would be fun.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s6",
+        "text_with_blanks": "When the timer rang, [[slot_child]] opened the oven door.",
+        "slot_ids": [
+          "slot_child"
+        ]
+      },
+      {
+        "id": "s7",
+        "text_with_blanks": "A cloud of colorful steam and glitter puffed out, revealing a lumpy but magnificent [[slot_creation]].",
+        "slot_ids": [
+          "slot_creation"
+        ]
+      },
+      {
+        "id": "s8",
+        "text_with_blanks": "The [[slot_creation]] smelled sweet and a little tangy, and it looked like a rainbow blob.",
+        "slot_ids": [
+          "slot_creation"
+        ]
+      },
+      {
+        "id": "s9",
+        "text_with_blanks": "[[slot_child]] laughed and gave the [[slot_creation]] to [[slot_recipient]], who cheered with delight.",
+        "slot_ids": [
+          "slot_child",
+          "slot_creation",
+          "slot_recipient"
+        ]
+      },
+      {
+        "id": "s10",
+        "text_with_blanks": "They all learned that a little mistake can make a gift extra special.",
+        "slot_ids": []
+      }
+    ],
+    "slots": [
+      {
+        "id": "slot_child",
+        "type": "child_name",
+        "author_description": "Name of the child main character.",
+        "child_prompt": "What is a name you like for the kid in this story?",
+        "examples": [
+          "Leo",
+          "Maya",
+          "Sam"
+        ]
+      },
+      {
+        "id": "slot_creation",
+        "type": "craft_or_food",
+        "author_description": "What the child is trying to make.",
+        "child_prompt": "What is something the child is making, like a cake or a statue?",
+        "examples": [
+          "super-cake",
+          "clay statue",
+          "robot costume"
+        ]
+      },
+      {
+        "id": "slot_weird_item",
+        "type": "odd_object",
+        "author_description": "The unexpected ingredient or material that falls into the mix.",
+        "child_prompt": "What is a silly or surprising thing that could fall into the batter?",
+        "examples": [
+          "spicy pepper",
+          "silver glitter",
+          "sour pickle juice"
+        ]
+      },
+      {
+        "id": "slot_recipient",
+        "type": "person_or_group",
+        "author_description": "Who receives the child’s creation.",
+        "child_prompt": "Who is the special person or group that will get the gift?",
+        "examples": [
+          "the Mayor",
+          "Mom",
+          "the Science Teacher"
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "generator_model": "inception/mercury",
+    "generator_temperature": 1.3,
+    "blueprint_id": "bp_unexpected_ingredient",
+    "blueprint_pattern_name": "The Happy Accident",
+    "blueprint_logline": "A child tries to create something perfect, makes a big messy mistake, but realizes the result is even better than the original plan.",
+    "blueprint_instantiated_at": "2025-12-03T08:38:37"
+  }
+}

@@ -1,0 +1,30 @@
+Title: The Great Scatter
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A child’s collection is scattered by a sudden force, and with help from a friendly passerby, they gather it back together.
+
+Slots:
+- slot_child (child_name): Name of the child main character.
+  Child prompt: What is a name you like for the kid in this story?
+  Examples: Kiko, Ben, Aria
+- slot_collection (plural_objects): The things that get scattered.
+  Child prompt: What are some things that a child might collect?
+  Examples: drawing pages, baseball cards, dried leaves
+- slot_force (cause_of_disaster): What causes the items to scatter.
+  Child prompt: What could suddenly blow or knock things away in a park?
+  Examples: gust of wind, running dog, giant sneeze
+- slot_helper (person_or_animal): Who helps the child catch the scattered items.
+  Child prompt: Who might be friendly and help in a park?
+  Examples: mail carrier, squirrel, crossing guard
+
+Story template:
+s1: [[slot_child]] was proud holding a pile of [[slot_collection]] to show to the teacher.
+s2: The park was windy, and a [[slot_force]] blew through the trees.
+s3: The [[slot_collection]] flew up like a flock of birds, swirling in the air.
+s4: They landed on high branches, a statue, and a passing kid's hat.
+s5: [[slot_child]] chased after them, giggling as they tried to catch each piece.
+s6: A friendly [[slot_helper]] saw the mess and offered help.
+s7: Together, they gathered the [[slot_collection]] from the branches and the hat.
+s8: The pile was a little messy but still safe.
+s9: [[slot_child]] thanked the [[slot_helper]] and the teacher for their kindness.
+s10: They all celebrated with a small picnic, and the park felt brighter.

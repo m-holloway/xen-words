@@ -1,0 +1,33 @@
+Title: The Plant Doctor's Song
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A kind child helps a sad plant feel better with fun experiments, water, light, and a special song.
+
+Slots:
+- slot_child (child_name): Name of the child main character.
+  Child prompt: What is a name you like for the kid in this story?
+  Examples: Mia, Jamal, Sofia
+- slot_plant (plant_type): Type of plant that needs help.
+  Child prompt: What kind of plant would you like to help?
+  Examples: cactus, fern, sunflower
+- slot_cure_action (verb_activity): A silly activity the child tries to cheer the plant.
+  Child prompt: What fun thing could you do to make a plant smile?
+  Examples: singing, dancing, telling jokes
+- slot_music_type (music_genre): Music style the plant listens to.
+  Child prompt: What kind of music would you play for the plant?
+  Examples: rock and roll, opera, lullabies
+- slot_change (visual_change): A sign that the plant is getting better.
+  Child prompt: What small change would show the plant is happy again?
+  Examples: green leaf, tiny flower, straight stem
+
+Story template:
+s1: [[slot_child]] looked at the plant on the windowsill and felt a little sad.
+s2: The [[slot_plant]] had drooping leaves and seemed thirsty.
+s3: [[slot_child]] decided to try a funny cure, so [[slot_cure_action]] to the plant.
+s4: Then [[slot_child]] played a soft [[slot_music_type]] with the plant.
+s5: The next day, [[slot_child]] noticed the soil was dry and the sun was hidden by clouds.
+s6: [[slot_child]] poured water into the pot and moved the plant to a sunny spot.
+s7: The centerpiece moment: [[slot_child]] put headphones on the pot so the plant could listen to their favorite song.
+s8: After the water and light, the [[slot_plant]] perked up and showed a [[slot_change]].
+s9: [[slot_child]] smiled, happy that the plant was no longer sad.
+s10: The window sill felt brighter, and both [[slot_child]] and the plant enjoyed the sunshine together.

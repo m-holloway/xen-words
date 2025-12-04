@@ -1,0 +1,33 @@
+Title: The Grocery Mission
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A brave child follows a list to find items in the supermarket, learns to make good choices, and feels proud of their independence.
+
+Slots:
+- slot_child (child_name): Name of the child main character.
+  Child prompt: What is a name you like for the kid in this story?
+  Examples: Mia, Jamal, Sofia
+- slot_parent (parent_role): The adult who gives the child the task.
+  Child prompt: Who is the adult helping the child? (e.g., Mom, Dad, Aunt)
+  Examples: Mom, Dad, Aunt
+- slot_item1 (grocery_item): First item on the child’s list.
+  Child prompt: Name an item the child has to find (e.g., tomato soup, bag of apples).
+  Examples: tomato soup, bag of apples, orange juice
+- slot_item2 (grocery_item): Second item on the child’s list.
+  Child prompt: Name another item the child has to find (e.g., bread, milk).
+  Examples: bread, milk, cookies
+- slot_brand (brand_name_silly): Specific brand the child looks for.
+  Child prompt: Choose a playful brand name (e.g., Super-Crunch, Grandma's Best).
+  Examples: Super-Crunch, Grandma's Best, Choco-Blast
+
+Story template:
+s1: [[slot_child]] walked into the bright supermarket with a small basket, ready for a new adventure.
+s2: [[slot_parent]] gave [[slot_child]] a list with two items: [[slot_item1]] and [[slot_item2]], and said, "Find them in the next aisle, and bring them back."
+s3: [[slot_child]] nodded, then headed toward the cereal aisle, where the boxes were stacked so high they looked like a wall of colorful bricks.
+s4: [[slot_child]] looked for the brand [[slot_brand]] on the [[slot_item1]] box, but the label was missing.
+s5: [[slot_child]] thought hard, then chose a similar box that smelled sweet and looked friendly.
+s6: Next, [[slot_child]] searched for [[slot_item2]] and found a fresh box of the same brand.
+s7: [[slot_child]] felt proud, collected both items, and carried them back to the cart.
+s8: When [[slot_parent]] saw the basket, they smiled and said, "Great job, [[slot_child]]! You did a wonderful job picking the best choices."
+s9: [[slot_child]] beamed, feeling very brave and independent.
+s10: The day ended with a happy snack, and [[slot_child]] dreamed of the next small adventure.

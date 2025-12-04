@@ -1,0 +1,33 @@
+Title: The Forest Treasure Hunt
+Level: 3 (Grades 1–2)
+Target minutes: 5
+Summary: A curious child collects nature treasures, searches for a special item, and learns that sometimes the unexpected can be the best addition to a collection.
+
+Slots:
+- slot_child (child_name): Name of the child main character.
+  Child prompt: What is a name you like for the kid in this story?
+  Examples: Lily, Noah, Mia
+- slot_collection_type (nature_object): The type of nature items the child collects.
+  Child prompt: What kind of nature items does the child collect? (e.g., rocks, leaves, acorns)
+  Examples: rocks, leaves, acorns
+- slot_rare_feature (adjective): The special feature or color the child is looking for.
+  Child prompt: What special feature or color is the child looking for? (e.g., sparkly, blue, heart-shaped)
+  Examples: sparkly, blue, heart-shaped
+- slot_container (container): Where the child keeps their collection.
+  Child prompt: Where does the child keep their collection? (e.g., egg carton, shoe box, pocket)
+  Examples: egg carton, shoe box, pocket
+- slot_surprise_item (object): The unexpected item the child finds.
+  Child prompt: What unexpected item does the child find? (e.g., fossil, bird feather, piece of glass)
+  Examples: fossil, bird feather, piece of glass
+
+Story template:
+s1: [[slot_child]] looked at the [[slot_collection_type]] in their [[slot_container]] and saw one empty spot.
+s2: They decided to find the missing piece, a [[slot_rare_feature]] one that would finish the set.
+s3: Outside, [[slot_child]] walked along the forest path, looking for a round white rock or a red pointy leaf.
+s4: They found a shiny leaf that was not the [[slot_rare_feature]] but it glittered in the sunlight.
+s5: On a tree stump, [[slot_child]] lines up ten smooth stones in a perfect circle, feeling proud.
+s6: The shiny leaf caught their eye, and they thought maybe it could be the new treasure.
+s7: They added the leaf to the collection, and the empty spot was now filled with something special.
+s8: The forest seemed brighter, and [[slot_child]] felt happy that the collection was complete.
+s9: They went back home, ready to show their friends the new addition.
+s10: And they knew that sometimes the best discoveries come when you look for something else.
